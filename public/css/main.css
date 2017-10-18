@@ -1,0 +1,12 @@
+body {
+  padding-top: 5rem;
+}
+.section {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 90vh;
+}

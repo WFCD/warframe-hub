@@ -22,6 +22,11 @@
 }
 
 .map-container {
+	padding-top: 20px;
 	width: 100%;
 	height: 90vh;
+}
+
+#map{
+	height: 100%;
 }

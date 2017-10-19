@@ -1,3 +1,49 @@
 <div class="container">
-	<h2>Default Index Page</h2>
+    <div class="section text-center">
+		
+		<br><br>
+		<div class="row"> 
+			<!-- Cetus Timer -->
+			<div class="col-md-6">
+				<h2>Cetus Day/Night Cycle</h2>
+				<hr>
+				<h3 id="cetuscycleindicator"></h3>
+				<p class="info" id="cetuscycletitle">Loading</p>
+				<p class="info" id="cetuscycletime">Cycle times...</p>
+				<br><br>
+				<p class="info" id="cetustimezonetitle">Loading</p>
+				<p class="info" id="cetustimezonetime">Local time...</p>
+				<hr>
+			</div>
+			
+			<!-- Bounty Timer -->
+			<div class="col-md-6">
+				<h2>Cetus Bounties</h2>
+				<hr>
+				<p class="info" id="cetusbountytitle">Loading...</p>
+				<p class="info" id="cetusbountytime">Cetus bounty cycle...</p>
+				<hr>
+			</div>
+        </div>
+        
+        
+        <p>WorldState Obtained: </p>
+        <p id="worldstate"></p>
+		
+		{{> footer}}
+    </div>
 </div>
+<!-- /.container -->
+
+<!-- jQuery CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- popper.js CDN, required by bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+<!-- Tether CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<!-- Bootstrap CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- required js for page -->
+<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>

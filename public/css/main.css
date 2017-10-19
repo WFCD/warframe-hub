@@ -21,6 +21,10 @@
   }
 }
 
+.list-container {
+	list-style-position: inside;
+}
+
 .map-container {
 	padding-top: 20px;
 	width: 100%;

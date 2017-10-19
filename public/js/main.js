@@ -9,10 +9,21 @@ var cetusCurrentTitleTimezone;
 var cetusCurrentIndicator;
 var cetusCurrentIndicatorColor;
 
+//Earth timer stuff
+var earthCycleExpiryTime;
+var earthCycleEndTimestamp;
+var earthCurrentTitle;
+var earthCurrentTitleTimezone;
+var earthCurrentIndicator;
+var earthCurrentIndicatorColor;
+
 //Timer instances for killing purposes
-var dayCycle;
+var earthDayCycle;
+var cetusDayCycle;
 var bountyCycle;
 var worldCycle;
+var voidTraderCycle;
+var darvoCycle;
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
@@ -27,10 +38,25 @@ function getWorldState() {
 // Update data that is being used by this page
 function updateDataDependencies() {
 	cetusCycleExpiryTime = (new Date(worldState.cetusCycle.expiry)).getTime() / 1000;
+	earthCycleExpiryTime = (new Date(worldState.earthCycle.expiry)).getTime() / 1000;
+}
+
+function updateEarthTitle () {
+    if(getCetusCurrentCycleSeconds() < 14400){
+		earthCurrentIndicator = "Night";
+		earthCurrentIndicatorColor = "darkblue";
+		earthCurrentTitle = "Time until day: ";
+		earthCurrentTitleTimezone = "Time at day: "
+	}else{
+		earthCurrentIndicator = "Day";
+		earthCurrentIndicatorColor = "orange";
+		earthCurrentTitle = "Time until night: ";
+		earthCurrentTitleTimezone = "Time at night: "
+	}
 }
 
 function updateCetusTitle () {
-    if(getCurrentCycleSeconds() < 3000){
+    if(getCetusCurrentCycleSeconds() < 3000){
 		cetusCurrentIndicator = "Night";
 		cetusCurrentIndicatorColor = "darkblue";
 		cetusCurrentTitle = "Time until day: ";
@@ -43,7 +69,7 @@ function updateCetusTitle () {
 	}
 }
 
-function getCurrentCycleSeconds() {
+function getCetusCurrentCycleSeconds() {
 	var currentTime = Math.floor((new Date()).getTime() / 1000);
 	if(currentTime > cetusCycleExpiryTime){
 		//If current time is greater, that means expiry is out of date
@@ -53,16 +79,32 @@ function getCurrentCycleSeconds() {
 	return 9000 - (cetusCycleExpiryTime - currentTime);
 }
 
-function getSecondsLeft() {
-	var seconds = getCurrentCycleSeconds();
+function getCetusCycleSecondsLeft() {
+	var seconds = getCetusCurrentCycleSeconds();
 	if(seconds < 3000)
 		return 3000 - seconds;
 	return 9000 - seconds;
 }
 
+function getEarthCurrentCycleSeconds() {
+	var currentTime = Math.floor((new Date()).getTime() / 1000);
+	if(currentTime > earthCycleExpiryTime){
+		//If current time is greater, that means expiry is out of date
+		//But in the mean time, we can calculate the next cycle ourselves
+		earthCycleExpiryTime += 28800;
+	}
+	return 28800 - (earthCycleExpiryTime - currentTime);
+}
+
+function getEarthCycleSecondsLeft() {
+	return 14400 - (getEarthCurrentCycleSeconds() % 14400);
+}
+
 function updatePage() {
 	updateCetusCycle();
-	updateCetusBounty();
+	updateEarthCycle();
+	updateVoidTrader();
+	updateCetusBountyTimer();
 	updateWorldStateTime();
 }
 
@@ -71,15 +113,15 @@ function updateWorldStateTime() {
 }
 
 function updateCetusCycle() {
-	if(dayCycle){
-		clearInterval(dayCycle);
-		dayCycle = null;
+	if(cetusDayCycle){
+		clearInterval(cetusDayCycle);
+		cetusDayCycle = null;
 	}
-	dayCycle = setInterval(function(){
+	cetusDayCycle = setInterval(function(){
 		updateCetusTitle();
 		var currentTime = Math.floor((new Date()).getTime());
-		var secondsLeft = getSecondsLeft();
-		var cycleSeconds = getCurrentCycleSeconds();
+		var secondsLeft = getCetusCycleSecondsLeft();
+		var cycleSeconds = getCetusCurrentCycleSeconds();
 		var duration = moment.duration(secondsLeft*1000, 'milliseconds');
 		duration = moment.duration(duration.asMilliseconds() - 1000, 'milliseconds');
 		document.getElementById('cetuscycleindicator').innerText = cetusCurrentIndicator;
@@ -94,7 +136,31 @@ function updateCetusCycle() {
 	}, 1000);
 }
 
-function updateCetusBounty() {
+function updateEarthCycle() {
+	if(earthDayCycle){
+		clearInterval(earthDayCycle);
+		earthDayCycle = null;
+	}
+	earthDayCycle = setInterval(function(){
+		updateEarthTitle();
+		var currentTime = Math.floor((new Date()).getTime());
+		var secondsLeft = getEarthCycleSecondsLeft();
+		var cycleSeconds = getEarthCurrentCycleSeconds();
+		var duration = moment.duration(secondsLeft*1000, 'milliseconds');
+		duration = moment.duration(duration.asMilliseconds() - 1000, 'milliseconds');
+		document.getElementById('earthcycleindicator').innerText = earthCurrentIndicator;
+		if(!$('#earthcycleindicator').hasClass(earthCurrentIndicatorColor)){
+			$('#earthcycleindicator').attr("class", earthCurrentIndicatorColor);
+		}
+		document.getElementById('earthcycletitle').innerText = earthCurrentTitle;
+		document.getElementById('earthtimezonetitle').innerText = earthCurrentTitleTimezone;
+		document.getElementById('earthcycletime').innerText = formatDuration(duration);
+		document.getElementById('earthtimezonetime').innerText = moment(currentTime + secondsLeft*1000).format('MMMM Do YYYY, h:mm:ss a');
+		
+	}, 1000);
+}
+
+function updateCetusBountyTimer() {
 	if(bountyCycle){
 		clearInterval(bountyCycle);
 		bountyCycle = null;
@@ -133,6 +199,52 @@ function updateCetusBounty() {
 	}
 }
 
+function updateVoidTrader(){
+	if(voidTraderCycle){
+		clearInterval(voidTraderCycle);
+		voidTraderCycle = null;
+	}
+	var voidTrader = worldState.voidTrader;
+	if(voidTrader)
+	{
+		voidTraderCycle = setInterval(function(){
+			var current = new Date().getTime();
+			var activate = new Date(voidTrader.activation).getTime();
+			var expire = new Date(voidTrader.expiry).getTime();
+			
+			var durationActive = moment.duration(activate - current, 'milliseconds');
+			var durationExpire = moment.duration(expire - current, 'milliseconds');
+			durationActive = moment.duration(durationActive.asMilliseconds() - 1000, 'milliseconds');
+			durationExpire = moment.duration(durationExpire.asMilliseconds() - 1000, 'milliseconds');
+			
+			if(current < activate){
+				document.getElementById('voidtradertitle').innerText = voidTrader.character + " arrives in:";
+				document.getElementById('voidtradertime').innerText = formatDuration(durationActive);
+				document.getElementById('voidtradertimezonetitle').innerText = "Arrives at:";
+				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.activation).format('MMMM Do YYYY, h:mm:ss a');
+			}
+			else if(current > activate && current < expire){
+				document.getElementById('voidtradertitle').innerText = "Void Trader leaves in:";
+				document.getElementById('voidtradertime').innerText = formatDuration(durationExpire);
+				document.getElementById('voidtradertimezonetitle').innerText = "Leaves at:";
+				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.expiry).format('MMMM Do YYYY, h:mm:ss a');
+			}
+			else{
+				document.getElementById('voidtradertitle').innerText = "Void Trader";
+				document.getElementById('voidtradertime').innerText = "data expired...";
+				document.getElementById('voidtradertimezonetitle').innerText = "Waiting for new information";
+				document.getElementById('voidtradertimezonetime').innerText = "from WorldState";
+			}
+		}, 1000);
+	}
+	else{
+		document.getElementById('voidtradertitle').innerText = "No Void Trader";
+		document.getElementById('voidtradertime').innerText = "Available";
+		document.getElementById('voidtradertimezonetitle').innerText = "Waiting for new information";
+		document.getElementById('voidtradertimezonetime').innerText = "from WorldState";
+	}
+}
+
 // Helper function to grab objects based on inner tags
 function getObjects(obj, key, val) {
     var objects = [];
@@ -165,4 +277,4 @@ function formatDuration(duration){
 getWorldState();
 setInterval(function(){
 	getWorldState();
-}, 30000);
+}, 60000);

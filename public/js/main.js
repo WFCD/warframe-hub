@@ -245,6 +245,21 @@ function updateVoidTrader(){
 	}
 }
 
+function updateDarvoDeals(){
+	if(darvoCycle){
+		clearInterval(darvoCycle);
+		darvoCycle = null;
+	}
+	var darvoDeals = worldState.dailyDeals;
+	if(darvoDeals)
+	{
+
+	}
+	else{
+
+	}
+}
+
 // Helper function to grab objects based on inner tags
 function getObjects(obj, key, val) {
     var objects = [];

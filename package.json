@@ -21,12 +21,17 @@
   "homepage": "https://github.com/WFCD/warframe-status#readme",
   "dependencies": {
     "body-parser": "~1.18.2",
+    "chai": "^4.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "express-handlebars": "^3.0.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "proxyquire": "^1.8.0",
+    "really-need": "^1.9.2",
+    "serve-favicon": "~2.4.5",
+    "sinon": "^4.0.1",
+    "supertest": "^3.0.0"
   }
 }

@@ -1,38 +1,41 @@
-// We'll use this to override require calls in routes
-var proxyquire = require('proxyquire');
-// Supertest allows us to make requests against an express object
-var supertest = require('supertest');
-// Natural language-like assertions
-var expect = require('chai').expect;
+const request = require('supertest');
+const path = require('path');
+const favicon = require('serve-favicon');
+const express = require('express');
+const handlebars = require('express-handlebars');
 
-var express = require('express');
+const app = express();
+const router = require('./routes/index');
+app.use(router);
 
-describe('GET /ping', function () {
-  var app, request, route;
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine('.hbs', handlebars({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
-  beforeEach(function () {
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-    // Create an express application object
-    app = express();
+describe('GET /', function() {
+	it('respond with 200', function(done) {
+		request(app)
+		.get('/')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) return done(err);
+			done();
+		});
+	});
+});
 
-    // Get our router module, with a stubbed out users dependency
-    // we stub this out so we can control the results returned by
-    // the users module to ensure we execute all paths in our code
-    route = proxyquire('./routes/index.js');
-
-    // Bind a route to our application
-    route(app);
-
-    // Get a supertest instance so we can make requests
-    request = supertest(app);
-  });
-
-  it('should respond with 200', function (done) {
-    request
-      .get('/')
-      .expect('Content-Type', /html/)
-      .expect(200, function (err, res) {
-        done();
-      });
-  });
+describe('GET /map', function() {
+	it('respond with 200', function(done) {
+		request(app)
+		.get('/')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) return done(err);
+			done();
+		});
+	});
 });

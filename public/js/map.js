@@ -36,7 +36,7 @@ function getNormalizedCoord(coord, zoom) {
 function addMarkers(map) {
 
     var homeIcon = {
-        url: "img/map_icons/home.png",
+        url: 'img/map_icons/home.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -46,7 +46,7 @@ function addMarkers(map) {
     ];
 
     var fishIcon = {
-        url: "img/map_icons/fish.png",
+        url: 'img/map_icons/fish.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -80,7 +80,7 @@ function addMarkers(map) {
     ];
 
     var caveIcon = {
-        url: "img/map_icons/caves.png",
+        url: 'img/map_icons/caves.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -101,7 +101,7 @@ function addMarkers(map) {
     ];
 
     var grineerIcon = {
-        url: "img/map_icons/grineer.png",
+        url: 'img/map_icons/grineer.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -116,7 +116,7 @@ function addMarkers(map) {
     ];
 
     var oddityIcon = {
-        url: "img/map_icons/oddity.png",
+        url: 'img/map_icons/oddity.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -158,7 +158,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + home[i][0] + "</h6>" + home[i][3]);
+                infowindow.setContent('<h6>' + home[i][0] + '</h6>' + home[i][3]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -177,11 +177,11 @@ function addMarkers(map) {
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
                 if (fish[i][3] === 'Pond') {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[0][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[0][1]);
                 } else if (fish[i][3] === 'Lake') {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[1][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[1][1]);
                 } else {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[2][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[2][1]);
                 }
                 infowindow.open(map, marker);
             }
@@ -200,7 +200,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + cave[i][0] + "</h6>" + cave[i][3]);
+                infowindow.setContent('<h6>' + cave[i][0] + '</h6>' + cave[i][3]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -218,7 +218,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + grineer[i][0] + "</h6>" + grineer[i][3]);
+                infowindow.setContent('<h6>' + grineer[i][0] + '</h6>' + grineer[i][3]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -236,7 +236,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + oddity[i][0] + "</h6>Fragment Name: <b>" + oddity[i][3] + "</b><br><br>" +
+                infowindow.setContent('<h6>' + oddity[i][0] + '</h6>Fragment Name: <b>' + oddity[i][3] + '</b><br><br>' +
                     '<iframe src="' + oddity[i][4] + '" width="320" height="180" frameborder="0" allowfullscreen></iframe>'
                 );
                 infowindow.open(map, marker);
@@ -276,7 +276,7 @@ window.onload = function() {
         streetViewControl: false,
         mapTypeControl: false,
         mapTypeControlOptions: {
-            mapTypeIds: ["custom"]
+            mapTypeIds: ['custom']
         }
     };
 

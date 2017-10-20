@@ -32,22 +32,22 @@ function updateWorldStateTime() {
 
 // Helper function to display duration in human readable format
 function formatDuration(duration){
-	var timeText = "";
+	var timeText = '';
 	if(duration.days()){
-		if(duration.days() != 1) {timeText += duration.days() + " days ";} else {timeText += duration.days() + " day ";}
-		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+		if(duration.days() !== 1) {timeText += duration.days() + ' days ';} else {timeText += duration.days() + ' day ';}
+		if(duration.hours() !== 1) {timeText += duration.hours() + ' hours ';} else {timeText += duration.hours() + ' hour ';}
+		if(duration.minutes() !== 1) {timeText += duration.minutes() + ' minutes ';} else {timeText += duration.minutes() + ' minute ';}
 	}
 	else if(duration.hours())
 	{
-		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+		if(duration.hours() !== 1) {timeText += duration.hours() + ' hours ';} else {timeText += duration.hours() + ' hour ';}
+		if(duration.minutes() !== 1) {timeText += duration.minutes() + ' minutes ';} else {timeText += duration.minutes() + ' minute ';}
 	}
 	else if(duration.minutes())
 	{
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+		if(duration.minutes() !== 1) {timeText += duration.minutes() + ' minutes ';} else {timeText += duration.minutes() + ' minute ';}
 	}
-	if(duration.seconds() != 1) {timeText += duration.seconds() + " seconds";} else {timeText += duration.seconds() + " seconds";}
+	if(duration.seconds() !== 1) {timeText += duration.seconds() + ' seconds';} else {timeText += duration.seconds() + ' seconds';}
 	return timeText;
 }
 
@@ -55,7 +55,7 @@ function formatDuration(duration){
 function getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
+        if (!obj.hasOwnProperty(i)) {continue};
         if (typeof obj[i] == 'object') {
             objects = objects.concat(getObjects(obj[i], key, val));
         } else if (i === key && obj[key] === val) {
@@ -104,29 +104,29 @@ function getEarthCycleSecondsLeft() {
 
 function updateEarthTitle () {
     if(getEarthCurrentCycleSeconds() < 14400){
-		earthCurrentIndicator = "Night";
-		earthCurrentIndicatorColor = "darkblue";
-		earthCurrentTitle = "Time until day: ";
-		earthCurrentTitleTimezone = "Time at day: "
+		earthCurrentIndicator = 'Night';
+		earthCurrentIndicatorColor = 'darkblue';
+		earthCurrentTitle = 'Time until day: ';
+		earthCurrentTitleTimezone = 'Time at day: ';
 	}else{
-		earthCurrentIndicator = "Day";
-		earthCurrentIndicatorColor = "orange";
-		earthCurrentTitle = "Time until night: ";
-		earthCurrentTitleTimezone = "Time at night: "
+		earthCurrentIndicator = 'Day';
+		earthCurrentIndicatorColor = 'orange';
+		earthCurrentTitle = 'Time until night: ';
+		earthCurrentTitleTimezone = 'Time at night: ';
 	}
 }
 
 function updateCetusTitle () {
     if(getCetusCurrentCycleSeconds() < 3000){
-		cetusCurrentIndicator = "Night";
-		cetusCurrentIndicatorColor = "darkblue";
-		cetusCurrentTitle = "Time until day: ";
-		cetusCurrentTitleTimezone = "Time at day: "
+		cetusCurrentIndicator = 'Night';
+		cetusCurrentIndicatorColor = 'darkblue';
+		cetusCurrentTitle = 'Time until day: ';
+		cetusCurrentTitleTimezone = 'Time at day: ';
 	}else{
-		cetusCurrentIndicator = "Day";
-		cetusCurrentIndicatorColor = "orange";
-		cetusCurrentTitle = "Time until night: ";
-		cetusCurrentTitleTimezone = "Time at night: "
+		cetusCurrentIndicator = 'Day';
+		cetusCurrentIndicatorColor = 'orange';
+		cetusCurrentTitle = 'Time until night: ';
+		cetusCurrentTitleTimezone = 'Time at night: ';
 	}
 }
 
@@ -144,7 +144,7 @@ function updateCetusCycle() {
 		duration = moment.duration(duration.asMilliseconds() - 1000, 'milliseconds');
 		document.getElementById('cetuscycleindicator').innerText = cetusCurrentIndicator;
 		if(!$('#cetuscycleindicator').hasClass(cetusCurrentIndicatorColor)){
-			$('#cetuscycleindicator').attr("class", cetusCurrentIndicatorColor);
+			$('#cetuscycleindicator').attr('class', cetusCurrentIndicatorColor);
 		}
 		document.getElementById('cetuscycletitle').innerText = cetusCurrentTitle;
 		document.getElementById('cetustimezonetitle').innerText = cetusCurrentTitleTimezone;
@@ -168,7 +168,7 @@ function updateEarthCycle() {
 		duration = moment.duration(duration.asMilliseconds() - 1000, 'milliseconds');
 		document.getElementById('earthcycleindicator').innerText = earthCurrentIndicator;
 		if(!$('#earthcycleindicator').hasClass(earthCurrentIndicatorColor)){
-			$('#earthcycleindicator').attr("class", earthCurrentIndicatorColor);
+			$('#earthcycleindicator').attr('class', earthCurrentIndicatorColor);
 		}
 		document.getElementById('earthcycletitle').innerText = earthCurrentTitle;
 		document.getElementById('earthtimezonetitle').innerText = earthCurrentTitleTimezone;
@@ -198,22 +198,22 @@ function updateCetusBountyTimer() {
 			durationExpire = moment.duration(durationExpire.asMilliseconds() - 1000, 'milliseconds');
 			
 			if(current < activate){
-				document.getElementById('cetusbountytitle').innerText = "New bounties in:";
+				document.getElementById('cetusbountytitle').innerText = 'New bounties in:';
 				document.getElementById('cetusbountytime').innerText = formatDuration(durationActive);
 			}
 			else if(current > activate && current < expire){
-				document.getElementById('cetusbountytitle').innerText = "Bounties expire in:";
+				document.getElementById('cetusbountytitle').innerText = 'Bounties expire in:';
 				document.getElementById('cetusbountytime').innerText = formatDuration(durationExpire);
 			}
 			else{
-				document.getElementById('cetusbountytitle').innerText = "Bounties expired...";
-				document.getElementById('cetusbountytime').innerText = "Waiting for WorldState to update";
+				document.getElementById('cetusbountytitle').innerText = 'Bounties expired...';
+				document.getElementById('cetusbountytime').innerText = 'Waiting for WorldState to update';
 			}
 		}, 1000);
 	}
 	else{
-		document.getElementById('cetusbountytitle').innerText = "No Bounty Information Available";
-		document.getElementById('cetusbountytime').innerText = "Waiting for WorldState to update";
+		document.getElementById('cetusbountytitle').innerText = 'No Bounty Information Available';
+		document.getElementById('cetusbountytime').innerText = 'Waiting for WorldState to update';
 	}
 }
 
@@ -236,30 +236,30 @@ function updateVoidTrader(){
 			durationExpire = moment.duration(durationExpire.asMilliseconds() - 1000, 'milliseconds');
 			
 			if(current < activate){
-				document.getElementById('voidtradertitle').innerText = voidTrader.character + " arrives in:";
+				document.getElementById('voidtradertitle').innerText = voidTrader.character + ' arrives in:';
 				document.getElementById('voidtradertime').innerText = formatDuration(durationActive);
-				document.getElementById('voidtradertimezonetitle').innerText = "Arrives at:";
+				document.getElementById('voidtradertimezonetitle').innerText = 'Arrives at:';
 				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.activation).format('MMMM Do YYYY, h:mm:ss a');
 			}
 			else if(current > activate && current < expire){
-				document.getElementById('voidtradertitle').innerText = voidTrader.character + " leaves in:";
+				document.getElementById('voidtradertitle').innerText = voidTrader.character + ' leaves in:';
 				document.getElementById('voidtradertime').innerText = formatDuration(durationExpire);
-				document.getElementById('voidtradertimezonetitle').innerText = "Leaves at:";
+				document.getElementById('voidtradertimezonetitle').innerText = 'Leaves at:';
 				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.expiry).format('MMMM Do YYYY, h:mm:ss a');
 			}
 			else{
-				document.getElementById('voidtradertitle').innerText = "Void Trader";
-				document.getElementById('voidtradertime').innerText = "data expired...";
-				document.getElementById('voidtradertimezonetitle').innerText = "Waiting for new information";
-				document.getElementById('voidtradertimezonetime').innerText = "from WorldState";
+				document.getElementById('voidtradertitle').innerText = 'Void Trader';
+				document.getElementById('voidtradertime').innerText = 'data expired...';
+				document.getElementById('voidtradertimezonetitle').innerText = 'Waiting for new information';
+				document.getElementById('voidtradertimezonetime').innerText = 'from WorldState';
 			}
 		}, 1000);
 	}
 	else{
-		document.getElementById('voidtradertitle').innerText = "No Void Trader";
-		document.getElementById('voidtradertime').innerText = "Available";
-		document.getElementById('voidtradertimezonetitle').innerText = "Waiting for new information";
-		document.getElementById('voidtradertimezonetime').innerText = "from WorldState";
+		document.getElementById('voidtradertitle').innerText = 'No Void Trader';
+		document.getElementById('voidtradertime').innerText = 'Available';
+		document.getElementById('voidtradertimezonetitle').innerText = 'Waiting for new information';
+		document.getElementById('voidtradertimezonetime').innerText = 'from WorldState';
 	}
 }
 

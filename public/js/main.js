@@ -224,7 +224,7 @@ function updateVoidTrader(){
 				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.activation).format('MMMM Do YYYY, h:mm:ss a');
 			}
 			else if(current > activate && current < expire){
-				document.getElementById('voidtradertitle').innerText = "Void Trader leaves in:";
+				document.getElementById('voidtradertitle').innerText = voidTrader.character + " leaves in:";
 				document.getElementById('voidtradertime').innerText = formatDuration(durationExpire);
 				document.getElementById('voidtradertimezonetitle').innerText = "Leaves at:";
 				document.getElementById('voidtradertimezonetime').innerText = moment(voidTrader.expiry).format('MMMM Do YYYY, h:mm:ss a');
@@ -277,15 +277,21 @@ function getObjects(obj, key, val) {
 // Helper function to display duration in human readable format
 function formatDuration(duration){
 	var timeText = "";
-	if(duration.hours())
-	{
-		if(duration.hours() > 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
+	if(duration.days()){
+		if(duration.days() != 1) {timeText += duration.days() + " days ";} else {timeText += duration.days() + " day ";}
+		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
 	}
-	if(duration.minutes())
+	else if(duration.hours())
 	{
-		if(duration.minutes() > 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
 	}
-	if(duration.seconds() > 1) {timeText += duration.seconds() + " seconds";} else {timeText += duration.seconds() + " seconds";}
+	else if(duration.minutes())
+	{
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+	}
+	if(duration.seconds() != 1) {timeText += duration.seconds() + " seconds";} else {timeText += duration.seconds() + " seconds";}
 	return timeText;
 }
 

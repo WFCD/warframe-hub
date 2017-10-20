@@ -4,11 +4,11 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-    res.render('index', {title: "Hub"});
+    res.render('index', {title: "Timers"});
 });
 
 router.get('/timer', function (req, res) {
-    res.render('index', {title: "Hub"});
+    res.render('index', {title: "Timers"});
 });
 
 router.get('/map', function (req, res) {

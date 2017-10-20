@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  - "iojs"
-  - "8"
+  - "node"
 
 cache:
   directories:
@@ -25,4 +24,4 @@ before_script:
   - npm install -g mocha
 
 script:
-  - npm start
+  - mocha spec mochaspec.js

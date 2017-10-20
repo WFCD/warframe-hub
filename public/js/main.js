@@ -25,48 +25,50 @@ var worldCycle;
 var voidTraderCycle;
 var darvoCycle;
 
-// Retrieves the easy to parse worldstate from WFCD
-function getWorldState() {
-	$.getJSON('https://ws.warframestat.us/pc', function(data){
-		worldState = JSON.parse(JSON.stringify(data));
-		updateTime = (new Date()).getTime();
-		updateDataDependencies();
-		updatePage();
-	});
+// Update worldstate timestamp
+function updateWorldStateTime() {
+	document.getElementById('worldstate').innerText = moment(updateTime).format('MMMM Do YYYY, h:mm:ss a');
+}
+
+// Helper function to display duration in human readable format
+function formatDuration(duration){
+	var timeText = "";
+	if(duration.days()){
+		if(duration.days() != 1) {timeText += duration.days() + " days ";} else {timeText += duration.days() + " day ";}
+		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+	}
+	else if(duration.hours())
+	{
+		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+	}
+	else if(duration.minutes())
+	{
+		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
+	}
+	if(duration.seconds() != 1) {timeText += duration.seconds() + " seconds";} else {timeText += duration.seconds() + " seconds";}
+	return timeText;
+}
+
+// Helper function to grab objects based on inner tags
+function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else if (i === key && obj[key] === val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
 }
 
 // Update data that is being used by this page
 function updateDataDependencies() {
 	cetusCycleExpiryTime = (new Date(worldState.cetusCycle.expiry)).getTime() / 1000;
 	earthCycleExpiryTime = (new Date(worldState.earthCycle.expiry)).getTime() / 1000;
-}
-
-function updateEarthTitle () {
-    if(getCetusCurrentCycleSeconds() < 14400){
-		earthCurrentIndicator = "Night";
-		earthCurrentIndicatorColor = "darkblue";
-		earthCurrentTitle = "Time until day: ";
-		earthCurrentTitleTimezone = "Time at day: "
-	}else{
-		earthCurrentIndicator = "Day";
-		earthCurrentIndicatorColor = "orange";
-		earthCurrentTitle = "Time until night: ";
-		earthCurrentTitleTimezone = "Time at night: "
-	}
-}
-
-function updateCetusTitle () {
-    if(getCetusCurrentCycleSeconds() < 3000){
-		cetusCurrentIndicator = "Night";
-		cetusCurrentIndicatorColor = "darkblue";
-		cetusCurrentTitle = "Time until day: ";
-		cetusCurrentTitleTimezone = "Time at day: "
-	}else{
-		cetusCurrentIndicator = "Day";
-		cetusCurrentIndicatorColor = "orange";
-		cetusCurrentTitle = "Time until night: ";
-		cetusCurrentTitleTimezone = "Time at night: "
-	}
 }
 
 function getCetusCurrentCycleSeconds() {
@@ -100,16 +102,32 @@ function getEarthCycleSecondsLeft() {
 	return 14400 - (getEarthCurrentCycleSeconds() % 14400);
 }
 
-function updatePage() {
-	updateCetusCycle();
-	updateEarthCycle();
-	updateVoidTrader();
-	updateCetusBountyTimer();
-	updateWorldStateTime();
+function updateEarthTitle () {
+    if(getEarthCurrentCycleSeconds() < 14400){
+		earthCurrentIndicator = "Night";
+		earthCurrentIndicatorColor = "darkblue";
+		earthCurrentTitle = "Time until day: ";
+		earthCurrentTitleTimezone = "Time at day: "
+	}else{
+		earthCurrentIndicator = "Day";
+		earthCurrentIndicatorColor = "orange";
+		earthCurrentTitle = "Time until night: ";
+		earthCurrentTitleTimezone = "Time at night: "
+	}
 }
 
-function updateWorldStateTime() {
-	document.getElementById('worldstate').innerText = moment(updateTime).format('MMMM Do YYYY, h:mm:ss a');
+function updateCetusTitle () {
+    if(getCetusCurrentCycleSeconds() < 3000){
+		cetusCurrentIndicator = "Night";
+		cetusCurrentIndicatorColor = "darkblue";
+		cetusCurrentTitle = "Time until day: ";
+		cetusCurrentTitleTimezone = "Time at day: "
+	}else{
+		cetusCurrentIndicator = "Day";
+		cetusCurrentIndicatorColor = "orange";
+		cetusCurrentTitle = "Time until night: ";
+		cetusCurrentTitleTimezone = "Time at night: "
+	}
 }
 
 function updateCetusCycle() {
@@ -260,39 +278,22 @@ function updateDarvoDeals(){
 	}
 }
 
-// Helper function to grab objects based on inner tags
-function getObjects(obj, key, val) {
-    var objects = [];
-    for (var i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
-        if (typeof obj[i] == 'object') {
-            objects = objects.concat(getObjects(obj[i], key, val));
-        } else if (i == key && obj[key] == val) {
-            objects.push(obj);
-        }
-    }
-    return objects;
+function updatePage() {
+	updateCetusCycle();
+	updateEarthCycle();
+	updateVoidTrader();
+	updateCetusBountyTimer();
+	updateWorldStateTime();
 }
 
-// Helper function to display duration in human readable format
-function formatDuration(duration){
-	var timeText = "";
-	if(duration.days()){
-		if(duration.days() != 1) {timeText += duration.days() + " days ";} else {timeText += duration.days() + " day ";}
-		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
-	}
-	else if(duration.hours())
-	{
-		if(duration.hours() != 1) {timeText += duration.hours() + " hours ";} else {timeText += duration.hours() + " hour ";}
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
-	}
-	else if(duration.minutes())
-	{
-		if(duration.minutes() != 1) {timeText += duration.minutes() + " minutes ";} else {timeText += duration.minutes() + " minute ";}
-	}
-	if(duration.seconds() != 1) {timeText += duration.seconds() + " seconds";} else {timeText += duration.seconds() + " seconds";}
-	return timeText;
+// Retrieves the easy to parse worldstate from WFCD
+function getWorldState() {
+	$.getJSON('https://ws.warframestat.us/pc', function(data){
+		worldState = JSON.parse(JSON.stringify(data));
+		updateTime = (new Date()).getTime();
+		updateDataDependencies();
+		updatePage();
+	});
 }
 
 getWorldState();

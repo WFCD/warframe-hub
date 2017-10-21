@@ -58,6 +58,15 @@
 						<br><br>
 						<p class="info" id="voidtradertimezonetitle">Loading</p>
 						<p class="info" id="voidtradertimezonetime">Local time...</p>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Stock</h3>
+                            </div>
+                            <div class="panel-body">
+                                Items
+                            </div>
+                        </div>
 					</div>
 				</div>
 				
@@ -72,10 +81,6 @@
 				</div>
 			</div>
         </div>
-        
-        
-        <p>WorldState Obtained: </p>
-        <p id="worldstate"></p>
 		
 		{{> footer}}
     </div>
@@ -94,3 +99,11 @@
 <!-- required js for page -->
 <script src="js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+
+<!-- Insert world state update information into footer -->
+<script>
+    $('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
+            'data-toggle="tooltip" href="#" data-original-title="World State obtained">' +
+            '<span class="glyphicon glyphicon-info-sign"></span></div></a>');
+    $('#worldstateinfo').tooltip();
+</script>

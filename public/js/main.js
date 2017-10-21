@@ -3,7 +3,6 @@ var updateTime;
 
 //Cetus timer stuff
 var cetusCycleExpiryTime;
-var cetusCycleEndTimestamp;
 var cetusCurrentTitle;
 var cetusCurrentTitleTimezone;
 var cetusCurrentIndicator;
@@ -11,7 +10,6 @@ var cetusCurrentIndicatorColor;
 
 //Earth timer stuff
 var earthCycleExpiryTime;
-var earthCycleEndTimestamp;
 var earthCurrentTitle;
 var earthCurrentTitleTimezone;
 var earthCurrentIndicator;
@@ -27,7 +25,8 @@ var darvoCycle;
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
-	document.getElementById('worldstate').innerText = moment(updateTime).format('MMMM Do YYYY, h:mm:ss a');
+	document.getElementById('worldstateinfo').setAttribute('data-original-title', 'World State updated at ' +
+		moment(updateTime).format('MMMM Do YYYY, h:mm:ss a'));
 }
 
 // Helper function to display duration in human readable format
@@ -56,7 +55,7 @@ function getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {
         if (!obj.hasOwnProperty(i)) {continue};
-        if (typeof obj[i] == 'object') {
+        if (typeof obj[i] === 'object') {
             objects = objects.concat(getObjects(obj[i], key, val));
         } else if (i === key && obj[key] === val) {
             objects.push(obj);
@@ -297,6 +296,6 @@ function getWorldState() {
 }
 
 getWorldState();
-setInterval(function(){
+worldCycle = setInterval(function(){
 	getWorldState();
 }, 60000);

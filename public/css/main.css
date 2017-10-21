@@ -34,6 +34,9 @@
     padding-bottom: 7px;
 }
 
+.navbar-footer a {
+    color: #2c3e50;
+}
 body {
 	margin-bottom: 31px;
 }

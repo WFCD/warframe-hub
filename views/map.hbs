@@ -87,8 +87,9 @@
 
 <!-- Add buttons to page -->
 <script>
-	$('#navbar-right').prepend('<li><a href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Map Credits</a></li>');
-	$('#navbar-right').prepend('<li><a href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
+    var rightnavbar = $('#navbar-right');
+    rightnavbar.prepend('<li><a href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Map Credits</a></li>');
+    rightnavbar.prepend('<li><a href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
 </script>
 
 {{> nightmode}}

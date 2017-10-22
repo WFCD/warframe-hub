@@ -20,4 +20,9 @@ router.get('/map', function (req, res) {
     res.render('map', {title: 'Map'});
 });
 
+router.get('/fish', function (req, res) {
+    visitor.pageview('/map').send();
+    res.render('fish', {title: 'Fish'});
+});
+
 module.exports = router;

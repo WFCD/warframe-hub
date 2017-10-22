@@ -70,6 +70,32 @@ body {
     margin: 10px !important;
 }
 
+/* Fish info table */
+.fish-info thead tr th {
+    text-align: center;
+}
+.color1 >td {
+    background-color: #363540;
+}
+.color2 >td {
+    background-color: #3f3540;
+}
+.color3 >td {
+    background-color: #403535;
+}
+.color4 >td {
+    background-color: #3a3540;
+}
+.color5 >td {
+    background-color: #353e40;
+}
+.color6 >td {
+    background-color: #3b4035;
+}
+.color7 >td {
+    background-color: #403935;
+}
+
 .img {
     max-width: 100%;
     max-height: 100%;

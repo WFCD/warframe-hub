@@ -44,10 +44,10 @@ body {
 
 /* Remove margins for info panel elements */
 .panel-body > h3 {
-    margin: 0px;
+    margin: 0;
 }
 .panel-body > p {
-    margin: 0px;
+    margin: 0;
 }
 
 /* Fix panel jumpy collapse */

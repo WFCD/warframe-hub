@@ -346,7 +346,7 @@ function calculateInventory(total, sold){
 
 function updateDarvoDeals() {
     var dailyDeals = worldState.dailyDeals;
-    if (dailyDeals) {
+    if (dailyDeals.length !== 0) {
         $('#darvotitle').hide();
         if (document.getElementById( dailyDeals[0].id ) === null) {
             var inventoryString = '<table class="table table-striped table-hover dailyDealsInventory" id="' +

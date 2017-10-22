@@ -38,7 +38,22 @@
     color: #2c3e50;
 }
 body {
-	margin-bottom: 31px;
+    margin-top: 50px !important;
+	margin-bottom: 40px !important;
+}
+
+/* Remove margins for info panel elements */
+.panel-body > h3 {
+    margin: 0px;
+}
+.panel-body > p {
+    margin: 0px;
+}
+
+/* Fix panel jumpy collapse */
+.panel-body {
+    padding: 0 !important;
+    margin: 10px !important;
 }
 
 .img {

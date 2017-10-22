@@ -21,6 +21,7 @@ var cetusDayCycle;
 var bountyCycle;
 var worldCycle;
 var voidTraderCycle;
+var resetCycle;
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
@@ -98,9 +99,8 @@ function getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {
         if (!obj.hasOwnProperty( i )) {
-            continue
+            continue;
         }
-        ;
         if (typeof obj[ i ] === 'object') {
             objects = objects.concat( getObjects( obj[ i ], key, val ) );
         } else if (i === key && obj[ key ] === val) {
@@ -128,8 +128,9 @@ function getCetusCurrentCycleSeconds() {
 
 function getCetusCycleSecondsLeft() {
     var seconds = getCetusCurrentCycleSeconds();
-    if (seconds < 3000)
+    if (seconds < 3000){
         return 3000 - seconds;
+    }
     return 9000 - seconds;
 }
 
@@ -341,11 +342,11 @@ function updateVoidTrader() {
 }
 
 function calculateDiscount(original, sale){
-    return Math.floor((sale - original) / original * 100) + "%";
+    return Math.floor((sale - original) / original * 100) + '%';
 }
 
 function calculateInventory(total, sold){
-    return (total - sold) + "/" + total;
+    return (total - sold) + '/' + total;
 }
 
 function updateDarvoDeals() {
@@ -436,3 +437,12 @@ updateTimeLabels();
 worldCycle = setInterval( function () {
     getWorldState();
 }, 60000 );
+
+resetCycle = setInterval( function () {
+    var nextReset = (new Date()).setUTCHours(24, 0, 0, 0);
+    var currentTime = (new Date()).getTime();
+    var duration = moment.duration( nextReset - currentTime - 1000, 'milliseconds' );
+    document.getElementById( 'resettimertitle' ).innerText = 'Time until new server day:';
+    document.getElementById( 'resettimertime' ).innerText = formatDuration(duration);
+
+}, 1000 );

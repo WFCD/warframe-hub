@@ -52,13 +52,32 @@
 }
 
 body {
-    margin-bottom: 31px;
+    margin-top: 50px !important;
+    margin-bottom: 40px !important;
 }
 
+/* Remove margins for info panel elements */
+.panel-body > h3 {
+    margin: 0px;
+}
+.panel-body > p {
+    margin: 0px;
+}
+
+/* Fix panel jumpy collapse */
+.panel-body {
+    padding: 0 !important;
+    margin: 10px !important;
+}
 
 .img {
     max-width: 100%;
     max-height: 100%;
+}
+
+/* Add background color to WFCD banner in night mode */
+.wfcd-banner {
+    background-color: #777777;
 }
 
 /* Map Container style */

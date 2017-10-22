@@ -6,7 +6,9 @@ var repeatOnXAxis = false;
  */
 
 function getNormalizedCoord(coord, zoom) {
-    if (!repeatOnXAxis) return coord;
+    if (!repeatOnXAxis) {
+        return coord;
+    }
 
     var y = coord.y;
     var x = coord.x;
@@ -160,7 +162,7 @@ function addMarkers(map) {
             return function() {
                 infowindow.setContent('<h6>' + home[i][0] + '</h6>' + home[i][3]);
                 infowindow.open(map, marker);
-            }
+            };
         })(marker, i));
     }
 
@@ -253,6 +255,41 @@ function addMarkers(map) {
 
 window.onload = function() {
 
+    function checkBounds() {
+
+        var allowedBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-65.0, -80.0),
+            new google.maps.LatLng(65.0, 80.0));
+
+        if (allowedBounds.contains(map.getCenter())) {
+            return;
+        }
+
+        var mapCenter = map.getCenter();
+        var X = mapCenter.lng();
+        var Y = mapCenter.lat();
+
+        var AmaxX = allowedBounds.getNorthEast().lng();
+        var AmaxY = allowedBounds.getNorthEast().lat();
+        var AminX = allowedBounds.getSouthWest().lng();
+        var AminY = allowedBounds.getSouthWest().lat();
+
+        if (X < AminX) {
+            X = AminX;
+        }
+        if (X > AmaxX) {
+            X = AmaxX;
+        }
+        if (Y < AminY) {
+            Y = AminY;
+        }
+        if (Y > AmaxY) {
+            Y = AmaxY;
+        }
+
+        map.setCenter(new google.maps.LatLng(Y, X));
+    }
+
     // Define our custom map type
     var customMapType = new google.maps.ImageMapType({
         getTileUrl: function(coord, zoom) {
@@ -291,41 +328,6 @@ window.onload = function() {
     google.maps.event.addListener(map, 'center_changed', function() {
         checkBounds();
     });
-
-    function checkBounds() {
-
-        var allowedBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(-65.0, -80.0),
-            new google.maps.LatLng(65.0, 80.0));
-
-        if (allowedBounds.contains(map.getCenter())) {
-            return;
-        }
-
-        var mapCenter = map.getCenter();
-        var X = mapCenter.lng();
-        var Y = mapCenter.lat();
-
-        var AmaxX = allowedBounds.getNorthEast().lng();
-        var AmaxY = allowedBounds.getNorthEast().lat();
-        var AminX = allowedBounds.getSouthWest().lng();
-        var AminY = allowedBounds.getSouthWest().lat();
-
-        if (X < AminX) {
-            X = AminX;
-        }
-        if (X > AmaxX) {
-            X = AmaxX;
-        }
-        if (Y < AminY) {
-            Y = AminY;
-        }
-        if (Y > AmaxY) {
-            Y = AmaxY;
-        }
-
-        map.setCenter(new google.maps.LatLng(Y, X));
-    }
 
     addMarkers(map);
 

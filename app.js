@@ -9,8 +9,6 @@ var handlebars = require('express-handlebars');
 var app = express();
 var router = require('./routes/index');
 
-process.env['NOBLE_HCI_DEVICE_ID'] = 1
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', handlebars({defaultLayout: 'main', extname: '.hbs'}));

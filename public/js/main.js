@@ -253,7 +253,7 @@ function updateCetusBountyTimer() {
 
 function updateVoidTraderInventory() {
     var voidTraderInventory = worldState.voidTrader.inventory;
-    if (voidTraderInventory) {
+    if (voidTraderInventory.length !== 0) {
         if (document.getElementById( worldState.voidTrader.id ) === null) {
             var inventoryString = '<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" ' +
                 'class="voidTraderInventory" id="' + worldState.voidTrader.id + '">\n<div class="panel-heading">\n' +

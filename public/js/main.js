@@ -2,6 +2,7 @@ var worldState;
 var updateTime;
 
 //Cetus timer stuff
+var cetusIsDay;
 var cetusCycleExpiryTime;
 var cetusCurrentTitle;
 var cetusCurrentTitleTimezone;
@@ -9,6 +10,7 @@ var cetusCurrentIndicator;
 var cetusCurrentIndicatorColor;
 
 //Earth timer stuff
+var earthIsDay;
 var earthCycleExpiryTime;
 var earthCurrentTitle;
 var earthCurrentTitleTimezone;
@@ -113,43 +115,36 @@ function getObjects(obj, key, val) {
 // Update data that is being used by this page
 function updateDataDependencies() {
     cetusCycleExpiryTime = (new Date( worldState.cetusCycle.expiry )).getTime() / 1000;
+    cetusIsDay = worldState.cetusCycle.isDay;
     earthCycleExpiryTime = (new Date( worldState.earthCycle.expiry )).getTime() / 1000;
-}
-
-function getCetusCurrentCycleSeconds() {
-    var currentTime = Math.floor( (new Date()).getTime() / 1000 );
-    if (currentTime > cetusCycleExpiryTime) {
-        //If current time is greater, that means expiry is out of date
-        //But in the mean time, we can calculate the next cycle ourselves
-        cetusCycleExpiryTime += 9000;
-    }
-    return 9000 - (cetusCycleExpiryTime - currentTime);
+    earthIsDay = worldState.earthCycle.isDay;
 }
 
 function getCetusCycleSecondsLeft() {
-    var seconds = getCetusCurrentCycleSeconds();
-    if (seconds < 3000){
-        return 3000 - seconds;
+    var currentTime = (new Date()).getTime() / 1000;
+    if(currentTime > cetusCycleExpiryTime){
+        if(cetusIsDay){
+            cetusIsDay = false;
+            cetusCycleExpiryTime += 3000; // Manually update expire time until end of night
+        }else{
+            cetusIsDay = true;
+            cetusCycleExpiryTime += 6000; // Manually update expire time until end of day
+        }
     }
-    return 9000 - seconds;
-}
-
-function getEarthCurrentCycleSeconds() {
-    var currentTime = Math.floor( (new Date()).getTime() / 1000 );
-    if (currentTime > earthCycleExpiryTime) {
-        //If current time is greater, that means expiry is out of date
-        //But in the mean time, we can calculate the next cycle ourselves
-        earthCycleExpiryTime += 28800;
-    }
-    return 28800 - (earthCycleExpiryTime - currentTime);
+    return cetusCycleExpiryTime - currentTime;
 }
 
 function getEarthCycleSecondsLeft() {
-    return 14400 - (getEarthCurrentCycleSeconds() % 14400);
+    var currentTime = (new Date()).getTime() / 1000;
+    if(currentTime > earthCycleExpiryTime){
+        earthIsDay = !earthIsDay;
+        earthCycleExpiryTime += 14400;
+    }
+    return earthCycleExpiryTime - currentTime;
 }
 
 function updateEarthTitle() {
-    if (getEarthCurrentCycleSeconds() < 14400) {
+    if (!earthIsDay) {
         earthCurrentIndicator = 'Night';
         earthCurrentIndicatorColor = 'darkblue';
         earthCurrentTitle = 'Time until day: ';
@@ -163,7 +158,7 @@ function updateEarthTitle() {
 }
 
 function updateCetusTitle() {
-    if (getCetusCurrentCycleSeconds() < 3000) {
+    if (!cetusIsDay) {
         cetusCurrentIndicator = 'Night';
         cetusCurrentIndicatorColor = 'darkblue';
         cetusCurrentTitle = 'Time until day: ';
@@ -183,17 +178,17 @@ function updateCetusCycle() {
     }
     cetusDayCycle = setInterval( function () {
         updateCetusTitle();
-        var currentTime = Math.floor( (new Date()).getTime() );
         var secondsLeft = getCetusCycleSecondsLeft();
         var duration = moment.duration( secondsLeft * 1000 - 1000, 'milliseconds' );
-        document.getElementById( 'cetuscycleindicator' ).innerText = cetusCurrentIndicator;
-        if (!$( '#cetuscycleindicator' ).hasClass( cetusCurrentIndicatorColor )) {
-            $( '#cetuscycleindicator' ).attr( 'class', cetusCurrentIndicatorColor );
+        var cycleIndicator = $( '#cetuscycleindicator' );
+        cycleIndicator.html(cetusCurrentIndicator);
+        if (!cycleIndicator.hasClass( cetusCurrentIndicatorColor )) {
+            cycleIndicator.attr( 'class', cetusCurrentIndicatorColor );
         }
         document.getElementById( 'cetuscycletitle' ).innerText = cetusCurrentTitle;
         document.getElementById( 'cetustimezonetitle' ).innerText = cetusCurrentTitleTimezone;
         document.getElementById( 'cetuscycletime' ).innerText = formatDuration( duration );
-        document.getElementById( 'cetustimezonetime' ).innerText = moment( currentTime + secondsLeft * 1000 ).format( 'MMMM Do YYYY, h:mm:ss a' );
+        document.getElementById( 'cetustimezonetime' ).innerText = moment( cetusCycleExpiryTime * 1000 ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
     }, 1000 );
 }
@@ -205,17 +200,17 @@ function updateEarthCycle() {
     }
     earthDayCycle = setInterval( function () {
         updateEarthTitle();
-        var currentTime = Math.floor( (new Date()).getTime() );
         var secondsLeft = getEarthCycleSecondsLeft();
         var duration = moment.duration( secondsLeft * 1000 - 1000, 'milliseconds' );
-        document.getElementById( 'earthcycleindicator' ).innerText = earthCurrentIndicator;
-        if (!$( '#earthcycleindicator' ).hasClass( earthCurrentIndicatorColor )) {
-            $( '#earthcycleindicator' ).attr( 'class', earthCurrentIndicatorColor );
+        var cycleIndicator = $( '#earthcycleindicator' );
+        cycleIndicator.html(earthCurrentIndicator);
+        if (!cycleIndicator.hasClass( earthCurrentIndicatorColor )) {
+            cycleIndicator.attr( 'class', earthCurrentIndicatorColor );
         }
         document.getElementById( 'earthcycletitle' ).innerText = earthCurrentTitle;
         document.getElementById( 'earthtimezonetitle' ).innerText = earthCurrentTitleTimezone;
         document.getElementById( 'earthcycletime' ).innerText = formatDuration( duration );
-        document.getElementById( 'earthtimezonetime' ).innerText = moment( currentTime + secondsLeft * 1000 ).format( 'MMMM Do YYYY, h:mm:ss a' );
+        document.getElementById( 'earthtimezonetime' ).innerText = moment( earthCycleExpiryTime * 1000 ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
     }, 1000 );
 }

@@ -2,6 +2,7 @@
 	<div class="map-container">
 		<div id="map" class="col-sm-12"></div>
 	</div>
+	{{> footer}}
 </div>
 <!-- /.container -->
 
@@ -79,14 +80,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
 
 <!-- Google Maps Script -->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiy4WUjEAGT2WCJWgsQK3f8Hz4qchbKuU"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiy4WUjEAGT2WCJWgsQK3f8Hz4qchbKuU"></script>
 <script src="js/map.js"></script>
 
 <!-- Add buttons to page -->
 <script>
-	$('#navbar-right').prepend('<li><a href="#credits" data-target="#credits" data-toggle="modal">Map Credits</a></li>');
-	$('#navbar-right').prepend('<li><a href="#fishinfo" data-target="#fishinfo" data-toggle="modal">Fish Info</a></li>');
+	$('#navbar-right').prepend('<li><a href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Map Credits</a></li>');
+	$('#navbar-right').prepend('<li><a href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
 </script>
+
+{{> nightmode}}

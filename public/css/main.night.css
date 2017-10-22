@@ -1,0 +1,91 @@
+/* Day/Night Colors */
+.orange {
+    margin-bottom: 10px;
+    color: orange;
+    font-weight:bold;
+}
+.darkblue {
+    margin-bottom: 10px;
+    color: darkblue;
+    font-weight:bold;
+}
+
+/* Info font customization */
+.info {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #ababab;
+}
+@media (min-width: 768px) {
+    .info {
+        font-size: 22.5px;
+    }
+}
+
+/* Sticky bottom navbar style */
+.navbar-footer {
+    bottom: 0;
+    width: 100%;
+    height: 31px;
+    background-color: #303030;
+}
+.navbar-footer > div > div {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.navbar-footer a {
+    color: #ababab;
+}
+
+/* Change panel color to less white */
+.panel-body {
+    color: #ababab;
+}
+.panel-title {
+    color: #ababab !important;
+}
+
+/* Change label color to be less white */
+.label {
+    color: #000000 !important;
+}
+
+body {
+    margin-top: 50px !important;
+    margin-bottom: 40px !important;
+}
+
+/* Remove margins for info panel elements */
+.panel-body > h3 {
+    margin: 0;
+}
+.panel-body > p {
+    margin: 0;
+}
+
+/* Fix panel jumpy collapse */
+.panel-body {
+    padding: 0 !important;
+    margin: 10px !important;
+}
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Add background color to WFCD banner in night mode */
+.wfcd-banner {
+    background-color: #777777;
+}
+
+/* Map Container style */
+.map-container {
+    padding-top: 20px;
+    width: 100%;
+    height: 90vh;
+}
+#map{
+    height: 100%;
+}

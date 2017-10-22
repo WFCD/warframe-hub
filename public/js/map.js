@@ -6,7 +6,9 @@ var repeatOnXAxis = false;
  */
 
 function getNormalizedCoord(coord, zoom) {
-    if (!repeatOnXAxis) return coord;
+    if (!repeatOnXAxis) {
+        return coord;
+    }
 
     var y = coord.y;
     var x = coord.x;
@@ -36,7 +38,7 @@ function getNormalizedCoord(coord, zoom) {
 function addMarkers(map) {
 
     var homeIcon = {
-        url: "img/map_icons/home.png",
+        url: 'img/map_icons/home.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -46,7 +48,7 @@ function addMarkers(map) {
     ];
 
     var fishIcon = {
-        url: "img/map_icons/fish.png",
+        url: 'img/map_icons/fish.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -80,7 +82,7 @@ function addMarkers(map) {
     ];
 
     var caveIcon = {
-        url: "img/map_icons/caves.png",
+        url: 'img/map_icons/caves.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -101,7 +103,7 @@ function addMarkers(map) {
     ];
 
     var grineerIcon = {
-        url: "img/map_icons/grineer.png",
+        url: 'img/map_icons/grineer.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -116,7 +118,7 @@ function addMarkers(map) {
     ];
 
     var oddityIcon = {
-        url: "img/map_icons/oddity.png",
+        url: 'img/map_icons/oddity.png',
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
@@ -158,9 +160,9 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + home[i][0] + "</h6>" + home[i][3]);
+                infowindow.setContent('<h6>' + home[i][0] + '</h6>' + home[i][3]);
                 infowindow.open(map, marker);
-            }
+            };
         })(marker, i));
     }
 
@@ -177,11 +179,11 @@ function addMarkers(map) {
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
                 if (fish[i][3] === 'Pond') {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[0][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[0][1]);
                 } else if (fish[i][3] === 'Lake') {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[1][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[1][1]);
                 } else {
-                    infowindow.setContent("<h6>" + fish[i][0] + "</h6>" + fishInfo[2][1]);
+                    infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[2][1]);
                 }
                 infowindow.open(map, marker);
             }
@@ -200,7 +202,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + cave[i][0] + "</h6>" + cave[i][3]);
+                infowindow.setContent('<h6>' + cave[i][0] + '</h6>' + cave[i][3]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -218,7 +220,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + grineer[i][0] + "</h6>" + grineer[i][3]);
+                infowindow.setContent('<h6>' + grineer[i][0] + '</h6>' + grineer[i][3]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -236,7 +238,7 @@ function addMarkers(map) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<h6>" + oddity[i][0] + "</h6>Fragment Name: <b>" + oddity[i][3] + "</b><br><br>" +
+                infowindow.setContent('<h6>' + oddity[i][0] + '</h6>Fragment Name: <b>' + oddity[i][3] + '</b><br><br>' +
                     '<iframe src="' + oddity[i][4] + '" width="320" height="180" frameborder="0" allowfullscreen></iframe>'
                 );
                 infowindow.open(map, marker);
@@ -252,45 +254,6 @@ function addMarkers(map) {
  */
 
 window.onload = function() {
-
-    // Define our custom map type
-    var customMapType = new google.maps.ImageMapType({
-        getTileUrl: function(coord, zoom) {
-            var normalizedCoord = getNormalizedCoord(coord, zoom);
-            if (normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
-                return 'img/plains/' + zoom + '_' + normalizedCoord.x + '_' + normalizedCoord.y + '.jpg';
-            } else {
-                return 'img/plains/empty.jpg';
-            }
-        },
-        tileSize: new google.maps.Size(256, 256),
-        maxZoom: 5,
-        name: 'Plains of Eidolon'
-    });
-
-    // Basic options for our map
-    var myOptions = {
-        center: new google.maps.LatLng(0, 0),
-        zoom: 3,
-        minZoom: 3,
-        streetViewControl: false,
-        mapTypeControl: false,
-        mapTypeControlOptions: {
-            mapTypeIds: ["custom"]
-        }
-    };
-
-    // Init the map and hook our custom map type to it
-    var map = new google.maps.Map(document.getElementById('map'), myOptions);
-
-    // This event listener when the map is clicked, output lat and lon to console
-    google.maps.event.addListener(map, 'click', function(event) {
-        console.log(JSON.stringify(event.latLng));
-    });
-
-    google.maps.event.addListener(map, 'center_changed', function() {
-        checkBounds();
-    });
 
     function checkBounds() {
 
@@ -326,6 +289,45 @@ window.onload = function() {
 
         map.setCenter(new google.maps.LatLng(Y, X));
     }
+
+    // Define our custom map type
+    var customMapType = new google.maps.ImageMapType({
+        getTileUrl: function(coord, zoom) {
+            var normalizedCoord = getNormalizedCoord(coord, zoom);
+            if (normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
+                return 'img/plains/' + zoom + '_' + normalizedCoord.x + '_' + normalizedCoord.y + '.jpg';
+            } else {
+                return 'img/plains/empty.jpg';
+            }
+        },
+        tileSize: new google.maps.Size(256, 256),
+        maxZoom: 5,
+        name: 'Plains of Eidolon'
+    });
+
+    // Basic options for our map
+    var myOptions = {
+        center: new google.maps.LatLng(0, 0),
+        zoom: 3,
+        minZoom: 3,
+        streetViewControl: false,
+        mapTypeControl: false,
+        mapTypeControlOptions: {
+            mapTypeIds: ['custom']
+        }
+    };
+
+    // Init the map and hook our custom map type to it
+    var map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+    // This event listener when the map is clicked, output lat and lon to console
+    google.maps.event.addListener(map, 'click', function(event) {
+        console.log(JSON.stringify(event.latLng));
+    });
+
+    google.maps.event.addListener(map, 'center_changed', function() {
+        checkBounds();
+    });
 
     addMarkers(map);
 

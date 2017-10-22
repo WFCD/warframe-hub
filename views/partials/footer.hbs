@@ -1,10 +1,60 @@
-<footer>
-    <div class="row">
-        <div class="col-lg-12">
-            <p>Made by <a href="https://www.reddit.com/user/MainlandHero" rel="nofollow" target="_blank">/u/MainlandHero</a></p>
-            <p>Project under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
-            <p>Built with <a href="https://getbootstrap.com" rel="nofollow">Bootstrap</a></p>
-			<p><img src="https://raw.githubusercontent.com/Warframe-Community-Developers/banner/master/banner.png" /></p>
+<footer class="navbar-footer navbar-fixed-bottom text-center" id="footer">
+    <div class="row" id="footer-row">
+        <div class="col-lg-12" id="footer-content">
+            <a href="https://github.com/MainlandHero" rel="nofollow" target="_blank">
+			<span class="glyphicon glyphicon-copyright-mark"></span> 2017 MainlandHero</a>
+			<span> | </span>
+            <a href="#credits" data-target="#license" data-toggle="modal" style="outline:none;">
+                <span class="glyphicon glyphicon-book"></span></a>
+			<span> | </span>
+            <a href="#credits" data-target="#wfcd" data-toggle="modal" style="outline:none;">WFCD</a>
         </div>
     </div>
 </footer>
+
+<!-- License Information -->
+<div class="modal fade" id="license" tabindex="-1" role="dialog" aria-labelledby="licenseLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">License Information</h4>
+            </div>
+            <div class="modal-body">
+                The Warframe Hub project is committed to open source. This project is licensed and distributed under
+                <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>
+                <br><br>
+                You are entitled to a copy of this project AS IS, and you are free to modify it to your heart's desires.
+                You must include a copy of this license to all future modification and releases. You can read more about
+                the terms of the license <a href="https://choosealicense.com/licenses/apache-2.0/">here</a>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WFCD Information -->
+<div class="modal fade" id="wfcd" tabindex="-1" role="dialog" aria-labelledby="wfcdLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Warframe Community Developers</h4>
+            </div>
+            <div class="modal-body">
+                This project is part of the Warframe Community Developers.
+                <br><br>
+                <a href="https://github.com/WFCD">
+                    <img class="wfcd-banner img-rounded" src="https://raw.githubusercontent.com/Warframe-Community-Developers/banner/master/banner.png" /></a>
+                <br><br>
+                Pull requests are welcome, please submit any issues found to the project's
+                <a href="https://github.com/WFCD/warframe-hub/issues">issue tracker</a>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

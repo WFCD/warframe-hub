@@ -7,9 +7,9 @@
 				<!-- Cetus Timer -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">Cetus Day/Night Cycle</h3>
+						<h3 class="panel-title">Cetus Day/Night Cycle <a href="#cetuscyclebody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body collapse in" id="cetuscyclebody">
 						<h3 id="cetuscycleindicator"></h3>
 						<p class="info" id="cetuscycletitle">Loading</p>
 						<p class="info" id="cetuscycletime">Cycle times...</p>
@@ -22,9 +22,9 @@
 				<!-- Earth Timer -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">Earth Day/Night Cycle</h3>
+						<h3 class="panel-title">Earth Day/Night Cycle <a href="#earthcyclebody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body collapse in" id="earthcyclebody">
 						<h3 id="earthcycleindicator"></h3>
 						<p class="info" id="earthcycletitle">Loading</p>
 						<p class="info" id="earthcycletime">Cycle times...</p>
@@ -33,15 +33,26 @@
 						<p class="info" id="earthtimezonetime">Local time...</p>
 					</div>
 				</div>
+
+                <!-- Reset Timer -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Raid Reset / Daily Login Reset Timer <a href="#resettimerbody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
+                    </div>
+                    <div class="panel-body collapse in" id="resettimerbody">
+                        <p class="info" id="resettimertitle">Loading</p>
+                        <p class="info" id="resettimertime">Reset times...</p>
+                    </div>
+                </div>
 			</div>
 			<div class="col-md-6">
 			
 				<!-- Bounty Timer -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">Ostron Bounty Cycle</h3>
+						<h3 class="panel-title">Ostron Bounty Cycle <a href="#cetusbountybody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body collapse in" id="cetusbountybody">
 						<p class="info" id="cetusbountytitle">Loading...</p>
 						<p class="info" id="cetusbountytime">Ostron bounty cycle...</p>
 					</div>
@@ -50,9 +61,9 @@
 				<!-- Void Trader Timer -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">Void Trader</h3>
+						<h3 class="panel-title">Void Trader <a href="#voidTraderBody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body collapse in" id="voidTraderBody">
 						<p class="info" id="voidtradertitle">Loading...</p>
 						<p class="info" id="voidtradertime">Void trader cycle...</p>
 						<br><br>
@@ -60,12 +71,18 @@
 						<p class="info" id="voidtradertimezonetime">Local time...</p>
 					</div>
 				</div>
+				
+				<!-- Darvo Timer -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Darvo Deals <a href="#darvobody" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
+					</div>
+					<div class="panel-body collapse in" id="darvobody">
+						<p class="info" id="darvotitle">Loading deals...</p>
+					</div>
+				</div>
 			</div>
         </div>
-        
-        
-        <p>WorldState Obtained: </p>
-        <p id="worldstate"></p>
 		
 		{{> footer}}
     </div>
@@ -80,7 +97,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+<!-- Moment CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+
 <!-- required js for page -->
 <script src="js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+
+
+
+<!-- Insert world state update information into footer -->
+<script>
+    $('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
+            'data-toggle="tooltip" href="#" data-original-title="World State obtained">' +
+            '<span class="glyphicon glyphicon-info-sign"></span></div></a>');
+    $('#worldstateinfo').tooltip();
+</script>
+
+{{> nightmode}}

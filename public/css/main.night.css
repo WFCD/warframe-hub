@@ -71,8 +71,17 @@ body {
 }
 
 /* Fish info table */
+.fish-info {
+    border: 2px solid #737373 !important;
+    color: #ababab;
+}
+.fish-info >tbody>tr>td {
+    border: 2px solid #737373 !important;
+    color: #ababab;
+}
 .fish-info thead tr th {
     text-align: center;
+    color: #ababab;
 }
 .color1 >td {
     background-color: #363540;

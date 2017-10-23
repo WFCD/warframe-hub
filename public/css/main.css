@@ -57,6 +57,12 @@ body {
 }
 
 /* Fish info table */
+.fish-info {
+    border: 2px solid #1a242f !important;
+}
+.fish-info >tbody>tr>td {
+    border: 2px solid #1a242f !important;
+}
 .fish-info thead tr th {
     text-align: center;
 }

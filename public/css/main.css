@@ -62,6 +62,8 @@ body {
 }
 .fish-info >tbody>tr>td {
     border: 2px solid #1a242f !important;
+    padding: 1px !important;
+    vertical-align: middle !important;
 }
 .fish-info thead tr th {
     text-align: center;
@@ -104,6 +106,7 @@ a.fish-tooltip div.fish-tooltip-inner img{
 }
 a.fish-tooltip:hover div{
     display:inline;
+    margin-top: -55px;
     position:absolute;
     border:2px solid #1a242f;
     background:#617487;

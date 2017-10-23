@@ -146,6 +146,37 @@ function addMarkers(map) {
         ['Thousand-Year Fish Statuette', 35.31736632923788, -39.90234375, 'The Ostrons', 'https://streamable.com/s/o5xjy/dlqkcm'],
     ];
 
+    var lureIcon = {
+        url: 'img/map_icons/lure.png',
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 0)
+    };
+
+    var lure = [
+        ['Eidolon Lure X2', 65.73062649311031, -51.6796875],
+        ['Eidolon Lure X2', 66.93006025862448, 9.4921875],
+        ['Eidolon Lure X2', 39.232253141714885, 71.71875],
+        ['Eidolon Lure X2', -2.811371193331128, -15.46875],
+        ['Eidolon Lure X2', -57.98480801923985, 60.64453125],
+        ['Eidolon Lure', 53.852526600449515, -37.08984375],
+        ['Eidolon Lure', 58.53959476664049, 21.26953125],
+        ['Eidolon Lure', 38.54816542304656, -82.96875],
+        ['Eidolon Lure', 31.353636941500987, -60.46875],
+        ['Eidolon Lure', 31.95216223802497, -15.8203125],
+        ['Eidolon Lure', 36.87962060502676, 14.94140625],
+        ['Eidolon Lure', 48.2246726495652, 74.53125],
+        ['Eidolon Lure', 37.579412513438385, 79.1015625],
+        ['Eidolon Lure', 9.622414142924805, -63.984375],
+        ['Eidolon Lure', 5.441022303717974, 4.5703125],
+        ['Eidolon Lure', -20.96143961409684, -28.65234375],
+        ['Eidolon Lure', -21.616579336740593, 50.44921875],
+        ['Eidolon Lure', -35.603718740697296, -49.04296875],
+        ['Eidolon Lure', -37.439974052270564, -17.05078125],
+        ['Eidolon Lure', -37.439974052270564, -85.078125],
+        ['Eidolon Lure', -57.797943884982736, -65.56640625],
+        ['Eidolon Lure', -53.95608553098789, -35.859375],
+    ];
+
     var infowindow = new google.maps.InfoWindow();
 
     // Home icon loop
@@ -158,8 +189,8 @@ function addMarkers(map) {
             optimized: false
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent('<h6>' + home[i][0] + '</h6>' + home[i][3]);
                 infowindow.open(map, marker);
             };
@@ -176,8 +207,8 @@ function addMarkers(map) {
             optimized: false
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 if (fish[i][3] === 'Pond') {
                     infowindow.setContent('<h6>' + fish[i][0] + '</h6>' + fishInfo[0][1]);
                 } else if (fish[i][3] === 'Lake') {
@@ -200,8 +231,8 @@ function addMarkers(map) {
             optimized: false
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent('<h6>' + cave[i][0] + '</h6>' + cave[i][3]);
                 infowindow.open(map, marker);
             }
@@ -218,8 +249,8 @@ function addMarkers(map) {
             optimized: false
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent('<h6>' + grineer[i][0] + '</h6>' + grineer[i][3]);
                 infowindow.open(map, marker);
             }
@@ -236,11 +267,30 @@ function addMarkers(map) {
             optimized: false
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent('<h6>' + oddity[i][0] + '</h6>Fragment Name: <b>' + oddity[i][3] + '</b><br><br>' +
                     '<iframe src="' + oddity[i][4] + '" width="320" height="180" frameborder="0" allowfullscreen></iframe>'
                 );
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+
+    // Lure icon loop
+    for (var i = 0; i < lure.length; i++) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lure[i][1], lure[i][2]),
+            map: map,
+            icon: lureIcon,
+            title: lure[i][0],
+            optimized: false
+        });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent('<h6>' + lure[i][0] + '</h6><br><br>' +
+                    '<img src="img/luredrone.png" /><br>Note: Spawn location not exact,<br>drone spawn not guaranteed');
                 infowindow.open(map, marker);
             }
         })(marker, i));
@@ -253,7 +303,7 @@ function addMarkers(map) {
  * ----------------
  */
 
-window.onload = function() {
+window.onload = function () {
 
     function checkBounds() {
 
@@ -292,7 +342,7 @@ window.onload = function() {
 
     // Define our custom map type
     var customMapType = new google.maps.ImageMapType({
-        getTileUrl: function(coord, zoom) {
+        getTileUrl: function (coord, zoom) {
             var normalizedCoord = getNormalizedCoord(coord, zoom);
             if (normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
                 return 'img/plains/' + zoom + '_' + normalizedCoord.x + '_' + normalizedCoord.y + '.jpg';
@@ -321,11 +371,11 @@ window.onload = function() {
     var map = new google.maps.Map(document.getElementById('map'), myOptions);
 
     // This event listener when the map is clicked, output lat and lon to console
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'click', function (event) {
         console.log(JSON.stringify(event.latLng));
     });
 
-    google.maps.event.addListener(map, 'center_changed', function() {
+    google.maps.event.addListener(map, 'center_changed', function () {
         checkBounds();
     });
 

@@ -10,19 +10,6 @@
     font-weight:bold;
 }
 
-/* Info font customization */
-.info {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.4;
-    color: #ababab;
-}
-@media (min-width: 768px) {
-    .info {
-        font-size: 22.5px;
-    }
-}
-
 /* Sticky bottom navbar style */
 .navbar-footer {
     bottom: 0;

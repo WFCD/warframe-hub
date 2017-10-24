@@ -10,16 +10,21 @@
 	font-weight:bold;
 }
 
-/* Info font customization */
-.info {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.4;
+/* List group border adjustments */
+li.list-group-item-borderless {
+    border: none !important;
 }
-@media (min-width: 768px) {
-  .info {
-    font-size: 22.5px;
-  }
+li.list-group-item-borderbottom {
+    border-style: solid;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom: 3px solid #1A5072 !important;
+}
+
+/* Navbar default color override */
+.navbar-default{
+    background-color: #1A5072 !important;
 }
 
 /* Sticky bottom navbar style */
@@ -35,11 +40,12 @@
 }
 
 .navbar-footer a {
-    color: #2c3e50;
+    color: #1A5072;
 }
 body {
     margin-top: 50px !important;
 	margin-bottom: 40px !important;
+    color: #1A5072 !important;
 }
 
 /* Remove margins for info panel elements */

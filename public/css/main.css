@@ -33,6 +33,9 @@ li.list-group-item-borderbottom {
     padding-top: 7px;
     padding-bottom: 7px;
 }
+.navbar-footer a {
+    color: #1A5072;
+}
 
 /* Margins for body */
 body {

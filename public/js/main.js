@@ -1,5 +1,6 @@
 var worldState;
 var updateTime;
+var platformSwapped = false;
 
 //Cetus timer stuff
 var cetusIsDay;
@@ -17,16 +18,10 @@ var earthCurrentTitleTimezone;
 var earthCurrentIndicator;
 var earthCurrentIndicatorColor;
 
-//Timer instances for killing purposes
-var earthDayCycle;
-var cetusDayCycle;
-var bountyCycle;
-var voidTraderCycle;
-
 // Update worldstate timestamp
 function updateWorldStateTime() {
-    document.getElementById( 'worldstateinfo' ).setAttribute( 'data-original-title', 'World State updated at ' +
-        moment( updateTime ).format( 'MMMM Do YYYY, h:mm:ss a' ) );
+    document.getElementById( 'worldstateinfo' ).setAttribute( 'data-original-title', 'World State for ' +
+        Cookies.get('platform') + ' updated at ' + moment( updateTime ).format( 'MMMM Do YYYY, h:mm:ss a' ) );
 }
 
 // Helper function to display duration in human readable format
@@ -269,6 +264,10 @@ function updateVoidTraderInventory() {
     var voidTraderInventory = worldState.voidTrader.inventory;
     if (voidTraderInventory.length !== 0) {
         if (document.getElementById( worldState.voidTrader.id ) === null) {
+            if(platformSwapped && document.getElementsByClassName( 'voidTraderInventory' )){
+                $( '.voidTraderInventory' ).remove();
+            }
+
             var inventoryString = '<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" ' +
                 'class="voidTraderInventory" id="' + worldState.voidTrader.id + '">\n<div class="panel-heading">\n' +
                 '<h3 class="panel-title">' + worldState.voidTrader.character + ' Inventory' +
@@ -367,6 +366,10 @@ function updateDarvoDeals() {
     if (dailyDeals.length !== 0) {
         $('#darvotitle').hide();
         if (document.getElementById( dailyDeals[0].id ) === null) {
+            if(platformSwapped && document.getElementsByClassName( 'dailyDealsInventory' )){
+                $( '.dailyDealsInventory' ).remove();
+            }
+
             var inventoryString = '<table class="table table-striped table-hover dailyDealsInventory" id="' +
                 dailyDeals[0].id + '">\n' +
                 '<thead>\n' +
@@ -415,12 +418,41 @@ function updatePage() {
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-    $.getJSON( 'https://ws.warframestat.us/pc', function (data) {
-        worldState = JSON.parse( JSON.stringify( data ) );
-        updateTime = (new Date()).getTime();
-        updateDataDependencies();
-        updatePage();
-    } );
+    switch(Cookies.get('platform').toLowerCase()){
+        case 'ps4':
+            $.getJSON( 'https://ws.warframestat.us/ps4', function (data) {
+                worldState = JSON.parse( JSON.stringify( data ) );
+                updateTime = (new Date()).getTime();
+                updateDataDependencies();
+                updatePage();
+            } );
+            break;
+        case 'xb1':
+            $.getJSON( 'https://ws.warframestat.us/xb1', function (data) {
+                worldState = JSON.parse( JSON.stringify( data ) );
+                updateTime = (new Date()).getTime();
+                updateDataDependencies();
+                updatePage();
+            } );
+            break;
+        default:
+            $.getJSON( 'https://ws.warframestat.us/pc', function (data) {
+                worldState = JSON.parse( JSON.stringify( data ) );
+                updateTime = (new Date()).getTime();
+                updateDataDependencies();
+                updatePage();
+            } );
+            break;
+    }
+
+}
+
+function updateResetTime() {
+    var nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000; //We want unix seconds, not unix millis
+    $('#resettimertitle').html( 'Time until new server day:' );
+    var timeBadge = $('#resettimertime');
+    timeBadge.attr( 'data-endtime', nextReset );
+    timeBadge.addClass('label timer');
 }
 
 function removeTimeBadgeColor(element){
@@ -447,13 +479,13 @@ function updateTimeBadges() {
 
             // Refreshes for things we don't need worldstate for
             switch(currentLabel.attr('id')){
-                case "cetuscycletime":
+                case 'cetuscycletime':
                     updateCetusCycle();
                     break;
-                case "earthcycletime":
+                case 'earthcycletime':
                     updateEarthCycle();
                     break;
-                case "resettimertime":
+                case 'resettimertime':
                     updateResetTime();
                     break;
             }
@@ -495,13 +527,67 @@ function updateTimeBadges() {
     setTimeout(updateTimeBadges, 1000);
 }
 
-function updateResetTime() {
-    var nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000; //We want unix seconds, not unix millis
-    $('#resettimertitle').html( 'Time until new server day:' );
-    var timeBadge = $('#resettimertime');
-    timeBadge.attr( 'data-endtime', nextReset );
-    timeBadge.addClass('label timer');
+function updatePlatformSwitch(){
+    platformSwapped = false;
 }
+
+// Platform switcher anonymous functions
+$(function(){
+    $('#platform_pc').click(function(){
+        $('#platform_ps4').removeClass('list-group-item-success');
+        $('#platform_xb1').removeClass('list-group-item-success');
+        $('#platform_pc').addClass('list-group-item-success');
+        Cookies.set('platform', 'PC');
+        platformSwapped = true;
+        getWorldState();
+        setTimeout(updatePlatformSwitch, 30000);
+    });
+});
+$(function(){
+    $('#platform_ps4').click(function(){
+        $('#platform_pc').removeClass('list-group-item-success');
+        $('#platform_xb1').removeClass('list-group-item-success');
+        $('#platform_ps4').addClass('list-group-item-success');
+        Cookies.set('platform', 'PS4');
+        platformSwapped = true;
+        getWorldState();
+        setTimeout(updatePlatformSwitch, 30000);
+    });
+});
+$(function(){
+    $('#platform_xb1').click(function(){
+        $('#platform_ps4').removeClass('list-group-item-success');
+        $('#platform_pc').removeClass('list-group-item-success');
+        $('#platform_xb1').addClass('list-group-item-success');
+        Cookies.set('platform', 'XB1');
+        platformSwapped = true;
+        getWorldState();
+        setTimeout(updatePlatformSwitch, 30000);
+    });
+});
+//Set default platform to PC if there isn't one
+if(Cookies.get('platform') === undefined){
+    Cookies.set('platform', 'PC')
+}else{
+    switch(Cookies.get('platform').toLowerCase()){
+        case 'ps4':
+            $('#platform_pc').removeClass('list-group-item-success');
+            $('#platform_xb1').removeClass('list-group-item-success');
+            $('#platform_ps4').addClass('list-group-item-success');
+            break;
+        case 'xb1':
+            $('#platform_ps4').removeClass('list-group-item-success');
+            $('#platform_pc').removeClass('list-group-item-success');
+            $('#platform_xb1').addClass('list-group-item-success');
+            break;
+        default:
+            $('#platform_ps4').removeClass('list-group-item-success');
+            $('#platform_xb1').removeClass('list-group-item-success');
+            $('#platform_pc').addClass('list-group-item-success');
+            break;
+    }
+}
+
 
 // Main data refresh loop every 60 minutes
 function update(){

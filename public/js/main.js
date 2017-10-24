@@ -353,10 +353,6 @@ function updateVoidTrader() {
     }
 }
 
-function calculateDiscount(original, sale){
-    return Math.floor((sale - original) / original * 100) + '%';
-}
-
 function calculateInventory(total, sold){
     return (total - sold) + '/' + total;
 }
@@ -391,8 +387,7 @@ function updateDarvoDeals() {
             $( '#darvobody' ).append( inventoryString );
             for (var item = 0; item < dailyDeals.length; item++) {
                 var currentItem = dailyDeals[ item ];
-                var itemString = '<tr><td>' + currentItem.item + '</td><td>' + calculateDiscount(currentItem.originalPrice,
-                    currentItem.salePrice) + '</td>' + '<td>' + currentItem.salePrice + '</td><td>' +
+                var itemString = '<tr><td>' + currentItem.item + '</td><td>' + currentItem.discount + '%</td>' + '<td>' + currentItem.salePrice + '</td><td>' +
                     calculateInventory(currentItem.total, currentItem.sold) + '</td>' +
                     '<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="' + moment(currentItem.expiry).unix() + '"></span></td></tr>';
                 $( '#dailyDealsInventory' ).append(itemString);

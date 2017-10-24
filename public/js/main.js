@@ -567,7 +567,7 @@ $(function(){
 });
 //Set default platform to PC if there isn't one
 if(Cookies.get('platform') === undefined){
-    Cookies.set('platform', 'PC')
+    Cookies.set('platform', 'PC');
 }else{
     switch(Cookies.get('platform').toLowerCase()){
         case 'ps4':

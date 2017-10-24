@@ -1,23 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html style="visibility: hidden">
 <head>
     <meta charset="utf-8">
     <title>Warframe Hub | {{title}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <link rel="stylesheet" href="css/main.css" id="mode-custom">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" media="screen" id="mode">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Cookies CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="css/bootstrap-night.min.css" media="screen" id="mode">
+    <link rel="stylesheet" href="css/main.night.css" id="mode-custom">
+    <script>
+        var theme = $('#mode');
+        var themecustom = $('#mode-custom');
+        if(Cookies.get('mode') === 'night'){
+            theme.attr('href', 'css/bootstrap-night.min.css');
+            themecustom.attr('href', 'css/main.night.css');
+            theme.toggleClass('night')
+        }else{
+            theme.attr('href', 'css/bootstrap-default.min.css');
+            themecustom.attr('href', 'css/main.css');
+        }
+    </script>
 </head>
 <body>
 
 {{> nav}}
 
 {{{body}}}
+<script>
+    // Wait until page is ready to display
+    $(document).ready(function() {
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
+    });
+</script>
 </body>
 </html>

@@ -1,25 +1,16 @@
 <script>
-    var theme = $('#mode');
-    var themecustom = $('#mode-custom');
-    if(Cookies.get('mode') === 'night'){
-        theme.attr('href', 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css');
-        themecustom.attr('href', 'css/main.night.css');
-        theme.toggleClass('night')
-    }
-</script>
-<script>
     $(function(){
         $('#nightmode').click(function(){
             var theme = $('#mode');
             var themecustom = $('#mode-custom');
             if(theme.hasClass('night')){
-                theme.attr('href', 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css');
+                theme.attr('href', 'css/bootstrap-default.min.css');
                 themecustom.attr('href', 'css/main.css');
                 theme.toggleClass('night');
                 Cookies.set('mode', 'day');
             }
             else{
-                theme.attr('href', 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css');
+                theme.attr('href', 'css/bootstrap-night.min.css');
                 themecustom.attr('href', 'css/main.night.css');
                 theme.toggleClass('night');
                 Cookies.set('mode', 'night');

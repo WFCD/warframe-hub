@@ -10,16 +10,16 @@
 	font-weight:bold;
 }
 
-/* Info font customization */
-.info {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.4;
+/* List group border adjustments */
+.list-group-item-borderless {
+    border: none !important;
 }
-@media (min-width: 768px) {
-  .info {
-    font-size: 22.5px;
-  }
+.list-group-item-borderbottom {
+    border-style: solid;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom: 2px solid #1A5072 !important;
 }
 
 /* Sticky bottom navbar style */
@@ -33,30 +33,72 @@
     padding-top: 7px;
     padding-bottom: 7px;
 }
-
 .navbar-footer a {
-    color: #2c3e50;
+    color: #1A5072;
 }
+
+/* Margins for body */
 body {
     margin-top: 50px !important;
 	margin-bottom: 40px !important;
 }
 
-/* Remove margins for info panel elements */
-.panel-body > h3 {
-    margin: 0;
+/* Fish info table */
+.fish-info {
+    border: 2px solid #1a242f !important;
 }
-.panel-body > p {
-    margin: 0;
+.fish-info >tbody>tr>td {
+    border: 2px solid #1a242f !important;
+    padding: 1px !important;
+    vertical-align: middle !important;
+}
+.fish-info thead tr th {
+    text-align: center;
+}
+.color1 >td {
+    background-color: #ead1dc;
+}
+.color2 >td {
+    background-color: #d9d2e9;
+}
+.color3 >td {
+    background-color: #cfe2f3;
+}
+.color4 >td {
+    background-color: #c9daf8;
+}
+.color5 >td {
+    background-color: #d0e0e3;
+}
+.color6 >td {
+    background-color: #d9ead3;
+}
+.color7 >td {
+    background-color: #fff2cc;
 }
 
-/* Fix panel jumpy collapse */
-.panel-body {
-    padding: 0 !important;
-    margin: 10px !important;
+/* Fish Image tooltip */
+.fish-tooltip {
+    text-decoration:none !important;
+    color: #2c3e50 !important;
 }
-
-.img {
+.fish-tooltip div{
+    display:none;
+    margin-left:8px;
+}
+.fish-tooltip-inner img{
+    object-fit: contain;
+    max-width:200px;
+    max-height:125px;
+}
+.fish-tooltip:hover div{
+    display:inline;
+    margin-top: -55px;
+    position:absolute;
+    border:2px solid #1a242f;
+    background:#617487;
+}
+img {
 	max-width: 100%;
 	max-height: 100%;
 }

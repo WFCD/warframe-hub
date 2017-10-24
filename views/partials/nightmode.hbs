@@ -1,13 +1,4 @@
 <script>
-    var theme = $('#mode');
-    var themecustom = $('#mode-custom');
-    if(Cookies.get('mode') === 'night'){
-        theme.attr('href', 'css/bootstrap-night.min.css');
-        themecustom.attr('href', 'css/main.night.css');
-        theme.toggleClass('night')
-    }
-</script>
-<script>
     $(function(){
         $('#nightmode').click(function(){
             var theme = $('#mode');

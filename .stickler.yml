@@ -1,6 +1,6 @@
 linters:
   csslint:
-    ignore: 'ids,important,qualified-headings'
+    ignore: 'ids,important,qualified-headings,known-properties,display-property-grouping'
 files:
   ignore:
     - 'bower_components/*'

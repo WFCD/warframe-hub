@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="visibility: hidden">
 <head>
     <meta charset="utf-8">
     <title>Warframe Hub | {{title}}</title>
@@ -34,5 +34,11 @@
 {{> nav}}
 
 {{{body}}}
+<script>
+    // Wait until page is ready to display
+    $(document).ready(function() {
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
+    });
+</script>
 </body>
 </html>

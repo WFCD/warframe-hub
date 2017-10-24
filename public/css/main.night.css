@@ -11,10 +11,10 @@
 }
 
 /* List group border adjustments */
-li.list-group-item-borderless {
+.list-group-item-borderless {
     border: none !important;
 }
-li.list-group-item-borderbottom {
+.list-group-item-borderbottom {
     border-style: solid;
     border-top:0;
     border-left:0;
@@ -90,16 +90,16 @@ body {
     text-decoration:none !important;
     color: #ababab !important;
 }
-a.fish-tooltip div{
+.fish-tooltip div{
     display:none;
     margin-left:8px;
 }
-a.fish-tooltip div.fish-tooltip-inner img{
+.fish-tooltip-inner img{
     object-fit: contain;
     max-width:200px;
     max-height:125px;
 }
-a.fish-tooltip:hover div{
+.fish-tooltip:hover div{
     display:inline;
     margin-top: -55px;
     position:absolute;

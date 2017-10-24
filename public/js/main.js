@@ -366,7 +366,9 @@ function updateDarvoDeals() {
     if (dailyDeals.length !== 0) {
         $('#darvotitle').hide();
         if (document.getElementById( dailyDeals[0].id ) === null) {
-            if(platformSwapped && document.getElementsByClassName( 'dailyDealsInventory' )){
+            if(platformSwapped && document.getElementsByClassName( 'dailyDealsInventory' ) ){
+                $( '.dailyDealsInventory' ).remove();
+            }else if ($( '.dailyDealsInventory' ).attr('id') !== dailyDeals[0].id){
                 $( '.dailyDealsInventory' ).remove();
             }
 

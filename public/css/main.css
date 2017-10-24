@@ -19,12 +19,7 @@ li.list-group-item-borderbottom {
     border-top:0;
     border-left:0;
     border-right:0;
-    border-bottom: 3px solid #1A5072 !important;
-}
-
-/* Navbar default color override */
-.navbar-default{
-    background-color: #1A5072 !important;
+    border-bottom: 2px solid #1A5072 !important;
 }
 
 /* Sticky bottom navbar style */
@@ -39,27 +34,10 @@ li.list-group-item-borderbottom {
     padding-bottom: 7px;
 }
 
-.navbar-footer a {
-    color: #1A5072;
-}
+/* Margins for body */
 body {
     margin-top: 50px !important;
 	margin-bottom: 40px !important;
-    color: #1A5072 !important;
-}
-
-/* Remove margins for info panel elements */
-.panel-body > h3 {
-    margin: 0;
-}
-.panel-body > p {
-    margin: 0;
-}
-
-/* Fix panel jumpy collapse */
-.panel-body {
-    padding: 0 !important;
-    margin: 10px !important;
 }
 
 /* Fish info table */
@@ -117,7 +95,6 @@ a.fish-tooltip:hover div{
     border:2px solid #1a242f;
     background:#617487;
 }
-
 img {
 	max-width: 100%;
 	max-height: 100%;

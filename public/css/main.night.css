@@ -10,6 +10,18 @@
     font-weight:bold;
 }
 
+/* List group border adjustments */
+li.list-group-item-borderless {
+    border: none !important;
+}
+li.list-group-item-borderbottom {
+    border-style: solid;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom: 2px solid #1A5072 !important;
+}
+
 /* Sticky bottom navbar style */
 .navbar-footer {
     bottom: 0;
@@ -25,36 +37,15 @@
     color: #ababab;
 }
 
-/* Change panel color to less white */
-.panel-body {
-    color: #ababab;
-}
-.panel-title {
+/* Change label color to be less white */
+.label {
     color: #ababab !important;
 }
 
-/* Change label color to be less white */
-.label {
-    color: #000000 !important;
-}
-
+/* Margins for body */
 body {
     margin-top: 50px !important;
     margin-bottom: 40px !important;
-}
-
-/* Remove margins for info panel elements */
-.panel-body > h3 {
-    margin: 0;
-}
-.panel-body > p {
-    margin: 0;
-}
-
-/* Fix panel jumpy collapse */
-.panel-body {
-    padding: 0 !important;
-    margin: 10px !important;
 }
 
 /* Fish info table */
@@ -115,7 +106,6 @@ a.fish-tooltip:hover div{
     border:2px solid #737373;
     background:#222222;
 }
-
 img {
     max-width: 100%;
     max-height: 100%;

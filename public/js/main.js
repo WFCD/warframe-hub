@@ -378,7 +378,7 @@ function updateDarvoDeals() {
                 '<th class="text-center">Discount</th>\n' +
                 '<th class="text-center">Platinum</th>\n' +
                 '<th class="text-center">Stock</th>\n' +
-                '<th class="text-center">Time Left</th>\n' +
+                '<th class="text-center"></th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
                 '<tbody id="dailyDealsInventory">\n' +
@@ -392,7 +392,7 @@ function updateDarvoDeals() {
                 var itemString = '<tr><td>' + currentItem.item + '</td><td>' + calculateDiscount(currentItem.originalPrice,
                     currentItem.salePrice) + '</td>' + '<td>' + currentItem.salePrice + '</td><td>' +
                     calculateInventory(currentItem.total, currentItem.sold) + '</td>' +
-                    '<td><span class="label timer" data-endtime="' + moment(currentItem.expiry).unix() + '"></span></td></tr>';
+                    '<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="' + moment(currentItem.expiry).unix() + '"></span></td></tr>';
                 $( '#dailyDealsInventory' ).append(itemString);
             }
         }

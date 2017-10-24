@@ -6,44 +6,6 @@
 </div>
 <!-- /.container -->
 
-<!-- Fish Info -->
-<div class="modal fade" id="fishinfo" tabindex="-1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Fish Info</h4>
-			</div>
-            <div class="modal-body">
-                Following Hotfix 22.0.3, you must equip the proper spear to catch the fish in 1 shot. Spear efficiency is determined by the type of fish you are catching. In order to have maximum fishing efficiency, you must equip all spears to catch all the different kinds of fish you might see.
-                <br><br>
-                <b>Twilight Bait:</b> Karkina and Sharrac (Sea)
-                <br>
-                <b>Cuthol Bait:</b> Cuthol (Pond)
-                <br>
-                <b>Murkray Bait:</b> Murkray (Sea)
-                <br>
-                <b>Norg Bait:</b> Norg (Lake)
-                <br>
-                <b>Glappid Bait:</b> Glappid (Sea)
-                <br>
-                <b>Peppered Bait:</b> Anything else at anywhere
-                <br><br>
-                Bait lasts 30 seconds, and must be through in wavy water:
-                <br>
-                <img src="img/wavywater.png" width=100% />
-                <br>
-                Image by Narration (WFRSB)
-                <br>
-                <a href="https://docs.google.com/document/d/1YsLgnEE00comLfMxDeRqUgjKg4GEM4RCcfnFSxb5BvM/edit">The definitive guide to fishing in Warframe</a>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Map Credits -->
 <div class="modal fade" id="credits" tabindex="-1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -57,7 +19,7 @@
                 <br><a href="https://www.reddit.com/r/Warframe/comments/76b96g/i_stitched_together_the_plains_of_eidolon_map_for/" target="_blank">Original Reddit Post</a>
                 <br><br>
                 Fish information made by /u/cranem258 and the amazing <a href="https://forums.warframe.com/topic/690039-warframe-raid-school-bus/" target="_blank">Warframe Raid School Bus Community</a>
-                <br><a href="https://docs.google.com/spreadsheets/d/13vN9qnVuPSkHiLHTJZ_CjImaekcMY2tC3cNCcQCCVP8/htmlview?sle=true" target="_blank">Detailed fishing information</a>
+                <br><a href="./fish" target="_blank">Detailed fishing information</a>
                 <br><br>
                 General information by /u/Cammo_353
                 <br><a href="https://www.reddit.com/r/Warframe/comments/76ivu5/i_made_a_plains_of_eidolon_field_guide/" target="_blank">Reddit Guide Thread</a>
@@ -89,7 +51,6 @@
 <script>
     var rightnavbar = $('#navbar-right');
     rightnavbar.prepend('<li><a href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Map Credits</a></li>');
-    rightnavbar.prepend('<li><a href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
 </script>
 
 {{> nightmode}}

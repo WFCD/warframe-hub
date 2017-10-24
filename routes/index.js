@@ -25,4 +25,9 @@ router.get('/fish', function (req, res) {
     res.render('fish', {title: 'Fish'});
 });
 
+router.get('/howtofish', function (req, res) {
+    visitor.pageview('/howtofish').send();
+    res.render('howtofish', {title: 'How to Fish'});
+});
+
 module.exports = router;

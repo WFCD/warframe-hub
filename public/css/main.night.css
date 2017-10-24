@@ -111,6 +111,11 @@ img {
     max-height: 100%;
 }
 
+/* Change button color to be less white */
+.btn {
+    background-color: #555555 !important;
+}
+
 /* Add background color to WFCD banner in night mode */
 .wfcd-banner {
     background-color: #777777;

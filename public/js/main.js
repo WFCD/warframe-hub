@@ -444,6 +444,19 @@ function updateTimeBadges() {
             }
             currentLabel.addClass('label-default');
             currentLabel.html('Expired: ' + formatDurationShort( duration ));
+
+            // Refreshes for things we don't need worldstate for
+            switch(currentLabel.attr('id')){
+                case "cetuscycletime":
+                    updateCetusCycle();
+                    break;
+                case "earthcycletime":
+                    updateEarthCycle();
+                    break;
+                case "resettimertime":
+                    updateResetTime();
+                    break;
+            }
         }
         //0 min to 10 min
         else if(diff < 600000) {

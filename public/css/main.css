@@ -130,6 +130,16 @@ img {
 
 .platform-picker ul a span {
     flex-grow: 1;
+    color: #1a5072;
+}
+
+.platform-picker ul a span {
+    flex-grow: 1;
+    color: #1a5072;
+}
+
+.platform-picker ul a:hover span {
+    color: inherit;
 }
 
 .platform-picker img {

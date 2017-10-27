@@ -130,3 +130,26 @@ img {
 #map{
     height: 100%;
 }
+
+/* Platform picker style */
+.platform-picker ul li {
+    border-top: 1px solid #464545;
+}
+
+.platform-picker ul li:first-child {
+    border: 0;
+}
+
+.platform-picker ul a {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.platform-picker ul a span {
+    flex-grow: 1;
+}
+
+.platform-picker img {
+    height: 20px;
+}

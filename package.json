@@ -34,7 +34,7 @@
     "serve-favicon": "~2.4.5",
     "sinon": "^4.0.1",
     "supertest": "^3.0.0",
-    "universal-analytics": "^0.4.15"
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",

@@ -368,22 +368,20 @@ function updateDarvoDeals() {
                 $( '.dailyDealsInventory' ).remove();
             }
 
-            var inventoryString = '<table class="table table-striped table-hover dailyDealsInventory" id="' +
+            var inventoryString = '<table class="table dailyDealsInventory" style="table-layout: fixed" id="' +
                 dailyDeals[0].id + '">\n' +
                 '<thead>\n' +
                 '<tr>\n' +
-                '<th class="text-center">Item Name</th>\n' +
-                '<th class="text-center">Discount</th>\n' +
-                '<th class="text-center">Platinum</th>\n' +
-                '<th class="text-center">Stock</th>\n' +
-                '<th class="text-center"></th>\n' +
+                '<th class="text-center col-xs-2">Item</th>\n' +
+                '<th class="text-center col-xs-2">% Off</th>\n' +
+                '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
+                '<th class="text-center col-xs-2">Stock</th>\n' +
+                '<th class="text-center col-xs-4"></th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
                 '<tbody id="dailyDealsInventory">\n' +
                 '</tbody>\n' +
-                '</table>\n' +
-                '</div>\n' +
-                '</div>';
+                '</table>';
             $( '#darvobody' ).append( inventoryString );
             for (var item = 0; item < dailyDeals.length; item++) {
                 var currentItem = dailyDeals[ item ];

@@ -5,8 +5,6 @@ var winston = require('winston');
 
 var router = express.Router();
 
-winston.level = process.env.LOG_LEVEL || 'error'; //default to error, we don't need everything
-
 router.get('/', function (req, res) {
     winston.info('Received ' + req.method + ' request for ' + req.originalUrl + ' from ' + req.connection.remoteAddress);
     res.render('index', {title: 'Index'});

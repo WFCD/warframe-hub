@@ -368,7 +368,7 @@ function updateDarvoDeals() {
                 $( '.dailyDealsInventory' ).remove();
             }
 
-            var inventoryString = '<table class="table table-hover dailyDealsInventory" style="table-layout: fixed" id="' +
+            var inventoryString = '<table class="table dailyDealsInventory" style="table-layout: fixed" id="' +
                 dailyDeals[0].id + '">\n' +
                 '<thead>\n' +
                 '<tr>\n' +

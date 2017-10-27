@@ -1,10 +1,22 @@
 {
   "name": "warframe-hub",
+  "description": "Warframe Hub aims to bring the community with up to date information within the game of Warframe.",
+  "keywords": [
+    "warframe",
+    "status",
+    "hub"
+  ],
+  "repository": "https://github.com/WFCD/warframe-hub",
+  "website": "https://hub.warframestat.us",
   "scripts": {
   },
   "env": {
   },
   "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
   },
   "addons": [
 

@@ -16,7 +16,7 @@ app.set('view engine', '.hbs');
 
 // favicon and caching options (cache is 7 days)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 86400000 }));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 604800000 }));
 
 // default node js includes
 app.use(bodyParser.json());

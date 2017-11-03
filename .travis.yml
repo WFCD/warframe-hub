@@ -1,8 +1,9 @@
 language: node_js
 
 node_js:
-  - "8.9.0"
+  # - "node" removing until stabilized
   - "6"
+  - "lts"
 
 cache:
   directories:

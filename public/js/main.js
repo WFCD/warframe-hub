@@ -401,12 +401,70 @@ function updateDarvoDeals() {
     }
 }
 
+function updateAlerts() {
+    var alerts = worldState.alerts;
+    if (alerts.length !== 0) {
+        $('#alerttitle').hide();
+        if(platformSwapped && document.getElementById( 'alertList' ) ){
+            $( '.alertList' ).children().not( '#alertbody' ).remove();
+        }
+
+        if(document.getElementById('alertList').children.length >= 1){
+            for (var num = 0; num < alerts.length; num++) {
+                var alert = alerts[ num ];
+                if($('#' + alert.id).length === 0){
+                    var alertRow = '<li class="list-group-item list-group-item-borderless" id="' + alert.id + '">';
+
+                    // Check if archwing is required for mission
+                    if(alert.mission.archwingRequired){
+                        alertRow += '<span title="Archwing Required" class="glyphicon glyphicon-plane"></span> '
+                    }
+                    if(alert.mission.nightmare){
+                        alertRow += '<span title="Nightmare Mission" class="glyphicon glyphicon-warning-sign"></span> '
+                    }
+                    alertRow += '<b>' + alert.mission.node + '</b> | ' + alert.mission.type + ' (' + alert.mission.faction + ')';
+                    alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +
+                        'data-endtime="' + moment(alert.expiry).unix() + '"></span>';
+
+                    alertRow += '<br><b>Level: </b>' + alert.mission.minEnemyLevel + '-' + alert.mission.maxEnemyLevel +
+                        '<span class="badge badge-primary">' + alert.mission.reward.asString + '</span>';
+
+                    alertRow += '</li>';
+                    $( '#alertbody' ).before(alertRow);
+                }
+            }
+        }else{
+            for (var num = 0; num < alerts.length; num++) {
+                var alert = alerts[ num ];
+                var alertRow = '<li class="list-group-item list-group-item-borderless" id="' + alert.id + '">';
+
+                // Check if archwing is required for mission
+                if(alert.mission.archwingRequired){
+                    alertRow += '<span class="glyphicon glyphicon-plane"></span>'
+                }
+                alertRow += '<b>' + alert.mission.node + '</b> | ' + alert.mission.type + ' (' + alert.mission.faction + ')';
+                alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +
+                    'data-endtime="' + moment(alert.expiry).unix() + '"></span></li>';
+                $( '#alertbody' ).before(alertRow);
+            }
+        }
+    }
+    else {
+        if (document.getElementById( 'alertList' )) {
+            $( '.alertList' ).children().not( '#alertbody' ).remove();
+            document.getElementById( 'alerttitle' ).innerText = 'No active alerts :(';
+            $( '#alerttitle' ).show();
+        }
+    }
+}
+
 function updatePage() {
     updateEarthCycle();
     updateCetusCycle();
     updateVoidTrader();
     updateVoidTraderInventory();
     updateDarvoDeals();
+    updateAlerts();
     updateCetusBountyTimer();
     updateWorldStateTime();
 }
@@ -483,6 +541,11 @@ function updateTimeBadges() {
                 case 'resettimertime':
                     updateResetTime();
                     break;
+                default:
+                    //If it is a alert timer, we can safely remove
+                    if(currentLabel.attr('id').includes('alerttimer')){
+                        $(currentLabel.parentElement).remove();
+                    }
             }
         }
         //0 min to 10 min

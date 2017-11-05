@@ -268,8 +268,9 @@ function updateVoidTraderInventory() {
                 $( '.voidTraderInventory' ).remove();
             }
 
-            var inventoryString = '<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" ' +
-                'class="voidTraderInventory" id="' + worldState.voidTrader.id + '">\n<div class="panel-heading">\n' +
+            var inventoryString = '<div class="panel panel-primary voidTraderInventory" ' +
+                'style="margin-left:5%; margin-right:5%" ' +
+                'id="' + worldState.voidTrader.id + '">\n<div class="panel-heading">\n' +
                 '<h3 class="panel-title">' + worldState.voidTrader.character + ' Inventory' +
                 '<a href="#voidTraderInventoryPanel" data-toggle="collapse">' +
                 '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>\n' +
@@ -406,7 +407,7 @@ function updateAlerts() {
     if (alerts.length !== 0) {
         $('#alerttitle').hide();
         if(platformSwapped && document.getElementById( 'alertList' ) ){
-            $( '.alertList' ).children().not( '#alertbody' ).remove();
+            $( '#alertList' ).children().not( '#alertbody' ).remove();
         }
 
         if(document.getElementById('alertList').children.length >= 1){
@@ -422,15 +423,34 @@ function updateAlerts() {
                     if(alert.mission.nightmare){
                         alertRow += '<span title="Nightmare Mission" class="glyphicon glyphicon-warning-sign"></span> '
                     }
-                    alertRow += '<b>' + alert.mission.node + '</b> | ' + alert.mission.type + ' (' + alert.mission.faction + ')';
+                    alertRow += '<b>' + alert.mission.node + '</b>';
                     alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +
                         'data-endtime="' + moment(alert.expiry).unix() + '"></span>';
 
-                    alertRow += '<br><b>Level: </b>' + alert.mission.minEnemyLevel + '-' + alert.mission.maxEnemyLevel +
-                        '<span class="badge badge-primary">' + alert.mission.reward.asString + '</span>';
+                    if(alert.mission.reward.items.length !== 0){
+                        for(var i = 0; i < alert.mission.reward.items.length; i++){
+                            alertRow += '<span class="label label-info pull-right" style="margin-right: 5px">' + alert.mission.reward.items[i] + '</span>';
+                        }
+                    }
+                    if(alert.mission.reward.countedItems.length !== 0){
+                        for(var i = 0; i < alert.mission.reward.countedItems.length; i++){
+                            alertRow += '<span class="label label-info pull-right" style="margin-right: 5px">' + alert.mission.reward.countedItems[i].count +
+                                ' ' + alert.mission.reward.countedItems[i].type + '</span>';
+                        }
+                    }
+                    if(alert.mission.reward.items.length === 0 && alert.mission.reward.countedItems.length === 0){
+                        alertRow += '<span class="label label-default pull-right" style="margin-right: 5px">' + alert.mission.reward.credits + 'cr</span>';
+                    }
+
+                    alertRow +=  '<br><b>' + alert.mission.type + '</b> (' + alert.mission.faction + ')' +
+                        ' | <b>Level: </b>' + alert.mission.minEnemyLevel + '-' + alert.mission.maxEnemyLevel;
 
                     alertRow += '</li>';
                     $( '#alertbody' ).before(alertRow);
+                }else{
+                    var timer = $('#alerttimer' + alert.id);
+                    timer.attr('data-starttime', moment(alert.activation).unix());
+                    timer.attr('data-endtime', moment(alert.expiry).unix());
                 }
             }
         }else{
@@ -514,16 +534,35 @@ function removeTimeBadgeColor(element){
     element.removeClass('label-danger');
     element.removeClass('label-warning');
     element.removeClass('label-default');
+    element.removeClass('label-info');
 }
 
 function updateTimeBadges() {
     var labels = document.getElementsByClassName('timer');
     for(var i = 0; i < labels.length; i++){
         var currentLabel = $(labels[i]);
+
+        var activation = currentLabel.attr('data-starttime');
+        var diffactivate = undefined;
+        var durationactivate = undefined;
+
+        if (typeof activation !== typeof undefined && activation !== false) {
+            diffactivate = moment().diff(moment.unix(currentLabel.attr('data-starttime'))) * -1;
+            durationactivate = moment.duration( diffactivate, 'milliseconds' );
+        }
+
         var diff = moment().diff(moment.unix(currentLabel.attr('data-endtime'))) * -1;
         var duration = moment.duration( diff, 'milliseconds' );
+        //Not started
+        if(diffactivate !== typeof undefined && diffactivate > 0){
+            if(!currentLabel.hasClass('label-info')){
+                removeTimeBadgeColor(currentLabel);
+            }
+            currentLabel.addClass('label-info');
+            currentLabel.html('Stars in: ' + formatDurationShort( durationactivate ));
+        }
         //Expired
-        if(diff < 0){
+        else if(diff < 0){
             if(!currentLabel.hasClass('label-default')){
                 removeTimeBadgeColor(currentLabel);
             }
@@ -544,7 +583,7 @@ function updateTimeBadges() {
                 default:
                     //If it is a alert timer, we can safely remove
                     if(currentLabel.attr('id').includes('alerttimer')){
-                        $(currentLabel.parentElement).remove();
+                        currentLabel.parent()[0].remove();
                     }
             }
         }

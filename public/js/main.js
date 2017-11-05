@@ -559,7 +559,7 @@ function updateTimeBadges() {
                 removeTimeBadgeColor(currentLabel);
             }
             currentLabel.addClass('label-info');
-            currentLabel.html('Stars in: ' + formatDurationShort( durationactivate ));
+            currentLabel.html('Starts in: ' + formatDurationShort( durationactivate ));
         }
         //Expired
         else if(diff < 0){

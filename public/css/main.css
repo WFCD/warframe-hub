@@ -146,3 +146,9 @@ img {
     height: 20px;
 }
 
+/* Nightmare glyph */
+.nightmare {
+  background-image: url('https://i.imgur.com/x5XoktW.png');
+  height: 16px;
+}
+

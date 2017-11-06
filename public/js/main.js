@@ -421,7 +421,7 @@ function updateAlerts() {
                         alertRow += '<span title="Archwing Required" class="glyphicon glyphicon-plane"></span> '
                     }
                     // if(alert.mission.nightmare){
-                       alertRow += '<span title="Nightmare Mission" class="nightmare"></span> '
+                    alertRow += '<span title="Nightmare Mission" class="nightmare"></span> '
                     // }
                     alertRow += '<b>' + alert.mission.node + '</b>';
                     alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +

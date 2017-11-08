@@ -153,3 +153,7 @@ img {
 .platform-picker img {
     height: 20px;
 }
+
+.nightmare {
+  filter: invert(0%); /*invert on main, not on night*/
+}

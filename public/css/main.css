@@ -146,3 +146,9 @@ img {
     height: 20px;
 }
 
+/* Nightmare glyph */
+.nightmare {
+  margin-top: -3px;
+  filter: invert(100%); /*invert on main, not on night*/
+}
+

@@ -24,6 +24,14 @@ install: npm install
 
 before_script:
   - npm install -g mocha
+  - export AUTHOR_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
 
 script:
   - mocha spec mochaspec.js
+
+after_success:
+  - chmod +x success.sh
+  - ./success.sh
+after_failure:
+  - chmod +x fail.sh
+  - ./fail.sh

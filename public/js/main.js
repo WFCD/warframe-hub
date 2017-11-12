@@ -471,7 +471,7 @@ function updateAlerts() {
     }
     else {
         if (document.getElementById( 'alertList' )) {
-            $( '.alertList' ).children().not( '#alertbody' ).remove();
+            $( '#alertList' ).children().not( '#alertbody' ).remove();
             document.getElementById( 'alerttitle' ).innerText = 'No active alerts :(';
             $( '#alerttitle' ).show();
         }

@@ -152,3 +152,17 @@ img {
   filter: invert(100%); /*invert on main, not on night*/
 }
 
+/* Invasion colors */
+.corpus {
+    background-color: #3498db;
+}
+.grineer {
+    background-color: #e74c3c;
+}
+.infestation {
+    background-color: #18bc9c;
+}
+.progress {
+    height: 15px;
+}
+

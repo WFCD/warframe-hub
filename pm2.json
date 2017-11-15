@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "warframe-hub",
+      "script": "./bin/www",
+      "exec_interpreter" : "node",
+      "watch"            : [],
+      "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+      "env": {
+      	"PORT": 80
+      }
+    }
+  ]
+}

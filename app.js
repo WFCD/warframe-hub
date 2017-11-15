@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
-const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
@@ -16,15 +15,14 @@ app.set('view engine', '.hbs');
 
 // favicon and caching options (cache is 7 days)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 604800000 }));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: 604800000}));
 
 // default node js includes
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // dev logger that should not be used in prod
-//app.use(logger('dev'));
 
 app.use(router);
 

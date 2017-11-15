@@ -146,7 +146,6 @@ const lure = [
  *  the X-axis (horizontally) like the standard Google map tiles.
  * ----------------
  */
-
 function getNormalizedCoord(coord, zoom) {
   if (!repeatOnXAxis) {
     return coord;
@@ -189,9 +188,9 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (innerMarker, innerCoords) => () => {
+    google.maps.event.addListener(marker, 'click', () => {
       infowindow.setContent(`<h6>${coords[0]}</h6>${coords[3]}`);
-      infowindow.open(map, innerCoords);
+      infowindow.open(map, coords);
     });
   });
 
@@ -206,18 +205,16 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (function infoClick(innerFishMarker, innerFish) {
-      return function infoClickInner() {
-        if (innerFish[3] === 'Pond') {
-          infowindow.setContent(`<h6>${innerFish[0]}</h6>${fishInfo[0][1]}`);
-        } else if (innerFish[3] === 'Lake') {
-          infowindow.setContent(`<h6>${innerFish[0]}</h6>${fishInfo[1][1]}`);
-        } else {
-          infowindow.setContent(`<h6>${innerFish[0]}</h6>${fishInfo[2][1]}`);
-        }
-        infowindow.open(map, innerFishMarker);
-      };
-    }(marker, thisFish)));
+    google.maps.event.addListener(marker, 'click', () => {
+      if (thisFish[3] === 'Pond') {
+        infowindow.setContent(`<h6>${thisFish[0]}</h6>${fishInfo[0][1]}`);
+      } else if (thisFish[3] === 'Lake') {
+        infowindow.setContent(`<h6>${thisFish[0]}</h6>${fishInfo[1][1]}`);
+      } else {
+        infowindow.setContent(`<h6>${thisFish[0]}</h6>${fishInfo[2][1]}`);
+      }
+      infowindow.open(map, marker);
+    });
   });
 
   // Cave icon loop
@@ -230,12 +227,10 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (function infoClick(innerGrineerMarker, innerCaveInst) {
-      return function infoClickInner() {
-        infowindow.setContent(`<h6>${innerCaveInst[0]}</h6>${innerCaveInst[3]}`);
-        infowindow.open(map, innerGrineerMarker);
-      };
-    }(marker, caveInst)));
+    google.maps.event.addListener(marker, 'click', () => {
+      infowindow.setContent(`<h6>${caveInst[0]}</h6>${caveInst[3]}`);
+      infowindow.open(map, marker);
+    });
   }
 
   // Grineer icon loop
@@ -248,12 +243,10 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (function infoClick(innerGrineerMarker, innerGrineerInst) {
-      return function infoClickInner() {
-        infowindow.setContent(`<h6>${innerGrineerInst[0]}</h6>${innerGrineerInst[3]}`);
-        infowindow.open(map, innerGrineerMarker);
-      };
-    }(marker, grineerInst)));
+    google.maps.event.addListener(marker, 'click', () => {
+      infowindow.setContent(`<h6>${grineerInst[0]}</h6>${grineerInst[3]}`);
+      infowindow.open(map, marker);
+    });
   }
 
   // Oddity icon loop
@@ -266,13 +259,11 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (function infoClick(innerOddityMarker, innerOddityInst) {
-      return function infoClickInner() {
-        infowindow.setContent(`<h6>${innerOddityInst[0]}</h6>Fragment Name: <b>${innerOddityInst[3]}</b><br><br>` +
-                    `<iframe src="${innerOddityInst[4]}" width="320" height="180" frameborder="0" allowfullscreen></iframe>`);
-        infowindow.open(map, innerOddityMarker);
-      };
-    }(marker, oddityInst)));
+    google.maps.event.addListener(marker, 'click', () => {
+      infowindow.setContent(`<h6>${oddityInst[0]}</h6>Fragment Name: <b>${oddityInst[3]}</b><br><br>` +
+                    `<iframe src="${oddityInst[4]}" width="320" height="180" frameborder="0" allowfullscreen></iframe>`);
+      infowindow.open(map, marker);
+    });
   }
 
   // Lure icon loop
@@ -285,13 +276,11 @@ function addMarkers(map) {
       optimized: false,
     });
 
-    google.maps.event.addListener(marker, 'click', (function onClick(innerLureMarker, innerLureInst) {
-      return function setupInfoWindow() {
-        infowindow.setContent(`<h6>${innerLureInst[0]}</h6><br><br>` +
+    google.maps.event.addListener(marker, 'click', () => {
+      infowindow.setContent(`<h6>${lureInst[0]}</h6><br><br>` +
                     '<img src="img/luredrone.png" /><br>Note: Spawn location not exact,<br>drone spawn not guaranteed');
-        infowindow.open(map, marker);
-      };
-    }(marker, lureInst)));
+      infowindow.open(map, marker);
+    });
   }
 }
 

@@ -1,277 +1,198 @@
-var worldState;
-var updateTime;
-var platformSwapped = false;
+/* globals $, moment, Cookies */
 
-//Cetus timer stuff
-var cetusIsDay;
-var cetusCycleExpiryTime;
-var cetusCurrentTitle;
-var cetusCurrentTitleTimezone;
-var cetusCurrentIndicator;
-var cetusCurrentIndicatorColor;
+let worldState;
+let updateTime;
+let platformSwapped = false;
 
-//Earth timer stuff
-var earthIsDay;
-var earthCycleExpiryTime;
-var earthCurrentTitle;
-var earthCurrentTitleTimezone;
-var earthCurrentIndicator;
-var earthCurrentIndicatorColor;
+// Cetus timer stuff
+let cetusIsDay;
+let cetusCurrentTitle;
+let cetusCurrentTitleTimezone;
+let cetusCurrentIndicator;
+let cetusCurrentIndicatorColor;
+
+// Earth timer stuff
+let earthIsDay;
+let earthCurrentTitle;
+let earthCurrentTitleTimezone;
+let earthCurrentIndicator;
+let earthCurrentIndicatorColor;
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
-    document.getElementById( 'worldstateinfo' ).setAttribute( 'data-original-title', 'World State for ' +
-        Cookies.get('platform') + ' updated at ' + moment( updateTime ).format( 'MMMM Do YYYY, h:mm:ss a' ) );
-}
-
-// Helper function to display duration in human readable format
-function formatDuration(duration) {
-    var timeText = '';
-    if (duration.days()) {
-        if (duration.days() !== 1) {
-            timeText += duration.days() + ' days ';
-        } else {
-            timeText += duration.days() + ' day ';
-        }
-        if (duration.hours() !== 1) {
-            timeText += duration.hours() + ' hours ';
-        } else {
-            timeText += duration.hours() + ' hour ';
-        }
-        if (duration.minutes() !== 1) {
-            timeText += duration.minutes() + ' minutes ';
-        } else {
-            timeText += duration.minutes() + ' minute ';
-        }
-    }
-    else if (duration.hours()) {
-        if (duration.hours() !== 1) {
-            timeText += duration.hours() + ' hours ';
-        } else {
-            timeText += duration.hours() + ' hour ';
-        }
-        if (duration.minutes() !== 1) {
-            timeText += duration.minutes() + ' minutes ';
-        } else {
-            timeText += duration.minutes() + ' minute ';
-        }
-    }
-    else if (duration.minutes()) {
-        if (duration.minutes() !== 1) {
-            timeText += duration.minutes() + ' minutes ';
-        } else {
-            timeText += duration.minutes() + ' minute ';
-        }
-    }
-    if (duration.seconds() !== 1) {
-        timeText += duration.seconds() + ' seconds';
-    } else {
-        timeText += duration.seconds() + ' seconds';
-    }
-    return timeText;
+  document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
+    Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
 }
 
 // Helper function to display duration in human readable format, short version
 function formatDurationShort(duration) {
-    var timeText = '';
-    if (duration.days()) {
-        timeText += duration.days() + 'd ' + duration.hours() + 'h ' + duration.minutes() + 'm ' + duration.seconds() + 's';
-    }
-    else if (duration.hours()) {
-        timeText += duration.hours() + 'h ' + duration.minutes() + 'm ' + duration.seconds() + 's';
-    }
-    else if (duration.minutes()) {
-        timeText += duration.minutes() + 'm ' + duration.seconds() + 's';
-    }
-    else{
-        timeText += duration.seconds() + 's';
-    }
-    return timeText;
+  let timeText = '';
+  if (duration.days()) {
+    timeText += `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m ${duration.seconds()}s`;
+  } else if (duration.hours()) {
+    timeText += `${duration.hours()}h ${duration.minutes()}m ${duration.seconds()}s`;
+  } else if (duration.minutes()) {
+    timeText += `${duration.minutes()}m ${duration.seconds()}s`;
+  } else {
+    timeText += `${duration.seconds()}s`;
+  }
+  return timeText;
 }
 
 // Helper function to grab objects based on inner tags
 function getObjects(obj, key, val) {
-    var objects = [];
-    for (var i in obj) {
-        if (!obj.hasOwnProperty( i )) {
-            continue;
-        }
-        if (typeof obj[ i ] === 'object') {
-            objects = objects.concat( getObjects( obj[ i ], key, val ) );
-        } else if (i === key && obj[ key ] === val) {
-            objects.push( obj );
-        }
+  let objects = [];
+  for (const objKey of Object.keys(obj)) {
+    if (typeof obj[objKey] === 'object') {
+      objects = objects.concat(getObjects(obj[objKey], key, val));
+    } else if (objKey === key && obj[objKey] === val) {
+      objects.push(obj);
     }
-    return objects;
+  }
+  return objects;
 }
 
 // Update data that is being used by this page
 function updateDataDependencies() {
-    cetusCycleExpiryTime = (new Date( worldState.cetusCycle.expiry )).getTime() / 1000;
-    cetusIsDay = worldState.cetusCycle.isDay;
-    earthCycleExpiryTime = (new Date( worldState.earthCycle.expiry )).getTime() / 1000;
-    earthIsDay = worldState.earthCycle.isDay;
-}
-
-function getCetusCycleSecondsLeft() {
-    var currentTime = (new Date()).getTime() / 1000;
-    if(currentTime > cetusCycleExpiryTime){
-        if(cetusIsDay){
-            cetusIsDay = false;
-            cetusCycleExpiryTime += 3000; // Manually update expire time until end of night
-        }else{
-            cetusIsDay = true;
-            cetusCycleExpiryTime += 6000; // Manually update expire time until end of day
-        }
-    }
-    return cetusCycleExpiryTime - currentTime;
-}
-
-function getEarthCycleSecondsLeft() {
-    var currentTime = (new Date()).getTime() / 1000;
-    if(currentTime > earthCycleExpiryTime){
-        earthIsDay = !earthIsDay;
-        earthCycleExpiryTime += 14400;
-    }
-    return earthCycleExpiryTime - currentTime;
+  cetusIsDay = worldState.cetusCycle.isDay;
+  earthIsDay = worldState.earthCycle.isDay;
 }
 
 function updateEarthTitle() {
-    if (!earthIsDay) {
-        earthCurrentIndicator = 'Night';
-        earthCurrentIndicatorColor = 'darkblue';
-        earthCurrentTitle = 'Time until day: ';
-        earthCurrentTitleTimezone = 'Time at day: ';
-    } else {
-        earthCurrentIndicator = 'Day';
-        earthCurrentIndicatorColor = 'orange';
-        earthCurrentTitle = 'Time until night: ';
-        earthCurrentTitleTimezone = 'Time at night: ';
-    }
+  if (!earthIsDay) {
+    earthCurrentIndicator = 'Night';
+    earthCurrentIndicatorColor = 'darkblue';
+    earthCurrentTitle = 'Time until day: ';
+    earthCurrentTitleTimezone = 'Time at day: ';
+  } else {
+    earthCurrentIndicator = 'Day';
+    earthCurrentIndicatorColor = 'orange';
+    earthCurrentTitle = 'Time until night: ';
+    earthCurrentTitleTimezone = 'Time at night: ';
+  }
 }
 
 function updateCetusTitle() {
-    if (!cetusIsDay) {
-        cetusCurrentIndicator = 'Night';
-        cetusCurrentIndicatorColor = 'darkblue';
-        cetusCurrentTitle = 'Time until day: ';
-        cetusCurrentTitleTimezone = 'Time at day: ';
-    } else {
-        cetusCurrentIndicator = 'Day';
-        cetusCurrentIndicatorColor = 'orange';
-        cetusCurrentTitle = 'Time until night: ';
-        cetusCurrentTitleTimezone = 'Time at night: ';
-    }
+  if (!cetusIsDay) {
+    cetusCurrentIndicator = 'Night';
+    cetusCurrentIndicatorColor = 'darkblue';
+    cetusCurrentTitle = 'Time until day: ';
+    cetusCurrentTitleTimezone = 'Time at day: ';
+  } else {
+    cetusCurrentIndicator = 'Day';
+    cetusCurrentIndicatorColor = 'orange';
+    cetusCurrentTitle = 'Time until night: ';
+    cetusCurrentTitleTimezone = 'Time at night: ';
+  }
 }
 
 function updateCetusCycle() {
-    var expiryTime = moment(worldState.cetusCycle.expiry).unix();
-    var currentTime = moment().unix();
+  let expiryTime = moment(worldState.cetusCycle.expiry).unix();
+  const currentTime = moment().unix();
 
-    // Oh no, cycle expired before we can fetch a new one
-    if(currentTime > expiryTime){
-        cetusIsDay = !cetusIsDay;
-        if(cetusIsDay){
-            expiryTime = moment(worldState.cetusCycle.expiry).add(100, 'm').unix(); // Add 100 min for day, temporarily
-        }else{
-            expiryTime = moment(worldState.cetusCycle.expiry).add(50, 'm').unix(); // Add 50 min for night, temporarily
-        }
+  // Oh no, cycle expired before we can fetch a new one
+  if (currentTime > expiryTime) {
+    cetusIsDay = !cetusIsDay;
+    if (cetusIsDay) {
+      expiryTime = moment(worldState.cetusCycle.expiry).add(100, 'm').unix(); // Add 100 min for day, temporarily
+    } else {
+      expiryTime = moment(worldState.cetusCycle.expiry).add(50, 'm').unix(); // Add 50 min for night, temporarily
     }
+  }
 
-    updateCetusTitle();
+  updateCetusTitle();
 
-    var cycleIndicator = $( '#cetuscycleindicator' );
-    cycleIndicator.html(cetusCurrentIndicator);
-    if (!cycleIndicator.hasClass( cetusCurrentIndicatorColor )) {
-        cycleIndicator.attr( 'class', cetusCurrentIndicatorColor );
-        cycleIndicator.addClass( 'pull-right' );
-    }
+  const cycleIndicator = $('#cetuscycleindicator');
+  cycleIndicator.html(cetusCurrentIndicator);
+  if (!cycleIndicator.hasClass(cetusCurrentIndicatorColor)) {
+    cycleIndicator.attr('class', cetusCurrentIndicatorColor);
+    cycleIndicator.addClass('pull-right');
+  }
 
-    $('#cetuscycletitle').html(cetusCurrentTitle);
-    $('#cetustimezonetitle').html(cetusCurrentTitleTimezone);
-    $('#cetustimezonetime').html(moment.unix(expiryTime).format( 'h:mm:ss a, MM/DD/YYYY' ));
+  $('#cetuscycletitle').html(cetusCurrentTitle);
+  $('#cetustimezonetitle').html(cetusCurrentTitleTimezone);
+  $('#cetustimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
 
-    var timeBadge = $('#cetuscycletime');
-    timeBadge.attr( 'data-endtime', expiryTime );
-    timeBadge.addClass('label timer');
+  const timeBadge = $('#cetuscycletime');
+  timeBadge.attr('data-endtime', expiryTime);
+  timeBadge.addClass('label timer');
 }
 
 function updateEarthCycle() {
-    var expiryTime = moment(worldState.earthCycle.expiry).unix();
-    var currentTime = moment().unix();
+  let expiryTime = moment(worldState.earthCycle.expiry).unix();
+  const currentTime = moment().unix();
 
-    // Oh no, cycle expired before we can fetch a new one
-    if(currentTime > expiryTime){
-        cetusIsDay = !cetusIsDay;
-        expiryTime = moment(worldState.cetusCycle.expiry).add(4, 'h').unix(); // Add 4hrs, temporarily
-    }
+  // Oh no, cycle expired before we can fetch a new one
+  if (currentTime > expiryTime) {
+    cetusIsDay = !cetusIsDay;
+    expiryTime = moment(worldState.cetusCycle.expiry).add(4, 'h').unix(); // Add 4hrs, temporarily
+  }
 
-    updateEarthTitle();
+  updateEarthTitle();
 
-    var cycleIndicator = $( '#earthcycleindicator' );
-    cycleIndicator.html(earthCurrentIndicator);
-    if (!cycleIndicator.hasClass( earthCurrentIndicatorColor )) {
-        cycleIndicator.attr( 'class', earthCurrentIndicatorColor );
-        cycleIndicator.addClass( 'pull-right' );
-    }
+  const cycleIndicator = $('#earthcycleindicator');
+  cycleIndicator.html(earthCurrentIndicator);
+  if (!cycleIndicator.hasClass(earthCurrentIndicatorColor)) {
+    cycleIndicator.attr('class', earthCurrentIndicatorColor);
+    cycleIndicator.addClass('pull-right');
+  }
 
-    $('#earthcycletitle').html(earthCurrentTitle);
-    $('#earthtimezonetitle').html(earthCurrentTitleTimezone);
-    $('#earthtimezonetime').html(moment.unix(expiryTime).format( 'h:mm:ss a, MM/DD/YYYY' ));
+  $('#earthcycletitle').html(earthCurrentTitle);
+  $('#earthtimezonetitle').html(earthCurrentTitleTimezone);
+  $('#earthtimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
 
-    var timeBadge = $('#earthcycletime');
-    timeBadge.attr( 'data-endtime', expiryTime );
-    timeBadge.addClass('label timer');
+  const timeBadge = $('#earthcycletime');
+  timeBadge.attr('data-endtime', expiryTime);
+  timeBadge.addClass('label timer');
 }
 
 function updateCetusBountyTimer() {
-    var cetusBlock = getObjects( worldState, 'syndicate', 'Ostrons' );
-    if (cetusBlock !== null && cetusBlock[ 0 ]) {
-        var cetus = cetusBlock[ 0 ];
+  const cetusBlock = getObjects(worldState, 'syndicate', 'Ostrons');
+  if (cetusBlock !== null && cetusBlock[0]) {
+    const cetus = cetusBlock[0];
 
-        var expiryTime = moment(cetus.expiry).unix();
-        var activateTime = moment(cetus.activation).unix();
-        var currentTime = moment().unix();
+    const expiryTime = moment(cetus.expiry).unix();
+    const activateTime = moment(cetus.activation).unix();
+    const currentTime = moment().unix();
 
-        if(currentTime < activateTime){
-            $('#cetusbountytitle').html('New bounties in:');
-            var timeBadge = $('#cetusbountytime');
-            timeBadge.attr( 'data-endtime', activateTime );
-            timeBadge.addClass('label timer');
-            timeBadge.show();
-        }else if(currentTime > activateTime && currentTime < expiryTime){
-            $('#cetusbountytitle').html('Bounties expire in:');
-            var timeBadge = $('#cetusbountytime');
-            timeBadge.attr( 'data-endtime', expiryTime );
-            timeBadge.addClass('label timer');
-            timeBadge.show();
-        }else{
-            $('#cetusbountytitle').html('Bounties expired, waiting for update...');
-            var timeBadge = $('#cetusbountytime');
-            timeBadge.removeClass('label timer');
-            timeBadge.hide();
-        }
+    if (currentTime < activateTime) {
+      $('#cetusbountytitle').html('New bounties in:');
+      const timeBadge = $('#cetusbountytime');
+      timeBadge.attr('data-endtime', activateTime);
+      timeBadge.addClass('label timer');
+      timeBadge.show();
+    } else if (currentTime > activateTime && currentTime < expiryTime) {
+      $('#cetusbountytitle').html('Bounties expire in:');
+      const timeBadge = $('#cetusbountytime');
+      timeBadge.attr('data-endtime', expiryTime);
+      timeBadge.addClass('label timer');
+      timeBadge.show();
+    } else {
+      $('#cetusbountytitle').html('Bounties expired, waiting for update...');
+      const timeBadge = $('#cetusbountytime');
+      timeBadge.removeClass('label timer');
+      timeBadge.hide();
     }
-    else {
-        $('#cetusbountytitle').html('No bounty information, waiting for update...');
-        var timeBadge = $('#cetusbountytime');
-        timeBadge.removeClass('label timer');
-        timeBadge.hide();
-    }
+  } else {
+    $('#cetusbountytitle').html('No bounty information, waiting for update...');
+    const timeBadge = $('#cetusbountytime');
+    timeBadge.removeClass('label timer');
+    timeBadge.hide();
+  }
 }
 
 function updateVoidTraderInventory() {
-    var voidTraderInventory = worldState.voidTrader.inventory;
-    if (voidTraderInventory.length !== 0) {
-        if (document.getElementById( worldState.voidTrader.id ) === null) {
-            if(platformSwapped && document.getElementsByClassName( 'voidTraderInventory' )){
-                $( '.voidTraderInventory' ).remove();
-            }
+  const voidTraderInventory = worldState.voidTrader.inventory;
+  if (voidTraderInventory.length !== 0) {
+    if (document.getElementById(worldState.voidTrader.id) === null) {
+      if (platformSwapped && document.getElementsByClassName('voidTraderInventory')) {
+        $('.voidTraderInventory').remove();
+      }
 
-            var inventoryString = '<div class="panel panel-primary voidTraderInventory" ' +
+      const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" ' +
                 'style="margin-left:5%; margin-right:5%" ' +
-                'id="' + worldState.voidTrader.id + '">\n<div class="panel-heading">\n' +
-                '<h3 class="panel-title">' + worldState.voidTrader.character + ' Inventory' +
+                'id="'}${worldState.voidTrader.id}">\n<div class="panel-heading">\n` +
+                `<h3 class="panel-title">${worldState.voidTrader.character} Inventory` +
                 '<a href="#voidTraderInventoryPanel" data-toggle="collapse">' +
                 '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>\n' +
                 '</div>\n' +
@@ -289,88 +210,89 @@ function updateVoidTraderInventory() {
                 '</table>\n' +
                 '</div>\n' +
                 '</div>';
-            var elementBody = $( '#voidTraderBody' );
-            elementBody.append( inventoryString );
-            elementBody.show();
-            for (var item = 0; item < voidTraderInventory.length; item++) {
-                var currentItem = voidTraderInventory[ item ];
-                var itemString = '<tr><td>' + currentItem.item + '</td>' +
-                    '<td>' + currentItem.ducats + '</td>' + '<td>' + currentItem.credits + '</td></tr>';
-                $( '#voidTraderInventoryContent' ).append(itemString);
-            }
-        }
+      const elementBody = $('#voidTraderBody');
+      elementBody.append(inventoryString);
+      elementBody.show();
+      for (const currentItem of voidTraderInventory) {
+        const itemString = `<tr><td>${currentItem.item}</td>` +
+                  `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
+        $('#voidTraderInventoryContent').append(itemString);
+      }
     }
-    else {
-        if (document.getElementsByClassName( 'voidTraderInventory' )) {
-            $( '.voidTraderInventory' ).remove();
-        }
-        $( '#voidTraderBody' ).hide();
+  } else {
+    if (document.getElementsByClassName('voidTraderInventory')) {
+      $('.voidTraderInventory').remove();
     }
+    $('#voidTraderBody').hide();
+  }
 }
 
 function updateVoidTrader() {
-    var voidTrader = worldState.voidTrader;
-    if (voidTrader) {
-        var expiryTime = moment(voidTrader.expiry).unix();
-        var activateTime = moment(voidTrader.activation).unix();
-        var currentTime = moment().unix();
+  const {voidTrader} = worldState;
+  if (voidTrader) {
+    const expiryTime = moment(voidTrader.expiry).unix();
+    const activateTime = moment(voidTrader.activation).unix();
+    const currentTime = moment().unix();
 
-        if(currentTime < activateTime){
-            $('#voidtradertitle').html(voidTrader.character + ' arrives in:');
-            $('#voidtradertimezonetitle').html('Arrives at:');
-            $('#voidtradertimezonetime').html(moment.unix(activateTime).format( 'h:mm:ss a, MM/DD/YYYY' ));
+    if (currentTime < activateTime) {
+      $('#voidtradertitle').html(`${voidTrader.character} arrives in:`);
+      $('#voidtradertimezonetitle').html('Arrives at:');
+      $('#voidtradertimezonetime').html(moment.unix(activateTime).format('h:mm:ss a, MM/DD/YYYY'));
 
-            var timeBadge = $('#voidtradertime');
-            timeBadge.attr( 'data-endtime', activateTime );
-            timeBadge.addClass('label timer');
-            timeBadge.show();
-        }else if(currentTime > activateTime && currentTime < expiryTime){
-            $('#voidtradertitle').html(voidTrader.character + ' leaves in:');
-            $('#voidtradertimezonetitle').html('Leaves at:');
-            $('#voidtradertimezonetime').html(moment.unix(expiryTime).format( 'h:mm:ss a, MM/DD/YYYY' ));
+      const timeBadge = $('#voidtradertime');
+      timeBadge.attr('data-endtime', activateTime);
+      timeBadge.addClass('label timer');
+      timeBadge.show();
+    } else if (currentTime > activateTime && currentTime < expiryTime) {
+      $('#voidtradertitle').html(`${voidTrader.character} leaves in:`);
+      $('#voidtradertimezonetitle').html('Leaves at:');
+      $('#voidtradertimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
 
-            var timeBadge = $('#voidtradertime');
-            timeBadge.attr( 'data-endtime', expiryTime );
-            timeBadge.addClass('label timer');
-            timeBadge.show();
-        }else{
-            $('#voidtradertitle').html('Void Trader expired, waiting for update...');
-            $('#voidtradertimezonetitle').html('');
-            $('#voidtradertimezonetime').html('');
+      const timeBadge = $('#voidtradertime');
+      timeBadge.attr('data-endtime', expiryTime);
+      timeBadge.addClass('label timer');
+      timeBadge.show();
+    } else {
+      $('#voidtradertitle').html('Void Trader expired, waiting for update...');
+      $('#voidtradertimezonetitle').html('');
+      $('#voidtradertimezonetime').html('');
 
-            var timeBadge = $('#voidtradertime');
-            timeBadge.removeClass('label timer');
-            timeBadge.hide();
-        }
+      const timeBadge = $('#voidtradertime');
+      timeBadge.removeClass('label timer');
+      timeBadge.hide();
     }
-    else {
-        $('#voidtradertitle').html('No Void Trader available, waiting for update...');
-        $('#voidtradertimezonetitle').html('');
-        $('#voidtradertimezonetime').html('');
+  } else {
+    $('#voidtradertitle').html('No Void Trader available, waiting for update...');
+    $('#voidtradertimezonetitle').html('');
+    $('#voidtradertimezonetime').html('');
 
-        var timeBadge = $('#voidtradertime');
-        timeBadge.removeClass('label timer');
-        timeBadge.hide();
-    }
+    const timeBadge = $('#voidtradertime');
+    timeBadge.removeClass('label timer');
+    timeBadge.hide();
+  }
 }
 
-function calculateInventory(total, sold){
-    return (total - sold) + '/' + total;
+function calculateInventory(total, sold) {
+  return `${total - sold}/${total}`;
 }
+
+const cleanupDailyDeals = (dailyDeals) => {
+  if (platformSwapped && document.getElementsByClassName('dailyDealsInventory')) {
+    $('.dailyDealsInventory').remove();
+  } else if ($('.dailyDealsInventory').attr('id') !== dailyDeals[0].id) {
+    $('.dailyDealsInventory').remove();
+  }
+};
 
 function updateDarvoDeals() {
-    var dailyDeals = worldState.dailyDeals;
-    if (dailyDeals.length !== 0) {
-        $('#darvotitle').hide();
-        if (document.getElementById( dailyDeals[0].id ) === null) {
-            if(platformSwapped && document.getElementsByClassName( 'dailyDealsInventory' ) ){
-                $( '.dailyDealsInventory' ).remove();
-            }else if ($( '.dailyDealsInventory' ).attr('id') !== dailyDeals[0].id){
-                $( '.dailyDealsInventory' ).remove();
-            }
+  const {dailyDeals} = worldState;
+  if (dailyDeals.length !== 0) {
+    $('#darvotitle').hide();
+    if (document.getElementById(dailyDeals[0].id) === null) {
+      cleanupDailyDeals(dailyDeals);
 
-            var inventoryString = '<table class="table dailyDealsInventory" style="table-layout: fixed" id="' +
-                dailyDeals[0].id + '">\n' +
+      const inventoryString = `<table class="table dailyDealsInventory" style="table-layout: fixed" id="${
+        dailyDeals[0].id}">\n` +
                 '<thead>\n' +
                 '<tr>\n' +
                 '<th class="text-center col-xs-2">Item</th>\n' +
@@ -383,313 +305,294 @@ function updateDarvoDeals() {
                 '<tbody id="dailyDealsInventory">\n' +
                 '</tbody>\n' +
                 '</table>';
-            $( '#darvobody' ).append( inventoryString );
-            for (var item = 0; item < dailyDeals.length; item++) {
-                var currentItem = dailyDeals[ item ];
-                var itemString = '<tr><td>' + currentItem.item + '</td><td>' + currentItem.discount + '%</td>' + '<td>' + currentItem.salePrice + '</td><td>' +
-                    calculateInventory(currentItem.total, currentItem.sold) + '</td>' +
-                    '<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="' + moment(currentItem.expiry).unix() + '"></span></td></tr>';
-                $( '#dailyDealsInventory' ).append(itemString);
-            }
-        }
+      $('#darvobody').append(inventoryString);
+
+      for (const currentItem of dailyDeals) {
+        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.discount}%</td><td>${currentItem.salePrice}</td><td>${
+          calculateInventory(currentItem.total, currentItem.sold)}</td>` +
+                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
+        $('#dailyDealsInventory').append(itemString);
+      }
     }
-    else {
-        if (document.getElementsByClassName( 'dailyDealsInventory' )) {
-            $( '.dailyDealsInventory' ).remove();
-            document.getElementById( 'darvotitle' ).innerText = 'No current deals :(';
-            $( '#darvotitle' ).show();
-        }
-    }
+  } else if (document.getElementsByClassName('dailyDealsInventory')) {
+    $('.dailyDealsInventory').remove();
+    document.getElementById('darvotitle').innerText = 'No current deals :(';
+    $('#darvotitle').show();
+  }
 }
 
 function updateAlerts() {
-    var alerts = worldState.alerts;
-    if (alerts.length !== 0) {
-        $('#alerttitle').hide();
-        if(platformSwapped && document.getElementById( 'alertList' ) ){
-            $( '#alertList' ).children().not( '#alertbody' ).remove();
-        }
-
-        if(document.getElementById('alertList').children.length >= 1){
-            for (var num = 0; num < alerts.length; num++) {
-                var alert = alerts[ num ];
-                if($('#' + alert.id).length === 0){
-                    var alertRow = '<li class="list-group-item list-group-item-borderless" id="' + alert.id + '">';
-
-                    // Check if archwing is required for mission
-                    if(alert.mission.archwingRequired){
-                        alertRow += '<span title="Archwing Required" class="glyphicon glyphicon-plane"></span> '
-                    }
-                    if(alert.mission.nightmare){
-                        alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
-                    }
-                    alertRow += '<b>' + alert.mission.node + '</b>';
-                    alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +
-                        'data-endtime="' + moment(alert.expiry).unix() + '"></span>';
-
-                    if(alert.mission.reward.items.length !== 0){
-                        for(var i = 0; i < alert.mission.reward.items.length; i++){
-                            alertRow += '<span class="label label-info pull-right" style="margin-right: 5px">' + alert.mission.reward.items[i] + '</span>';
-                        }
-                    }
-                    if(alert.mission.reward.countedItems.length !== 0){
-                        for(var i = 0; i < alert.mission.reward.countedItems.length; i++){
-                            alertRow += '<span class="label label-info pull-right" style="margin-right: 5px">' + alert.mission.reward.countedItems[i].count +
-                                ' ' + alert.mission.reward.countedItems[i].type + '</span>';
-                        }
-                    }
-                    if(alert.mission.reward.items.length === 0 && alert.mission.reward.countedItems.length === 0){
-                        alertRow += '<span class="label label-default pull-right" style="margin-right: 5px">' + alert.mission.reward.credits + 'cr</span>';
-                    }
-
-                    alertRow +=  '<br><b>' + alert.mission.type + '</b> (' + alert.mission.faction + ')' +
-                        ' | <b>Level: </b>' + alert.mission.minEnemyLevel + '-' + alert.mission.maxEnemyLevel;
-
-                    alertRow += '</li>';
-                    $( '#alertbody' ).before(alertRow);
-                }else{
-                    var timer = $('#alerttimer' + alert.id);
-                    timer.attr('data-starttime', moment(alert.activation).unix());
-                    timer.attr('data-endtime', moment(alert.expiry).unix());
-                }
-            }
-        }else{
-            for (var num = 0; num < alerts.length; num++) {
-                var alert = alerts[ num ];
-                var alertRow = '<li class="list-group-item list-group-item-borderless" id="' + alert.id + '">';
-
-                // Check if archwing is required for mission
-                if(alert.mission.archwingRequired){
-                    alertRow += '<span class="glyphicon glyphicon-plane"></span>'
-                }
-                alertRow += '<b>' + alert.mission.node + '</b> | ' + alert.mission.type + ' (' + alert.mission.faction + ')';
-                alertRow += '<span id="alerttimer' + alert.id + '" class="label timer pull-right" data-starttime="' + moment(alert.activation).unix() + '" ' +
-                    'data-endtime="' + moment(alert.expiry).unix() + '"></span></li>';
-                $( '#alertbody' ).before(alertRow);
-            }
-        }
+  const {alerts} = worldState;
+  if (alerts.length !== 0) {
+    $('#alerttitle').hide();
+    if (platformSwapped && document.getElementById('alertList')) {
+      $('#alertList').children().not('#alertbody').remove();
     }
-    else {
-        if (document.getElementById( 'alertList' )) {
-            $( '#alertList' ).children().not( '#alertbody' ).remove();
-            document.getElementById( 'alerttitle' ).innerText = 'No active alerts :(';
-            $( '#alerttitle' ).show();
+
+    if (document.getElementById('alertList').children.length >= 1) {
+      for (const alert of alerts) {
+        if ($(`#${alert.id}`).length === 0) {
+          let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
+
+          // Check if archwing is required for mission
+          if (alert.mission.archwingRequired) {
+            alertRow += '<span title="Archwing Required" class="glyphicon glyphicon-plane"></span> ';
+          }
+          if (alert.mission.nightmare) {
+            alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
+          }
+          alertRow += `<b>${alert.mission.node}</b>`;
+          alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
+                        `data-endtime="${moment(alert.expiry).unix()}"></span>`;
+
+          if (alert.mission.reward.items.length !== 0) {
+            for (const item of alert.mission.reward.items) {
+              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${item}</span>`;
+            }
+          }
+          if (alert.mission.reward.countedItems.length !== 0) {
+            for (const countedItem of alert.mission.reward.countedItems) {
+              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${countedItem.count} ${countedItem.type}</span>`;
+            }
+          }
+          if (alert.mission.reward.items.length === 0
+                          && alert.mission.reward.countedItems.length === 0) {
+            alertRow += `<span class="label label-default pull-right" style="margin-right: 5px">${alert.mission.reward.credits}cr</span>`;
+          }
+
+          alertRow += `<br><b>${alert.mission.type}</b> (${alert.mission.faction})` +
+                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}`;
+
+          alertRow += '</li>';
+          $('#alertbody').before(alertRow);
+        } else {
+          const timer = $(`#alerttimer${alert.id}`);
+          timer.attr('data-starttime', moment(alert.activation).unix());
+          timer.attr('data-endtime', moment(alert.expiry).unix());
         }
+      }
+    } else {
+      for (const alert of alerts) {
+        let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
+
+        // Check if archwing is required for mission
+        if (alert.mission.archwingRequired) {
+          alertRow += '<span class="glyphicon glyphicon-plane"></span>';
+        }
+        alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
+        alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
+                    `data-endtime="${moment(alert.expiry).unix()}"></span></li>`;
+        $('#alertbody').before(alertRow);
+      }
     }
+  } else if (document.getElementById('alertList')) {
+    $('#alertList').children().not('#alertbody').remove();
+    document.getElementById('alerttitle').innerText = 'No active alerts :(';
+    $('#alerttitle').show();
+  }
 }
 
 function updatePage() {
-    updateEarthCycle();
-    updateCetusCycle();
-    updateVoidTrader();
-    updateVoidTraderInventory();
-    updateDarvoDeals();
-    updateAlerts();
-    updateCetusBountyTimer();
-    updateWorldStateTime();
+  updateEarthCycle();
+  updateCetusCycle();
+  updateVoidTrader();
+  updateVoidTraderInventory();
+  updateDarvoDeals();
+  updateAlerts();
+  updateCetusBountyTimer();
+  updateWorldStateTime();
 }
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-    switch(Cookies.get('platform').toLowerCase()){
-        case 'ps4':
-            $.getJSON( 'https://ws.warframestat.us/ps4', function (data) {
-                worldState = JSON.parse( JSON.stringify( data ) );
-                updateTime = (new Date()).getTime();
-                updateDataDependencies();
-                updatePage();
-            } );
-            break;
-        case 'xb1':
-            $.getJSON( 'https://ws.warframestat.us/xb1', function (data) {
-                worldState = JSON.parse( JSON.stringify( data ) );
-                updateTime = (new Date()).getTime();
-                updateDataDependencies();
-                updatePage();
-            } );
-            break;
-        default:
-            $.getJSON( 'https://ws.warframestat.us/pc', function (data) {
-                worldState = JSON.parse( JSON.stringify( data ) );
-                updateTime = (new Date()).getTime();
-                updateDataDependencies();
-                updatePage();
-            } );
-            break;
-    }
-
+  switch (Cookies.get('platform').toLowerCase()) {
+  case 'ps4':
+    $.getJSON('https://ws.warframestat.us/ps4', (data) => {
+      worldState = JSON.parse(JSON.stringify(data));
+      updateTime = (new Date()).getTime();
+      updateDataDependencies();
+      updatePage();
+    });
+    break;
+  case 'xb1':
+    $.getJSON('https://ws.warframestat.us/xb1', (data) => {
+      worldState = JSON.parse(JSON.stringify(data));
+      updateTime = (new Date()).getTime();
+      updateDataDependencies();
+      updatePage();
+    });
+    break;
+  default:
+    $.getJSON('https://ws.warframestat.us/pc', (data) => {
+      worldState = JSON.parse(JSON.stringify(data));
+      updateTime = (new Date()).getTime();
+      updateDataDependencies();
+      updatePage();
+    });
+    break;
+  }
 }
 
 function updateResetTime() {
-    var nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000; //We want unix seconds, not unix millis
-    $('#resettimertitle').html( 'Time until new server day:' );
-    var timeBadge = $('#resettimertime');
-    timeBadge.attr( 'data-endtime', nextReset );
-    timeBadge.addClass('label timer');
+  // We want unix seconds, not unix millis
+  const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
+  $('#resettimertitle').html('Time until new server day:');
+  const timeBadge = $('#resettimertime');
+  timeBadge.attr('data-endtime', nextReset);
+  timeBadge.addClass('label timer');
 }
 
-function removeTimeBadgeColor(element){
-    element.removeClass('label-success');
-    element.removeClass('label-primary');
-    element.removeClass('label-danger');
-    element.removeClass('label-warning');
-    element.removeClass('label-default');
-    element.removeClass('label-info');
+function removeTimeBadgeColor(element) {
+  element.removeClass('label-success');
+  element.removeClass('label-primary');
+  element.removeClass('label-danger');
+  element.removeClass('label-warning');
+  element.removeClass('label-default');
+  element.removeClass('label-info');
 }
 
 function updateTimeBadges() {
-    var labels = document.getElementsByClassName('timer');
-    for(var i = 0; i < labels.length; i++){
-        var currentLabel = $(labels[i]);
+  const labels = document.getElementsByClassName('timer');
+  for (const label of labels) {
+    const currentLabel = $(label);
 
-        var activation = currentLabel.attr('data-starttime');
-        var diffactivate = undefined;
-        var durationactivate = undefined;
+    const activation = currentLabel.attr('data-starttime');
+    let diffactivate;
+    let durationactivate;
 
-        if (typeof activation !== typeof undefined && activation !== false) {
-            diffactivate = moment().diff(moment.unix(currentLabel.attr('data-starttime'))) * -1;
-            durationactivate = moment.duration( diffactivate, 'milliseconds' );
-        }
-
-        var diff = moment().diff(moment.unix(currentLabel.attr('data-endtime'))) * -1;
-        var duration = moment.duration( diff, 'milliseconds' );
-        //Not started
-        if(diffactivate !== typeof undefined && diffactivate > 0){
-            if(!currentLabel.hasClass('label-info')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-info');
-            currentLabel.html('Starts in: ' + formatDurationShort( durationactivate ));
-        }
-        //Expired
-        else if(diff < 0){
-            if(!currentLabel.hasClass('label-default')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-default');
-            currentLabel.html('Expired: ' + formatDurationShort( duration ));
-
-            // Refreshes for things we don't need worldstate for
-            switch(currentLabel.attr('id')){
-                case 'cetuscycletime':
-                    updateCetusCycle();
-                    break;
-                case 'earthcycletime':
-                    updateEarthCycle();
-                    break;
-                case 'resettimertime':
-                    updateResetTime();
-                    break;
-                default:
-                    //If it is a alert timer, we can safely remove
-                    if(currentLabel.attr('id').includes('alerttimer')){
-                        currentLabel.parent()[0].remove();
-                    }
-            }
-        }
-        //0 min to 10 min
-        else if(diff < 600000) {
-            if(!currentLabel.hasClass('label-danger')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-danger');
-            currentLabel.html(formatDurationShort( duration ));
-        }
-        //10 min to 30 min
-        else if(diff < 1800000) {
-            if(!currentLabel.hasClass('label-warning')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-warning');
-            currentLabel.html(formatDurationShort( duration ));
-        }
-        //30 min to 1 hour
-        else if(diff < 3600000) {
-            if(!currentLabel.hasClass('label-success')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-success');
-            currentLabel.html(formatDurationShort( duration ));
-        }
-        //More than 1 hour
-        else if(diff > 3600000) {
-            if(!currentLabel.hasClass('label-primary')){
-                removeTimeBadgeColor(currentLabel);
-            }
-            currentLabel.addClass('label-primary');
-            currentLabel.html(formatDurationShort( duration ));
-        }
-
+    if (typeof activation !== typeof undefined && activation !== false) {
+      diffactivate = moment().diff(moment.unix(currentLabel.attr('data-starttime'))) * -1;
+      durationactivate = moment.duration(diffactivate, 'milliseconds');
     }
-    setTimeout(updateTimeBadges, 1000);
+
+    const diff = moment().diff(moment.unix(currentLabel.attr('data-endtime'))) * -1;
+    const duration = moment.duration(diff, 'milliseconds');
+    // Not started
+    if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+      if (!currentLabel.hasClass('label-info')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-info');
+      currentLabel.html(`Starts in: ${formatDurationShort(durationactivate)}`);
+    } else if (diff < 0) { // Expired
+      if (!currentLabel.hasClass('label-default')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-default');
+      currentLabel.html(`Expired: ${formatDurationShort(duration)}`);
+
+      // Refreshes for things we don't need worldstate for
+      switch (currentLabel.attr('id')) {
+      case 'cetuscycletime':
+        updateCetusCycle();
+        break;
+      case 'earthcycletime':
+        updateEarthCycle();
+        break;
+      case 'resettimertime':
+        updateResetTime();
+        break;
+      default:
+        // If it is a alert timer, we can safely remove
+        if (currentLabel.attr('id').includes('alerttimer')) {
+          currentLabel.parent()[0].remove();
+        }
+      }
+    } else if (diff < 600000) { // 0 min to 10 min
+      if (!currentLabel.hasClass('label-danger')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-danger');
+      currentLabel.html(formatDurationShort(duration));
+    } else if (diff < 1800000) { // 10 min to 30 min
+      if (!currentLabel.hasClass('label-warning')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-warning');
+      currentLabel.html(formatDurationShort(duration));
+    } else if (diff < 3600000) { // 30 min to 1 hour
+      if (!currentLabel.hasClass('label-success')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-success');
+      currentLabel.html(formatDurationShort(duration));
+    } else if (diff > 3600000) { // More than 1 hour
+      if (!currentLabel.hasClass('label-primary')) {
+        removeTimeBadgeColor(currentLabel);
+      }
+      currentLabel.addClass('label-primary');
+      currentLabel.html(formatDurationShort(duration));
+    }
+  }
+
+  setTimeout(updateTimeBadges, 1000);
 }
 
-function updatePlatformSwitch(){
-    platformSwapped = false;
+function updatePlatformSwitch() {
+  platformSwapped = false;
 }
 
 // Platform switcher anonymous functions
-$(function(){
-    $('#platform_pc').click(function(){
-        $('#platform_ps4').removeClass('list-group-item-success');
-        $('#platform_xb1').removeClass('list-group-item-success');
-        $('#platform_pc').addClass('list-group-item-success');
-        Cookies.set('platform', 'PC');
-        platformSwapped = true;
-        getWorldState();
-        setTimeout(updatePlatformSwitch, 30000);
-    });
-});
-$(function(){
-    $('#platform_ps4').click(function(){
-        $('#platform_pc').removeClass('list-group-item-success');
-        $('#platform_xb1').removeClass('list-group-item-success');
-        $('#platform_ps4').addClass('list-group-item-success');
-        Cookies.set('platform', 'PS4');
-        platformSwapped = true;
-        getWorldState();
-        setTimeout(updatePlatformSwitch, 30000);
-    });
-});
-$(function(){
-    $('#platform_xb1').click(function(){
-        $('#platform_ps4').removeClass('list-group-item-success');
-        $('#platform_pc').removeClass('list-group-item-success');
-        $('#platform_xb1').addClass('list-group-item-success');
-        Cookies.set('platform', 'XB1');
-        platformSwapped = true;
-        getWorldState();
-        setTimeout(updatePlatformSwitch, 30000);
-    });
-});
-//Set default platform to PC if there isn't one
-if(Cookies.get('platform') === undefined){
+$(() => {
+  $('#platform_pc').click(() => {
+    $('#platform_ps4').removeClass('list-group-item-success');
+    $('#platform_xb1').removeClass('list-group-item-success');
+    $('#platform_pc').addClass('list-group-item-success');
     Cookies.set('platform', 'PC');
-}else{
-    switch(Cookies.get('platform').toLowerCase()){
-        case 'ps4':
-            $('#platform_pc').removeClass('list-group-item-success');
-            $('#platform_xb1').removeClass('list-group-item-success');
-            $('#platform_ps4').addClass('list-group-item-success');
-            break;
-        case 'xb1':
-            $('#platform_ps4').removeClass('list-group-item-success');
-            $('#platform_pc').removeClass('list-group-item-success');
-            $('#platform_xb1').addClass('list-group-item-success');
-            break;
-        default:
-            $('#platform_ps4').removeClass('list-group-item-success');
-            $('#platform_xb1').removeClass('list-group-item-success');
-            $('#platform_pc').addClass('list-group-item-success');
-            break;
-    }
+    platformSwapped = true;
+    getWorldState();
+    setTimeout(updatePlatformSwitch, 30000);
+  });
+});
+$(() => {
+  $('#platform_ps4').click(() => {
+    $('#platform_pc').removeClass('list-group-item-success');
+    $('#platform_xb1').removeClass('list-group-item-success');
+    $('#platform_ps4').addClass('list-group-item-success');
+    Cookies.set('platform', 'PS4');
+    platformSwapped = true;
+    getWorldState();
+    setTimeout(updatePlatformSwitch, 30000);
+  });
+});
+$(() => {
+  $('#platform_xb1').click(() => {
+    $('#platform_ps4').removeClass('list-group-item-success');
+    $('#platform_pc').removeClass('list-group-item-success');
+    $('#platform_xb1').addClass('list-group-item-success');
+    Cookies.set('platform', 'XB1');
+    platformSwapped = true;
+    getWorldState();
+    setTimeout(updatePlatformSwitch, 30000);
+  });
+});
+// Set default platform to PC if there isn't one
+if (Cookies.get('platform') === undefined) {
+  Cookies.set('platform', 'PC');
+} else {
+  switch (Cookies.get('platform').toLowerCase()) {
+  case 'ps4':
+    $('#platform_pc').removeClass('list-group-item-success');
+    $('#platform_xb1').removeClass('list-group-item-success');
+    $('#platform_ps4').addClass('list-group-item-success');
+    break;
+  case 'xb1':
+    $('#platform_ps4').removeClass('list-group-item-success');
+    $('#platform_pc').removeClass('list-group-item-success');
+    $('#platform_xb1').addClass('list-group-item-success');
+    break;
+  default:
+    $('#platform_ps4').removeClass('list-group-item-success');
+    $('#platform_xb1').removeClass('list-group-item-success');
+    $('#platform_pc').addClass('list-group-item-success');
+    break;
+  }
 }
 
-
 // Main data refresh loop every 60 minutes
-function update(){
-    getWorldState();
-    setTimeout(update, 60000);
+function update() {
+  getWorldState();
+  setTimeout(update, 60000);
 }
 
 update();

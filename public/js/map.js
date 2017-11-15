@@ -1,3 +1,91 @@
+/*
+ * Main Core
+ * ----------------
+ */
+const infowindow = new google.maps.InfoWindow();
+
+// Basic options for our map
+const myOptions = {
+  center: new google.maps.LatLng(0, 0),
+  zoom: 3,
+  minZoom: 3,
+  streetViewControl: false,
+  mapTypeControl: false,
+  mapTypeControlOptions: {
+    mapTypeIds: ['custom'],
+  },
+};
+
+// Init the map and hook our custom map type to it
+const map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+window.onload = function onload() {
+  function checkBounds() {
+    const allowedBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-65.0, -80.0),
+      new google.maps.LatLng(65.0, 80.0),
+    );
+
+    if (allowedBounds.contains(map.getCenter())) {
+      return;
+    }
+
+    const mapCenter = map.getCenter();
+    let X = mapCenter.lng();
+    let Y = mapCenter.lat();
+
+    const AmaxX = allowedBounds.getNorthEast().lng();
+    const AmaxY = allowedBounds.getNorthEast().lat();
+    const AminX = allowedBounds.getSouthWest().lng();
+    const AminY = allowedBounds.getSouthWest().lat();
+
+    if (X < AminX) {
+      X = AminX;
+    }
+    if (X > AmaxX) {
+      X = AmaxX;
+    }
+    if (Y < AminY) {
+      Y = AminY;
+    }
+    if (Y > AmaxY) {
+      Y = AmaxY;
+    }
+
+    map.setCenter(new google.maps.LatLng(Y, X));
+  }
+
+  // Define our custom map type
+  const customMapType = new google.maps.ImageMapType({
+    getTileUrl(coord, zoom) {
+      const normalizedCoord = getNormalizedCoord(coord, zoom);
+      if (normalizedCoord && (normalizedCoord.x < 2 ** zoom) && (normalizedCoord.x > -1) &&
+        (normalizedCoord.y < 2 ** zoom) && (normalizedCoord.y > -1)) {
+        return `img/plains/${zoom}_${normalizedCoord.x}_${normalizedCoord.y}.jpg`;
+      }
+      return 'img/plains/empty.jpg';
+    },
+    tileSize: new google.maps.Size(256, 256),
+    maxZoom: 5,
+    name: 'Plains of Eidolon',
+  });
+
+  // This event listener when the map is clicked, output lat and lon to console
+  google.maps.event.addListener(map, 'click', (event) => {
+    infowindow.close();
+    console.log(JSON.stringify(event.latLng)); // eslint-disable-line no-console
+  });
+
+  google.maps.event.addListener(map, 'center_changed', () => {
+    checkBounds();
+  });
+
+  addMarkers(map);
+
+  map.mapTypes.set('custom', customMapType);
+  map.setMapTypeId('custom');
+};
+
 /* globals google */
 const repeatOnXAxis = false;
 
@@ -174,9 +262,7 @@ function getNormalizedCoord(coord, zoom) {
 }
 
 // Adds predefined markers to the map
-function addMarkers(map) {
-  const infowindow = new google.maps.InfoWindow();
-
+function addMarkers() {
   // Home icon loop
   Object.keys(home).forEach((key) => {
     const coords = home[key];
@@ -283,88 +369,3 @@ function addMarkers(map) {
     });
   }
 }
-
-/*
- * Main Core
- * ----------------
- */
-// Basic options for our map
-const myOptions = {
-  center: new google.maps.LatLng(0, 0),
-  zoom: 3,
-  minZoom: 3,
-  streetViewControl: false,
-  mapTypeControl: false,
-  mapTypeControlOptions: {
-    mapTypeIds: ['custom'],
-  },
-};
-
-// Init the map and hook our custom map type to it
-const map = new google.maps.Map(document.getElementById('map'), myOptions);
-
-window.onload = function onload() {
-  function checkBounds() {
-    const allowedBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-65.0, -80.0),
-      new google.maps.LatLng(65.0, 80.0),
-    );
-
-    if (allowedBounds.contains(map.getCenter())) {
-      return;
-    }
-
-    const mapCenter = map.getCenter();
-    let X = mapCenter.lng();
-    let Y = mapCenter.lat();
-
-    const AmaxX = allowedBounds.getNorthEast().lng();
-    const AmaxY = allowedBounds.getNorthEast().lat();
-    const AminX = allowedBounds.getSouthWest().lng();
-    const AminY = allowedBounds.getSouthWest().lat();
-
-    if (X < AminX) {
-      X = AminX;
-    }
-    if (X > AmaxX) {
-      X = AmaxX;
-    }
-    if (Y < AminY) {
-      Y = AminY;
-    }
-    if (Y > AmaxY) {
-      Y = AmaxY;
-    }
-
-    map.setCenter(new google.maps.LatLng(Y, X));
-  }
-
-  // Define our custom map type
-  const customMapType = new google.maps.ImageMapType({
-    getTileUrl(coord, zoom) {
-      const normalizedCoord = getNormalizedCoord(coord, zoom);
-      if (normalizedCoord && (normalizedCoord.x < 2 ** zoom) && (normalizedCoord.x > -1) &&
-        (normalizedCoord.y < 2 ** zoom) && (normalizedCoord.y > -1)) {
-        return `img/plains/${zoom}_${normalizedCoord.x}_${normalizedCoord.y}.jpg`;
-      }
-      return 'img/plains/empty.jpg';
-    },
-    tileSize: new google.maps.Size(256, 256),
-    maxZoom: 5,
-    name: 'Plains of Eidolon',
-  });
-
-  // This event listener when the map is clicked, output lat and lon to console
-  google.maps.event.addListener(map, 'click', (event) => {
-    console.log(JSON.stringify(event.latLng)); // eslint-disable-line no-console
-  });
-
-  google.maps.event.addListener(map, 'center_changed', () => {
-    checkBounds();
-  });
-
-  addMarkers(map);
-
-  map.mapTypes.set('custom', customMapType);
-  map.setMapTypeId('custom');
-};

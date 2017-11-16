@@ -335,9 +335,9 @@ function updateAlerts() {
           let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
 
           // Check if archwing is required for mission
-          if (alert.mission.archwingRequired) {
+          //if (alert.mission.archwingRequired) {
             alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
-          }
+          //}
           if (alert.mission.nightmare) {
             alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
           }

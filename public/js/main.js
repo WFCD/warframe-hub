@@ -336,7 +336,7 @@ function updateAlerts() {
 
           // Check if archwing is required for mission
           if (alert.mission.archwingRequired) {
-            alertRow += '<span title="Archwing Required" class="glyphicon glyphicon-plane"></span> ';
+            alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
           }
           if (alert.mission.nightmare) {
             alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';

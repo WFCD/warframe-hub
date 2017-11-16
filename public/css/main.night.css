@@ -154,6 +154,6 @@ img {
     height: 20px;
 }
 
-.nightmare {
+.nightmare, .archwing {
   filter: invert(0%); /*invert on main, not on night*/
 }

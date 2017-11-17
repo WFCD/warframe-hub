@@ -152,6 +152,12 @@ img {
   filter: invert(100%); /*invert on main, not on night*/
 }
 
+.sortie .faction-image {
+    margin-top: -3px;
+    filter: invert(100%);
+    width: 1em;
+}
+
 /* Invasion colors */
 .corpus {
     background-color: #3498db;

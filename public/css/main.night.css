@@ -157,3 +157,9 @@ img {
 .nightmare {
   filter: invert(0%); /*invert on main, not on night*/
 }
+
+.sortie .faction-image {
+    margin-top: -3px;
+    filter: invert(0%);
+    width: 1em;
+}

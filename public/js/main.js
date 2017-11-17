@@ -393,25 +393,27 @@ function updateAlerts() {
 }
 
 function updateSortie() {
-  var sortie = worldState.sortie;
-  
+  let sortie = worldState.sortie;
+
   if (sortie.length !== 0) {
-	$('#sortietitle').hide();
-	
-	$('#sortieBoss').html(sortie.boss);
-	$('#sortieFaction').html(sortie.faction);
-	$('#sortieList').find('.variant').remove();
-	
-	sortie.variants.forEach(function(variant, index) {
-	  if ($('#variant_' + index).length === 0) {
-		let sortieRow = '<li class="list-group-item list-group-item-borderless variant" id="variant_' + index + '">';
-		
-		sortieRow += '<b>' + variant.missionType + '</b> - ' + '<span>' + variant.modifier + '</span>';
-		sortieRow += '<br /><b>' + variant.node + '</b></li>';
-		
-		$('#sortiebody').before(sortieRow);
-	  }
-	});
+    $('#sortietitle').hide();
+
+    if (platformSwapped || $('#sortieList').children().length === 0) {
+      $('#sortieBoss').html(sortie.boss);
+      $('#sortieFaction').html(`<img src="/img/${sortie.faction}.png" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieList').find('.variant').remove();
+
+      sortie.variants.forEach((variant, index) => {
+        let sortieRow = `<li class="list-group-item list-group-item-borderless variant" id="variant_${index}">`;
+
+        sortieRow += `<b>${variant.missionType}</b> - <span data-toggle="tooltip" title="${variant.modifierDescription}" data-placement="right">${variant.modifier}</span>`;
+        sortieRow += `<br /><b>${variant.node}</b></li>`;
+
+        $('#sortieList').append(sortieRow);
+      });
+    }
+  } else {
+    $('#sortietitle').show();
   }
 }
 
@@ -616,7 +618,7 @@ if (Cookies.get('platform') === undefined) {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 60000);
+  setTimeout(update, 1000);
 }
 
 update();

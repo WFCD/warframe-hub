@@ -395,13 +395,13 @@ function updateAlerts() {
 function updateSortie() {
   const sortie = worldState.sortie;
 
-  if (sortie.length !== 0) {
+  if (sortie.variants.length !== 0) {
     $('#sortietitle').hide();
 
     if (platformSwapped || $('#sortieList').children().length === 0) {
       $('#sortieBoss').html(sortie.boss);
       $('#sortieFaction').html(`<img src="/img/${sortie.faction.toLowerCase()}.png" alt="${sortie.faction}" class="faction-image" />`);
-      $('#sortieList').find('.variant').remove();
+      $('#sortieList').find('#sortieList').empty();
 
       sortie.variants.forEach((variant, index) => {
         let sortieRow = `<li class="list-group-item list-group-item-borderless variant" id="variant_${index}">`;
@@ -414,6 +414,7 @@ function updateSortie() {
     }
   } else {
     $('#sortietitle').show();
+    $('#sortieList').find('#sortieList').empty();
   }
 }
 

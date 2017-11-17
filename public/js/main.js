@@ -393,14 +393,14 @@ function updateAlerts() {
 }
 
 function updateSortie() {
-  let sortie = worldState.sortie;
+  const sortie = worldState.sortie;
 
   if (sortie.length !== 0) {
     $('#sortietitle').hide();
 
     if (platformSwapped || $('#sortieList').children().length === 0) {
       $('#sortieBoss').html(sortie.boss);
-      $('#sortieFaction').html(`<img src="/img/${sortie.faction}.png" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieFaction').html(`<img src="/img/${sortie.faction.toLowerCase()}.png" alt="${sortie.faction}" class="faction-image" />`);
       $('#sortieList').find('.variant').remove();
 
       sortie.variants.forEach((variant, index) => {

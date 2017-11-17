@@ -618,7 +618,7 @@ if (Cookies.get('platform') === undefined) {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 1000);
+  setTimeout(update, 60000);
 }
 
 update();

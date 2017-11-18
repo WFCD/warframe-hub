@@ -152,10 +152,19 @@ img {
   filter: invert(100%); /*invert on main, not on night*/
 }
 
+.sortie #sortieBossInfo {
+    display: flex;
+}
+
+.sortie #sortieBoss {
+    margin: 10px 5px;
+}
+
 .sortie .faction-image {
-    margin-top: -3px;
+    position: relative;
+    top: 6px;
+    width: 2em;
     filter: invert(100%);
-    width: 1em;
 }
 
 /* Invasion colors */
@@ -171,4 +180,3 @@ img {
 .progress {
     height: 15px;
 }
-

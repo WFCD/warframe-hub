@@ -392,6 +392,32 @@ function updateAlerts() {
   }
 }
 
+function updateSortie() {
+  const sortie = worldState.sortie;
+
+  if (sortie.variants.length !== 0) {
+    $('#sortietitle').hide();
+
+    if (platformSwapped || $('#sortieList').children().length === 0) {
+      $('#sortieBoss').html(sortie.boss);
+      $('#sortieFaction').html(`<img src="/img/${sortie.faction.toLowerCase()}.png" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieList').empty();
+
+      sortie.variants.forEach((variant, index) => {
+        let sortieRow = `<li class="list-group-item list-group-item-borderless variant" id="variant_${index}">`;
+
+        sortieRow += `<b>${variant.missionType}</b> - <b>${variant.node}</b>`;
+        sortieRow += `<br /><span data-toggle="tooltip" title="${variant.modifierDescription}" data-placement="right">${variant.modifier}</span></li>`;
+
+        $('#sortieList').append(sortieRow);
+      });
+    }
+  } else {
+    $('#sortietitle').show();
+    $('#sortieList').find('#sortieList').empty();
+  }
+}
+
 function updatePage() {
   updateEarthCycle();
   updateCetusCycle();
@@ -399,6 +425,7 @@ function updatePage() {
   updateVoidTraderInventory();
   updateDarvoDeals();
   updateAlerts();
+  updateSortie();
   updateCetusBountyTimer();
   updateWorldStateTime();
 }

@@ -157,3 +157,18 @@ img {
 .nightmare, .archwing {
   filter: invert(0%); /*invert on main, not on night*/
 }
+
+.sortie #sortieBossInfo {
+    display: flex;
+}
+
+.sortie #sortieBoss {
+    margin: 10px 5px;
+}
+
+.sortie .faction-image {
+    position: relative;
+    top: 6px;
+    width: 2em;
+    filter: invert(0%);
+}

@@ -45,6 +45,28 @@
             </div>
         </div>
 
+        <div class="row sortie">
+            <div class="col-md-6">
+                <h3 class="text-center">Sortie</h3>
+                <ul class="list-group">
+                    <li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
+                    <li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span><h4 id="sortieBoss"></h4></li>
+                    <div id="sortieList"></div>
+                    <li class="list-group-item list-group-item-borderbottom"></li>
+                </ul>
+            </div>
+
+            <div class="col-md-6 void-fissures">
+                <h3 class="text-center">Void Fissures</h3>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-borderless">
+                        <span id="voidfissurestitle">Loading Fissures...</span>
+                    </li>
+                    <li class="list-group-item list-group-item-borderbottom"></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <h3 class="text-center">Cetus Day/Night Cycle</h3>
@@ -155,7 +177,10 @@
     $('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
             'data-toggle="tooltip" href="#" data-original-title="World State obtained">' +
             '<span class="glyphicon glyphicon-info-sign"></span></div></a>');
-    $('#worldstateinfo').tooltip();
+
+    $('body').tooltip({
+        selector: '[data-toggle="tooltip"]'
+    });
 </script>
 
 {{> nightmode}}

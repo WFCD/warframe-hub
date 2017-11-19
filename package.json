@@ -1,38 +1,44 @@
 {
-  "name": "wf-status",
+  "name": "warframe-hub",
   "version": "1.0.0",
   "description": "Utility page to check current warframe status",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "mocha spec mochaspec.js",
+    "postinstall": "npm install -g gulp",
+    "start": "gulp && node ./bin/www"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WFCD/warframe-status.git"
+    "url": "git+https://github.com/WFCD/warframe-hub.git"
   },
   "keywords": [
     "warframe",
-    "status"
+    "hub"
   ],
   "author": "MainlandHero",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/WFCD/warframe-status/issues"
+    "url": "https://github.com/WFCD/warframe-hub/issues"
   },
-  "homepage": "https://github.com/WFCD/warframe-status#readme",
+  "homepage": "https://github.com/WFCD/warframe-hub#readme",
   "dependencies": {
     "body-parser": "~1.18.2",
     "chai": "^4.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "eslint": "^4.9.0",
+    "del": "^3.0.0",
+    "eslint": "^4.11.0",
     "express": "~4.15.5",
     "express-handlebars": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-minify": "^2.1.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "proxyquire": "^1.8.0",
     "really-need": "^1.9.2",
     "serve-favicon": "~2.4.5",
-    "sinon": "^4.0.1",
+    "sinon": "^4.1.2",
     "supertest": "^3.0.0",
     "winston": "^2.4.0"
   },
@@ -40,6 +46,6 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.5.1"
   }
 }

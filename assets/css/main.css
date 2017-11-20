@@ -168,14 +168,20 @@ img {
 }
 
 /* Invasion colors */
-.corpus {
+.corpus-invasion {
     background-color: #3498db;
 }
-.grineer {
+.grineer-invasion {
     background-color: #e74c3c;
 }
-.infestation {
+.infested-invasion {
     background-color: #18bc9c;
+}
+.corrupted-invasion {
+    background-color: #f39c12;
+}
+.default-invasion {
+    background-color: #95a5a6;
 }
 .progress {
     height: 15px;

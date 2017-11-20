@@ -172,3 +172,23 @@ img {
     width: 2em;
     filter: invert(0%);
 }
+
+/* Invasion colors */
+.corpus-invasion {
+    background-color: #0071bd;
+}
+.grineer-invasion {
+    background-color: #8e3026;
+}
+.infested-invasion {
+    background-color: #006d51;
+}
+.corrupted-invasion {
+    background-color: #84560d;
+}
+.default-invasion {
+    background-color: #464545;
+}
+.progress {
+    height: 15px;
+}

@@ -418,6 +418,102 @@ function updateSortie() {
   }
 }
 
+function getLabelColor(faction) {
+  switch (faction) {
+  case 'Corpus':
+    return 'label-info';
+  case 'Grineer':
+    return 'label-danger';
+  case 'Infested':
+    return 'label-success';
+  case 'Corrupted':
+    return 'label-warning';
+  default:
+    return 'label-default';
+  }
+}
+
+function getProgressBarColor(faction) {
+  switch (faction) {
+  case 'Corpus':
+    return 'corpus-invasion';
+  case 'Grineer':
+    return 'grineer-invasion';
+  case 'Infested':
+    return 'infested-invasion';
+  case 'Corrupted':
+    return 'corrupted-invasion';
+  default:
+    return 'default-invasion';
+  }
+}
+
+function updateInvasions() {
+  const {invasions} = worldState;
+  let numInvasions = 0;
+
+  if (invasions.length !== 0) {
+    $('#invasiontitle').hide();
+
+    if (platformSwapped && document.getElementById('invasionList')) {
+      $('#invasionList').children().not('#invasionbody').remove();
+    }
+
+    invasions.forEach((invasion) => {
+      if (invasion.completed) {
+        if ($(`#${invasion.id}`).length !== 0) {
+          $(`#${invasion.id}`).remove();
+        }
+      } else {
+        let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
+        invasionRow += `<div class="row text-center"><b>${invasion.node}</b><br>${invasion.desc} (${invasion.eta})</div>`;
+
+        invasionRow += '<div class="row" style="margin-bottom: 1px;">';
+        if (invasion.attackerReward.items.length !== 0) {
+          for (const item of invasion.attackerReward.items) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
+          }
+        }
+        if (invasion.attackerReward.countedItems.length !== 0) {
+          for (const countedItem of invasion.attackerReward.countedItems) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+          }
+        }
+        if (invasion.defenderReward.items.length !== 0) {
+          for (const item of invasion.defenderReward.items) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${item}</span>`;
+          }
+        }
+        if (invasion.defenderReward.countedItems.length !== 0) {
+          for (const countedItem of invasion.defenderReward.countedItems) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+          }
+        }
+        invasionRow += '</div>';
+
+        invasionRow += '<div class="row" style="margin-bottom: 1px;"><div class="progress">';
+        const attackPercent = Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
+        const defendPercent = 100 - attackPercent;
+
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="img/${invasion.attackingFaction.toLowerCase()}.png" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="img/${invasion.defendingFaction.toLowerCase()}.png" /></div>`;
+        invasionRow += '</div></div></li>';
+
+        $('#invasionbody').before(invasionRow);
+        numInvasions += 1;
+      }
+    });
+
+    if (numInvasions === 0) {
+      document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+      $('#invasiontitle').show();
+    }
+  } else {
+    document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+    $('#invasiontitle').show();
+  }
+}
+
 function updatePage() {
   updateEarthCycle();
   updateCetusCycle();
@@ -426,6 +522,7 @@ function updatePage() {
   updateDarvoDeals();
   updateAlerts();
   updateSortie();
+  updateInvasions();
   updateCetusBountyTimer();
   updateWorldStateTime();
 }

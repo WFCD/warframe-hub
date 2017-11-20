@@ -125,7 +125,7 @@ function updateEarthCycle() {
   // Oh no, cycle expired before we can fetch a new one
   if (currentTime > expiryTime) {
     cetusIsDay = !cetusIsDay;
-    expiryTime = moment(worldState.cetusCycle.expiry).add(4, 'h').unix(); // Add 4hrs, temporarily
+    expiryTime = moment(worldState.earthCycle.expiry).add(4, 'h').unix(); // Add 4hrs, temporarily
   }
 
   updateEarthTitle();
@@ -393,7 +393,7 @@ function updateAlerts() {
 }
 
 function updateSortie() {
-  const sortie = worldState.sortie;
+  const {sortie} = worldState;
 
   if (sortie.variants.length !== 0) {
     $('#sortietitle').hide();

@@ -1,0 +1,174 @@
+/* Day/Night Colors */
+.orange {
+    margin-bottom: 10px;
+    color: orange;
+    font-weight:bold;
+}
+.darkblue {
+    margin-bottom: 10px;
+    color: darkblue;
+    font-weight:bold;
+}
+
+/* List group border adjustments */
+.list-group-item-borderless {
+    border: none !important;
+}
+.list-group-item-borderbottom {
+    border-style: solid;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom: 2px solid #1A5072 !important;
+}
+
+/* Sticky bottom navbar style */
+.navbar-footer {
+    bottom: 0;
+    width: 100%;
+    height: 31px;
+    background-color: #303030;
+}
+.navbar-footer > div > div {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.navbar-footer a {
+    color: #ababab;
+}
+
+/* Change label color to be less white */
+.label {
+    color: #ababab !important;
+}
+
+/* Margins for body */
+body {
+    margin-top: 50px !important;
+    margin-bottom: 40px !important;
+}
+
+/* Fish info table */
+.fish-info {
+    border: 2px solid #737373 !important;
+    color: #ababab;
+}
+.fish-info >tbody>tr>td {
+    border: 2px solid #737373 !important;
+    color: #ababab;
+    padding: 1px !important;
+    vertical-align: middle !important;
+}
+.fish-info thead tr th {
+    text-align: center;
+    color: #ababab;
+}
+.color1 >td {
+    background-color: #363540;
+}
+.color2 >td {
+    background-color: #3f3540;
+}
+.color3 >td {
+    background-color: #403535;
+}
+.color4 >td {
+    background-color: #3a3540;
+}
+.color5 >td {
+    background-color: #353e40;
+}
+.color6 >td {
+    background-color: #3b4035;
+}
+.color7 >td {
+    background-color: #403935;
+}
+
+/* Fish Image tooltip */
+.fish-tooltip {
+    text-decoration:none !important;
+    color: #ababab !important;
+}
+.fish-tooltip div{
+    display:none;
+    margin-left:8px;
+}
+.fish-tooltip-inner img{
+    object-fit: contain;
+    max-width:200px;
+    max-height:125px;
+}
+.fish-tooltip:hover div{
+    display:inline;
+    margin-top: -55px;
+    position:absolute;
+    border:2px solid #737373;
+    background:#222222;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Change button color to be less white */
+.btn {
+    background-color: #555555 !important;
+}
+
+/* Add background color to WFCD banner in night mode */
+.wfcd-banner {
+    background-color: #777777;
+}
+
+/* Map Container style */
+.map-container {
+    padding-top: 20px;
+    width: 100%;
+    height: 90vh;
+}
+#map{
+    height: 100%;
+}
+
+/* Platform picker style */
+.platform-picker ul li {
+    border-top: 1px solid #464545;
+}
+
+.platform-picker ul li:first-child {
+    border: 0;
+}
+
+.platform-picker ul a {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.platform-picker ul a span {
+    flex-grow: 1;
+}
+
+.platform-picker img {
+    height: 20px;
+}
+
+.nightmare, .archwing {
+  filter: invert(0%); /*invert on main, not on night*/
+}
+
+.sortie #sortieBossInfo {
+    display: flex;
+}
+
+.sortie #sortieBoss {
+    margin: 10px 5px;
+}
+
+.sortie .faction-image {
+    position: relative;
+    top: 6px;
+    width: 2em;
+    filter: invert(0%);
+}

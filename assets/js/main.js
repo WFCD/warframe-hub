@@ -492,7 +492,8 @@ function updateInvasions() {
         invasionRow += '</div>';
 
         invasionRow += '<div class="row" style="margin-bottom: 1px;"><div class="progress">';
-        const attackPercent = Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
+        const attackPercent =
+              Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
         const defendPercent = 100 - attackPercent;
 
         invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="img/${invasion.attackingFaction.toLowerCase()}.png" /></div>`;

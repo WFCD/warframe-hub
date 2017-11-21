@@ -168,15 +168,44 @@ img {
 }
 
 /* Invasion colors */
-.corpus {
+.corpus-invasion {
     background-color: #3498db;
 }
-.grineer {
+.grineer-invasion {
     background-color: #e74c3c;
 }
-.infestation {
+.infested-invasion {
     background-color: #18bc9c;
+}
+.corrupted-invasion {
+    background-color: #f39c12;
+}
+.default-invasion {
+    background-color: #95a5a6;
 }
 .progress {
     height: 15px;
+}
+.winning-left {
+  -moz-animation: progress-bar-stripes 3s linear infinite;
+  -ms-animation: progress-bar-stripes 3s linear infinite;
+  -o-animation: progress-bar-stripes 3s linear infinite;
+  -webkit-animation: progress-bar-stripes 3s linear infinite;
+  animation: progress-bar-stripes 3s linear infinite;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
+}
+.winning-right {
+  -moz-animation: progress-bar-stripes 3s linear infinite;
+  -ms-animation: progress-bar-stripes 3s linear infinite;
+  -o-animation: progress-bar-stripes 3s linear infinite;
+  -webkit-animation: progress-bar-stripes 3s linear infinite;
+  animation: progress-bar-stripes 3s linear infinite;
+  -moz-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -o-animation-direction: reverse;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
 }

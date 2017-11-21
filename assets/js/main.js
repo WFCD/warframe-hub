@@ -392,6 +392,21 @@ function updateAlerts() {
   }
 }
 
+function getFactionPicture(faction) {
+  switch (faction.toLowerCase()) {
+  case 'corpus':
+    return 'img/corpus.png';
+  case 'grineer':
+    return 'img/grineer.png';
+  case 'infested':
+    return 'img/infested.png';
+  case 'infestation':
+    return 'img/infested.png';
+  default:
+    return 'img/corpus.png';
+  }
+}
+
 function updateSortie() {
   const {sortie} = worldState;
 
@@ -400,7 +415,7 @@ function updateSortie() {
 
     if (platformSwapped || $('#sortieList').children().length === 0) {
       $('#sortieBoss').html(sortie.boss);
-      $('#sortieFaction').html(`<img src="/img/${sortie.faction.toLowerCase()}.png" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieFaction').html(`<img src="${getFactionPicture(sortie.faction)}" alt="${sortie.faction}" class="faction-image" />`);
       $('#sortieList').empty();
 
       sortie.variants.forEach((variant, index) => {
@@ -418,6 +433,131 @@ function updateSortie() {
   }
 }
 
+function getLabelColor(faction) {
+  switch (faction) {
+  case 'Corpus':
+    return 'label-info';
+  case 'Grineer':
+    return 'label-danger';
+  case 'Infested':
+    return 'label-success';
+  case 'Corrupted':
+    return 'label-warning';
+  default:
+    return 'label-default';
+  }
+}
+
+function getProgressBarColor(faction) {
+  switch (faction) {
+  case 'Corpus':
+    return 'corpus-invasion';
+  case 'Grineer':
+    return 'grineer-invasion';
+  case 'Infested':
+    return 'infested-invasion';
+  case 'Corrupted':
+    return 'corrupted-invasion';
+  default:
+    return 'default-invasion';
+  }
+}
+
+function updateInvasions() {
+  const {invasions} = worldState;
+  let numInvasions = 0;
+
+  if (invasions.length !== 0) {
+    document.getElementById('invasiontitle').innerText = '*End time is estimated';
+
+    if (platformSwapped && document.getElementById('invasionList')) {
+      $('#invasionList').children().not('#invasionbody').remove();
+    }
+
+    invasions.forEach((invasion) => {
+      if ($(`#${invasion.id}`).length !== 0) {
+        if (invasion.completed) {
+          $(`#${invasion.id}`).remove();
+        } else {
+          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})`);
+          const attackPercent =
+                Math.floor(((invasion.count + invasion.requiredRuns)
+                 / (invasion.requiredRuns * 2)) * 100);
+          const defendPercent = 100 - attackPercent;
+
+          const attackBar = $(`#${invasion.id}_progress`).children()[0];
+          const defendBar = $(`#${invasion.id}_progress`).children()[1];
+
+          if (invasion.count > 0) {
+            $(attackBar).addClass('winning-right');
+            $(defendBar).removeClass('winning-left');
+          } else {
+            $(attackBar).removeClass('winning-right');
+            $(defendBar).addClass('winning-left');
+          }
+
+          $(attackBar).css('width', `${attackPercent}%`).css('aria-valuenow', `${attackPercent}%`);
+          $(defendBar).css('width', `${defendPercent}%`).css('aria-valuenow', `${defendPercent}%`);
+          numInvasions += 1;
+        }
+      } else if (!invasion.completed) {
+        let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
+        invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})*</div>`;
+
+        invasionRow += '<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px">';
+        if (invasion.attackerReward.items.length !== 0) {
+          for (const item of invasion.attackerReward.items) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
+          }
+        }
+        if (invasion.attackerReward.countedItems.length !== 0) {
+          for (const countedItem of invasion.attackerReward.countedItems) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+          }
+        }
+        if (invasion.defenderReward.items.length !== 0) {
+          for (const item of invasion.defenderReward.items) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${item}</span>`;
+          }
+        }
+        if (invasion.defenderReward.countedItems.length !== 0) {
+          for (const countedItem of invasion.defenderReward.countedItems) {
+            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+          }
+        }
+        invasionRow += '</div>';
+
+        invasionRow += `<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
+        const attackPercent =
+              Math.floor(((invasion.count + invasion.requiredRuns)
+               / (invasion.requiredRuns * 2)) * 100);
+        const defendPercent = 100 - attackPercent;
+        let attackWinning = '';
+        let defendWinning = '';
+
+        if (invasion.count > 0) {
+          attackWinning = 'winning-right';
+        } else {
+          defendWinning = 'winning-left';
+        }
+
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
+        invasionRow += '</div></div></li>';
+
+        $('#invasionbody').before(invasionRow);
+        numInvasions += 1;
+      }
+    });
+
+    if (numInvasions === 0) {
+      document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+    }
+  } else {
+    document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+  }
+}
+
 function updatePage() {
   updateEarthCycle();
   updateCetusCycle();
@@ -426,6 +566,7 @@ function updatePage() {
   updateDarvoDeals();
   updateAlerts();
   updateSortie();
+  updateInvasions();
   updateCetusBountyTimer();
   updateWorldStateTime();
 }

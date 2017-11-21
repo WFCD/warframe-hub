@@ -223,7 +223,6 @@ function updateVoidTraderInventory() {
     if (document.getElementsByClassName('voidTraderInventory')) {
       $('.voidTraderInventory').remove();
     }
-    $('#voidTraderBody').hide();
   }
 }
 

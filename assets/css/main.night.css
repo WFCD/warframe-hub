@@ -191,4 +191,5 @@ img {
 }
 .progress {
     height: 15px;
+    background-color: transparent;
 }

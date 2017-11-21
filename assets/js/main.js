@@ -481,7 +481,8 @@ function updateInvasions() {
         } else {
           $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})`);
           const attackPercent =
-                Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
+                Math.floor(((invasion.count + invasion.requiredRuns)
+                 / (invasion.requiredRuns * 2)) * 100);
           const defendPercent = 100 - attackPercent;
 
           const attackBar = $(`#${invasion.id}_progress`).children()[0];
@@ -520,11 +521,12 @@ function updateInvasions() {
 
         invasionRow += `<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
         const attackPercent =
-              Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
+              Math.floor(((invasion.count + invasion.requiredRuns)
+               / (invasion.requiredRuns * 2)) * 100);
         const defendPercent = 100 - attackPercent;
 
         invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
         invasionRow += '</div></div></li>';
 
         $('#invasionbody').before(invasionRow);

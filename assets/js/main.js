@@ -392,6 +392,21 @@ function updateAlerts() {
   }
 }
 
+function getFactionPicture(faction) {
+  switch (faction.toLowerCase()) {
+  case 'corpus':
+    return 'img/corpus.png';
+  case 'grineer':
+    return 'img/grineer.png';
+  case 'infested':
+    return 'img/infested.png';
+  case 'infestation':
+    return 'img/infested.png';
+  default:
+    return 'img/corpus.png';
+  }
+}
+
 function updateSortie() {
   const {sortie} = worldState;
 
@@ -400,7 +415,7 @@ function updateSortie() {
 
     if (platformSwapped || $('#sortieList').children().length === 0) {
       $('#sortieBoss').html(sortie.boss);
-      $('#sortieFaction').html(`<img src="/img/${sortie.faction.toLowerCase()}.png" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieFaction').html(`<img src="${getFactionPicture(sortie.faction)}" alt="${sortie.faction}" class="faction-image" />`);
       $('#sortieList').empty();
 
       sortie.variants.forEach((variant, index) => {
@@ -453,22 +468,34 @@ function updateInvasions() {
   let numInvasions = 0;
 
   if (invasions.length !== 0) {
-    $('#invasiontitle').hide();
+    document.getElementById('invasiontitle').innerText = '*End time is estimated';
 
     if (platformSwapped && document.getElementById('invasionList')) {
       $('#invasionList').children().not('#invasionbody').remove();
     }
 
     invasions.forEach((invasion) => {
-      if (invasion.completed) {
-        if ($(`#${invasion.id}`).length !== 0) {
+      if ($(`#${invasion.id}`).length !== 0) {
+        if (invasion.completed) {
           $(`#${invasion.id}`).remove();
-        }
-      } else {
-        let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
-        invasionRow += `<div class="row text-center"><b>${invasion.node}</b><br>${invasion.desc} (${invasion.eta})</div>`;
+        } else {
+          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})`);
+          const attackPercent =
+                Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
+          const defendPercent = 100 - attackPercent;
 
-        invasionRow += '<div class="row" style="margin-bottom: 1px;">';
+          const attackBar = $(`#${invasion.id}_progress`).children()[0];
+          const defendBar = $(`#${invasion.id}_progress`).children()[1];
+
+          $(attackBar).css('width', `${attackPercent}%`).css('aria-valuenow', `${attackPercent}%`);
+          $(defendBar).css('width', `${defendPercent}%`).css('aria-valuenow', `${defendPercent}%`);
+          numInvasions += 1;
+        }
+      } else if (!invasion.completed) {
+        let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
+        invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})*</div>`;
+
+        invasionRow += '<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
           for (const item of invasion.attackerReward.items) {
             invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
@@ -491,13 +518,13 @@ function updateInvasions() {
         }
         invasionRow += '</div>';
 
-        invasionRow += '<div class="row" style="margin-bottom: 1px;"><div class="progress">';
+        invasionRow += `<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
         const attackPercent =
               Math.floor(((invasion.count + invasion.requiredRuns) / (invasion.requiredRuns * 2)) * 100);
         const defendPercent = 100 - attackPercent;
 
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="img/${invasion.attackingFaction.toLowerCase()}.png" /></div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="img/${invasion.defendingFaction.toLowerCase()}.png" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
         invasionRow += '</div></div></li>';
 
         $('#invasionbody').before(invasionRow);
@@ -507,11 +534,9 @@ function updateInvasions() {
 
     if (numInvasions === 0) {
       document.getElementById('invasiontitle').innerText = 'No active invasions :(';
-      $('#invasiontitle').show();
     }
   } else {
     document.getElementById('invasiontitle').innerText = 'No active invasions :(';
-    $('#invasiontitle').show();
   }
 }
 

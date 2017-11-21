@@ -354,13 +354,10 @@ function updateAlerts() {
               alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${countedItem.count} ${countedItem.type}</span>`;
             }
           }
-          if (alert.mission.reward.items.length === 0
-                          && alert.mission.reward.countedItems.length === 0) {
-            alertRow += `<span class="label label-default pull-right" style="margin-right: 5px">${alert.mission.reward.credits}cr</span>`;
-          }
 
-          alertRow += `<br><b>${alert.mission.type}</b> (${alert.mission.faction})` +
+          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
                         ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}`;
+          alertRow += `<span class="label label-default pull-right">${alert.mission.reward.credits}cr</span></div>`;
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);

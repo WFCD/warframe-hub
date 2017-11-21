@@ -488,6 +488,14 @@ function updateInvasions() {
           const attackBar = $(`#${invasion.id}_progress`).children()[0];
           const defendBar = $(`#${invasion.id}_progress`).children()[1];
 
+          if (invasion.count > 0) {
+            $(attackBar).addClass('winning-right');
+            $(defendBar).removeClass('winning-left');
+          } else {
+            $(attackBar).removeClass('winning-right');
+            $(defendBar).addClass('winning-left');
+          }
+
           $(attackBar).css('width', `${attackPercent}%`).css('aria-valuenow', `${attackPercent}%`);
           $(defendBar).css('width', `${defendPercent}%`).css('aria-valuenow', `${defendPercent}%`);
           numInvasions += 1;
@@ -524,9 +532,17 @@ function updateInvasions() {
               Math.floor(((invasion.count + invasion.requiredRuns)
                / (invasion.requiredRuns * 2)) * 100);
         const defendPercent = 100 - attackPercent;
+        let attackWinning = '';
+        let defendWinning = '';
 
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
+        if (invasion.count > 0) {
+          attackWinning = 'winning-right';
+        } else {
+          defendWinning = 'winning-left';
+        }
+
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
         invasionRow += '</div></div></li>';
 
         $('#invasionbody').before(invasionRow);

@@ -219,10 +219,8 @@ function updateVoidTraderInventory() {
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
-  } else {
-    if (document.getElementsByClassName('voidTraderInventory')) {
-      $('.voidTraderInventory').remove();
-    }
+  } else if (document.getElementsByClassName('voidTraderInventory')) {
+    $('.voidTraderInventory').remove();
   }
 }
 
@@ -429,6 +427,36 @@ function updateSortie() {
   }
 }
 
+function updateFissure() {
+  const {fissures} = worldState;
+
+  if (fissures.length !== 0) {
+    $('#fissuretitle').hide();
+    if (platformSwapped && document.getElementById('fissureList')) {
+      $('#fissureList').children().not('#fissurebody').remove();
+    }
+
+    for (const fissure of fissures) {
+      if ($(`#${fissure.id}`).length !== 0) {
+        const timer = $(`#fissuretimer${fissure.id}`);
+        timer.attr('data-starttime', moment(fissure.activation).unix());
+        timer.attr('data-endtime', moment(fissure.expiry).unix());
+      } else {
+        let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
+        fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}`;
+        fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
+                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
+        fissureRow += '</li>';
+        $('#fissurebody').before(fissureRow);
+      }
+    }
+  } else {
+    $('#fissureList').children().not('#fissurebody').remove();
+    document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';
+    $('#fissuretitle').show();
+  }
+}
+
 function getLabelColor(faction) {
   switch (faction) {
   case 'Corpus':
@@ -562,6 +590,7 @@ function updatePage() {
   updateDarvoDeals();
   updateAlerts();
   updateSortie();
+  updateFissure();
   updateInvasions();
   updateCetusBountyTimer();
   updateWorldStateTime();
@@ -658,7 +687,7 @@ function updateTimeBadges() {
         break;
       default:
         // If it is a alert timer, we can safely remove
-        if (currentLabel.attr('id').includes('alerttimer')) {
+        if (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer')) {
           currentLabel.parent()[0].remove();
         }
       }

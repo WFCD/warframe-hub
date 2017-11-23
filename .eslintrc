@@ -30,6 +30,8 @@
     // keep it simple
     "complexity": [ 1, 20 ],
 
-    "no-restricted-syntax": [0, 0]
+    "no-restricted-syntax": [0, 0],
+    
+    "arrow-parens": [2, "as-needed"]
   }
 }

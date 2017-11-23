@@ -466,7 +466,11 @@ function updateFissure() {
 }
 
 function updateNews() {
-  const {news} = worldState;
+  let {news} = worldState;
+  news = news.filter((article) => {
+    if ('en' in article.translations) { return true; }
+    return false;
+  });
 
   if (news.length !== 0) {
     $('#newstitle').hide();
@@ -840,7 +844,7 @@ if (Cookies.get('platform') === undefined) {
   }
 }
 
-moment.locale('en', {
+moment.updateLocale('en', {
   relativeTime: {
     future: 'in %s',
     past: '%s',

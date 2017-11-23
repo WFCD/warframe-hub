@@ -1,25 +1,28 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var handlebars = require('express-handlebars');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const handlebars = require('express-handlebars');
 
-var app = express();
-var router = require('./routes/index');
+const app = express();
+const router = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', handlebars({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
+// favicon and caching options (cache is 7 days)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: 604800000}));
+
+// default node js includes
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use(logger('dev'));
+
+// dev logger that should not be used in prod
 
 app.use(router);
 

@@ -1,8 +1,9 @@
 language: node_js
 
 node_js:
-  - "node"
+  # - "node" removing until stabilized
   - "6"
+  - "lts/*"
 
 cache:
   directories:
@@ -15,14 +16,23 @@ branches:
   only:
   - dev
   - master
-  
+
 before_install:
   - npm i -g npm@5.5.1
 
 install: npm install
 
 before_script:
-  - npm install -g mocha
+  - npm install -g mocha gulp gulp-minify gulp-clean-css del
+  - export AUTHOR_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
+  - gulp
 
 script:
   - mocha spec mochaspec.js
+
+after_success:
+  - chmod +x success.sh
+  - ./success.sh
+after_failure:
+  - chmod +x fail.sh
+  - ./fail.sh

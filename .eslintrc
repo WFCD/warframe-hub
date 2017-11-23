@@ -8,14 +8,14 @@
   "extends": "airbnb",
   "rules": {
     // indentation
-    "indent": [ 2, 4 ],
+    "indent": [ 2, 2 ],
 
     // spacing
-    "space-in-parens": [ 2, "always" ],
-    "template-curly-spacing": [ 2, "always" ],
-    "array-bracket-spacing": [ 2, "always" ],
-    "object-curly-spacing": [ 2, "always" ],
-    "computed-property-spacing": [ 2, "always" ],
+    "space-in-parens": [ 2, "never" ],
+    "template-curly-spacing": [ 2, "never" ],
+    "array-bracket-spacing": [ 2, "never" ],
+    "object-curly-spacing": [ 2, "never" ],
+    "computed-property-spacing": [ 2, "never" ],
     "no-multiple-empty-lines": [ 2, { "max": 1, "maxEOF": 0, "maxBOF": 0 } ],
 
     // strings
@@ -28,6 +28,10 @@
     "prefer-const": 1,
 
     // keep it simple
-    "complexity": [ 1, 6 ]
+    "complexity": [ 1, 20 ],
+
+    "no-restricted-syntax": [0, 0],
+    
+    "arrow-parens": [2, "as-needed"]
   }
 }

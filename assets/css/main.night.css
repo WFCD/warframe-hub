@@ -123,9 +123,9 @@ img {
 
 /* Map Container style */
 .map-container {
-    padding-top: 20px;
+    margin-top: 20px;
     width: 100%;
-    height: 90vh;
+    height: 92vh;
 }
 #map{
     height: 100%;
@@ -152,4 +152,68 @@ img {
 
 .platform-picker img {
     height: 20px;
+}
+
+.nightmare, .archwing {
+  filter: invert(0%); /*invert on main, not on night*/
+}
+
+.sortie #sortieBossInfo {
+    display: flex;
+}
+
+.sortie #sortieBoss {
+    margin: 10px 5px;
+}
+
+.sortie .faction-image {
+    position: relative;
+    top: 6px;
+    width: 2em;
+    filter: invert(0%);
+}
+
+/* Invasion colors */
+.corpus-invasion {
+    background-color: #0071bd;
+}
+.grineer-invasion {
+    background-color: #8e3026;
+}
+.infested-invasion {
+    background-color: #006d51;
+}
+.corrupted-invasion {
+    background-color: #84560d;
+}
+.default-invasion {
+    background-color: #464545;
+}
+.progress {
+    height: 15px;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+.winning-left {
+  -moz-animation: progress-bar-stripes 3s linear infinite;
+  -ms-animation: progress-bar-stripes 3s linear infinite;
+  -o-animation: progress-bar-stripes 3s linear infinite;
+  -webkit-animation: progress-bar-stripes 3s linear infinite;
+  animation: progress-bar-stripes 3s linear infinite;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
+}
+.winning-right {
+  -moz-animation: progress-bar-stripes 3s linear infinite;
+  -ms-animation: progress-bar-stripes 3s linear infinite;
+  -o-animation: progress-bar-stripes 3s linear infinite;
+  -webkit-animation: progress-bar-stripes 3s linear infinite;
+  animation: progress-bar-stripes 3s linear infinite;
+  -moz-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -o-animation-direction: reverse;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
 }

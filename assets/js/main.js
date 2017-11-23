@@ -584,7 +584,12 @@ function updateInvasions() {
         }
         if (invasion.attackerReward.countedItems.length !== 0) {
           for (const countedItem of invasion.attackerReward.countedItems) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+            // Include count only if more than 1
+            if (countedItem.count > 1) {
+              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+            } else {
+              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.type}</span>`;
+            }
           }
         }
         if (invasion.defenderReward.items.length !== 0) {
@@ -594,7 +599,12 @@ function updateInvasions() {
         }
         if (invasion.defenderReward.countedItems.length !== 0) {
           for (const countedItem of invasion.defenderReward.countedItems) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+            // Include count only if more than 1
+            if (countedItem.count > 1) {
+              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+            } else {
+              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.type}</span>`;
+            }
           }
         }
         invasionRow += '</div>';

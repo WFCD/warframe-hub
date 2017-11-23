@@ -467,10 +467,7 @@ function updateFissure() {
 
 function updateNews() {
   let {news} = worldState;
-  news = news.filter((article) => {
-    if (article.translations.en) { return true; }
-    return false;
-  });
+  news = news.filter(article => article.translations.en);
 
   if (news.length !== 0) {
     $('#newstitle').hide();

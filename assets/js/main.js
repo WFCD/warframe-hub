@@ -468,7 +468,7 @@ function updateFissure() {
 function updateNews() {
   let {news} = worldState;
   news = news.filter((article) => {
-    if ('en' in article.translations) { return true; }
+    if (article.translations.en) { return true; }
     return false;
   });
 

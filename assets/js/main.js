@@ -492,7 +492,7 @@ function updateNews() {
         articleRow += '</li>';
 
         if (article.priority) {
-          $('#newsList').prepend(articleRow);
+          $('#newstop').after(articleRow);
         } else {
           $('#newsbody').before(articleRow);
         }

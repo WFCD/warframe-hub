@@ -436,6 +436,14 @@ function updateFissure() {
       $('#fissureList').children().not('#fissurebody').remove();
     }
 
+    fissures.sort((a, b) => {
+      const tierA = a.tierNum;
+      const tierB = b.tierNum;
+      if (tierA < tierB) { return -1; }
+      if (tierA > tierB) { return 1; }
+      return 0;
+    });
+
     for (const fissure of fissures) {
       if ($(`#${fissure.id}`).length !== 0) {
         const timer = $(`#fissuretimer${fissure.id}`);
@@ -454,6 +462,46 @@ function updateFissure() {
     $('#fissureList').children().not('#fissurebody').remove();
     document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';
     $('#fissuretitle').show();
+  }
+}
+
+function updateNews() {
+  const {news} = worldState;
+
+  if (news.length !== 0) {
+    $('#newstitle').hide();
+    if (platformSwapped && document.getElementById('newsList')) {
+      $('#newsList').children().not('#newsbody').remove();
+    }
+
+    news.sort((a, b) => {
+      const timeA = moment(a.date).unix();
+      const timeB = moment(b.date).unix();
+      if (timeA < timeB) { return 1; }
+      if (timeA > timeB) { return -1; }
+      return 0;
+    });
+
+    for (const article of news) {
+      if ($(`#${article.id}`).length !== 0) {
+        $(`#newstime${article.id}`).html(`[${moment(article.date).fromNow()}]`);
+      } else {
+        let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
+        articleRow += `<a href="${article.link}">${article.message}</a>`;
+        articleRow += `<span id="newstime${article.id}" class="pull-right">[${moment(article.date).fromNow()}]</span>`;
+        articleRow += '</li>';
+
+        if (article.priority) {
+          $('#newsList').prepend(articleRow);
+        } else {
+          $('#newsbody').before(articleRow);
+        }
+      }
+    }
+  } else {
+    $('#newsList').children().not('#newsbody').remove();
+    document.getElementById('newstitle').innerText = 'No News to show :(';
+    $('#newstitle').show();
   }
 }
 
@@ -591,6 +639,7 @@ function updatePage() {
   updateAlerts();
   updateSortie();
   updateFissure();
+  updateNews();
   updateInvasions();
   updateCetusBountyTimer();
   updateWorldStateTime();

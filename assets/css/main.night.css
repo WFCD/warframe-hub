@@ -191,6 +191,7 @@ img {
 }
 .progress {
     height: 15px;
+    margin-bottom: 10px;
     background-color: transparent;
 }
 .winning-left {

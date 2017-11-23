@@ -185,6 +185,7 @@ img {
 }
 .progress {
     height: 15px;
+    margin-bottom: 10px;
 }
 .winning-left {
   -moz-animation: progress-bar-stripes 3s linear infinite;

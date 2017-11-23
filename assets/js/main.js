@@ -219,10 +219,8 @@ function updateVoidTraderInventory() {
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
-  } else {
-    if (document.getElementsByClassName('voidTraderInventory')) {
-      $('.voidTraderInventory').remove();
-    }
+  } else if (document.getElementsByClassName('voidTraderInventory')) {
+    $('.voidTraderInventory').remove();
   }
 }
 
@@ -354,13 +352,10 @@ function updateAlerts() {
               alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${countedItem.count} ${countedItem.type}</span>`;
             }
           }
-          if (alert.mission.reward.items.length === 0
-                          && alert.mission.reward.countedItems.length === 0) {
-            alertRow += `<span class="label label-default pull-right" style="margin-right: 5px">${alert.mission.reward.credits}cr</span>`;
-          }
 
-          alertRow += `<br><b>${alert.mission.type}</b> (${alert.mission.faction})` +
+          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
                         ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}`;
+          alertRow += `<span class="label label-default pull-right">${alert.mission.reward.credits}cr</span></div>`;
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);
@@ -429,6 +424,84 @@ function updateSortie() {
   } else {
     $('#sortietitle').show();
     $('#sortieList').find('#sortieList').empty();
+  }
+}
+
+function updateFissure() {
+  const {fissures} = worldState;
+
+  if (fissures.length !== 0) {
+    $('#fissuretitle').hide();
+    if (platformSwapped && document.getElementById('fissureList')) {
+      $('#fissureList').children().not('#fissurebody').remove();
+    }
+
+    fissures.sort((a, b) => {
+      const tierA = a.tierNum;
+      const tierB = b.tierNum;
+      if (tierA < tierB) { return -1; }
+      if (tierA > tierB) { return 1; }
+      return 0;
+    });
+
+    for (const fissure of fissures) {
+      if ($(`#${fissure.id}`).length !== 0) {
+        const timer = $(`#fissuretimer${fissure.id}`);
+        timer.attr('data-starttime', moment(fissure.activation).unix());
+        timer.attr('data-endtime', moment(fissure.expiry).unix());
+      } else {
+        let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
+        fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}`;
+        fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
+                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
+        fissureRow += '</li>';
+        $('#fissurebody').before(fissureRow);
+      }
+    }
+  } else {
+    $('#fissureList').children().not('#fissurebody').remove();
+    document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';
+    $('#fissuretitle').show();
+  }
+}
+
+function updateNews() {
+  let {news} = worldState;
+  news = news.filter(article => article.translations.en);
+
+  if (news.length !== 0) {
+    $('#newstitle').hide();
+    if (platformSwapped && document.getElementById('newsList')) {
+      $('#newsList').children().not('#newsbody').remove();
+    }
+
+    news.sort((a, b) => {
+      const timeA = moment(a.date).unix();
+      const timeB = moment(b.date).unix();
+      if (timeA < timeB) { return 1; }
+      if (timeA > timeB) { return -1; }
+      return 0;
+    });
+
+    for (const article of news) {
+      if ($(`#${article.id}`).length !== 0) {
+        $(`#newstime${article.id}`).html(`[${moment(article.date).fromNow()}] &#9;`);
+      } else {
+        let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
+        articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>`;
+        articleRow += '</li>';
+
+        if (article.priority) {
+          $('#newstop').after(articleRow);
+        } else {
+          $('#newsbody').before(articleRow);
+        }
+      }
+    }
+  } else {
+    $('#newsList').children().not('#newsbody').remove();
+    document.getElementById('newstitle').innerText = 'No News to show :(';
+    $('#newstitle').show();
   }
 }
 
@@ -511,7 +584,12 @@ function updateInvasions() {
         }
         if (invasion.attackerReward.countedItems.length !== 0) {
           for (const countedItem of invasion.attackerReward.countedItems) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+            // Include count only if more than 1
+            if (countedItem.count > 1) {
+              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+            } else {
+              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.type}</span>`;
+            }
           }
         }
         if (invasion.defenderReward.items.length !== 0) {
@@ -521,7 +599,12 @@ function updateInvasions() {
         }
         if (invasion.defenderReward.countedItems.length !== 0) {
           for (const countedItem of invasion.defenderReward.countedItems) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+            // Include count only if more than 1
+            if (countedItem.count > 1) {
+              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+            } else {
+              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.type}</span>`;
+            }
           }
         }
         invasionRow += '</div>';
@@ -565,6 +648,8 @@ function updatePage() {
   updateDarvoDeals();
   updateAlerts();
   updateSortie();
+  updateFissure();
+  updateNews();
   updateInvasions();
   updateCetusBountyTimer();
   updateWorldStateTime();
@@ -661,7 +746,7 @@ function updateTimeBadges() {
         break;
       default:
         // If it is a alert timer, we can safely remove
-        if (currentLabel.attr('id').includes('alerttimer')) {
+        if (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer')) {
           currentLabel.parent()[0].remove();
         }
       }
@@ -755,6 +840,25 @@ if (Cookies.get('platform') === undefined) {
     break;
   }
 }
+
+moment.updateLocale('en', {
+  relativeTime: {
+    future: 'in %s',
+    past: '%s',
+    s: '1s',
+    ss: '%ss',
+    m: '1m',
+    mm: '%dm',
+    h: '1h',
+    hh: '%dh',
+    d: '1d',
+    dd: '%dd',
+    M: '1M',
+    MM: '%dM',
+    y: '1Y',
+    yy: '%dY',
+  },
+});
 
 // Main data refresh loop every 60 minutes
 function update() {

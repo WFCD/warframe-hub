@@ -484,7 +484,7 @@ function updateNews() {
 
     for (const article of news) {
       if ($(`#${article.id}`).length !== 0) {
-        $(`#newstime${article.id}`).html(`[${moment(article.date).fromNow()}]`);
+        $(`#newstime${article.id}`).html(`[${moment(article.date).fromNow()}] &#9;`);
       } else {
         let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
         articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>`;

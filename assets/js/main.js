@@ -273,7 +273,7 @@ function calculateInventory(total, sold) {
   return `${total - sold}/${total}`;
 }
 
-const cleanupDailyDeals = (dailyDeals) => {
+const cleanupDailyDeals = dailyDeals => {
   if (platformSwapped && document.getElementsByClassName('dailyDealsInventory')) {
     $('.dailyDealsInventory').remove();
   } else if ($('.dailyDealsInventory').attr('id') !== dailyDeals[0].id) {
@@ -546,7 +546,7 @@ function updateInvasions() {
       $('#invasionList').children().not('#invasionbody').remove();
     }
 
-    invasions.forEach((invasion) => {
+    invasions.forEach(invasion => {
       if ($(`#${invasion.id}`).length !== 0) {
         if (invasion.completed) {
           $(`#${invasion.id}`).remove();
@@ -659,7 +659,7 @@ function updatePage() {
 function getWorldState() {
   switch (Cookies.get('platform').toLowerCase()) {
   case 'ps4':
-    $.getJSON('https://ws.warframestat.us/ps4', (data) => {
+    $.getJSON('https://ws.warframestat.us/ps4', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
@@ -667,7 +667,7 @@ function getWorldState() {
     });
     break;
   case 'xb1':
-    $.getJSON('https://ws.warframestat.us/xb1', (data) => {
+    $.getJSON('https://ws.warframestat.us/xb1', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
@@ -675,7 +675,7 @@ function getWorldState() {
     });
     break;
   default:
-    $.getJSON('https://ws.warframestat.us/pc', (data) => {
+    $.getJSON('https://ws.warframestat.us/pc', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();

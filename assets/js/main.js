@@ -18,6 +18,8 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
+const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
+
 // Update worldstate timestamp
 function updateWorldStateTime() {
   document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
@@ -451,6 +453,7 @@ function updateFissure() {
         timer.attr('data-endtime', moment(fissure.expiry).unix());
       } else {
         let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
+        fissureRow += `<img title="Tier ${fissure.tierNum} Fissure" src="${fissureGlyphs[fissure.tierNum - 1]}" class="fissureGlyph" height="16px" /> `;
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}`;
         fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
                       `data-endtime="${moment(fissure.expiry).unix()}"></span>`;

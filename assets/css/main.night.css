@@ -154,7 +154,7 @@ img {
     height: 20px;
 }
 
-.nightmare, .archwing {
+.nightmare, .archwing, .fissureGlyph {
   filter: invert(0%); /*invert on main, not on night*/
 }
 

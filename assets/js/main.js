@@ -354,8 +354,8 @@ function updateAlerts() {
           }
 
           alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
-                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}`;
-          alertRow += `<span class="label label-default pull-right">${alert.mission.reward.credits}cr</span></div>`;
+                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}` +
+                        ` | ${alert.mission.reward.credits}cr`;
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);

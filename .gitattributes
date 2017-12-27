@@ -2,19 +2,19 @@
 * text=auto
 
 # Declare files that will always have CRLF line endings on checkout.
-*.js text eol=lf
-*.css text eol=lf
-*.sh text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.html text eol=lf
-*.hbs text eol=lf
-*.yml text eol=lf
-Procfile text eol=lf
-LICENSE text eol=lf
-.gitignore text eol=lf
-.gitattributes text eol=lf
-.eslintrc text eol=lf
+*.js text eol=cr
+*.css text eol=cr
+*.sh text eol=cr
+*.json text eol=cr
+*.md text eol=cr
+*.html text eol=cr
+*.hbs text eol=cr
+*.yml text eol=cr
+Procfile text eol=cr
+LICENSE text eol=cr
+.gitignore text eol=cr
+.gitattributes text eol=cr
+.eslintrc text eol=cr
 
 
 # Denote all files that are truly binary and should not be modified.

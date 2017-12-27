@@ -320,6 +320,58 @@ function updateDarvoDeals() {
   }
 }
 
+function updateAcolytes() {
+  const {persistentEnemies} = worldState;
+  if (persistentEnemies.length !== 0) {
+    $('#acolytetitle').hide();
+    if (platformSwapped && document.getElementById('alertList')) {
+      $('#acolyteList').children().not('#acolytebody').remove();
+    }
+
+    if (document.getElementById('acolyteList').children.length >= 1) {
+      for (const acolyte of persistentEnemies) {
+        if ($(`#${acolyte.id}`).length === 0) {
+          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
+          acolyteRow += `<b>${acolyte.agentType}</b>`;
+          acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
+                        ` | <b>Level: </b>${acolyte.rank}` +
+                        ` <span class="label label-primary pull-right">${moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY')}</span>`;
+
+          const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
+          const progressBar = $(`#${acolyte.id}_progress`).children()[1];
+
+          if (acolyte.count > 0) {
+            $(remainingBar).addClass('winning-right');
+            $(progressBar).removeClass('winning-left');
+          } else {
+            $(remainingBar).removeClass('winning-right');
+            $(progressBar).addClass('winning-left');
+          }
+
+          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10).toFixed(2));
+          const progressPercent = 100 - remainingPercent;
+
+          const label = `<span class="pull-left label label-danger" style="line-height:12px; margin-top: 2px;" title="Remaining Acolyte Health">Remaining: ${(acolyte.healthPercent * 100).toFixed()}%</span>`;
+
+          acolyteRow += `</div><div class="row" style="margin-top: 4px; margin-bottom: 1px; margin-left:10px; margin-right:5px; line-height:12px;">${label}` +
+            `<div class="progress" id="${acolyte.id}_progress" style="margin-top: 4px; margin-left:10px; margin-right:5px; line-height:12px;">` +
+            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
+            `<div class="progress-bar corrupted-invasion defend" role="progressbar" style="width: ${progressPercent}%" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
+            '</div>';
+
+          acolyteRow += '</li>';
+          $('#acolytebody').before(acolyteRow);
+        }
+      }
+    }
+  } else if (document.getElementById('acolyteList')) {
+    $('#acolyteList').children().not('#acolytebody').remove();
+    document.getElementById('acolytetitle').innerText = 'No active acolytes :(';
+    $('#alerttitle').show();
+  }
+}
+
 function updateAlerts() {
   const {alerts} = worldState;
   if (alerts.length !== 0) {
@@ -373,7 +425,11 @@ function updateAlerts() {
 
         // Check if archwing is required for mission
         if (alert.mission.archwingRequired) {
-          alertRow += '<span class="glyphicon glyphicon-plane"></span>';
+          alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
+        }
+        // Check if mission is nightmare
+        if (alert.mission.nightmare) {
+          alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
         }
         alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
         alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
@@ -649,6 +705,7 @@ function updatePage() {
   updateVoidTrader();
   updateVoidTraderInventory();
   updateDarvoDeals();
+  updateAcolytes();
   updateAlerts();
   updateSortie();
   updateFissure();
@@ -662,7 +719,7 @@ function updatePage() {
 function getWorldState() {
   switch (Cookies.get('platform').toLowerCase()) {
   case 'ps4':
-    $.getJSON('https://ws.warframestat.us/ps4', data => {
+    $.getJSON('https://api.warframestat.us/ps4', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
@@ -670,7 +727,7 @@ function getWorldState() {
     });
     break;
   case 'xb1':
-    $.getJSON('https://ws.warframestat.us/xb1', data => {
+    $.getJSON('https://api.warframestat.us/xb1', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
@@ -678,7 +735,7 @@ function getWorldState() {
     });
     break;
   default:
-    $.getJSON('https://ws.warframestat.us/pc', data => {
+    $.getJSON('https://api.warframestat.us/pc', data => {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();

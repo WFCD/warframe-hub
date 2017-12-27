@@ -1,142 +1,154 @@
 <div class="container">
-    <div class="section">
-    	<br><br>
-	<div class="row">
-            <div class="col-md-6">
-                <h3 class="text-center">Cetus Day/Night Cycle</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderless">
-                        Currently it is:
-                        <span id="cetuscycleindicator"></span>
-                    </li>
-                    <li class="list-group-item list-group-item-borderless">
-                        <span id="cetuscycletitle">Loading...</span>
-                        <span class="pull-right" id="cetuscycletime"></span>
-                    </li>
-                    <li class="list-group-item list-group-item-borderbottom">
-                        <span id="cetustimezonetitle">Loading...</span>
-                        <span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
-                    </li>
-                </ul>
-            </div>
+	<div class="section">
+		<br><br>
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-center">Current Acolytes</h3>
+				<ul class="list-group" id="acolyteList">
+					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
+						<span id="acolytetitle">Loading Acolytes...</span>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-            <div class="col-md-6">
-                <h3 class="text-center">Earth Day/Night Cycle</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderless">
-                        Currently it is:
-                        <span id="earthcycleindicator"></span>
-                    </li>
-                    <li class="list-group-item list-group-item-borderless">
-                        <span id="earthcycletitle">Loading...</span>
-                        <span class="pull-right" id="earthcycletime"></span>
-                    </li>
-                    <li class="list-group-item list-group-item-borderbottom">
-                        <span id="earthtimezonetitle">Loading...</span>
-                        <span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-	
-	<div class="row">
-            <div class="col-md-6">
-                <h3 class="text-center">Raid / Daily Reward Timer</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderbottom">
-                        <span id="resettimertitle"></span>
-                        <span class="pull-right" id="resettimertime"></span>
-                    </li>
-                </ul>
-            </div>
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="text-center">Cetus Day/Night Cycle</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderless">
+						Currently it is:
+						<span id="cetuscycleindicator"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderless">
+						<span id="cetuscycletitle">Loading...</span>
+						<span class="pull-right" id="cetuscycletime"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderbottom">
+						<span id="cetustimezonetitle">Loading...</span>
+						<span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
+					</li>
+				</ul>
+			</div>
 
-            <div class="col-md-6">
-                <h3 class="text-center">Ostron Bounty Cycle</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderbottom">
-                        <span id="cetusbountytitle"></span>
-                        <span class="pull-right" id="cetusbountytime"></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<div class="col-md-6">
+				<h3 class="text-center">Earth Day/Night Cycle</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderless">
+						Currently it is:
+						<span id="earthcycleindicator"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderless">
+						<span id="earthcycletitle">Loading...</span>
+						<span class="pull-right" id="earthcycletime"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderbottom">
+						<span id="earthtimezonetitle">Loading...</span>
+						<span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <h3 class="text-center">Current Alerts</h3>
-                <ul class="list-group" id="alertList">
-                    <li class="list-group-item list-group-item-borderbottom" id="alertbody">
-                        <span id="alerttitle">Loading Alerts...</span>
-                    </li>
-                </ul>
-                <h3 class="text-center">Orbiter News</h3>
-                <ul class="list-group" id="newsList">
-                    <li class="list-group-item list-group-item-borderless" id="newstop"></li>
-                    <li class="list-group-item list-group-item-borderbottom" id="newsbody">
-                        <span id="newstitle">Loading News...</span>
-                    </li>
-                </ul>
-            </div>
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="text-center">Raid / Daily Reward Timer</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderbottom">
+						<span id="resettimertitle"></span>
+						<span class="pull-right" id="resettimertime"></span>
+					</li>
+				</ul>
+			</div>
 
-            <div class="col-md-6">
-                <h3 class="text-center">Current Invasions</h3>
-                <ul class="list-group" id="invasionList">
-                    <li class="list-group-item list-group-item-borderbottom" id="invasionbody">
-                        <span id="invasiontitle">Loading Invasions...</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<div class="col-md-6">
+				<h3 class="text-center">Ostron Bounty Cycle</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderbottom">
+						<span id="cetusbountytitle"></span>
+						<span class="pull-right" id="cetusbountytime"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="row sortie">
-            <div class="col-md-6">
-                <h3 class="text-center">Sortie</h3>
-                <ul class="list-group">
-                    <li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
-                    <li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span><h4 id="sortieBoss"></h4></li>
-                    <div id="sortieList"></div>
-                    <li class="list-group-item list-group-item-borderbottom"></li>
-                </ul>
-            </div>
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="text-center">Current Alerts</h3>
+				<ul class="list-group" id="alertList">
+					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
+						<span id="alerttitle">Loading Alerts...</span>
+					</li>
+				</ul>
+				<h3 class="text-center">Orbiter News</h3>
+				<ul class="list-group" id="newsList">
+					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
+					<li class="list-group-item list-group-item-borderbottom" id="newsbody">
+						<span id="newstitle">Loading News...</span>
+					</li>
+				</ul>
+			</div>
 
-            <div class="col-md-6 void-fissures">
-                <h3 class="text-center">Void Fissures</h3>
-                <ul class="list-group" id="fissureList">
-                    <li class="list-group-item list-group-item-borderbottom" id="fissurebody">
-                        <span id="fissuretitle">Loading Fissures...</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<div class="col-md-6">
+				<h3 class="text-center">Current Invasions</h3>
+				<ul class="list-group" id="invasionList">
+					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
+						<span id="invasiontitle">Loading Invasions...</span>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <h3 class="text-center">Void Trader</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderless">
-                        <span id="voidtradertitle">Loading...</span>
-                        <span class="pull-right" id="voidtradertime"></span>
-                    </li>
-                    <li class="list-group-item list-group-item-borderless">
-                        <span id="voidtradertimezonetitle">Loading...</span>
-                        <span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
-                    </li>
-		    <li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
-                </ul>
-            </div>
+		<div class="row sortie">
+			<div class="col-md-6">
+				<h3 class="text-center">Sortie</h3>
+				<ul class="list-group">
+					<li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
+					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span>
+						<h4 id="sortieBoss"></h4></li>
+					<div id="sortieList"></div>
+					<li class="list-group-item list-group-item-borderbottom"></li>
+				</ul>
+			</div>
 
-            <div class="col-md-6">
-                <h3 class="text-center">Darvo Deals</h3>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
-                        <span id="darvotitle">Loading Darvo Deals...</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<div class="col-md-6 void-fissures">
+				<h3 class="text-center">Void Fissures</h3>
+				<ul class="list-group" id="fissureList">
+					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
+						<span id="fissuretitle">Loading Fissures...</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="text-center">Void Trader</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderless">
+						<span id="voidtradertitle">Loading...</span>
+						<span class="pull-right" id="voidtradertime"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderless">
+						<span id="voidtradertimezonetitle">Loading...</span>
+						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
+					</li>
+					<li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
+				</ul>
+			</div>
+
+			<div class="col-md-6">
+				<h3 class="text-center">Darvo Deals</h3>
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
+						<span id="darvotitle">Loading Darvo Deals...</span>
+					</li>
+				</ul>
+			</div>
+		</div>
 
 		{{> footer}}
-    </div>
+	</div>
 </div>
 <!-- /.container -->
 
@@ -156,13 +168,13 @@
 
 <!-- Insert world state update information into footer -->
 <script>
-    $('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
-            'data-toggle="tooltip" href="#" data-original-title="World State obtained" style="margin-right:5px">' +
-            '<span class="glyphicon glyphicon-info-sign"></span></div></a>');
+	$('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
+		'data-toggle="tooltip" href="#" data-original-title="World State obtained" style="margin-right:5px">' +
+		'<span class="glyphicon glyphicon-info-sign"></span></div></a>');
 
-    $('body').tooltip({
-        selector: '[data-toggle="tooltip"]'
-    });
+	$('body').tooltip({
+		selector: '[data-toggle="tooltip"]'
+	});
 </script>
 
 {{> nightmode}}

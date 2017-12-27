@@ -352,7 +352,7 @@ function updateAcolytes() {
           const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10).toFixed(2));
           const progressPercent = 100 - remainingPercent;
 
-          const label = `<span class="pull-left label label-danger" style="line-height:12px; margin-top: 2px;" title="Remaining Acolyte Health">Remaining: ${(acolyte.healthPercent * 100).toFixed()}%</span>`;
+          const label = `<span class="pull-left label label-danger" style="line-height:12px; margin-top: 2px; margin-right: 10px;" title="Remaining Acolyte Health">Remaining: ${(acolyte.healthPercent * 100).toFixed()}%</span>`;
 
           acolyteRow += `</div><div class="row" style="margin-top: 4px; margin-bottom: 1px; margin-left:10px; margin-right:5px; line-height:12px;">${label}` +
             `<div class="progress" id="${acolyte.id}_progress" style="margin-top: 4px; margin-left:10px; margin-right:5px; line-height:12px;">` +

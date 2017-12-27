@@ -348,12 +348,15 @@ function updateAcolytes() {
             $(remainingBar).removeClass('winning-right');
             $(progressBar).addClass('winning-left');
           }
-          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
 
-          const label = `<span class="pull-left label label-danger" style="line-height:12px;" title="Remaining Acolyte Health">Remaining: ${(acolyte.healthPercent * 100).toFixed(2)}%</span><br />`;
-          acolyteRow += `</div><div class="row" style="margin-top: 4px; margin-bottom: 1px; margin-left:10px; margin-right:5px;">${label}` +
-            `<div class="progress" id="${acolyte.id}_progress" style="margin-top: 4px;">` +
-            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
+          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
+          const progressPercent = 100 - remainingPercent;
+
+          acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
+            `<div class="progress" id="${acolyte.id}_progress">` +
+            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
+            `${(acolyte.healthPercent * 100).toFixed(2)}%</div>` +
+            `<div class="progress-bar grey defend" role="progressbar" style="width: ${progressPercent}%;  line-height:20px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
             '</div>';
 
           acolyteRow += '</li>';

@@ -37,6 +37,15 @@
     color: #ababab;
 }
 
+/* Tables stuff */
+.bountiesList tbody tr td {
+  font-size: 11px;
+}
+
+.bountiesList tbody tr td ul {
+  padding-left: 16px;
+}
+
 /* Change label color to be less white */
 .label {
     color: #ababab !important;

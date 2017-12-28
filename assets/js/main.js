@@ -320,40 +320,45 @@ function updateDarvoDeals() {
   }
 }
 
-function updateDeals() {
-  const {dailyDeals} = worldState;
-  if (dailyDeals.length !== 0) {
-    $('#darvotitle').hide();
-    if (document.getElementById(dailyDeals[0].id) === null) {
-      cleanupDailyDeals(dailyDeals);
+const cleanupDeals = dailyDeals => {
+  if (platformSwapped && document.getElementsByClassName('dealsInventory')) {
+    $('.dealsInventory').remove();
+  } else if ($('.dealsInventory').attr('id') !== dailyDeals[0].id) {
+    $('.dealsInventory').remove();
+  }
+};
 
-      const inventoryString = `<table class="table dailyDealsInventory" style="table-layout: fixed" id="${
-        dailyDeals[0].id}">\n` +
+function updateDeals() {
+  const {flashSales} = worldState;
+  if (flashSales.length !== 0) {
+    $('#dealstitle').hide();
+    if (document.getElementById(flashSales[0].id) === null) {
+      cleanupDeals(flashSales);
+
+      const inventoryString = `<table class="table dealsInventory" style="table-layout: fixed" id="${
+        flashSales[0].id}">\n` +
                 '<thead>\n' +
                 '<tr>\n' +
-                '<th class="text-center col-xs-2">Item</th>\n' +
-                '<th class="text-center col-xs-2">% Off</th>\n' +
+                '<th class="text-center col-xs-5">Item</th>\n' +
                 '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
-                '<th class="text-center col-xs-2">Stock</th>\n' +
                 '<th class="text-center col-xs-4"></th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
-                '<tbody id="dailyDealsInventory">\n' +
+                '<tbody id="dealsInventory">\n' +
                 '</tbody>\n' +
                 '</table>';
-      $('#darvobody').append(inventoryString);
+      $('#dealsbody').append(inventoryString);
 
-      for (const currentItem of dailyDeals) {
-        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.discount}%</td><td>${currentItem.salePrice}</td><td>${
-          calculateInventory(currentItem.total, currentItem.sold)}</td>` +
+      for (const currentItem of flashSales) {
+        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.premiumOverride}</td>` +
                     `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
-        $('#dailyDealsInventory').append(itemString);
+        $('#dealsInventory').append(itemString);
       }
     }
-  } else if (document.getElementsByClassName('dailyDealsInventory')) {
-    $('.dailyDealsInventory').remove();
-    document.getElementById('darvotitle').innerText = 'No current deals :(';
-    $('#darvotitle').show();
+  } else if (document.getElementsByClassName('dealsInventory')) {
+    $('.dealsInventory').remove();
+    document.getElementById('dealstitle').innerText = 'No current deals :(';
+    $('#dealstitle').show();
   }
 }
 
@@ -481,6 +486,54 @@ function updateAlerts() {
     $('#alertList').children().not('#alertbody').remove();
     document.getElementById('alerttitle').innerText = 'No active alerts :(';
     $('#alerttitle').show();
+  }
+}
+
+const cleanupBounties = dailyDeals => {
+  if (platformSwapped && document.getElementsByClassName('bountiesList')) {
+    $('.bountiesList').remove();
+  } else if ($('.bountiesList').attr('id') !== dailyDeals[0].id) {
+    $('.bountiesList').remove();
+  }
+};
+
+function updateBounties() {
+  const {syndicateMissions} = worldState;
+  const ostronMissions = syndicateMissions.filter(syndicate => syndicate.syndicate === 'Ostrons')[0];
+  const jobs = ostronMissions ? ostronMissions.jobs : [];
+  if (jobs.length !== 0) {
+    $('#bountytitle').hide();
+    if (document.getElementById(jobs[0].id) === null) {
+      cleanupBounties(jobs);
+
+      const inventoryString = `<table class="table bountiesList" style="table-layout: fixed" id="${
+        jobs[0].id}">\n` +
+                '<thead>\n' +
+                '<tr>\n' +
+                '<th class="text-center col-xs-4">Type</th>\n' +
+                '<th class="text-center col-xs-3"><img style="width: 20px;height: 20px;" src="img/standing.png" /></th>\n' +
+                '<th class="text-center col-xs-4">Level Range</th>\n' +
+                '<th class="text-center col-xs-4">Rewards</th>\n' +
+                '<th class="text-center col-xs-4"></th>\n' +
+                '</tr>\n' +
+                '</thead>\n' +
+                '<tbody id="bountiesList">\n' +
+                '</tbody>\n' +
+                '</table>';
+      $('#bountybody').append(inventoryString);
+
+      for (const job of jobs) {
+        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
+                    `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
+                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`)}</ul></td>` +
+                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(ostronMissions.expiry).unix()}"></span></td></tr>`;
+        $('#bountiesList').append(itemString);
+      }
+    }
+  } else if (document.getElementsByClassName('bountiesList')) {
+    $('.bountiesList').remove();
+    document.getElementById('dealstitle').innerText = 'No current deals :(';
+    $('#bountytitle').show();
   }
 }
 
@@ -745,8 +798,10 @@ function updatePage() {
   updateVoidTrader();
   updateVoidTraderInventory();
   updateDarvoDeals();
+  updateDeals();
   updateAcolytes();
   updateAlerts();
+  updateBounties();
   updateSortie();
   updateFissure();
   updateNews();

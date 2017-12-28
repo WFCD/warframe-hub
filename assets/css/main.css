@@ -37,6 +37,16 @@
     color: #1A5072;
 }
 
+/* Tables stuff */
+.bountiesList tbody tr td {
+  font-size: 11px;
+}
+
+.bountiesList tbody tr td ul {
+  float:left;
+  padding-left: 16px;
+}
+
 /* Margins for body */
 body {
     margin-top: 50px !important;

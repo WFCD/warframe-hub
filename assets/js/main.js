@@ -805,7 +805,8 @@ function updateTimeBadges() {
         break;
       default:
         // If it is a alert timer, we can safely remove
-        if (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer')) {
+        if (currentLabel.attr('id')
+          && (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer'))) {
           currentLabel.parent()[0].remove();
         }
       }

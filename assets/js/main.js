@@ -320,6 +320,43 @@ function updateDarvoDeals() {
   }
 }
 
+function updateDeals() {
+  const {dailyDeals} = worldState;
+  if (dailyDeals.length !== 0) {
+    $('#darvotitle').hide();
+    if (document.getElementById(dailyDeals[0].id) === null) {
+      cleanupDailyDeals(dailyDeals);
+
+      const inventoryString = `<table class="table dailyDealsInventory" style="table-layout: fixed" id="${
+        dailyDeals[0].id}">\n` +
+                '<thead>\n' +
+                '<tr>\n' +
+                '<th class="text-center col-xs-2">Item</th>\n' +
+                '<th class="text-center col-xs-2">% Off</th>\n' +
+                '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
+                '<th class="text-center col-xs-2">Stock</th>\n' +
+                '<th class="text-center col-xs-4"></th>\n' +
+                '</tr>\n' +
+                '</thead>\n' +
+                '<tbody id="dailyDealsInventory">\n' +
+                '</tbody>\n' +
+                '</table>';
+      $('#darvobody').append(inventoryString);
+
+      for (const currentItem of dailyDeals) {
+        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.discount}%</td><td>${currentItem.salePrice}</td><td>${
+          calculateInventory(currentItem.total, currentItem.sold)}</td>` +
+                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
+        $('#dailyDealsInventory').append(itemString);
+      }
+    }
+  } else if (document.getElementsByClassName('dailyDealsInventory')) {
+    $('.dailyDealsInventory').remove();
+    document.getElementById('darvotitle').innerText = 'No current deals :(';
+    $('#darvotitle').show();
+  }
+}
+
 function updateAcolytes() {
   const {persistentEnemies} = worldState;
   if (persistentEnemies.length !== 0) {
@@ -336,7 +373,7 @@ function updateAcolytes() {
           acolyteRow += `<b>${acolyte.agentType}</b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
-                        ` <span class="label label-primary pull-right">${moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY')}</span>`;
+                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY')}</span>`;
 
           const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
           const progressBar = $(`#${acolyte.id}_progress`).children()[1];
@@ -355,12 +392,16 @@ function updateAcolytes() {
           acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
             `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
             `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `${(acolyte.healthPercent * 100).toFixed(2)}%</div>` +
+            `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}%</span></div>` +
             `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%;  line-height:20px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
             '</div>';
 
           acolyteRow += '</li>';
           $('#acolytebody').before(acolyteRow);
+        } else {
+          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+          $(`#${acolyte.id}-health`).html(`${(acolyte.healthPercent * 100).toFixed(2)}%`);
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY'));
         }
       }
     }
@@ -923,7 +964,7 @@ moment.updateLocale('en', {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 60000);
+  setTimeout(update, 30000);
 }
 
 update();

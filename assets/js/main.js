@@ -354,9 +354,9 @@ function updateAcolytes() {
 
           acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
             `<div class="progress" id="${acolyte.id}_progress">` +
-            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
+            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
             `${(acolyte.healthPercent * 100).toFixed(2)}%</div>` +
-            `<div class="progress-bar grey defend" role="progressbar" style="width: ${progressPercent}%;  line-height:20px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
+            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%;  line-height:20px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
             '</div>';
 
           acolyteRow += '</li>';

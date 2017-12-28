@@ -194,6 +194,11 @@ img {
     margin-bottom: 10px;
     background-color: transparent;
 }
+
+.progress-bar-grey {
+  background-color: #555;
+}
+
 .winning-left {
   -moz-animation: progress-bar-stripes 3s linear infinite;
   -ms-animation: progress-bar-stripes 3s linear infinite;

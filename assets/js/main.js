@@ -514,7 +514,6 @@ function updateBounties() {
                 '<th class="text-center col-xs-3"><img style="width: 20px;height: 20px;" src="img/standing.png" /></th>\n' +
                 '<th class="text-center col-xs-4">Level Range</th>\n' +
                 '<th class="text-center col-xs-4">Rewards</th>\n' +
-                '<th class="text-center col-xs-4"></th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
                 '<tbody id="bountiesList">\n' +
@@ -525,8 +524,7 @@ function updateBounties() {
       for (const job of jobs) {
         const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
                     `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
-                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`)}</ul></td>` +
-                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(ostronMissions.expiry).unix()}"></span></td></tr>`;
+                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`)}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
     }

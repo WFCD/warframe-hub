@@ -882,7 +882,7 @@ function updatePage() {
     percentPosition: true,
   });
   grid.find('.grid-item').each((i, gridItem) => {
-    const draggie = new Draggabilly(gridItem);
+    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
     grid.packery('bindDraggabillyEvents', draggie);
   });
 }

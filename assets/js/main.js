@@ -22,8 +22,10 @@ const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/V
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
-  document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
-    Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+  if (document.getElementById('worldstateinfo')) {
+    document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
+      Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+  }
 }
 
 // Helper function to display duration in human readable format, short version
@@ -394,11 +396,14 @@ function updateAcolytes() {
           const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
           const progressPercent = 100 - remainingPercent;
 
+          const remainingLabel = `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}% Remaining</span>`;
+
           acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
             `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
             `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}%</span></div>` +
-            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%;  line-height:20px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>` +
+            `${remainingPercent > 0 ? remainingLabel : ''}</div>` +
+            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%; height: 20px; font-size: 12px; line-height:16px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">` +
+            `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
             '</div>';
 
           acolyteRow += '</li>';
@@ -791,25 +796,105 @@ function updateInvasions() {
 }
 
 function updatePage() {
-  updateEarthCycle();
-  updateCetusCycle();
-  updateVoidTrader();
-  updateVoidTraderInventory();
-  updateDarvoDeals();
-  updateDeals();
-  updateAcolytes();
-  updateAlerts();
-  updateBounties();
-  updateSortie();
-  updateFissure();
-  updateNews();
-  updateInvasions();
-  updateCetusBountyTimer();
+  if (worldState) {
+    if (Cookies.get('earth') === 'true' || ($('#earth_checkbox') && $('#earth_checkbox').prop('checked'))) {
+      updateEarthCycle();
+      $('#component-earth').show();
+    } else {
+      $('#component-earth').hide();
+    }
+    if (Cookies.get('cetus') === 'true' || ($('#cetus_checkbox') && $('#cetus_checkbox').prop('checked'))) {
+      updateCetusCycle();
+      $('#component-cetus').show();
+    } else {
+      $('#component-cetus').hide();
+    }
+    if (Cookies.get('voidtrader') === 'true' || ($('#voidtrader_checkbox') && $('#voidtrader_checkbox').prop('checked'))) {
+      updateVoidTrader();
+      updateVoidTraderInventory();
+      $('#component-baro').show();
+    } else {
+      $('#component-baro').hide();
+    }
+    if (Cookies.get('darvo') === 'true' || ($('#darvo_checkbox') && $('#darvo_checkbox').prop('checked'))) {
+      updateDarvoDeals();
+      $('#component-darvo').show();
+    } else {
+      $('#component-darvo').hide();
+    }
+    if (Cookies.get('sales') === 'true' || ($('#sales_checkbox') && $('#sales_checkbox').prop('checked'))) {
+      updateDeals();
+      $('#component-deals').show();
+    } else {
+      $('#component-deals').hide();
+    }
+    if (Cookies.get('acolyte') === 'true' || ($('#acolyte_checkbox') && $('#acolyte_checkbox').prop('checked'))) {
+      updateAcolytes();
+      $('#component-acolytes').show();
+    } else {
+      $('#component-acolytes').hide();
+    }
+    if (Cookies.get('alerts') === 'true' || ($('#alerts_checkbox') && $('#alerts_checkbox').prop('checked'))) {
+      updateAlerts();
+      $('#component-alerts').show();
+    } else {
+      $('#component-alerts').hide();
+    }
+    if (Cookies.get('bounties') === 'true' || ($('#bounties_checkbox') && $('#bounties_checkbox').prop('checked'))) {
+      updateBounties();
+      updateCetusBountyTimer();
+      $('#component-bounties').show();
+    } else {
+      $('#component-bounties').hide();
+    }
+    if (Cookies.get('sortie') === 'true' || ($('#sortie_checkbox') && $('#sortie_checkbox').prop('checked'))) {
+      updateSortie();
+      $('#component-sortie').show();
+    } else {
+      $('#component-sortie').hide();
+    }
+    if (Cookies.get('fissures') === 'true' || ($('#fissures_checkbox') && $('#fissures_checkbox').prop('checked'))) {
+      updateFissure();
+      $('#component-fissures').show();
+    } else {
+      $('#component-fissures').hide();
+    }
+    if (Cookies.get('news') === 'true' || ($('#news_checkbox') && $('#news_checkbox').prop('checked'))) {
+      updateNews();
+      $('#component-news').show();
+    } else {
+      $('#component-news').hide();
+    }
+    if (Cookies.get('invasions') === 'true' || ($('#invasions_checkbox') && $('#invasions_checkbox').prop('checked'))) {
+      updateInvasions();
+      $('#component-invasions').show();
+    } else {
+      $('#component-invasions').hide();
+    }
+  }
   updateWorldStateTime();
+}
+
+function refreshSelections() {
+  $('#earth_checkbox').prop('checked', Cookies.get('earth') === 'true');
+  $('#cetus_checkbox').prop('checked', Cookies.get('cetus') === 'true');
+  $('#voidtrader_checkbox').prop('checked', Cookies.get('voidtrader') === 'true');
+  $('#darvo_checkbox').prop('checked', Cookies.get('darvo') === 'true');
+  $('#sales_checkbox').prop('checked', Cookies.get('sales') === 'true');
+  $('#acolyte_checkbox').prop('checked', Cookies.get('acolytes') === 'true');
+  $('#alerts_checkbox').prop('checked', Cookies.get('alerts') === 'true');
+  $('#bounties_checkbox').prop('checked', Cookies.get('bounties') === 'true');
+  $('#sortie_checkbox').prop('checked', Cookies.get('sortie') === 'true');
+  $('#fissures_checkbox').prop('checked', Cookies.get('fissures') === 'true');
+  $('#news_checkbox').prop('checked', Cookies.get('news') === 'true');
+  $('#invasions_checkbox').prop('checked', Cookies.get('invasions') === 'true');
+  $('#reset_checkbox').prop('checked', Cookies.get('reset') === 'true');
+  updatePage();
 }
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
+  refreshSelections();
   switch (Cookies.get('platform').toLowerCase()) {
   case 'ps4':
     $.getJSON('https://api.warframestat.us/ps4', data => {
@@ -839,12 +924,18 @@ function getWorldState() {
 }
 
 function updateResetTime() {
-  // We want unix seconds, not unix millis
-  const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
-  $('#resettimertitle').html('Time until new server day:');
-  const timeBadge = $('#resettimertime');
-  timeBadge.attr('data-endtime', nextReset);
-  timeBadge.addClass('label timer');
+  // This should not be called again unless the timer expires
+  if (Cookies.get('reset') === 'true' || ($('#resets_checkbox') && $('#reset_checkbox').prop('checked'))) {
+    // We want unix seconds, not unix millis
+    const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
+    $('#resettimertitle').html('Time until new server day:');
+    const timeBadge = $('#resettimertime');
+    timeBadge.attr('data-endtime', nextReset);
+    timeBadge.addClass('label timer');
+    $('#component-reset').show();
+  } else {
+    $('#component-reset').hide();
+  }
 }
 
 function removeTimeBadgeColor(element) {
@@ -938,6 +1029,19 @@ function updatePlatformSwitch() {
   platformSwapped = false;
 }
 
+function handleClickForOpen() {
+  $(this).parent().toggleClass('open');
+}
+
+function handleClickOnBody(e) {
+  if (!$('#component-selection').is(e.target)
+        && $('#component-selection').has(e.target).length === 0
+        && $('.open').has(e.target).length === 0
+  ) {
+    $('#component-selector').removeClass('open');
+  }
+}
+
 // Platform switcher anonymous functions
 $(() => {
   $('#platform_pc').click(() => {
@@ -972,26 +1076,124 @@ $(() => {
     setTimeout(updatePlatformSwitch, 30000);
   });
 });
-// Set default platform to PC if there isn't one
-if (Cookies.get('platform') === undefined) {
-  Cookies.set('platform', 'PC');
-} else {
-  switch (Cookies.get('platform').toLowerCase()) {
-  case 'ps4':
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_ps4').addClass('list-group-item-success');
-    break;
-  case 'xb1':
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').addClass('list-group-item-success');
-    break;
-  default:
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_pc').addClass('list-group-item-success');
-    break;
+
+$(() => {
+  $('.component-check').click(e => {
+    const status = $(`#${e.target.id}`).prop('checked') ? 'true' : 'false';
+    switch (e.target.id) {
+    case 'earth_checkbox':
+      Cookies.set('earth', status);
+      break;
+    case 'cetus_checkbox':
+      Cookies.set('cetus', status);
+      break;
+    case 'voidtrader_checkbox':
+      Cookies.set('voidtrader', status);
+      break;
+    case 'darvo_checkbox':
+      Cookies.set('darvo', status);
+      break;
+    case 'sales_checkbox':
+      Cookies.set('sales', status);
+      break;
+    case 'acolyte_checkbox':
+      Cookies.set('acolytes', status);
+      break;
+    case 'alerts_checkbox':
+      Cookies.set('alerts', status);
+      break;
+    case 'bounties_checkbox':
+      Cookies.set('bounties', status);
+      break;
+    case 'sortie_checkbox':
+      Cookies.set('sortie', status);
+      break;
+    case 'fissures_checkbox':
+      Cookies.set('fissures', status);
+      break;
+    case 'news_checkbox':
+      Cookies.set('news', status);
+      break;
+    case 'invasions_checkbox':
+      Cookies.set('invasion', status);
+      break;
+    case 'reset_checkbox':
+      Cookies.set('reset', status);
+      updateResetTime();
+      break;
+    default:
+      break;
+    }
+    updatePage();
+  });
+});
+
+// Set default component selections if there aren't any
+function setDefaultCookies() {
+  // Set default platform to PC if there isn't one
+  if (Cookies.get('platform') === undefined) {
+    Cookies.set('platform', 'PC');
+  } else {
+    switch (Cookies.get('platform').toLowerCase()) {
+    case 'ps4':
+      $('#platform_pc').removeClass('list-group-item-success');
+      $('#platform_xb1').removeClass('list-group-item-success');
+      $('#platform_ps4').addClass('list-group-item-success');
+      break;
+    case 'xb1':
+      $('#platform_ps4').removeClass('list-group-item-success');
+      $('#platform_pc').removeClass('list-group-item-success');
+      $('#platform_xb1').addClass('list-group-item-success');
+      break;
+    default:
+      $('#platform_ps4').removeClass('list-group-item-success');
+      $('#platform_xb1').removeClass('list-group-item-success');
+      $('#platform_pc').addClass('list-group-item-success');
+      break;
+    }
+  }
+
+  if (typeof Cookies.get('earth') === 'undefined') {
+    Cookies.set('earth', 'true');
+  }
+  if (typeof Cookies.get('cetus') === 'undefined') {
+    Cookies.set('cetus', 'true');
+  }
+  if (typeof Cookies.get('voidtrader') === 'undefined') {
+    Cookies.set('voidtrader', 'true');
+  }
+  if (typeof Cookies.get('darvo') === 'undefined') {
+    Cookies.set('darvo', 'true');
+  }
+  if (typeof Cookies.get('sales') === 'undefined') {
+    Cookies.set('sales', 'false');
+  }
+  if (typeof Cookies.get('acolytes') === 'undefined') {
+    Cookies.set('acolytes', 'true');
+  }
+  if (typeof Cookies.get('alerts') === 'undefined') {
+    Cookies.set('alerts', 'true');
+  }
+  if (typeof Cookies.get('bounties') === 'undefined') {
+    Cookies.set('bounties', 'true');
+  }
+  if (typeof Cookies.get('sortie') === 'undefined') {
+    Cookies.set('sortie', 'true');
+  }
+  if (typeof Cookies.get('sortie') === 'undefined') {
+    Cookies.set('sortie', 'true');
+  }
+  if (typeof Cookies.get('fissures') === 'undefined') {
+    Cookies.set('fissures', 'true');
+  }
+  if (typeof Cookies.get('news') === 'undefined') {
+    Cookies.set('news', 'true');
+  }
+  if (typeof Cookies.get('invasions') === 'undefined') {
+    Cookies.set('invasions', 'true');
+  }
+  if (typeof Cookies.get('reset') === 'undefined') {
+    Cookies.set('reset', 'true');
   }
 }
 
@@ -1021,5 +1223,9 @@ function update() {
 }
 
 update();
+setDefaultCookies();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
+
+$('#component-selection').on('click', handleClickForOpen);
+$('body').on('click', handleClickOnBody);

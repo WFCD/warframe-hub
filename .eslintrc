@@ -28,10 +28,10 @@
     "prefer-const": 1,
 
     // keep it simple
-    "complexity": [ 1, 20 ],
+    "complexity": [ 1, 50 ],
 
     "no-restricted-syntax": [0, 0],
-    
+
     "arrow-parens": [2, "as-needed"]
   }
 }

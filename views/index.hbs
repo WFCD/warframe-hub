@@ -2,7 +2,7 @@
 	<div class="section">
 		<br><br>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12" id="component-acolytes">
 				<h3 class="text-center">Current Acolytes</h3>
 				<ul class="list-group" id="acolyteList">
 					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
@@ -10,10 +10,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-cetus" class="collapse">
 				<h3 class="text-center">Cetus Day/Night Cycle</h3>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-borderless">
@@ -31,7 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-earth">
 				<h3 class="text-center">Earth Day/Night Cycle</h3>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-borderless">
@@ -48,20 +46,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-6">
-				<h3 class="text-center">Raid / Daily Reward Timer</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderbottom">
-						<span id="resettimertitle"></span>
-						<span class="pull-right" id="resettimertime"></span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-bounties">
 				<h3 class="text-center">Ostron Bounty Cycle</h3>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-borderless">
@@ -76,26 +62,30 @@
   				</ul>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row">
 			<div class="col-md-6">
-				<h3 class="text-center">Current Alerts</h3>
-				<ul class="list-group" id="alertList">
-					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
-						<span id="alerttitle">Loading Alerts...</span>
-					</li>
-				</ul>
-				<h3 class="text-center">Orbiter News</h3>
-				<ul class="list-group" id="newsList">
-					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
-					<li class="list-group-item list-group-item-borderbottom" id="newsbody">
-						<span id="newstitle">Loading News...</span>
-					</li>
-				</ul>
+        <div id="component-alerts">
+  				<h3 class="text-center">Current Alerts</h3>
+  				<ul class="list-group" id="alertList">
+  					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
+  						<span id="alerttitle">Loading Alerts...</span>
+  					</li>
+  				</ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="component-news">
+  				<h3 class="text-center">Orbiter News</h3>
+  				<ul class="list-group" id="newsList">
+  					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
+  					<li class="list-group-item list-group-item-borderbottom" id="newsbody">
+  						<span id="newstitle">Loading News...</span>
+  					</li>
+  				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-invasions">
 				<h3 class="text-center">Current Invasions</h3>
 				<ul class="list-group" id="invasionList">
 					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
@@ -103,10 +93,18 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row sortie">
-			<div class="col-md-6">
+      <div class="col-md-6" id="component-reset">
+        <h3 class="text-center">Raid / Daily Reward Timer</h3>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-borderbottom">
+            <span id="resettimertitle"></span>
+            <span class="pull-right" id="resettimertime"></span>
+          </li>
+        </ul>
+      </div>
+
+			<div class="col-md-6" id="component-sortie">
 				<h3 class="text-center">Sortie</h3>
 				<ul class="list-group">
 					<li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
@@ -117,7 +115,7 @@
 				</ul>
 			</div>
 
-			<div class="col-md-6 void-fissures">
+			<div class="col-md-6 void-fissures" id="component-fissures">
 				<h3 class="text-center">Void Fissures</h3>
 				<ul class="list-group" id="fissureList">
 					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
@@ -125,10 +123,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-baro">
 				<h3 class="text-center">Void Trader</h3>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-borderless">
@@ -143,7 +139,7 @@
 				</ul>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-darvo">
 				<h3 class="text-center">Darvo Deals</h3>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
@@ -151,10 +147,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-    <div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6" id="component-deals">
 				<h3 class="text-center">Sales and Featured Deals</h3>
         <ul class="list-group">
 					<li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">

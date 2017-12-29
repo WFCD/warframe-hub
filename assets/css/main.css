@@ -170,11 +170,14 @@ img {
   filter: invert(100%); /*invert on main, not on night*/
 }
 
+.inv {
+  filter: invert(0%);
+}
+
 .cc-img {
   height: 16px;
   widght: 16px;
   overflow: hidden;
-  filter: invert(100%);
 }
 
 #sortieBossInfo {

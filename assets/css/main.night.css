@@ -181,6 +181,10 @@ img {
   filter: invert(0%); /*invert on main, not on night*/
 }
 
+.inv {
+  filter: invert(100%);
+}
+
 .cc-img {
   height:16px;
   widght: 16px;

@@ -907,31 +907,14 @@ function refreshSelections() {
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
   refreshSelections();
-  switch (Cookies.get('platform').toLowerCase()) {
-  case 'ps4':
-    $.getJSON('https://api.warframestat.us/ps4', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      refreshSelections();
-    });
-    break;
-  case 'xb1':
-    $.getJSON('https://api.warframestat.us/xb1', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      refreshSelections();
-    });
-    break;
-  default:
-    $.getJSON('https://api.warframestat.us/pc', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      refreshSelections();
-    });
-    break;
+  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform') || 'pc'}`, data => {
+    worldState = JSON.parse(JSON.stringify(data));
+    updateTime = (new Date()).getTime();
+    updateDataDependencies();
+    refreshSelections();
+  });
+  if (typeof Cookies.get('platform') === 'undefined') {
+    Cookies.set('platform', 'pc');
   }
 }
 
@@ -1060,7 +1043,7 @@ $(() => {
     $('#platform_ps4').removeClass('list-group-item-success');
     $('#platform_xb1').removeClass('list-group-item-success');
     $('#platform_pc').addClass('list-group-item-success');
-    Cookies.set('platform', 'PC');
+    Cookies.set('platform', 'pc');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
@@ -1071,7 +1054,7 @@ $(() => {
     $('#platform_pc').removeClass('list-group-item-success');
     $('#platform_xb1').removeClass('list-group-item-success');
     $('#platform_ps4').addClass('list-group-item-success');
-    Cookies.set('platform', 'PS4');
+    Cookies.set('platform', 'ps4');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
@@ -1082,7 +1065,7 @@ $(() => {
     $('#platform_ps4').removeClass('list-group-item-success');
     $('#platform_pc').removeClass('list-group-item-success');
     $('#platform_xb1').addClass('list-group-item-success');
-    Cookies.set('platform', 'XB1');
+    Cookies.set('platform', 'xb1');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
@@ -1144,9 +1127,9 @@ $(() => {
 function setDefaultCookies() {
   // Set default platform to PC if there isn't one
   if (typeof Cookies.get('platform') === 'undefined') {
-    Cookies.set('platform', 'PC');
+    Cookies.set('platform', 'pc');
   } else {
-    switch (Cookies.get('platform').toLowerCase()) {
+    switch (Cookies.get('platform')) {
     case 'ps4':
       $('#platform_pc').removeClass('list-group-item-success');
       $('#platform_xb1').removeClass('list-group-item-success');

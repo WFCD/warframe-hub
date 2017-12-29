@@ -530,9 +530,9 @@ function updateBounties() {
       $('#bountybody').append(inventoryString);
 
       for (const job of jobs) {
-        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages}</td>` +
+        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
                     `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
-                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`)}</ul></td></tr>`;
+                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
     }

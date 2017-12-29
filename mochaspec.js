@@ -18,7 +18,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 describe('GET /', () => {
-  it('respond with 200', (done) => {
+  it('respond with 200', done => {
     request(app)
       .get('/')
       .expect(200)
@@ -32,7 +32,7 @@ describe('GET /', () => {
 });
 
 describe('GET /map', () => {
-  it('respond with 200', (done) => {
+  it('respond with 200', done => {
     request(app)
       .get('/')
       .expect(200)

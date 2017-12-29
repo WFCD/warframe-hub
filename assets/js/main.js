@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies */
+/* globals $, moment, Cookies, Draggabilly */
 
 let worldState;
 let updateTime;
@@ -17,6 +17,9 @@ let earthCurrentTitle;
 let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
+
+// Packery
+let grid;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
@@ -518,7 +521,7 @@ function updateBounties() {
                 '<th class="text-center col-xs-4">Type</th>\n' +
                 '<th class="text-center col-xs-3"><img style="width: 20px;height: 20px;" src="img/standing.png" /></th>\n' +
                 '<th class="text-center col-xs-4">Level Range</th>\n' +
-                '<th class="text-center col-xs-4">Rewards</th>\n' +
+                '<th class="text-center col-xs-5">Rewards</th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
                 '<tbody id="bountiesList">\n' +
@@ -527,7 +530,7 @@ function updateBounties() {
       $('#bountybody').append(inventoryString);
 
       for (const job of jobs) {
-        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
+        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages}</td>` +
                     `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
                     `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`)}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
@@ -873,6 +876,15 @@ function updatePage() {
     }
   }
   updateWorldStateTime();
+  grid = $('.grid').packery({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+  });
+  grid.find('.grid-item').each((i, gridItem) => {
+    const draggie = new Draggabilly(gridItem);
+    grid.packery('bindDraggabillyEvents', draggie);
+  });
 }
 
 function refreshSelections() {
@@ -901,7 +913,7 @@ function getWorldState() {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
-      updatePage();
+      refreshSelections();
     });
     break;
   case 'xb1':
@@ -909,7 +921,7 @@ function getWorldState() {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
-      updatePage();
+      refreshSelections();
     });
     break;
   default:
@@ -917,7 +929,7 @@ function getWorldState() {
       worldState = JSON.parse(JSON.stringify(data));
       updateTime = (new Date()).getTime();
       updateDataDependencies();
-      updatePage();
+      refreshSelections();
     });
     break;
   }
@@ -1115,7 +1127,7 @@ $(() => {
       Cookies.set('news', status);
       break;
     case 'invasions_checkbox':
-      Cookies.set('invasion', status);
+      Cookies.set('invasions', status);
       break;
     case 'reset_checkbox':
       Cookies.set('reset', status);
@@ -1124,14 +1136,14 @@ $(() => {
     default:
       break;
     }
-    updatePage();
+    refreshSelections();
   });
 });
 
 // Set default component selections if there aren't any
 function setDefaultCookies() {
   // Set default platform to PC if there isn't one
-  if (Cookies.get('platform') === undefined) {
+  if (typeof Cookies.get('platform') === 'undefined') {
     Cookies.set('platform', 'PC');
   } else {
     switch (Cookies.get('platform').toLowerCase()) {

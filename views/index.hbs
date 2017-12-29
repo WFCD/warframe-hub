@@ -1,70 +1,76 @@
-<div class="container">
-	<div class="section">
-		<br><br>
-		<div class="row">
-			<div class="col-md-12" id="component-acolytes">
-				<h3 class="text-center">Current Acolytes</h3>
-				<ul class="list-group" id="acolyteList">
-					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
-						<span id="acolytetitle">Loading Acolytes...</span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-md-6" id="component-cetus" class="collapse">
-				<h3 class="text-center">Cetus Day/Night Cycle</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderless">
-						Currently it is:
-						<span id="cetuscycleindicator"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderless">
-						<span id="cetuscycletitle">Loading...</span>
-						<span class="pull-right" id="cetuscycletime"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderbottom">
-						<span id="cetustimezonetitle">Loading...</span>
-						<span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-md-6" id="component-earth">
-				<h3 class="text-center">Earth Day/Night Cycle</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderless">
-						Currently it is:
-						<span id="earthcycleindicator"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderless">
-						<span id="earthcycletitle">Loading...</span>
-						<span class="pull-right" id="earthcycletime"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderbottom">
-						<span id="earthtimezonetitle">Loading...</span>
-						<span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-md-6" id="component-bounties">
-				<h3 class="text-center">Ostron Bounty Cycle</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderless">
-						<span id="cetusbountytitle"></span>
-						<span class="pull-right" id="cetusbountytime"></span>
-					</li>
-
-          <ul class="list-group">
-  					<li class="list-group-item list-group-item-borderbottom text-center" id="bountybody">
-  						<span id="bountytitle">Loading Bounties...</span>
+<div class="container-fluid">
+	<div class="grid">
+      <div class="grid-sizer col-md-6"></div>
+			<div class="grid-item col-md-12">
+        <div class="grid-item-content" id="component-acolytes">
+  				<h3 class="text-center">Current Acolytes</h3>
+  				<ul class="list-group" id="acolyteList">
+  					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
+  						<span id="acolytetitle">Loading Acolytes...</span>
   					</li>
   				</ul>
-				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6">
-        <div id="component-alerts">
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-cetus">
+  				<h3 class="text-center">Cetus Day/Night Cycle</h3>
+  				<ul class="list-group">
+  					<li class="list-group-item list-group-item-borderless">
+  						Currently it is:
+  						<span id="cetuscycleindicator"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderless">
+  						<span id="cetuscycletitle">Loading...</span>
+  						<span class="pull-right" id="cetuscycletime"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderbottom">
+  						<span id="cetustimezonetitle">Loading...</span>
+  						<span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
+  					</li>
+  				</ul>
+        </div>
+			</div>
+
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-earth">
+  				<h3 class="text-center">Earth Day/Night Cycle</h3>
+  				<ul class="list-group">
+  					<li class="list-group-item list-group-item-borderless">
+  						Currently it is:
+  						<span id="earthcycleindicator"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderless">
+  						<span id="earthcycletitle">Loading...</span>
+  						<span class="pull-right" id="earthcycletime"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderbottom">
+  						<span id="earthtimezonetitle">Loading...</span>
+  						<span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
+  					</li>
+  				</ul>
+        </div>
+			</div>
+
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-bounties">
+  				<h3 class="text-center">Ostron Bounty Cycle</h3>
+  				<ul class="list-group">
+  					<li class="list-group-item list-group-item-borderless">
+  						<span id="cetusbountytitle"></span>
+  						<span class="pull-right" id="cetusbountytime"></span>
+  					</li>
+            <ul class="list-group">
+    					<li class="list-group-item list-group-item-borderbottom text-center" id="bountybody">
+    						<span id="bountytitle">Loading Bounties...</span>
+    					</li>
+    				</ul>
+  				</ul>
+        </div>
+			</div>
+
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-alerts">
   				<h3 class="text-center">Current Alerts</h3>
   				<ul class="list-group" id="alertList">
   					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
@@ -73,8 +79,8 @@
   				</ul>
         </div>
       </div>
-      <div class="col-md-6">
-        <div id="component-news">
+      <div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-news">
   				<h3 class="text-center">Orbiter News</h3>
   				<ul class="list-group" id="newsList">
   					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
@@ -85,81 +91,94 @@
         </div>
 			</div>
 
-			<div class="col-md-6" id="component-invasions">
-				<h3 class="text-center">Current Invasions</h3>
-				<ul class="list-group" id="invasionList">
-					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
-						<span id="invasiontitle">Loading Invasions...</span>
-					</li>
-				</ul>
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-invasions">
+  				<h3 class="text-center">Current Invasions</h3>
+  				<ul class="list-group" id="invasionList">
+  					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
+  						<span id="invasiontitle">Loading Invasions...</span>
+  					</li>
+  				</ul>
+        </div>
 			</div>
 
-      <div class="col-md-6" id="component-reset">
-        <h3 class="text-center">Raid / Daily Reward Timer</h3>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-borderbottom">
-            <span id="resettimertitle"></span>
-            <span class="pull-right" id="resettimertime"></span>
-          </li>
-        </ul>
+      <div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-reset">
+          <h3 class="text-center">Raid / Daily Reward Timer</h3>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-borderbottom">
+              <span id="resettimertitle"></span>
+              <span class="pull-right" id="resettimertime"></span>
+            </li>
+          </ul>
+        </div>
       </div>
 
-			<div class="col-md-6" id="component-sortie">
-				<h3 class="text-center">Sortie</h3>
-				<ul class="list-group">
-					<li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
-					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span>
-						<h4 id="sortieBoss"></h4></li>
-					<div id="sortieList"></div>
-					<li class="list-group-item list-group-item-borderbottom"></li>
-				</ul>
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-sortie">
+  				<h3 class="text-center">Sortie</h3>
+  				<ul class="list-group">
+  					<li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
+  					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span>
+  						<h4 id="sortieBoss"></h4></li>
+  					<div id="sortieList"></div>
+  					<li class="list-group-item list-group-item-borderbottom"></li>
+  				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6 void-fissures" id="component-fissures">
-				<h3 class="text-center">Void Fissures</h3>
-				<ul class="list-group" id="fissureList">
-					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
-						<span id="fissuretitle">Loading Fissures...</span>
-					</li>
-				</ul>
+			<div class="grid-item col-md-6 void-fissures">
+        <div class="grid-item-content" id="component-fissures">
+  				<h3 class="text-center">Void Fissures</h3>
+  				<ul class="list-group" id="fissureList">
+  					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
+  						<span id="fissuretitle">Loading Fissures...</span>
+  					</li>
+  				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6" id="component-baro">
-				<h3 class="text-center">Void Trader</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderless">
-						<span id="voidtradertitle">Loading...</span>
-						<span class="pull-right" id="voidtradertime"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderless">
-						<span id="voidtradertimezonetitle">Loading...</span>
-						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
-					</li>
-					<li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
-				</ul>
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-baro">
+  				<h3 class="text-center">Void Trader</h3>
+  				<ul class="list-group">
+  					<li class="list-group-item list-group-item-borderless">
+  						<span id="voidtradertitle">Loading...</span>
+  						<span class="pull-right" id="voidtradertime"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderless">
+  						<span id="voidtradertimezonetitle">Loading...</span>
+  						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
+  					</li>
+  					<li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
+  				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6" id="component-darvo">
-				<h3 class="text-center">Darvo Deals</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
-						<span id="darvotitle">Loading Darvo Deals...</span>
-					</li>
-				</ul>
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-darvo">
+  				<h3 class="text-center">Darvo Deals</h3>
+  				<ul class="list-group">
+  					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
+  						<span id="darvotitle">Loading Darvo Deals...</span>
+  					</li>
+  				</ul>
+        </div>
 			</div>
 
-			<div class="col-md-6" id="component-deals">
-				<h3 class="text-center">Sales and Featured Deals</h3>
-        <ul class="list-group">
-					<li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
-						<span id="dealstitle">Loading Deals...</span>
-					</li>
-				</ul>
+			<div class="grid-item col-md-6">
+        <div class="grid-item-content" id="component-deals">
+  				<h3 class="text-center">Sales and Featured Deals</h3>
+          <ul class="list-group">
+  					<li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
+  						<span id="dealstitle">Loading Deals...</span>
+  					</li>
+  				</ul>
+        </div>
 			</div>
 		</div>
 
 		{{> footer}}
-	</div>
 </div>
 <!-- /.container -->
 
@@ -171,6 +190,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Moment CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+<!-- packery CDN -->
+<script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
+<!-- draggabilly CDN -->
+<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
 
 <!-- required js for page -->
 <script src="js/main.js"></script>

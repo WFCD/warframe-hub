@@ -37,6 +37,15 @@
     color: #1A5072;
 }
 
+/* Tables stuff */
+.bountiesList tbody tr td {
+  font-size: 11px;
+}
+
+.bountiesList tbody tr td ul {
+  padding-left: 16px;
+}
+
 /* Margins for body */
 body {
     margin-top: 50px !important;
@@ -113,36 +122,45 @@ img {
 	height: 100%;
 }
 
-/* Platform picker style */
-.platform-picker ul li {
+/* Picker dropdown style */
+.component-selector ul li .checkbox {
+  margin-left: 30px;
+}
+
+.platform-picker ul li, .theme-picker ul li, .component-selector ul li {
     border-top: 1px solid #e5e5e5;
 }
 
-.platform-picker ul li:first-child {
+.platform-picker ul li:first-child,
+  .theme-picker ul li:first-child,
+  .component-selector ul li:first-child {
     border: 0;
 }
 
-.platform-picker ul a {
+.platform-picker ul a,
+  .theme-picker ul a,
+  .component-selector ul a {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
 }
 
-.platform-picker ul a span {
+.platform-picker ul a span,
+  .theme-picker ul a span,
+  .component-selector ul a span {
     flex-grow: 1;
     color: #1a5072;
 }
 
-.platform-picker ul a span {
-    flex-grow: 1;
-    color: #1a5072;
-}
-
-.platform-picker ul a:hover span {
+.platform-picker ul a:hover span,
+  .theme-picker ul a:hover span,
+  .component-selector ul a:hover span {
     color: inherit;
 }
 
-.platform-picker img {
+.platform-picker img,
+  .theme-picker img,
+  .component-selector img {
     height: 20px;
 }
 
@@ -152,15 +170,25 @@ img {
   filter: invert(100%); /*invert on main, not on night*/
 }
 
-.sortie #sortieBossInfo {
+.inv {
+  filter: invert(0%);
+}
+
+.cc-img {
+  height: 16px;
+  widght: 16px;
+  overflow: hidden;
+}
+
+#sortieBossInfo {
     display: flex;
 }
 
-.sortie #sortieBoss {
+#sortieBoss {
     margin: 10px 5px;
 }
 
-.sortie .faction-image {
+.faction-image {
     position: relative;
     top: 6px;
     width: 2em;
@@ -187,6 +215,11 @@ img {
     height: 15px;
     margin-bottom: 10px;
 }
+
+.progress-bar-grey {
+  background-color: #f5f5f5;
+}
+
 .winning-left {
   -moz-animation: progress-bar-stripes 3s linear infinite;
   -ms-animation: progress-bar-stripes 3s linear infinite;

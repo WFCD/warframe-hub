@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies */
+/* globals $, moment, Cookies, Draggabilly */
 
 let worldState;
 let updateTime;
@@ -18,12 +18,17 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
+// Packery
+let grid;
+
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
-  document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
-    Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+  if (document.getElementById('worldstateinfo')) {
+    document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
+      Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+  }
 }
 
 // Helper function to display duration in human readable format, short version
@@ -320,6 +325,106 @@ function updateDarvoDeals() {
   }
 }
 
+const cleanupDeals = dailyDeals => {
+  if (platformSwapped && document.getElementsByClassName('dealsInventory')) {
+    $('.dealsInventory').remove();
+  } else if ($('.dealsInventory').attr('id') !== dailyDeals[0].id) {
+    $('.dealsInventory').remove();
+  }
+};
+
+function updateDeals() {
+  const {flashSales} = worldState;
+  if (flashSales.length !== 0) {
+    $('#dealstitle').hide();
+    if (document.getElementById(flashSales[0].id) === null) {
+      cleanupDeals(flashSales);
+
+      const inventoryString = `<table class="table dealsInventory" style="table-layout: fixed" id="${
+        flashSales[0].id}">\n` +
+                '<thead>\n' +
+                '<tr>\n' +
+                '<th class="text-center col-xs-5">Item</th>\n' +
+                '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
+                '<th class="text-center col-xs-4"></th>\n' +
+                '</tr>\n' +
+                '</thead>\n' +
+                '<tbody id="dealsInventory">\n' +
+                '</tbody>\n' +
+                '</table>';
+      $('#dealsbody').append(inventoryString);
+
+      for (const currentItem of flashSales) {
+        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.premiumOverride}</td>` +
+                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
+        $('#dealsInventory').append(itemString);
+      }
+    }
+  } else if (document.getElementsByClassName('dealsInventory')) {
+    $('.dealsInventory').remove();
+    document.getElementById('dealstitle').innerText = 'No current deals :(';
+    $('#dealstitle').show();
+  }
+}
+
+function updateAcolytes() {
+  const {persistentEnemies} = worldState;
+  if (persistentEnemies.length !== 0) {
+    $('#acolytetitle').hide();
+    if (platformSwapped && document.getElementById('alertList')) {
+      $('#acolyteList').children().not('#acolytebody').remove();
+    }
+
+    if (document.getElementById('acolyteList').children.length >= 1) {
+      for (const acolyte of persistentEnemies) {
+        if ($(`#${acolyte.id}`).length === 0) {
+          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
+          acolyteRow += `<b>${acolyte.agentType}</b>`;
+          acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
+                        ` | <b>Level: </b>${acolyte.rank}` +
+                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY')}</span>`;
+
+          const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
+          const progressBar = $(`#${acolyte.id}_progress`).children()[1];
+
+          if (acolyte.count > 0) {
+            $(remainingBar).addClass('winning-right');
+            $(progressBar).removeClass('winning-left');
+          } else {
+            $(remainingBar).removeClass('winning-right');
+            $(progressBar).addClass('winning-left');
+          }
+
+          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
+          const progressPercent = 100 - remainingPercent;
+
+          const remainingLabel = `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}% Remaining</span>`;
+
+          acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
+            `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
+            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
+            `${remainingPercent > 0 ? remainingLabel : ''}</div>` +
+            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%; height: 20px; font-size: 12px; line-height:16px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">` +
+            `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
+            '</div>';
+
+          acolyteRow += '</li>';
+          $('#acolytebody').before(acolyteRow);
+        } else {
+          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+          $(`#${acolyte.id}-health`).html(`${(acolyte.healthPercent * 100).toFixed(2)}%`);
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY'));
+        }
+      }
+    }
+  } else if (document.getElementById('acolyteList')) {
+    $('#acolyteList').children().not('#acolytebody').remove();
+    document.getElementById('acolytetitle').innerText = 'No active acolytes :(';
+    $('#alerttitle').show();
+  }
+}
+
 function updateAlerts() {
   const {alerts} = worldState;
   if (alerts.length !== 0) {
@@ -373,7 +478,11 @@ function updateAlerts() {
 
         // Check if archwing is required for mission
         if (alert.mission.archwingRequired) {
-          alertRow += '<span class="glyphicon glyphicon-plane"></span>';
+          alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
+        }
+        // Check if mission is nightmare
+        if (alert.mission.nightmare) {
+          alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
         }
         alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
         alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
@@ -385,6 +494,52 @@ function updateAlerts() {
     $('#alertList').children().not('#alertbody').remove();
     document.getElementById('alerttitle').innerText = 'No active alerts :(';
     $('#alerttitle').show();
+  }
+}
+
+const cleanupBounties = dailyDeals => {
+  if (platformSwapped && document.getElementsByClassName('bountiesList')) {
+    $('.bountiesList').remove();
+  } else if ($('.bountiesList').attr('id') !== dailyDeals[0].id) {
+    $('.bountiesList').remove();
+  }
+};
+
+function updateBounties() {
+  const {syndicateMissions} = worldState;
+  const ostronMissions = syndicateMissions.filter(syndicate => syndicate.syndicate === 'Ostrons')[0];
+  const jobs = ostronMissions ? ostronMissions.jobs : [];
+  if (jobs.length !== 0) {
+    $('#bountytitle').hide();
+    if (document.getElementById(jobs[0].id) === null) {
+      cleanupBounties(jobs);
+
+      const inventoryString = `<table class="table bountiesList" style="table-layout: fixed" id="${
+        jobs[0].id}">\n` +
+                '<thead>\n' +
+                '<tr>\n' +
+                '<th class="text-center col-xs-4">Type</th>\n' +
+                '<th class="text-center col-xs-3"><img style="width: 20px;height: 20px;" src="img/standing.png" /></th>\n' +
+                '<th class="text-center col-xs-4">Level Range</th>\n' +
+                '<th class="text-center col-xs-5">Rewards</th>\n' +
+                '</tr>\n' +
+                '</thead>\n' +
+                '<tbody id="bountiesList">\n' +
+                '</tbody>\n' +
+                '</table>';
+      $('#bountybody').append(inventoryString);
+
+      for (const job of jobs) {
+        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
+                    `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
+                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
+        $('#bountiesList').append(itemString);
+      }
+    }
+  } else if (document.getElementsByClassName('bountiesList')) {
+    $('.bountiesList').remove();
+    document.getElementById('dealstitle').innerText = 'No current deals :(';
+    $('#bountytitle').show();
   }
 }
 
@@ -644,57 +799,138 @@ function updateInvasions() {
 }
 
 function updatePage() {
-  updateEarthCycle();
-  updateCetusCycle();
-  updateVoidTrader();
-  updateVoidTraderInventory();
-  updateDarvoDeals();
-  updateAlerts();
-  updateSortie();
-  updateFissure();
-  updateNews();
-  updateInvasions();
-  updateCetusBountyTimer();
+  if (worldState) {
+    if (Cookies.get('earth') === 'true' || ($('#earth_checkbox') && $('#earth_checkbox').prop('checked'))) {
+      updateEarthCycle();
+      $('#component-earth').show();
+    } else {
+      $('#component-earth').hide();
+    }
+    if (Cookies.get('cetus') === 'true' || ($('#cetus_checkbox') && $('#cetus_checkbox').prop('checked'))) {
+      updateCetusCycle();
+      $('#component-cetus').show();
+    } else {
+      $('#component-cetus').hide();
+    }
+    if (Cookies.get('voidtrader') === 'true' || ($('#voidtrader_checkbox') && $('#voidtrader_checkbox').prop('checked'))) {
+      updateVoidTrader();
+      updateVoidTraderInventory();
+      $('#component-baro').show();
+    } else {
+      $('#component-baro').hide();
+    }
+    if (Cookies.get('darvo') === 'true' || ($('#darvo_checkbox') && $('#darvo_checkbox').prop('checked'))) {
+      updateDarvoDeals();
+      $('#component-darvo').show();
+    } else {
+      $('#component-darvo').hide();
+    }
+    if (Cookies.get('sales') === 'true' || ($('#sales_checkbox') && $('#sales_checkbox').prop('checked'))) {
+      updateDeals();
+      $('#component-deals').show();
+    } else {
+      $('#component-deals').hide();
+    }
+    if (Cookies.get('acolyte') === 'true' || ($('#acolyte_checkbox') && $('#acolyte_checkbox').prop('checked'))) {
+      updateAcolytes();
+      $('#component-acolytes').show();
+    } else {
+      $('#component-acolytes').hide();
+    }
+    if (Cookies.get('alerts') === 'true' || ($('#alerts_checkbox') && $('#alerts_checkbox').prop('checked'))) {
+      updateAlerts();
+      $('#component-alerts').show();
+    } else {
+      $('#component-alerts').hide();
+    }
+    if (Cookies.get('bounties') === 'true' || ($('#bounties_checkbox') && $('#bounties_checkbox').prop('checked'))) {
+      updateBounties();
+      updateCetusBountyTimer();
+      $('#component-bounties').show();
+    } else {
+      $('#component-bounties').hide();
+    }
+    if (Cookies.get('sortie') === 'true' || ($('#sortie_checkbox') && $('#sortie_checkbox').prop('checked'))) {
+      updateSortie();
+      $('#component-sortie').show();
+    } else {
+      $('#component-sortie').hide();
+    }
+    if (Cookies.get('fissures') === 'true' || ($('#fissures_checkbox') && $('#fissures_checkbox').prop('checked'))) {
+      updateFissure();
+      $('#component-fissures').show();
+    } else {
+      $('#component-fissures').hide();
+    }
+    if (Cookies.get('news') === 'true' || ($('#news_checkbox') && $('#news_checkbox').prop('checked'))) {
+      updateNews();
+      $('#component-news').show();
+    } else {
+      $('#component-news').hide();
+    }
+    if (Cookies.get('invasions') === 'true' || ($('#invasions_checkbox') && $('#invasions_checkbox').prop('checked'))) {
+      updateInvasions();
+      $('#component-invasions').show();
+    } else {
+      $('#component-invasions').hide();
+    }
+  }
   updateWorldStateTime();
+  grid = $('.grid').packery({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+  });
+  grid.find('.grid-item').each((i, gridItem) => {
+    const draggie = new Draggabilly(gridItem);
+    grid.packery('bindDraggabillyEvents', draggie);
+  });
+}
+
+function refreshSelections() {
+  $('#earth_checkbox').prop('checked', Cookies.get('earth') === 'true');
+  $('#cetus_checkbox').prop('checked', Cookies.get('cetus') === 'true');
+  $('#voidtrader_checkbox').prop('checked', Cookies.get('voidtrader') === 'true');
+  $('#darvo_checkbox').prop('checked', Cookies.get('darvo') === 'true');
+  $('#sales_checkbox').prop('checked', Cookies.get('sales') === 'true');
+  $('#acolyte_checkbox').prop('checked', Cookies.get('acolytes') === 'true');
+  $('#alerts_checkbox').prop('checked', Cookies.get('alerts') === 'true');
+  $('#bounties_checkbox').prop('checked', Cookies.get('bounties') === 'true');
+  $('#sortie_checkbox').prop('checked', Cookies.get('sortie') === 'true');
+  $('#fissures_checkbox').prop('checked', Cookies.get('fissures') === 'true');
+  $('#news_checkbox').prop('checked', Cookies.get('news') === 'true');
+  $('#invasions_checkbox').prop('checked', Cookies.get('invasions') === 'true');
+  $('#reset_checkbox').prop('checked', Cookies.get('reset') === 'true');
+  updatePage();
 }
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-  switch (Cookies.get('platform').toLowerCase()) {
-  case 'ps4':
-    $.getJSON('https://ws.warframestat.us/ps4', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      updatePage();
-    });
-    break;
-  case 'xb1':
-    $.getJSON('https://ws.warframestat.us/xb1', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      updatePage();
-    });
-    break;
-  default:
-    $.getJSON('https://ws.warframestat.us/pc', data => {
-      worldState = JSON.parse(JSON.stringify(data));
-      updateTime = (new Date()).getTime();
-      updateDataDependencies();
-      updatePage();
-    });
-    break;
+  refreshSelections();
+  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform') || 'pc'}`, data => {
+    worldState = JSON.parse(JSON.stringify(data));
+    updateTime = (new Date()).getTime();
+    updateDataDependencies();
+    refreshSelections();
+  });
+  if (typeof Cookies.get('platform') === 'undefined') {
+    Cookies.set('platform', 'pc');
   }
 }
 
 function updateResetTime() {
-  // We want unix seconds, not unix millis
-  const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
-  $('#resettimertitle').html('Time until new server day:');
-  const timeBadge = $('#resettimertime');
-  timeBadge.attr('data-endtime', nextReset);
-  timeBadge.addClass('label timer');
+  // This should not be called again unless the timer expires
+  if (Cookies.get('reset') === 'true' || ($('#resets_checkbox') && $('#reset_checkbox').prop('checked'))) {
+    // We want unix seconds, not unix millis
+    const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
+    $('#resettimertitle').html('Time until new server day:');
+    const timeBadge = $('#resettimertime');
+    timeBadge.attr('data-endtime', nextReset);
+    timeBadge.addClass('label timer');
+    $('#component-reset').show();
+  } else {
+    $('#component-reset').hide();
+  }
 }
 
 function removeTimeBadgeColor(element) {
@@ -749,7 +985,8 @@ function updateTimeBadges() {
         break;
       default:
         // If it is a alert timer, we can safely remove
-        if (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer')) {
+        if (currentLabel.attr('id')
+          && (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer'))) {
           currentLabel.parent()[0].remove();
         }
       }
@@ -787,13 +1024,26 @@ function updatePlatformSwitch() {
   platformSwapped = false;
 }
 
+function handleClickForOpen() {
+  $(this).parent().toggleClass('open');
+}
+
+function handleClickOnBody(e) {
+  if (!$('#component-selection').is(e.target)
+        && $('#component-selection').has(e.target).length === 0
+        && $('.open').has(e.target).length === 0
+  ) {
+    $('#component-selector').removeClass('open');
+  }
+}
+
 // Platform switcher anonymous functions
 $(() => {
   $('#platform_pc').click(() => {
     $('#platform_ps4').removeClass('list-group-item-success');
     $('#platform_xb1').removeClass('list-group-item-success');
     $('#platform_pc').addClass('list-group-item-success');
-    Cookies.set('platform', 'PC');
+    Cookies.set('platform', 'pc');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
@@ -804,7 +1054,7 @@ $(() => {
     $('#platform_pc').removeClass('list-group-item-success');
     $('#platform_xb1').removeClass('list-group-item-success');
     $('#platform_ps4').addClass('list-group-item-success');
-    Cookies.set('platform', 'PS4');
+    Cookies.set('platform', 'ps4');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
@@ -815,32 +1065,130 @@ $(() => {
     $('#platform_ps4').removeClass('list-group-item-success');
     $('#platform_pc').removeClass('list-group-item-success');
     $('#platform_xb1').addClass('list-group-item-success');
-    Cookies.set('platform', 'XB1');
+    Cookies.set('platform', 'xb1');
     platformSwapped = true;
     getWorldState();
     setTimeout(updatePlatformSwitch, 30000);
   });
 });
-// Set default platform to PC if there isn't one
-if (Cookies.get('platform') === undefined) {
-  Cookies.set('platform', 'PC');
-} else {
-  switch (Cookies.get('platform').toLowerCase()) {
-  case 'ps4':
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_ps4').addClass('list-group-item-success');
-    break;
-  case 'xb1':
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').addClass('list-group-item-success');
-    break;
-  default:
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_pc').addClass('list-group-item-success');
-    break;
+
+$(() => {
+  $('.component-check').click(e => {
+    const status = $(`#${e.target.id}`).prop('checked') ? 'true' : 'false';
+    switch (e.target.id) {
+    case 'earth_checkbox':
+      Cookies.set('earth', status);
+      break;
+    case 'cetus_checkbox':
+      Cookies.set('cetus', status);
+      break;
+    case 'voidtrader_checkbox':
+      Cookies.set('voidtrader', status);
+      break;
+    case 'darvo_checkbox':
+      Cookies.set('darvo', status);
+      break;
+    case 'sales_checkbox':
+      Cookies.set('sales', status);
+      break;
+    case 'acolyte_checkbox':
+      Cookies.set('acolytes', status);
+      break;
+    case 'alerts_checkbox':
+      Cookies.set('alerts', status);
+      break;
+    case 'bounties_checkbox':
+      Cookies.set('bounties', status);
+      break;
+    case 'sortie_checkbox':
+      Cookies.set('sortie', status);
+      break;
+    case 'fissures_checkbox':
+      Cookies.set('fissures', status);
+      break;
+    case 'news_checkbox':
+      Cookies.set('news', status);
+      break;
+    case 'invasions_checkbox':
+      Cookies.set('invasions', status);
+      break;
+    case 'reset_checkbox':
+      Cookies.set('reset', status);
+      updateResetTime();
+      break;
+    default:
+      break;
+    }
+    refreshSelections();
+  });
+});
+
+// Set default component selections if there aren't any
+function setDefaultCookies() {
+  // Set default platform to PC if there isn't one
+  if (typeof Cookies.get('platform') === 'undefined') {
+    Cookies.set('platform', 'pc');
+  } else {
+    switch (Cookies.get('platform')) {
+    case 'ps4':
+      $('#platform_pc').removeClass('list-group-item-success');
+      $('#platform_xb1').removeClass('list-group-item-success');
+      $('#platform_ps4').addClass('list-group-item-success');
+      break;
+    case 'xb1':
+      $('#platform_ps4').removeClass('list-group-item-success');
+      $('#platform_pc').removeClass('list-group-item-success');
+      $('#platform_xb1').addClass('list-group-item-success');
+      break;
+    default:
+      $('#platform_ps4').removeClass('list-group-item-success');
+      $('#platform_xb1').removeClass('list-group-item-success');
+      $('#platform_pc').addClass('list-group-item-success');
+      break;
+    }
+  }
+
+  if (typeof Cookies.get('earth') === 'undefined') {
+    Cookies.set('earth', 'true');
+  }
+  if (typeof Cookies.get('cetus') === 'undefined') {
+    Cookies.set('cetus', 'true');
+  }
+  if (typeof Cookies.get('voidtrader') === 'undefined') {
+    Cookies.set('voidtrader', 'true');
+  }
+  if (typeof Cookies.get('darvo') === 'undefined') {
+    Cookies.set('darvo', 'true');
+  }
+  if (typeof Cookies.get('sales') === 'undefined') {
+    Cookies.set('sales', 'false');
+  }
+  if (typeof Cookies.get('acolytes') === 'undefined') {
+    Cookies.set('acolytes', 'true');
+  }
+  if (typeof Cookies.get('alerts') === 'undefined') {
+    Cookies.set('alerts', 'true');
+  }
+  if (typeof Cookies.get('bounties') === 'undefined') {
+    Cookies.set('bounties', 'true');
+  }
+  if (typeof Cookies.get('sortie') === 'undefined') {
+    Cookies.set('sortie', 'true');
+  }
+  if (typeof Cookies.get('sortie') === 'undefined') {
+    Cookies.set('sortie', 'true');
+  }
+  if (typeof Cookies.get('fissures') === 'undefined') {
+    Cookies.set('fissures', 'true');
+  }
+  if (typeof Cookies.get('news') === 'undefined') {
+    Cookies.set('news', 'true');
+  }
+  if (typeof Cookies.get('invasions') === 'undefined') {
+    Cookies.set('invasions', 'true');
+  }
+  if (typeof Cookies.get('reset') === 'undefined') {
+    Cookies.set('reset', 'true');
   }
 }
 
@@ -866,9 +1214,13 @@ moment.updateLocale('en', {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 60000);
+  setTimeout(update, 30000);
 }
 
 update();
+setDefaultCookies();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
+
+$('#component-selection').on('click', handleClickForOpen);
+$('body').on('click', handleClickOnBody);

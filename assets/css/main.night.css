@@ -141,7 +141,7 @@ img {
 }
 
 /* Picker dropdown style */
-.component-selector ul li div.checkbox {
+.component-selector ul li .checkbox {
   margin-left: 30px;
 }
 

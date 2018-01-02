@@ -21,6 +21,7 @@ let earthCurrentIndicatorColor;
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
 const defaultLayout = [
+  ['acolytes'],
   ['cetus'], ['earth'],
   ['alerts', 'news'], ['invasions'],
   ['sortie', 'reset'], ['fissures'],

@@ -22,11 +22,12 @@ const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/V
 
 const defaultLayout = [
   ['acolytes'],
-  ['cetus'], ['earth'],
-  ['alerts', 'news'], ['invasions'],
-  ['sortie', 'reset'], ['fissures'],
-  ['bounties'], ['baro', 'darvo'],
-  ['deals'], [],
+  ['cetus', 'alerts', 'news', 'sortie', 'reset', 'bounties', 'deals'],
+  ['earth', 'invasions', 'fissures', 'baro', 'darvo'],
+  [], [],
+  [], [],
+  [], [],
+  [], [],
 ];
 
 // Update worldstate timestamp

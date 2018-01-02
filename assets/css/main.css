@@ -249,13 +249,13 @@ body.layout-editing .droppable {
 }
 
 body.layout-editing .droppable:nth-of-type(3n) {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 body.layout-editing .droppable:nth-of-type(3n+1) {
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgba(0, 0, 0, 0.10);
 }
 
 body.layout-editing .droppable:nth-of-type(3n+2) {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.15);
 }

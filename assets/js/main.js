@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, Draggabilly */
+/* globals $, moment, Cookies, dragula */
 
 let worldState;
 let updateTime;
@@ -18,10 +18,17 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
-// Packery
-let grid;
-
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
+
+const defaultLayout = [
+  ['acolytes'],
+  ['cetus', 'alerts', 'news', 'sortie', 'reset', 'bounties', 'deals'],
+  ['earth', 'invasions', 'fissures', 'baro', 'darvo'],
+  [], [],
+  [], [],
+  [], [],
+  [], [],
+];
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
@@ -876,15 +883,6 @@ function updatePage() {
     }
   }
   updateWorldStateTime();
-  grid = $('.grid').packery({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-  });
-  grid.find('.grid-item').each((i, gridItem) => {
-    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
-    grid.packery('bindDraggabillyEvents', draggie);
-  });
 }
 
 function refreshSelections() {
@@ -1216,6 +1214,40 @@ function update() {
   getWorldState();
   setTimeout(update, 30000);
 }
+
+// Load saved layout and initialize Dragula
+$(() => {
+  let layout = Cookies.getJSON('layout');
+  if (typeof layout !== 'object') {
+    layout = defaultLayout;
+  }
+  $('.droppable').each((i, columnEl) => {
+    layout[i].forEach(id => {
+      columnEl.appendChild(document.querySelector(`#component-${id}`));
+    });
+  });
+
+  const drake = dragula($('.droppable').toArray(), {
+    moves(el, source, handle) {
+      return handle.nodeName.toUpperCase() === 'H3';
+    },
+  });
+  drake.on('drag', () => $(document.body).addClass('layout-editing'));
+  // Save layout on drop/cancel
+  drake.on('dragend', () => {
+    $(document.body).removeClass('layout-editing');
+
+    const newLayout = [];
+    $('.droppable').each((i, columnEl) => {
+      const column = [];
+      $(columnEl).children().each((j, component) => {
+        column.push(component.id.replace('component-', ''));
+      });
+      newLayout.push(column);
+    });
+    Cookies.set('layout', newLayout);
+  });
+});
 
 update();
 setDefaultCookies();

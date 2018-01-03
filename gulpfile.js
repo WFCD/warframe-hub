@@ -31,6 +31,7 @@ gulp.task('clean-css', () => {
   del([
     'public/css/main.css',
     'public/css/main.night.css',
+    'public/css/main.retro.css',
   ]);
 });
 

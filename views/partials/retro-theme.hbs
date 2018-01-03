@@ -1,19 +1,19 @@
 <script>
 	$(function() {
-		$('#nightmode').click(function() {
+		$('#retro').click(function() {
 			var theme = $('#mode');
 			var themecustom = $('#mode-custom');
-			if (theme.hasClass('night')) {
+			if (theme.hasClass('retro')) {
 				theme.attr('href', 'css/bootstrap-default.min.css');
 				themecustom.attr('href', 'css/main.css');
 				theme.removeClass();
 				Cookies.set('mode', 'day');
 			} else {
-				theme.attr('href', 'css/bootstrap-night.min.css');
-				themecustom.attr('href', 'css/main.night.css');
+				theme.attr('href', 'css/bootstrap-default.min.css');
+				themecustom.attr('href', 'css/main.retro.css');
 				theme.removeClass();
-				theme.addClass('night');
-				Cookies.set('mode', 'night');
+				theme.addClass('retro');
+				Cookies.set('mode', 'retro');
 			}
 		});
 	});

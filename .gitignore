@@ -33,7 +33,6 @@ npm-debug.log
 .idea
 
 # Production css and js files
-public/css/main.css
-public/css/main.night.css
+public/css/*
 public/js/main.js
 public/js/map.js

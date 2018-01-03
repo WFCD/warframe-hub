@@ -239,7 +239,7 @@ button.close, .close:hover, .close:focus {
 /* Green */
 
 .label-success {
-	color: #0a0 !important;
+  color: #0a0 !important;
   text-shadow: 0px 0px 15px #ff9c00 !important;
 }
 
@@ -261,7 +261,7 @@ button.close, .close:hover, .close:focus {
 
 .label {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #009dff!important;
+  text-shadow: 0px 0px 15px #009dff;
 	background: none !important;
 	font-weight: normal !important;
 	font-family: "Hack";

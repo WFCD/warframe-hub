@@ -219,7 +219,7 @@ button.close, .close:hover, .close:focus {
 
 .orange:before {
 	color: #0a0;
-	content: "  ";
+	content: "☀  ";
 }
 
 /* Night */
@@ -233,7 +233,7 @@ button.close, .close:hover, .close:focus {
 
 .darkblue:before {
 	color: #009dff;
-	content: "  ";
+	content: "🌙  ";
 }
 
 /* Green */

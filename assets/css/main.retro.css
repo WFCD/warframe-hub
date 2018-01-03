@@ -268,6 +268,48 @@ button.close, .close:hover, .close:focus {
   font-size: 1.1em!important;
 }
 
+/* Picker dropdown style */
+.component-selector ul li .checkbox {
+  margin-left: 30px;
+}
+
+.platform-picker ul li, .theme-picker ul li, .component-selector ul li {
+    border-top: 1px solid #040;
+}
+
+.platform-picker ul li:first-child,
+  .theme-picker ul li:first-child,
+  .component-selector ul li:first-child {
+    border: 0;
+}
+
+.platform-picker ul a,
+  .theme-picker ul a,
+  .component-selector ul a {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.platform-picker ul a span,
+  .theme-picker ul a span,
+  .component-selector ul a span {
+    flex-grow: 1;
+    color: #0f0;
+}
+
+.platform-picker ul a:hover span,
+  .theme-picker ul a:hover span,
+  .component-selector ul a:hover span {
+    color: inherit;
+}
+
+.platform-picker img,
+  .theme-picker img,
+  .component-selector img {
+    height: 20px;
+}
+
 
 /* Archwing/Nightmare/Sortie Images */
 .faction-image {

@@ -368,3 +368,13 @@ button.close, .close:hover, .close:focus {
 *::-webkit-scrollbar-corner, *::-webkit-scrollbar-track {
 	background: #000 ! important;
 }
+
+
+/* Bounty rewards */
+/* Tables stuff */
+.bountiesList tbody tr td {
+  font-size: 11px;
+}
+.bountiesList tbody tr td ul {
+  padding-left: 16px;
+}

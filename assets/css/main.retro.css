@@ -240,12 +240,7 @@ button.close, .close:hover, .close:focus {
 
 .label-success {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #00ff00 !important;
-	background: none !important;
-	font-weight: normal !important;
-	font-family: "Hack";
   text-shadow: 0px 0px 15px #ff9c00 !important;
-  background:none !important;
 }
 
 /* Orange */
@@ -253,9 +248,6 @@ button.close, .close:hover, .close:focus {
 .label-warning {
 	color: #0a0 !important;
   text-shadow: 0px 0px 15px #ff9c00 !important;
-	background: none !important;
-	font-weight: normal !important;
-	font-family: "Hack";
 }
 
 /* Red */
@@ -263,19 +255,17 @@ button.close, .close:hover, .close:focus {
 .label-danger {
 	color: #0a0 !important;
   text-shadow: 0px 0px 15px #ff1900 !important;
-	background: none !important;
-	font-weight: normal !important;
-	font-family: "Hack";
 }
 
 /* Blue - Standard, no warnings */
 
 .label {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #009dff;
+  text-shadow: 0px 0px 15px #009dff!important;
 	background: none !important;
 	font-weight: normal !important;
 	font-family: "Hack";
+  font-size: 1.1em!important;
 }
 
 

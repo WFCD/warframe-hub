@@ -690,109 +690,117 @@ function getProgressBarColor(faction) {
   }
 }
 
-function updateInvasions() {
-  const {invasions} = worldState;
-  let numInvasions = 0;
+const COMPONENTS = {
+  invasions: {
+    id: 'invasions',
+    worldStateKey: 'invasions',
+    parse(data) {
+      let numInvasions = 0;
 
-  if (invasions.length !== 0) {
-    document.getElementById('invasiontitle').innerText = '*End time is estimated';
+      if (platformSwapped) {
+        // this should happen when changing platforms, not here
+        // I just want to change as little code as possible for now
+        this.cleanup();
+      }
 
-    if (platformSwapped && document.getElementById('invasionList')) {
-      $('#invasionList').children().not('#invasionbody').remove();
-    }
-
-    invasions.forEach(invasion => {
-      if ($(`#${invasion.id}`).length !== 0) {
-        if (invasion.completed) {
-          $(`#${invasion.id}`).remove();
-        } else {
-          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})`);
-          const attackPercent =
-                Math.floor(((invasion.count + invasion.requiredRuns)
-                 / (invasion.requiredRuns * 2)) * 100);
-          const defendPercent = 100 - attackPercent;
-
-          const attackBar = $(`#${invasion.id}_progress`).children()[0];
-          const defendBar = $(`#${invasion.id}_progress`).children()[1];
-
-          if (invasion.count > 0) {
-            $(attackBar).addClass('winning-right');
-            $(defendBar).removeClass('winning-left');
+      data.forEach(invasion => {
+        const invasionElement = $(`#${invasion.id}`);
+        if (invasionElement.length !== 0) {
+          if (invasion.completed) {
+            invasionElement.remove();
           } else {
-            $(attackBar).removeClass('winning-right');
-            $(defendBar).addClass('winning-left');
+            this.update(invasion, invasionElement);
+            numInvasions += 1;
           }
-
-          $(attackBar).css('width', `${attackPercent}%`).css('aria-valuenow', `${attackPercent}%`);
-          $(defendBar).css('width', `${defendPercent}%`).css('aria-valuenow', `${defendPercent}%`);
+        } else if (!invasion.completed) {
+          this.add(invasion);
           numInvasions += 1;
         }
-      } else if (!invasion.completed) {
-        let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
-        invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})*</div>`;
+      });
 
-        invasionRow += '<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px">';
-        if (invasion.attackerReward.items.length !== 0) {
-          for (const item of invasion.attackerReward.items) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
-          }
-        }
-        if (invasion.attackerReward.countedItems.length !== 0) {
-          for (const countedItem of invasion.attackerReward.countedItems) {
-            // Include count only if more than 1
-            if (countedItem.count > 1) {
-              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
-            } else {
-              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.type}</span>`;
-            }
-          }
-        }
-        if (invasion.defenderReward.items.length !== 0) {
-          for (const item of invasion.defenderReward.items) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${item}</span>`;
-          }
-        }
-        if (invasion.defenderReward.countedItems.length !== 0) {
-          for (const countedItem of invasion.defenderReward.countedItems) {
-            // Include count only if more than 1
-            if (countedItem.count > 1) {
-              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
-            } else {
-              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.type}</span>`;
-            }
-          }
-        }
-        invasionRow += '</div>';
-
-        invasionRow += `<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
-        const attackPercent =
-              Math.floor(((invasion.count + invasion.requiredRuns)
-               / (invasion.requiredRuns * 2)) * 100);
-        const defendPercent = 100 - attackPercent;
-        let attackWinning = '';
-        let defendWinning = '';
-
-        if (invasion.count > 0) {
-          attackWinning = 'winning-right';
-        } else {
-          defendWinning = 'winning-left';
-        }
-
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left faction-invasion-img" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right faction-invasion-img" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
-        invasionRow += '</div></div></li>';
-
-        $('#invasionbody').before(invasionRow);
-        numInvasions += 1;
+      if (numInvasions > 0) {
+        $('#invasiontitle').html('*End time is estimated');
+      } else {
+        $('#invasiontitle').html('No active invasions :(');
       }
-    });
+    },
+    add(invasion) {
+      const invasionElement = cloneTemplate(this.id);
+      invasionElement.attr('id', invasion.id);
 
-    if (numInvasions === 0) {
-      document.getElementById('invasiontitle').innerText = 'No active invasions :(';
-    }
-  } else {
-    document.getElementById('invasiontitle').innerText = 'No active invasions :(';
-  }
+      invasionElement.find('.node').html(invasion.node);
+      invasionElement.find('.desc').html(invasion.desc);
+
+      const rewardsElement = invasionElement.find('.rewards');
+      ['attack', 'defend'].forEach(side => {
+        const factionName = invasion[`${side}ingFaction`];
+        const labelColor = getLabelColor(factionName);
+        const literalSide = (side === 'attack' ? 'left' : 'right');
+        const rewards = invasion[`${side}erReward`];
+
+        for (const countedItem of rewards.countedItems) {
+          const count = countedItem.count > 1 ? `${countedItem.count} ` : '';
+          rewards.items.push(count + countedItem.type);
+        }
+        for (const item of rewards.items) {
+          cloneLabel(literalSide, labelColor, item)
+            .appendTo(rewardsElement);
+        }
+
+        invasionElement
+          .find(`.${side}`).addClass(getProgressBarColor(factionName))
+          .find('img').attr('src', getFactionPicture(factionName));
+      });
+
+      this.update(invasion, invasionElement);
+
+      $('#invasionbody').before(invasionElement);
+    },
+    update(invasion, invasionElement) {
+      const attackPercent = Math.floor(invasion.vsInfestation
+        ? invasion.completion / 2
+        : invasion.completion);
+      const defendPercent = 100 - attackPercent;
+
+      const attackBar = invasionElement.find('.attack');
+      const defendBar = invasionElement.find('.defend');
+
+      if (invasion.count > 0) {
+        attackBar.addClass('winning-right');
+        defendBar.removeClass('winning-left');
+      } else {
+        attackBar.removeClass('winning-right');
+        defendBar.addClass('winning-left');
+      }
+
+      attackBar.css('width', `${attackPercent}%`)
+        .attr('aria-valuenow', `${attackPercent}%`);
+      defendBar.css('width', `${defendPercent}%`)
+        .attr('aria-valuenow', `${defendPercent}%`);
+
+      invasionElement.find('.eta').html(invasion.eta);
+    },
+    cleanup() {
+      $('#invasionList').children().not('#invasionbody').remove();
+    },
+  },
+};
+
+// returns cloned template as jQuery object
+function cloneTemplate(id) {
+  return $(`#${id}-template`).clone().removeAttr('id');
+}
+
+function cloneLabel(pullDirection, colorClass, text) {
+  const label = cloneTemplate('label').html(text);
+  label.addClass(`pull-${pullDirection}`);
+  label.addClass(colorClass);
+  return label;
+}
+
+function parseData(componentId, worldStateData) {
+  const component = COMPONENTS[componentId];
+  component.parse.call(component, worldStateData[component.worldStateKey]);
 }
 
 function updatePage() {
@@ -810,7 +818,7 @@ function updatePage() {
     updateSortie();
     updateFissure();
     updateNews();
-    updateInvasions();
+    parseData('invasions', worldState);
     updateWorldStateTime();
     updateGrid();
   }

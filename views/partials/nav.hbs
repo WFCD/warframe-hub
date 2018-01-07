@@ -12,7 +12,7 @@
 			<ul class="nav navbar-nav">
 				<li><a name="Timers" href="./timer">Timers</a></li>
 				<li class="dropdown">
-					<a name="Plains Navigation" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plains <span class="caret"></span></a>
+					<a name="Plains Navigation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plains <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a name="Map" href="./map">Map</a></li>
 						<li><a name="Fishing Data" href="./fish">Fishing Data</a></li>
@@ -20,7 +20,7 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a name="Projects Navigation" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
+					<a name="Projects Navigation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a name="Drops" rel="noopener" target="_blank" href="https://drops.warframestat.us">Drops</a></li>
 						<li><a name="Genesis" rel="noopener" target="_blank" href="https://genesis.warframestat.us">Genesis</a></li>
@@ -30,131 +30,131 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right" id="navbar-right">
-				<li class="dropdown component-selector" id="component-selector">
-					<a name="Component Selection" href="#" class="dropdown-toggle" role="button" aria-expanded="false" id="component-selection">Components <span class="caret"></span></a>
+				<li class="dropdown component-selector hide" id="component-selector">
+					<a name="Component Selection" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="component-selection">Components <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="text-left" id="option_acolytes">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="acolyte_checkbox" class="component-check" />
+								<input type="checkbox" id="acolyte_checkbox" class="component-check" data-component="acolytes">
 								<label for="acolyte_checkbox">Acolytes</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_cetus">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="cetus_checkbox" class="component-check" />
+								<input type="checkbox" id="cetus_checkbox" class="component-check" data-component="cetus">
 								<label for="cetus_checkbox">Cetus Cycle</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_earth">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="earth_checkbox" class="component-check" />
+								<input type="checkbox" id="earth_checkbox" class="component-check" data-component="earth">
 								<label for="earth_checkbox">Earth Cycle</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_reset">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="reset_checkbox" class="component-check" />
+								<input type="checkbox" id="reset_checkbox" class="component-check" data-component="reset">
 								<label for="reset_checkbox">Reset Timer</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_bounties">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="bounties_checkbox" class="component-check" />
+								<input type="checkbox" id="bounties_checkbox" class="component-check" data-component="bounties">
 								<label for="bounties_checkbox">Bounties Timer</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_alerts">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="alerts_checkbox" class="component-check" />
+								<input type="checkbox" id="alerts_checkbox" class="component-check" data-component="alerts">
 								<label for="alerts_checkbox">Alerts</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_invasions">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="invasions_checkbox" class="component-check" />
+								<input type="checkbox" id="invasions_checkbox" class="component-check" data-component="invasions">
 								<label for="invasions_checkbox">Invasions</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_news">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="news_checkbox" class="component-check" />
+								<input type="checkbox" id="news_checkbox" class="component-check" data-component="news">
 								<label for="news_checkbox">News</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_sortie">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="sortie_checkbox" class="component-check" />
+								<input type="checkbox" id="sortie_checkbox" class="component-check" data-component="sortie">
 								<label for="sortie_checkbox">Sortie</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_fissuures">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="fissures_checkbox" class="component-check" />
+								<input type="checkbox" id="fissures_checkbox" class="component-check" data-component="fissures">
 								<label for="fissures_checkbox">Fissures</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_voidtrader">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="voidtrader_checkbox" class="component-check" />
+								<input type="checkbox" id="voidtrader_checkbox" class="component-check" data-component="baro">
 								<label for="voidtrader_checkbox">Void Trader</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_darvo">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="darvo_checkbox" class="component-check" />
+								<input type="checkbox" id="darvo_checkbox" class="component-check" data-component="darvo">
 								<label for="darvo_checkbox">Darvo Deals</label>
 							</div>
 						</li>
 						<li class="text-left" id="option_sales">
 							<div class="checkbox">
-								<input type="checkbox" value="" id="sales_checkbox" class="component-check" />
+								<input type="checkbox" id="sales_checkbox" class="component-check" data-component="deals">
 								<label for="sales_checkbox">Sales</label>
 							</div>
 						</li>
 					</ul>
 				</li>
 				<li class="dropdown theme-picker">
-					<a name="Theme Selection" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Theme <span class="caret"></span></a>
+					<a name="Theme Selection" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Theme <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="text-center" id="theme_night">
-							<a name="Nightmode" href="#/" id="nightmode">
-                <img class="cc-img inv" src="img/noun_670445_cc.png" />
-                <span>Night Mode</span>
-              </a>
+							<a name="Nightmode" href="#" id="nightmode">
+								<img class="cc-img inv" src="img/noun_670445_cc.png">
+								<span>Night Mode</span>
+							</a>
 						</li>
 						<li class="text-center" id="theme_retro">
-							<a name="Retro" href="#/" id="retro">
-                <img class="cc-img inv" src="img/vintage-personal-computer.png" />
-                <span>Retro Mode</span>
-              </a>
+							<a name="Retro" href="#" id="retro">
+								<img class="cc-img inv" src="img/vintage-personal-computer.png">
+								<span>Retro Mode</span>
+							</a>
 						</li>
 						<li class="text-center" id="theme_none">
-							<a name="No Theme" href="#/" id="no-theme">
-                <span>No Theme</span>
-              </a>
+							<a name="No Theme" href="#" id="no-theme">
+								<span>No Theme</span>
+							</a>
 						</li>
 					</ul>
 				</li>
-				<li class="dropdown platform-picker">
-					<a name="Platform Navigation" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Platform <span class="caret"></span></a>
+				<li class="dropdown platform-picker hide">
+					<a name="Platform Navigation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Platform <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li class="text-center list-group-item-success" id="platform_pc">
-							<a name="PC Platform" href="#/">
-                <img src="img/platform_icon/pc.png" />
-                <span>PC</span>
-              </a>
+						<li class="text-center" data-platform="pc">
+							<a name="PC Platform" href="#">
+								<img src="img/platform_icon/pc.png">
+								<span>PC</span>
+							</a>
 						</li>
-						<li class="text-center" id="platform_ps4">
-							<a name="PS4 Platform" href="#/">
-                <img src="img/platform_icon/ps4.png" />
-                <span>PS4</span>
-              </a>
+						<li class="text-center" data-platform="ps4">
+							<a name="PS4 Platform" href="#">
+								<img src="img/platform_icon/ps4.png">
+								<span>PS4</span>
+							</a>
 						</li>
-						<li class="text-center" id="platform_xb1">
-							<a name="XB1 Platform" href="#/">
-                <img src="img/platform_icon/xb1.png" />
-                <span>XBox One</span>
-              </a>
+						<li class="text-center" data-platform="xb1">
+							<a name="XB1 Platform" href="#">
+								<img src="img/platform_icon/xb1.png">
+								<span>XBox One</span>
+							</a>
 						</li>
 					</ul>
 				</li>

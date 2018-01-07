@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, Draggabilly */
+/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid, initGrid */
 
 let worldState;
 let updateTime;
@@ -18,8 +18,75 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
-// Packery
-let grid;
+// Packery closure
+(() => {
+  // source: https://codepen.io/desandro/pen/PZrXVv
+  // add Packery.prototype methods
+
+  // get JSON-friendly data for items positions
+  Packery.prototype.getShiftPositions = function getShiftPositions() {
+    return this.items.map(item => ({
+      attr: item.element.getAttribute('id'),
+      x: item.rect.x / this.packer.width,
+    }));
+  };
+
+  Packery.prototype.initShiftLayout = function initShiftLayout(positions) {
+    if (!positions) {
+      // if no initial positions, run packery layout
+      this.layout();
+      return;
+    }
+
+    // eslint-disable-next-line no-underscore-dangle
+    this._resetLayout();
+
+    try {
+      // set item order and horizontal position from saved positions
+      this.items = positions.map(itemPosition => {
+        const selector = `#${itemPosition.attr}`;
+        const itemElem = this.element.querySelector(selector);
+        const item = this.getItem(itemElem);
+        item.rect.x = itemPosition.x * this.packer.width;
+        return item;
+      }, this);
+      this.shiftLayout();
+    } catch (error) {
+      this.layout();
+    }
+  };
+
+  let grid;
+  this.initGrid = () => {
+    grid = $('.grid').packery({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      initLayout: false, // disable initial layout
+    });
+
+    // get saved dragged positions
+    const initPositions = Cookies.getJSON('dragPositions');
+    // init layout with saved positions
+    grid.packery('initShiftLayout', initPositions);
+
+    // make draggable
+    grid.find('.grid-item').each((i, gridItem) => {
+      const draggie = new Draggabilly(gridItem, {handle: 'h3'});
+      grid.packery('bindDraggabillyEvents', draggie);
+    });
+
+    // save drag positions on event
+    grid.on('dragItemPositioned', () => {
+      // save drag positions
+      const positions = grid.packery('getShiftPositions');
+      Cookies.set('dragPositions', positions);
+    });
+  };
+  this.updateGrid = () => {
+    grid.packery();
+  };
+})();
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
@@ -815,16 +882,8 @@ function updatePage() {
     updateNews();
     updateInvasions();
     updateWorldStateTime();
+    updateGrid();
   }
-  grid = $('.grid').packery({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-  });
-  grid.find('.grid-item').each((i, gridItem) => {
-    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
-    grid.packery('bindDraggabillyEvents', draggie);
-  });
 }
 
 // Retrieves the easy to parse worldstate from WFCD
@@ -902,6 +961,7 @@ function updateTimeBadges() {
         if (currentLabel.attr('id')
           && (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer'))) {
           currentLabel.parent()[0].remove();
+          updateGrid();
         }
       }
     } else {
@@ -992,11 +1052,15 @@ $('.component-check').click(e => {
   } else {
     componentElement.hide();
   }
+  updateGrid();
 });
 
 // Show dropdowns that should be visible only on timers page
 $('.platform-picker').removeClass('hide');
 $('#component-selector').removeClass('hide');
+
+// Initialize Packery
+initGrid();
 
 moment.updateLocale('en', {
   relativeTime: {

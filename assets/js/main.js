@@ -1018,12 +1018,16 @@ $('.platform-picker li').click(e => {
 });
 
 // Set default component selections if there aren't any
-['acolytes', 'cetus', 'earth', 'bounties', 'alerts',
-  'news', 'invasions', 'reset', 'sortie', 'fissures',
-  'baro', 'darvo', 'deals'].forEach(component => {
+[['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
+  ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
+  ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
   let value = Cookies.get(component);
   if (typeof value === 'undefined') {
-    value = 'true';
+    if (typeof defValue === 'undefined') {
+      value = 'true';
+    } else {
+      value = defValue;
+    }
     Cookies.set(component, value);
   }
   if (value === 'true') {

@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, Draggabilly */
+/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid */
 
 let worldState;
 let updateTime;
@@ -17,9 +17,6 @@ let earthCurrentTitle;
 let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
-
-// Packery
-let grid;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
@@ -800,137 +797,43 @@ function updateInvasions() {
 
 function updatePage() {
   if (worldState) {
-    if (Cookies.get('earth') === 'true' || ($('#earth_checkbox') && $('#earth_checkbox').prop('checked'))) {
-      updateEarthCycle();
-      $('#component-earth').show();
-    } else {
-      $('#component-earth').hide();
-    }
-    if (Cookies.get('cetus') === 'true' || ($('#cetus_checkbox') && $('#cetus_checkbox').prop('checked'))) {
-      updateCetusCycle();
-      $('#component-cetus').show();
-    } else {
-      $('#component-cetus').hide();
-    }
-    if (Cookies.get('voidtrader') === 'true' || ($('#voidtrader_checkbox') && $('#voidtrader_checkbox').prop('checked'))) {
-      updateVoidTrader();
-      updateVoidTraderInventory();
-      $('#component-baro').show();
-    } else {
-      $('#component-baro').hide();
-    }
-    if (Cookies.get('darvo') === 'true' || ($('#darvo_checkbox') && $('#darvo_checkbox').prop('checked'))) {
-      updateDarvoDeals();
-      $('#component-darvo').show();
-    } else {
-      $('#component-darvo').hide();
-    }
-    if (Cookies.get('sales') === 'true' || ($('#sales_checkbox') && $('#sales_checkbox').prop('checked'))) {
-      updateDeals();
-      $('#component-deals').show();
-    } else {
-      $('#component-deals').hide();
-    }
-    if (Cookies.get('acolyte') === 'true' || ($('#acolyte_checkbox') && $('#acolyte_checkbox').prop('checked'))) {
-      updateAcolytes();
-      $('#component-acolytes').show();
-    } else {
-      $('#component-acolytes').hide();
-    }
-    if (Cookies.get('alerts') === 'true' || ($('#alerts_checkbox') && $('#alerts_checkbox').prop('checked'))) {
-      updateAlerts();
-      $('#component-alerts').show();
-    } else {
-      $('#component-alerts').hide();
-    }
-    if (Cookies.get('bounties') === 'true' || ($('#bounties_checkbox') && $('#bounties_checkbox').prop('checked'))) {
-      updateBounties();
-      updateCetusBountyTimer();
-      $('#component-bounties').show();
-    } else {
-      $('#component-bounties').hide();
-    }
-    if (Cookies.get('sortie') === 'true' || ($('#sortie_checkbox') && $('#sortie_checkbox').prop('checked'))) {
-      updateSortie();
-      $('#component-sortie').show();
-    } else {
-      $('#component-sortie').hide();
-    }
-    if (Cookies.get('fissures') === 'true' || ($('#fissures_checkbox') && $('#fissures_checkbox').prop('checked'))) {
-      updateFissure();
-      $('#component-fissures').show();
-    } else {
-      $('#component-fissures').hide();
-    }
-    if (Cookies.get('news') === 'true' || ($('#news_checkbox') && $('#news_checkbox').prop('checked'))) {
-      updateNews();
-      $('#component-news').show();
-    } else {
-      $('#component-news').hide();
-    }
-    if (Cookies.get('invasions') === 'true' || ($('#invasions_checkbox') && $('#invasions_checkbox').prop('checked'))) {
-      updateInvasions();
-      $('#component-invasions').show();
-    } else {
-      $('#component-invasions').hide();
-    }
+    updateEarthCycle();
+    updateCetusCycle();
+    updateVoidTrader();
+    updateVoidTraderInventory();
+    updateDarvoDeals();
+    updateDeals();
+    updateAcolytes();
+    updateAlerts();
+    updateBounties();
+    updateCetusBountyTimer();
+    updateSortie();
+    updateFissure();
+    updateNews();
+    updateInvasions();
+    updateWorldStateTime();
+    updateGrid();
   }
-  updateWorldStateTime();
-  grid = $('.grid').packery({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-  });
-  grid.find('.grid-item').each((i, gridItem) => {
-    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
-    grid.packery('bindDraggabillyEvents', draggie);
-  });
-}
-
-function refreshSelections() {
-  $('#earth_checkbox').prop('checked', Cookies.get('earth') === 'true');
-  $('#cetus_checkbox').prop('checked', Cookies.get('cetus') === 'true');
-  $('#voidtrader_checkbox').prop('checked', Cookies.get('voidtrader') === 'true');
-  $('#darvo_checkbox').prop('checked', Cookies.get('darvo') === 'true');
-  $('#sales_checkbox').prop('checked', Cookies.get('sales') === 'true');
-  $('#acolyte_checkbox').prop('checked', Cookies.get('acolytes') === 'true');
-  $('#alerts_checkbox').prop('checked', Cookies.get('alerts') === 'true');
-  $('#bounties_checkbox').prop('checked', Cookies.get('bounties') === 'true');
-  $('#sortie_checkbox').prop('checked', Cookies.get('sortie') === 'true');
-  $('#fissures_checkbox').prop('checked', Cookies.get('fissures') === 'true');
-  $('#news_checkbox').prop('checked', Cookies.get('news') === 'true');
-  $('#invasions_checkbox').prop('checked', Cookies.get('invasions') === 'true');
-  $('#reset_checkbox').prop('checked', Cookies.get('reset') === 'true');
-  updatePage();
 }
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-  refreshSelections();
-  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform') || 'pc'}`, data => {
+  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform')}`, data => {
     worldState = JSON.parse(JSON.stringify(data));
     updateTime = (new Date()).getTime();
     updateDataDependencies();
-    refreshSelections();
+    updatePage();
   });
-  if (typeof Cookies.get('platform') === 'undefined') {
-    Cookies.set('platform', 'pc');
-  }
 }
 
 function updateResetTime() {
   // This should not be called again unless the timer expires
-  if (Cookies.get('reset') === 'true' || ($('#resets_checkbox') && $('#reset_checkbox').prop('checked'))) {
-    // We want unix seconds, not unix millis
-    const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
-    $('#resettimertitle').html('Time until new server day:');
-    const timeBadge = $('#resettimertime');
-    timeBadge.attr('data-endtime', nextReset);
-    timeBadge.addClass('label timer');
-    $('#component-reset').show();
-  } else {
-    $('#component-reset').hide();
-  }
+  // We want unix seconds, not unix millis
+  const nextReset = (new Date()).setUTCHours(24, 0, 0, 0) / 1000;
+  $('#resettimertitle').html('Time until new server day:');
+  const timeBadge = $('#resettimertime');
+  timeBadge.attr('data-endtime', nextReset);
+  timeBadge.addClass('label timer');
 }
 
 function removeTimeBadgeColor(element) {
@@ -988,31 +891,26 @@ function updateTimeBadges() {
         if (currentLabel.attr('id')
           && (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer'))) {
           currentLabel.parent()[0].remove();
+          updateGrid();
         }
       }
-    } else if (diff < 600000) { // 0 min to 10 min
-      if (!currentLabel.hasClass('label-danger')) {
-        removeTimeBadgeColor(currentLabel);
+    } else {
+      let color;
+
+      if (diff < 600000) { // 0 min to 10 min
+        color = 'label-danger';
+      } else if (diff < 1800000) { // 10 min to 30 min
+        color = 'label-warning';
+      } else if (diff < 3600000) { // 30 min to 1 hour
+        color = 'label-success';
+      } else if (diff > 3600000) { // More than 1 hour
+        color = 'label-primary';
       }
-      currentLabel.addClass('label-danger');
-      currentLabel.html(formatDurationShort(duration));
-    } else if (diff < 1800000) { // 10 min to 30 min
-      if (!currentLabel.hasClass('label-warning')) {
+
+      if (!currentLabel.hasClass(color)) {
         removeTimeBadgeColor(currentLabel);
+        currentLabel.addClass(color);
       }
-      currentLabel.addClass('label-warning');
-      currentLabel.html(formatDurationShort(duration));
-    } else if (diff < 3600000) { // 30 min to 1 hour
-      if (!currentLabel.hasClass('label-success')) {
-        removeTimeBadgeColor(currentLabel);
-      }
-      currentLabel.addClass('label-success');
-      currentLabel.html(formatDurationShort(duration));
-    } else if (diff > 3600000) { // More than 1 hour
-      if (!currentLabel.hasClass('label-primary')) {
-        removeTimeBadgeColor(currentLabel);
-      }
-      currentLabel.addClass('label-primary');
       currentLabel.html(formatDurationShort(duration));
     }
   }
@@ -1024,173 +922,145 @@ function updatePlatformSwitch() {
   platformSwapped = false;
 }
 
-function handleClickForOpen() {
-  $(this).parent().toggleClass('open');
+// Change color of active platform
+function selectPlatform(platform) {
+  const cls = 'list-group-item-success';
+  $('.platform-picker li')
+    .removeClass(cls)
+    .filter(`[data-platform="${platform}"]`)
+    .addClass(cls);
 }
 
-function handleClickOnBody(e) {
-  if (!$('#component-selection').is(e.target)
-        && $('#component-selection').has(e.target).length === 0
-        && $('.open').has(e.target).length === 0
-  ) {
-    $('#component-selector').removeClass('open');
-  }
+// Set default platform to PC if there isn't one
+if (typeof Cookies.get('platform') === 'undefined') {
+  Cookies.set('platform', 'pc');
 }
+selectPlatform(Cookies.get('platform'));
 
-// Platform switcher anonymous functions
-$(() => {
-  $('#platform_pc').click(() => {
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_pc').addClass('list-group-item-success');
-    Cookies.set('platform', 'pc');
-    platformSwapped = true;
-    getWorldState();
-    setTimeout(updatePlatformSwitch, 30000);
-  });
-});
-$(() => {
-  $('#platform_ps4').click(() => {
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').removeClass('list-group-item-success');
-    $('#platform_ps4').addClass('list-group-item-success');
-    Cookies.set('platform', 'ps4');
-    platformSwapped = true;
-    getWorldState();
-    setTimeout(updatePlatformSwitch, 30000);
-  });
-});
-$(() => {
-  $('#platform_xb1').click(() => {
-    $('#platform_ps4').removeClass('list-group-item-success');
-    $('#platform_pc').removeClass('list-group-item-success');
-    $('#platform_xb1').addClass('list-group-item-success');
-    Cookies.set('platform', 'xb1');
-    platformSwapped = true;
-    getWorldState();
-    setTimeout(updatePlatformSwitch, 30000);
-  });
-});
-
-$(() => {
-  $('.component-check').click(e => {
-    const status = $(`#${e.target.id}`).prop('checked') ? 'true' : 'false';
-    switch (e.target.id) {
-    case 'earth_checkbox':
-      Cookies.set('earth', status);
-      break;
-    case 'cetus_checkbox':
-      Cookies.set('cetus', status);
-      break;
-    case 'voidtrader_checkbox':
-      Cookies.set('voidtrader', status);
-      break;
-    case 'darvo_checkbox':
-      Cookies.set('darvo', status);
-      break;
-    case 'sales_checkbox':
-      Cookies.set('sales', status);
-      break;
-    case 'acolyte_checkbox':
-      Cookies.set('acolytes', status);
-      break;
-    case 'alerts_checkbox':
-      Cookies.set('alerts', status);
-      break;
-    case 'bounties_checkbox':
-      Cookies.set('bounties', status);
-      break;
-    case 'sortie_checkbox':
-      Cookies.set('sortie', status);
-      break;
-    case 'fissures_checkbox':
-      Cookies.set('fissures', status);
-      break;
-    case 'news_checkbox':
-      Cookies.set('news', status);
-      break;
-    case 'invasions_checkbox':
-      Cookies.set('invasions', status);
-      break;
-    case 'reset_checkbox':
-      Cookies.set('reset', status);
-      updateResetTime();
-      break;
-    default:
-      break;
-    }
-    refreshSelections();
-  });
+// Platform switcher
+$('.platform-picker li').click(e => {
+  const platform = $(e.currentTarget).attr('data-platform');
+  selectPlatform(platform);
+  Cookies.set('platform', platform);
+  platformSwapped = true;
+  getWorldState();
+  setTimeout(updatePlatformSwitch, 30000);
 });
 
 // Set default component selections if there aren't any
-function setDefaultCookies() {
-  // Set default platform to PC if there isn't one
-  if (typeof Cookies.get('platform') === 'undefined') {
-    Cookies.set('platform', 'pc');
-  } else {
-    switch (Cookies.get('platform')) {
-    case 'ps4':
-      $('#platform_pc').removeClass('list-group-item-success');
-      $('#platform_xb1').removeClass('list-group-item-success');
-      $('#platform_ps4').addClass('list-group-item-success');
-      break;
-    case 'xb1':
-      $('#platform_ps4').removeClass('list-group-item-success');
-      $('#platform_pc').removeClass('list-group-item-success');
-      $('#platform_xb1').addClass('list-group-item-success');
-      break;
-    default:
-      $('#platform_ps4').removeClass('list-group-item-success');
-      $('#platform_xb1').removeClass('list-group-item-success');
-      $('#platform_pc').addClass('list-group-item-success');
-      break;
+[['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
+  ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
+  ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
+  let value = Cookies.get(component);
+  if (typeof value === 'undefined') {
+    if (typeof defValue === 'undefined') {
+      value = 'true';
+    } else {
+      value = defValue;
     }
+    Cookies.set(component, value);
   }
+  if (value === 'true') {
+    $(`.component-check[data-component="${component}"]`)
+      .prop('checked', true);
+  } else {
+    $(`#component-${component}`).hide();
+  }
+});
 
-  if (typeof Cookies.get('earth') === 'undefined') {
-    Cookies.set('earth', 'true');
+// Prevent components menu from closing on label click
+$('#component-selector > ul').click(e => {
+  e.stopPropagation();
+});
+
+// Toggle component visibility on checkbox click
+$('.component-check').click(e => {
+  const target = $(e.target);
+  const status = target.prop('checked');
+  const component = target.attr('data-component');
+  const componentElement = $(`#component-${component}`);
+
+  Cookies.set(component, status);
+  if (status) {
+    componentElement.show();
+  } else {
+    componentElement.hide();
   }
-  if (typeof Cookies.get('cetus') === 'undefined') {
-    Cookies.set('cetus', 'true');
-  }
-  if (typeof Cookies.get('voidtrader') === 'undefined') {
-    Cookies.set('voidtrader', 'true');
-  }
-  if (typeof Cookies.get('darvo') === 'undefined') {
-    Cookies.set('darvo', 'true');
-  }
-  if (typeof Cookies.get('sales') === 'undefined') {
-    Cookies.set('sales', 'false');
-  }
-  if (typeof Cookies.get('acolytes') === 'undefined') {
-    Cookies.set('acolytes', 'true');
-  }
-  if (typeof Cookies.get('alerts') === 'undefined') {
-    Cookies.set('alerts', 'true');
-  }
-  if (typeof Cookies.get('bounties') === 'undefined') {
-    Cookies.set('bounties', 'true');
-  }
-  if (typeof Cookies.get('sortie') === 'undefined') {
-    Cookies.set('sortie', 'true');
-  }
-  if (typeof Cookies.get('sortie') === 'undefined') {
-    Cookies.set('sortie', 'true');
-  }
-  if (typeof Cookies.get('fissures') === 'undefined') {
-    Cookies.set('fissures', 'true');
-  }
-  if (typeof Cookies.get('news') === 'undefined') {
-    Cookies.set('news', 'true');
-  }
-  if (typeof Cookies.get('invasions') === 'undefined') {
-    Cookies.set('invasions', 'true');
-  }
-  if (typeof Cookies.get('reset') === 'undefined') {
-    Cookies.set('reset', 'true');
-  }
-}
+  updateGrid();
+});
+
+// Show dropdowns that should be visible only on timers page
+$('.platform-picker').removeClass('hide');
+$('#component-selector').removeClass('hide');
+
+// Packery closure
+(() => {
+  // source: https://codepen.io/desandro/pen/PZrXVv
+  // add Packery.prototype methods
+
+  // get JSON-friendly data for items positions
+  Packery.prototype.getShiftPositions = function getShiftPositions() {
+    return this.items.map(item => ({
+      attr: item.element.getAttribute('id'),
+      x: item.rect.x / this.packer.width,
+    }));
+  };
+
+  Packery.prototype.initShiftLayout = function initShiftLayout(positions) {
+    if (!positions) {
+      // if no initial positions, run packery layout
+      this.layout();
+      return;
+    }
+
+    // eslint-disable-next-line no-underscore-dangle
+    this._resetLayout();
+
+    try {
+      // set item order and horizontal position from saved positions
+      this.items = positions.map(itemPosition => {
+        const selector = `#${itemPosition.attr}`;
+        const itemElem = this.element.querySelector(selector);
+        const item = this.getItem(itemElem);
+        item.rect.x = itemPosition.x * this.packer.width;
+        return item;
+      }, this);
+      this.shiftLayout();
+    } catch (error) {
+      this.layout();
+    }
+  };
+
+  // initialize Packery
+  const grid = $('.grid').packery({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+    initLayout: false, // disable initial layout
+  });
+
+  // get saved dragged positions
+  const initPositions = Cookies.getJSON('dragPositions');
+  // init layout with saved positions
+  grid.packery('initShiftLayout', initPositions);
+
+  // make draggable
+  grid.find('.grid-item').each((i, gridItem) => {
+    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
+    grid.packery('bindDraggabillyEvents', draggie);
+  });
+
+  // save drag positions on event
+  grid.on('dragItemPositioned', () => {
+    // save drag positions
+    const positions = grid.packery('getShiftPositions');
+    Cookies.set('dragPositions', positions);
+  });
+
+  this.updateGrid = () => {
+    grid.packery();
+  };
+})();
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -1218,9 +1088,5 @@ function update() {
 }
 
 update();
-setDefaultCookies();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
-
-$('#component-selection').on('click', handleClickForOpen);
-$('body').on('click', handleClickOnBody);

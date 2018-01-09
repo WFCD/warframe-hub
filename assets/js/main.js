@@ -660,10 +660,10 @@ const COMPONENTS = {
       alertElement.find('.credits').html(mission.reward.credits);
 
       if (mission.archwingRequired) {
-        cloneTemplate('archwing').prependTo(alertElement);
+        cloneTemplate('archwing').prependTo(alertElement).after(' ');
       }
       if (mission.nightmare) {
-        cloneTemplate('nightmare').prependTo(alertElement);
+        cloneTemplate('nightmare').prependTo(alertElement).after(' ');
       }
 
       const newLine = alertElement.find('br');

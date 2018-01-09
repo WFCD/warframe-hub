@@ -422,78 +422,6 @@ function updateAcolytes() {
   }
 }
 
-function updateAlerts() {
-  const {alerts} = worldState;
-  if (alerts.length !== 0) {
-    $('#alerttitle').hide();
-    if (platformSwapped && document.getElementById('alertList')) {
-      $('#alertList').children().not('#alertbody').remove();
-    }
-
-    if (document.getElementById('alertList').children.length >= 1) {
-      for (const alert of alerts) {
-        if ($(`#${alert.id}`).length === 0) {
-          let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
-
-          // Check if archwing is required for mission
-          if (alert.mission.archwingRequired) {
-            alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
-          }
-          if (alert.mission.nightmare) {
-            alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
-          }
-          alertRow += `<b>${alert.mission.node}</b>`;
-          alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                        `data-endtime="${moment(alert.expiry).unix()}"></span>`;
-
-          if (alert.mission.reward.items.length !== 0) {
-            for (const item of alert.mission.reward.items) {
-              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${item}</span>`;
-            }
-          }
-          if (alert.mission.reward.countedItems.length !== 0) {
-            for (const countedItem of alert.mission.reward.countedItems) {
-              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${countedItem.count} ${countedItem.type}</span>`;
-            }
-          }
-
-          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
-                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}` +
-                        ` | ${alert.mission.reward.credits}cr`;
-
-          alertRow += '</li>';
-          $('#alertbody').before(alertRow);
-        } else {
-          const timer = $(`#alerttimer${alert.id}`);
-          timer.attr('data-starttime', moment(alert.activation).unix());
-          timer.attr('data-endtime', moment(alert.expiry).unix());
-        }
-      }
-    } else {
-      for (const alert of alerts) {
-        let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
-
-        // Check if archwing is required for mission
-        if (alert.mission.archwingRequired) {
-          alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
-        }
-        // Check if mission is nightmare
-        if (alert.mission.nightmare) {
-          alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
-        }
-        alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
-        alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                    `data-endtime="${moment(alert.expiry).unix()}"></span></li>`;
-        $('#alertbody').before(alertRow);
-      }
-    }
-  } else if (document.getElementById('alertList')) {
-    $('#alertList').children().not('#alertbody').remove();
-    document.getElementById('alerttitle').innerText = 'No active alerts :(';
-    $('#alerttitle').show();
-  }
-}
-
 const cleanupBounties = dailyDeals => {
   if (platformSwapped && document.getElementsByClassName('bountiesList')) {
     $('.bountiesList').remove();
@@ -691,6 +619,75 @@ function getProgressBarColor(faction) {
 }
 
 const COMPONENTS = {
+  alerts: {
+    id: 'alerts',
+    worldStateKey: 'alerts',
+    parse(data) {
+      let numAlerts = 0;
+
+      if (platformSwapped) {
+        // this should happen when changing platforms, not here
+        // I just want to change as little code as possible for now
+        this.cleanup();
+      }
+
+      data.forEach(alert => {
+        if (!alert.expired) {
+          numAlerts += 1;
+          if ($(`#${alert.id}`).length === 0) {
+            this.add(alert);
+          }
+        }
+        // if it's expired we don't care, timer will delete this (this.expired)
+      });
+
+      if (numAlerts > 0) {
+        $('#alerttitle').hide();
+      } else {
+        $('#alerttitle').html('No active alerts :(').show();
+      }
+    },
+    add(alert) {
+      const {mission} = alert;
+      const alertElement = cloneTemplate(this.id);
+      alertElement.attr('id', alert.id);
+
+      alertElement.find('.node').html(mission.node);
+      alertElement.find('.mission-type').html(mission.type);
+      alertElement.find('.faction').html(mission.faction);
+      alertElement.find('.levels')
+        .html(`${mission.minEnemyLevel}-${mission.maxEnemyLevel}`);
+      alertElement.find('.credits').html(mission.reward.credits);
+
+      if (mission.archwingRequired) {
+        cloneTemplate('archwing').prependTo(alertElement);
+      }
+      if (mission.nightmare) {
+        cloneTemplate('nightmare').prependTo(alertElement);
+      }
+
+      const newLine = alertElement.find('br');
+
+      const timer = cloneTimer(alert.activation, alert.expiry, this.id);
+      manageTimer(timer);
+      newLine.before(timer);
+
+      const rewards = parseRewards(mission.reward);
+      for (const item of rewards) {
+        newLine.before(cloneLabel('right', 'label-info', item)
+          .css('margin-right', '5px'));
+      }
+
+      $('#alertbody').before(alertElement);
+    },
+    expired(timer) {
+      timer.closest('li').remove();
+      updateGrid();
+    },
+    cleanup() {
+      $('#alertList').children().not('#alertbody').remove();
+    },
+  },
   invasions: {
     id: 'invasions',
     worldStateKey: 'invasions',
@@ -736,13 +733,9 @@ const COMPONENTS = {
         const factionName = invasion[`${side}ingFaction`];
         const labelColor = getLabelColor(factionName);
         const literalSide = (side === 'attack' ? 'left' : 'right');
-        const rewards = invasion[`${side}erReward`];
+        const rewards = parseRewards(invasion[`${side}erReward`]);
 
-        for (const countedItem of rewards.countedItems) {
-          const count = countedItem.count > 1 ? `${countedItem.count} ` : '';
-          rewards.items.push(count + countedItem.type);
-        }
-        for (const item of rewards.items) {
+        for (const item of rewards) {
           cloneLabel(literalSide, labelColor, item)
             .appendTo(rewardsElement);
         }
@@ -786,21 +779,41 @@ const COMPONENTS = {
   },
 };
 
+function parseRewards(rewardsData) {
+  const rewards = rewardsData.items.slice();
+  // const rewardsSet = new Set(rewards);
+
+  for (const countedItem of rewardsData.countedItems) {
+    const count = countedItem.count > 1 ? `${countedItem.count} ` : '';
+    rewards.push(count + countedItem.type);
+    // rewardsSet.add(countedItem.type);
+  }
+
+  // return [rewards, rewardsSet];
+  return rewards;
+}
+
 // returns cloned template as jQuery object
 function cloneTemplate(id) {
   return $(`#${id}-template`).clone().removeAttr('id');
 }
 
 function cloneLabel(pullDirection, colorClass, text) {
-  const label = cloneTemplate('label').html(text);
-  label.addClass(`pull-${pullDirection}`);
-  label.addClass(colorClass);
-  return label;
+  return cloneTemplate('label').html(text)
+    .addClass(`pull-${pullDirection}`)
+    .addClass(colorClass);
+}
+
+function cloneTimer(start, end, component) {
+  return cloneLabel('right').addClass('timer')
+    .attr('data-start', (new Date(start)).getTime())
+    .attr('data-end', (new Date(end)).getTime())
+    .attr('data-component', component);
 }
 
 function parseData(componentId, worldStateData) {
   const component = COMPONENTS[componentId];
-  component.parse.call(component, worldStateData[component.worldStateKey]);
+  component.parse(worldStateData[component.worldStateKey]);
 }
 
 function updatePage() {
@@ -812,7 +825,7 @@ function updatePage() {
     updateDarvoDeals();
     updateDeals();
     updateAcolytes();
-    updateAlerts();
+    parseData('alerts', worldState);
     updateBounties();
     updateCetusBountyTimer();
     updateSortie();
@@ -853,8 +866,74 @@ function removeTimeBadgeColor(element) {
   element.removeClass('label-info');
 }
 
+// helper function, transforms miliseconds diff into one of:
+// Dd HHh MMm SSs
+// Hh MMm SSs
+// Mm SSs
+// Ss
+function formatTimer(diff) {
+  let timeLeft = diff;
+  const stringArray = [];
+
+  [[86400000, 'd'], [3600000, 'h'], [60000, 'm'], [1000, 's']]
+    .forEach(([unit, suffix]) => {
+      const time = Math.floor(timeLeft / unit);
+      const first = stringArray.length === 0;
+      if (!first || time > 0) {
+        stringArray.push(time.toString()
+          .padStart(first ? 1 : 2, '0') + suffix);
+      }
+      timeLeft -= time * unit;
+    });
+  return stringArray.join(' ');
+}
+
+function manageTimer(timerElement) {
+  const now = Date.now();
+  const activation = timerElement.attr('data-start');
+  const expiration = timerElement.attr('data-end');
+
+  if (now > expiration) { // expired, let components deal with it
+    COMPONENTS[timerElement.attr('data-component')].expired(timerElement);
+  } else {
+    let diff;
+    let prefix = '';
+    let color;
+
+    if (activation > now) { // not started yet
+      diff = activation - now;
+      prefix = 'Starts in: ';
+      color = 'label-info';
+    } else {
+      diff = expiration - now;
+
+      if (diff < 600000) {
+        color = 'label-danger'; // 0 min to 10 min
+      } else if (diff < 1800000) {
+        color = 'label-warning'; // 10 min to 30 min
+      } else if (diff < 3600000) {
+        color = 'label-success'; // 30 min to 1 hour
+      } else {
+        color = 'label-primary'; // More than 1 hour
+      }
+    }
+
+    if (!timerElement.hasClass(color)) {
+      removeTimeBadgeColor(timerElement);
+      timerElement.addClass(color);
+    }
+    timerElement.html(prefix + formatTimer(diff));
+  }
+}
+
+function manageTimers() {
+  $('.timer[data-component]').each((i, timerElement) => {
+    manageTimer($(timerElement));
+  });
+}
+
 function updateTimeBadges() {
-  const labels = document.getElementsByClassName('timer');
+  const labels = document.querySelectorAll('.timer:not([data-component])');
   for (const label of labels) {
     const currentLabel = $(label);
 
@@ -1098,3 +1177,5 @@ function update() {
 update();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
+
+window.setInterval(manageTimers, 1000);

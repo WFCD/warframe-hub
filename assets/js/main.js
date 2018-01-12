@@ -1087,11 +1087,13 @@ function update() {
   setTimeout(update, 30000);
 }
 
-let resizeId;
-$('.resize-trigger').click(() => {
-  clearTimeout(resizeId);
-  resizeId = setTimeout(updateGrid, 300);
-});
+function initResizeTrigger () {
+  let resizeId;
+  $('.resize-trigger').on('shown.bs.collapse', updateGrid);
+  $('.resize-trigger').on('hidden.bs.collapse', updateGrid);
+}
+
+$( initResizeTrigger ); //For some reason this is the preferred syntax https://api.jquery.com/ready/
 
 update();
 updateTimeBadges(); // Method has its own 1 second timeout

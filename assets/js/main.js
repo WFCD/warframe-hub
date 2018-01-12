@@ -197,7 +197,7 @@ function updateVoidTraderInventory() {
                 'style="margin-left:5%; margin-right:5%" ' +
                 'id="'}${worldState.voidTrader.id}">\n<div class="panel-heading">\n` +
                 `<h3 class="panel-title">${worldState.voidTrader.character} Inventory` +
-                '<a href="#voidTraderInventoryPanel" data-toggle="collapse">' +
+                '<a href="#voidTraderInventoryPanel" class="resize-trigger" data-toggle="collapse">' +
                 '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>\n' +
                 '</div>\n' +
                 '<div class="panel-body collapse" id="voidTraderInventoryPanel">\n' +
@@ -221,11 +221,6 @@ function updateVoidTraderInventory() {
         const itemString = `<tr><td>${currentItem.item}</td>` +
                   `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
         $('#voidTraderInventoryContent').append(itemString);
-        let resizeId;
-        $('a[href="#voidTraderInventoryPanel"]').click(() => {
-          clearTimeout(resizeId);
-          resizeId = setTimeout(updateGrid, 300);
-        });
       }
     }
   } else if (document.getElementsByClassName('voidTraderInventory')) {
@@ -1091,6 +1086,12 @@ function update() {
   getWorldState();
   setTimeout(update, 30000);
 }
+
+let resizeId;
+$('.resize-trigger').click(() => {
+  clearTimeout(resizeId);
+  resizeId = setTimeout(updateGrid, 300);
+});
 
 update();
 updateTimeBadges(); // Method has its own 1 second timeout

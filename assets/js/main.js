@@ -18,9 +18,6 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
-// packery container
-const pkry = $('.grid');
-
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
 // Update worldstate timestamp
@@ -224,7 +221,7 @@ function updateVoidTraderInventory() {
         const itemString = `<tr><td>${currentItem.item}</td>` +
                   `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
         $('#voidTraderInventoryContent').append(itemString);
-        $("#voidTraderInventoryPanel").resize(() => { pkry.updateGrid(); });
+        $('#voidTraderInventoryPanel').resize(() => { updateGrid(); });
       }
     }
   } else if (document.getElementsByClassName('voidTraderInventory')) {

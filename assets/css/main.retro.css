@@ -427,8 +427,13 @@ button.close, .close:hover, .close:focus {
     [class*="col-"] {
         width: 100%;
     }
-	  /* For list items that go over labels */
+
+    /* For list items that go over labels */
     .list-group-item { 
-      font-size: 0.9em;
+        font-size: 0.9em;
+    }
+    .label {
+        font-size: 0.9em;
+        margin-top: 2px;
     }
 }

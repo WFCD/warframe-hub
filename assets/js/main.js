@@ -221,7 +221,11 @@ function updateVoidTraderInventory() {
         const itemString = `<tr><td>${currentItem.item}</td>` +
                   `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
         $('#voidTraderInventoryContent').append(itemString);
-        $('#voidTraderInventoryPanel').resize(() => { updateGrid(); });
+        let resizeId;
+        $('#voidTraderInventoryPanel').resize(() => {
+          clearTimeout(resizeId);
+          resizeId = setTimeout(updateGrid, 500);
+        });
       }
     }
   } else if (document.getElementsByClassName('voidTraderInventory')) {

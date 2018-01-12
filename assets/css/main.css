@@ -250,4 +250,9 @@ img {
     [class*="col-"] {
         width: 100%;
     }
+    
+    /* For list items that go over labels */
+    .list-group-item { 
+      font-size: 0.9em;
+    }
 }

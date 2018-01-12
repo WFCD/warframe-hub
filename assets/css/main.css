@@ -262,4 +262,10 @@ img {
     .dropdown-menu span, .dropdown-menu label { 
         color: white!important;
     }
+    
+    .fissure-body {
+        display: inline-block;
+        max-width: 80%;
+        overflow: scroll;
+    }
 }

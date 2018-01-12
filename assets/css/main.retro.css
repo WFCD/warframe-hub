@@ -436,4 +436,9 @@ button.close, .close:hover, .close:focus {
         font-size: 0.9em;
         margin-top: 2px;
     }
+    .fissure-body {
+        display: inline-block;
+        max-width: 80%;
+        overflow: scroll;
+    }
 }

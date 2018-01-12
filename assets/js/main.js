@@ -222,9 +222,9 @@ function updateVoidTraderInventory() {
                   `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
         $('#voidTraderInventoryContent').append(itemString);
         let resizeId;
-        $('#voidTraderInventoryPanel').resize(() => {
+        $('a[href="#voidTraderInventoryPanel"]').click(() => {
           clearTimeout(resizeId);
-          resizeId = setTimeout(updateGrid, 500);
+          resizeId = setTimeout(updateGrid, 300);
         });
       }
     }

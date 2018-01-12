@@ -223,6 +223,8 @@ function updateVoidTraderInventory() {
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
+    $("#voidTraderInventoryPanel").on('shown.bs.collapse', updateGrid);
+    $("#voidTraderInventoryPanel").on('hidden.bs.collapse', updateGrid);
   } else if (document.getElementsByClassName('voidTraderInventory')) {
     $('.voidTraderInventory').remove();
   }
@@ -1086,14 +1088,6 @@ function update() {
   getWorldState();
   setTimeout(update, 30000);
 }
-
-function initResizeTrigger () {
-  let resizeId;
-  $('.resize-trigger').on('shown.bs.collapse', updateGrid);
-  $('.resize-trigger').on('hidden.bs.collapse', updateGrid);
-}
-
-$( initResizeTrigger ); //For some reason this is the preferred syntax https://api.jquery.com/ready/
 
 update();
 updateTimeBadges(); // Method has its own 1 second timeout

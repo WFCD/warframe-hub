@@ -32,7 +32,10 @@ npm-debug.log
 # Jetbrain Files
 .idea
 
-# Production css and js files
+# Production hbs, css and js files
+assets/js/components.js
 public/css/*
+public/js/components.js
 public/js/main.js
 public/js/map.js
+views/partials/concat-templates.hbs

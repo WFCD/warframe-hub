@@ -1,3 +1,8 @@
 {
-  "ignore": ["public/js/*", "public/css/main*"]
+  "ignore": [
+    "assets/js/components.js",
+    "public/js/*",
+    "public/css/main*",
+    "views/partials/concat-templates.hbs"
+  ]
 }

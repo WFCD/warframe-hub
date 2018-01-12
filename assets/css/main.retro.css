@@ -420,3 +420,11 @@ button.close, .close:hover, .close:focus {
 .bountiesList tbody tr td ul {
   padding-left: 16px;
 }
+
+// mobile width fix
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}

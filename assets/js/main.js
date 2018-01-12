@@ -60,7 +60,7 @@ function getObjects(obj, key, val) {
 function updateDataDependencies() {
   cetusIsDay = worldState.cetusCycle.isDay;
   earthIsDay = worldState.earthCycle.isDay;
-}c
+}
 
 function updateEarthTitle() {
   if (!earthIsDay) {

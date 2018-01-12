@@ -223,8 +223,8 @@ function updateVoidTraderInventory() {
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
-    $("#voidTraderInventoryPanel").on('shown.bs.collapse', updateGrid);
-    $("#voidTraderInventoryPanel").on('hidden.bs.collapse', updateGrid);
+    $('#voidTraderInventoryPanel').on('shown.bs.collapse', updateGrid);
+    $('#voidTraderInventoryPanel').on('hidden.bs.collapse', updateGrid);
   } else if (document.getElementsByClassName('voidTraderInventory')) {
     $('.voidTraderInventory').remove();
   }

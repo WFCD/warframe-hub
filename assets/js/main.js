@@ -224,7 +224,7 @@ function updateVoidTraderInventory() {
         const itemString = `<tr><td>${currentItem.item}</td>` +
                   `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
         $('#voidTraderInventoryContent').append(itemString);
-        $('a[href$="#voidTraderInventoryPanel"').click(() => pkry.packery());
+        $('a[href$="#voidTraderInventoryPanel"]').click(() => pkry.packery());
       }
     }
   } else if (document.getElementsByClassName('voidTraderInventory')) {

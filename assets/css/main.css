@@ -259,4 +259,7 @@ img {
         font-size: 0.9em;
         margin-top: 2px;
     }
+    .dropdown-menu span, .dropdown-menu label { 
+        color: white!important;
+    }
 }

@@ -420,3 +420,25 @@ button.close, .close:hover, .close:focus {
 .bountiesList tbody tr td ul {
   padding-left: 16px;
 }
+
+/* mobile width fix */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    /* For list items that go over labels */
+    .list-group-item { 
+        font-size: 0.9em;
+    }
+    .label {
+        font-size: 0.9em;
+        margin-top: 2px;
+    }
+    .fissure-body {
+        display: inline-block;
+        max-width: 80%;
+        overflow: scroll;
+    }
+}

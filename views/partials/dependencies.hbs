@@ -1,0 +1,59 @@
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<!-- jQuery CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		// Wait until page is ready to display
+		document.getElementsByTagName("html")[0].style.visibility = "hidden";
+		$(document).ready(function() {
+			document.getElementsByTagName("html")[0].style.visibility = "visible";
+		});
+	</script>
+	<!-- Cookies CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
+	<link rel="stylesheet" href="css/bootstrap-night.min.css" media="screen" id="mode">
+	<link rel="stylesheet" href="css/main.night.css" id="mode-custom">
+	<script>
+		var theme = $('#mode');
+		var themecustom = $('#mode-custom');
+    switch (Cookies.get('mode')) {
+      case 'night':
+        theme.attr('href', 'css/bootstrap-night.min.css');
+  			themecustom.attr('href', 'css/main.night.css');
+  			theme.toggleClass('night');
+        break;
+      case 'retro':
+        theme.attr('href', 'css/bootstrap-default.min.css');
+        themecustom.attr('href', 'css/main.retro.css');
+        theme.toggleClass('retro');
+        break;
+      default:
+        theme.attr('href', 'css/bootstrap-default.min.css');
+        themecustom.attr('href', 'css/main.css');
+        break;
+    }
+	</script>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<script>
+		window.addEventListener("load", () => {
+			window.cookieconsent.initialise({
+				"palette": {
+					"popup": {
+						"background": "#000"
+					},
+					"button": {
+						"background": "#f1d600"
+					}
+				},
+				"theme": "classic",
+				"position": "bottom-right"
+			})
+		});
+	</script>

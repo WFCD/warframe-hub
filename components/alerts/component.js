@@ -1,5 +1,5 @@
 /* globals $, COMPONENTS, updateGrid, cloneTemplate, cloneLabel,
-   manageTimer, platformSwapped, parseRewards, cloneTimer */
+   platformSwapped, parseRewards, cloneTimer */
 
 COMPONENTS.alerts = {
   id: 'alerts',
@@ -51,7 +51,6 @@ COMPONENTS.alerts = {
     const newLine = alertElement.find('br');
 
     const timer = cloneTimer(alert.activation, alert.expiry, this.id);
-    manageTimer(timer);
     newLine.before(timer);
 
     const rewards = parseRewards(mission.reward);

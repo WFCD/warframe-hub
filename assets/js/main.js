@@ -18,8 +18,6 @@ let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
 let earthCurrentIndicatorColor;
 
-const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
-
 // Update worldstate timestamp
 function updateWorldStateTime() {
   if (document.getElementById('worldstateinfo')) {
@@ -509,45 +507,6 @@ function updateSortie() {
   }
 }
 
-function updateFissure() {
-  const {fissures} = worldState;
-
-  if (fissures.length !== 0) {
-    $('#fissuretitle').hide();
-    if (platformSwapped && document.getElementById('fissureList')) {
-      $('#fissureList').children().not('#fissurebody').remove();
-    }
-
-    fissures.sort((a, b) => {
-      const tierA = a.tierNum;
-      const tierB = b.tierNum;
-      if (tierA < tierB) { return -1; }
-      if (tierA > tierB) { return 1; }
-      return 0;
-    });
-
-    for (const fissure of fissures) {
-      if ($(`#${fissure.id}`).length !== 0) {
-        const timer = $(`#fissuretimer${fissure.id}`);
-        timer.attr('data-starttime', moment(fissure.activation).unix());
-        timer.attr('data-endtime', moment(fissure.expiry).unix());
-      } else {
-        let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
-        fissureRow += `<img title="Tier ${fissure.tierNum} Fissure" src="${fissureGlyphs[fissure.tierNum - 1]}" class="fissureGlyph" height="24px" /> `;
-        fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}`;
-        fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
-                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
-        fissureRow += '</li>';
-        $('#fissurebody').before(fissureRow);
-      }
-    }
-  } else {
-    $('#fissureList').children().not('#fissurebody').remove();
-    document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';
-    $('#fissuretitle').show();
-  }
-}
-
 function updateNews() {
   let {news} = worldState;
   news = news.filter(article => article.translations.en);
@@ -614,10 +573,12 @@ function cloneLabel(pullDirection, colorClass, text) {
 }
 
 function cloneTimer(start, end, component) { // eslint-disable-line no-unused-vars
-  return cloneLabel('right').addClass('timer')
+  const timer = cloneLabel('right').addClass('timer')
     .attr('data-start', (new Date(start)).getTime())
     .attr('data-end', (new Date(end)).getTime())
     .attr('data-component', component);
+  manageTimer(timer);
+  return timer;
 }
 
 function parseData(componentId, worldStateData) {
@@ -638,7 +599,7 @@ function updatePage() {
     updateBounties();
     updateCetusBountyTimer();
     updateSortie();
-    updateFissure();
+    parseData('fissures', worldState);
     updateNews();
     parseData('invasions', worldState);
     updateWorldStateTime();

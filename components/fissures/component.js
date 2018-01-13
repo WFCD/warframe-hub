@@ -1,5 +1,4 @@
-/* globals $, COMPONENTS, updateGrid, cloneTemplate,
-   platformSwapped, cloneTimer */
+/* globals $, COMPONENTS, updateGrid, cloneTemplate, cloneTimer */
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
@@ -8,12 +7,6 @@ COMPONENTS.fissures = {
   worldStateKey: 'fissures',
   parse(data) {
     let numFissures = 0;
-
-    if (platformSwapped) {
-      // this should happen when changing platforms, not here
-      // I just want to change as little code as possible for now
-      this.cleanup();
-    }
 
     data.sort((a, b) => {
       const tierA = a.tierNum;

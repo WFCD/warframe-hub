@@ -581,11 +581,6 @@ function cloneTimer(start, end, component) { // eslint-disable-line no-unused-va
   return timer;
 }
 
-function parseData(componentId, worldStateData) {
-  const component = COMPONENTS[componentId];
-  component.parse(worldStateData[component.worldStateKey]);
-}
-
 function updatePage() {
   if (worldState) {
     updateEarthCycle();
@@ -595,14 +590,19 @@ function updatePage() {
     updateDarvoDeals();
     updateDeals();
     updateAcolytes();
-    parseData('alerts', worldState);
     updateBounties();
     updateCetusBountyTimer();
     updateSortie();
-    parseData('fissures', worldState);
     updateNews();
-    parseData('invasions', worldState);
     updateWorldStateTime();
+    Object.values(COMPONENTS).forEach(component => {
+      if (platformSwapped && typeof component.cleanup !== 'undefined') {
+        component.cleanup();
+      }
+      if (typeof component.parse !== 'undefined') {
+        component.parse(worldState[component.worldStateKey]);
+      }
+    });
     updateGrid();
   }
 }

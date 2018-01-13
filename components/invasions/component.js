@@ -1,5 +1,5 @@
 /* globals $, COMPONENTS, cloneTemplate, cloneLabel,
-   platformSwapped, parseRewards, getFactionPicture */
+   parseRewards, getFactionPicture */
 
 function getLabelColor(faction) {
   switch (faction) {
@@ -36,12 +36,6 @@ COMPONENTS.invasions = {
   worldStateKey: 'invasions',
   parse(data) {
     let numInvasions = 0;
-
-    if (platformSwapped) {
-      // this should happen when changing platforms, not here
-      // I just want to change as little code as possible for now
-      this.cleanup();
-    }
 
     data.forEach(invasion => {
       const invasionElement = $(`#${invasion.id}`);

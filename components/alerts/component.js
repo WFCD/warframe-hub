@@ -1,17 +1,11 @@
 /* globals $, COMPONENTS, updateGrid, cloneTemplate, cloneLabel,
-   platformSwapped, parseRewards, cloneTimer */
+   parseRewards, cloneTimer */
 
 COMPONENTS.alerts = {
   id: 'alerts',
   worldStateKey: 'alerts',
   parse(data) {
     let numAlerts = 0;
-
-    if (platformSwapped) {
-      // this should happen when changing platforms, not here
-      // I just want to change as little code as possible for now
-      this.cleanup();
-    }
 
     data.forEach(alert => {
       if (!alert.expired) {

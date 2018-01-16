@@ -144,7 +144,7 @@ body {
 }
 
 .panel-title {
-	color: #0f97bd;
+	color: #13bdec;
 }
 
 .panel-primary {
@@ -170,15 +170,15 @@ body {
 }
 
 .fish-info td {
-  color: #ffffff;
+  color: #bacade;
 }
 
 .fish-info td a {
-	color: #cccccc;
+	color: #eff2f6;
 }
 
 .fish-info td a:hover {
-  color: #e6e6e6;
+  color: #ffffff;
 }
 
 .fish-info>tbody>tr>td {
@@ -221,7 +221,7 @@ body {
 
 .fish-tooltip {
   text-decoration: none !important;
-  color: #2c3e50 !important;
+  color: #adbfd2 !important;
 }
 
 .fish-tooltip div {

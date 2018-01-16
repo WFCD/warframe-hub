@@ -107,7 +107,7 @@
 .navbar a,
 .navbar-footer a,
 .container a,
-.list-group-item a, {
+.list-group-item a {
   color: #00addd !important;
 }
 
@@ -420,12 +420,12 @@ img {
 
 /* mobile width fix */
 @media only screen and (max-width: 768px) {
-	/* For mobile phones: */
+  /* For mobile phones: */
   [class*="col-"] {
     width: 100%;
   }
 
-	/* For list items that go over labels */
+  /* For list items that go over labels */
   .list-group-item {
     font-size: .9em;
   }

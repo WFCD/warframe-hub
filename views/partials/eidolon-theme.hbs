@@ -1,21 +1,21 @@
 <script>
-	$(function() {
-		$('#eidolon').click(function() {
-			var theme = $('#mode');
-			var themecustom = $('#mode-custom');
-			if (theme.hasClass('eidolon')) {
-				theme.attr('href', 'css/bootstrap-default.min.css');
-				themecustom.attr('href', 'css/main.css');
-				theme.removeClass();
-				Cookies.set('mode', 'day');
-			} else {
-				theme.attr('href', 'css/bootstrap-default.min.css');
-				themecustom.attr('href', 'css/main.eidolon.css');
-				theme.removeClass();
-				theme.addClass('eidolon');
-				Cookies.set('mode', 'eidolon');
-			}
-			updateGrid();
-		});
-	});
+  $(function() {
+    $('#eidolon').click(function() {
+      var theme = $('#mode');
+      var themecustom = $('#mode-custom');
+      if (theme.hasClass('eidolon')) {
+        theme.attr('href', 'css/bootstrap-default.min.css');
+        themecustom.attr('href', 'css/main.css');
+        theme.removeClass();
+        Cookies.set('mode', 'day');
+      } else {
+        theme.attr('href', 'css/bootstrap-default.min.css');
+        themecustom.attr('href', 'css/main.eidolon.css');
+        theme.removeClass();
+        theme.addClass('eidolon');
+        Cookies.set('mode', 'eidolon');
+      }
+      updateGrid();
+    });
+  });
 </script>

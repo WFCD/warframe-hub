@@ -5,6 +5,7 @@
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
+/* Day/Night Colors */
 .orange {
   margin-bottom: 10px;
   color: orange;
@@ -42,6 +43,7 @@
   border-top-left-radius: 2px;
 }
 
+/* List group border adjustments */
 .list-group-item-borderless {
   border: none !important;
 }
@@ -89,6 +91,7 @@
   border-color: #02303b !important;
 }
 
+/* Sticky bottom navbar style */
 .navbar-footer {
   bottom: 0;
   width: 100%;
@@ -103,12 +106,14 @@
 
 .navbar a,
 .navbar-footer a,
-.list-group-item a {
+.container a,
+.list-group-item a, {
   color: #00addd !important;
 }
 
 .navbar a:hover,
 .navbar-footer a:hover,
+.container a,
 .list-group-item a:hover {
   color: #2be9ff !important;
 }
@@ -117,6 +122,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Tables stuff */
 .bountiesList tbody tr td {
   font-size: 14px;
 }
@@ -125,6 +131,7 @@ a:hover {
   padding-left: 16px;
 }
 
+/* Margins for body */
 body {
   background: url(../img/themes/eidolon/background.jpg) no-repeat center center fixed;
   background-color: #000000;
@@ -165,6 +172,7 @@ body {
   background-color: rgba(0, 120, 153, 0.2);
 }
 
+/* Fish info table */
 .fish-info {
   border: 1px solid #0b3541 !important;
 }
@@ -216,9 +224,10 @@ body {
 }
 
 .color7>td {
-  background-color: rgba(255, 217, 102, 0.7);
+  background-color: rgba(230, 179, 25, 0.7);
 }
 
+/* Fish Image tooltip */
 .fish-tooltip {
   text-decoration: none !important;
   color: #adbfd2 !important;
@@ -248,6 +257,7 @@ img {
   max-height: 100%;
 }
 
+/* Map Container style */
 .map-container {
   margin-top: 20px;
   width: 100%;
@@ -258,6 +268,7 @@ img {
   height: 100%;
 }
 
+/* Picker dropdown style */
 .component-selector ul li .checkbox {
   margin-left: 30px;
 }
@@ -301,6 +312,7 @@ img {
   height: 20px;
 }
 
+/* Nightmare glyph */
 .nightmare,
 .archwing,
 .fissureGlyph {
@@ -334,6 +346,7 @@ img {
   filter: invert(10%);
 }
 
+/* Invasion colors */
 .corpus-invasion {
   background-color: rgba(31, 116, 173, 0.8);
 }
@@ -405,10 +418,14 @@ img {
   color: #00addd !important;
 }
 
+/* mobile width fix */
 @media only screen and (max-width: 768px) {
+	/* For mobile phones: */
   [class*="col-"] {
     width: 100%;
   }
+
+	/* For list items that go over labels */
   .list-group-item {
     font-size: .9em;
   }

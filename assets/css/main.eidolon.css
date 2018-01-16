@@ -155,7 +155,6 @@ body {
 
 /* Fish info table */
 .fish-info {
-	  color: #111111;
     border: 1px solid #1a242f !important;
 }
 
@@ -168,7 +167,7 @@ body {
 }
 
 .fish-info >tbody>tr>td {
-    border: 2px solid #1a242f !important;
+    border: 1px solid #1a242f !important;
     padding: 1px !important;
     vertical-align: middle !important;
 }
@@ -211,12 +210,12 @@ body {
     color: #2c3e50 !important;
 }
 
-.fish-tooltip div{
+.fish-tooltip div {
     display:none;
     margin-left:8px;
 }
 
-.fish-tooltip-inner img{
+.fish-tooltip-inner img {
     object-fit: contain;
     max-width:200px;
     max-height:125px;

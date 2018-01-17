@@ -321,7 +321,7 @@ img {
 }
 
 .inv {
-  filter: invert(10%);
+  filter: invert(100%);
 }
 
 .cc-img {
@@ -343,7 +343,7 @@ img {
   position: relative;
   top: 6px;
   width: 2em;
-  filter: invert(10%);
+  filter: invert(100%);
 }
 
 /* Invasion colors */
@@ -416,26 +416,4 @@ img {
 .dropdown-menu label,
 .dropdown-menu span {
   color: #00addd !important;
-}
-
-/* mobile width fix */
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="col-"] {
-    width: 100%;
-  }
-
-  /* For list items that go over labels */
-  .list-group-item {
-    font-size: .9em;
-  }
-  .label {
-    font-size: .9em;
-    margin-top: 2px;
-  }
-  .fissure-body {
-    display: inline-block;
-    max-width: 80%;
-    overflow: scroll;
-  }
 }

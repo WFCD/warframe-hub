@@ -537,9 +537,9 @@ function updateAlerts() {
 
 const cleanupBounties = dailyDeals => {
   if (platformSwapped && document.getElementsByClassName('bountiesList')) {
-    $('.bountiesList').remove();
+    $('.bountyListPanelWrapper').remove();
   } else if ($('.bountiesList').attr('id') !== dailyDeals[0].id) {
-    $('.bountiesList').remove();
+    $('.bountyListPanelWrapper').remove();
   }
 };
 
@@ -552,22 +552,24 @@ function updateBounties() {
     if (document.getElementById(jobs[0].id) === null) {
       cleanupBounties(jobs);
       /* eslint-disable prefer-template */
-      const inventoryString = `<table class="table bountiesList" style="table-layout: fixed" id="${jobs[0].id}">\n` +
-                '<thead>\n' +
-                '<tr>\n' +
-                '<th class="text-center col-xs-4">Type</th>\n' +
-                '<th class="text-center col-xs-3">' +
-                getImage('general', {image: 'standing', className: 'standing'}) +
-                '</th>\n' +
-                '<th class="text-center col-xs-4">Level Range</th>\n' +
-                '<th class="text-center col-xs-5">Rewards</th>\n' +
-                '</tr>\n' +
-                '</thead>\n' +
-                '<tbody id="bountiesList">\n' +
-                '</tbody>\n' +
-                '</table>';
+      const panelHeading = '<div class="panel-heading"><h3 class="panel-title"><a href="#bountyListPanelBody" data-toggle="collapse">Ostron Bounties<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>';
+
+      // Table header, plat image
+      const standingImg = getImage('general', {image: 'standing', className: 'standing'});
+      const tableHeader = `<thead><tr><th class="text-center col-xs-4">Type</th><th class="text-center col-xs-3">${standingImg}</th><th class="text-center col-xs-4">Level Range</th><th class="text-center col-xs-5">Rewards</th></tr></thead>`;
+      const tableBody = '<tbody id="bountiesList"></tbody>';
+      const table = `<table class="table bountiesList" style="table-layout: fixed" id="${jobs[0].id}">${tableHeader}${tableBody}</table>`;
+
+      const panelBody = `<div class="panel-body collapse" id="bountyListPanelBody">${table}</div>`;
+
+      let panelWrapper;
+      panelWrapper += `<div class="panel panel-primary bountyListPanelWrapper" style="margin-left:5%; margin-right:5%" id="${jobs[0].id}Panel">`;
+      panelWrapper += panelHeading;
+      panelWrapper += panelBody;
+      panelWrapper += '</div>';
+
       /* eslint-enable prefer-template */
-      $('#bountybody').append(inventoryString);
+      $('#bountybody').append(panelWrapper);
 
       for (const job of jobs) {
         const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
@@ -575,10 +577,12 @@ function updateBounties() {
                     `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
+      $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);
+      $('#bountyListPanelBody').on('hidden.bs.collapse', updateGrid);
     }
-  } else if (document.getElementsByClassName('bountiesList')) {
-    $('.bountiesList').remove();
-    document.getElementById('dealstitle').innerText = 'No current deals :(';
+  } else if (document.getElementsByClassNam('bountyListPanelWrapper')) {
+    $('#bountiesList').remove();
+    $('#bountytitle').text('No current deals :(');
     $('#bountytitle').show();
   }
 }

@@ -138,8 +138,8 @@
 }
 
 .platform-picker .list-group-item-success {
-  color: inherit;
-  background-color: inherit;
+  background-color: #0f0f0f;
+  color: white;
 }
 
 /* Fish image tooltip */

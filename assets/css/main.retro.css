@@ -277,20 +277,6 @@ button.close, .close:hover, .close:focus {
     border-top: 1px solid #040;
 }
 
-.platform-picker ul li:first-child,
-  .theme-picker ul li:first-child,
-  .component-selector ul li:first-child {
-    border: 0;
-}
-
-.platform-picker ul a,
-  .theme-picker ul a,
-  .component-selector ul a {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
-
 .platform-picker ul a span,
   .theme-picker ul a span,
   .component-selector ul a span {
@@ -298,51 +284,12 @@ button.close, .close:hover, .close:focus {
     color: #0f0;
 }
 
-.platform-picker ul a:hover span,
-  .theme-picker ul a:hover span,
-  .component-selector ul a:hover span {
-    color: inherit;
-}
-
-.platform-picker img,
-  .theme-picker img,
-  .component-selector img {
-    height: 20px;
-}
-
-
-/* Archwing/Nightmare/Sortie Images */
-.faction-image {
-    position: relative;
-    top: 6px;
-    width: 2em;
-}
-
-.faction-invasion-img {
-  width: 15px;
-}
-
 .inv {
   filter: invert(100%);
 }
 
-.cc-img {
-  height: 16px;
-  widght: 16px;
-  overflow: hidden;
-}
-
-#sortieBossInfo {
-    display: flex;
-}
-
-#sortieBoss {
-    margin: 10px 5px;
-}
-
-
 .archwing, .nightmare, .sortie .faction-image {
-	background-color: #f5f;
+	background-color: #f5f!important;
 	/* Pink, then Inverted */
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
@@ -355,34 +302,29 @@ button.close, .close:hover, .close:focus {
 .progress {
     height: 15px;
     margin-bottom: 10px;
-    background-color: #000;
+    background-color: #000!important;
 }
 
-.winning-left {
-  -moz-animation: progress-bar-stripes 3s linear infinite;
-  -ms-animation: progress-bar-stripes 3s linear infinite;
-  -o-animation: progress-bar-stripes 3s linear infinite;
-  -webkit-animation: progress-bar-stripes 3s linear infinite;
-  animation: progress-bar-stripes 3s linear infinite;
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-size: 10px 10px;
-  background-color: #0a0;
+.winning-right, .winning-left {
+  background-color: #0a0!important;
 }
-.winning-right {
-  -moz-animation: progress-bar-stripes 3s linear infinite;
-  -ms-animation: progress-bar-stripes 3s linear infinite;
-  -o-animation: progress-bar-stripes 3s linear infinite;
-  -webkit-animation: progress-bar-stripes 3s linear infinite;
-  animation: progress-bar-stripes 3s linear infinite;
-  -moz-animation-direction: reverse;
-  -ms-animation-direction: reverse;
-  -o-animation-direction: reverse;
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-size: 10px 10px;
-  background-color: #0a0;
+
+.corpus-invasion {
+    background-color: transparent;
 }
+.grineer-invasion {
+    background-color: transparent;
+}
+.infested-invasion {
+    background-color: transparent;
+}
+.corrupted-invasion {
+    background-color: transparent;
+}
+.default-invasion {
+    background-color: transparent;
+}
+
 
 /* Scrollbar */
 
@@ -410,7 +352,6 @@ button.close, .close:hover, .close:focus {
 *::-webkit-scrollbar-corner, *::-webkit-scrollbar-track {
 	background: #000 ! important;
 }
-
 
 /* Bounty rewards */
 /* Tables stuff */

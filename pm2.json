@@ -4,10 +4,10 @@
       "name": "warframe-hub",
       "script": "./bin/www",
       "exec_interpreter" : "node",
-      "watch"            : [],
+      "watch"            : ["public", "assets"],
       "log_date_format"  : "YYYY-MM-DD HH:mm Z",
       "env": {
-      	"PORT": 3647
+      	"PORT": 8080
       }
     }
   ]

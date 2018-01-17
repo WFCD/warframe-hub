@@ -33,6 +33,7 @@ gulp.task('clean-css', () => {
     'public/css/main.night.css',
     'public/css/main.retro.css',
     'public/css/main.eidolon.css',
+    'public/css/common.css',
   ]);
 });
 

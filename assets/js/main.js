@@ -563,7 +563,7 @@ function updateBounties() {
       const panelBody = `<div class="panel-body collapse" id="bountyListPanelBody">${table}</div>`;
 
       let panelWrapper;
-      panelWrapper += `<div class="panel panel-primary bountyListPanelWrapper" style="margin-left:5%; margin-right:5%" id="${jobs[0].id}Panel">`;
+      panelWrapper = `<div class="panel panel-primary bountyListPanelWrapper" style="margin-left:5%; margin-right:5%" id="${jobs[0].id}Panel">`;
       panelWrapper += panelHeading;
       panelWrapper += panelBody;
       panelWrapper += '</div>';

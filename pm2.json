@@ -7,7 +7,7 @@
       "watch"            : ["public", "assets"],
       "log_date_format"  : "YYYY-MM-DD HH:mm Z",
       "env": {
-      	"PORT": 8080
+      	"PORT": 3647
       }
     }
   ]

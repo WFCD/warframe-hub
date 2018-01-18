@@ -20,6 +20,46 @@ let earthCurrentIndicatorColor;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
+const getImage = (
+  type,
+  {
+    className = undefined, image = undefined, title = undefined, forcePng = false,
+  },
+) => {
+  if (typeof SVGRect !== 'undefined' && !forcePng) {
+    return `<img src="img/${type}/${image}.svg" class="${className} inv" title="${title}" />`;
+  } else if (type === 'fissure') {
+    return `<img src="${fissureGlyphs[parseInt(image, 10) - 1]}" class="${className}" title="${title}" />`;
+  } else if (type === 'archwing') {
+    return `<img src="https://i.imgur.com/R1kpRx4.png" class="${className}" title="${title}" />`;
+  } else if (type === 'nightmare') {
+    return `<img src="https://i.imgur.com/x5XoktW.png" class="${className}" title="${title}" />`;
+  }
+  return `<img src="img/${type}/${image}.png" class="${className}" />`;
+};
+
+const setTheme = (themeName, superTheme, reset) => {
+  const theme = $('#mode');
+  const themecustom = $('#mode-custom');
+  if (!reset) {
+    if (theme.hasClass(themeName)) {
+      setTheme(false, false, true);
+    } else {
+      theme.attr('href', `css/bootstrap-${superTheme}.min.css`);
+      themecustom.attr('href', `css/main.${themeName}.css`);
+      theme.removeClass();
+      theme.addClass(themeName);
+      Cookies.set('mode', themeName);
+    }
+  } else {
+    theme.attr('href', 'css/bootstrap-default.min.css');
+    themecustom.attr('href', 'css/main.css');
+    theme.removeClass();
+    Cookies.set('mode', 'day');
+  }
+  updateGrid();
+};
+
 // Update worldstate timestamp
 function updateWorldStateTime() {
   if (document.getElementById('worldstateinfo')) {
@@ -192,7 +232,7 @@ function updateVoidTraderInventory() {
       if (platformSwapped && document.getElementsByClassName('voidTraderInventory')) {
         $('.voidTraderInventory').remove();
       }
-
+      /* eslint-disable prefer-template */
       const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" ' +
                 'style="margin-left:5%; margin-right:5%" ' +
                 'id="'}${worldState.voidTrader.id}">\n<div class="panel-heading">\n` +
@@ -214,6 +254,7 @@ function updateVoidTraderInventory() {
                 '</table>\n' +
                 '</div>\n' +
                 '</div>';
+      /* eslint-enable prefer-template */
       const elementBody = $('#voidTraderBody');
       elementBody.append(inventoryString);
       elementBody.show();
@@ -300,7 +341,7 @@ function updateDarvoDeals() {
                 '<tr>\n' +
                 '<th class="text-center col-xs-2">Item</th>\n' +
                 '<th class="text-center col-xs-2">% Off</th>\n' +
-                '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
+                `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n` +
                 '<th class="text-center col-xs-2">Stock</th>\n' +
                 '<th class="text-center col-xs-4"></th>\n' +
                 '</tr>\n' +
@@ -344,7 +385,7 @@ function updateDeals() {
                 '<thead>\n' +
                 '<tr>\n' +
                 '<th class="text-center col-xs-5">Item</th>\n' +
-                '<th class="text-center col-xs-2"><img style="width: 20px;height: 20px;" src="img/plat.png" /></th>\n' +
+                `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n` +
                 '<th class="text-center col-xs-4"></th>\n' +
                 '</tr>\n' +
                 '</thead>\n' +
@@ -439,10 +480,10 @@ function updateAlerts() {
 
           // Check if archwing is required for mission
           if (alert.mission.archwingRequired) {
-            alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
+            alertRow += `${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} `;
           }
           if (alert.mission.nightmare) {
-            alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
+            alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
           }
           alertRow += `<b>${alert.mission.node}</b>`;
           alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
@@ -475,13 +516,11 @@ function updateAlerts() {
       for (const alert of alerts) {
         let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
 
-        // Check if archwing is required for mission
         if (alert.mission.archwingRequired) {
-          alertRow += '<img title="Archwing Required for Mission" src="https://i.imgur.com/R1kpRx4.png" class="archwing" height="16px" /> ';
+          alertRow += `${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} `;
         }
-        // Check if mission is nightmare
         if (alert.mission.nightmare) {
-          alertRow += '<img title="Nightmare Mission" src="https://i.imgur.com/x5XoktW.png" class="nightmare" height="16px" /> ';
+          alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
         }
         alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
         alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
@@ -498,9 +537,9 @@ function updateAlerts() {
 
 const cleanupBounties = dailyDeals => {
   if (platformSwapped && document.getElementsByClassName('bountiesList')) {
-    $('.bountiesList').remove();
+    $('.bountyListPanelWrapper').remove();
   } else if ($('.bountiesList').attr('id') !== dailyDeals[0].id) {
-    $('.bountiesList').remove();
+    $('.bountyListPanelWrapper').remove();
   }
 };
 
@@ -512,21 +551,25 @@ function updateBounties() {
     $('#bountytitle').hide();
     if (document.getElementById(jobs[0].id) === null) {
       cleanupBounties(jobs);
+      /* eslint-disable prefer-template */
+      const panelHeading = '<div class="panel-heading"><h3 class="panel-title"><a href="#bountyListPanelBody" data-toggle="collapse">Ostron Bounties<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>';
 
-      const inventoryString = `<table class="table bountiesList" style="table-layout: fixed" id="${
-        jobs[0].id}">\n` +
-                '<thead>\n' +
-                '<tr>\n' +
-                '<th class="text-center col-xs-4">Type</th>\n' +
-                '<th class="text-center col-xs-3"><img style="width: 20px;height: 20px;" src="img/standing.png" /></th>\n' +
-                '<th class="text-center col-xs-4">Level Range</th>\n' +
-                '<th class="text-center col-xs-5">Rewards</th>\n' +
-                '</tr>\n' +
-                '</thead>\n' +
-                '<tbody id="bountiesList">\n' +
-                '</tbody>\n' +
-                '</table>';
-      $('#bountybody').append(inventoryString);
+      // Table header, plat image
+      const standingImg = getImage('general', {image: 'standing', className: 'standing'});
+      const tableHeader = `<thead><tr><th class="text-center col-xs-4">Type</th><th class="text-center col-xs-3">${standingImg}</th><th class="text-center col-xs-4">Level Range</th><th class="text-center col-xs-5">Rewards</th></tr></thead>`;
+      const tableBody = '<tbody id="bountiesList"></tbody>';
+      const table = `<table class="table bountiesList" style="table-layout: fixed" id="${jobs[0].id}">${tableHeader}${tableBody}</table>`;
+
+      const panelBody = `<div class="panel-body collapse" id="bountyListPanelBody">${table}</div>`;
+
+      let panelWrapper;
+      panelWrapper = `<div class="panel panel-primary bountyListPanelWrapper" style="margin-left:5%; margin-right:5%" id="${jobs[0].id}Panel">`;
+      panelWrapper += panelHeading;
+      panelWrapper += panelBody;
+      panelWrapper += '</div>';
+
+      /* eslint-enable prefer-template */
+      $('#bountybody').append(panelWrapper);
 
       for (const job of jobs) {
         const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
@@ -534,26 +577,29 @@ function updateBounties() {
                     `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
+      $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);
+      $('#bountyListPanelBody').on('hidden.bs.collapse', updateGrid);
     }
-  } else if (document.getElementsByClassName('bountiesList')) {
-    $('.bountiesList').remove();
-    document.getElementById('dealstitle').innerText = 'No current deals :(';
+  } else if (document.getElementsByClassNam('bountyListPanelWrapper')) {
+    $('#bountiesList').remove();
+    $('#bountytitle').text('No current deals :(');
     $('#bountytitle').show();
   }
 }
 
-function getFactionPicture(faction) {
+function getFactionKey(faction) {
   switch (faction.toLowerCase()) {
   case 'corpus':
-    return 'img/corpus.png';
+    return 'corpus';
   case 'grineer':
-    return 'img/grineer.png';
+    return 'grineer';
   case 'infested':
-    return 'img/infested.png';
   case 'infestation':
-    return 'img/infested.png';
+    return 'infested';
+  case 'corrupted':
+  case 'orokin':
   default:
-    return 'img/corpus.png';
+    return 'corrupted';
   }
 }
 
@@ -565,7 +611,10 @@ function updateSortie() {
 
     if (platformSwapped || $('#sortieList').children().length === 0) {
       $('#sortieBoss').html(sortie.boss);
-      $('#sortieFaction').html(`<img src="${getFactionPicture(sortie.faction)}" alt="${sortie.faction}" class="faction-image" />`);
+      $('#sortieFaction').html(getImage(
+        'factions',
+        {image: getFactionKey(sortie.faction), className: 'faction-image sortie-faction', title: sortie.faction},
+      ));
       $('#sortieList').empty();
 
       sortie.variants.forEach((variant, index) => {
@@ -607,10 +656,14 @@ function updateFissure() {
         timer.attr('data-endtime', moment(fissure.expiry).unix());
       } else {
         let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
+        // fissure timer
         fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
                       `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
-        fissureRow += `<span class= "fissure-body"><img title="Tier ${fissure.tierNum} Fissure" src="${fissureGlyphs[fissure.tierNum - 1]}" class="fissureGlyph" height="24px" /> `;
+
+        // fissure body
+        fissureRow += `<span class= "fissure-body">${getImage('fissures', {image: fissure.tierNum, title: `Tier ${fissure.tierNum}`, className: 'fissure-icon'})}`;
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
+
         fissureRow += '</li>';
         $('#fissurebody').before(fissureRow);
       }
@@ -780,8 +833,10 @@ function updateInvasions() {
           defendWinning = 'winning-left';
         }
 
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-left faction-invasion-img" src="${getFactionPicture(invasion.attackingFaction)}" /></div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100"><img class="pull-right faction-invasion-img" src="${getFactionPicture(invasion.defendingFaction)}" /></div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">` +
+          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`;
+        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
+          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`;
         invasionRow += '</div></div></li>';
 
         $('#invasionbody').before(invasionRow);

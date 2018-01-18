@@ -5,21 +5,24 @@
     <![endif]-->
 	<!-- jQuery CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
-		// Wait until page is ready to display
-		document.getElementsByTagName("html")[0].style.visibility = "hidden";
-		$(document).ready(function() {
-			document.getElementsByTagName("html")[0].style.visibility = "visible";
-		});
-	</script>
+
 	<!-- Cookies CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
 	<link rel="stylesheet" href="css/bootstrap-night.min.css" media="screen" id="mode">
+	<link rel="stylesheet" href="css/common.css" id="common-css">
 	<link rel="stylesheet" href="css/main.night.css" id="mode-custom">
+
 	<script>
+		/* global $, Cookies */
+		// Wait until page is ready to display
+		document.getElementsByTagName("html")[0].style.visibility = "hidden";
+		$(document).ready(function() {
+			document.getElementsByTagName("html")[0].style.visibility = "visible";
+		});
+
 		var theme = $('#mode');
 		var themecustom = $('#mode-custom');
     switch (Cookies.get('mode')) {
@@ -33,7 +36,7 @@
         themecustom.attr('href', 'css/main.retro.css');
         theme.toggleClass('retro');
         break;
-			case 'eidolon':
+      case 'eidolon':
         theme.attr('href', 'css/bootstrap-default.min.css');
         themecustom.attr('href', 'css/main.eidolon.css');
         theme.toggleClass('eidolon');

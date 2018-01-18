@@ -1,0 +1,23 @@
+<script>
+	/* globals setTheme, $ */
+	$(function() {
+		$('#nightmode').click(function() {
+			setTheme('night', 'night');
+		});
+	});
+	$(function() {
+		$('#retro').click(function() {
+			setTheme('retro', 'night');
+		});
+	});
+	$(function() {
+		$('#no-theme').click(function() {
+			setTheme(undefined, undefined, true);
+		});
+	});
+	$(function() {
+		$('#eidolon').click(function() {
+			setTheme('eidolon', 'default', false);
+		});
+	});
+</script>

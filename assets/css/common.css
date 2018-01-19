@@ -143,10 +143,16 @@
 }
 
 .platform-picker .list-group-item-success {
-  background-color: #0f0f0f;
   color: white;
 }
 
+.platform-picker .list-group-item-success img {
+    filter: invert(100%);
+}
+
+.platform-picker .list-group-item-success span {
+    color: white!important;
+}
 /* Fish image tooltip */
 .fish-tooltip div{
     display:none;

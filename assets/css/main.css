@@ -73,3 +73,10 @@
 .inv {
   filter: invert(0%);
 }
+
+
+/* platform picker primary */
+.list-group-item-success {
+  background-color: #0f0f0f;
+  color: white;
+}

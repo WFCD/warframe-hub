@@ -370,7 +370,7 @@ button.close, .close:hover, .close:focus {
     }
 
     /* For list items that go over labels */
-    .list-group-item { 
+    .list-group-item {
         font-size: 0.9em;
     }
     .label {
@@ -382,4 +382,8 @@ button.close, .close:hover, .close:focus {
         max-width: 80%;
         overflow: scroll;
     }
+}
+
+.dropdown-menu li.list-group-item-success a {
+  background-color: #1d1d1d;
 }

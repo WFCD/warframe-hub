@@ -24,6 +24,11 @@
     display: inline;
 }
 
+.panel-heading a,
+.panel-heading a:hover {
+  text-decoration: none;
+}
+
 /* Invasion colors */
 .corpus-invasion {
     background-color: #3498db;
@@ -81,17 +86,17 @@
     }
 
     /* For list items that go over labels */
-    .list-group-item { 
+    .list-group-item {
         font-size: 0.9em;
     }
     .label {
         font-size: 0.9em;
         margin-top: 2px;
     }
-    .dropdown-menu span, .dropdown-menu label { 
+    .dropdown-menu span, .dropdown-menu label {
         color: white!important;
     }
-    
+
     .fissure-body {
         display: inline-block;
         max-width: 80%;

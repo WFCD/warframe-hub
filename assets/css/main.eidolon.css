@@ -185,11 +185,6 @@ body {
   background-color: rgba(0, 120, 153, .2);
 }
 
-.panel-heading a,
-.panel-heading a:hover {
-  text-decoration: none;
-}
-
 /* Fish info table */
 .fish-info {
   border: 1px solid #0b3541 !important;

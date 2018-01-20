@@ -162,7 +162,7 @@ function updateEvents() {
             rewardPanelWrapper += rewardPanelBody;
             rewardPanelWrapper += '</div>';
 
-            const jobTitle = `<div class="col-md-6"><div class="col-md-7 col-sm-offset-3"><span class="label label-primary pull-right">${job.enemyLevels.join(' - ')}</span><span>${job.type}<span></div>`;
+            const jobTitle = `<div class="col-md-6"><div class="col-md-7 col-sm-offset-3"><span class="label label-primary pull-right">${job.enemyLevels.join(' - ')}</span><span style="padding-right:5px;">${job.type}<span></div>`;
             let jobBody = '<br />';
             jobBody += `<div class="col-md-7 col-md-offset-3">${standingPanelWrapper}</div>`;
             jobBody += `<div class="col-md-7 col-md-offset-3">${rewardPanelWrapper}</div>`;

@@ -143,7 +143,7 @@ function updateEvents() {
             const standingPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#standingPanelBody${job.id}" data-toggle="collapse">Standing<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
             const standingTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
             const standingTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${standingTableBody}</table>`;
-            const standingPanelBody = `<div class="panel-body collapse" id="standingPanelBody${job.id}">${standingTable}</div>`;
+            const standingPanelBody = `<div class="panel-body collapse" id="standingPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${standingTable}</div>`;
 
             let standingPanelWrapper;
             standingPanelWrapper = `<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" id="${job.id}StandingPanel">`;
@@ -154,7 +154,7 @@ function updateEvents() {
             const rewardPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#rewardsPanelBody${job.id}" data-toggle="collapse">Rewards<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
             const rewardTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
             const rewardTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${rewardTableBody}</table>`;
-            const rewardPanelBody = `<div class="panel-body collapse" id="rewardsPanelBody${job.id}">${rewardTable}</div>`;
+            const rewardPanelBody = `<div class="panel-body collapse" id="rewardsPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${rewardTable}</div>`;
 
             let rewardPanelWrapper;
             rewardPanelWrapper = `<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" id="${job.id}RewardsPanel">`;

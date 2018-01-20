@@ -1075,7 +1075,7 @@ $('.platform-picker li').click(e => {
 });
 
 // Set default component selections if there aren't any
-[['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
+[['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
   ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
   ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
   let value = Cookies.get(component);

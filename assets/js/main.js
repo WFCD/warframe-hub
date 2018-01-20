@@ -116,6 +116,75 @@ function updateEarthTitle() {
   }
 }
 
+function updateEvents() {
+  const {events} = worldState;
+  if (events.length) {
+    const componentBody = $('#component-event-body');
+    events.forEach((event, index) => {
+      let title;
+      let body = `<div class="text-center">${event.tooltip}</div><br />`;
+      if ($(`#event-${event.id}-title`).length === 0) {
+        if (index === 0) {
+          title = `<h2 class="display-3 text-center">${event.description}</h2>`;
+        } else {
+          title = `<p>${event.description}</p>`;
+        }
+        let healthState = 'success';
+        const healthPerc = parseFloat(event.health);
+        if (healthPerc > 50 && healthPerc < 100) {
+          healthState = 'warning';
+        } else if (healthPerc < 50) {
+          healthState = 'danger';
+        }
+        body += `<div class="text-center d-inline"><span class="label label-danger ">${event.victimNode}</span><span class="label label-${healthState}">${event.health || 0}% Remaining</span></div><br />`;
+        if (event.jobs) {
+          let listItems = '<div class="container-fluid">';
+          event.jobs.forEach(job => {
+            const standingPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#standingPanelBody${job.id}" data-toggle="collapse">Standing<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
+            const standingTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
+            const standingTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${standingTableBody}</table>`;
+            const standingPanelBody = `<div class="panel-body collapse" id="standingPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${standingTable}</div>`;
+
+            let standingPanelWrapper;
+            standingPanelWrapper = `<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" id="${job.id}StandingPanel">`;
+            standingPanelWrapper += standingPanelHeading;
+            standingPanelWrapper += standingPanelBody;
+            standingPanelWrapper += '</div>';
+
+            const rewardPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#rewardsPanelBody${job.id}" data-toggle="collapse">Rewards<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
+            const rewardTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
+            const rewardTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${rewardTableBody}</table>`;
+            const rewardPanelBody = `<div class="panel-body collapse" id="rewardsPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${rewardTable}</div>`;
+
+            let rewardPanelWrapper;
+            rewardPanelWrapper = `<div class="panel panel-primary" style="margin-left:5%; margin-right:5%" id="${job.id}RewardsPanel">`;
+            rewardPanelWrapper += rewardPanelHeading;
+            rewardPanelWrapper += rewardPanelBody;
+            rewardPanelWrapper += '</div>';
+
+            const jobTitle = `<div class="col-md-6"><div class="col-md-7 col-sm-offset-3"><span class="label label-primary pull-right">${job.enemyLevels.join(' - ')}</span><span style="padding-right:5px;">${job.type}<span></div>`;
+            let jobBody = '<br />';
+            jobBody += `<div class="col-md-7 col-md-offset-3">${standingPanelWrapper}</div>`;
+            jobBody += `<div class="col-md-7 col-md-offset-3">${rewardPanelWrapper}</div>`;
+            jobBody += '</div>';
+            listItems += `${jobTitle}${jobBody}`;
+          });
+          body += `${listItems}</div>`;
+        }
+        if (title && body) {
+          componentBody.append(`<li class="list-group-item list-group-item-borderless" id="event-${event.id}-title">${title}${body}</li>`);
+        }
+      } else if (event.expired) {
+        $(`#event-${event.id}-title"`).remove();
+      }
+    });
+    $('#event-title').hide();
+  } else {
+    $('#event-title').hide();
+    $('#component-event').hide();
+  }
+}
+
 function updateCetusTitle() {
   if (!cetusIsDay) {
     cetusCurrentIndicator = 'Night';
@@ -854,6 +923,7 @@ function updateInvasions() {
 
 function updatePage() {
   if (worldState) {
+    updateEvents();
     updateEarthCycle();
     updateCetusCycle();
     updateVoidTrader();
@@ -1005,7 +1075,7 @@ $('.platform-picker li').click(e => {
 });
 
 // Set default component selections if there aren't any
-[['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
+[['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
   ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
   ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
   let value = Cookies.get(component);

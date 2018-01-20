@@ -432,3 +432,7 @@ img {
 .dropdown-menu span {
   color: #00addd !important;
 }
+
+.container .jumbotron, .container-fluid .jumbotron {
+  background: transparent;
+}

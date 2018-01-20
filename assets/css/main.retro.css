@@ -387,3 +387,6 @@ button.close, .close:hover, .close:focus {
 .dropdown-menu li.list-group-item-success a {
   background-color: #1d1d1d;
 }
+.container .jumbotron, .container-fluid .jumbotron {
+  background: transparent;
+}

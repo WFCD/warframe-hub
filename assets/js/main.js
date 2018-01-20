@@ -152,7 +152,7 @@ function updateEvents() {
             standingPanelWrapper += '</div>';
 
             const rewardPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#rewardsPanelBody${job.id}" data-toggle="collapse">Rewards<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
-            const rewardTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
+            const rewardTableBody = `<tbody>${job.rewardPool.map(reward => `<tr class="text-center"><td>${reward}</tr></td>`).join('')}</tbody>`;
             const rewardTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${rewardTableBody}</table>`;
             const rewardPanelBody = `<div class="panel-body collapse" id="rewardsPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${rewardTable}</div>`;
 

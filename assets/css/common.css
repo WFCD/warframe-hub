@@ -217,11 +217,89 @@ img {
 
 /* Margins for body */
 body {
-    margin-top: 50px !important;
-    margin-bottom: 40px !important;
+  margin-top: 50px !important;
+  margin-bottom: 40px !important;
 }
 
 /* force inversion images in progress bars to be white  */
 .progress-bar .inv {
-    filter: invert(100%);
+  filter: invert(100%);
+}
+
+/* Loader */
+.loader {
+  display: block;
+  margin: auto;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes wf-loader-left {
+  0% {
+    transform: translateX(30px);
+  }
+  50% {
+    transform: translateX(-60px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes wf-loader-right {
+  0% {
+    transform: translateX(-30px);
+  }
+  50% {
+    transform: translateX(60px);
+  }
+  100% {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes wf-loader-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    1% {
+      transform: rotate(5deg);
+    }
+    17% {
+      transform: rotate(90deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    40% {
+      transform: rotate(180deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    65% {
+      transform: rotate(270deg);
+    }
+    75% {
+      transform: rotate(270deg);
+    }
+    90% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.loading-left {
+  animation: wf-loader-left .4s ease infinite;
+}
+
+.loading-right {
+  animation: wf-loader-right .4s ease infinite;
+}
+
+.loading-center {
+  transform-origin: 50% 50%;
+  animation: wf-loader-spin 1.6s linear infinite;
 }

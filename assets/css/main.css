@@ -80,3 +80,10 @@
   background-color: #0f0f0f;
   color: white;
 }
+
+/* Loader */
+.loader-left path,
+.loader-center path,
+.loader-right path {
+  fill: #1a5072;
+}

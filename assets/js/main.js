@@ -649,7 +649,7 @@ function updateBounties() {
       $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);
       $('#bountyListPanelBody').on('hidden.bs.collapse', updateGrid);
     }
-  } else if (document.getElementsByClassNam('bountyListPanelWrapper')) {
+  } else if (document.getElementsByClassName('bountyListPanelWrapper')) {
     $('#bountiesList').remove();
     $('#bountytitle').text('No current deals :(');
     $('#bountytitle').show();

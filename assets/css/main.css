@@ -82,6 +82,8 @@
 }
 
 /* Loader */
-svg.loader path {
+.loader-left path,
+.loader-center path,
+.loader-right path {
   fill: #1a5072;
 }

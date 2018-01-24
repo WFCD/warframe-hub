@@ -96,8 +96,6 @@ function getObjects(obj, key, val) {
   return objects;
 }
 
-updateSVG();
-
 // Update data that is being used by this page
 function updateDataDependencies() {
   cetusIsDay = worldState.cetusCycle.isDay;

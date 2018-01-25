@@ -118,10 +118,10 @@ function updateEarthTitle() {
 
 function updateEvents() {
   const {events} = worldState;
-  if (events.length) {
-    if (platformSwapped && document.getElementById('component-event-body')) {
-      $('.voidTraderInventory').slice(1).remove();
+  if (platformSwapped && document.getElementById('component-event-body')) {
+      $('#component-event-body').slice(1).remove();
     }
+  if (events.length) {
     const componentBody = $('#component-event-body');
     events.forEach((event, index) => {
       let title;

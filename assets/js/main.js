@@ -179,7 +179,9 @@ function updateEvents() {
       }
     });
     $('#event-title').hide();
-    $('#component-event').show();
+    if (Cookies.get('event') === 'true') {
+      $('#component-event').show();
+    }
   } else {
     $('#event-title').hide();
     $('#component-event').hide();

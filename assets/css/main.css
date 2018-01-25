@@ -80,3 +80,8 @@
   background-color: #0f0f0f;
   color: white;
 }
+
+/* Loader */
+.loader {
+  fill: #1a5072;
+}

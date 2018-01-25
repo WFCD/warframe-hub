@@ -436,3 +436,8 @@ img {
 .container .jumbotron, .container-fluid .jumbotron {
   background: transparent;
 }
+
+/* Loader */
+.loader {
+  fill: #00addd;
+}

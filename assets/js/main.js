@@ -1212,6 +1212,7 @@ moment.updateLocale('en', {
 function update() {
   getWorldState();
   setTimeout(update, 30000);
+  SVGInjector(document.querySelectorAll('img.loader'));
 }
 
 update();

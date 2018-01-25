@@ -88,3 +88,8 @@
 .inv {
   filter: invert(100%);
 }
+
+/* Loader */
+.loader {
+  fill: #00ff00;
+}

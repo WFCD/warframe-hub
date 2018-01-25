@@ -2,7 +2,7 @@
   <div class="jumbotron" id="component-event">
     <ul class="list-group" id="component-event-body">
       <li class="list-group-item list-group-item-borderless">
-        <h1 class="display-3" id="event-title">Loading Events...</h1>
+        <h1 class="display-3" id="event-title">{{> loading}}</h1>
       </li>
     </ul>
   </div>
@@ -16,12 +16,12 @@
   						<span id="cetuscycleindicator"></span>
   					</li>
   					<li class="list-group-item list-group-item-borderless">
-  						<span id="cetuscycletitle">Loading...</span>
+  						<span id="cetuscycletitle">{{> loading}}</span>
   						<span class="pull-right" id="cetuscycletime"></span>
   					</li>
   					<li class="list-group-item list-group-item-borderbottom">
   						<span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
-  						<span id="cetustimezonetitle">Loading...</span>
+  						<span id="cetustimezonetitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -35,12 +35,12 @@
   					</li>
   					<li class="list-group-item list-group-item-borderless">
   						<span class="pull-right" id="earthcycletime"></span>
-  						<span id="earthcycletitle">Loading...</span>
+  						<span id="earthcycletitle">{{> loading}}</span>
 
   					</li>
   					<li class="list-group-item list-group-item-borderbottom">
   						<span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
-  						<span id="earthtimezonetitle">Loading...</span>
+  						<span id="earthtimezonetitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -49,7 +49,7 @@
   				<h3 class="text-center">Current Acolytes</h3>
   				<ul class="list-group" id="acolyteList">
   					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
-  						<span id="acolytetitle">Loading Acolytes...</span>
+  						<span id="acolytetitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -62,7 +62,7 @@
   						<span id="cetusbountytitle"></span>
   					</li>
   					<li class="list-group-item list-group-item-borderbottom text-center" id="bountybody">
-  						<span id="bountytitle">Loading Bounties...</span>
+  						<span id="bountytitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -71,7 +71,7 @@
   				<h3 class="text-center">Current Alerts</h3>
   				<ul class="list-group" id="alertList">
   					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
-  						<span id="alerttitle">Loading Alerts...</span>
+  						<span id="alerttitle">{{> loading}}</span>
   					</li>
   				</ul>
       </div>
@@ -80,7 +80,7 @@
   				<ul class="list-group" id="newsList">
   					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
   					<li class="list-group-item list-group-item-borderbottom" id="newsbody">
-  						<span id="newstitle">Loading News...</span>
+  						<span id="newstitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -89,7 +89,7 @@
   				<h3 class="text-center">Current Invasions</h3>
   				<ul class="list-group" id="invasionList">
   					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
-  						<span id="invasiontitle">Loading Invasions...</span>
+  						<span id="invasiontitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -107,7 +107,7 @@
 			<div class="grid-item col-md-6" id="component-sortie">
   				<h3 class="text-center">Sortie</h3>
   				<ul class="list-group">
-  					<li id="sortietitle" class="list-group-item list-group-item-borderless">Loading Sortie...</li>
+  					<li id="sortietitle" class="list-group-item list-group-item-borderless">{{> loading}}</li>
   					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span>
   						<h4 id="sortieBoss"></h4></li>
   					<div id="sortieList"></div>
@@ -119,7 +119,7 @@
   				<h3 class="text-center">Void Fissures</h3>
   				<ul class="list-group" id="fissureList">
   					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
-  						<span id="fissuretitle">Loading Fissures...</span>
+  						<span id="fissuretitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -129,11 +129,11 @@
   				<ul class="list-group">
   					<li class="list-group-item list-group-item-borderless">
               					<span class="pull-right" id="voidtradertime"></span>
-  						<span id="voidtradertitle">Loading...</span>
+  						<span id="voidtradertitle">{{> loading}}</span>
   					</li>
             <li class="list-group-item list-group-item-borderless">
   						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
-  						<span id="voidtradertimezonetitle">Loading...</span>
+  						<span id="voidtradertimezonetitle">{{> loading}}</span>
   					</li>
   					<li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
   				</ul>
@@ -143,7 +143,7 @@
   				<h3 class="text-center">Darvo Deals</h3>
   				<ul class="list-group">
   					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
-  						<span id="darvotitle">Loading Darvo Deals...</span>
+  						<span id="darvotitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -152,7 +152,7 @@
   				<h3 class="text-center">Sales and Featured Deals</h3>
           <ul class="list-group">
   					<li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
-  						<span id="dealstitle">Loading Deals...</span>
+  						<span id="dealstitle">{{> loading}}</span>
   					</li>
   				</ul>
 			</div>
@@ -177,11 +177,11 @@
 
 <!-- required js for page -->
 <script src="js/main.js"></script>
+<script src="js/svg-injector.min.js"></script>
 
-
-
-<!-- Insert world state update information into footer -->
+<!-- Insert world state update information into footer -->W
 <script>
+	/* globals $, SVGInjector */
 	$('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
 		'data-toggle="tooltip" href="#" data-original-title="World State obtained" style="margin-right:5px">' +
 		'<span class="glyphicon glyphicon-info-sign"></span></div></a>');
@@ -189,6 +189,8 @@
 	$('body').tooltip({
 		selector: '[data-toggle="tooltip"]'
 	});
+
+	SVGInjector(document.querySelectorAll('img.loader'));
 </script>
 
 {{> themes}}

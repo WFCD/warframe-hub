@@ -1,90 +1,100 @@
 /* Sticky bottom navbar style */
-.navbar-footer { background-color: #303030; }
-.navbar-footer a { color: #ababab; }
+.navbar-footer {
+  background-color: #303030;
+}
+
+.navbar-footer a {
+  color: #ababab;
+}
 
 /* Change label color to be less white */
 .label {
-    color: #ababab !important;
+  color: #ababab !important;
 }
-
 
 /* Fish info table */
 .fish-info {
-    border: 2px solid #737373 !important;
-    color: #ababab;
+  border: 2px solid #737373 !important;
+  color: #ababab;
 }
-.fish-info >tbody>tr>td {
-    border: 2px solid #737373 !important;
-    color: #ababab;
-    padding: 1px !important;
-    vertical-align: middle !important;
+.fish-info > tbody > tr > td {
+  border: 2px solid #737373 !important;
+  color: #ababab;
+  padding: 1px !important;
+  vertical-align: middle !important;
 }
 .fish-info thead tr th {
-    text-align: center;
-    color: #ababab;
+  text-align: center;
+  color: #ababab;
 }
-.color1 >td {
-    background-color: #363540;
+.color1 > td {
+  background-color: #363540;
 }
-.color2 >td {
-    background-color: #3f3540;
+.color2 > td {
+  background-color: #3f3540;
 }
-.color3 >td {
-    background-color: #403535;
+.color3 > td {
+  background-color: #403535;
 }
-.color4 >td {
-    background-color: #3a3540;
+.color4 > td {
+  background-color: #3a3540;
 }
-.color5 >td {
-    background-color: #353e40;
+.color5 > td {
+  background-color: #353e40;
 }
-.color6 >td {
-    background-color: #3b4035;
+.color6 > td {
+  background-color: #3b4035;
 }
-.color7 >td {
-    background-color: #403935;
+.color7 > td {
+  background-color: #403935;
 }
 
 /* Fish Image tooltip */
 .fish-tooltip {
-    text-decoration:none !important;
-    color: #ababab !important;
+  text-decoration:none !important;
+  color: #ababab !important;
 }
 
 .fish-tooltip:hover div{
-    display:inline;
-    margin-top: -55px;
-    position:absolute;
-    border:2px solid #737373;
-    background:#222222;
+  display:inline;
+  margin-top: -55px;
+  position:absolute;
+  border:2px solid #737373;
+  background:#222222;
 }
 
 /* Change button color to be less white */
 .btn {
-    background-color: #555555 !important;
+  background-color: #555555 !important;
 }
 
 /* Add background color to WFCD banner in night mode */
 .wfcd-banner {
-    background-color: #777777;
+  background-color: #777777;
 }
 
 /* Map Container style */
 .map-container {
-    margin-top: 20px;
-    width: 100%;
-    height: 92vh;
+  margin-top: 20px;
+  width: 100%;
+  height: 92vh;
 }
-#map{
-    height: 100%;
+
+#map {
+  height: 100%;
 }
 
 .platform-picker ul li,
-  .theme-picker ul li,
-  .component-selector ul li {
-    border-top: 1px solid #464545;
+.theme-picker ul li,
+.component-selector ul li {
+  border-top: 1px solid #464545;
 }
 
 .inv {
   filter: invert(100%);
+}
+
+/* Loader */
+.loader {
+  fill: #bbbbbb;
 }

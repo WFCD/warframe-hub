@@ -119,7 +119,7 @@ function updateEarthTitle() {
 function updateEvents() {
   const {events} = worldState;
   if (platformSwapped && document.getElementById('component-event-body')) {
-      $('#component-event-body').slice(1).remove();
+      $("#component-event-body li").slice(1).remove();
     }
   if (events.length) {
     const componentBody = $('#component-event-body');

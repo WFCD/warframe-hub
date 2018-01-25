@@ -179,6 +179,7 @@ function updateEvents() {
       }
     });
     $('#event-title').hide();
+    $('#component-event').show();
   } else {
     $('#event-title').hide();
     $('#component-event').hide();

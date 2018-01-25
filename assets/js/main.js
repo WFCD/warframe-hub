@@ -118,16 +118,19 @@ function updateEarthTitle() {
 
 function updateEvents() {
   const {events} = worldState;
+  if (platformSwapped && document.getElementById('component-event-body')) {
+      $("#component-event-body li").slice(1).remove();
+    }
   if (events.length) {
     const componentBody = $('#component-event-body');
     events.forEach((event, index) => {
       let title;
-      let body = `<div class="text-center">${event.tooltip}</div><br />`;
+      let body = event.tooltip ? `<div class="text-center">${event.tooltip}</div><br />` : '';
       if ($(`#event-${event.id}-title`).length === 0) {
         if (index === 0) {
           title = `<h2 class="display-3 text-center">${event.description}</h2>`;
         } else {
-          title = `<p>${event.description}</p>`;
+          title = `<p class="text-center">${event.description}</p>`;
         }
         let healthState = 'success';
         const healthPerc = parseFloat(event.health);
@@ -179,6 +182,9 @@ function updateEvents() {
       }
     });
     $('#event-title').hide();
+    if (Cookies.get('event') === 'true') {
+      $('#component-event').show();
+    }
   } else {
     $('#event-title').hide();
     $('#component-event').hide();

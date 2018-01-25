@@ -390,3 +390,8 @@ button.close, .close:hover, .close:focus {
 .container .jumbotron, .container-fluid .jumbotron {
   background: transparent;
 }
+
+/* Loader */
+.loader {
+  fill: #0f0;
+}

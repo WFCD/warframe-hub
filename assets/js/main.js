@@ -122,12 +122,12 @@ function updateEvents() {
     const componentBody = $('#component-event-body');
     events.forEach((event, index) => {
       let title;
-      let body = `<div class="text-center">${event.tooltip}</div><br />`;
+      let body = event.tooltip ? `<div class="text-center">${event.tooltip}</div><br />` : '';
       if ($(`#event-${event.id}-title`).length === 0) {
         if (index === 0) {
           title = `<h2 class="display-3 text-center">${event.description}</h2>`;
         } else {
-          title = `<p>${event.description}</p>`;
+          title = `<p class="text-center">${event.description}</p>`;
         }
         let healthState = 'success';
         const healthPerc = parseFloat(event.health);

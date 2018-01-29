@@ -86,11 +86,13 @@ function formatDurationShort(duration) {
 // Helper function to grab objects based on inner tags
 function getObjects(obj, key, val) {
   let objects = [];
-  for (const objKey of Object.keys(obj)) {
-    if (typeof obj[objKey] === 'object') {
-      objects = objects.concat(getObjects(obj[objKey], key, val));
-    } else if (objKey === key && obj[objKey] === val) {
-      objects.push(obj);
+  if (typeof obj !== 'undefined') {
+    for (const objKey of Object.keys(obj)) {
+      if (typeof obj[objKey] === 'object') {
+        objects = objects.concat(getObjects(obj[objKey], key, val));
+      } else if (objKey === key && obj[objKey] === val) {
+        objects.push(obj);
+      }
     }
   }
   return objects;

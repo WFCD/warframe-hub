@@ -4,50 +4,50 @@
 
 /* Fish info table */
 .fish-info {
-    border: 2px solid #1a242f !important;
+  border: 2px solid #1a242f !important;
 }
-.fish-info >tbody>tr>td {
-    border: 2px solid #1a242f !important;
-    padding: 1px !important;
-    vertical-align: middle !important;
+.fish-info > tbody > tr > td {
+  border: 2px solid #1a242f !important;
+  padding: 1px !important;
+  vertical-align: middle !important;
 }
 .fish-info thead tr th {
-    text-align: center;
+  text-align: center;
 }
-.color1 >td {
-    background-color: #ead1dc;
+.color1 > td {
+  background-color: #ead1dc;
 }
-.color2 >td {
-    background-color: #d9d2e9;
+.color2 > td {
+  background-color: #d9d2e9;
 }
-.color3 >td {
-    background-color: #cfe2f3;
+.color3 > td {
+  background-color: #cfe2f3;
 }
-.color4 >td {
-    background-color: #c9daf8;
+.color4 > td {
+  background-color: #c9daf8;
 }
-.color5 >td {
-    background-color: #d0e0e3;
+.color5 > td {
+  background-color: #d0e0e3;
 }
-.color6 >td {
-    background-color: #d9ead3;
+.color6 > td {
+  background-color: #d9ead3;
 }
-.color7 >td {
-    background-color: #fff2cc;
+.color7 > td {
+  background-color: #fff2cc;
 }
 
 /* Fish Image tooltip */
 .fish-tooltip {
-    text-decoration:none !important;
-    color: #2c3e50 !important;
+  text-decoration: none !important;
+  color: #2c3e50 !important;
 }
 
-.fish-tooltip:hover div{
-    display:inline;
-    margin-top: -55px;
-    position:absolute;
-    border:2px solid #1a242f;
-    background:#617487;
+.fish-tooltip:hover div {
+  display: inline;
+  margin-top: -55px;
+  position: absolute;
+  border: 2px solid #1a242f;
+  background: #617487;
 }
 
 /* Map Container style */
@@ -56,24 +56,29 @@
 	width: 100%;
 	height: 92vh;
 }
-#map{
+#map {
 	height: 100%;
 }
 
-.platform-picker ul li, .theme-picker ul li, .component-selector ul li {
-    border-top: 1px solid #e5e5e5;
+.platform-picker ul li,
+.theme-picker ul li,
+.component-selector ul li {
+  border-top: 1px solid #e5e5e5;
 }
 
 .platform-picker ul a:hover img,
-  .theme-picker ul a:hover img,
-  .component-selector ul a:hover img {
-    filter: invert(100%);
+.theme-picker ul a:hover img,
+.component-selector ul a:hover img {
+  filter: invert(100%);
+}
+
+.platform-picker .list-group-item-success {
+  background-color: #18bc9c;
 }
 
 .inv {
   filter: invert(0%);
 }
-
 
 /* platform picker primary */
 .list-group-item-success {

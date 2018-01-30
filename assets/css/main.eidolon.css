@@ -89,9 +89,9 @@
   background-color: rgba(182, 38, 22, .5);
 }
 
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:hover,
-.navbar-default .navbar-nav>.open>a:focus {
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
   background-color: rgba(0, 172, 219, .1);
 }
 
@@ -113,7 +113,7 @@
   opacity: .9;
 }
 
-.navbar-footer>div>div {
+.navbar-footer > div > div {
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -176,12 +176,12 @@ body {
   border-color: rgba(2, 48, 59, .9);
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
+.table-striped > tbody > tr:nth-of-type(odd) {
   background-color: rgba(12, 12, 12, .5);
 }
 
-.table-striped>tbody>tr:nth-of-type(odd):hover,
-.table-striped>tbody>tr:nth-of-type(even):hover {
+.table-striped > tbody > tr:nth-of-type(odd):hover,
+.table-striped > tbody > tr:nth-of-type(even):hover {
   background-color: rgba(0, 120, 153, .2);
 }
 
@@ -202,7 +202,7 @@ body {
   color: #ffffff;
 }
 
-.fish-info>tbody>tr>td {
+.fish-info > tbody > tr > td {
   border: 1px solid #0b3541 !important;
   padding: 1px !important;
   vertical-align: middle !important;
@@ -212,31 +212,31 @@ body {
   text-align: center;
 }
 
-.color1>td {
+.color1 > td {
   background-color: rgba(210, 131, 164, .7);
 }
 
-.color2>td {
+.color2 > td {
   background-color: rgba(156, 134, 208, .7);
 }
 
-.color3>td {
+.color3 > td {
   background-color: rgba(115, 177, 231, .7);
 }
 
-.color4>td {
+.color4 > td {
   background-color: rgba(102, 154, 244, .7);
 }
 
-.color5>td {
+.color5 > td {
   background-color: rgba(135, 188, 197, .7);
 }
 
-.color6>td {
+.color6 > td {
   background-color: rgba(153, 209, 133, .7);
 }
 
-.color7>td {
+.color7 > td {
   background-color: rgba(230, 179, 25, .7);
 }
 

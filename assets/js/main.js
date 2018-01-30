@@ -518,7 +518,7 @@ function updateAcolytes() {
 
           const remainingLabel = `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}% Remaining</span>`;
 
-          acolyteRow += '</div><div class="row" style="margin-bottom: 1px;">' +
+          acolyteRow += '</div><div class="row">' +
             `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
             `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
             `${remainingPercent > 0 ? remainingLabel : ''}</div>` +
@@ -863,7 +863,7 @@ function updateInvasions() {
         let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
         invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})*</div>`;
 
-        invasionRow += '<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px">';
+        invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
           for (const item of invasion.attackerReward.items) {
             invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
@@ -896,7 +896,7 @@ function updateInvasions() {
         }
         invasionRow += '</div>';
 
-        invasionRow += `<div class="row" style="margin-bottom: 1px; margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
+        invasionRow += `<div class="row" style="margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
         const attackPercent =
               Math.floor(((invasion.count + invasion.requiredRuns)
                / (invasion.requiredRuns * 2)) * 100);

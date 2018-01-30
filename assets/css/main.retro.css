@@ -26,21 +26,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 /* Highlighted (selected) text */
-
 ::selection {
-	color: #000;
+	color: black;
 	background: #0f0;
 	/* WebKit and Blink Browsers */
 }
 
 ::-moz-selection {
-	color: #000;
+	color: black;
 	background: #0f0;
 	/* Gecko Browsers */
 }
 
 /* Links */
-
 a, a:hover, a:focus {
 	color: #0f0;
 }
@@ -50,29 +48,39 @@ a:focus {
 }
 
 /* Header */
-
-.navbar-default, .navbar-footer, .navbar-footer a, .navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand, .dropdown-menu>li>a, .dropdown-menu {
+.navbar-default,
+.navbar-footer,
+.navbar-footer a,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand,
+.dropdown-menu > li > a,
+.dropdown-menu {
 	color: #0f0;
 	font-weight: bold;
-	background-color: #000;
+	background-color: black;
 }
 
 /* Header :Hover: :Focus: */
-
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
 	color: #0f0;
 	background-color: #070707 !important;
 }
 
 /* Credits pop-up */
-
 .modal-content {
 	color: #0a0;
-	background-color: #000;
+	background-color: black;
 }
 
 /* Credits pop-up lines */
-
 .modal-header {
 	border-bottom: 1px solid #070;
 }
@@ -82,7 +90,6 @@ a:focus {
 }
 
 /* Credits pop-up Button */
-
 .btn, .btn:focus, .btn.focus {
 	color: #0a0;
 	background-color: #070707 !important;
@@ -98,7 +105,6 @@ a:focus {
 }
 
 /* Credits pop-up Close Button */
-
 button.close, .close:hover, .close:focus {
 	color: #0f0;
 }
@@ -108,32 +114,28 @@ button.close, .close:hover, .close:focus {
 }
 
 /* WFCD Credits pop-up banner */
-
 .wfcd-banner {
-	background-color: #000;
+	background-color: black;
 }
 
 /* How to Fish page */
-
-.panel-primary>.panel-heading, .panel {
+.panel-primary > .panel-heading, .panel {
 	color: #0f0;
 	font-weight: bold;
-	background-color: #000;
+	background-color: black;
 }
 
 /* Fish Map pop-up text color */
-
 .gm-style .gm-style-iw {
 	color: #0f0;
-	background-color: #000;
+	background-color: black;
 	border-style: solid;
 	border-width: 10px 10px 10px 10px;
-	border-color: #000;
+	border-color: black;
 }
 
 /* Expanding Maps Border Color */
-
-.panel-primary>.panel-heading, .panel-primary, .list-group-item-borderbottom, .list-group-item  {
+.panel-primary > .panel-heading, .panel-primary, .list-group-item-borderbottom, .list-group-item  {
 	border-color: #040 !important;
 }
 
@@ -156,23 +158,21 @@ button.close, .close:hover, .close:focus {
 }
 
 /* Fish information picture pop-ups */
-
-.fish-tooltip-inner img, .fish-tooltip:hover div {
-	background-color: #000;
-	background: #000;
+.fish-tooltip-inner img,
+.fish-tooltip:hover div {
+	background-color: black;
+	background: black;
 	border: 1px solid #070 !important;
 }
 
 /* Fish names, etc. (pop-up text) color */
-
 .fish-tooltip {
 	font-weight: normal;
 	color: #0a0 !important;
 }
 
 /* Table Borders, and text color */
-
-.fish-info, .fish-info>tbody>tr>td {
+.fish-info, .fish-info > tbody > tr > td {
 	font-weight: normal;
 	border: 2px solid #040 !important;
 	/* Was too bright at #070 */
@@ -180,39 +180,34 @@ button.close, .close:hover, .close:focus {
 }
 
 /* Table Headers */
-
 .fish-info thead tr th {
 	color: #0f0;
-	background-color: #000;
+	background-color: black;
 	font-weight: normal;
 }
 
 /* Table background colors odd */
-
-.color1>td, .color3>td, .color5>td, .color7>td {
+.color1 > td, .color3 > td, .color5 > td, .color7 > td {
 	background-color: #070707;
 }
 
 /* Table background colors even */
-
-.color2>td, .color4>td, .color6>td {
-	background-color: #000;
+.color2 > td, .color4 > td, .color6 > td {
+	background-color: black;
 }
 
 /* Timer Boxes */
-
-.list-group-item, .table-striped>tbody>tr:nth-of-type(odd) {
-	background-color: #000;
+.list-group-item, .table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: black;
 	color: #0a0;
 }
 
 /* Timers */
 
 /* Day */
-
 .orange {
 	color: #0a0;
-	text-shadow: 0px 0px 15px orange !important;
+	text-shadow: 0 0 15px orange !important;
 	font-weight: normal !important;
 	font-family: "Hack";
 }
@@ -223,10 +218,9 @@ button.close, .close:hover, .close:focus {
 }
 
 /* Night */
-
 .darkblue {
 	color: #0a0;
-  text-shadow: 0px 0px 15px #009dff !important;
+  text-shadow: 0 0 15px #009dff !important;
 	font-weight: normal !important;
 	font-family: "Hack";
 }
@@ -237,31 +231,27 @@ button.close, .close:hover, .close:focus {
 }
 
 /* Green */
-
 .label-success {
   color: #0a0 !important;
-  text-shadow: 0px 0px 15px #ff9c00 !important;
+  text-shadow: 0 0 15px #ff9c00 !important;
 }
 
 /* Orange */
-
 .label-warning {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #ff9c00 !important;
+  text-shadow: 0 0 15px #ff9c00 !important;
 }
 
 /* Red */
-
 .label-danger {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #ff1900 !important;
+  text-shadow: 0 0 15px #ff1900 !important;
 }
 
 /* Blue - Standard, no warnings */
-
 .label {
 	color: #0a0 !important;
-  text-shadow: 0px 0px 15px #009dff;
+  text-shadow: 0 0 15px #009dff;
 	background: none !important;
 	font-weight: normal !important;
 	font-family: "Hack";
@@ -273,15 +263,17 @@ button.close, .close:hover, .close:focus {
   margin-left: 30px;
 }
 
-.platform-picker ul li, .theme-picker ul li, .component-selector ul li {
-    border-top: 1px solid #040;
+.platform-picker ul li,
+.theme-picker ul li,
+.component-selector ul li {
+  border-top: 1px solid #040;
 }
 
 .platform-picker ul a span,
-  .theme-picker ul a span,
-  .component-selector ul a span {
-    flex-grow: 1;
-    color: #0f0;
+.theme-picker ul a span,
+.component-selector ul a span {
+  flex-grow: 1;
+  color: #0f0;
 }
 
 .inv {
@@ -296,61 +288,65 @@ button.close, .close:hover, .close:focus {
 }
 
 .progress-bar {
-  border: 1px solid #040!important;
+  border: 1px solid #040 !important;
   background-color: transparent;
 }
 .progress {
-    height: 15px;
-    margin-bottom: 10px;
-    background-color: #000!important;
+  height: 15px;
+  margin-bottom: 10px;
+  background-color: black !important;
 }
 
 .winning-right, .winning-left {
-  background-color: #0a0!important;
+  background-color: #0a0 !important;
 }
 
 .corpus-invasion {
-    background-color: transparent;
-}
-.grineer-invasion {
-    background-color: transparent;
-}
-.infested-invasion {
-    background-color: transparent;
-}
-.corrupted-invasion {
-    background-color: transparent;
-}
-.default-invasion {
-    background-color: transparent;
+  background-color: transparent;
 }
 
+.grineer-invasion {
+  background-color: transparent;
+}
+
+.infested-invasion {
+  background-color: transparent;
+}
+
+.corrupted-invasion {
+  background-color: transparent;
+}
+
+.default-invasion {
+  background-color: transparent;
+}
 
 /* Scrollbar */
-
 *::-webkit-scrollbar {
-	width: 10px ! important;
-	height: 10px ! important;
-	background: #1e1e1e ! important;
-	border: 1px solid #252525 ! important;
+	width: 10px !important;
+	height: 10px !important;
+	background: #1e1e1e !important;
+	border: 1px solid #252525 !important;
 }
 
 *::-webkit-scrollbar-button {
-	display: none ! important;
+	display: none !important;
 }
 
-*::-webkit-scrollbar-thumb, *::-webkit-scrollbar-track {
-	border: 0 ! important;
-	box-shadow: none ! important;
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-track {
+	border: 0 !important;
+	box-shadow: none !important;
 }
 
 *::-webkit-scrollbar-thumb {
-	min-height: 28px ! important;
-	background: #0c0c0c ! important;
+	min-height: 28px !important;
+	background: #0c0c0c !important;
 }
 
-*::-webkit-scrollbar-corner, *::-webkit-scrollbar-track {
-	background: #000 ! important;
+*::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-track {
+	background: black !important;
 }
 
 /* Bounty rewards */
@@ -358,30 +354,33 @@ button.close, .close:hover, .close:focus {
 .bountiesList tbody tr td {
   font-size: 11px;
 }
+
 .bountiesList tbody tr td ul {
   padding-left: 16px;
 }
 
 /* mobile width fix */
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    [class*="col-"] {
-        width: 100%;
-    }
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
 
-    /* For list items that go over labels */
-    .list-group-item {
-        font-size: 0.9em;
-    }
-    .label {
-        font-size: 0.9em;
-        margin-top: 2px;
-    }
-    .fissure-body {
-        display: inline-block;
-        max-width: 80%;
-        overflow: scroll;
-    }
+  /* For list items that go over labels */
+  .list-group-item {
+    font-size: .9em;
+  }
+
+  .label {
+    font-size: .9em;
+    margin-top: 2px;
+  }
+
+  .fissure-body {
+    display: inline-block;
+    max-width: 80%;
+    overflow: scroll;
+  }
 }
 
 .dropdown-menu li.list-group-item-success a {

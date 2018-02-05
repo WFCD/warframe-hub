@@ -319,3 +319,7 @@ body {
 .wfcd-logo path {
     fill: #0cf;
 }
+.wfcd-logo {
+  width: 100%;
+  height: 100%;
+}

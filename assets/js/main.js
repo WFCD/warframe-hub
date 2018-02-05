@@ -982,8 +982,7 @@ function removeTimeBadgeColor(element) {
 
 function updateTimeBadges() {
   const labels = document.getElementsByClassName('timer');
-  for (var l = 0; l < labels.length; l++) {
-    const label = labels[l];
+  for (const label of labels) {
     const currentLabel = $(label);
 
     const activation = currentLabel.attr('data-starttime');

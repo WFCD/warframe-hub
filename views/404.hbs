@@ -2,7 +2,7 @@
 	<br><br>
 	<div class="row">
 		<div class="col-md-4">
-			<img name="WFCD Logo" src="img/general/wfcd.png" />
+			<img class="wfcd-logo" name="WFCD Logo" src="/img/general/wfcd.svg" onerror="this.src='/img/general/wfcd.png'; this.onerror=null;">
 		</div>
 
 		<div class="col-md-8">
@@ -16,7 +16,7 @@
 			<p>Speaking of which, one of the developers is probably panicking right now just because of this error log.</p>
 			<p>Oh well, poor him.</p>
 			<br><br>
-			<a name="Main Page" href="./">Click here to return to a safe place</a>
+			<a name="Main Page" href="/">Click here to return to a safe place</a>
 		</div>
 
 	</div>
@@ -32,4 +32,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+  SVGInjector(document.querySelectorAll('img.wfcd-logo'));
+</script>
 {{> themes}}

@@ -3,8 +3,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <!-- jQuery CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- jQuery CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- SVG Injector -->
+	<script src="/js/svg-injector.min.js"></script>
+  <!-- Babel polyfill -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
 
 	<!-- Cookies CDN -->
@@ -12,9 +15,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
-	<link rel="stylesheet" href="css/bootstrap-night.min.css" media="screen" id="mode">
-	<link rel="stylesheet" href="css/common.css" id="common-css">
-	<link rel="stylesheet" href="css/main.night.css" id="mode-custom">
+	<link rel="stylesheet" href="/css/bootstrap-night.min.css" media="screen" id="mode">
+	<link rel="stylesheet" href="/css/common.css" id="common-css">
+	<link rel="stylesheet" href="/css/main.night.css" id="mode-custom">
 
 	<script>
 		/* global $, Cookies */
@@ -28,23 +31,23 @@
 		var themecustom = $('#mode-custom');
     switch (Cookies.get('mode')) {
       case 'night':
-        theme.attr('href', 'css/bootstrap-night.min.css');
-  			themecustom.attr('href', 'css/main.night.css');
+        theme.attr('href', '/css/bootstrap-night.min.css');
+  			themecustom.attr('href', '/css/main.night.css');
   			theme.toggleClass('night');
         break;
       case 'retro':
-        theme.attr('href', 'css/bootstrap-default.min.css');
-        themecustom.attr('href', 'css/main.retro.css');
+        theme.attr('href', '/css/bootstrap-default.min.css');
+        themecustom.attr('href', '/css/main.retro.css');
         theme.toggleClass('retro');
         break;
       case 'eidolon':
-        theme.attr('href', 'css/bootstrap-default.min.css');
-        themecustom.attr('href', 'css/main.eidolon.css');
+        theme.attr('href', '/css/bootstrap-default.min.css');
+        themecustom.attr('href', '/css/main.eidolon.css');
         theme.toggleClass('eidolon');
         break;
       default:
-        theme.attr('href', 'css/bootstrap-default.min.css');
-        themecustom.attr('href', 'css/main.css');
+        theme.attr('href', '/css/bootstrap-default.min.css');
+        themecustom.attr('href', '/css/main.css');
         break;
     }
 	</script>

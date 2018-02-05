@@ -110,7 +110,13 @@
     display: inline-block;
     max-width: 80%;
     overflow: scroll;
-    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .wfcd-logo {
+    height: 100%;
+  }
 }
 
 /* picker dropdown stuff */
@@ -175,9 +181,9 @@
   max-height: 125px;
 }
 
-img {
-	max-width: 100%;
-	max-height: 100%;
+img, .wfcd-logo  {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* Tables stuff */
@@ -313,4 +319,12 @@ body {
 
 .loader-right {
   animation: moving-right .3s ease infinite;
+}
+
+/* wfcd logo (404 page)  */
+.wfcd-logo path {
+    fill: #0cf;
+}
+.wfcd-logo {
+  width: 100%;
 }

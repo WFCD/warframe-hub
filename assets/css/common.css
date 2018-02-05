@@ -110,7 +110,11 @@
     display: inline-block;
     max-width: 80%;
     overflow: scroll;
-    }
+  }
+
+  .wfcd-logo {
+    height: 100%;
+  }
 }
 
 /* picker dropdown stuff */
@@ -321,5 +325,4 @@ body {
 }
 .wfcd-logo {
   width: 100%;
-  height: 100%;
 }

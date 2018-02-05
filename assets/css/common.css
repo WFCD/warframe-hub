@@ -111,7 +111,9 @@
     max-width: 80%;
     overflow: scroll;
   }
+}
 
+@media only screen and (min-width: 768px) {
   .wfcd-logo {
     height: 100%;
   }

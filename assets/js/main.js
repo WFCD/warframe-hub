@@ -49,13 +49,13 @@ const setTheme = (themeName, superTheme, reset) => {
       themecustom.attr('href', `css/main.${themeName}.css`);
       theme.removeClass();
       theme.addClass(themeName);
-      Cookies.set('mode', themeName);
+      Cookies.set('mode', themeName, {expires: 365});
     }
   } else {
     theme.attr('href', 'css/bootstrap-default.min.css');
     themecustom.attr('href', 'css/main.css');
     theme.removeClass();
-    Cookies.set('mode', 'day');
+    Cookies.set('mode', 'day', {expires: 365});
   }
   updateGrid();
 };
@@ -81,6 +81,28 @@ function formatDurationShort(duration) {
     timeText += `${duration.seconds()}s`;
   }
   return timeText;
+}
+
+/* helper function, transforms miliseconds diff into one of:
+Dd HHh MMm SSs
+Hh MMm SSs
+Mm SSs
+Ss */
+function formatTimer(diff) {
+  let timeLeft = diff;
+  const stringArray = [];
+
+  [[86400000, 'd'], [3600000, 'h'], [60000, 'm'], [1000, 's']]
+    .forEach(([unit, suffix]) => {
+      const time = Math.floor(timeLeft / unit);
+      const first = stringArray.length === 0;
+      if (!first || time > 0) {
+        stringArray.push(time.toString()
+          .padStart(first ? 1 : 2, '0') + suffix);
+      }
+      timeLeft -= time * unit;
+    });
+  return stringArray.join(' ');
 }
 
 // Helper function to grab objects based on inner tags
@@ -232,7 +254,7 @@ function updateCetusCycle() {
 
   $('#cetuscycletitle').html(cetusCurrentTitle);
   $('#cetustimezonetitle').html(cetusCurrentTitleTimezone);
-  $('#cetustimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
+  $('#cetustimezonetime').html(moment.unix(expiryTime).format('llll'));
 
   const timeBadge = $('#cetuscycletime');
   timeBadge.attr('data-endtime', expiryTime);
@@ -260,7 +282,7 @@ function updateEarthCycle() {
 
   $('#earthcycletitle').html(earthCurrentTitle);
   $('#earthtimezonetitle').html(earthCurrentTitleTimezone);
-  $('#earthtimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
+  $('#earthtimezonetime').html(moment.unix(expiryTime).format('llll'));
 
   const timeBadge = $('#earthcycletime');
   timeBadge.attr('data-endtime', expiryTime);
@@ -358,7 +380,7 @@ function updateVoidTrader() {
     if (currentTime < activateTime) {
       $('#voidtradertitle').html(`${voidTrader.character} arrives in:`);
       $('#voidtradertimezonetitle').html('Arrives at:');
-      $('#voidtradertimezonetime').html(moment.unix(activateTime).format('h:mm:ss a, MM/DD/YYYY'));
+      $('#voidtradertimezonetime').html(moment.unix(activateTime).format('llll'));
 
       const timeBadge = $('#voidtradertime');
       timeBadge.attr('data-endtime', activateTime);
@@ -367,7 +389,7 @@ function updateVoidTrader() {
     } else if (currentTime > activateTime && currentTime < expiryTime) {
       $('#voidtradertitle').html(`${voidTrader.character} leaves in:`);
       $('#voidtradertimezonetitle').html('Leaves at:');
-      $('#voidtradertimezonetime').html(moment.unix(expiryTime).format('h:mm:ss a, MM/DD/YYYY'));
+      $('#voidtradertimezonetime').html(moment.unix(expiryTime).format('llll'));
 
       const timeBadge = $('#voidtradertime');
       timeBadge.attr('data-endtime', expiryTime);
@@ -500,7 +522,7 @@ function updateAcolytes() {
           acolyteRow += `<b>${acolyte.agentType}</b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
-                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY')}</span>`;
+                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
 
           const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
           const progressBar = $(`#${acolyte.id}_progress`).children()[1];
@@ -531,7 +553,7 @@ function updateAcolytes() {
         } else {
           const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
           $(`#${acolyte.id}-health`).html(`${(acolyte.healthPercent * 100).toFixed(2)}%`);
-          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('h:mm:ss a, MM/DD/YYYY'));
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('llll'));
         }
       }
     }
@@ -693,6 +715,12 @@ function updateSortie() {
         {image: getFactionKey(sortie.faction), className: 'faction-image sortie-faction', title: sortie.faction},
       ));
       $('#sortieList').empty();
+      const sortieTimer = `<span id="sortieTimer${sortie.id}" class="label timer pull-right" data-starttime="${moment(sortie.activation).unix()}" ` +
+                    `data-endtime="${moment(sortie.expiry).unix()}"></span>`;
+      if ($('#sortieTimerInfo').children()) {
+        $('#sortieTimerInfo').children().remove();
+      }
+      $('#sortieTimerInfo').append(sortieTimer);
 
       sortie.variants.forEach((variant, index) => {
         let sortieRow = `<li class="list-group-item list-group-item-borderless variant" id="variant_${index}">`;
@@ -706,6 +734,7 @@ function updateSortie() {
   } else {
     $('#sortietitle').show();
     $('#sortieList').find('#sortieList').empty();
+    $('#sortieTimer').remove();
   }
 }
 
@@ -1036,17 +1065,15 @@ function updateTimeBadges() {
         color = 'label-danger';
       } else if (diff < 1800000) { // 10 min to 30 min
         color = 'label-warning';
-      } else if (diff < 3600000) { // 30 min to 1 hour
+      } else if (diff > 1800000) { // 30 min to 1 hour
         color = 'label-success';
-      } else if (diff > 3600000) { // More than 1 hour
-        color = 'label-primary';
       }
 
       if (!currentLabel.hasClass(color)) {
         removeTimeBadgeColor(currentLabel);
         currentLabel.addClass(color);
       }
-      currentLabel.html(formatDurationShort(duration));
+      currentLabel.html(formatTimer(diff));
     }
   }
 
@@ -1068,7 +1095,7 @@ function selectPlatform(platform) {
 
 // Set default platform to PC if there isn't one
 if (typeof Cookies.get('platform') === 'undefined') {
-  Cookies.set('platform', 'pc');
+  Cookies.set('platform', 'pc', {expires: 365});
 }
 selectPlatform(Cookies.get('platform'));
 
@@ -1076,7 +1103,7 @@ selectPlatform(Cookies.get('platform'));
 $('.platform-picker li').click(e => {
   const platform = $(e.currentTarget).attr('data-platform');
   selectPlatform(platform);
-  Cookies.set('platform', platform);
+  Cookies.set('platform', platform, {expires: 365});
   platformSwapped = true;
   getWorldState();
   setTimeout(updatePlatformSwitch, 30000);
@@ -1093,7 +1120,7 @@ $('.platform-picker li').click(e => {
     } else {
       value = defValue;
     }
-    Cookies.set(component, value);
+    Cookies.set(component, value, {expires: 365});
   }
   if (value === 'true') {
     $(`.component-check[data-component="${component}"]`)
@@ -1115,7 +1142,7 @@ $('.component-check').click(e => {
   const component = target.attr('data-component');
   const componentElement = $(`#component-${component}`);
 
-  Cookies.set(component, status);
+  Cookies.set(component, status, {expires: 365});
   if (status) {
     componentElement.show();
   } else {
@@ -1189,7 +1216,7 @@ $('#component-selector').removeClass('hide');
   grid.on('dragItemPositioned', () => {
     // save drag positions
     const positions = grid.packery('getShiftPositions');
-    Cookies.set('dragPositions', positions);
+    Cookies.set('dragPositions', positions, {expires: 365});
   });
 
   this.updateGrid = () => {

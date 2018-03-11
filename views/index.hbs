@@ -95,7 +95,7 @@
 			</div>
 
       <div class="grid-item col-md-6" id="component-reset">
-          <h3 class="text-center">Raid / Daily Reward Timer</h3>
+          <h3 class="text-center">Daily Reward Timer</h3>
           <ul class="list-group">
             <li class="list-group-item list-group-item-borderbottom">
               <span class="pull-right" id="resettimertime"></span>
@@ -108,10 +108,12 @@
   				<h3 class="text-center">Sortie</h3>
   				<ul class="list-group">
   					<li id="sortietitle" class="list-group-item list-group-item-borderless">{{> loading}}</li>
-  					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless"><span id="sortieFaction"></span>
-  						<h4 id="sortieBoss"></h4></li>
-  					<div id="sortieList"></div>
-  					<li class="list-group-item list-group-item-borderbottom"></li>
+  					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless">
+              <span id="sortieFaction"></span>
+  						<span><h4 id="sortieBoss"></h4></span>
+              <span id="sortieTimerInfo"></span>
+            </li>
+  					<li class="list-group-item list-group-item-borderbottom"><div id="sortieList"></div></li>
   				</ul>
 			</div>
 
@@ -128,8 +130,8 @@
   				<h3 class="text-center">Void Trader</h3>
   				<ul class="list-group">
   					<li class="list-group-item list-group-item-borderless">
-              					<span class="pull-right" id="voidtradertime"></span>
-  						<span id="voidtradertitle">{{> loading}}</span>
+    					<span class="pull-right" id="voidtradertime"></span>
+			        <span id="voidtradertitle">{{> loading}}</span>
   					</li>
             <li class="list-group-item list-group-item-borderless">
   						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>

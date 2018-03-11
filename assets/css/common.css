@@ -10,14 +10,14 @@
 
 .faction-image {
   position: relative;
-  top: 6px;
+  top: -1px;
   width: 2em;
   max-width: 30px;
   max-height: 30px;
 }
 
 #sortieBossInfo {
-  display: flex;
+  display: block;
 }
 
 #sortieBoss {

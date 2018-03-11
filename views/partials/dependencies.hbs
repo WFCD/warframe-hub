@@ -29,7 +29,7 @@
 
     var theme = $('#mode');
     if (typeof Cookies.get('mode') === 'undefined') {
-			Cookies.set('mode', 'night');
+			Cookies.set('mode', 'night', {expires: 365 });
 		}
 		var themecustom = $('#mode-custom');
     switch (Cookies.get('mode')) {

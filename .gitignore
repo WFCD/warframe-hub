@@ -34,8 +34,8 @@ npm-debug.log
 
 # Production css and js files
 public/css/*
-public/js/main.js
-public/js/map.js
+public/js/*
+
 
 # Original files created while diffing
 *.orig

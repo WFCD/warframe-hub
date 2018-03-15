@@ -163,7 +163,9 @@ function updateEvents() {
         } else if (healthPerc < 50) {
           healthState = 'danger';
         }
-        body += `<div class="text-center d-inline"><span class="label label-danger ">${event.victimNode}</span><span class="label label-${healthState}">${event.health || 0}% Remaining</span></div><br />`;
+        const victim = event.victimNode ? `<span class="label label-danger">${event.victimNode || ''}</span>` : '';
+        const health = event.health ? `<span class="label label-${healthState}">${event.health || 0}% Remaining</span>` : '';
+        body += `<div class="text-center d-inline">${victim}${health}</div><br />`;
         if (event.jobs) {
           let listItems = '<div class="container-fluid">';
           event.jobs.forEach(job => {
@@ -197,6 +199,9 @@ function updateEvents() {
             listItems += `${jobTitle}${jobBody}`;
           });
           body += `${listItems}</div>`;
+        } else {
+          body += event.rewards.length > 0 ? event.rewards.map(reward =>
+            `<div class="text-center d-inline"><span class="label label-success">${reward.asString}</span></div><br />`).join(' ') : '';
         }
         if (title && body) {
           componentBody.append(`<li class="list-group-item list-group-item-borderless" id="event-${event.id}-title">${title}${body}</li>`);

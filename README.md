@@ -1,7 +1,7 @@
 # Warframe Hub
 [![Build Status](https://travis-ci.org/WFCD/warframe-hub.svg?branch=dev)](https://travis-ci.org/WFCD/warframe-hub) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e3152d74ab44e78a8e5a42c3de9e836)](https://www.codacy.com/app/MainlandHero/warframe-hub?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WFCD/warframe-hub&amp;utm_campaign=Badge_Grade) [![Waffle.io - Columns and their card count](https://badge.waffle.io/WFCD/warframe-hub.svg?columns=in%20progress,review,done)](http://waffle.io/WFCD/warframe-hub)
 
-[![Supported by Warframe Community Developers](https://raw.githubusercontent.com/WFCD/banner/master/banner.png)](https://github.com/WFCD "Supported by Warframe Community Developers")
+[![Supported by Warframe Community Developers](https://warframestat.us/wfcd.png)](https://github.com/WFCD "Supported by Warframe Community Developers")
 
 ## Prerequisite
 In order to run your own version of Warframe Hub, you are required to have the following on your machine:

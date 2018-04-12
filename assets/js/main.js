@@ -1227,6 +1227,7 @@ moment.updateLocale('en', {
 });
 
 /* Polyfills go here */
+/* eslint-disable */
 // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
 if (!String.prototype.padStart) {
@@ -1244,6 +1245,7 @@ if (!String.prototype.padStart) {
     return padString.slice(0, targetLength) + String(this);
   };
 }
+/* eslint-enable */
 
 // Main data refresh loop every 60 minutes
 function update() {

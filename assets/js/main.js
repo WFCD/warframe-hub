@@ -38,28 +38,6 @@ const getImage = (
   return `<img src="img/${type}/${image}.png" class="${className}" />`;
 };
 
-const setTheme = (themeName, superTheme, reset) => {
-  const theme = $('#mode');
-  const themecustom = $('#mode-custom');
-  if (!reset) {
-    if (theme.hasClass(themeName)) {
-      setTheme(false, false, true);
-    } else {
-      theme.attr('href', `css/bootstrap-${superTheme}.min.css`);
-      themecustom.attr('href', `css/main.${themeName}.css`);
-      theme.removeClass();
-      theme.addClass(themeName);
-      Cookies.set('mode', themeName, {expires: 365});
-    }
-  } else {
-    theme.attr('href', 'css/bootstrap-default.min.css');
-    themecustom.attr('href', 'css/main.css');
-    theme.removeClass();
-    Cookies.set('mode', 'day', {expires: 365});
-  }
-  updateGrid();
-};
-
 // Update worldstate timestamp
 function updateWorldStateTime() {
   if (document.getElementById('worldstateinfo')) {
@@ -1249,24 +1227,25 @@ moment.updateLocale('en', {
 });
 
 /* Polyfills go here */
+/* eslint-disable */
 // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
 if (!String.prototype.padStart) {
-    String.prototype.padStart = function padStart(targetLength,padString) {
-        targetLength = targetLength>>0; //truncate if number or convert non-number to 0;
-        padString = String((typeof padString !== 'undefined' ? padString : ' '));
-        if (this.length > targetLength) {
-            return String(this);
-        }
-        else {
-            targetLength = targetLength-this.length;
-            if (targetLength > padString.length) {
-                padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
-            }
-            return padString.slice(0,targetLength) + String(this);
-        }
-    };
+  String.prototype.padStart = function padStart(targetLength, padString) {
+    targetLength >>= 0; // truncate if number or convert non-number to 0;
+    padString = String((typeof padString !== 'undefined' ? padString : ' '));
+    if (this.length > targetLength) {
+      return String(this);
+    }
+
+    targetLength -= this.length;
+    if (targetLength > padString.length) {
+      padString += padString.repeat(targetLength / padString.length); // append to original to ensure we are longer than needed
+    }
+    return padString.slice(0, targetLength) + String(this);
+  };
 }
+/* eslint-enable */
 
 // Main data refresh loop every 60 minutes
 function update() {

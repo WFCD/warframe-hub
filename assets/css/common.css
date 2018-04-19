@@ -340,3 +340,15 @@ body {
 .wfcd-logo {
   width: 100%;
 }
+
+
+/* Map Container style */
+.map-container {
+  margin-top: 20px;
+  width: 100%;
+  height: 92vh;
+}
+
+#map {
+  height: 100%;
+}

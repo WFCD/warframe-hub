@@ -16,6 +16,7 @@ branches:
   only:
   - dev
   - master
+  - /^greenkeeper/.*$/
 
 before_install:
   - npm i -g npm@5.5.1

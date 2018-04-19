@@ -50,16 +50,6 @@
   background: #617487;
 }
 
-/* Map Container style */
-.map-container {
-	margin-top: 20px;
-	width: 100%;
-	height: 92vh;
-}
-#map {
-	height: 100%;
-}
-
 .platform-picker ul li,
 .theme-picker ul li,
 .component-selector ul li {

@@ -39,7 +39,7 @@
     "proxyquire": "^2.0.1",
     "really-need": "^1.9.2",
     "serve-favicon": "~2.5.0",
-    "sinon": "^4.1.2",
+    "sinon": "^5.0.1",
     "supertest": "^3.0.0",
     "winston": "^2.4.0"
   },

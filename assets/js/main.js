@@ -762,7 +762,7 @@ function updateFissure() {
           }
         });
         if (!filtered) {
-            $('#fissurebody').before(fissureRow);
+          $('#fissurebody').before(fissureRow);
         }
       }
     }

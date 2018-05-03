@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid, localStorage  */
+/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid, localStorage, Notification  */
 let worldState;
 let updateTime;
 let platformSwapped = false;
@@ -1179,6 +1179,28 @@ const loadFilterData = () => {
   loadSoundOptionsData();
 };
 loadFilterData();
+
+$('#notif-anchor').click(e => {
+  if (!("Notification" in window)) {
+    alert("This browser does not support system notifications");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    new Notification("Hi there!");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        new Notification("Hi there!");
+      }
+    });
+  }
+});
 
 // Toggle filter settings on checkbox click
 $('.notif-filter-check').click(e => {

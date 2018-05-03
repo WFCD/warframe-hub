@@ -766,6 +766,11 @@ function updateFissure() {
         }
       }
     }
+    if ($('#fissurebody').children().length === 1) {
+      $('#fissureList').children().not('#fissurebody').remove();
+      document.getElementById('fissuretitle').innerText = 'No active Void Fissures Matching Your Filters :(';
+      $('#fissuretitle').show();
+    }
   } else {
     $('#fissureList').children().not('#fissurebody').remove();
     document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';

@@ -722,6 +722,7 @@ function updateSortie() {
 
 function updateFissure() {
   const {fissures} = worldState;
+  const filteredPlanets = JSON.stringify(localStorage.getItem('fissurefilters') || '[]');
 
   if (fissures.length !== 0) {
     $('#fissuretitle').hide();
@@ -753,7 +754,16 @@ function updateFissure() {
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
 
         fissureRow += '</li>';
-        $('#fissurebody').before(fissureRow);
+        
+        let filtered = false;
+        filteredPlanets.forEach(planet => {
+          if (fissure.node.toLowerCase().indexOf(planet.toLowerCase) > -1) {
+            filtered = true;
+          }
+        });
+        if (!filtered) {
+            $('#fissurebody').before(fissureRow);
+        }
       }
     }
   } else {

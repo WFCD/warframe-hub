@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid */
+/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid, localStorage  */
 
 let worldState;
 let updateTime;
@@ -1134,9 +1134,105 @@ $('.component-check').click(e => {
   updateGrid();
 });
 
+// load filter settings
+const loadNotificationFilterData = () => {
+  let filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  filterData.forEach(filter => {
+    $(`.notif-filter-check[data-notif="${filter}"]`)
+      .prop('checked', true);
+  });
+};
+
+const loadFissuresFilterData = () => {
+  let filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
+  filterData.forEach(filter => {
+    $(`.fissure-filter-check[data-fissure="${filter}"]`)
+      .prop('checked', true);
+  });
+};
+
+const loadSoundOptionsData = () => {
+  let filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
+  filterData.forEach(filter => {
+    $(`.sound-option-check[data-sound="${filter}"]`)
+      .prop('checked', true);
+  });
+};
+
+
+const loadFilterData = () => {
+  loadNotificationFilterData();
+  loadFissuresFilterData();
+  loadSoundOptionsData();
+};
+loadFilterData();
+
+
+// Toggle filter settings on checkbox click
+$('.notif-filter-check').click((e) => {
+  const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  const target = $(e.target);
+  const status = target.prop('checked');
+  const filter = target.attr('data-notif');
+
+  if (status) {
+    if (!filterData.includes(filter)) {
+      filterData.push(filter);
+    }
+  } else {
+    if (filterData.includes(filter)) {
+      filterData.splice(filterData.indexOf(filter), 1);
+    }
+  }
+  const stringified = JSON.stringify(filterData);
+  localStorage.setItem('notificationfilters', stringified);
+});
+
+$('.fissure-filter-check').click((e) => {
+  const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
+
+  const target = $(e.target);
+  const status = target.prop('checked');
+  const filter = target.attr('data-fissure');
+
+  if (status) {
+    if (!filterData.includes(filter)) {
+      filterData.push(filter);
+    }
+  } else {
+    if (filterData.includes(filter)) {
+      filterData.splice(filterData.indexOf(filter), 1);
+    }
+  }
+  const stringified = JSON.stringify(filterData);
+  localStorage.setItem('fissurefilters', stringified);
+});
+
+$('.sound-option-check').click((e) => {
+  const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
+
+  const target = $(e.target);
+  const status = target.prop('checked');
+  const filter = target.attr('data-sound');
+
+  if (status) {
+    if (!filterData.includes(filter)) {
+      filterData.push(filter);
+    }
+  } else {
+    if (filterData.includes(filter)) {
+      filterData.splice(filterData.indexOf(filter), 1);
+    }
+  }
+
+  const stringified = JSON.stringify(filterData);
+  localStorage.setItem('soundoptions', stringified);
+});
+
 // Show dropdowns that should be visible only on timers page
 $('.platform-picker').removeClass('hide');
 $('#component-selector').removeClass('hide');
+$('#filters-picker').removeClass('hide');
 
 // Packery closure
 (() => {

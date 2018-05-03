@@ -1,0 +1,20 @@
+{
+  "mercury": "Mercury",
+  "venus": "Venus",
+  "earth": "Earth",
+  "lua": "Lua",
+  "mars": "Mars",
+  "phobos": "Phobos",
+  "ceres": "Ceres",
+  "jupiter": "Jupiter",
+  "europa": "Europa",
+  "saturn": "Saturn",
+  "uranus": "Uranus",
+  "neptune": "Neptune",
+  "pluto": "Pluto",
+  "sedna": "Sedna",
+  "kuva": "Kuva Fortress",
+  "eris": "Eris",
+  "derelict": "Orokin Derelict",
+  "void": "Void"
+}

@@ -1186,10 +1186,8 @@ $('.notif-filter-check').click(e => {
     if (!filterData.includes(filter)) {
       filterData.push(filter);
     }
-  } else {
-    if (filterData.includes(filter)) {
-      filterData.splice(filterData.indexOf(filter), 1);
-    }
+  } else if (filterData.includes(filter)) {
+    filterData.splice(filterData.indexOf(filter), 1);
   }
   const stringified = JSON.stringify(filterData);
   localStorage.setItem('notificationfilters', stringified);
@@ -1206,10 +1204,8 @@ $('.fissure-filter-check').click(e => {
     if (!filterData.includes(filter)) {
       filterData.push(filter);
     }
-  } else {
-    if (filterData.includes(filter)) {
-      filterData.splice(filterData.indexOf(filter), 1);
-    }
+  } else if (filterData.includes(filter)) {
+    filterData.splice(filterData.indexOf(filter), 1);
   }
   const stringified = JSON.stringify(filterData);
   localStorage.setItem('fissurefilters', stringified);
@@ -1226,10 +1222,8 @@ $('.sound-option-check').click(e => {
     if (!filterData.includes(filter)) {
       filterData.push(filter);
     }
-  } else {
-    if (filterData.includes(filter)) {
-      filterData.splice(filterData.indexOf(filter), 1);
-    }
+  } else if (filterData.includes(filter)) {
+    filterData.splice(filterData.indexOf(filter), 1);
   }
 
   const stringified = JSON.stringify(filterData);

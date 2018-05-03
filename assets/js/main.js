@@ -757,7 +757,7 @@ function updateFissure() {
 
         let filtered = false;
         filteredPlanets.forEach(planet => {
-          if (fissure.node.toLowerCase().indexOf(planet.toLowerCase) > -1) {
+          if (fissure.node.toLowerCase().indexOf(planet.toLowerCase()) > -1) {
             filtered = true;
           }
         });

@@ -355,6 +355,6 @@ body {
 
 /* Scrollable modal body. */
 .modal-body {
-    max-height: calc(100vh - 212px);
-    overflow-y: auto;
+    max-height: calc(100vh - 212px)!important;
+    overflow-y: auto!important;
 }

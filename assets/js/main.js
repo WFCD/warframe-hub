@@ -1,5 +1,4 @@
 /* globals $, moment, Cookies, Draggabilly, Packery, updateGrid, localStorage  */
-
 let worldState;
 let updateTime;
 let platformSwapped = false;
@@ -1136,7 +1135,7 @@ $('.component-check').click(e => {
 
 // load filter settings
 const loadNotificationFilterData = () => {
-  let filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
   filterData.forEach(filter => {
     $(`.notif-filter-check[data-notif="${filter}"]`)
       .prop('checked', true);
@@ -1144,7 +1143,7 @@ const loadNotificationFilterData = () => {
 };
 
 const loadFissuresFilterData = () => {
-  let filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
+  const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
   filterData.forEach(filter => {
     $(`.fissure-filter-check[data-fissure="${filter}"]`)
       .prop('checked', true);
@@ -1152,13 +1151,12 @@ const loadFissuresFilterData = () => {
 };
 
 const loadSoundOptionsData = () => {
-  let filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
+  const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
   filterData.forEach(filter => {
     $(`.sound-option-check[data-sound="${filter}"]`)
       .prop('checked', true);
   });
 };
-
 
 const loadFilterData = () => {
   loadNotificationFilterData();
@@ -1167,9 +1165,8 @@ const loadFilterData = () => {
 };
 loadFilterData();
 
-
 // Toggle filter settings on checkbox click
-$('.notif-filter-check').click((e) => {
+$('.notif-filter-check').click(e => {
   const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
   const target = $(e.target);
   const status = target.prop('checked');
@@ -1188,7 +1185,7 @@ $('.notif-filter-check').click((e) => {
   localStorage.setItem('notificationfilters', stringified);
 });
 
-$('.fissure-filter-check').click((e) => {
+$('.fissure-filter-check').click(e => {
   const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
 
   const target = $(e.target);
@@ -1208,7 +1205,7 @@ $('.fissure-filter-check').click((e) => {
   localStorage.setItem('fissurefilters', stringified);
 });
 
-$('.sound-option-check').click((e) => {
+$('.sound-option-check').click(e => {
   const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
 
   const target = $(e.target);

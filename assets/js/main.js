@@ -295,16 +295,17 @@ function updateCetusCycle() {
   timeBadge.attr('data-endtime', expiryTime);
   timeBadge.addClass('label timer');
 
-  if (isNotifiable(worldState.cetusCycle.id, 'cetusCycle')) {
     if (worldState.cetusCycle.isDay) {
       // Day notification
-      sendNotification(worldState.cetusCycle.shortString, 'Rise and Shine! Hunting\'s Over!');
-    } else {
+      if (isNotifiable(worldState.cetusCycle.id, 'cetus.day')) {
+        sendNotification(worldState.cetusCycle.shortString, 'Rise and Shine! Hunting\'s Over!');
+        addNotifiedId(worldState.cetusCycle.id);
+      }
+    } else if (isNotifiable(worldState.cetusCycle.id, 'cetus.night')) {
       sendNotification(worldState.cetusCycle.shortString, 'It\'s Hunting Time!', 'audio/eidolon.mp3');
+      addNotifiedId(worldState.cetusCycle.id);
     }
-
-    addNotifiedId(worldState.cetusCycle.id);
-  }
+    
 }
 
 function updateEarthCycle() {

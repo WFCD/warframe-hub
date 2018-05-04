@@ -26,7 +26,6 @@ const sendNotification = (body, title = 'Warframe Hub', sound = 'audio/TextMessa
     const audio = new Audio(sound);
     audio.volume = 0.5;
     audio.play();
-    
     return notif;
   }
   return undefined;

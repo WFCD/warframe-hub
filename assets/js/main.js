@@ -19,11 +19,11 @@ let earthCurrentIndicatorColor;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
-const sendNotification = (body, title) => {
+const sendNotification = (body, title = 'Warframe Hub', sound='audio/TextMessage_SingleDrumHit.mp3') => {
   if (Notification.permission === 'granted') {
-    const notif = new Notification(title || 'Warframe Hub', {icon: 'https://warframestat.us/wfcd_logo_color.png', body});
-    setTimeout(notif.close.bind(notif), 4000);
-    return notif;
+    const notif = new Notification(title, {icon: 'https://warframestat.us/wfcd_logo_color.png', body, sound});
+    setTimeout(notif.close.bind(notif), 20000);
+    return notif; 
   }
   return undefined;
 };
@@ -39,6 +39,12 @@ const addNotifiedId = id => {
   localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
 };
 
+const isNotifiable = (id, event, items) => {
+  const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  const includesItems = (typeof items !== 'undefined' && items.length > 0) ? tracked.some(r => items.indexOf(r) >= 0) : true;
+  return isNotNotified(id) && tracked.includes(event) && (includesItems || (tracked.includes('credits') && event === 'alerts'));
+};
+
 const cleanupNotifiedIds = () => {
   if (!worldState) return;
   const ids = worldState.alerts.map(alert => alert.id)
@@ -50,7 +56,8 @@ const cleanupNotifiedIds = () => {
     .concat(worldState.fissures.map(item => item.id))
     .concat(worldState.flashSales.map(item => item.id))
     .concat(worldState.conclaveChallenges.map(item => item.id))
-    .concat(worldState.conclaveChallenges.map(item => item.id));
+    .concat(worldState.conclaveChallenges.map(item => item.id))
+    .concat([worldState.cetusCycle.id]);
   const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
   const toRemove = [];
   notifiedIds.forEach(id => {
@@ -287,6 +294,17 @@ function updateCetusCycle() {
   const timeBadge = $('#cetuscycletime');
   timeBadge.attr('data-endtime', expiryTime);
   timeBadge.addClass('label timer');
+
+  if(isNotifiable(worldState.cetusCycle.id, 'cetusCycle')) {
+    if (worldState.cetusCycle.isDay) {
+      // Day notification
+      sendNotification(worldState.cetusCycle.shortString, 'Rise and Shine! Hunting\'s Over!');
+    } else {
+      sendNotification(worldState.cetusCycle.shortString, 'It\'s Hunting Time!', 'audio/eidolon.mp3');
+    }
+
+    addNotifiedId(worldState.cetusCycle.id);
+  }
 }
 
 function updateEarthCycle() {
@@ -633,11 +651,8 @@ function updateAlerts() {
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);
-          const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
 
-          if (isNotNotified(alert.id) && tracked.includes('alerts')
-            && (tracked.some(r => alert.rewardTypes.indexOf(r) >= 0)
-            || tracked.includes('credits'))) {
+          if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
             sendNotification(`${alert.mission.reward.asString}\n${alert.eta} Remaining | ${new Date().toLocaleString()}`, `${alert.mission.type} - ${alert.mission.node}`);
             addNotifiedId(alert.id);
           }
@@ -1042,6 +1057,7 @@ function getWorldState() {
     updateTime = (new Date()).getTime();
     updateDataDependencies();
     updatePage();
+    sendNotification('Worldstate Updated');
   });
 }
 

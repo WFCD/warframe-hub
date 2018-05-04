@@ -36,6 +36,5 @@ npm-debug.log
 public/css/*
 public/js/*
 
-
 # Original files created while diffing
 *.orig

@@ -1057,7 +1057,9 @@ function getWorldState() {
     updateTime = (new Date()).getTime();
     updateDataDependencies();
     updatePage();
-    sendNotification('Worldstate Updated');
+    if (JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('wsUpdate')) {
+      sendNotification('Worldstate Updated'); 
+    }
   });
 }
 

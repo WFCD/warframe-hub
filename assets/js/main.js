@@ -766,7 +766,7 @@ function updateFissure() {
         }
       }
     }
-    if ($('#fissurebody').children().length === 1) {
+    if ($('#fissureList').children().length === 1) {
       $('#fissureList').children().not('#fissurebody').remove();
       document.getElementById('fissuretitle').innerText = 'No active Void Fissures Matching Your Filters :(';
       $('#fissuretitle').show();
@@ -781,7 +781,7 @@ function updateFissure() {
 function updateNews() {
   let {news} = worldState;
   news = news.filter(article => article.translations.en);
-
+  const priorityNotif = '<span>* Denotes Priority News</span>';
   if (news.length !== 0) {
     $('#newstitle').hide();
     if (platformSwapped && document.getElementById('newsList')) {
@@ -789,27 +789,30 @@ function updateNews() {
     }
 
     news.sort((a, b) => {
-      const timeA = moment(a.date).unix();
-      const timeB = moment(b.date).unix();
-      if (timeA < timeB) { return 1; }
-      if (timeA > timeB) { return -1; }
+      if (moment(a.date).isBefore(b.date, 'second')) { return 1; }
+      if (moment(a.date).isAfter(b.date, 'second')) { return -1; }
       return 0;
     });
 
+    let showPriorityNotif = false;
     for (const article of news) {
       if ($(`#${article.id}`).length !== 0) {
         $(`#newstime${article.id}`).html(`[${moment(article.date).fromNow()}] &#9;`);
       } else {
         let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
-        articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>`;
+        articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>${article.priority ? '*' : ''}`;
         articleRow += '</li>';
 
         if (article.priority) {
+          showPriorityNotif = true;
           $('#newstop').after(articleRow);
         } else {
           $('#newsbody').before(articleRow);
         }
       }
+    }
+    if (showPriorityNotif) {
+      $('#newsList').find(' > li:nth-last-child(1)').html(priorityNotif);
     }
   } else {
     $('#newsList').children().not('#newsbody').remove();
@@ -864,7 +867,7 @@ function updateInvasions() {
         if (invasion.completed) {
           $(`#${invasion.id}`).remove();
         } else {
-          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})`);
+          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})`);
           const attackPercent =
                 Math.floor(((invasion.count + invasion.requiredRuns)
                  / (invasion.requiredRuns * 2)) * 100);
@@ -887,7 +890,8 @@ function updateInvasions() {
         }
       } else if (!invasion.completed) {
         let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
-        invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta})*</div>`;
+        invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>
+          ${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*</div>`;
 
         invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
@@ -1180,23 +1184,19 @@ const loadFilterData = () => {
 };
 loadFilterData();
 
-$('#notif-anchor').click(e => {
-  if (!("Notification" in window)) {
-    alert("This browser does not support system notifications");
-  }
-
-  // Let's check whether notification permissions have already been granted
-  else if (Notification.permission === "granted") {
+$('#notif-anchor').click(() => {
+  if (!('Notification' in window)) {
+    alert('This browser does not support system notifications');
+  } else if (Notification.permission === 'granted') {
+    // Let's check whether notification permissions have already been granted
     // If it's okay let's create a notification
-    new Notification("Hi there!");
-  }
-
-  // Otherwise, we need to ask the user for permission
-  else if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function (permission) {
+    new Notification('Hi there!');
+  } else if (Notification.permission !== 'denied') {
+    // Otherwise, we need to ask the user for permission
+    Notification.requestPermission(permission => {
       // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        new Notification("Hi there!");
+      if (permission === 'granted') {
+        new Notification('Hi there!');
       }
     });
   }
@@ -1220,6 +1220,12 @@ $('.notif-filter-check').click(e => {
   localStorage.setItem('notificationfilters', stringified);
 });
 
+const reloadAfterClick = () => {
+  platformSwapped = true;
+  getWorldState();
+  setTimeout(updatePlatformSwitch, 30000);
+};
+
 $('.fissure-filter-check').click(e => {
   const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
 
@@ -1236,6 +1242,7 @@ $('.fissure-filter-check').click(e => {
   }
   const stringified = JSON.stringify(filterData);
   localStorage.setItem('fissurefilters', stringified);
+  reloadAfterClick();
 });
 
 $('.sound-option-check').click(e => {

@@ -94,7 +94,7 @@
 						</li>
 					</ul>
 				</li>
-			
+
 			  <li class="dropdown filters-picker" id="filters-picker">
 					<a name="Filters Navigation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -118,24 +118,24 @@
 			</div>
 			<div class="modal-body">
 			  Checking the checkbox next to an item below will enable delivery of notifications for alerts or invasions with the corresponding item.
-				<ul>
+				<ul class="filter-list">
 				  {{#each trackables.rewardTypes}}
 				  <li class="text-left" id="option_{{@key}}">
 						<div class="checkbox">
-							<input type="checkbox" id="{{@key}}_checkbox" class="notif-filter-check" data-notif="{{@key}}">
-							<label for="{{@key}}_checkbox">{{this}}</label>
+							<input type="checkbox" id="{{@key}}_filter_checkbox" class="notif-filter-check" data-notif="{{@key}}">
+							<label for="{{@key}}_filter_checkbox">{{this}}</label>
 						</div>
 					</li>
 					{{/each}}
 				</ul>
-				<div class="separator"></div>
+				<hr />
 				Checking the checkbox next to an event below will enable delivery of notifications the corresponding events.
-				<ul>
+				<ul class="filter-list">
 				  {{#each trackables.eventTypes}}
 				  <li class="text-left" id="option_{{@key}}">
 						<div class="checkbox">
-							<input type="checkbox" id="{{@key}}_checkbox" class="notif-filter-check" data-notif="{{@key}}">
-							<label for="{{@key}}_checkbox">{{this}}</label>
+							<input type="checkbox" id="{{@key}}_filter_checkbox" class="notif-filter-check" data-notif="{{@key}}">
+							<label for="{{@key}}_filter_checkbox">{{this}}</label>
 						</div>
 					</li>
 					{{/each}}

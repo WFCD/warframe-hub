@@ -354,7 +354,12 @@ body {
 }
 
 /* Scrollable modal body. */
-.modal-body {
-    max-height: calc(100vh - 212px)!important;
-    overflow-y: auto!important;
+.modal-body, .dropdown-menu {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
+}
+
+.filter-list {
+    max-height: 300px;
+    overflow-y: auto;
 }

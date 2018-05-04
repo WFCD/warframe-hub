@@ -19,11 +19,11 @@ let earthCurrentIndicatorColor;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
-const sendNotification = (body, title = 'Warframe Hub', sound='audio/TextMessage_SingleDrumHit.mp3') => {
+const sendNotification = (body, title = 'Warframe Hub', sound = 'audio/TextMessage_SingleDrumHit.mp3') => {
   if (Notification.permission === 'granted') {
     const notif = new Notification(title, {icon: 'https://warframestat.us/wfcd_logo_color.png', body, sound});
     setTimeout(notif.close.bind(notif), 20000);
-    return notif; 
+    return notif;
   }
   return undefined;
 };
@@ -295,7 +295,7 @@ function updateCetusCycle() {
   timeBadge.attr('data-endtime', expiryTime);
   timeBadge.addClass('label timer');
 
-  if(isNotifiable(worldState.cetusCycle.id, 'cetusCycle')) {
+  if (isNotifiable(worldState.cetusCycle.id, 'cetusCycle')) {
     if (worldState.cetusCycle.isDay) {
       // Day notification
       sendNotification(worldState.cetusCycle.shortString, 'Rise and Shine! Hunting\'s Over!');
@@ -1058,7 +1058,7 @@ function getWorldState() {
     updateDataDependencies();
     updatePage();
     if (JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('wsUpdate')) {
-      sendNotification('Worldstate Updated'); 
+      sendNotification('Worldstate Updated');
     }
   });
 }

@@ -23,6 +23,8 @@ const sendNotification = (body, title = 'Warframe Hub', sound = 'audio/TextMessa
   if (Notification.permission === 'granted') {
     const notif = new Notification(title, {icon: 'https://warframestat.us/wfcd_logo_color.png', body, sound});
     setTimeout(notif.close.bind(notif), 20000);
+    const audio = new Audio(sound);
+    audio.play(); 
     return notif;
   }
   return undefined;

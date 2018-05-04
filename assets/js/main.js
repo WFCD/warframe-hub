@@ -19,6 +19,52 @@ let earthCurrentIndicatorColor;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
+const sendNotification = (body, title) => {
+  if (Notification.permission === 'granted') {
+    const notif = new Notification(title || 'Warframe Hub', {icon: 'https://warframestat.us/wfcd_logo_color.png', body});
+    setTimeout(notif.close.bind(notif), 4000);
+    return notif;
+  }
+  return undefined;
+};
+
+const isNotNotified = id => {
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
+  return !notifiedIds.includes(id);
+};
+
+const addNotifiedId = id => {
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
+  notifiedIds.push(id);
+  localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
+};
+
+const cleanupNotifiedIds = () => {
+  if (!worldState) return;
+  const ids = worldState.alerts.map(alert => alert.id)
+    .concat(worldState.invasions.map(invasion => invasion.id))
+    .concat(worldState.news.map(item => item.id))
+    .concat(worldState.events.map(event => event.id))
+    .concat([worldState.sortie.id])
+    .concat(worldState.syndicateMissions.map(item => item.id))
+    .concat(worldState.fissures.map(item => item.id))
+    .concat(worldState.flashSales.map(item => item.id))
+    .concat(worldState.conclaveChallenges.map(item => item.id))
+    .concat(worldState.conclaveChallenges.map(item => item.id));
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
+  const toRemove = [];
+  notifiedIds.forEach(id => {
+    if (!ids.includes(id)) {
+      toRemove.push(id);
+    }
+  });
+  toRemove.forEach(id => {
+    notifiedIds.splice(notifiedIds.indexOf(id), 1);
+  });
+
+  localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
+};
+
 const getImage = (
   type,
   {
@@ -587,6 +633,14 @@ function updateAlerts() {
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);
+          const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+
+          if (isNotNotified(alert.id) && tracked.includes('alerts')
+            && (tracked.some(r => alert.rewardTypes.indexOf(r) >= 0)
+            || tracked.includes('credits'))) {
+            sendNotification(`${alert.mission.reward.asString}\n${alert.eta} Remaining | ${new Date().toLocaleString()}`, `${alert.mission.type} - ${alert.mission.node}`);
+            addNotifiedId(alert.id);
+          }
         } else {
           const timer = $(`#alerttimer${alert.id}`);
           timer.attr('data-starttime', moment(alert.activation).unix());
@@ -1186,17 +1240,16 @@ loadFilterData();
 
 $('#notif-anchor').click(() => {
   if (!('Notification' in window)) {
-    alert('This browser does not support system notifications');
+    // eslint-disable-next-line no-console
+    console.error('[Error] This browser does not support system notifications');
   } else if (Notification.permission === 'granted') {
-    // Let's check whether notification permissions have already been granted
-    // If it's okay let's create a notification
-    new Notification('Hi there!');
+    // Do nothing
   } else if (Notification.permission !== 'denied') {
     // Otherwise, we need to ask the user for permission
     Notification.requestPermission(permission => {
       // If the user accepts, let's create a notification
       if (permission === 'granted') {
-        new Notification('Hi there!');
+        sendNotification('Woot, now we can send you notifications.');
       }
     });
   }
@@ -1387,3 +1440,4 @@ function update() {
 update();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
+setInterval(cleanupNotifiedIds, 60000);

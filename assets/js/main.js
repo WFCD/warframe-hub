@@ -656,7 +656,7 @@ function updateAlerts() {
           $('#alertbody').before(alertRow);
 
           if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
-            sendNotification(`${alert.mission.reward.asString}\n${alert.eta} Remaining | ${new Date().toLocaleString()}`, `${alert.mission.type} - ${alert.mission.node}`);
+            sendNotification(`${alert.mission.reward.asString}\n${alert.eta} Remaining • @${moment().format('h:mm:ss a')}`, `${alert.mission.type} - ${alert.mission.node}`);
             addNotifiedId(alert.id);
           }
         } else {

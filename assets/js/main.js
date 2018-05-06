@@ -19,13 +19,15 @@ let earthCurrentIndicatorColor;
 
 const fissureGlyphs = ['https://i.imgur.com/D595KoY.png', 'https://i.imgur.com/VpBDaZV.png', 'https://i.imgur.com/YOjBckN.png', 'https://i.imgur.com/nZ3FfpC.png'];
 
-const sendNotification = (body, title = 'Warframe Hub', sound = 'audio/TextMessage_SingleDrumHit.mp3') => {
+const sendNotification = (body, title = 'Warframe Hub', sound) => {
   if (Notification.permission === 'granted') {
-    const notif = new Notification(title, {icon: 'https://warframestat.us/wfcd_logo_color.png', body, sound});
+    const notif = new Notification(title, {icon: 'https://warframestat.us/wfcd_logo_color.png', body});
     setTimeout(notif.close.bind(notif), 20000);
-    const audio = new Audio(sound);
-    audio.volume = 0.5;
-    audio.play();
+    if (sound) {
+      const audio = new Audio(sound);
+      audio.volume = 0.2;
+      audio.play();
+    }
     return notif;
   }
   return undefined;
@@ -45,7 +47,7 @@ const addNotifiedId = id => {
 const isNotifiable = (id, event, items) => {
   const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
   const includesItems = (typeof items !== 'undefined' && items.length > 0) ? tracked.some(r => items.indexOf(r) >= 0) : true;
-  return isNotNotified(id) && tracked.includes(event) && (includesItems || (tracked.includes('credits') && event === 'alerts'));
+  return isNotNotified(id) && tracked.includes(event) && (includesItems);
 };
 
 const cleanupNotifiedIds = () => {
@@ -305,7 +307,8 @@ function updateCetusCycle() {
       addNotifiedId(worldState.cetusCycle.id);
     }
   } else if (isNotifiable(worldState.cetusCycle.id, 'cetus.night')) {
-    sendNotification(worldState.cetusCycle.shortString, 'Cetus - It\'s Hunting Time!', 'audio/eidolon.mp3');
+    const sound = JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('sound_cetus_night');
+    sendNotification(worldState.cetusCycle.shortString, 'Cetus - It\'s Hunting Time!', sound ? 'audio/eidolon.mp3' : undefined);
     addNotifiedId(worldState.cetusCycle.id);
   }
 }
@@ -656,7 +659,11 @@ function updateAlerts() {
           $('#alertbody').before(alertRow);
 
           if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
-            sendNotification(`${alert.mission.reward.asString}\n${alert.eta} Remaining • @${moment().format('h:mm:ss a')}`, `${alert.mission.type} - ${alert.mission.node}`);
+            const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_alert');
+            sendNotification(
+              `${alert.mission.reward.asString}\n${alert.eta} Remaining • @${moment().format('h:mm:ss a')}`,
+              `${alert.mission.type} - ${alert.mission.node}`, sound ? 'audio/TextMessage_SingleDrumHit.mp3' : undefined,
+            );
             addNotifiedId(alert.id);
           }
         } else {
@@ -837,8 +844,13 @@ function updateFissure() {
           $('#fissurebody').before(fissureRow);
         }
       }
+      const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/ig, '')}`;
+      if (isNotifiable(fissure.id, notifIdentifier)) {
+        sendNotification(`${fissure.tier} ${fissure.missionType} • ${fissure.node}`);
+        addNotifiedId(fissure.id);
+      }
     }
-    if ($('#fissureList').children().length === 1) {
+    if ($('#fissureList').children().length < 2) {
       $('#fissureList').children().not('#fissurebody').remove();
       document.getElementById('fissuretitle').innerText = 'No active Void Fissures Matching Your Filters :(';
       $('#fissuretitle').show();
@@ -1017,6 +1029,16 @@ function updateInvasions() {
         invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
           `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`;
         invasionRow += '</div></div></li>';
+
+        if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
+          const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_invasion');
+          const rewards = `${invasion.attackerReward.asString.length ? `${invasion.attackerReward.asString} vs ` : ''}${invasion.defenderReward.asString}`;
+          sendNotification(
+            `${invasion.desc} • ${invasion.node}\n${invasion.attackingFaction} vs ${invasion.defendingFaction}\n${invasion.eta} Remaining • @${moment().format('h:mm:ss a')}`,
+            `${rewards}`, sound ? 'audio/TextMessage_SingleDrumHit.mp3' : undefined,
+          );
+          addNotifiedId(invasion.id);
+        }
 
         $('#invasionbody').before(invasionRow);
         numInvasions += 1;

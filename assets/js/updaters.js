@@ -775,7 +775,9 @@ function updateNews() {
   if (news.length !== 0) {
     $('#newstitle').hide();
     if (platformSwapped && document.getElementById('newsList')) {
-      $('#newsList').children().not('#newsbody').not('#newstop').remove();
+      $('#newsList').children()
+        .not('#newsbody').not('#newstop')
+        .remove();
     }
 
     news.sort((a, b) => {

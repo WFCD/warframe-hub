@@ -193,12 +193,11 @@ $('#notif-anchor').click(() => {
   }
 });
 
-// Toggle filter settings on checkbox click
-$('.notif-filter-check').click(e => {
-  const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+const checkAndToggleValue = (setting, dataName, e) => {
+  const filterData = JSON.parse(localStorage.getItem(setting) || '[]');
   const target = $(e.target);
   const status = target.prop('checked');
-  const filter = target.attr('data-notif');
+  const filter = target.attr(`data-${dataName}`);
 
   if (status) {
     if (!filterData.includes(filter)) {
@@ -208,7 +207,12 @@ $('.notif-filter-check').click(e => {
     filterData.splice(filterData.indexOf(filter), 1);
   }
   const stringified = JSON.stringify(filterData);
-  localStorage.setItem('notificationfilters', stringified);
+  localStorage.setItem(setting, stringified);
+};
+
+// Toggle filter settings on checkbox click
+$('.notif-filter-check').click(e => {
+  checkAndToggleValue('notificationfilters', 'notif', e);
 });
 
 const reloadAfterClick = () => {
@@ -218,41 +222,12 @@ const reloadAfterClick = () => {
 };
 
 $('.fissure-filter-check').click(e => {
-  const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
-
-  const target = $(e.target);
-  const status = target.prop('checked');
-  const filter = target.attr('data-fissure');
-
-  if (status) {
-    if (!filterData.includes(filter)) {
-      filterData.push(filter);
-    }
-  } else if (filterData.includes(filter)) {
-    filterData.splice(filterData.indexOf(filter), 1);
-  }
-  const stringified = JSON.stringify(filterData);
-  localStorage.setItem('fissurefilters', stringified);
+  checkAndToggleValue('fissurefilters', 'fissure', e);
   reloadAfterClick();
 });
 
 $('.sound-option-check').click(e => {
-  const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
-
-  const target = $(e.target);
-  const status = target.prop('checked');
-  const filter = target.attr('data-sound');
-
-  if (status) {
-    if (!filterData.includes(filter)) {
-      filterData.push(filter);
-    }
-  } else if (filterData.includes(filter)) {
-    filterData.splice(filterData.indexOf(filter), 1);
-  }
-
-  const stringified = JSON.stringify(filterData);
-  localStorage.setItem('soundoptions', stringified);
+  checkAndToggleValue('soundoptions', 'sound', e);
 });
 
 // Show dropdowns that should be visible only on timers page

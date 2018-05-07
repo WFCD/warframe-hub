@@ -752,7 +752,7 @@ function updateFissure() {
       }
       const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/ig, '')}`;
       if (isNotifiable(fissure.id, notifIdentifier)) {
-        sendNotification(`${fissure.tier} ${fissure.missionType} • ${fissure.node}`);
+        sendNotification(`${fissure.tier} ${fissure.missionType} • ${fissure.node}`, 'New Fissure Detected');
         addNotifiedId(fissure.id);
       }
     }

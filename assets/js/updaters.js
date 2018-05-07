@@ -820,6 +820,8 @@ function updateNews() {
     }
     if (showPriorityNotif) {
       $('#newsList').find(' > li:nth-last-child(1)').html(priorityNotif);
+    } else {
+      $('#newsList').find(' > li:nth-last-child(1)').html("");
     }
   } else {
     $('#newsList').children().not('#newsbody').remove();

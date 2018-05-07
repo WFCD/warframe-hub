@@ -21,7 +21,7 @@ const cleanupNotifiedIds = () => {
     .concat(worldState.conclaveChallenges.map(item => item.id))
     .concat([worldState.cetusCycle.id])
     .concat([worldState.voidTrader.id])
-    .concat(worldState.enemies.map(enemy => enemy.pid));
+    .concat(worldState.persistentEnemies.map(enemy => enemy.pid));
   const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
   const toRemove = [];
   notifiedIds.forEach(id => {

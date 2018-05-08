@@ -35,6 +35,8 @@ npm-debug.log
 # Production css and js files
 public/css/*
 public/js/*
+!public/js/svg-injector.min.js
+public/sums.json
 
 # Original files created while diffing
 *.orig

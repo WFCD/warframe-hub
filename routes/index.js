@@ -8,12 +8,15 @@ const router = express.Router();
 const trackables = require('../assets/json/trackables.json');
 const planets = require('../assets/json/planets.json');
 const components = require('../assets/json/components.json');
+const sums = require('../public/sums.json'); // eslint-disable-line import/no-unresolved
 
 winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't need everything
 
 router.get('/', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {title: 'Index', trackables, planets, components});
+  res.render('index', {
+    title: 'Index', trackables, planets, components, sums,
+  });
 });
 
 router.get('/timer', (req, res) => {

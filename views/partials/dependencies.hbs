@@ -1,87 +1,87 @@
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	<!-- jQuery CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- SVG Injector -->
-	<script src="/js/svg-injector.min.js"></script>
-  <!-- Babel polyfill -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
-  
-  <!-- popper.js CDN, required by bootstrap -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
-  <!-- Tether CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-  <!-- Bootstrap CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Moment CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
-  <!-- packery CDN -->
-  <script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
-  <!-- draggabilly CDN -->
-  <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<!-- jQuery CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- SVG Injector -->
+<script src="/js/svg-injector.min.js?v{{sums['public/js/svg-injector.min.js']}}"></script>
+<!-- Babel polyfill -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
 
-	<!-- Cookies CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
-	<link rel="stylesheet" href="/css/bootstrap-night.min.css" media="screen" id="mode">
-	<link rel="stylesheet" href="/css/common.css" id="common-css">
-	<link rel="stylesheet" href="/css/main.night.css" id="mode-custom">
+<!-- popper.js CDN, required by bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+<!-- Tether CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<!-- Bootstrap CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Moment CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+<!-- packery CDN -->
+<script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
+<!-- draggabilly CDN -->
+<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
 
-	<script>
-		/* global $, Cookies */
-		// Wait until page is ready to display
-		document.getElementsByTagName("html")[0].style.visibility = "hidden";
-		$(document).ready(function() {
-			document.getElementsByTagName("html")[0].style.visibility = "visible";
-		});
+<!-- Cookies CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
+<link rel="stylesheet" href="/css/bootstrap-night.min.css?v{{sums['public/css/bootstrap-night.min.css']}}" media="screen" id="mode">
+<link rel="stylesheet" href="/css/common.css?v{{sums['public/css/bcommon.css']}}" id="common-css">
+<link rel="stylesheet" href="/css/main.night.css?v{{sums['public/css/main.night.css']}}" id="mode-custom">
 
-    var theme = $('#mode');
-    if (typeof Cookies.get('mode') === 'undefined') {
-			Cookies.set('mode', 'night', {expires: 365 });
-		}
-		var themecustom = $('#mode-custom');
-    switch (Cookies.get('mode')) {
-      case 'night':
-        theme.attr('href', '/css/bootstrap-night.min.css');
-  			themecustom.attr('href', '/css/main.night.css');
-  			theme.toggleClass('night');
-        break;
-      case 'retro':
-        theme.attr('href', '/css/bootstrap-default.min.css');
-        themecustom.attr('href', '/css/main.retro.css');
-        theme.toggleClass('retro');
-        break;
-      case 'eidolon':
-        theme.attr('href', '/css/bootstrap-default.min.css');
-        themecustom.attr('href', '/css/main.eidolon.css');
-        theme.toggleClass('eidolon');
-        break;
-      default:
-        theme.attr('href', '/css/bootstrap-default.min.css');
-        themecustom.attr('href', '/css/main.css');
-        break;
-    }
-	</script>
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-	<script>
-		window.addEventListener("load", () => {
-			window.cookieconsent.initialise({
-				"palette": {
-					"popup": {
-						"background": "#000"
-					},
-					"button": {
-						"background": "#f1d600"
-					}
-				},
-				"theme": "classic",
-				"position": "bottom-right"
-			})
-		});
-	</script>
+<script>
+  /* global $, Cookies */
+  // Wait until page is ready to display
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+  $(document).ready(function() {
+    document.getElementsByTagName("html")[0].style.visibility = "visible";
+  });
+
+  var theme = $('#mode');
+  if (typeof Cookies.get('mode') === 'undefined') {
+    Cookies.set('mode', 'night', {expires: 365 });
+  }
+  var themecustom = $('#mode-custom');
+  switch (Cookies.get('mode')) {
+    case 'night':
+      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-night.min.css']}}");
+      themecustom.attr('href', "/css/main.night.css?v{{sums['public/css/main.night.css']}}");
+      theme.toggleClass('night');
+      break;
+    case 'retro':
+      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
+      themecustom.attr('href', "/css/main.retro.css?v{{sums['public/css/main.retro.css']}}");
+      theme.toggleClass('retro');
+      break;
+    case 'eidolon':
+      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
+      themecustom.attr('href', "/css/main.eidolon.css?v{{sums['public/css/main.eidolon.css']}}");
+      theme.toggleClass('eidolon');
+      break;
+    default:
+      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
+      themecustom.attr('href', "/css/main.css?v{{sums['public/css/main.css']}}");
+      break;
+  }
+</script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", () => {
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#000"
+        },
+        "button": {
+          "background": "#f1d600"
+        }
+      },
+      "theme": "classic",
+      "position": "bottom-right"
+    })
+  });
+</script>

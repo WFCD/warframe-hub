@@ -4,8 +4,8 @@
   "description": "Utility page to check current warframe status",
   "scripts": {
     "test": "mocha spec mochaspec.js",
-    "postinstall": "npm install -g gulp",
-    "start": "gulp && node ./bin/www"
+    "postinstall": "npm install -g gulp-cli",
+    "start": "gulp default && node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -27,28 +27,30 @@
     "cookie-parser": "~1.4.3",
     "debug": "~3.1.0",
     "del": "^3.0.0",
-    "eslint": "^4.11.0",
+    "eslint": "^4.19.1",
     "express": "~4.16.3",
     "express-handlebars": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.0",
+    "gulp": "git://github.com/gulpjs/gulp.git#6d71a658c61edb3090221579d8f97dbe086ba2ed",
+    "gulp-clean-css": "^3.9.4",
     "gulp-minify": "^2.1.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "nodemon": "^1.17.1",
+    "nodemon": "^1.17.4",
     "proxyquire": "^2.0.1",
     "really-need": "^1.9.2",
     "serve-favicon": "~2.5.0",
     "sinon": "^5.0.1",
     "supertest": "^3.0.0",
-    "winston": "^2.4.0"
+    "vinyl-source-stream": "^2.0.0",
+    "winston": "^2.4.2"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "greenkeeper-lockfile": "^1.14.0",
+    "gulp-hashsum": "^1.2.0",
     "mocha": "^5.1.1"
   }
 }

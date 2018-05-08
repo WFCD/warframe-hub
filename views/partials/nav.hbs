@@ -33,90 +33,14 @@
 				<li class="dropdown component-selector hide" id="component-selector">
 					<a name="Component Selection" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="component-selection">Components <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-            <li class="text-left" id="option_event">
+            {{#each components}}
+            <li class="text-left" id="option_{{this.key}}">
 							<div class="checkbox">
-								<input type="checkbox" id="event_checkbox" class="component-check" data-component="event">
-								<label for="event_checkbox">Events</label>
+								<input type="checkbox" id="{{this.key}}_checkbox" class="component-check" data-component="{{this.key}}">
+								<label for="{{this.key}}_checkbox">{{this.display}}</label>
 							</div>
 						</li>
-						<li class="text-left" id="option_acolytes">
-							<div class="checkbox">
-								<input type="checkbox" id="acolyte_checkbox" class="component-check" data-component="acolytes">
-								<label for="acolyte_checkbox">Acolytes</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_cetus">
-							<div class="checkbox">
-								<input type="checkbox" id="cetus_checkbox" class="component-check" data-component="cetus">
-								<label for="cetus_checkbox">Cetus Cycle</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_earth">
-							<div class="checkbox">
-								<input type="checkbox" id="earth_checkbox" class="component-check" data-component="earth">
-								<label for="earth_checkbox">Earth Cycle</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_reset">
-							<div class="checkbox">
-								<input type="checkbox" id="reset_checkbox" class="component-check" data-component="reset">
-								<label for="reset_checkbox">Reset Timer</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_bounties">
-							<div class="checkbox">
-								<input type="checkbox" id="bounties_checkbox" class="component-check" data-component="bounties">
-								<label for="bounties_checkbox">Bounties Timer</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_alerts">
-							<div class="checkbox">
-								<input type="checkbox" id="alerts_checkbox" class="component-check" data-component="alerts">
-								<label for="alerts_checkbox">Alerts</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_invasions">
-							<div class="checkbox">
-								<input type="checkbox" id="invasions_checkbox" class="component-check" data-component="invasions">
-								<label for="invasions_checkbox">Invasions</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_news">
-							<div class="checkbox">
-								<input type="checkbox" id="news_checkbox" class="component-check" data-component="news">
-								<label for="news_checkbox">News</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_sortie">
-							<div class="checkbox">
-								<input type="checkbox" id="sortie_checkbox" class="component-check" data-component="sortie">
-								<label for="sortie_checkbox">Sortie</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_fissuures">
-							<div class="checkbox">
-								<input type="checkbox" id="fissures_checkbox" class="component-check" data-component="fissures">
-								<label for="fissures_checkbox">Fissures</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_voidtrader">
-							<div class="checkbox">
-								<input type="checkbox" id="voidtrader_checkbox" class="component-check" data-component="baro">
-								<label for="voidtrader_checkbox">Void Trader</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_darvo">
-							<div class="checkbox">
-								<input type="checkbox" id="darvo_checkbox" class="component-check" data-component="darvo">
-								<label for="darvo_checkbox">Darvo Deals</label>
-							</div>
-						</li>
-						<li class="text-left" id="option_sales">
-							<div class="checkbox">
-								<input type="checkbox" id="sales_checkbox" class="component-check" data-component="deals">
-								<label for="sales_checkbox">Sales</label>
-							</div>
-						</li>
+						{{/each}}
 					</ul>
 				</li>
 				<li class="dropdown theme-picker">
@@ -170,7 +94,122 @@
 						</li>
 					</ul>
 				</li>
+
+			  <li class="dropdown filters-picker" id="filters-picker">
+					<a name="Filters Navigation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li class="text-center"><a name="Notification Filters" href="#notif-filters" data-toggle="modal" style="outline:none;" id="notif-anchor">Notification Filters</a></li>
+						<li class="text-center"><a name="Fissures Filters" href="#fissure-filters" data-toggle="modal" style="outline:none;">Fissure Filters</a></li>
+						<li class="text-center"><a name="Sounds" href="#sound-options" data-toggle="modal" style="outline:none;">Sounds</a></li>
+					</ul>
+				</li>
 			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Notification filters Modal -->
+<div class="modal fade" id="notif-filters" tabindex="-1" role="dialog" aria-labelledby="notificationFilterLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Notification Filters</h4>
+			</div>
+			<div class="modal-body">
+			  Checking the checkbox next to an item below will enable delivery of notifications for alerts or invasions with the corresponding item.
+				<ul class="filter-list">
+				  {{#each trackables.rewardTypes}}
+				  <li class="text-left" id="option_{{@key}}">
+						<div class="checkbox">
+							<input type="checkbox" id="{{@key}}_filter_checkbox" class="notif-filter-check" data-notif="{{@key}}">
+							<label for="{{@key}}_filter_checkbox">{{this}}</label>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+				<hr />
+				Checking the checkbox next to an event below will enable delivery of notifications the corresponding events.
+				<ul class="filter-list">
+				  {{#each trackables.eventTypes}}
+				  <li class="text-left" id="option_{{@key}}">
+						<div class="checkbox">
+							<input type="checkbox" id="{{@key}}_filter_checkbox" class="notif-filter-check" data-notif="{{@key}}">
+							<label for="{{@key}}_filter_checkbox">{{this}}</label>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fissures filters Modal -->
+<div class="modal fade" id="fissure-filters" tabindex="-1" role="dialog" aria-labelledby="fissureFilterLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Fissures Planets Filters</h4>
+			</div>
+			<div class="modal-body">
+			  Checking the checkbox next to a planet below will disable it from being shown in the fissures list.
+				<ul>
+				  {{#each planets}}
+				  <li class="text-left" id="option_{{@key}}">
+						<div class="checkbox">
+							<input type="checkbox" id="{{@key}}_fissure_checkbox" class="fissure-filter-check" data-fissure="{{@key}}">
+							<label for="{{@key}}_fissure_checkbox">{{this}}</label>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Sound Options Modal -->
+<div class="modal fade" id="sound-options" tabindex="-1" role="dialog" aria-labelledby="soundOptionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Sound Options</h4>
+			</div>
+			<div class="modal-body">
+			  Checking the checkbox next to an option will allow a sound to be played for those new items.
+				<ul>
+				  <li class="text-left" id="option_sound_cetus_night">
+						<div class="checkbox">
+							<input type="checkbox" id="sound_cetus_night_checkbox" class="sound-option-check" data-sound="sound_cetus_night">
+							<label for="sound_cetus_night_checkbox">Eidolon Roar to Start the Night</label>
+						</div>
+					</li>
+					<li class="text-left" id="option_sound_alert">
+						<div class="checkbox">
+							<input type="checkbox" id="sound_alert_checkbox" class="sound-option-check" data-sound="sound_alert">
+							<label for="sound_alert_checkbox">Alert Tone</label>
+						</div>
+					</li>
+					<li class="text-left" id="option_sound_invasion">
+						<div class="checkbox">
+							<input type="checkbox" id="sound_invasion_checkbox" class="sound-option-check" data-sound="sound_invasion">
+							<label for="sound_invasion_checkbox">Invasion Tone</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+			</div>
 		</div>
 	</div>
 </div>

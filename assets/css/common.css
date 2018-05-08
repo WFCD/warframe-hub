@@ -352,3 +352,14 @@ body {
 #map {
   height: 100%;
 }
+
+/* Scrollable modal body. */
+.modal-body, .dropdown-menu {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
+}
+
+.filter-list {
+    max-height: 300px;
+    overflow-y: auto;
+}

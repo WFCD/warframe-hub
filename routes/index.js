@@ -5,11 +5,15 @@ const winston = require('winston');
 
 const router = express.Router();
 
+const trackables = require('../assets/json/trackables.json');
+const planets = require('../assets/json/planets.json');
+const components = require('../assets/json/components.json');
+
 winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't need everything
 
 router.get('/', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {title: 'Index'});
+  res.render('index', {title: 'Index', trackables, planets, components});
 });
 
 router.get('/timer', (req, res) => {

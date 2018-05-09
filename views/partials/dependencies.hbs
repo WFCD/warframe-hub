@@ -47,12 +47,12 @@
   const themecustom = $('#mode-custom');
   switch (Cookies.get('mode')) {
     case 'night':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
+      theme.attr('href', "/css/bootstrap-night.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
       themecustom.attr('href', "/css/main.night.css?v={{lookup sums 'css/main.night.css'}}");
       theme.toggleClass('night');
       break;
     case 'retro':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
+      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
       themecustom.attr('href', "/css/main.retro.css?v={{lookup sums 'css/main.retro.css'}}");
       theme.toggleClass('retro');
       break;

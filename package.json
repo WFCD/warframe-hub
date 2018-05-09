@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Utility page to check current warframe status",
   "scripts": {
-    "test": "mocha spec mochaspec.js",
+    "test": "npm run pre && mocha spec mochaspec.js",
     "postinstall": "npm install -g gulp-cli",
-    "start": "gulp && gulp hash && node ./bin/www"
+    "start": "npm run pre && node ./bin/www",
+    "pre": "gulp && gulp hash"
   },
   "repository": {
     "type": "git",

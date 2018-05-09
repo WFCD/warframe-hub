@@ -5,7 +5,7 @@
   "scripts": {
     "test": "mocha spec mochaspec.js",
     "postinstall": "npm install -g gulp-cli",
-    "start": "gulp default && node ./bin/www"
+    "start": "gulp && gulp hash && node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "gulp": "git://github.com/gulpjs/gulp.git#6d71a658c61edb3090221579d8f97dbe086ba2ed",
     "gulp-clean-css": "^3.9.4",
     "gulp-minify": "^2.1.0",
+    "hbs": "^4.0.1",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "nodemon": "^1.17.4",

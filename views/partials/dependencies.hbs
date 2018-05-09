@@ -6,7 +6,7 @@
 <!-- jQuery CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- SVG Injector -->
-<script src="/js/svg-injector.min.js?v{{sums['public/js/svg-injector.min.js']}}"></script>
+<script src="/js/svg-injector.min.js?v={{lookup sums 'js/svg-injector.min.js'}}"></script>
 <!-- Babel polyfill -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
 
@@ -28,9 +28,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
-<link rel="stylesheet" href="/css/bootstrap-night.min.css?v{{sums['public/css/bootstrap-night.min.css']}}" media="screen" id="mode">
-<link rel="stylesheet" href="/css/common.css?v{{sums['public/css/bcommon.css']}}" id="common-css">
-<link rel="stylesheet" href="/css/main.night.css?v{{sums['public/css/main.night.css']}}" id="mode-custom">
+<link rel="stylesheet" href="/css/bootstrap-night.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}" media="screen" id="mode">
+<link rel="stylesheet" href="/css/common.css?v={{lookup sums 'css/common.css'}}" id="common-css">
+<link rel="stylesheet" href="/css/main.night.css?v={{lookup sums 'css/main.night.css'}}" id="mode-custom">
 
 <script>
   /* global $, Cookies */
@@ -47,25 +47,26 @@
   var themecustom = $('#mode-custom');
   switch (Cookies.get('mode')) {
     case 'night':
-      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-night.min.css']}}");
-      themecustom.attr('href', "/css/main.night.css?v{{sums['public/css/main.night.css']}}");
+      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
+      themecustom.attr('href', "/css/main.night.css?v={{lookup sums 'css/main.night.css'}}");
       theme.toggleClass('night');
       break;
     case 'retro':
-      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
-      themecustom.attr('href', "/css/main.retro.css?v{{sums['public/css/main.retro.css']}}");
+      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
+      themecustom.attr('href', "/css/main.retro.css?v={{lookup sums 'css/main.retro.css'}}");
       theme.toggleClass('retro');
       break;
     case 'eidolon':
-      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
-      themecustom.attr('href', "/css/main.eidolon.css?v{{sums['public/css/main.eidolon.css']}}");
+      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
+      themecustom.attr('href', "/css/main.eidolon.css?v={{lookup sums 'css/main.eidolon.css'}}");
       theme.toggleClass('eidolon');
       break;
     default:
-      theme.attr('href', "/css/bootstrap-default.min.css?v{{sums['public/css/bootstrap-default.min.css']}}");
-      themecustom.attr('href', "/css/main.css?v{{sums['public/css/main.css']}}");
+      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
+      themecustom.attr('href', "/css/main.css?v={{lookup sums 'css/main.css'}}");
       break;
   }
+  var sums = {{json sums}};
 </script>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>

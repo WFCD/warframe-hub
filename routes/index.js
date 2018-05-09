@@ -14,39 +14,37 @@ winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't 
 
 router.get('/', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {
-    title: 'Index', trackables, planets, components, sums,
-  });
+  res.render('index', { title: 'Index', trackables, planets, components, sums});
 });
 
 router.get('/timer', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {title: 'Timers'});
+  res.render('index', {title: 'Timers', trackables, planets, components, sums});
 });
 
 router.get('/map', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('map', {title: 'Map'});
+  res.render('map', {title: 'Map', sums});
 });
 
 router.get('/fish', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('fish', {title: 'Fish'});
+  res.render('fish', {title: 'Fish', sums});
 });
 
 router.get('/howtofish', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('howtofish', {title: 'How to Fish'});
+  res.render('howtofish', {title: 'How to Fish', sums});
 });
 
 router.get('/404', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('404', {title: '404 Error'});
+  res.render('404', {title: '404 Error',sums});
 });
 
 router.get('*', (req, res) => {
   winston.error(`ABNORMAL ${req.method} REQUEST for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('404', {title: '404 Error'});
+  res.render('404', {title: '404 Error', sums});
 });
 
 module.exports = router;

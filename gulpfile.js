@@ -45,15 +45,16 @@ gulp.task('pack-css', done => {
   done();
 });
 
-gulp.task('hash', done => {
-  gulp.src(['./public/js/**/*.js', './public/css/**/*.css'])
+gulp.task('hash', () => {
+  return gulp.src(['./public/js/**/*.js', './public/css/**/*.css'])
     .pipe(hashsum({
-      dest: './public/',
+      dest: 'public',
       json: true,
       force: true,
       filename: 'sums.json',
     }));
-  done();
 });
 
-gulp.task('default', gulp.series('clean-js', 'clean-css', 'pack-css', 'pack-js', 'hash'));
+gulp.task('default', gulp.series('clean-js', 'clean-css', 'pack-css', 'pack-js'));
+
+gulp.task('default-hash', gulp.series('default', 'hash'));

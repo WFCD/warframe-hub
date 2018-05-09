@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $, localStorage, Notification */
 /* eslint-disable no-unused-vars */
 
 function calculateInventory(total, sold) {
@@ -136,9 +136,9 @@ function formatTimer(diff) {
 // Helper function to grab objects based on inner tags
 function getObjects(obj, key, val) {
   let objects = [];
-  if (typeof obj !== 'undefined') {
+  if (obj && typeof obj !== 'undefined') {
     for (const objKey of Object.keys(obj)) {
-      if (typeof obj[objKey] === 'object') {
+      if (objKey && typeof obj[objKey] === 'object') {
         objects = objects.concat(getObjects(obj[objKey], key, val));
       } else if (objKey === key && obj[objKey] === val) {
         objects.push(obj);

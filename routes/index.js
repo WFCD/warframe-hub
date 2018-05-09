@@ -14,7 +14,7 @@ winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't 
 
 router.get('/', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', { title: 'Index', trackables, planets, components, sums});
+  res.render('index', {title: 'Index', trackables, planets, components, sums});
 });
 
 router.get('/timer', (req, res) => {
@@ -39,7 +39,7 @@ router.get('/howtofish', (req, res) => {
 
 router.get('/404', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('404', {title: '404 Error',sums});
+  res.render('404', {title: '404 Error', sums});
 });
 
 router.get('*', (req, res) => {

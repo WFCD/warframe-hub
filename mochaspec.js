@@ -9,7 +9,7 @@ const router = require('./routes/index');
 
 app.use(router);
 
-const hbs = handlebars.create({helpers: {json: JSON.stringify }, defaultLayout: 'main', extname: '.hbs' });
+const hbs = handlebars.create({helpers: {json: JSON.stringify}, defaultLayout: 'main', extname: '.hbs'});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

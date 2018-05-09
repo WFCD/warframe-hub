@@ -8,7 +8,7 @@ const handlebars = require('express-handlebars');
 const app = express();
 const router = require('./routes/index');
 
-const hbs = handlebars.create({ helpers: { json: JSON.stringify }, defaultLayout: 'main', extname: '.hbs' });
+const hbs = handlebars.create({helpers: {json: JSON.stringify}, defaultLayout: 'main', extname: '.hbs'});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

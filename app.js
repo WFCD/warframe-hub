@@ -8,16 +8,18 @@ const handlebars = require('express-handlebars');
 const app = express();
 const router = require('./routes/index');
 
+const hbs = handlebars.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+    json:  function(context) { return JSON.stringify(context); },
+  },
+  defaultLayout: 'main',
+  extname: '.hbs',
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', handlebars({
-    // Specify helpers which are only registered on this instance.
-    helpers: {
-        json:  function(context) { return JSON.stringify(context); },
-    },
-    defaultLayout: 'main',
-    extname: '.hbs',
-}));
+app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
 // favicon and caching options (cache is 7 days)

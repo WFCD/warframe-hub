@@ -6,7 +6,7 @@
 <!-- jQuery CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- SVG Injector -->
-<script src="/js/svg-injector.min.js?v={{lookup sums 'js/svg-injector.min.js'}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-injector/1.1.3/svg-injector.min.js"></script>
 <!-- Babel polyfill -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
 
@@ -22,9 +22,12 @@
 <script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
 <!-- draggabilly CDN -->
 <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
-
 <!-- Cookies CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<!-- Cookie Consent -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel='stylesheet' href="//cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
@@ -40,6 +43,7 @@
     document.getElementsByTagName("html")[0].style.visibility = "visible";
   });
 
+  // Theme loading
   const theme = $('#mode');
   if (typeof Cookies.get('mode') === 'undefined') {
     Cookies.set('mode', 'night', {expires: 365 });
@@ -67,10 +71,8 @@
       break;
   }
   const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
-</script>
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-<script>
+  
+  // Cookie Consent setup
   window.addEventListener("load", () => {
     window.cookieconsent.initialise({
       "palette": {
@@ -85,4 +87,8 @@
       "position": "bottom-right"
     })
   });
+</script>
+
+<script>
+  
 </script>

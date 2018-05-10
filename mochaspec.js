@@ -9,9 +9,11 @@ const router = require('./routes/index');
 
 app.use(router);
 
+const hbs = handlebars.create({helpers: {json: JSON.stringify}, defaultLayout: 'main', extname: '.hbs'});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', handlebars({defaultLayout: 'main', extname: '.hbs'}));
+app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

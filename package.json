@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/WFCD/warframe-hub#readme",
   "dependencies": {
-    "body-parser": "~1.18.2",
+    "body-parser": "~1.18.3",
     "chai": "^4.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~3.1.0",

@@ -4,30 +4,28 @@ const cleanCss = require('gulp-clean-css');
 const del = require('del');
 const hashsum = require('gulp-hashsum');
 
-gulp.task('clean-js', done => {
-  del([
+gulp.task('clean-js', () => {
+  return del([
     './public/js/main.js',
     './public/js/maps.js',
     './public/js/updaters.js',
     './public/js/utilities.js',
     './public/sums.json',
   ]);
-  done();
 });
 
-gulp.task('clean-css', done => {
-  del([
+gulp.task('clean-css', () => {
+  return del([
     './public/css/main.css',
     './public/css/main.night.css',
     './public/css/main.retro.css',
     './public/css/main.eidolon.css',
     './public/css/common.css',
   ]);
-  done();
 });
 
-gulp.task('pack-js', done => {
-  gulp.src(['assets/js/*.js'])
+gulp.task('pack-js', () => {
+  return gulp.src(['assets/js/*.js'])
     .pipe(minify({
       ext: {
         min: '.js',
@@ -35,18 +33,16 @@ gulp.task('pack-js', done => {
       noSource: true,
     }))
     .pipe(gulp.dest('public/js'));
-  done();
 });
 
-gulp.task('pack-css', done => {
-  gulp.src(['assets/css/*.css'])
+gulp.task('pack-css', () => {
+  return gulp.src(['./assets/css/*.css'])
     .pipe(cleanCss())
     .pipe(gulp.dest('./public/css'));
-  done();
 });
 
 gulp.task('hash', () => {
-  return gulp.src(['./public/js/**/*.js', './public/css/**/*.css'])
+  return gulp.src(['public/js/**/*.js', 'public/css/**/*.css'])
     .pipe(hashsum({
       dest: 'public',
       json: true,

@@ -9,7 +9,6 @@ gulp.task('clean-js', () => {
     './public/js/jquery.overlayScrollbars.min.js',
     './public/js/main.js',
     './public/js/maps.js',
-    './public/js/ui.js',
     './public/js/updaters.js',
     './public/js/utilities.js',
     './public/sums.json',

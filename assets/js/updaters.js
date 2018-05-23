@@ -36,7 +36,7 @@ function updateDataDependencies() {
 
 // Number with commas
 function numberWithCommas(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function updateEarthTitle() {
@@ -60,12 +60,12 @@ function updateEvents() {
     const componentBody = $('#component-event-body');
     events.forEach((event, index) => {
       let title;
-      let body = event.tooltip ? `<div class="text-center">${event.tooltip}</div><br />` : '';
+      let body = event.tooltip ? `<div>${event.tooltip}</div><br />` : '';
       if ($(`#event-${event.id}-title`).length === 0) {
         if (index === 0) {
-          title = `<h2 class="display-3 text-center">${event.description}</h2>`;
+          title = `<h2>${event.description}</h2>`;
         } else {
-          title = `<p class="text-center">${event.description}</p>`;
+          title = `<p>${event.description}</p>`;
         }
         let healthState = 'success';
         const healthPerc = parseFloat(event.health);
@@ -487,7 +487,7 @@ function updateAcolytes() {
             `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
             '</div>';
 
-          acolyteRow += '</li>';
+          acolyteRow += `</li>`;
           $('#acolytebody').before(acolyteRow);
           if (isNotifiable(acolyte.pid, 'enemies')) {
             sendNotification(`${acolyte.healthPercent}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
@@ -734,7 +734,7 @@ function updateFissure() {
         fissureRow += `<span class= "fissure-body">${getImage('fissures', {image: fissure.tierNum, title: `Tier ${fissure.tierNum}`, className: 'fissure-icon'})}`;
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
 
-        fissureRow += '</li>';
+        fissureRow += `</li>`;
 
         let filtered = false;
         filteredPlanets.forEach(planet => {
@@ -789,7 +789,7 @@ function updateNews() {
       } else {
         let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
         articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>${article.priority ? '*' : ''}`;
-        articleRow += '</li>';
+        articleRow += `</li>`;
 
         if (article.priority) {
           showPriorityNotif = true;

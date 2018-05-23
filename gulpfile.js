@@ -6,7 +6,6 @@ const hashsum = require('gulp-hashsum');
 
 gulp.task('clean-js', () => {
   return del([
-    './public/js/jquery.overlayScrollbars.min.js',
     './public/js/main.js',
     './public/js/maps.js',
     './public/js/ui.js',

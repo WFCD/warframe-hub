@@ -548,13 +548,7 @@ function updateAlerts() {
                         `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
           alertRow += `</ul>`;
-
-          if (alert.mission.faction == 'Orokin') {
-            alertRow += `<img class="factionIcon" src="img/factions/corrupted.svg">`;
-          } else {
-            alertRow += `<img class="factionIcon" src="img/factions/${alert.mission.faction}.svg">`;
-          }
-
+          alertRow += `<img class = "factionIcon" src="img/factions/${alert.mission.faction !== "Orokin" ? alert.mission.faction : 'corrupted'}.svg">`;
           alertRow += `</div>`;
           $('#alertbody').before(alertRow);
 
@@ -588,7 +582,7 @@ function updateAlerts() {
                       `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
         alertRow += `</ul>`;
-        alertRow += `<img class="factionIcon" src="img/factions/${alert.mission.faction}.svg">`;
+        alertRow += `<img class = "factionIcon" src="img/factions/${alert.mission.faction !== "Orokin" ? alert.mission.faction : 'corrupted'}.svg">`;
         alertRow += `</div>`;
         $('#alertbody').before(alertRow);
       }

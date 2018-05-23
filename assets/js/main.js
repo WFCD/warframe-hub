@@ -36,15 +36,6 @@ const cleanupNotifiedIds = () => {
   localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
 };
 
-function removeTimeBadgeColor(element) {
-  element.removeClass('label-success');
-  element.removeClass('label-primary');
-  element.removeClass('label-danger');
-  element.removeClass('label-warning');
-  element.removeClass('label-default');
-  element.removeClass('label-info');
-}
-
 function updateTimeBadges() {
   const labels = document.getElementsByClassName('timer');
   for (const label of labels) {

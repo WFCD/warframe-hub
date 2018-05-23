@@ -548,7 +548,7 @@ function updateAlerts() {
                         `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
           alertRow += `</ul>`;
-          alertRow += `<img class = "factionIcon" src="img/factions/${alert.mission.faction !== "Orokin" ? alert.mission.faction : 'corrupted'}.svg">`;
+          alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
           alertRow += `</div>`;
           $('#alertbody').before(alertRow);
 
@@ -582,7 +582,7 @@ function updateAlerts() {
                       `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
         alertRow += `</ul>`;
-        alertRow += `<img class = "factionIcon" src="img/factions/${alert.mission.faction !== "Orokin" ? alert.mission.faction : 'corrupted'}.svg">`;
+        alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
         alertRow += `</div>`;
         $('#alertbody').before(alertRow);
       }

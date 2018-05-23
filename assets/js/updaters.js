@@ -1,7 +1,7 @@
-/* globals $, moment, Cookies, updateGrid,
-  localStorage, Notification, sendNotification,
-  addNotifiedId, isNotifiable, getImage,
-  getObjects, calculateInventory,
+/* globals $, moment, Cookies, localStorage,
+  Notification, sendNotification, addNotifiedId
+  isNotifiable, getImage, getObjects,
+  calculateInventory,
 */
 /* eslint-disable no-unused-vars */
 let worldState;
@@ -13,14 +13,12 @@ let cetusIsDay;
 let cetusCurrentTitle;
 let cetusCurrentTitleTimezone;
 let cetusCurrentIndicator;
-let cetusCurrentIndicatorColor;
 
 // Earth timer stuff
 let earthIsDay;
 let earthCurrentTitle;
 let earthCurrentTitleTimezone;
 let earthCurrentIndicator;
-let earthCurrentIndicatorColor;
 
 // Update worldstate timestamp
 function updateWorldStateTime() {
@@ -36,15 +34,18 @@ function updateDataDependencies() {
   earthIsDay = worldState.earthCycle.isDay;
 }
 
+// Number with commas
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function updateEarthTitle() {
   if (!earthIsDay) {
     earthCurrentIndicator = 'Night';
-    earthCurrentIndicatorColor = 'darkblue';
     earthCurrentTitle = 'Time until day: ';
     earthCurrentTitleTimezone = 'Time at day: ';
   } else {
     earthCurrentIndicator = 'Day';
-    earthCurrentIndicatorColor = 'orange';
     earthCurrentTitle = 'Time until night: ';
     earthCurrentTitleTimezone = 'Time at night: ';
   }
@@ -137,12 +138,10 @@ function updateEvents() {
 function updateCetusTitle() {
   if (!cetusIsDay) {
     cetusCurrentIndicator = 'Night';
-    cetusCurrentIndicatorColor = 'darkblue';
     cetusCurrentTitle = 'Time until day: ';
     cetusCurrentTitleTimezone = 'Time at day: ';
   } else {
     cetusCurrentIndicator = 'Day';
-    cetusCurrentIndicatorColor = 'orange';
     cetusCurrentTitle = 'Time until night: ';
     cetusCurrentTitleTimezone = 'Time at night: ';
   }
@@ -166,10 +165,6 @@ function updateCetusCycle() {
 
   const cycleIndicator = $('#cetuscycleindicator');
   cycleIndicator.html(cetusCurrentIndicator);
-  if (!cycleIndicator.hasClass(cetusCurrentIndicatorColor)) {
-    cycleIndicator.attr('class', cetusCurrentIndicatorColor);
-    cycleIndicator.addClass('pull-right');
-  }
 
   $('#cetuscycletitle').html(cetusCurrentTitle);
   $('#cetustimezonetitle').html(cetusCurrentTitleTimezone);
@@ -206,10 +201,6 @@ function updateEarthCycle() {
 
   const cycleIndicator = $('#earthcycleindicator');
   cycleIndicator.html(earthCurrentIndicator);
-  if (!cycleIndicator.hasClass(earthCurrentIndicatorColor)) {
-    cycleIndicator.attr('class', earthCurrentIndicatorColor);
-    cycleIndicator.addClass('pull-right');
-  }
 
   $('#earthcycletitle').html(earthCurrentTitle);
   $('#earthtimezonetitle').html(earthCurrentTitleTimezone);
@@ -298,8 +289,6 @@ function updateVoidTraderInventory() {
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
-    $('#voidTraderInventoryPanel').on('shown.bs.collapse', updateGrid);
-    $('#voidTraderInventoryPanel').on('hidden.bs.collapse', updateGrid);
   } else if (document.getElementsByClassName('voidTraderInventory')) {
     $('.voidTraderInventory').remove();
   }
@@ -398,7 +387,7 @@ function updateDarvoDeals() {
     }
   } else if (document.getElementsByClassName('dailyDealsInventory')) {
     $('.dailyDealsInventory').remove();
-    document.getElementById('darvotitle').innerText = 'No current deals :(';
+    document.getElementById('darvotitle').innerText = 'No current deals';
     $('#darvotitle').show();
   }
 }
@@ -451,7 +440,7 @@ function updateDeals() {
     }
   } else if (document.getElementsByClassName('dealsInventory')) {
     $('.dealsInventory').remove();
-    document.getElementById('dealstitle').innerText = 'No current deals :(';
+    document.getElementById('dealstitle').innerText = 'No current deals';
     $('#dealstitle').show();
   }
 }
@@ -513,7 +502,7 @@ function updateAcolytes() {
     }
   } else if (document.getElementById('acolyteList')) {
     $('#acolyteList').children().not('#acolytebody').remove();
-    document.getElementById('acolytetitle').innerText = 'No active acolytes :(';
+    document.getElementById('acolytetitle').innerText = 'No active acolytes';
     $('#alerttitle').show();
   }
 }
@@ -529,35 +518,44 @@ function updateAlerts() {
     if (document.getElementById('alertList').children.length >= 1) {
       for (const alert of alerts) {
         if ($(`#${alert.id}`).length === 0) {
-          let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
+          let alertRow = `<div id="${alert.id}" class="alertWrapper">`;
+          alertRow += `<img class="itemThumbnail" src="${alert.mission.reward.thumbnail}">`;
+          alertRow += `<ul>`;
+          alertRow += `<li><b>${alert.mission.node}</b> Level: ${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}</li>`;
 
           // Check if archwing is required for mission
           if (alert.mission.archwingRequired) {
-            alertRow += `${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} `;
+            alertRow += `<li>${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} <b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
+          } else if (alert.mission.nightmare) {
+            alertRow += `<li>${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} <b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
+          } else {
+            alertRow += `<li><b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
           }
-          if (alert.mission.nightmare) {
-            alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
-          }
-          alertRow += `<b>${alert.mission.node}</b>`;
-          alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                        `data-endtime="${moment(alert.expiry).unix()}"></span>`;
 
           if (alert.mission.reward.items.length !== 0) {
             for (const item of alert.mission.reward.items) {
-              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${item}</span>`;
+              alertRow += `<li>Reward: ${numberWithCommas(alert.mission.reward.credits)} + ${item}</li>`;
             }
-          }
-          if (alert.mission.reward.countedItems.length !== 0) {
+          } else if (alert.mission.reward.countedItems.length !== 0) {
             for (const countedItem of alert.mission.reward.countedItems) {
-              alertRow += `<span class="label label-info pull-right" style="margin-right: 5px">${countedItem.count} ${countedItem.type}</span>`;
+              alertRow += `<li>Reward: ${numberWithCommas(alert.mission.reward.credits)} + ${countedItem.type} (${countedItem.count})</li>`;
             }
+          } else {
+            alertRow += `<li>Reward: ${numberWithCommas(alert.mission.reward.credits)}</li>`;
           }
 
-          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
-                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}` +
-                        ` | ${alert.mission.reward.credits}cr`;
+          alertRow += `<li id="alerttimer${alert.id}" class="label timer" data-starttime="${moment(alert.activation).unix()}" ` +
+                        `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
-          alertRow += '</li>';
+          alertRow += `</ul>`;
+
+          if (alert.mission.faction == 'Orokin') {
+            alertRow += `<img class="factionIcon" src="img/factions/corrupted.svg">`;
+          } else {
+            alertRow += `<img class="factionIcon" src="img/factions/${alert.mission.faction}.svg">`;
+          }
+
+          alertRow += `</div>`;
           $('#alertbody').before(alertRow);
 
           if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
@@ -576,25 +574,31 @@ function updateAlerts() {
       }
     } else {
       for (const alert of alerts) {
-        let alertRow = `<li class="list-group-item list-group-item-borderless" id="${alert.id}">`;
+        let alertRow = `<div id="${alert.id}" class="alertWrapper">`;
 
         if (alert.mission.archwingRequired) {
-          alertRow += `${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} `;
+          alertRow += `<li>${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} <b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
+        } else if (alert.mission.nightmare) {
+          alertRow += `<li>${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} <b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
+        } else {
+          alertRow += `<li><b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
         }
-        if (alert.mission.nightmare) {
-          alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
-        }
-        alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
-        alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                    `data-endtime="${moment(alert.expiry).unix()}"></span></li>`;
+
+        alertRow += `<li id="alerttimer${alert.id}" class="label timer" data-starttime="${moment(alert.activation).unix()}" ` +
+                      `data-endtime="${moment(alert.expiry).unix()}"></li>`;
+
+        alertRow += `</ul>`;
+        alertRow += `<img class="factionIcon" src="img/factions/${alert.mission.faction}.svg">`;
+        alertRow += `</div>`;
         $('#alertbody').before(alertRow);
       }
     }
   } else if (document.getElementById('alertList')) {
     $('#alertList').children().not('#alertbody').remove();
-    document.getElementById('alerttitle').innerText = 'No active alerts :(';
+    document.getElementById('alerttitle').innerText = 'No active alerts';
     $('#alerttitle').show();
   }
+  updateImages();
 }
 
 const cleanupBounties = dailyDeals => {
@@ -639,12 +643,10 @@ function updateBounties() {
                     `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
-      $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);
-      $('#bountyListPanelBody').on('hidden.bs.collapse', updateGrid);
     }
   } else if (document.getElementsByClassName('bountyListPanelWrapper')) {
     $('#bountiesList').remove();
-    $('#bountytitle').text('No current deals :(');
+    $('#bountytitle').text('No current deals');
     $('#bountytitle').show();
   }
 }
@@ -758,12 +760,12 @@ function updateFissure() {
     }
     if ($('#fissureList').children().length < 2) {
       $('#fissureList').children().not('#fissurebody').remove();
-      document.getElementById('fissuretitle').innerText = 'No active Void Fissures Matching Your Filters :(';
+      document.getElementById('fissuretitle').innerText = 'No active Void Fissures Matching Your Filters';
       $('#fissuretitle').show();
     }
   } else {
     $('#fissureList').children().not('#fissurebody').remove();
-    document.getElementById('fissuretitle').innerText = 'No active Void Fissures :(';
+    document.getElementById('fissuretitle').innerText = 'No active Void Fissures';
     $('#fissuretitle').show();
   }
 }
@@ -827,23 +829,8 @@ function updateNews() {
     }
   } else {
     $('#newsList').children().not('#newsbody').remove();
-    document.getElementById('newstitle').innerText = 'No News to show :(';
+    document.getElementById('newstitle').innerText = 'No News to show';
     $('#newstitle').show();
-  }
-}
-
-function getLabelColor(faction) {
-  switch (faction) {
-  case 'Corpus':
-    return 'label-info';
-  case 'Grineer':
-    return 'label-danger';
-  case 'Infested':
-    return 'label-success';
-  case 'Corrupted':
-    return 'label-warning';
-  default:
-    return 'label-default';
   }
 }
 
@@ -907,31 +894,31 @@ function updateInvasions() {
         invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
           for (const item of invasion.attackerReward.items) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${item}</span>`;
+            invasionRow += `<span class="label">${item}</span>`;
           }
         }
         if (invasion.attackerReward.countedItems.length !== 0) {
           for (const countedItem of invasion.attackerReward.countedItems) {
             // Include count only if more than 1
             if (countedItem.count > 1) {
-              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.count} ${countedItem.type}</span>`;
+              invasionRow += `<span class="label">${countedItem.count} ${countedItem.type}</span>`;
             } else {
-              invasionRow += `<span class="label ${getLabelColor(invasion.attackingFaction)} pull-left">${countedItem.type}</span>`;
+              invasionRow += `<span class="label">${countedItem.type}</span>`;
             }
           }
         }
         if (invasion.defenderReward.items.length !== 0) {
           for (const item of invasion.defenderReward.items) {
-            invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${item}</span>`;
+            invasionRow += `<span class="label">${item}</span>`;
           }
         }
         if (invasion.defenderReward.countedItems.length !== 0) {
           for (const countedItem of invasion.defenderReward.countedItems) {
             // Include count only if more than 1
             if (countedItem.count > 1) {
-              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.count} ${countedItem.type}</span>`;
+              invasionRow += `<span class="label">${countedItem.count} ${countedItem.type}</span>`;
             } else {
-              invasionRow += `<span class="label ${getLabelColor(invasion.defendingFaction)} pull-right">${countedItem.type}</span>`;
+              invasionRow += `<span class="label">${countedItem.type}</span>`;
             }
           }
         }
@@ -973,10 +960,10 @@ function updateInvasions() {
     });
 
     if (numInvasions === 0) {
-      document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+      document.getElementById('invasiontitle').innerText = 'No active invasions';
     }
   } else {
-    document.getElementById('invasiontitle').innerText = 'No active invasions :(';
+    document.getElementById('invasiontitle').innerText = 'No active invasions';
   }
 }
 
@@ -998,7 +985,6 @@ function updatePage() {
     updateNews();
     updateInvasions();
     updateWorldStateTime();
-    updateGrid();
   }
 }
 

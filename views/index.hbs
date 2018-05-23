@@ -1,164 +1,46 @@
-<div class="container-fluid">
-  <div class="jumbotron" id="component-event">
-    <ul class="list-group" id="component-event-body">
-      <li class="list-group-item list-group-item-borderless">
-        <h1 class="display-3" id="event-title">{{> loading}}</h1>
-      </li>
+<div id="content">
+  <header>
+    <a class="hubTitle" href="/">Warframe Hub</a>
+    <div id="settingsModal" class="hubSettings">Settings</div>
+    <div class="hubDev" href="/">Development Build</div>
+  </header>
+  <nav>
+    <p class="sectionTitle">Alerts</p>
+    <ul class="sections">
+      <li name="Alerts" class="active"><img src="img/navigation/alerts.svg"></li>
+      <li name="Invasions"><img src="img/navigation/invasions.svg"></li>
+      <li name="Fissures"><img src="img/navigation/fissures.svg"></li>
+      <li name="Sortie"><img src="img/navigation/sortie.svg"></li>
+      <li name="Ostron"><img src="img/navigation/ostron.svg"></li>
+      <li name="Baro Ki'Teer"><img src="img/navigation/baro.svg"></li>
+      <li name="Darvo Deals"><img src="img/navigation/darvo.svg"></li>
+      <li name="Flash Sales"><img src="img/navigation/sales.svg"></li>
+      <li name="Acolytes"><img src="img/navigation/acolytes.svg"></li>
+      <li name="Event"><img src="img/navigation/event.svg"></li>
+    </ul>
+    {{> nav}}
+  </nav>
+  <div class="sectionContainer">
+    <div id="alertList">
+      <div id="alertbody">
+        <span id="alerttitle">{{> loading}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="timersContainer">
+    <ul>
+      <p class="sectionTitle">Timers</p>
+      <li>Cetus Day/Night Cycle<div class="timerRight">Day - 3h 44m 55s</div></li>
+      <li>Earth Day/Night Cycle<div class="timerRight">Day - 22m 11s</div></li>
+      <li>Daily Reward Timer<div class="timerRight">15h 40m 50s</div></li>
+      <p class="sectionTitle">Orbiter News</p>
+      <li><a href="#" class="news">[3d] Beasts of the Sanctuary: Hotfix 22.20.3</a></li>
+      <li><a href="#" class="news">[4d] Beasts of the Sanctuary: Update 22.20.0</a></li>
+      <li><a href="#" class="news">[17d] Tenno Tunes Vol 3 Now Live!</a></li>
+      <li><a href="#" class="news">[2M] TennoCon Digital Pack Available Now!</a></li>
+      <li><a href="#" class="news">[2M] Zephyr Prime Access is Here!</a></li>
     </ul>
   </div>
-	<div class="grid">
-      <div class="grid-sizer col-md-6"></div>
-			<div class="grid-item col-md-6" id="component-cetus">
-  				<h3 class="text-center">Cetus Day/Night Cycle</h3>
-  				<ul class="list-group">
-  					<li class="list-group-item list-group-item-borderless">
-  						Currently it is:
-  						<span id="cetuscycleindicator"></span>
-  					</li>
-  					<li class="list-group-item list-group-item-borderless">
-  						<span id="cetuscycletitle">{{> loading}}</span>
-  						<span class="pull-right" id="cetuscycletime"></span>
-  					</li>
-  					<li class="list-group-item list-group-item-borderbottom">
-  						<span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
-  						<span id="cetustimezonetitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-earth">
-  				<h3 class="text-center">Earth Day/Night Cycle</h3>
-  				<ul class="list-group">
-  					<li class="list-group-item list-group-item-borderless">
-  						Currently it is:
-  						<span id="earthcycleindicator"></span>
-  					</li>
-  					<li class="list-group-item list-group-item-borderless">
-  						<span class="pull-right" id="earthcycletime"></span>
-  						<span id="earthcycletitle">{{> loading}}</span>
-
-  					</li>
-  					<li class="list-group-item list-group-item-borderbottom">
-  						<span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
-  						<span id="earthtimezonetitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-      <div class="grid-item col-md-6" id="component-acolytes">
-  				<h3 class="text-center">Current Acolytes</h3>
-  				<ul class="list-group" id="acolyteList">
-  					<li class="list-group-item list-group-item-borderbottom" id="acolytebody">
-  						<span id="acolytetitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-bounties">
-  				<h3 class="text-center">Ostron Bounty Cycle</h3>
-  				<ul class="list-group">
-  					<li class="list-group-item list-group-item-borderless">
-  						<span class="pull-right" id="cetusbountytime"></span>
-  						<span id="cetusbountytitle"></span>
-  					</li>
-  					<li class="list-group-item list-group-item-borderbottom text-center" id="bountybody">
-  						<span id="bountytitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-alerts">
-  				<h3 class="text-center">Current Alerts</h3>
-  				<ul class="list-group" id="alertList">
-  					<li class="list-group-item list-group-item-borderbottom" id="alertbody">
-  						<span id="alerttitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-      </div>
-      <div class="grid-item col-md-6" id="component-news">
-  				<h3 class="text-center">Orbiter News</h3>
-  				<ul class="list-group" id="newsList">
-  					<li class="list-group-item list-group-item-borderless" id="newstop"></li>
-  					<li class="list-group-item list-group-item-borderbottom" id="newsbody">
-  						<span id="newstitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-invasions">
-  				<h3 class="text-center">Current Invasions</h3>
-  				<ul class="list-group" id="invasionList">
-  					<li class="list-group-item list-group-item-borderbottom" id="invasionbody">
-  						<span id="invasiontitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-      <div class="grid-item col-md-6" id="component-reset">
-          <h3 class="text-center">Daily Reward Timer</h3>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-borderbottom">
-              <span class="pull-right" id="resettimertime"></span>
-              <span id="resettimertitle"></span>
-            </li>
-          </ul>
-      </div>
-
-			<div class="grid-item col-md-6" id="component-sortie">
-  				<h3 class="text-center">Sortie</h3>
-  				<ul class="list-group">
-  					<li id="sortietitle" class="list-group-item list-group-item-borderless">{{> loading}}</li>
-  					<li id="sortieBossInfo" class="list-group-item list-group-item-borderless">
-              <span id="sortieFaction"></span>
-  						<span><h4 id="sortieBoss"></h4></span>
-              <span id="sortieTimerInfo"></span>
-            </li>
-  					<li class="list-group-item list-group-item-borderbottom"><div id="sortieList"></div></li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6 void-fissures" id="component-fissures">
-  				<h3 class="text-center">Void Fissures</h3>
-  				<ul class="list-group" id="fissureList">
-  					<li class="list-group-item list-group-item-borderbottom" id="fissurebody">
-  						<span id="fissuretitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-baro">
-  				<h3 class="text-center">Void Trader</h3>
-  				<ul class="list-group">
-  					<li class="list-group-item list-group-item-borderless">
-    					<span class="pull-right" id="voidtradertime"></span>
-			        <span id="voidtradertitle">{{> loading}}</span>
-  					</li>
-            <li class="list-group-item list-group-item-borderless">
-  						<span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
-  						<span id="voidtradertimezonetitle">{{> loading}}</span>
-  					</li>
-  					<li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-darvo">
-  				<h3 class="text-center">Darvo Deals</h3>
-  				<ul class="list-group">
-  					<li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
-  						<span id="darvotitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-
-			<div class="grid-item col-md-6" id="component-deals">
-  				<h3 class="text-center">Sales and Featured Deals</h3>
-          <ul class="list-group">
-  					<li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
-  						<span id="dealstitle">{{> loading}}</span>
-  					</li>
-  				</ul>
-			</div>
-		</div>
 
 		{{> footer}}
 </div>
@@ -168,18 +50,18 @@
 <script src="js/utilities.js?v={{lookup sums 'js/utilities.js'}}"></script>
 <script src="js/updaters.js?v={{lookup sums 'js/updaters.js'}}"></script>
 <script src="js/main.js?v={{lookup sums 'js/main.js'}}"></script>
+<script src="js/jquery.overlayScrollbars.min.js?v={{lookup sums 'js/jquery.overlayScrollbars.min.js'}}"></script>
+<script src="js/ui.js?v={{lookup sums 'js/ui.js'}}"></script>
 
 
-<!-- Insert world state update information into footer -->
 <script>
-	/* globals $, SVGInjector */
-	$('#footer-content').append('<div class="pull-right"><a id="worldstateinfo" title="" data-placement="left" ' +
-		'data-toggle="tooltip" href="#" data-original-title="World State obtained" style="margin-right:5px">' +
-		'<span class="glyphicon glyphicon-info-sign"></span></div></a>');
-
-	$('body').tooltip({
-		selector: '[data-toggle="tooltip"]'
-	});
-
-	SVGInjector(document.querySelectorAll('img.loader'));
+	/* overlayScrollbars */
+  $('.sectionContainer').overlayScrollbars(
+    {
+      className: "os-theme-hub",
+      overflowBehavior: {
+        x: "hidden",
+        y: "scroll"
+      }
+    });
 </script>

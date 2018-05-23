@@ -6,8 +6,10 @@ const hashsum = require('gulp-hashsum');
 
 gulp.task('clean-js', () => {
   return del([
+    './public/js/jquery.overlayScrollbars.min.js',
     './public/js/main.js',
     './public/js/maps.js',
+    './public/js/ui.js',
     './public/js/updaters.js',
     './public/js/utilities.js',
     './public/sums.json',
@@ -17,10 +19,9 @@ gulp.task('clean-js', () => {
 gulp.task('clean-css', () => {
   return del([
     './public/css/main.css',
-    './public/css/main.night.css',
-    './public/css/main.retro.css',
-    './public/css/main.eidolon.css',
-    './public/css/common.css',
+    './public/css/scrollbar.css',
+    './public/css/theme.orokin.css',
+    './public/css/theme.grineer.css',
   ]);
 });
 

@@ -2,6 +2,8 @@
   <header>
     <a class="hubTitle" href="/">Warframe Hub</a>
     <div id="settingsModal" class="hubSettings">Settings</div>
+    <div id="orokin" class="hubSettings">[Dev] Theme: Orokin</div>
+    <div id="grineer" class="hubSettings">[Dev] Theme: Grineer</div>
     <div class="hubDev" href="/">Development Build</div>
   </header>
   <nav>
@@ -25,6 +27,126 @@
       <div id="alertbody">
         <span id="alerttitle">{{> loading}}</span>
       </div>
+    </div>
+    <div style="display: none;">
+      <ul class="list-group" id="component-event-body">
+        <li class="list-group-item list-group-item-borderless">
+          <h1 class="display-3" id="event-title">{{> loading}}</h1>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderless">
+          Currently it is:
+          <span id="cetuscycleindicator"></span>
+        </li>
+        <li class="list-group-item list-group-item-borderless">
+          <span id="cetuscycletitle">{{> loading}}</span>
+          <span class="pull-right" id="cetuscycletime"></span>
+        </li>
+        <li class="list-group-item list-group-item-borderbottom">
+          <span class="pull-right label label-primary" id="cetustimezonetime" title="This is in your timezone!"></span>
+          <span id="cetustimezonetitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderless">
+          Currently it is:
+          <span id="earthcycleindicator"></span>
+        </li>
+        <li class="list-group-item list-group-item-borderless">
+          <span class="pull-right" id="earthcycletime"></span>
+          <span id="earthcycletitle">{{> loading}}</span>
+        </li>
+        <li class="list-group-item list-group-item-borderbottom">
+          <span class="pull-right label label-primary" id="earthtimezonetime" title="This is in your timezone!"></span>
+          <span id="earthtimezonetitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group" id="acolyteList">
+        <li class="list-group-item list-group-item-borderbottom" id="acolytebody">
+          <span id="acolytetitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderless">
+          <span class="pull-right" id="cetusbountytime"></span>
+          <span id="cetusbountytitle"></span>
+        </li>
+
+        <li class="list-group-item list-group-item-borderbottom text-center" id="bountybody">
+          <span id="bountytitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group" id="alertList">
+        <li class="list-group-item list-group-item-borderbottom" id="alertbody">
+          <span id="alerttitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group" id="newsList">
+        <li class="list-group-item list-group-item-borderless" id="newstop"></li>
+        <li class="list-group-item list-group-item-borderbottom" id="newsbody">
+          <span id="newstitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group" id="invasionList">
+        <li class="list-group-item list-group-item-borderbottom" id="invasionbody">
+          <span id="invasiontitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderbottom">
+          <span class="pull-right" id="resettimertime"></span>
+          <span id="resettimertitle"></span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li id="sortietitle" class="list-group-item list-group-item-borderless">{{> loading}}</li>
+        <li id="sortieBossInfo" class="list-group-item list-group-item-borderless">
+          <span id="sortieFaction"></span>
+          <span><h4 id="sortieBoss"></h4></span>
+          <span id="sortieTimerInfo"></span>
+        </li>
+        <li class="list-group-item list-group-item-borderbottom"><div id="sortieList"></div></li>
+      </ul>
+
+      <ul class="list-group" id="fissureList">
+        <li class="list-group-item list-group-item-borderbottom" id="fissurebody">
+          <span id="fissuretitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderless">
+          <span class="pull-right" id="voidtradertime"></span>
+          <span id="voidtradertitle">{{> loading}}</span>
+        </li>
+        <li class="list-group-item list-group-item-borderless">
+          <span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
+          <span id="voidtradertimezonetitle">{{> loading}}</span>
+        </li>
+        <li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
+          <span id="darvotitle">{{> loading}}</span>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
+          <span id="dealstitle">{{> loading}}</span>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="timersContainer">

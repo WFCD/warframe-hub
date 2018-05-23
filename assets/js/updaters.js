@@ -1,7 +1,7 @@
 /* globals $, moment, Cookies, localStorage,
-  Notification, sendNotification, addNotifiedId
-  isNotifiable, getImage, getObjects,
-  calculateInventory,
+   Notification, sendNotification, addNotifiedId
+   isNotifiable, getImage, getObjects,
+   calculateInventory,
 */
 /* eslint-disable no-unused-vars */
 let worldState;
@@ -36,7 +36,11 @@ function updateDataDependencies() {
 
 // Number with commas
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function updateImages() {
+  SVGInjector(document.querySelectorAll('img'));
 }
 
 function updateEarthTitle() {
@@ -487,7 +491,7 @@ function updateAcolytes() {
             `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
             '</div>';
 
-          acolyteRow += `</li>`;
+          acolyteRow += '</li>';
           $('#acolytebody').before(acolyteRow);
           if (isNotifiable(acolyte.pid, 'enemies')) {
             sendNotification(`${acolyte.healthPercent}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
@@ -520,7 +524,7 @@ function updateAlerts() {
         if ($(`#${alert.id}`).length === 0) {
           let alertRow = `<div id="${alert.id}" class="alertWrapper">`;
           alertRow += `<img class="itemThumbnail" src="${alert.mission.reward.thumbnail}">`;
-          alertRow += `<ul>`;
+          alertRow += '<ul>';
           alertRow += `<li><b>${alert.mission.node}</b> Level: ${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}</li>`;
 
           // Check if archwing is required for mission
@@ -547,9 +551,9 @@ function updateAlerts() {
           alertRow += `<li id="alerttimer${alert.id}" class="label timer" data-starttime="${moment(alert.activation).unix()}" ` +
                         `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
-          alertRow += `</ul>`;
+          alertRow += '</ul>';
           alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
-          alertRow += `</div>`;
+          alertRow += '</div>';
           $('#alertbody').before(alertRow);
 
           if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
@@ -734,7 +738,7 @@ function updateFissure() {
         fissureRow += `<span class= "fissure-body">${getImage('fissures', {image: fissure.tierNum, title: `Tier ${fissure.tierNum}`, className: 'fissure-icon'})}`;
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
 
-        fissureRow += `</li>`;
+        fissureRow += '</li>';
 
         let filtered = false;
         filteredPlanets.forEach(planet => {
@@ -789,7 +793,7 @@ function updateNews() {
       } else {
         let articleRow = `<li class="list-group-item list-group-item-borderless" id="${article.id}" style="padding-top:2px;padding-bottom:2px">`;
         articleRow += `<span id="newstime${article.id}" style="white-space:pre">[${moment(article.date).fromNow()}] &#9;</span><a href="${article.link}">${article.message}</a>${article.priority ? '*' : ''}`;
-        articleRow += `</li>`;
+        articleRow += '</li>';
 
         if (article.priority) {
           showPriorityNotif = true;

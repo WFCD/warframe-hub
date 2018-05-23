@@ -86,10 +86,10 @@ function updateTimeBadges() {
 
 
 // Moving background
-var movementStrength = 4;
-var height = movementStrength / $(window).height();
-var width = movementStrength / $(window).width();
-$('#content').mousemove(function(e){
+$('#content').mousemove(function(e) {
+  var movementStrength = 4;
+  var height = movementStrength / $(window).height();
+  var width = movementStrength / $(window).width();
   var pageX = e.pageX - ($(window).width() / 2);
   var pageY = e.pageY - ($(window).height() / 2);
   var newvalueX = width * pageX * -1 - 4;
@@ -98,13 +98,13 @@ $('#content').mousemove(function(e){
 });
 
 // Dropdown
-$('.dropdown').click(function(){
+$('.dropdown').click(function() {
   $(this).find('.dropdownList').slideToggle('fast');
 });
 
 $(document).on('click', function(event) {
   var $trigger = $('.dropdown');
-  if($trigger !== event.target && !$trigger.has(event.target).length){
+  if ($trigger !== event.target && !$trigger.has(event.target).length) {
     $('.dropdownList').slideUp('fast');
   }
 });
@@ -225,10 +225,6 @@ if (!String.prototype.padStart) {
 function update() {
   getWorldState();
   setTimeout(update, 30000);
-}
-
-function updateImages() {
-  SVGInjector(document.querySelectorAll('img'));
 }
 
 update();

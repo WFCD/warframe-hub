@@ -585,9 +585,9 @@ function updateAlerts() {
         alertRow += `<li id="alerttimer${alert.id}" class="label timer" data-starttime="${moment(alert.activation).unix()}" ` +
                       `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
-        alertRow += `</ul>`;
+        alertRow += '</ul>';
         alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
-        alertRow += `</div>`;
+        alertRow += '</div>';
         $('#alertbody').before(alertRow);
       }
     }

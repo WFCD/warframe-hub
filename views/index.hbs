@@ -7,155 +7,171 @@
     <div class="hubDev" href="/">Development Build</div>
   </header>
   <nav>
-    <p class="sectionTitle">Alerts</p>
+    <p class="sectionTitle"></p>
     <ul class="sections">
-      <li name="Alerts" class="active"><img src="img/navigation/alerts.svg"></li>
-      <li name="Invasions"><img src="img/navigation/invasions.svg"></li>
-      <li name="Fissures"><img src="img/navigation/fissures.svg"></li>
-      <li name="Sortie"><img src="img/navigation/sortie.svg"></li>
-      <li name="Ostron"><img src="img/navigation/ostron.svg"></li>
-      <li name="Baro Ki'Teer"><img src="img/navigation/baro.svg"></li>
-      <li name="Darvo Deals"><img src="img/navigation/darvo.svg"></li>
-      <li name="Flash Sales"><img src="img/navigation/sales.svg"></li>
-      <li name="Acolytes"><img src="img/navigation/acolytes.svg"></li>
-      <li name="Event"><img src="img/navigation/event.svg"></li>
+      <li id="alerts" name="Alerts"><img src="img/navigation/alerts.svg"></li>
+      <li id="invasions" name="Invasions"><img src="img/navigation/invasions.svg"></li>
+      <li id="fissures" name="Fissures"><img src="img/navigation/fissures.svg"></li>
+      <li id="sortie" name="Sortie"><img src="img/navigation/sortie.svg"></li>
+      <li id="ostron" name="Ostron"><img src="img/navigation/ostron.svg"></li>
+      <li id="baro" name="Baro Ki'Teer"><img src="img/navigation/baro.svg"></li>
+      <li id="darvo" name="Darvo Deals"><img src="img/navigation/darvo.svg"></li>
+      <li id="sales" name="Flash Sales"><img src="img/navigation/sales.svg"></li>
+      <li id="acolytes" name="Acolytes"><img src="img/navigation/acolytes.svg"></li>
+      <li id="event" name="Event"><img src="img/navigation/event.svg"></li>
     </ul>
     {{> nav}}
   </nav>
   <div class="sectionContainer">
-    <div id="alertList">
+
+    <div id="alertsWrapper" class="section">
       <div id="alertbody">
         <span id="alerttitle">{{> loading}}</span>
       </div>
     </div>
-    <div style="display: none;">
-      <ul class="list-group" id="component-event-body">
-        <li class="list-group-item list-group-item-borderless">
-          <h1 class="display-3" id="event-title">{{> loading}}</h1>
+
+    <div id="invasionsWrapper" class="section">
+      <ul id="invasionList">
+        <li class="list-group-item list-group-item-borderbottom" id="invasionbody">
+          <span id="invasiontitle">{{> loading}}</span>
         </li>
       </ul>
+    </div>
 
+      <div id="fissuresWrapper" class="section">
+        <ul class="list-group" id="fissureList">
+          <li class="list-group-item list-group-item-borderbottom" id="fissurebody">
+            <span id="fissuretitle">{{> loading}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div id="sortieWrapper" class="section">
+        <ul>
+          <li id="sortietitle">{{> loading}}</li>
+          <li id="sortieBossInfo">
+            <span id="sortieFaction"></span>
+            <span><h4 id="sortieBoss"></h4></span>
+            <span id="sortieTimerInfo"></span>
+          </li>
+          <li><div id="sortieList"></div></li>
+        </ul>
+      </div>
+
+      <div id="ostronWrapper" class="section">
+        <li id="bountybody">
+          <span id="bountytitle">{{> loading}}</span>
+        </li>
+      </ul>
+    </div>
+
+      <div id="baroWrapper" class="section">
+        <ul>
+          <li>
+            <span id="voidtradertime"></span>
+            <span id="voidtradertitle">{{> loading}}</span>
+          </li>
+          <li class="list-group-item list-group-item-borderless">
+            <span class="label" id="voidtradertimezonetime" title="This is in your timezone!"></span>
+            <span id="voidtradertimezonetitle">{{> loading}}</span>
+          </li>
+          <li id="voidTraderBody"></li>
+        </ul>
+      </div>
+
+      <div id="darvoWrapper" class="section">
+        <ul class="list-group">
+          <li id="darvobody">
+            <span id="darvotitle">{{> loading}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div id="salesWrapper" class="section">
+        <ul>
+        <li id="dealsbody">
+          <span id="dealstitle">{{> loading}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div id="acolytesWrapper" class="section">
+      <ul id="acolyteList">
+        <li id="acolytebody">
+          <span id="acolytetitle">{{> loading}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div id="eventWrapper" class="section">
+      <ul>
+        <li class="list-group-item list-group-item-borderless">
+          <h1 id="event-title">{{> loading}}</h1>
+        </li>
+      </ul>
+    </div>
+
+    <div style="display: none">
       <ul class="list-group">
         <li class="list-group-item list-group-item-borderless">
           Currently it is:
           <span id="cetuscycleindicator"></span>
         </li>
-        <li class="list-group-item list-group-item-borderless">
-          <span id="cetuscycletitle">{{> loading}}</span>
-          <span id="cetuscycletime"></span>
-        </li>
-        <li class="list-group-item list-group-item-borderbottom">
-          <span class="label" id="cetustimezonetime" title="This is in your timezone!"></span>
-          <span id="cetustimezonetitle">{{> loading}}</span>
-        </li>
-      </ul>
 
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderless">
-          Currently it is:
-          <span id="earthcycleindicator"></span>
-        </li>
-        <li class="list-group-item list-group-item-borderless">
-          <span id="earthcycletime"></span>
-          <span id="earthcycletitle">{{> loading}}</span>
-        </li>
-        <li class="list-group-item list-group-item-borderbottom">
-          <span class="label" id="earthtimezonetime" title="This is in your timezone!"></span>
-          <span id="earthtimezonetitle">{{> loading}}</span>
-        </li>
-      </ul>
+      <li class="list-group-item list-group-item-borderless">
+        <span id="cetuscycletitle">{{> loading}}</span>
+        <span id="cetuscycletime"></span>
+      </li>
+      <li class="list-group-item list-group-item-borderbottom">
+        <span class="label" id="cetustimezonetime" title="This is in your timezone!"></span>
+        <span id="cetustimezonetitle">{{> loading}}</span>
+      </li>
+    </ul>
 
-      <ul class="list-group" id="acolyteList">
-        <li class="list-group-item list-group-item-borderbottom" id="acolytebody">
-          <span id="acolytetitle">{{> loading}}</span>
-        </li>
-      </ul>
+    <ul>
+      <li>
+        Currently it is:
+        <span id="earthcycleindicator"></span>
+      </li>
+      <li>
+        <span id="earthcycletime"></span>
+        <span id="earthcycletitle">{{> loading}}</span>
+      </li>
+      <li class="list-group-item list-group-item-borderbottom">
+        <span class="label" id="earthtimezonetime" title="This is in your timezone!"></span>
+        <span id="earthtimezonetitle">{{> loading}}</span>
+      </li>
+    </ul>
 
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderless">
-          <span id="cetusbountytime"></span>
-          <span id="cetusbountytitle"></span>
-        </li>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-borderless">
+        <span id="cetusbountytime"></span>
+        <span id="cetusbountytitle"></span>
+      </li>
 
-        <li class="list-group-item list-group-item-borderbottom" id="bountybody">
-          <span id="bountytitle">{{> loading}}</span>
-        </li>
-      </ul>
+    <ul id="newsList">
+      <li id="newstop"></li>
+      <li id="newsbody">
+        <span id="newstitle">{{> loading}}</span>
+      </li>
+    </ul>
 
-      <ul class="list-group" id="alertList">
-        <li class="list-group-item list-group-item-borderbottom" id="alertbody">
-          <span id="alerttitle">{{> loading}}</span>
-        </li>
-      </ul>
-
-      <ul class="list-group" id="newsList">
-        <li class="list-group-item list-group-item-borderless" id="newstop"></li>
-        <li class="list-group-item list-group-item-borderbottom" id="newsbody">
-          <span id="newstitle">{{> loading}}</span>
-        </li>
-      </ul>
-
-      <ul class="list-group" id="invasionList">
-        <li class="list-group-item list-group-item-borderbottom" id="invasionbody">
-          <span id="invasiontitle">{{> loading}}</span>
-        </li>
-      </ul>
-
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderbottom">
-          <span class="pull-right" id="resettimertime"></span>
-          <span id="resettimertitle"></span>
-        </li>
-      </ul>
-
-      <ul class="list-group">
-        <li id="sortietitle" class="list-group-item list-group-item-borderless">{{> loading}}</li>
-        <li id="sortieBossInfo" class="list-group-item list-group-item-borderless">
-          <span id="sortieFaction"></span>
-          <span><h4 id="sortieBoss"></h4></span>
-          <span id="sortieTimerInfo"></span>
-        </li>
-        <li class="list-group-item list-group-item-borderbottom"><div id="sortieList"></div></li>
-      </ul>
-
-      <ul class="list-group" id="fissureList">
-        <li class="list-group-item list-group-item-borderbottom" id="fissurebody">
-          <span id="fissuretitle">{{> loading}}</span>
-        </li>
-      </ul>
-
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderless">
-          <span class="pull-right" id="voidtradertime"></span>
-          <span id="voidtradertitle">{{> loading}}</span>
-        </li>
-        <li class="list-group-item list-group-item-borderless">
-          <span class="pull-right label label-primary" id="voidtradertimezonetime" title="This is in your timezone!"></span>
-          <span id="voidtradertimezonetitle">{{> loading}}</span>
-        </li>
-        <li class="list-group-item list-group-item-borderbottom" id="voidTraderBody"></li>
-      </ul>
-
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderbottom text-center" id="darvobody">
-          <span id="darvotitle">{{> loading}}</span>
-        </li>
-      </ul>
-
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-borderbottom text-center" id="dealsbody">
-          <span id="dealstitle">{{> loading}}</span>
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <span id="resettimertime"></span>
+        <span id="resettimertitle"></span>
+      </li>
+    </ul>
   </div>
+</div>
+
   <div class="timersContainer">
     <ul>
-      <p class="sectionTitle">Timers</p>
+      <p class="panelTitle">Timers</p>
       <li>Cetus Day/Night Cycle<div class="timerRight">Day - 3h 44m 55s</div></li>
       <li>Earth Day/Night Cycle<div class="timerRight">Day - 22m 11s</div></li>
       <li>Daily Reward Timer<div class="timerRight">15h 40m 50s</div></li>
-      <p class="sectionTitle">Orbiter News</p>
+      <p class="panelTitle">Orbiter News</p>
       <li><a href="#" class="news">[3d] Beasts of the Sanctuary: Hotfix 22.20.3</a></li>
       <li><a href="#" class="news">[4d] Beasts of the Sanctuary: Update 22.20.0</a></li>
       <li><a href="#" class="news">[17d] Tenno Tunes Vol 3 Now Live!</a></li>
@@ -172,11 +188,11 @@
 <script src="js/utilities.js?v={{lookup sums 'js/utilities.js'}}"></script>
 <script src="js/updaters.js?v={{lookup sums 'js/updaters.js'}}"></script>
 <script src="js/main.js?v={{lookup sums 'js/main.js'}}"></script>
-<script src="js/jquery.overlayScrollbars.min.js?v={{lookup sums 'js/jquery.overlayScrollbars.min.js'}}"></script>
+<script src="js/overlayScrollbars.min.js?v={{lookup sums 'js/overlayScrollbars.min.js'}}"></script>
 
 
 <script>
-	/* overlayScrollbars */
+	/* overlayScrollbars, TypeIt */
   $('.sectionContainer').overlayScrollbars(
     {
       className: "os-theme-hub",

@@ -128,7 +128,7 @@ nav {
   height: 10vh;
 }
 
-.sectionTitle {
+.sectionTitle, .panelTitle {
   font-size: 2.1vh;
   font-weight: 500;
   margin-bottom: .39vh;
@@ -171,10 +171,6 @@ nav .dropdown {
   overflow: hidden;
 }
 
-.sectionContainer div:last-child {
-  margin-bottom: 0;
-}
-
 .timersContainer {
   float: right;
   width: 25vw;
@@ -183,7 +179,7 @@ nav .dropdown {
   margin: 0 8vw 0 2vw;
 }
 
-.timersContainer .sectionTitle {
+.panelTitle {
   margin: 1vh .3vw;
 }
 
@@ -191,7 +187,7 @@ nav .dropdown {
   margin: auto .3vw;
 }
 
-.timersContainer .sectionTitle {
+.panelTitle {
   opacity: .75;
   margin-top: 2vh;
 }
@@ -220,24 +216,24 @@ nav .dropdown {
   text-decoration: underline;
 }
 
-.alertWrapper {
+.alertContainer {
   height: 10vh;
   padding: 1.3vh 1.24vw;
   margin-bottom: .65vh;
   overflow: hidden;
 }
 
-.alertWrapper ul {
+.alertContainer ul {
   display: flex;
   flex-direction: column;
   float: left;
 }
 
-#alertList .alertWrapper:last-child {
+#alertsWrapper div:nth-last-child(2) {
   margin-bottom: 0;
 }
 
-.alertWrapper ul li {
+.alertContainer ul li {
   font-size: 1.8vh;
   line-height: 2.6vh;
 }

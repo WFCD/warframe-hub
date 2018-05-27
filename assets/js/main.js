@@ -84,7 +84,7 @@ function updateTimeBadges() {
   setTimeout(updateTimeBadges, 1000);
 }
 
-// Moving Background
+// Moving background
 $(document).ready(function() {
   var movementStrength = 4;
   var height = movementStrength / $(window).height();
@@ -96,6 +96,27 @@ $(document).ready(function() {
     var newvalueY = height * pageY * -1 - 8;
     $('#content').css("background-position", newvalueX+'vw     '+newvalueY+'vh');
   });
+
+  // Section switcher
+  $('.sections li').click(function(event) {
+    var requestedSection = $(this).attr('id');
+    var sectionTitle = $(this).attr('name');
+    $('.sections > li').removeClass("active");
+    $(this).addClass("active");
+    $('.sectionTitle').html(sectionTitle);
+
+    new TypeIt('.sectionTitle', {
+      cursor: false,
+      speed: 20,
+      autoStart: true
+    });
+
+    $('.section').hide();
+    $('#' + requestedSection + 'Wrapper').show();
+  });
+
+  // Default section
+  $('#alerts').click();
 
   // Dropdown
   $('.dropdown').click(function() {

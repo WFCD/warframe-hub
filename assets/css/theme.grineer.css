@@ -3,7 +3,7 @@ body, h1, h2, h3, h4, h5, h6, ul li a, .hubTitle {
 }
 
 body {
-  background: #1b1920 url('../themes/grineer/static.jpg') no-repeat;
+  background-color: #1c211d;
 }
 
 ::selection {
@@ -54,7 +54,7 @@ svg path {
 }
 
 #content {
-  background: url('../themes/grineer/dynamic.png') -4vh -8vw no-repeat;
+  background: url('../themes/grineer/background.jpg') -4vh -8vw no-repeat;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -70,7 +70,7 @@ svg path {
   color: rgba(210, 200, 155, 1);
 }
 
-.sectionTitle {
+.sectionTitle, .panelTitle {
   color: rgba(210, 200, 155, 1);
 }
 
@@ -100,7 +100,7 @@ nav .sections li:hover {
   color: rgba(140, 120, 80, 1);
 }
 
-.alertWrapper {
+.alertContainer {
   background-color: rgba(20, 20, 25, .4);
 }
 

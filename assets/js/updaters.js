@@ -453,7 +453,7 @@ function updateAcolytes() {
   const {persistentEnemies} = worldState;
   if (persistentEnemies.length !== 0) {
     $('#acolytetitle').hide();
-    if (platformSwapped && document.getElementById('alertList')) {
+    if (platformSwapped && document.getElementById('alertsWrapper')) {
       $('#acolyteList').children().not('#acolytebody').remove();
     }
 
@@ -515,14 +515,14 @@ function updateAlerts() {
   const {alerts} = worldState;
   if (alerts.length !== 0) {
     $('#alerttitle').hide();
-    if (platformSwapped && document.getElementById('alertList')) {
-      $('#alertList').children().not('#alertbody').remove();
+    if (platformSwapped && document.getElementById('alertsWrapper')) {
+      $('#alertsWrapper').children().not('#alertbody').remove();
     }
 
-    if (document.getElementById('alertList').children.length >= 1) {
+    if (document.getElementById('alertsWrapper').children.length >= 1) {
       for (const alert of alerts) {
         if ($(`#${alert.id}`).length === 0) {
-          let alertRow = `<div id="${alert.id}" class="alertWrapper">`;
+          let alertRow = `<div id="${alert.id}" class="alertContainer">`;
           alertRow += `<img class="itemThumbnail" src="${alert.mission.reward.thumbnail}">`;
           alertRow += '<ul>';
           alertRow += `<li><b>${alert.mission.node}</b> Level: ${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}</li>`;
@@ -572,7 +572,7 @@ function updateAlerts() {
       }
     } else {
       for (const alert of alerts) {
-        let alertRow = `<div id="${alert.id}" class="alertWrapper">`;
+        let alertRow = `<div id="${alert.id}" class="alertContainer">`;
 
         if (alert.mission.archwingRequired) {
           alertRow += `<li>${getImage('general', {image: 'archwing', title: 'Archwing Required for Mission', className: 'archwing'})} <b>${alert.mission.type} - ${alert.mission.faction}</b></li>`;
@@ -591,8 +591,8 @@ function updateAlerts() {
         $('#alertbody').before(alertRow);
       }
     }
-  } else if (document.getElementById('alertList')) {
-    $('#alertList').children().not('#alertbody').remove();
+  } else if (document.getElementById('alertsWrapper')) {
+    $('#alertsWrapper').children().not('#alertbody').remove();
     document.getElementById('alerttitle').innerText = 'No active alerts';
     $('#alerttitle').show();
   }
@@ -616,7 +616,6 @@ function updateBounties() {
     if (document.getElementById(jobs[0].id) === null) {
       cleanupBounties(jobs);
       /* eslint-disable prefer-template */
-      const panelHeading = '<div class="panel-heading"><h3 class="panel-title"><a href="#bountyListPanelBody" data-toggle="collapse">Ostron Bounties<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>';
 
       // Table header, plat image
       const standingImg = getImage('general', {image: 'standing', className: 'standing'});
@@ -628,7 +627,6 @@ function updateBounties() {
 
       let panelWrapper;
       panelWrapper = `<div class="panel panel-primary bountyListPanelWrapper" style="margin-left:5%; margin-right:5%" id="${jobs[0].id}Panel">`;
-      panelWrapper += panelHeading;
       panelWrapper += panelBody;
       panelWrapper += '</div>';
 

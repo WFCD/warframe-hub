@@ -94,17 +94,20 @@ $(document).ready(() => {
     const pageY = e.pageY - ($(window).height() / 2);
     const newvalueX = (width * pageX * -1) - 4;
     const newvalueY = (height * pageY * -1) - 8;
-    $('#content').css('background-position', `${newvalueX}vw     ${newvalueY}vh`);
+    $('#content').css('background-position', `${newvalueX}vw ${newvalueY}vh`);
   });
 
   // Section switcher
-  $('.sections li').click(() => {
-    const requestedSection = $(this).attr('id');
-    const sectionTitle = $(this).attr('name');
+  $('.sections>li.section-selector').click(e => {
+    const target = $(e.currentTarget);
+
+    const requestedSection = target.attr('data-selector');
+    const sectionTitle = target.attr('name');
     $('.sections > li').removeClass('active');
-    $(this).addClass('active');
+    target.addClass('active');
     $('.sectionTitle').html(sectionTitle);
 
+    // eslint-disable-next-line no-new
     new TypeIt('.sectionTitle', {
       cursor: false,
       speed: 20,
@@ -119,8 +122,8 @@ $(document).ready(() => {
   $('#alerts').click();
 
   // Dropdown
-  $('.dropdown').click(() => {
-    $(this).find('.dropdownList').slideToggle('fast');
+  $('.dropdown').click(event => {
+    $(event.target).find('.dropdownList').slideToggle('fast');
   });
 });
 

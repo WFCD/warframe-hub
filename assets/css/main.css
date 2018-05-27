@@ -143,11 +143,16 @@ nav .sections li {
   width: 2vw;
 }
 
+nav .sections img {
+  z-index: -1;
+}
+
 nav .sections svg {
   display: block;
   margin: .65vh auto .39vh auto;
   height: 2.47vh;
   width: 1.39vw;
+  z-index: -1;
 }
 
 nav .dropdown {

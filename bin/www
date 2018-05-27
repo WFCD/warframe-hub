@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+const winston = require('winston');
+
+winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't need everything
+
 /**
  * Module dependencies.
  */
@@ -36,7 +40,7 @@ server.on('listening', onListening);
 function normalizePort(val) {
   const normalizedPort = parseInt(val, 10);
 
-  if (isNaN(normalizedPort)) {
+  if (Number.isNaN(normalizedPort)) {
     // named pipe
     return val;
   }
@@ -52,7 +56,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -65,11 +68,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
   case 'EACCES':
-    console.error(`${bind} requires elevated privileges`);
+    winston.error(`[ERROR] ${bind} requires elevated privileges`);
     process.exit(1);
     break;
   case 'EADDRINUSE':
-    console.error(`${bind} is already in use`);
+    winston.error(`[ERROR] ${bind} is already in use`);
     process.exit(1);
     break;
   default:

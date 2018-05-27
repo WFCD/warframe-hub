@@ -3,7 +3,7 @@
   loadFilterData, sendNotification, formatDurationShort,
   formatTimer, getWorldState, worldState, selectPlatform,
   updatePlatformSwitch, platformSwapped, updateCetusCycle,
-  updateEarthCycle, updateResetTime
+  updateEarthCycle, updateResetTime, TypeIt
 */
 /* eslint-enable no-unused-vars */
 const cleanupNotifiedIds = () => {
@@ -85,54 +85,54 @@ function updateTimeBadges() {
 }
 
 // Moving background
-$(document).ready(function() {
-  var movementStrength = 4;
-  var height = movementStrength / $(window).height();
-  var width = movementStrength / $(window).width();
-  $('#content').mousemove(function(e) {
-    var pageX = e.pageX - ($(window).width() / 2);
-    var pageY = e.pageY - ($(window).height() / 2);
-    var newvalueX = width * pageX * -1 - 4;
-    var newvalueY = height * pageY * -1 - 8;
-    $('#content').css("background-position", newvalueX+'vw     '+newvalueY+'vh');
+$(document).ready(() => {
+  const movementStrength = 4;
+  const height = movementStrength / $(window).height();
+  const width = movementStrength / $(window).width();
+  $('#content').mousemove(e => {
+    const pageX = e.pageX - ($(window).width() / 2);
+    const pageY = e.pageY - ($(window).height() / 2);
+    const newvalueX = (width * pageX * -1) - 4;
+    const newvalueY = (height * pageY * -1) - 8;
+    $('#content').css('background-position', `${newvalueX}vw     ${newvalueY}vh`);
   });
 
   // Section switcher
-  $('.sections li').click(function(event) {
-    var requestedSection = $(this).attr('id');
-    var sectionTitle = $(this).attr('name');
-    $('.sections > li').removeClass("active");
-    $(this).addClass("active");
+  $('.sections li').click(() => {
+    const requestedSection = $(this).attr('id');
+    const sectionTitle = $(this).attr('name');
+    $('.sections > li').removeClass('active');
+    $(this).addClass('active');
     $('.sectionTitle').html(sectionTitle);
 
     new TypeIt('.sectionTitle', {
       cursor: false,
       speed: 20,
-      autoStart: true
+      autoStart: true,
     });
 
     $('.section').hide();
-    $('#' + requestedSection + 'Wrapper').show();
+    $(`#${requestedSection}Wrapper`).show();
   });
 
   // Default section
   $('#alerts').click();
 
   // Dropdown
-  $('.dropdown').click(function() {
+  $('.dropdown').click(() => {
     $(this).find('.dropdownList').slideToggle('fast');
   });
 });
 
-$(document).on('click', function(event){
-  var $trigger = $('.dropdown');
-  if($trigger !== event.target && !$trigger.has(event.target).length){
+$(document).on('click', event => {
+  const $trigger = $('.dropdown');
+  if ($trigger !== event.target && !$trigger.has(event.target).length) {
     $('.dropdownList').slideUp('fast');
   }
 });
 
-$(document).on('click', function(event) {
-  var $trigger = $('.dropdown');
+$(document).on('click', event => {
+  const $trigger = $('.dropdown');
   if ($trigger !== event.target && !$trigger.has(event.target).length) {
     $('.dropdownList').slideUp('fast');
   }

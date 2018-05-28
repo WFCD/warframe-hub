@@ -511,6 +511,16 @@ function updateAcolytes() {
   }
 }
 
+const cleanUpAlerts = (wsAlerts, visibleAlerts) => {
+  if (visibleAlerts) {
+    $.each(visibleAlerts, visibleAlert => {
+      if (!wsAlerts.includes(visibleAlert)) {
+        $(`${visibleAlert}`).remove();
+      }
+    });
+  }
+};
+
 function updateAlerts() {
   const {alerts} = worldState;
   if (alerts.length !== 0) {
@@ -552,7 +562,7 @@ function updateAlerts() {
                         `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
           alertRow += '</ul>';
-          alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
+          alertRow += getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction});
           alertRow += '</div>';
           $('#alertbody').before(alertRow);
 
@@ -568,6 +578,9 @@ function updateAlerts() {
           const timer = $(`#alerttimer${alert.id}`);
           timer.attr('data-starttime', moment(alert.activation).unix());
           timer.attr('data-endtime', moment(alert.expiry).unix());
+          if (new Date(alert.expiry).getTime() < Date.now()) {
+            $(`#${alert.id}`).remove();
+          }
         }
       }
     } else {
@@ -586,7 +599,7 @@ function updateAlerts() {
                       `data-endtime="${moment(alert.expiry).unix()}"></li>`;
 
         alertRow += '</ul>';
-        alertRow += `${getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction})}`;
+        alertRow += getImage('factions', {image: getFactionKey(alert.mission.faction), className: 'factionIcon', title: alert.mission.faction});
         alertRow += '</div>';
         $('#alertbody').before(alertRow);
       }
@@ -596,6 +609,8 @@ function updateAlerts() {
     document.getElementById('alerttitle').innerText = 'No active alerts';
     $('#alerttitle').show();
   }
+
+  cleanUpAlerts(alerts, $('#alertsWrapper').children().not('#alertbody'));
   updateImages();
 }
 
@@ -935,9 +950,9 @@ function updateInvasions() {
         }
 
         invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`;
+          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img factionIcon'})}</div>`;
         invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`;
+          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img factionIcon'})}</div>`;
         invasionRow += '</div></div></li>';
 
         if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {

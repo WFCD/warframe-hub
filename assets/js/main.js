@@ -256,7 +256,7 @@ if (!String.prototype.padStart) {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 30000);
+  setTimeout(update, 15000);
 }
 
 update();

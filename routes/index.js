@@ -14,12 +14,16 @@ winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't 
 
 router.get('/', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {title: 'Index', trackables, planets, components, sums});
+  res.render('index', {
+    title: 'Index', trackables, planets, components, sums,
+  });
 });
 
 router.get('/timer', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('index', {title: 'Timers', trackables, planets, components, sums});
+  res.render('index', {
+    title: 'Timers', trackables, planets, components, sums,
+  });
 });
 
 router.get('/map', (req, res) => {

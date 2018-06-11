@@ -37,7 +37,7 @@
     "gulp-minify": "git://github.com/zbennett10/gulp-minify.git#e1d8905041af230fd0fb980aa8a26c12c53e03f7",
     "hbs": "^4.0.1",
     "serve-favicon": "~2.5.0",
-    "sinon": "5.1.1",
+    "sinon": "6.0.0",
     "supertest": "^3.0.0",
     "winston": "^2.4.2"
   },

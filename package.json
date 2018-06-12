@@ -39,7 +39,7 @@
     "serve-favicon": "~2.5.0",
     "sinon": "6.0.0",
     "supertest": "^3.0.0",
-    "winston": "^2.4.2"
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",

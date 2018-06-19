@@ -1,0 +1,117 @@
+body, h1, h2, h3, h4, h5, h6, ul li a, .hubTitle {
+  color: #8c7850;
+}
+
+body {
+  background-color: #1b1920;
+}
+
+::selection {
+  background-color: rgba(140, 120, 80, .3);
+  color: rgba(210, 200, 155, .9);
+}
+
+ul li p {
+  color: rgba(210, 200, 155, .75);
+}
+
+.active, .sections li a:hover {
+  border-bottom: .26vh solid rgba(210, 200, 155, 1) !important;
+}
+
+.active svg path, .sections li:hover svg path {
+  fill: rgba(210, 200, 155, 1);
+}
+
+.hubDev {
+  color: rgba(210, 200, 155, .15);
+}
+
+.dropdownMenu {
+  background-color: rgba(20, 20, 25, .35);
+  color: rgba(210, 200, 155, .75);
+}
+
+.caret {
+  border-top: 1.06vh solid rgba(140, 120, 80, 1);
+}
+
+ul li ul.dropdownList {
+  background-color: rgba(28, 26, 30, .9);
+}
+
+ul li ul.dropdownList li a {
+  color: rgba(140, 120, 80, .75);
+}
+
+ul li ul.dropdownList li a:hover {
+  color: #141419;
+  background-color: #8c7850;
+}
+
+svg path {
+  fill: #8c7850;
+}
+
+#content {
+  background: url('../themes/orokin/background.jpg') -4vh -8vw no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-size: calc(100% + 8vw);
+}
+
+.hubTitle {
+  border-image: linear-gradient(to right, rgba(140, 120, 80, .5) 90%, transparent);
+  border-image-slice: 1;
+}
+
+.hubSettings:hover, .timersContainer .news:hover {
+  color: rgba(210, 200, 155, 1);
+}
+
+.sectionTitle, .panelTitle {
+  color: rgba(210, 200, 155, 1);
+}
+
+nav .sections li {
+  border-top: .13vh solid rgba(140, 120, 80, .05);
+  border-right: .07vw solid rgba(140, 120, 80, .05);
+  border-bottom: .26vh solid rgba(140, 120, 80, .25);
+  border-left: .07vw solid rgba(140, 120, 80, .05);
+  background-color: rgba(140, 120, 80, .01);
+}
+
+nav .sections li:hover {
+  border-bottom: .26vh solid rgba(210, 200, 155, .75);
+  fill: rgba(210, 200, 155, 1);
+}
+
+.timersContainer {
+  border-image: linear-gradient(to right, rgba(140, 120, 80, .3) 93%, transparent);
+  border-image-slice: 1;
+}
+
+.timersContainer ul li {
+  color: rgba(230, 230, 230, .9);
+}
+
+.timersContainer .timerRight {
+  color: rgba(140, 120, 80, 1);
+}
+
+.alertContainer {
+  background-color: rgba(20, 20, 25, .4);
+}
+
+footer svg path {
+  fill: rgba(140, 120, 80, .75);
+}
+
+footer a, footer div {
+  color: rgba(140, 120, 80, .4);
+}
+
+footer a:hover, footer div:hover {
+  color: rgba(140, 120, 80, 1);
+}

@@ -34,7 +34,9 @@ npm-debug.log
 
 # Production css and js files
 public/css/*
+!public/css/overlayScrollbars.min.css
 public/js/*
+!public/js/overlayScrollbars.min.js
 public/sums.json
 
 # Original files created while diffing

@@ -5,6 +5,7 @@ const del = require('del');
 const hashsum = require('gulp-hashsum');
 
 gulp.task('clean-js', () => del([
+  './public/js/jquery.overlayScrollbars.min.js',
   './public/js/main.js',
   './public/js/maps.js',
   './public/js/updaters.js',
@@ -14,10 +15,8 @@ gulp.task('clean-js', () => del([
 
 gulp.task('clean-css', () => del([
   './public/css/main.css',
-  './public/css/main.night.css',
-  './public/css/main.retro.css',
-  './public/css/main.eidolon.css',
-  './public/css/common.css',
+  './public/css/theme.orokin.css',
+  './public/css/theme.grineer.css',
 ]));
 
 gulp.task('pack-js', () => gulp.src(['assets/js/*.js'])

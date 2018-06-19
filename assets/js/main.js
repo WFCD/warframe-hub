@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid,
-  localStorage, Notification, loadFilterData, sendNotification,
-  formatDurationShort, formatTimer, getWorldState, worldState,
-  selectPlatform, updatePlatformSwitch, platformSwapped,
-  updateCetusCycle, updateEarthCycle, updateResetTime
+/* globals $, moment, Cookies, localStorage, Notification,
+  loadFilterData, sendNotification, formatDurationShort,
+  formatTimer, getWorldState, worldState, selectPlatform,
+  updatePlatformSwitch, platformSwapped, updateCetusCycle,
+  updateEarthCycle, updateResetTime, TypeIt
 */
 /* eslint-enable no-unused-vars */
 const cleanupNotifiedIds = () => {
@@ -36,15 +36,6 @@ const cleanupNotifiedIds = () => {
   localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
 };
 
-function removeTimeBadgeColor(element) {
-  element.removeClass('label-success');
-  element.removeClass('label-primary');
-  element.removeClass('label-danger');
-  element.removeClass('label-warning');
-  element.removeClass('label-default');
-  element.removeClass('label-info');
-}
-
 function updateTimeBadges() {
   const labels = document.getElementsByClassName('timer');
   for (const label of labels) {
@@ -63,16 +54,8 @@ function updateTimeBadges() {
     const duration = moment.duration(diff, 'milliseconds');
     // Not started
     if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
-      if (!currentLabel.hasClass('label-info')) {
-        removeTimeBadgeColor(currentLabel);
-      }
-      currentLabel.addClass('label-info');
       currentLabel.html(`Starts in: ${formatDurationShort(durationactivate)}`);
     } else if (diff < 0) { // Expired
-      if (!currentLabel.hasClass('label-default')) {
-        removeTimeBadgeColor(currentLabel);
-      }
-      currentLabel.addClass('label-default');
       currentLabel.html(`Expired: ${formatDurationShort(duration)}`);
 
       // Refreshes for things we don't need worldstate for
@@ -90,31 +73,73 @@ function updateTimeBadges() {
         // If it is a alert timer, we can safely remove
         if (currentLabel.attr('id')
           && (currentLabel.attr('id').includes('alerttimer') || currentLabel.attr('id').includes('fissuretimer'))) {
-          currentLabel.parent()[0].remove();
-          updateGrid();
+          currentLabel.parents()[0].remove();
         }
       }
     } else {
-      let color;
-
-      if (diff < 600000) { // 0 min to 10 min
-        color = 'label-danger';
-      } else if (diff < 1800000) { // 10 min to 30 min
-        color = 'label-warning';
-      } else if (diff > 1800000) { // 30 min to 1 hour
-        color = 'label-success';
-      }
-
-      if (!currentLabel.hasClass(color)) {
-        removeTimeBadgeColor(currentLabel);
-        currentLabel.addClass(color);
-      }
-      currentLabel.html(formatTimer(diff));
+      currentLabel.html(`Time left: ${formatTimer(diff)}`);
     }
   }
 
   setTimeout(updateTimeBadges, 1000);
 }
+
+// Moving background
+$(document).ready(() => {
+  const movementStrength = 4;
+  const height = movementStrength / $(window).height();
+  const width = movementStrength / $(window).width();
+  $('#content').mousemove(e => {
+    const pageX = e.pageX - ($(window).width() / 2);
+    const pageY = e.pageY - ($(window).height() / 2);
+    const newvalueX = (width * pageX * -1) - 4;
+    const newvalueY = (height * pageY * -1) - 8;
+    $('#content').css('background-position', `${newvalueX}vw ${newvalueY}vh`);
+  });
+
+  // Section switcher
+  $('.sections>li.section-selector').click(e => {
+    const target = $(e.currentTarget);
+
+    const requestedSection = target.attr('data-selector');
+    const sectionTitle = target.attr('name');
+    $('.sections > li').removeClass('active');
+    target.addClass('active');
+    $('.sectionTitle').html(sectionTitle);
+
+    // eslint-disable-next-line no-new
+    new TypeIt('.sectionTitle', {
+      cursor: false,
+      speed: 20,
+      autoStart: true,
+    });
+
+    $('.section').hide();
+    $(`#${requestedSection}Wrapper`).show();
+  });
+
+  // Default section
+  $('#alerts').click();
+
+  // Dropdown
+  $('.dropdown').click(event => {
+    $(event.target).find('.dropdownList').slideToggle('fast');
+  });
+});
+
+$(document).on('click', event => {
+  const $trigger = $('.dropdown');
+  if ($trigger !== event.target && !$trigger.has(event.target).length) {
+    $('.dropdownList').slideUp('fast');
+  }
+});
+
+$(document).on('click', event => {
+  const $trigger = $('.dropdown');
+  if ($trigger !== event.target && !$trigger.has(event.target).length) {
+    $('.dropdownList').slideUp('fast');
+  }
+});
 
 // Set default platform to PC if there isn't one
 if (typeof Cookies.get('platform') === 'undefined') {
@@ -130,48 +155,6 @@ $('.platform-picker li').click(e => {
   platformSwapped = true; // eslint-disable-line no-global-assign
   getWorldState();
   setTimeout(updatePlatformSwitch, 30000);
-});
-
-// Set default component selections if there aren't any
-[['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
-  ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
-  ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
-  let value = Cookies.get(component);
-  if (typeof value === 'undefined') {
-    if (typeof defValue === 'undefined') {
-      value = 'true';
-    } else {
-      value = defValue;
-    }
-    Cookies.set(component, value, {expires: 365});
-  }
-  if (value === 'true') {
-    $(`.component-check[data-component="${component}"]`)
-      .prop('checked', true);
-  } else {
-    $(`#component-${component}`).hide();
-  }
-});
-
-// Prevent components menu from closing on label click
-$('#component-selector > ul').click(e => {
-  e.stopPropagation();
-});
-
-// Toggle component visibility on checkbox click
-$('.component-check').click(e => {
-  const target = $(e.target);
-  const status = target.prop('checked');
-  const component = target.attr('data-component');
-  const componentElement = $(`#component-${component}`);
-
-  Cookies.set(component, status, {expires: 365});
-  if (status) {
-    componentElement.show();
-  } else {
-    componentElement.hide();
-  }
-  updateGrid();
 });
 
 loadFilterData();
@@ -230,80 +213,6 @@ $('.sound-option-check').click(e => {
   checkAndToggleValue('soundoptions', 'sound', e);
 });
 
-// Show dropdowns that should be visible only on timers page
-$('.platform-picker').removeClass('hide');
-$('#component-selector').removeClass('hide');
-$('#filters-picker').removeClass('hide');
-
-// Packery closure
-(() => {
-  // source: https://codepen.io/desandro/pen/PZrXVv
-  // add Packery.prototype methods
-
-  // get JSON-friendly data for items positions
-  Packery.prototype.getShiftPositions = function getShiftPositions() {
-    return this.items.map(item => ({
-      attr: item.element.getAttribute('id'),
-      x: item.rect.x / this.packer.width,
-    }));
-  };
-
-  Packery.prototype.initShiftLayout = function initShiftLayout(positions) {
-    if (!positions) {
-      // if no initial positions, run packery layout
-      this.layout();
-      return;
-    }
-
-    // eslint-disable-next-line no-underscore-dangle
-    this._resetLayout();
-
-    try {
-      // set item order and horizontal position from saved positions
-      this.items = positions.map(itemPosition => {
-        const selector = `#${itemPosition.attr}`;
-        const itemElem = this.element.querySelector(selector);
-        const item = this.getItem(itemElem);
-        item.rect.x = itemPosition.x * this.packer.width;
-        return item;
-      }, this);
-      this.shiftLayout();
-    } catch (error) {
-      this.layout();
-    }
-  };
-
-  // initialize Packery
-  const grid = $('.grid').packery({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-    initLayout: false, // disable initial layout
-  });
-
-  // get saved dragged positions
-  const initPositions = Cookies.getJSON('dragPositions');
-  // init layout with saved positions
-  grid.packery('initShiftLayout', initPositions);
-
-  // make draggable
-  grid.find('.grid-item').each((i, gridItem) => {
-    const draggie = new Draggabilly(gridItem, {handle: 'h3'});
-    grid.packery('bindDraggabillyEvents', draggie);
-  });
-
-  // save drag positions on event
-  grid.on('dragItemPositioned', () => {
-    // save drag positions
-    const positions = grid.packery('getShiftPositions');
-    Cookies.set('dragPositions', positions, {expires: 365});
-  });
-
-  this.updateGrid = () => {
-    grid.packery();
-  };
-})();
-
 moment.updateLocale('en', {
   relativeTime: {
     future: 'in %s',
@@ -347,7 +256,7 @@ if (!String.prototype.padStart) {
 // Main data refresh loop every 60 minutes
 function update() {
   getWorldState();
-  setTimeout(update, 30000);
+  setTimeout(update, 15000);
 }
 
 update();

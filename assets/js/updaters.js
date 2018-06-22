@@ -936,9 +936,7 @@ function updateInvasions() {
         invasionRow += '</div>';
 
         invasionRow += `<div class="row" style="margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
-        const attackPercent =
-              Math.floor(((invasion.count + invasion.requiredRuns)
-               / (invasion.requiredRuns * 2)) * 100);
+        const attackPercent = invasion.completion;
         const defendPercent = 100 - attackPercent;
         let attackWinning = '';
         let defendWinning = '';
@@ -959,7 +957,7 @@ function updateInvasions() {
           const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_invasion');
           const rewards = `${invasion.attackerReward.asString.length ? `${invasion.attackerReward.asString} vs ` : ''}${invasion.defenderReward.asString}`;
           sendNotification(
-            `${invasion.desc} • ${invasion.node}\n${invasion.attackingFaction} vs ${invasion.defendingFaction}\n${invasion.eta} Remaining`,
+            `${invasion.desc} • ${invasion.node}\n${invasion.attackingFaction} vs ${invasion.defendingFaction}\n${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')} Remaining`,
             `${rewards}`, sound ? 'audio/TextMessage_SingleDrumHit.mp3' : undefined,
           );
           addNotifiedId(invasion.id);

@@ -879,9 +879,7 @@ function updateInvasions() {
           $(`#${invasion.id}`).remove();
         } else {
           $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})`);
-          const attackPercent =
-                Math.floor(((invasion.count + invasion.requiredRuns)
-                 / (invasion.requiredRuns * 2)) * 100);
+          const attackPercent = invasion.completion;
           const defendPercent = 100 - attackPercent;
 
           const attackBar = $(`#${invasion.id}_progress`).children()[0];

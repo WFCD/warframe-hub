@@ -42,7 +42,7 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb": "^17.0.0",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",

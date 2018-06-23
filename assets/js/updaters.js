@@ -874,11 +874,18 @@ function updateInvasions() {
     }
 
     invasions.forEach(invasion => {
+      const runningTime = formatTimer(moment().diff(moment(invasion.activation)));
+      const timeInfo = `
+        <span data-toggle="popover" title="Running time" data-content="${runningTime}" style="cursor: pointer">
+          (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*
+        </span>
+      `;
+
       if ($(`#${invasion.id}`).length !== 0) {
         if (invasion.completed) {
           $(`#${invasion.id}`).remove();
         } else {
-          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})`);
+          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} ${timeInfo}`);
           const attackPercent =
                 Math.floor(((invasion.count + invasion.requiredRuns)
                  / (invasion.requiredRuns * 2)) * 100);
@@ -902,7 +909,7 @@ function updateInvasions() {
       } else if (!invasion.completed) {
         let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
         invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>
-          ${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*</div>`;
+          ${invasion.desc} ${timeInfo}</div>`;
 
         invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
@@ -971,6 +978,8 @@ function updateInvasions() {
         numInvasions += 1;
       }
     });
+
+    $('#invasionList [data-toggle="popover"]').popover();
 
     if (numInvasions === 0) {
       document.getElementById('invasiontitle').innerText = 'No active invasions :(';

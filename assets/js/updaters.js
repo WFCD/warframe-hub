@@ -1,7 +1,7 @@
 /* globals $, moment, Cookies, updateGrid,
   localStorage, Notification, sendNotification,
   addNotifiedId, isNotifiable, getImage,
-  getObjects, calculateInventory,
+  getObjects, calculateInventory, formatTimer,
 */
 /* eslint-disable no-unused-vars */
 let worldState;

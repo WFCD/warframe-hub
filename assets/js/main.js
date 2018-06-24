@@ -63,7 +63,7 @@ function updateTimeBadges() {
     const duration = moment.duration(diff, 'milliseconds');
     if (!label.hasAttribute('data-endtime')) {
       // Increasing timer
-      currentLabel.text((diffactivate > 0 ? '-' : '') + `${formatTimer(Math.abs(diffactivate))}`);
+      currentLabel.text(`${diffactivate > 0 ? '-' : ''}${formatTimer(Math.abs(diffactivate))}`);
     } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
       // Not started
       if (!currentLabel.hasClass('label-info')) {

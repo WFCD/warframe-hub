@@ -939,7 +939,7 @@ function updateInvasions() {
         }
         invasionRow += '</div>';
 
-        invasionRow += `<div class="row" style="margin-left:5px; margin-right:5px">`;
+        invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
 
         const runningTimeBadge = `<span class="timer" data-starttime="${moment(invasion.activation).unix()}">...</span>`;
         const progress = $(`<div class="progress" id="${invasion.id}_progress" data-html="true" data-placement="top" data-toggle="popover" title="Running time" style="cursor: pointer"></div>`);
@@ -962,7 +962,7 @@ function updateInvasions() {
           `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`);
         progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
           `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`);
-        invasionRow += progress.get(0).outerHTML + '</div></li>';
+        invasionRow += `${progress.get(0).outerHTML}</div></li>`;
 
         if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
           const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_invasion');

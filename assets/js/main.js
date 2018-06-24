@@ -61,8 +61,11 @@ function updateTimeBadges() {
 
     const diff = moment().diff(moment.unix(currentLabel.attr('data-endtime'))) * -1;
     const duration = moment.duration(diff, 'milliseconds');
-    // Not started
-    if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+    if (!label.hasAttribute('data-endtime')) {
+      // Increasing timer
+      currentLabel.text((diffactivate > 0 ? '-' : '') + `${formatTimer(Math.abs(diffactivate))}`);
+    } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+      // Not started
       if (!currentLabel.hasClass('label-info')) {
         removeTimeBadgeColor(currentLabel);
       }

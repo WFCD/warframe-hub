@@ -874,11 +874,13 @@ function updateInvasions() {
     }
 
     invasions.forEach(invasion => {
+      const endTimeEstimate = `(Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*`;
+
       if ($(`#${invasion.id}`).length !== 0) {
         if (invasion.completed) {
           $(`#${invasion.id}`).remove();
         } else {
-          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})`);
+          $(`#${invasion.id}_info`).html(`<b>${invasion.node}</b><br>${invasion.desc} ${endTimeEstimate}`);
           const attackPercent =
                 Math.floor(((invasion.count + invasion.requiredRuns)
                  / (invasion.requiredRuns * 2)) * 100);
@@ -902,7 +904,7 @@ function updateInvasions() {
       } else if (!invasion.completed) {
         let invasionRow = `<li class="list-group-item list-group-item-borderless" id="${invasion.id}" style="padding-top:10px;padding-bottom:0px;">`;
         invasionRow += `<div class="row text-center" id="${invasion.id}_info"><b>${invasion.node}</b><br>
-          ${invasion.desc} (Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*</div>`;
+          ${invasion.desc} ${endTimeEstimate}</div>`;
 
         invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
         if (invasion.attackerReward.items.length !== 0) {
@@ -937,7 +939,12 @@ function updateInvasions() {
         }
         invasionRow += '</div>';
 
-        invasionRow += `<div class="row" style="margin-left:5px; margin-right:5px"><div class="progress" id="${invasion.id}_progress">`;
+        invasionRow += '<div class="row" style="margin-left:5px; margin-right:5px">';
+
+        const runningTimeBadge = `<span class="timer" data-starttime="${moment(invasion.activation).unix()}">...</span>`;
+        const progress = $(`<div class="progress" id="${invasion.id}_progress" data-html="true" data-placement="top" data-toggle="popover" title="Running time" style="cursor: pointer"></div>`);
+        progress.attr('data-content', runningTimeBadge);
+
         const attackPercent =
               Math.floor(((invasion.count + invasion.requiredRuns)
                / (invasion.requiredRuns * 2)) * 100);
@@ -951,11 +958,11 @@ function updateInvasions() {
           defendWinning = 'winning-left';
         }
 
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`;
-        invasionRow += `<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`;
-        invasionRow += '</div></div></li>';
+        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">` +
+          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`);
+        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
+          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`);
+        invasionRow += `${progress.get(0).outerHTML}</div></li>`;
 
         if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
           const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_invasion');
@@ -971,6 +978,8 @@ function updateInvasions() {
         numInvasions += 1;
       }
     });
+
+    $('#invasionList [data-toggle="popover"]').popover();
 
     if (numInvasions === 0) {
       document.getElementById('invasiontitle').innerText = 'No active invasions :(';

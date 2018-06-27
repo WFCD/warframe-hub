@@ -874,7 +874,7 @@ function updateInvasions() {
     }
 
     invasions.forEach(invasion => {
-      const endTimeEstimate = `(Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')})*`;
+      const endTimeEstimate = `(Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??').replace(/\s\d\d?s/ig, '')})*`;
 
       if ($(`#${invasion.id}`).length !== 0) {
         if (invasion.completed) {

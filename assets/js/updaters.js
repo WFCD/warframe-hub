@@ -79,7 +79,7 @@ function updateEvents() {
         if (event.jobs) {
           let listItems = '<div class="container-fluid">';
           event.jobs.forEach(job => {
-            const standingPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#standingPanelBody${job.id}" data-toggle="collapse">Standing<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
+            const standingPanelHeading = `<a href="#standingPanelBody${job.id}" data-toggle="collapse" class="panel-heading show text-center"><h3 class="panel-title">Standing<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3></a>`;
             const standingTableBody = `<tbody>${job.standingStages.map(stage => `<tr class="text-center"><td>${stage}</tr></td>`).join('')}</tbody>`;
             const standingTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${standingTableBody}</table>`;
             const standingPanelBody = `<div class="panel-body collapse" id="standingPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${standingTable}</div>`;
@@ -90,7 +90,7 @@ function updateEvents() {
             standingPanelWrapper += standingPanelBody;
             standingPanelWrapper += '</div>';
 
-            const rewardPanelHeading = `<div class="panel-heading text-center"><h3 class="panel-title"><a href="#rewardsPanelBody${job.id}" data-toggle="collapse">Rewards<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>`;
+            const rewardPanelHeading = `<a href="#rewardsPanelBody${job.id}" data-toggle="collapse" class="panel-heading show text-center"><h3 class="panel-title">Rewards<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3></a>`;
             const rewardTableBody = `<tbody>${job.rewardPool.map(reward => `<tr class="text-center"><td>${reward}</tr></td>`).join('')}</tbody>`;
             const rewardTable = `<table class="table List" style="table-layout: fixed" id="${job.id}">${rewardTableBody}</table>`;
             const rewardPanelBody = `<div class="panel-body collapse" id="rewardsPanelBody${job.id}" style="padding-top:0; padding-bottom:0;">${rewardTable}</div>`;
@@ -269,11 +269,11 @@ function updateVoidTraderInventory() {
       /* eslint-disable prefer-template */
       const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" ' +
                 'style="margin-left:5%; margin-right:5%" ' +
-                'id="'}${worldState.voidTrader.id}">\n<div class="panel-heading">\n` +
+                'id="'}${worldState.voidTrader.id}">\n` +
+                '<a href="#voidTraderInventoryPanel" data-toggle="collapse" class="panel-heading show">\n' +
                 `<h3 class="panel-title">${worldState.voidTrader.character} Inventory` +
-                '<a href="#voidTraderInventoryPanel" data-toggle="collapse">' +
-                '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>\n' +
-                '</div>\n' +
+                '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3>\n' +
+                '</a>\n' +
                 '<div class="panel-body collapse" id="voidTraderInventoryPanel">\n' +
                 '<table class="table table-striped table-hover ">\n' +
                 '<thead>\n' +
@@ -614,7 +614,7 @@ function updateBounties() {
     if (document.getElementById(jobs[0].id) === null) {
       cleanupBounties(jobs);
       /* eslint-disable prefer-template */
-      const panelHeading = '<div class="panel-heading"><h3 class="panel-title"><a href="#bountyListPanelBody" data-toggle="collapse">Ostron Bounties<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3></div>';
+      const panelHeading = '<a href="#bountyListPanelBody" data-toggle="collapse" class="panel-heading show"><h3 class="panel-title">Ostron Bounties<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3></a>';
 
       // Table header, plat image
       const standingImg = getImage('general', {image: 'standing', className: 'standing'});

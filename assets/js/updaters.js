@@ -270,7 +270,7 @@ function updateVoidTraderInventory() {
       const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" ' +
                 'style="margin-left:5%; margin-right:5%" ' +
                 'id="'}${worldState.voidTrader.id}">\n` +
-                '<a href="#voidTraderInventoryPanel" data-toggle="collapse" class="panel-heading show">\n' +
+                '<a href="#voidTraderInventoryPanel" data-toggle="collapse" class="panel-heading show text-center">\n' +
                 `<h3 class="panel-title">${worldState.voidTrader.character} Inventory` +
                 '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3>\n' +
                 '</a>\n' +
@@ -293,8 +293,13 @@ function updateVoidTraderInventory() {
       elementBody.append(inventoryString);
       elementBody.show();
       for (const currentItem of voidTraderInventory) {
-        const itemString = `<tr><td>${currentItem.item}</td>` +
-                  `<td>${currentItem.ducats}</td><td>${currentItem.credits}</td></tr>`;
+        const itemString = `
+          <tr>
+            <td>${currentItem.item}</td>
+            <td class="text-center">${currentItem.ducats}</td>
+            <td class="text-center">${currentItem.credits}</td>
+          </tr>
+        `;
         $('#voidTraderInventoryContent').append(itemString);
       }
     }
@@ -636,7 +641,7 @@ function updateBounties() {
       for (const job of jobs) {
         const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
                     `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
-                    `<td><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
+                    `<td class="text-left"><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
       $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);

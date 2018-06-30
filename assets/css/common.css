@@ -52,6 +52,19 @@ a.panel-heading {
   background-color: #95a5a6;
 }
 
+.fissure {
+  display: flex;
+  align-items: center;
+}
+
+.fissure-body {
+  margin-right: 10px;
+}
+
+.fissure-timer {
+  margin-left: auto;
+}
+
 .progress {
   height: 15px;
   margin-bottom: 10px;
@@ -107,12 +120,6 @@ a.panel-heading {
   .dropdown-menu span,
   .dropdown-menu label {
     color: white !important;
-  }
-
-  .fissure-body {
-    display: inline-block;
-    max-width: 80%;
-    overflow: scroll;
   }
 }
 

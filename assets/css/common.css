@@ -26,7 +26,8 @@
 }
 
 .panel-heading a,
-.panel-heading a:hover {
+.panel-heading a:hover,
+a.panel-heading {
   text-decoration: none;
 }
 

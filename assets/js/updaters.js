@@ -734,14 +734,15 @@ function updateFissure() {
         timer.attr('data-starttime', moment(fissure.activation).unix());
         timer.attr('data-endtime', moment(fissure.expiry).unix());
       } else {
-        let fissureRow = `<li class="list-group-item list-group-item-borderless" id="${fissure.id}">`;
-        // fissure timer
-        fissureRow += `<span id="fissuretimer${fissure.id}" class="label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
-                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
+        let fissureRow = `<li class="fissure list-group-item list-group-item-borderless" id="${fissure.id}">`;
 
         // fissure body
         fissureRow += `<span class= "fissure-body">${getImage('fissures', {image: fissure.tierNum, title: `Tier ${fissure.tierNum}`, className: 'fissure-icon'})}`;
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
+
+        // fissure timer
+        fissureRow += `<span id="fissuretimer${fissure.id}" class="fissure-timer label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
+                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
 
         fissureRow += '</li>';
 

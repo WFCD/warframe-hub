@@ -748,12 +748,13 @@ function updateFissure() {
           let added = false;
 
           // Order by tier number
-          $('#fissureList .fissure').each(() => {
-            if ($(this).attr('data-tiernum') > fissure.tierNum) {
+          $('#fissureList .fissure').each((index, existingFissure) => {
+            if ($(existingFissure).attr('data-tiernum') > fissure.tierNum) {
               added = true;
-              $(this).before(fissureRow);
+              $(existingFissure).before(fissureRow);
               return false;
             }
+            return true;
           });
 
           if (!added) {

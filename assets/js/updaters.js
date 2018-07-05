@@ -748,7 +748,7 @@ function updateFissure() {
           let added = false;
 
           // Order by tier number
-          $('#fissureList .fissure').each(function () {
+          $('#fissureList .fissure').each(() => {
             if ($(this).attr('data-tiernum') > fissure.tierNum) {
               added = true;
               $(this).before(fissureRow);

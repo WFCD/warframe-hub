@@ -999,7 +999,7 @@ function updateInvasions() {
         if (!invasionIDs.includes(invasion.id)) {
           $(`#${invasion.id}`).remove();
         }
-    });
+      });
 
     $('#invasionList [data-toggle="popover"]').popover();
 

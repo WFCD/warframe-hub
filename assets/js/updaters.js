@@ -121,7 +121,7 @@ function updateEvents() {
           addNotifiedId(event.id);
         }
       } else if (event.expired) {
-        $(`#event-${event.id}-title"`).remove();
+        $(`#event-${event.id}-title`).remove();
       }
     });
     $('#event-title').hide();
@@ -877,6 +877,7 @@ function getProgressBarColor(faction) {
 function updateInvasions() {
   const {invasions} = worldState;
   let numInvasions = 0;
+  let invasionIDs = [];
 
   if (invasions.length !== 0) {
     document.getElementById('invasiontitle').innerText = '*End time is estimated';
@@ -886,6 +887,8 @@ function updateInvasions() {
     }
 
     invasions.forEach(invasion => {
+      // store current invasion ids
+      invasionIDs.push(invasion.id);
       const endTimeEstimate = `(Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??').replace(/\s\d\d?s/ig, '')})*`;
 
       if ($(`#${invasion.id}`).length !== 0) {
@@ -983,6 +986,14 @@ function updateInvasions() {
 
         $('#invasionbody').before(invasionRow);
         numInvasions += 1;
+      }
+    });
+
+    // remove invasions if they are not in the current invasion id list
+    // this is for obviously expired invasions that no longer exists in the worldstate.
+    $('#invasionList').children().forEach(invasion => {
+      if(!(invasion.id in invasionIDs)){
+        $(`#${invasion.id}`).remove();
       }
     });
 

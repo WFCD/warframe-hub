@@ -989,9 +989,6 @@ function updateInvasions() {
       }
     });
 
-    // debugging
-    console.log(invasionIDs);
-
     // remove invasions if they are not in the current invasion id list
     // this is for obviously expired invasions that no longer exists in the worldstate.
     $('#invasionList').children().not('#invasionbody').toArray().forEach(invasion => {

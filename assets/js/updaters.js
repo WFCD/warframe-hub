@@ -720,21 +720,13 @@ function updateFissure() {
       $('#fissureList').children().not('#fissurebody').remove();
     }
 
-    fissures.sort((a, b) => {
-      const tierA = a.tierNum;
-      const tierB = b.tierNum;
-      if (tierA < tierB) { return -1; }
-      if (tierA > tierB) { return 1; }
-      return 0;
-    });
-
     for (const fissure of fissures) {
       if ($(`#${fissure.id}`).length !== 0) {
         const timer = $(`#fissuretimer${fissure.id}`);
         timer.attr('data-starttime', moment(fissure.activation).unix());
         timer.attr('data-endtime', moment(fissure.expiry).unix());
       } else {
-        let fissureRow = `<li class="fissure list-group-item list-group-item-borderless" id="${fissure.id}">`;
+        let fissureRow = `<li class="fissure list-group-item list-group-item-borderless" id="${fissure.id}" data-tiernum="${fissure.tierNum}">`;
 
         // fissure body
         fissureRow += `<span class= "fissure-body">${getImage('fissures', {image: fissure.tierNum, title: `Tier ${fissure.tierNum}`, className: 'fissure-icon'})}`;
@@ -753,7 +745,21 @@ function updateFissure() {
           }
         });
         if (!filtered) {
-          $('#fissurebody').before(fissureRow);
+          let added = false;
+
+          // Order by tier number
+          $('#fissureList .fissure').each((index, existingFissure) => {
+            if ($(existingFissure).attr('data-tiernum') > fissure.tierNum) {
+              added = true;
+              $(existingFissure).before(fissureRow);
+              return false;
+            }
+            return true;
+          });
+
+          if (!added) {
+            $('#fissurebody').before(fissureRow);
+          }
         }
       }
       const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/ig, '')}`;

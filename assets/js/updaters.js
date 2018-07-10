@@ -876,8 +876,8 @@ function getProgressBarColor(faction) {
 
 function updateInvasions() {
   const {invasions} = worldState;
+  const invasionIDs = [];
   let numInvasions = 0;
-  let invasionIDs = [];
 
   if (invasions.length !== 0) {
     document.getElementById('invasiontitle').innerText = '*End time is estimated';

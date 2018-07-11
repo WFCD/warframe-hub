@@ -876,7 +876,7 @@ function getProgressBarColor(faction) {
 
 function updateInvasions() {
   const {invasions} = worldState;
-  const invasionIDs = [];
+  const invasionIDs = {};
   let numInvasions = 0;
 
   if (invasions.length !== 0) {
@@ -888,7 +888,7 @@ function updateInvasions() {
 
     invasions.forEach(invasion => {
       // store current invasion ids
-      invasionIDs.push(invasion.id);
+      invasionIDs[invasion.id] = true;
       const endTimeEstimate = `(Ends in: ${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??').replace(/\s\d\d?s/ig, '')})*`;
 
       if ($(`#${invasion.id}`).length !== 0) {
@@ -990,13 +990,13 @@ function updateInvasions() {
     });
 
     // remove invasions if they are not in the current invasion id list
-    // this is for obviously expired invasions that no longer exists in the worldstate.
+    // this is for obviously expired invasions that no longer exist in the worldstate.
     $('#invasionList')
       .children()
       .not('#invasionbody')
       .toArray()
       .forEach(invasion => {
-        if (!invasionIDs.includes(invasion.id)) {
+        if (!(invasion.id in invasionIDs)) {
           $(`#${invasion.id}`).remove();
         }
       });

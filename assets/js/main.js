@@ -347,13 +347,21 @@ if (!String.prototype.padStart) {
 }
 /* eslint-enable */
 
-// Main data refresh loop every 60 minutes
-function update() {
-  getWorldState();
-  setTimeout(update, 30000);
+// Main data refresh loop
+function initializeUpdateLoop() {
+  const updatePeriod = 30000;
+  let nextUpdateTimestamp = 0;
+  (function updateCheck() {
+    const currentTimestamp = new Date().getTime();
+    if (currentTimestamp >= nextUpdateTimestamp) {
+      getWorldState();
+      nextUpdateTimestamp = currentTimestamp + updatePeriod;
+    }
+    setTimeout(updateCheck, 3000);
+  })();
 }
 
-update();
+initializeUpdateLoop();
 updateTimeBadges(); // Method has its own 1 second timeout
 updateResetTime(); // This should not be called again unless the timer expires
 setInterval(cleanupNotifiedIds, 60000);

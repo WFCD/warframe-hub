@@ -358,7 +358,7 @@ function initializeUpdateLoop() {
       nextUpdateTimestamp = currentTimestamp + updatePeriod;
     }
     setTimeout(updateCheck, 3000);
-  })();
+  }());
 }
 
 initializeUpdateLoop();

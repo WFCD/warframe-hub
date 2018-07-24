@@ -1,7 +1,7 @@
 [
   {
     "name": "Charc Eel",
-    "thumb": "img/fish/charceel.png"
+    "thumb": "img/fish/charceel.png",
     "unique": {
       "name": "Charc Electroplax",
       "thumb": "img/fish/part/electroplax.png",

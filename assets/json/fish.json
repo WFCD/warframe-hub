@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Charc Eel",
+    "thumb": "img/fish/charceel.png"
+    "unique": {
+      "name": "Charc Electroplax",
+      "thumb": "img/fish/part/electroplax.png",
+      "wiki": "http://warframe.wikia.com/wiki/Charc_Electroplax"
+    },
+    "resources": {
+      "small": [3,2,1],
+      "medium": [4,3,2],
+      "large": [5,4,3]
+    },
+    "standing": {
+      "small": 25,
+      "medium": 35,
+      "large": 50,
+    },
+    "location": "Lake",
+    "time": "Any",
+    "rarity": "Common",
+    "bait": {
+      "name": "Peppered Bait",
+      "thumb": "img/fish/bait/peppered-bait.png"
+    },
+    "spear": ["Any"],
+    "maximumMass": "24kg"
+  }
+]

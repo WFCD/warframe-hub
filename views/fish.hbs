@@ -1,38 +1,38 @@
 <div class="container">
-	<div class="section text-center">
+  <div class="section text-center">
 
-		<br><br>
+    <br><br>
 
-		<div class="row">
-			<!-- Map Panel -->
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Fishing Map <a name="Fishmap" href="#fishmap" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
-				</div>
-				<div class="panel-body collapse" id="fishmap">
-					<img src="img/fishmap.png" />
-				</div>
-			</div>
-		</div>
+    <div class="row">
+      <!-- Map Panel -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Fishing Map <a name="Fishmap" href="#fishmap" data-toggle="collapse"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a></h3>
+        </div>
+        <div class="panel-body collapse" id="fishmap">
+          <img src="img/fishmap.png" />
+        </div>
+      </div>
+    </div>
 
-		<div class="row">
-			<table class="table fish-info col-md-12">
-				<thead>
-					<tr>
-						<th title="The name of the fish">Fish Name</th>
-						<th title="Number of fish parts you receive is dependent on fish size">Size</th>
-						<th title="Number of fish meat you will receive when making bait">Meat</th>
-						<th title="Number of fish scale you will receive when making bait">Scales</th>
-						<th title="Number of fish oil you will receive when making bait">Oil</th>
-						<th title="You will always receive 1 of these per fish when making bait">Unique</th>
-						<th title="Ostron standing gain when donating fish">Standing</th>
-						<th title="Location of where to find the fish">Location</th>
-						<th title="Time of when you can find the fish">Time</th>
-						<th title="How likely the fish will spawn">Rarity</th>
-						<th title="The appropriate spear needed for this fish">Spear</th>
-						<th title="The maximum weight possible for this fish">Max Weight</th>
-					</tr>
-				</thead>
+    <div class="row">
+      <table class="table fish-info col-md-12">
+        <thead>
+          <tr>
+            <th title="The name of the fish">Fish Name</th>
+            <th title="Number of fish parts you receive is dependent on fish size">Size</th>
+            <th title="Number of fish meat you will receive when making bait">Meat</th>
+            <th title="Number of fish scale you will receive when making bait">Scales</th>
+            <th title="Number of fish oil you will receive when making bait">Oil</th>
+            <th title="You will always receive 1 of these per fish when making bait">Unique</th>
+            <th title="Ostron standing gain when donating fish">Standing</th>
+            <th title="Location of where to find the fish">Location</th>
+            <th title="Time of when you can find the fish">Time</th>
+            <th title="How likely the fish will spawn">Rarity</th>
+            <th title="The appropriate spear needed for this fish">Spear</th>
+            <th title="The maximum weight possible for this fish">Max Weight</th>
+          </tr>
+        </thead>
         <tbody>
           {{#each fishes }}
             <tr class="color1">
@@ -67,10 +67,10 @@
               </a>
             </td>
             <td rowspan="3">
-            {{#each spear}}
-              {{this}}
-              <br />
-            {{/each}}
+              {{#each spear}}
+                {{this}}
+                <br />
+              {{/each}}
             </td>
             <td rowspan="3">{{this.maximumMass}}</td>
           </tr>
@@ -92,80 +92,81 @@
             <td>{{this.standing.large}}</td>
           </tr>
           {{/if}}
+        {{/each}}
         </tbody>
-			</table>
-		</div>
+      </table>
+    </div>
 
-		{{> footer}}
-	</div>
+    {{> footer}}
+  </div>
 </div>
 <!-- /.container -->
 
 <!-- Fish Info -->
 <div class="modal fade" id="fishinfo" tabindex="-1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button name="Dismiss Modal" name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Fish Info</h4>
-			</div>
-			<div class="modal-body">
-				Following Hotfix 22.0.3, you must equip the proper spear to catch the fish in 1 shot. Spear efficiency is determined by the type of fish you are catching. In order to have maximum fishing efficiency, you must equip all spears to catch all the different
-				kinds of fish you might see.
-				<br><br>
-				<b>Twilight Bait:</b> Karkina and Sharrac (Sea)
-				<br>
-				<b>Cuthol Bait:</b> Cuthol (Pond)
-				<br>
-				<b>Murkray Bait:</b> Murkray (Sea)
-				<br>
-				<b>Norg Bait:</b> Norg (Lake)
-				<br>
-				<b>Glappid Bait:</b> Glappid (Sea)
-				<br>
-				<b>Peppered Bait:</b> Anything else at anywhere
-				<br><br> Bait lasts 30 seconds, and must be through in wavy water:
-				<br>
-				<img src="img/fish/guide/hotspot.gif" width=100% />
-				<br> GIF by How4Much (WFRSB)
-				<br>
-				<a name="How to Fish" href="./howtofish">The definitive guide to fishing in Warframe</a>
-			</div>
-			<div class="modal-footer">
-				<button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
-			</div>
-		</div>
-	</div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button name="Dismiss Modal" name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Fish Info</h4>
+      </div>
+      <div class="modal-body">
+        Following Hotfix 22.0.3, you must equip the proper spear to catch the fish in 1 shot. Spear efficiency is determined by the type of fish you are catching. In order to have maximum fishing efficiency, you must equip all spears to catch all the different
+        kinds of fish you might see.
+        <br><br>
+        <b>Twilight Bait:</b> Karkina and Sharrac (Sea)
+        <br>
+        <b>Cuthol Bait:</b> Cuthol (Pond)
+        <br>
+        <b>Murkray Bait:</b> Murkray (Sea)
+        <br>
+        <b>Norg Bait:</b> Norg (Lake)
+        <br>
+        <b>Glappid Bait:</b> Glappid (Sea)
+        <br>
+        <b>Peppered Bait:</b> Anything else at anywhere
+        <br><br> Bait lasts 30 seconds, and must be through in wavy water:
+        <br>
+        <img src="img/fish/guide/hotspot.gif" width=100% />
+        <br> GIF by How4Much (WFRSB)
+        <br>
+        <a name="How to Fish" href="./howtofish">The definitive guide to fishing in Warframe</a>
+      </div>
+      <div class="modal-footer">
+        <button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Chart Credits -->
 <div class="modal fade" id="credits" tabindex="-1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Chart Credits</h4>
-			</div>
-			<div class="modal-body">
-				The information you see on this page was made possible by /u/cranem258 (Reddit) A.K.A. PepsiMan (IGN)
-				<br><br> Huge thanks to Narration and his team for locations/rarities. Special thanks to the
-				<a name="RSB Forums" rel="noopener" href="https://forums.warframe.com/topic/690039-warframe-raid-school-bus/" target="_blank">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button name="Dismiss Modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Chart Credits</h4>
+      </div>
+      <div class="modal-body">
+        The information you see on this page was made possible by /u/cranem258 (Reddit) A.K.A. PepsiMan (IGN)
+        <br><br> Huge thanks to Narration and his team for locations/rarities. Special thanks to the
+        <a name="RSB Forums" rel="noopener" href="https://forums.warframe.com/topic/690039-warframe-raid-school-bus/" target="_blank">
                     Warframe Raid School Bus Community</a> server and staff.
-				<br><br> Remaining info taken from https://semlar.com/fish and from http://warframe.wikia.com/wiki/Fishing
-				<br><br> The fish are are organized by standing reward.
-				<br><br> If you have any suggestions for edits or want to report a mistake please pm PEPSIMAN#6867 via Discord.
-			</div>
-			<div class="modal-footer">
-				<button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
-			</div>
-		</div>
-	</div>
+        <br><br> Remaining info taken from https://semlar.com/fish and from http://warframe.wikia.com/wiki/Fishing
+        <br><br> The fish are are organized by standing reward.
+        <br><br> If you have any suggestions for edits or want to report a mistake please pm PEPSIMAN#6867 via Discord.
+      </div>
+      <div class="modal-footer">
+        <button name="Dismiss Modal" type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Add buttons to page -->
 <script>
   /*globals $*/
-	var rightnavbar = $('#navbar-right');
-	rightnavbar.prepend('<li><a name="Credits" href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Chart Credits</a></li>');
-	rightnavbar.prepend('<li><a name="Fish Info" href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
+  var rightnavbar = $('#navbar-right');
+  rightnavbar.prepend('<li><a name="Credits" href="#credits" data-target="#credits" data-toggle="modal" style="outline:none;">Chart Credits</a></li>');
+  rightnavbar.prepend('<li><a name="Fish Info" href="#fishinfo" data-target="#fishinfo" data-toggle="modal" style="outline:none;">Fish Info</a></li>');
 </script>

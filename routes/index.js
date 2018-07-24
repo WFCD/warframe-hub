@@ -8,6 +8,7 @@ const router = express.Router();
 const trackables = require('../assets/json/trackables.json');
 const planets = require('../assets/json/planets.json');
 const components = require('../assets/json/components.json');
+const fishes = require('../assets/json/fish.json');
 const sums = require('../public/sums.json'); // eslint-disable-line import/no-unresolved
 
 winston.level = process.env.LOG_LEVEL || 'error'; // default to error, we don't need everything
@@ -33,7 +34,7 @@ router.get('/map', (req, res) => {
 
 router.get('/fish', (req, res) => {
   winston.info(`Received ${req.method} request for ${req.originalUrl} from ${req.connection.remoteAddress}`);
-  res.render('fish', {title: 'Fish', sums});
+  res.render('fish', {title: 'Fish', sums, fishes});
 });
 
 router.get('/howtofish', (req, res) => {

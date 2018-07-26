@@ -100,18 +100,18 @@
           {{#if this.medium}}
           <tr class="color1">
             <td>M</td>
-            <td>{{this.medium.meat}}</td>
-            <td>{{this.medium.scales}}</td>
-            <td>{{this.medium.oil}}</td>
+            <td>{{this.medium.resources.meat}}</td>
+            <td>{{this.medium.resources.scales}}</td>
+            <td>{{this.medium.resources.oil}}</td>
             <td>{{this.medium.standing}}</td>
           </tr>
           {{/if}}
-          {{#if this.large}}
+          {{#if this.large.meat}}
           <tr class="color1">
             <td>L</td>
-            <td>{{this.large.meat}}</td>
-            <td>{{this.large.scales}}</td>
-            <td>{{this.large.oil}}</td>
+            <td>{{this.large.resources.meat}}</td>
+            <td>{{this.large.resources.scales}}</td>
+            <td>{{this.large.resources.oil}}</td>
             <td>{{this.large.standing}}</td>
           </tr>
           {{/if}}

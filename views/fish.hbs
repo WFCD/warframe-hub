@@ -43,7 +43,11 @@
                   </div>
               </a>
             </td>
-            <td>S</td>
+            {{#if this.smallLabel}}
+              <td>{{this.smallLabel}}</td>
+            {{else}}
+              <td>S</td>
+            {{/if}}
             {{#each this.resources.small}}
               <td>{{this}}</td>
             {{/each}}
@@ -67,13 +71,15 @@
                     <img style="width:100%;height:100%" src="img/fish/guide/hotspot.gif" />
                   </div>
                 </a>
-              <br>
+              <br />
               {{/if}}
+              {{#if this.bait}}
               <a name="Fish tooltip" class="fish-tooltip" href="#/"><span class="glyphicon glyphicon-picture"></span> {{this.bait.name}}
                 <div class="fish-tooltip-inner">
                   <img style="width:100%;" src="{{this.bait.thumb}}" />
                 </div>
               </a>
+              {{/if}}
             </td>
             <td rowspan="3">
               {{#each spear}}
@@ -94,7 +100,7 @@
           {{/if}}
           {{#if this.resources.large}}
           <tr class="color1">
-            <td>M</td>
+            <td>L</td>
             {{#each this.resources.large}}
               <td>{{this}}</td>
             {{/each}}

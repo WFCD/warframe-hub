@@ -37,11 +37,15 @@
           {{#each fishes }}
             <tr class="color1">
             <td rowspan="3">
+              {{#if this.thumb}}
               <a name="Fish tooltip" class="fish-tooltip" href="#/"><span class="glyphicon glyphicon-picture"></span> {{this.name}}
                   <div class="fish-tooltip-inner">
                       <img style="width:100%;" src="{{this.thumb}}" />
                   </div>
               </a>
+              {{else}}
+                <span></span> {{this.name}}
+              {{/if}}
             </td>
             {{#if this.smallLabel}}
               <td>{{this.smallLabel}}</td>
@@ -52,12 +56,16 @@
               <td>{{this}}</td>
             {{/each}}
             <td rowspan="3">
+              {{#if this.unique.thumb}}
               <a name="Wikia Article" rel="noopener" class="fish-tooltip" href="{{this.unique.wiki}}" target="_blank">
                 <span class="glyphicon glyphicon-picture"></span> {{this.unique.name}}
                 <div class="fish-tooltip-inner">
                   <img style="width:100%;" src="{{this.unique.thumb}}" />
                 </div>
               </a>
+              {{else}}
+                <span></span> {{this.unique.name}}
+              {{/if}} 
             </td>
             <td>{{this.standing.small}}</td>
             <td rowspan="3">{{this.location}}</td>

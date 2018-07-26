@@ -7,28 +7,6 @@
       "thumb": "img/fish/part/electroplax.png",
       "wiki": "http://warframe.wikia.com/wiki/Charc_Electroplax"
     },
-    "resources": {
-      "small": [
-        3,
-        2,
-        1
-      ],
-      "medium": [
-        4,
-        3,
-        2
-      ],
-      "large": [
-        5,
-        4,
-        3
-      ]
-    },
-    "standing": {
-      "small": 25,
-      "medium": 35,
-      "large": 50
-    },
     "location": "Lake",
     "time": "Any",
     "rarity": "Common",
@@ -39,7 +17,31 @@
     "spear": [
       "Any"
     ],
-    "maximumMass": "24kg"
+    "maximumMass": "24kg",
+    "small": {
+      "resources": {
+        "meat": 3,
+        "scales": 2,
+        "oil": 1
+      },
+      "standing": 25
+    },
+    "medium": {
+      "resources": {
+        "meat": 4,
+        "scales": 3,
+        "oil": 2
+      },
+      "standing": 35
+    },
+    "large": {
+      "resources": {
+        "meat": 5,
+        "scales": 4,
+        "oil": 3
+      },
+      "standing": 50
+    }
   },
   {
     "name": "Maw Fish",
@@ -48,28 +50,6 @@
       "name": "Mawfish Bones",
       "thumb": "img/fish/part/bones.png",
       "wiki": "http://warframe.wikia.com/wiki/Mawfish_Bones"
-    },
-    "resources": {
-      "small": [
-        3,
-        1,
-        2
-      ],
-      "medium": [
-        4,
-        2,
-        3
-      ],
-      "large": [
-        5,
-        3,
-        2
-      ]
-    },
-    "standing": {
-      "small": 15,
-      "medium": 35,
-      "large": 50
     },
     "location": "Lake",
     "time": "Day",
@@ -81,7 +61,31 @@
     "spear": [
       "Any"
     ],
-    "maximumMass": "30kg"
+    "maximumMass": "30kg",
+    "small": {
+      "resources": {
+        "meat": 3,
+        "scales": 1,
+        "oil": 2
+      },
+      "standing": 15
+    },
+    "medium": {
+      "resources": {
+        "meat": 4,
+        "scales": 2,
+        "oil": 3
+      },
+      "standing": 35
+    },
+    "large": {
+      "resources": {
+        "meat": 5,
+        "scales": 3,
+        "oil": 2
+      },
+      "standing": 50
+    }
   },
   {
     "name": "Khut-Khut",
@@ -91,28 +95,6 @@
       "thumb": "img/fish/part/sac.png",
       "wiki": "http://warframe.wikia.com/wiki/Khut-Khut_Venom_Sac"
     },
-    "resources": {
-      "small": [
-        2,
-        1,
-        3
-      ],
-      "medium": [
-        3,
-        2,
-        4
-      ],
-      "large": [
-        4,
-        3,
-        5
-      ]
-    },
-    "standing": {
-      "small": 25,
-      "medium": 35,
-      "large": 50
-    },
     "location": "Pond",
     "time": "Day",
     "rarity": "Common",
@@ -123,7 +105,31 @@
     "spear": [
       "Any"
     ],
-    "maximumMass": "20kg"
+    "maximumMass": "20kg",
+    "small": {
+      "resources": {
+        "meat": 2,
+        "scales": 1,
+        "oil": 3
+      },
+      "standing": 25
+    },
+    "medium": {
+      "resources": {
+        "meat": 3,
+        "scales": 2,
+        "oil": 4
+      },
+      "standing": 35
+    },
+    "large": {
+      "resources": {
+        "meat": 4,
+        "scales": 3,
+        "oil": 5
+      },
+      "standing": 50
+    }
   },
   {
     "name": "Yogwun",
@@ -133,28 +139,6 @@
       "thumb": "img/fish/part/stomach.png",
       "wiki": "http://warframe.wikia.com/wiki/Yogwun_Stomach"
     },
-    "resources": {
-      "small": [
-        4,
-        1,
-        1
-      ],
-      "medium": [
-        5,
-        2,
-        2
-      ],
-      "large": [
-        6,
-        3,
-        2
-      ]
-    },
-    "standing": {
-      "small": 25,
-      "medium": 35,
-      "large": 50
-    },
     "location": "Pond",
     "time": "Day",
     "rarity": "Common",
@@ -165,7 +149,31 @@
     "spear": [
       "Any"
     ],
-    "maximumMass": "32kg"
+    "maximumMass": "32kg",
+    "small": {
+      "resources": {
+        "meat": 4,
+        "scales": 1,
+        "oil": 1
+      },
+      "standing": 25
+    },
+    "medium": {
+      "resources": {
+        "meat": 5,
+        "scales": 2,
+        "oil": 2
+      },
+      "standing": 35
+    },
+    "large": {
+      "resources": {
+        "meat": 6,
+        "scales": 3,
+        "oil": 2
+      },
+      "standing": 50
+    }
   },
   {
     "name": "Goopola",
@@ -174,28 +182,6 @@
       "name": "Goopola Spleen",
       "thumb": "img/fish/part/spleen.png",
       "wiki": "http://warframe.wikia.com/wiki/Goopolla_Spleen"
-    },
-    "resources": {
-      "small": [
-        3,
-        2,
-        1
-      ],
-      "medium": [
-        3,
-        4,
-        2
-      ],
-      "large": [
-        4,
-        5,
-        3
-      ]
-    },
-    "standing": {
-      "small": 25,
-      "medium": 35,
-      "large": 50
     },
     "location": "Sea",
     "time": "Any",
@@ -207,7 +193,31 @@
     "spear": [
       "Any"
     ],
-    "maximumMass": "24kg"
+    "maximumMass": "24kg",
+    "small": {
+      "resources": {
+        "meat": 3,
+        "scales": 2,
+        "oil": 1
+      },
+      "standing": 25
+    },
+    "medium": {
+      "resources": {
+        "meat": 3,
+        "scales": 4,
+        "oil": 2
+      },
+      "standing": 35
+    },
+    "large": {
+      "resources": {
+        "meat": 4,
+        "scales": 5,
+        "oil": 3
+      },
+      "standing": 50
+    }
   },
   {
     "name": "Karkina",
@@ -216,28 +226,6 @@
       "name": "Karkina Antenna",
       "thumb": "img/fish/part/antenna.png",
       "wiki": "http://warframe.wikia.com/wiki/Karkina_Antenna"
-    },
-    "resources": {
-      "small": [
-        1,
-        3,
-        4
-      ],
-      "medium": [
-        2,
-        4,
-        6
-      ],
-      "large": [
-        3,
-        5,
-        8
-      ]
-    },
-    "standing": {
-      "small": 100,
-      "medium": 125,
-      "large": 200
     },
     "location": "Sea",
     "time": "Any",
@@ -250,7 +238,31 @@
       "Lanzo (T1)",
       "Tulok (T2)"
     ],
-    "maximumMass": "32kg"
+    "maximumMass": "32kg",
+    "small": {
+      "resources": {
+        "meat": 1,
+        "scales": 3,
+        "oil": 4
+      },
+      "standing": 100
+    },
+    "medium": {
+      "resources": {
+        "meat": 2,
+        "scales": 4,
+        "oil": 6
+      },
+      "standing": 125
+    },
+    "large": {
+      "resources": {
+        "meat": 3,
+        "scales": 5,
+        "oil": 8
+      },
+      "standing": 200
+    }
   },
   {
     "name": "Mortus Lungfish",
@@ -259,28 +271,6 @@
       "name": "Mortus Horn",
       "thumb": "img/fish/part/horn.png",
       "wiki": "http://warframe.wikia.com/wiki/Mortus_Horn"
-    },
-    "resources": {
-      "small": [
-        3,
-        1,
-        4
-      ],
-      "medium": [
-        4,
-        2,
-        6
-      ],
-      "large": [
-        5,
-        3,
-        8
-      ]
-    },
-    "standing": {
-      "small": 100,
-      "medium": 125,
-      "large": 200
     },
     "location": "Pond",
     "time": "Any",
@@ -293,7 +283,31 @@
       "Lanzo (T1)",
       "Peram (T3)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 3,
+        "scales": 1,
+        "oil": 4
+      },
+      "standing": 100
+    },
+    "medium": {
+      "resources": {
+        "meat": 4,
+        "scales": 2,
+        "oil": 6
+      },
+      "standing": 125
+    },
+    "large": {
+      "resources": {
+        "meat": 5,
+        "scales": 3,
+        "oil": 8
+      },
+      "standing": 200
+    }
   },
   {
     "name": "Sharrac",
@@ -302,28 +316,6 @@
       "name": "Sharrac Teeth",
       "thumb": "img/fish/part/teeth.png",
       "wiki": "http://warframe.wikia.com/wiki/Sharrac_Teeth"
-    },
-    "resources": {
-      "small": [
-        2,
-        4,
-        2
-      ],
-      "medium": [
-        4,
-        3,
-        2
-      ],
-      "large": [
-        5,
-        4,
-        3
-      ]
-    },
-    "standing": {
-      "small": 100,
-      "medium": 125,
-      "large": 200
     },
     "location": "Sea",
     "time": "Any",
@@ -336,7 +328,31 @@
       "Lanzo (T1)",
       "Tulok (T2)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 2,
+        "scales": 4,
+        "oil": 2
+      },
+      "standing": 100
+    },
+    "medium": {
+      "resources": {
+        "meat": 4,
+        "scales": 3,
+        "oil": 2
+      },
+      "standing": 125
+    },
+    "large": {
+      "resources": {
+        "meat": 5,
+        "scales": 4,
+        "oil": 3
+      },
+      "standing": 200
+    }
   },
   {
     "name": "Tralok",
@@ -345,28 +361,6 @@
       "name": "Tralok Eyes",
       "thumb": "img/fish/part/eyes.png",
       "wiki": "http://warframe.wikia.com/wiki/Tralok_Eyes"
-    },
-    "resources": {
-      "small": [
-        2,
-        5,
-        1
-      ],
-      "medium": [
-        3,
-        7,
-        2
-      ],
-      "large": [
-        4,
-        9,
-        3
-      ]
-    },
-    "standing": {
-      "small": 100,
-      "medium": 125,
-      "large": 200
     },
     "location": "Sea",
     "time": "Day",
@@ -379,7 +373,31 @@
       "Tulok (T2)",
       "Peram (T3)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 2,
+        "scales": 5,
+        "oil": 1
+      },
+      "standing": 100
+    },
+    "medium": {
+      "resources": {
+        "meat": 3,
+        "scales": 7,
+        "oil": 2
+      },
+      "standing": 125
+    },
+    "large": {
+      "resources": {
+        "meat": 4,
+        "scales": 9,
+        "oil": 3
+      },
+      "standing": 200
+    }
   },
   {
     "name": "Cuthol",
@@ -388,28 +406,6 @@
       "name": "Cuthol Tendrils",
       "thumb": "img/fish/part/tendrils.png",
       "wiki": "http://warframe.wikia.com/wiki/Cuthol_Tendrils"
-    },
-    "resources": {
-      "small": [
-        5,
-        3,
-        2
-      ],
-      "medium": [
-        8,
-        4,
-        3
-      ],
-      "large": [
-        11,
-        5,
-        4
-      ]
-    },
-    "standing": {
-      "small": 500,
-      "medium": 625,
-      "large": 1000
     },
     "location": "Pond",
     "time": "Night",
@@ -422,7 +418,31 @@
     "spear": [
       "Lanzo (T1)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 5,
+        "scales": 3,
+        "oil": 2
+      },
+      "standing": 500
+    },
+    "medium": {
+      "resources": {
+        "meat": 8,
+        "scales": 4,
+        "oil": 3
+      },
+      "standing": 625
+    },
+    "large": {
+      "resources": {
+        "meat": 11,
+        "scales": 5,
+        "oil": 4
+      },
+      "standing": 1000
+    }
   },
   {
     "name": "Murkray",
@@ -431,28 +451,6 @@
       "name": "Murkray Liver",
       "thumb": "img/fish/part/liver.png",
       "wiki": "http://warframe.wikia.com/wiki/Murkray_Liver"
-    },
-    "resources": {
-      "small": [
-        1,
-        2,
-        7
-      ],
-      "medium": [
-        3,
-        4,
-        7
-      ],
-      "large": [
-        5,
-        6,
-        9
-      ]
-    },
-    "standing": {
-      "small": 500,
-      "medium": 625,
-      "large": 1000
     },
     "location": "Sea",
     "time": "Any",
@@ -465,7 +463,31 @@
     "spear": [
       "Lanzo (T1)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 1,
+        "scales": 2,
+        "oil": 7
+      },
+      "standing": 500
+    },
+    "medium": {
+      "resources": {
+        "meat": 3,
+        "scales": 4,
+        "oil": 7
+      },
+      "standing": 625
+    },
+    "large": {
+      "resources": {
+        "meat": 5,
+        "scales": 6,
+        "oil": 9
+      },
+      "standing": 1000
+    }
   },
   {
     "name": "Norg",
@@ -474,28 +496,6 @@
       "name": "Norg Brain",
       "thumb": "img/fish/part/brain.png",
       "wiki": "http://warframe.wikia.com/wiki/Norg_Brain"
-    },
-    "resources": {
-      "small": [
-        2,
-        5,
-        3
-      ],
-      "medium": [
-        3,
-        7,
-        5
-      ],
-      "large": [
-        4,
-        10,
-        6
-      ]
-    },
-    "standing": {
-      "small": 500,
-      "medium": 625,
-      "large": 1000
     },
     "location": "Lake",
     "time": "Night",
@@ -508,7 +508,31 @@
     "spear": [
       "Peram (T3)"
     ],
-    "maximumMass": "40kg"
+    "maximumMass": "40kg",
+    "small": {
+      "resources": {
+        "meat": 2,
+        "scales": 5,
+        "oil": 3
+      },
+      "standing": 500
+    },
+    "medium": {
+      "resources": {
+        "meat": 3,
+        "scales": 7,
+        "oil": 5
+      },
+      "standing": 625
+    },
+    "large": {
+      "resources": {
+        "meat": 4,
+        "scales": 10,
+        "oil": 6
+      },
+      "standing": 1000
+    }
   },
   {
     "name": "Glappid",
@@ -517,28 +541,6 @@
       "name": "Seram Beetle Shell",
       "thumb": "img/fish/part/shell.png",
       "wiki": "http://warframe.wikia.com/wiki/Seram_Beetle_Shell"
-    },
-    "resources": {
-      "small": [
-        4,
-        5,
-        3
-      ],
-      "medium": [
-        6,
-        7,
-        5
-      ],
-      "large": [
-        8,
-        9,
-        7
-      ]
-    },
-    "standing": {
-      "small": 1200,
-      "medium": 1500,
-      "large": 2000
     },
     "location": "Sea",
     "time": "Night",
@@ -551,22 +553,36 @@
     "spear": [
       "Peram (T3)"
     ],
-    "maximumMass": "44kg"
+    "maximumMass": "44kg",
+    "small": {
+      "resources": {
+        "meat": 4,
+        "scales": 5,
+        "oil": 3
+      },
+      "standing": 1200
+    },
+    "medium": {
+      "resources": {
+        "meat": 6,
+        "scales": 7,
+        "oil": 5
+      },
+      "standing": 1500
+    },
+    "large": {
+      "resources": {
+        "meat": 8,
+        "scales": 9,
+        "oil": 7
+      },
+      "standing": 2000
+    }
   },
   {
     "name": "Boot",
     "unique": {
       "name": "Boot"
-    },
-    "resources": {
-      "small": [
-        0,
-        0,
-        0
-      ]
-    },
-    "standing": {
-      "small": 0
     },
     "smallLabel": "Boot",
     "location": "Any",
@@ -575,6 +591,14 @@
     "spear": [
       "Lol, Any"
     ],
-    "maximumMass": "Boot"
+    "maximumMass": "Boot",
+    "small": {
+      "resources": {
+        "meat": 0,
+        "scales": 0,
+        "oil": 0
+      },
+      "standing": 0
+    }
   }
 ]

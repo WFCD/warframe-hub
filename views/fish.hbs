@@ -34,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each fishes }}
+          {{#each fishes}}
             <tr class="color1">
             <td rowspan="3">
               {{#if this.thumb}}
@@ -52,9 +52,9 @@
             {{else}}
               <td>S</td>
             {{/if}}
-            {{#each this.resources.small}}
-              <td>{{this}}</td>
-            {{/each}}
+            <td>{{this.small.resources.meat}}</td>
+            <td>{{this.small.resources.scales}}</td>
+            <td>{{this.small.resources.oil}}</td>
             <td rowspan="3">
               {{#if this.unique.thumb}}
               <a name="Wikia Article" rel="noopener" class="fish-tooltip" href="{{this.unique.wiki}}" target="_blank">
@@ -67,7 +67,7 @@
                 <span></span> {{this.unique.name}}
               {{/if}} 
             </td>
-            <td>{{this.standing.small}}</td>
+            <td>{{this.small.standing}}</td>
             <td rowspan="3">{{this.location}}</td>
             <td rowspan="3">{{this.time}}</td>
             <td rowspan="3">
@@ -97,22 +97,22 @@
             </td>
             <td rowspan="3">{{this.maximumMass}}</td>
           </tr>
-          {{#if this.resources.medium}}
+          {{#if this.medium}}
           <tr class="color1">
             <td>M</td>
-            {{#each this.resources.medium}}
-              <td>{{this}}</td>
-            {{/each}}
-            <td>{{this.standing.medium}}</td>
+            <td>{{this.medium.meat}}</td>
+            <td>{{this.medium.scales}}</td>
+            <td>{{this.medium.oil}}</td>
+            <td>{{this.medium.standing}}</td>
           </tr>
           {{/if}}
-          {{#if this.resources.large}}
+          {{#if this.large}}
           <tr class="color1">
             <td>L</td>
-            {{#each this.resources.large}}
-              <td>{{this}}</td>
-            {{/each}}
-            <td>{{this.standing.large}}</td>
+            <td>{{this.large.meat}}</td>
+            <td>{{this.large.scales}}</td>
+            <td>{{this.large.oil}}</td>
+            <td>{{this.large.standing}}</td>
           </tr>
           {{/if}}
         {{/each}}

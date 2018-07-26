@@ -563,29 +563,16 @@
         0,
         0,
         0
-      ],
-      "medium": [
-        8,
-        4,
-        3
-      ],
-      "large": [
-        11,
-        5,
-        4
       ]
     },
     "standing": {
       "small": 0
     },
+    "smallLabel": "Boot",
     "location": "Any",
     "time": "All",
     "rarity": "Can't believe you missed the fish",
     "hotspot": true,
-    "bait": {
-      "name": "Cuthol Bait",
-      "thumb": "img/fish/bait/cuthol-bait.png"
-    },
     "spear": [
       "Lol, Any"
     ],

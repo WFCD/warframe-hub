@@ -484,11 +484,13 @@ function updateAcolytes() {
           } else if (health === 0.00) {
             labelClass = 'success';
           }
-          const acolyteLabel = `<span class="label label-${labelClass} pull-right" id="${acolyte.id}-health">${health}</span>`;
-          const visibility = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right" id="${acolyte.id}-health">${health}</span>`;
+          const visibility = acolyte.isDiscovered 
+            ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
+            : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
 
-          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
-          acolyteRow += `<b>${acolyte.agentType} <span id="${acolyte.id}-visibility">${visibility}</span></b>`;
+          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">${acolyteHealthLabel}`;
+          acolyteRow += `<b><span id="${acolyte.id}-visibility">${visibility}</span> ${acolyte.agentType}</b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
                         ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
@@ -519,7 +521,9 @@ function updateAcolytes() {
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')
             .addClass(`label-${labelClass}`);
-          const visibility = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          const visibility = acolyte.isDiscovered 
+            ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
+            : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
           $(`#${acolyte.id}-visibility`).html(visibility);
 
         }

@@ -477,9 +477,9 @@ function updateAcolytes() {
           let labelClass = 'danger';
           const health = (acolyte.healthPercent * 100).toFixed(2);
           if (health <= 80 && health > 50) {
-            lableClass = 'warning';
+            labelClass = 'warning';
           } else if (health <= 50 && health > 20) {
-            lableClass = 'info';
+            labelClass = 'info';
           } else if (health <= 20 && health > 0) {
             labelClass = 'primary';
           } else if (health === 0.00) {
@@ -507,9 +507,9 @@ function updateAcolytes() {
           let labelClass = 'danger';
           const health = (acolyte.healthPercent * 100).toFixed(2);
           if (health <= 80 && health > 50) {
-            lableClass = 'warning';
+            labelClass = 'warning';
           } else if (health <= 50 && health > 20) {
-            lableClass = 'info';
+            labelClass = 'info';
           } else if (health <= 20 && health > 0) {
             labelClass = 'primary';
           } else if (health === 0.00) {

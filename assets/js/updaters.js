@@ -471,7 +471,7 @@ function updateAcolytes() {
 
     if (document.getElementById('acolyteList').children.length >= 1) {
       for (const acolyte of persistentEnemies) {
-        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).toNow();
+        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).fromNow();
         const health = (acolyte.healthPercent * 100).toFixed(2);
         let labelClass = 'success';
         if (health <= 80 && health > 50) {

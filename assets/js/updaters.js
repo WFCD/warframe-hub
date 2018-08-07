@@ -494,7 +494,7 @@ function updateAcolytes() {
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
                         ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
-                        
+
           acolyteRow += '</div></li>';
 
           $('#acolytebody').before(acolyteRow);

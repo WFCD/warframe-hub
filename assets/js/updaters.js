@@ -471,23 +471,23 @@ function updateAcolytes() {
 
     if (document.getElementById('acolyteList').children.length >= 1) {
       for (const acolyte of persistentEnemies) {
-        if ($(`#${acolyte.id}`).length === 0) {
-          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          let labelClass = 'danger';
-          const health = (acolyte.healthPercent * 100).toFixed(2);
-          if (health <= 80 && health > 50) {
-            labelClass = 'warning';
-          } else if (health <= 50 && health > 20) {
-            labelClass = 'info';
-          } else if (health <= 20 && health > 0) {
-            labelClass = 'primary';
-          } else if (health === 0.00) {
-            labelClass = 'success';
-          }
-          const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right"><span id="${acolyte.id}-health">${health}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>`;
-          const visibility = acolyte.isDiscovered
+        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+        const health = (acolyte.healthPercent * 100).toFixed(2);
+        let labelClass = 'success';
+        if (health <= 80 && health > 50) {
+          labelClass = 'info';
+        } else if (health <= 50 && health > 20) {
+          labelClass = 'warning';
+        } else if (health === 0.00) {
+          labelClass = 'danger';
+        }
+
+        const visibility = acolyte.isDiscovered
             ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
             : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
+        
+        if ($(`#${acolyte.id}`).length === 0) {
+          const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right"><span id="${acolyte.id}-health">${health}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>`;
 
           let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">${acolyteHealthLabel}`;
           acolyteRow += `<b><span id="${acolyte.id}-visibility">${visibility}</span> ${acolyte.agentType}</b>`;
@@ -503,28 +503,13 @@ function updateAcolytes() {
             addNotifiedId(acolyte.pid);
           }
         } else {
-          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-
-          let labelClass = 'danger';
-          const health = (acolyte.healthPercent * 100).toFixed(2);
-          if (health <= 80 && health > 50) {
-            labelClass = 'warning';
-          } else if (health <= 50 && health > 20) {
-            labelClass = 'info';
-          } else if (health <= 20 && health > 0) {
-            labelClass = 'primary';
-          } else if (health === 0.00) {
-            labelClass = 'success';
-          }
           $(`#${acolyte.id}-health`).html(health);
           $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('llll'));
           $(`#${acolyte.id}-loc`).html(`${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}`);
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')
             .addClass(`label-${labelClass}`);
-          const visibility = acolyte.isDiscovered
-            ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
-            : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
+
           $(`#${acolyte.id}-visibility`).html(visibility);
 
         }

@@ -483,9 +483,9 @@ function updateAcolytes() {
         }
 
         const visibility = acolyte.isDiscovered
-            ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
-            : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
-        
+          ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
+          : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
+
         if ($(`#${acolyte.id}`).length === 0) {
           const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right"><span id="${acolyte.id}-health">${health}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>`;
 

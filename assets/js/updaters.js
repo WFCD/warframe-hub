@@ -504,7 +504,7 @@ function updateAcolytes() {
           }
         } else {
           const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          
+
           let labelClass = 'danger';
           const health = (acolyte.healthPercent * 100).toFixed(2);
           if (health <= 80 && health > 50) {

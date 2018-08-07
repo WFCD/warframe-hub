@@ -473,7 +473,6 @@ function updateAcolytes() {
       for (const acolyte of persistentEnemies) {
         if ($(`#${acolyte.id}`).length === 0) {
           const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          const acolyteLabel = `<span class="label label-${labelClass} pull-right" id="${acolyte.id}-health">${health}</span>`;
           let labelClass = 'danger';
           const health = (acolyte.healthPercent * 100).toFixed(2);
           if (health <= 80 && health > 50) {
@@ -485,9 +484,9 @@ function updateAcolytes() {
           } else if (health === 0.00) {
             labelClass = 'success';
           }
-          
+          const acolyteLabel = `<span class="label label-${labelClass} pull-right" id="${acolyte.id}-health">${health}</span>`;
           const visibility = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
-          
+
           let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
           acolyteRow += `<b>${acolyte.agentType} <span id="${acolyte.id}-visibility">${visibility}</span></b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +

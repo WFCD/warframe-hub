@@ -471,7 +471,7 @@ function updateAcolytes() {
 
     if (document.getElementById('acolyteList').children.length >= 1) {
       for (const acolyte of persistentEnemies) {
-        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime);
         const health = (acolyte.healthPercent * 100).toFixed(2);
         let labelClass = 'success';
         if (health <= 80 && health > 50) {
@@ -493,7 +493,7 @@ function updateAcolytes() {
           acolyteRow += `<b><span id="${acolyte.id}-visibility">${visibility}</span> ${acolyte.agentType}</b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b><span id="${acolyte.id}-loc">${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}</span></b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
-                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).fromNow()}</span>`;
+                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${lastDiscoveredTime.fromNow()}</span>`;
 
           acolyteRow += '</div></li>';
 
@@ -504,7 +504,7 @@ function updateAcolytes() {
           }
         } else {
           $(`#${acolyte.id}-health`).html(health);
-          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).fromNow());
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(lastDiscoveredTime.fromNow());
           $(`#${acolyte.id}-loc`).html(`${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}`);
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')

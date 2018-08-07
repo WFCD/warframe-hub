@@ -310,7 +310,6 @@ $('#filters-picker').removeClass('hide');
 moment.updateLocale('en', {
   relativeTime: {
     future: 'in %s',
-    past: '%s',
     s: '1s',
     ss: '%ss',
     m: '1m',

@@ -485,7 +485,7 @@ function updateAcolytes() {
             labelClass = 'success';
           }
           const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right"><span id="${acolyte.id}-health"${health}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>`;
-          const visibility = acolyte.isDiscovered 
+          const visibility = acolyte.isDiscovered
             ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
             : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
 
@@ -521,7 +521,7 @@ function updateAcolytes() {
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')
             .addClass(`label-${labelClass}`);
-          const visibility = acolyte.isDiscovered 
+          const visibility = acolyte.isDiscovered
             ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
             : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
           $(`#${acolyte.id}-visibility`).html(visibility);

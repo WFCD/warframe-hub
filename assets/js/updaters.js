@@ -473,37 +473,29 @@ function updateAcolytes() {
       for (const acolyte of persistentEnemies) {
         if ($(`#${acolyte.id}`).length === 0) {
           const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
+          const acolyteLabel = `<span class="label label-${labelClass} pull-right" id="${acolyte.id}-health">${health}</span>`;
+          let labelClass = 'danger';
+          const health = (acolyte.healthPercent * 100).toFixed(2);
+          if (health <= 80 && health > 50) {
+            lableClass = 'warning';
+          } else if (health <= 50 && health > 20) {
+            lableClass = 'info';
+          } else if (health <= 20 && health > 0) {
+            labelClass = 'primary';
+          } else if (health === 0.00) {
+            labelClass = 'success';
+          }
+          
+          const visiblity = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          
           let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
-          acolyteRow += `<b>${acolyte.agentType}</b>`;
+          acolyteRow += `<b>${acolyte.agentType} <span id="${acolyte.id}-visibility">${visibility}</span></b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
                         ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
+                        
+          acolyteRow += '</div></li>';
 
-          const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
-          const progressBar = $(`#${acolyte.id}_progress`).children()[1];
-
-          if (acolyte.count > 0) {
-            $(remainingBar).addClass('winning-right');
-            $(progressBar).removeClass('winning-left');
-          } else {
-            $(remainingBar).removeClass('winning-right');
-            $(progressBar).addClass('winning-left');
-          }
-
-          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
-          const progressPercent = 100 - remainingPercent;
-
-          const remainingLabel = `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}% Remaining</span>`;
-
-          acolyteRow += '</div><div class="row">' +
-            `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
-            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `${remainingPercent > 0 ? remainingLabel : ''}</div>` +
-            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%; height: 20px; font-size: 12px; line-height:16px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
-            '</div>';
-
-          acolyteRow += '</li>';
           $('#acolytebody').before(acolyteRow);
           if (isNotifiable(acolyte.pid, 'enemies')) {
             sendNotification(`${acolyte.healthPercent}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
@@ -511,8 +503,26 @@ function updateAcolytes() {
           }
         } else {
           const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          $(`#${acolyte.id}-health`).html(`${(acolyte.healthPercent * 100).toFixed(2)}%`);
+          
+          let labelClass = 'danger';
+          const health = (acolyte.healthPercent * 100).toFixed(2);
+          if (health <= 80 && health > 50) {
+            lableClass = 'warning';
+          } else if (health <= 50 && health > 20) {
+            lableClass = 'info';
+          } else if (health <= 20 && health > 0) {
+            labelClass = 'primary';
+          } else if (health === 0.00) {
+            labelClass = 'success';
+          }
+          $(`#${acolyte.id}-health`).html(health);
           $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('llll'));
+          $(`#${acolyte.id}-health`)
+            .removeClass('label-danger label-warning label-info label-primary label-success')
+            .addClass(`label-${labelClass}`);
+          const visiblity = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          $(`#${acolyte.id}-visibility`).html(visiblity);
+
         }
       }
     }

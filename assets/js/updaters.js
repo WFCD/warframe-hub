@@ -493,7 +493,7 @@ function updateAcolytes() {
           acolyteRow += `<b><span id="${acolyte.id}-visibility">${visibility}</span> ${acolyte.agentType}</b>`;
           acolyteRow += `<br><div style="margin-top:2px"><b><span id="${acolyte.id}-loc">${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}</span></b>` +
                         ` | <b>Level: </b>${acolyte.rank}` +
-                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
+                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).fromNow()}</span>`;
 
           acolyteRow += '</div></li>';
 
@@ -504,7 +504,7 @@ function updateAcolytes() {
           }
         } else {
           $(`#${acolyte.id}-health`).html(health);
-          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('llll'));
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).fromNow());
           $(`#${acolyte.id}-loc`).html(`${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}`);
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')

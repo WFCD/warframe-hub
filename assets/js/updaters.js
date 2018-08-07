@@ -486,7 +486,7 @@ function updateAcolytes() {
             labelClass = 'success';
           }
           
-          const visiblity = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          const visibility = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
           
           let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
           acolyteRow += `<b>${acolyte.agentType} <span id="${acolyte.id}-visibility">${visibility}</span></b>`;
@@ -520,8 +520,8 @@ function updateAcolytes() {
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')
             .addClass(`label-${labelClass}`);
-          const visiblity = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
-          $(`#${acolyte.id}-visibility`).html(visiblity);
+          const visibility = acolyte.isDiscovered ? `<i class="far fa-eye" alt="${acolyte.agentType} Discovered"></i>` : `<i class="far fa-eye-slash"  alt="${acolyte.agentType} Hidden"></i>`;
+          $(`#${acolyte.id}-visibility`).html(visibility);
 
         }
       }

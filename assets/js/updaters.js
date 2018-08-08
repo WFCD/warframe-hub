@@ -498,7 +498,7 @@ function updateAcolytes() {
 
           $('#acolytebody').before(acolyteRow);
           if (isNotifiable(acolyte.pid, 'enemies')) {
-            sendNotification(`${acolyte.healthPercent}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
+            sendNotification(`${health}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
             addNotifiedId(acolyte.pid);
           }
         } else {
@@ -673,7 +673,7 @@ function updateSortie() {
   if (sortie.variants.length !== 0) {
     $('#sortietitle').hide();
 
-    if (platformSwapped || $('#sortieList').children().length === 0) {
+    if (platformSwapped || $('#sortieList').children().length === 0 || !$(`#sortieTimer${sortie.id}`).length) {
       $('#sortieBoss').html(sortie.boss);
       $('#sortieFaction').html(getImage(
         'factions',

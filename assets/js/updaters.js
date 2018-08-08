@@ -110,8 +110,7 @@ function updateEvents() {
           });
           body += `${listItems}</div>`;
         } else {
-          body += event.rewards.length > 0 ? event.rewards.map(reward =>
-            `<div class="text-center d-inline"><span class="label label-success">${reward.asString}</span></div><br />`).join(' ') : '';
+          body += event.rewards.length > 0 ? event.rewards.map(reward => `<div class="text-center d-inline"><span class="label label-success">${reward.asString}</span></div><br />`).join(' ') : '';
         }
         if (title && body) {
           componentBody.append(`<li class="list-group-item list-group-item-borderless" id="event-${event.id}-title">${title}${body}</li>`);
@@ -267,27 +266,27 @@ function updateVoidTraderInventory() {
         $('.voidTraderInventory').remove();
       }
       /* eslint-disable prefer-template */
-      const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" ' +
-                'style="margin-left:5%; margin-right:5%" ' +
-                'id="'}${worldState.voidTrader.id}">\n` +
-                '<a href="#voidTraderInventoryPanel" data-toggle="collapse" class="panel-heading show text-center">\n' +
-                `<h3 class="panel-title">${worldState.voidTrader.character} Inventory` +
-                '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3>\n' +
-                '</a>\n' +
-                '<div class="panel-body collapse" id="voidTraderInventoryPanel">\n' +
-                '<table class="table table-striped table-hover ">\n' +
-                '<thead>\n' +
-                '<tr>\n' +
-                '<th class="text-center">Item Name</th>\n' +
-                '<th class="text-center">Ducats</th>\n' +
-                '<th class="text-center">Credits</th>\n' +
-                '</tr>\n' +
-                '</thead>\n' +
-                '<tbody id="voidTraderInventoryContent">\n' +
-                '</tbody>\n' +
-                '</table>\n' +
-                '</div>\n' +
-                '</div>';
+      const inventoryString = `${'<div class="panel panel-primary voidTraderInventory" '
+                + 'style="margin-left:5%; margin-right:5%" '
+                + 'id="'}${worldState.voidTrader.id}">\n`
+                + '<a href="#voidTraderInventoryPanel" data-toggle="collapse" class="panel-heading show text-center">\n'
+                + `<h3 class="panel-title">${worldState.voidTrader.character} Inventory`
+                + '<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3>\n'
+                + '</a>\n'
+                + '<div class="panel-body collapse" id="voidTraderInventoryPanel">\n'
+                + '<table class="table table-striped table-hover ">\n'
+                + '<thead>\n'
+                + '<tr>\n'
+                + '<th class="text-center">Item Name</th>\n'
+                + '<th class="text-center">Ducats</th>\n'
+                + '<th class="text-center">Credits</th>\n'
+                + '</tr>\n'
+                + '</thead>\n'
+                + '<tbody id="voidTraderInventoryContent">\n'
+                + '</tbody>\n'
+                + '</table>\n'
+                + '</div>\n'
+                + '</div>';
       /* eslint-enable prefer-template */
       const elementBody = $('#voidTraderBody');
       elementBody.append(inventoryString);
@@ -375,25 +374,25 @@ function updateDarvoDeals() {
       cleanupDailyDeals(dailyDeals);
 
       const inventoryString = `<table class="table dailyDealsInventory" style="table-layout: fixed" id="${
-        dailyDeals[0].id}">\n` +
-                '<thead>\n' +
-                '<tr>\n' +
-                '<th class="text-center col-xs-2">Item</th>\n' +
-                '<th class="text-center col-xs-2">% Off</th>\n' +
-                `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n` +
-                '<th class="text-center col-xs-2">Stock</th>\n' +
-                '<th class="text-center col-xs-4"></th>\n' +
-                '</tr>\n' +
-                '</thead>\n' +
-                '<tbody id="dailyDealsInventory">\n' +
-                '</tbody>\n' +
-                '</table>';
+        dailyDeals[0].id}">\n`
+                + '<thead>\n'
+                + '<tr>\n'
+                + '<th class="text-center col-xs-2">Item</th>\n'
+                + '<th class="text-center col-xs-2">% Off</th>\n'
+                + `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n`
+                + '<th class="text-center col-xs-2">Stock</th>\n'
+                + '<th class="text-center col-xs-4"></th>\n'
+                + '</tr>\n'
+                + '</thead>\n'
+                + '<tbody id="dailyDealsInventory">\n'
+                + '</tbody>\n'
+                + '</table>';
       $('#darvobody').append(inventoryString);
 
       for (const currentItem of dailyDeals) {
         const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.discount}%</td><td>${currentItem.salePrice}</td><td>${
-          calculateInventory(currentItem.total, currentItem.sold)}</td>` +
-                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
+          calculateInventory(currentItem.total, currentItem.sold)}</td>`
+                    + `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
         $('#dailyDealsInventory').append(itemString);
         if (isNotifiable(currentItem.id, 'darvo')) {
           sendNotification(`${currentItem.item} for sale!\n${currentItem.discount}% off • ${currentItem.total - currentItem.sold} remaining\nEnds in ${currentItem.eta}`);
@@ -424,22 +423,22 @@ function updateDeals() {
       cleanupDeals(flashSales);
 
       const inventoryString = `<table class="table dealsInventory" style="table-layout: fixed" id="${
-        flashSales[0].id}">\n` +
-                '<thead>\n' +
-                '<tr>\n' +
-                '<th class="text-center col-xs-5">Item</th>\n' +
-                `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n` +
-                '<th class="text-center col-xs-4"></th>\n' +
-                '</tr>\n' +
-                '</thead>\n' +
-                '<tbody id="dealsInventory">\n' +
-                '</tbody>\n' +
-                '</table>';
+        flashSales[0].id}">\n`
+                + '<thead>\n'
+                + '<tr>\n'
+                + '<th class="text-center col-xs-5">Item</th>\n'
+                + `<th class="text-center col-xs-2">${getImage('general', {image: 'plat', className: 'plat', forcePng: true})}</th>\n`
+                + '<th class="text-center col-xs-4"></th>\n'
+                + '</tr>\n'
+                + '</thead>\n'
+                + '<tbody id="dealsInventory">\n'
+                + '</tbody>\n'
+                + '</table>';
       $('#dealsbody').append(inventoryString);
 
       for (const currentItem of flashSales) {
-        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.premiumOverride}</td>` +
-                    `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
+        const itemString = `<tr><td>${currentItem.item}</td><td>${currentItem.premiumOverride}</td>`
+                    + `<td style="padding-right:0;"><span class="label timer pull-right" data-endtime="${moment(currentItem.expiry).unix()}"></span></td></tr>`;
         $('#dealsInventory').append(itemString);
         let notifIdentifier = 'deals.';
         if (currentItem.isPopular) {
@@ -471,48 +470,46 @@ function updateAcolytes() {
 
     if (document.getElementById('acolyteList').children.length >= 1) {
       for (const acolyte of persistentEnemies) {
+        const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).fromNow();
+        const health = (acolyte.healthPercent * 100).toFixed(2);
+        let labelClass = 'success';
+        if (health <= 80 && health > 50) {
+          labelClass = 'info';
+        } else if (health <= 50 && health > 20) {
+          labelClass = 'warning';
+        } else if (health <= 0.00) {
+          labelClass = 'danger';
+        }
+
+        const visibility = acolyte.isDiscovered
+          ? `<i class="far fa-eye" title="${acolyte.agentType} Discovered" style="margin-right: 10px"></i>`
+          : `<i class="far fa-eye-slash" title="${acolyte.agentType} Hidden" style="margin-right: 10px"></i>`;
+
         if ($(`#${acolyte.id}`).length === 0) {
-          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">`;
-          acolyteRow += `<b>${acolyte.agentType}</b>`;
-          acolyteRow += `<br><div style="margin-top:2px"><b>${acolyte.isDiscovered ? '' : 'Last '} At ${acolyte.lastDiscoveredAt}</b>` +
-                        ` | <b>Level: </b>${acolyte.rank}` +
-                        ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${moment.unix(lastDiscoveredTime).format('llll')}</span>`;
+          const acolyteHealthLabel = `<span class="label label-${labelClass} pull-right"><span id="${acolyte.id}-health">${health}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>`;
 
-          const remainingBar = $(`#${acolyte.id}_progress`).children()[0];
-          const progressBar = $(`#${acolyte.id}_progress`).children()[1];
+          let acolyteRow = `<li class="list-group-item list-group-item-borderless" id="${acolyte.id}">${acolyteHealthLabel}`;
+          acolyteRow += `<b><span id="${acolyte.id}-visibility">${visibility}</span> ${acolyte.agentType}</b>`;
+          acolyteRow += `<br><div style="margin-top:2px"><b><span id="${acolyte.id}-loc">${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}</span></b>`
+                        + ` | <b>Level: </b>${acolyte.rank}`
+                        + ` <span class="label label-primary pull-right" id="${acolyte.id}-lastDiscoveredTime">${lastDiscoveredTime}</span>`;
 
-          if (acolyte.count > 0) {
-            $(remainingBar).addClass('winning-right');
-            $(progressBar).removeClass('winning-left');
-          } else {
-            $(remainingBar).removeClass('winning-right');
-            $(progressBar).addClass('winning-left');
-          }
+          acolyteRow += '</div></li>';
 
-          const remainingPercent = Math.floor(parseInt(acolyte.healthPercent * 100, 10));
-          const progressPercent = 100 - remainingPercent;
-
-          const remainingLabel = `<span id="${acolyte.id}-health">${(acolyte.healthPercent * 100).toFixed(2)}% Remaining</span>`;
-
-          acolyteRow += '</div><div class="row">' +
-            `<div class="progress" id="${acolyte.id}_progress" style="margin-left: 5px; margin-right: 5px;">` +
-            `<div class="progress-bar grineer-invasion attack winning-left" role="progressbar" style="height: 20px; font-size: 12px; line-height:16px; width: ${remainingPercent}%" aria-valuenow="${remainingPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `${remainingPercent > 0 ? remainingLabel : ''}</div>` +
-            `<div class="progress-bar defend progress-bar-grey" role="progressbar" style="width: ${progressPercent}%; height: 20px; font-size: 12px; line-height:16px;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">` +
-            `${remainingPercent === 0 ? remainingLabel : ''}</div>` +
-            '</div>';
-
-          acolyteRow += '</li>';
           $('#acolytebody').before(acolyteRow);
           if (isNotifiable(acolyte.pid, 'enemies')) {
             sendNotification(`${acolyte.healthPercent}% Health Remaining • Discovered at ${acolyte.lastDiscoveredAt}`, `${acolyte.agentType} discovered!`);
             addNotifiedId(acolyte.pid);
           }
         } else {
-          const lastDiscoveredTime = moment(acolyte.lastDiscoveredTime).unix();
-          $(`#${acolyte.id}-health`).html(`${(acolyte.healthPercent * 100).toFixed(2)}%`);
-          $(`#${acolyte.id}-lastDiscoveredTime`).html(moment.unix(lastDiscoveredTime).format('llll'));
+          $(`#${acolyte.id}-health`).html(health);
+          $(`#${acolyte.id}-lastDiscoveredTime`).html(lastDiscoveredTime);
+          $(`#${acolyte.id}-loc`).html(`${acolyte.isDiscovered ? '' : 'Last '} @ ${acolyte.lastDiscoveredAt}`);
+          $(`#${acolyte.id}-health`)
+            .removeClass('label-danger label-warning label-info label-primary label-success')
+            .addClass(`label-${labelClass}`);
+
+          $(`#${acolyte.id}-visibility`).html(visibility);
         }
       }
     }
@@ -544,8 +541,8 @@ function updateAlerts() {
             alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
           }
           alertRow += `<b>${alert.mission.node}</b>`;
-          alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                        `data-endtime="${moment(alert.expiry).unix()}"></span>`;
+          alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" `
+                        + `data-endtime="${moment(alert.expiry).unix()}"></span>`;
 
           if (alert.mission.reward.items.length !== 0) {
             for (const item of alert.mission.reward.items) {
@@ -558,9 +555,9 @@ function updateAlerts() {
             }
           }
 
-          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})` +
-                        ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}` +
-                        ` | ${alert.mission.reward.credits}cr`;
+          alertRow += `<br><div style="margin-top:2px"><b>${alert.mission.type}</b> (${alert.mission.faction})`
+                        + ` | <b>Level: </b>${alert.mission.minEnemyLevel}-${alert.mission.maxEnemyLevel}`
+                        + ` | ${alert.mission.reward.credits}cr`;
 
           alertRow += '</li>';
           $('#alertbody').before(alertRow);
@@ -590,8 +587,8 @@ function updateAlerts() {
           alertRow += `${getImage('general', {image: 'nightmare', title: 'Nightmare Mission', className: 'nightmare'})} `;
         }
         alertRow += `<b>${alert.mission.node}</b> | ${alert.mission.type} (${alert.mission.faction})`;
-        alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" ` +
-                    `data-endtime="${moment(alert.expiry).unix()}"></span></li>`;
+        alertRow += `<span id="alerttimer${alert.id}" class="label timer pull-right" data-starttime="${moment(alert.activation).unix()}" `
+                    + `data-endtime="${moment(alert.expiry).unix()}"></span></li>`;
         $('#alertbody').before(alertRow);
       }
     }
@@ -639,9 +636,9 @@ function updateBounties() {
       $('#bountybody').append(panelWrapper);
 
       for (const job of jobs) {
-        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>` +
-                    `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>` +
-                    `<td class="text-left"><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
+        const itemString = `<tr><td>${job.type}</td><td>${job.standingStages.join(', ')}</td>`
+                    + `<td>${job.enemyLevels[0]}-${job.enemyLevels[1]}</td>`
+                    + `<td class="text-left"><ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul></td></tr>`;
         $('#bountiesList').append(itemString);
       }
       $('#bountyListPanelBody').on('shown.bs.collapse', updateGrid);
@@ -683,8 +680,8 @@ function updateSortie() {
         {image: getFactionKey(sortie.faction), className: 'faction-image sortie-faction', title: sortie.faction},
       ));
       $('#sortieList').empty();
-      const sortieTimer = `<span id="sortieTimer${sortie.id}" class="label timer pull-right" data-starttime="${moment(sortie.activation).unix()}" ` +
-                    `data-endtime="${moment(sortie.expiry).unix()}"></span>`;
+      const sortieTimer = `<span id="sortieTimer${sortie.id}" class="label timer pull-right" data-starttime="${moment(sortie.activation).unix()}" `
+                    + `data-endtime="${moment(sortie.expiry).unix()}"></span>`;
       if ($('#sortieTimerInfo').children()) {
         $('#sortieTimerInfo').children().remove();
       }
@@ -733,8 +730,8 @@ function updateFissure() {
         fissureRow += `<b>${fissure.node}</b> | ${fissure.missionType} | ${fissure.tier}</span>`;
 
         // fissure timer
-        fissureRow += `<span id="fissuretimer${fissure.id}" class="fissure-timer label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" ` +
-                      `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
+        fissureRow += `<span id="fissuretimer${fissure.id}" class="fissure-timer label timer pull-right" data-starttime="${moment(fissure.activation).unix()}" `
+                      + `data-endtime="${moment(fissure.expiry).unix()}"></span>`;
 
         fissureRow += '</li>';
 
@@ -968,10 +965,10 @@ function updateInvasions() {
           defendWinning = 'winning-left';
         }
 
-        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`);
-        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">` +
-          `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`);
+        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.attackingFaction)} attack ${attackWinning}" role="progressbar" style="width: ${attackPercent}%" aria-valuenow="${attackPercent}" aria-valuemin="0" aria-valuemax="100">`
+          + `${getImage('factions', {image: getFactionKey(invasion.attackingFaction), className: 'pull-left faction-invasion-img'})}</div>`);
+        progress.append(`<div class="progress-bar ${getProgressBarColor(invasion.defendingFaction)} defend ${defendWinning}" role="progressbar" style="width: ${defendPercent}%" aria-valuenow="${defendPercent}" aria-valuemin="0" aria-valuemax="100">`
+          + `${getImage('factions', {image: getFactionKey(invasion.defendingFaction), className: 'pull-right faction-invasion-img'})}</div>`);
         invasionRow += `${progress.get(0).outerHTML}</div></li>`;
 
         if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {

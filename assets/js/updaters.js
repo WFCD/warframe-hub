@@ -508,8 +508,10 @@ function updateAcolytes() {
           $(`#${acolyte.id}-health`)
             .removeClass('label-danger label-warning label-info label-primary label-success')
             .addClass(`label-${labelClass}`);
-
           $(`#${acolyte.id}-visibility`).html(visibility);
+          if (!health) {
+            $(`#${acolyte.id}`).remove();
+          }
         }
       }
     }

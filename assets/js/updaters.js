@@ -477,7 +477,7 @@ function updateAcolytes() {
           labelClass = 'info';
         } else if (health <= 50 && health > 20) {
           labelClass = 'warning';
-        } else if (health <= 0.00) {
+        } else if (health <= 20) {
           labelClass = 'danger';
         }
 

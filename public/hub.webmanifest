@@ -1,0 +1,16 @@
+{
+  "name": "Warframe Hub",
+  "short_name": "Hub",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000",
+  "description": "Warframe hub strives to be the community center of the Warframe game.",
+  "icons": [
+    {
+      "src": "img/logos/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1a5072"
+}

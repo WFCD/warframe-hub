@@ -85,15 +85,15 @@ const getImage = (
   },
 ) => {
   if (typeof SVGRect !== 'undefined' && !forcePng) {
-    return `<img src="img/${type}/${image}.svg" class="${className} inv" title="${title}" />`;
+    return `<img src="img/${type}/${image}.svg" class="${className} inv" title="${title}" alt="${title}" />`;
   } else if (type === 'fissure') {
-    return `<img src="${fissureGlyphs[parseInt(image, 10) - 1]}" class="${className}" title="${title}" />`;
+    return `<img src="${fissureGlyphs[parseInt(image, 10) - 1]}" class="${className}" title="${title}" alt="${title}" />`;
   } else if (type === 'archwing') {
-    return `<img src="https://i.imgur.com/R1kpRx4.png" class="${className}" title="${title}" />`;
+    return `<img src="https://i.imgur.com/R1kpRx4.png" class="${className}" title="${title}" alt="${title}" />`;
   } else if (type === 'nightmare') {
-    return `<img src="https://i.imgur.com/x5XoktW.png" class="${className}" title="${title}" />`;
+    return `<img src="https://i.imgur.com/x5XoktW.png" class="${className}" title="${title}" alt="${title}" />`;
   }
-  return `<img src="img/${type}/${image}.png" class="${className}" />`;
+  return `<img src="img/${type}/${image}.png" class="${className}" alt="${image}" />`;
 };
 
 // Helper function to display duration in human readable format, short version

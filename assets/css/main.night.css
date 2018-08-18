@@ -2,9 +2,24 @@
 .navbar-footer { background-color: #303030; }
 .navbar-footer a { color: #ababab; }
 
-/* Change label color to be less white */
+/* Change label color to be less white, and adjust backgrounds for WCAG */
 .label {
-  color: #ababab !important;
+  color: #bbbbbb !important;
+}
+.label-danger {
+  background-color: #852d23 !important;
+}
+.label-info {
+  background-color: #004d80 !important;
+}
+.label-primary {
+  background-color: #194c6c !important;
+}
+.label-success {
+  background-color: #00523d !important;
+}
+.label-warning {
+  background-color: #684308 !important;
 }
 
 /* Fish info table */
@@ -81,4 +96,9 @@
 /* Loader */
 .loader {
   fill: #bbbbbb;
+}
+
+/* Night */
+.darkblue {
+  color: #40a0ff;
 }

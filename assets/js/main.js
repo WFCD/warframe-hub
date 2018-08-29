@@ -348,7 +348,7 @@ if (!String.prototype.padStart) {
 
 // Main data refresh loop
 function initializeUpdateLoop() {
-  const updatePeriod = 30000;
+  const updatePeriod = 60000;
   let nextUpdateTimestamp = 0;
   (function updateCheck() {
     const currentTimestamp = new Date().getTime();

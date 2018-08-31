@@ -139,14 +139,9 @@ $('.platform-picker li').click(e => {
 [['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
   ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
   ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
-  let value = localStorage.getItem(component);
-  if (typeof value === 'undefined') {
-    if (typeof defValue === 'undefined') {
-      value = 'true';
-    } else {
-      value = defValue;
-    }
-    localStorage.setItem(component, value);
+  const value = localStorage.getItem(component);
+  if (typeof value === 'undefined' || value === null) {
+    localStorage.setItem(component, defValue || 'true');
   }
   if (value === 'true') {
     $(`.component-check[data-component="${component}"]`)

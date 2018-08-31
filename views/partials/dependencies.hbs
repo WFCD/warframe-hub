@@ -59,6 +59,8 @@
       components.forEach(component => {
         if (Cookies.get(component)) {
           localStorage.setItem(component, Cookies.get(component));
+        } else {
+          localStorage.setItem(component, 'true');
         }
       });
       localStorage.cookiesMigrated = true;
@@ -71,7 +73,7 @@
   // Theme loading
   const theme = $('#mode');
   if (typeof localStorage.mode === 'undefined') {
-    localStorage.mode = night;
+    localStorage.mode = 'night';
   }
   const themecustom = $('#mode-custom');
   switch (localStorage.mode) {

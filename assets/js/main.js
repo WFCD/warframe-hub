@@ -22,7 +22,7 @@ const cleanupNotifiedIds = () => {
     .concat([worldState.cetusCycle.id])
     .concat([worldState.voidTrader.id])
     .concat(worldState.persistentEnemies.map(enemy => enemy.pid));
-  const notifiedIds = JSON.parse(localStorage.notifiedIds || '[]');
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
   const toRemove = [];
   notifiedIds.forEach(id => {
     if (!ids.includes(id)) {
@@ -120,16 +120,16 @@ function updateTimeBadges() {
 }
 
 // Set default platform to PC if there isn't one
-if (typeof localStorage.platform === 'undefined') {
-  localStorage.platform = 'pc';
+if (!localStorage.getItem('platform')) {
+  localStorage.setItem('platform', 'pc');
 }
-selectPlatform(localStorage.platform);
+selectPlatform(localStorage.getItem('platform'));
 
 // Platform switcher
 $('.platform-picker li').click(e => {
   const platform = $(e.currentTarget).attr('data-platform');
   selectPlatform(platform);
-  localStorage.platform = platform;
+  localStorage.setItem('platform', platform);
   platformSwapped = true; // eslint-disable-line no-global-assign
   getWorldState();
   setTimeout(updatePlatformSwitch, 30000);

@@ -13,7 +13,7 @@
   });
   $(function() {
     $('#no-theme').click(function() {
-      setTheme(undefined, undefined, true);
+      setTheme('day', 'default', true);
     });
   });
   $(function() {
@@ -22,26 +22,26 @@
     });
   });
 
+  const superThemeMap = {
+    eidolon: 'night',
+    day: 'default',
+    night: 'night',
+    retro: 'night',
+  };
+
   const setTheme = (themeName, superTheme, reset) => {
     const theme = $('#mode');
+    const metaTheme = superTheme || superThemeMap[themeName] || 'night';
     if (!reset) {
-      if (theme.hasClass(themeName)) {
+      if (html.hasClass(themeName)) {
         setTheme(false, false, true);
       } else {
-        theme.attr('href', `css/bootstrap-${superTheme}.min.css?v=${sums[`css/bootstrap-${superTheme}.min.css`]}`);
-        theme.removeClass();
-        theme.addClass(themeName);
-        html.removeClass(localStorage.mode);
-        localStorage.mode = themeName;
-        html.addClass(themeName);
+        theme.attr('href', `css/bootstrap-${metaTheme}.min.css?v=${sums[`css/bootstrap-${metaTheme}.min.css`]}`);
+        localStorage.setItem('mode', themeName);
+        html.attr('class', themeName);
       }
-    } else {
-      theme.attr('href', `css/bootstrap-default.min.css?v=${sums[`css/bootstrap-${superTheme}.min.css`]}`);
-      theme.removeClass();
-      html.removeClass(localStorage.mode);
-      localStorage.mode = 'day';
-      html.attr('data-theme', 'day');
-      html.addClass('day');
+    } else if (themeName != 'day') {
+      setTheme('day', 'default');
     }
     if (typeof updateGrid !== 'undefined') {
       updateGrid();

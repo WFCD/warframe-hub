@@ -6,7 +6,7 @@ function calculateInventory(total, sold) {
 
 // load filter settings
 const loadNotificationFilterData = () => {
-  const filterData = JSON.parse(localStorage.notificationfilters || '[]');
+  const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
   filterData.forEach(filter => {
     $(`.notif-filter-check[data-notif="${filter}"]`)
       .prop('checked', true);
@@ -14,7 +14,7 @@ const loadNotificationFilterData = () => {
 };
 
 const loadFissuresFilterData = () => {
-  const filterData = JSON.parse(localStorage.fissurefilters || '[]');
+  const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
   filterData.forEach(filter => {
     $(`.fissure-filter-check[data-fissure="${filter}"]`)
       .prop('checked', true);
@@ -22,7 +22,7 @@ const loadFissuresFilterData = () => {
 };
 
 const loadSoundOptionsData = () => {
-  const filterData = JSON.parse(localStorage.soundoptions || '[]');
+  const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
   filterData.forEach(filter => {
     $(`.sound-option-check[data-sound="${filter}"]`)
       .prop('checked', true);
@@ -59,18 +59,18 @@ const sendNotification = (body, title = 'Warframe Hub', sound, link) => {
 };
 
 const isNotNotified = id => {
-  const notifiedIds = JSON.parse(localStorage.notifiedIds || '[]');
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
   return !notifiedIds.includes(id);
 };
 
 const addNotifiedId = id => {
-  const notifiedIds = JSON.parse(localStorage.notifiedIds || '[]');
+  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
   notifiedIds.push(id);
-  localStorage.notifiedIds = JSON.stringify(notifiedIds);
+  localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
 };
 
 const isNotifiable = (id, event, items) => {
-  const tracked = JSON.parse(localStorage.notificationfilters || '[]');
+  const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
   const includesItems = (typeof items !== 'undefined' && items.length > 0) ? tracked.some(r => items.indexOf(r) >= 0) : true;
   return isNotNotified(id) && tracked.includes(event) && (includesItems);
 };

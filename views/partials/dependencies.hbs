@@ -46,53 +46,36 @@
   document.getElementsByTagName("html")[0].style.visibility = "hidden";
   $(document).ready(function() {
     document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    // Theme loading
+    if (!localStorage.getItem('mode')) {
+      localStorage.setItem('mode', 'night');
+    }
+    if (!$('html').hasClass(localStorage.getItem('mode'))) {
+      setTheme(localStorage.getItem('mode'));
+    }
   });
 
   const checkForCookies = () => {
-    if (!localStorage.cookiesMigrated) {
+    if (!localStorage.getItem('cookiesMigrated')) {
       if (Cookies.get('mode')) {
-        localStorage.mode = Cookies.get('mode');
+        localStorage.setItem('mode', Cookies.get('mode'));
+      } else {
+        localStorage.setItem('mode', 'night');
       }
       if (Cookies.get('platform')) {
-        localStorage.platform = Cookies.get('platform');
+        localStorage.setItem('platform', Cookies.get('platform'));
       }
       components.forEach(component => {
         if (Cookies.get(component)) {
           localStorage.setItem(component, Cookies.get(component));
-        } else {
-          localStorage.setItem(component, 'true');
         }
       });
-      localStorage.cookiesMigrated = true;
+      localStorage.setItem('cookiesMigrated', 'true');
       console.debug('Cookies Migrated');
     }
   };
 
   checkForCookies();
-
-  // Theme loading
-  const theme = $('#mode');
-  if (typeof localStorage.mode === 'undefined' || localStorage.mode = null) {
-    localStorage.mode = 'night';
-  }
-  switch (localStorage.mode) {
-    case 'night':
-      theme.attr('href', "/css/bootstrap-night.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
-      http.toggleClass('night');
-      break;
-    case 'retro':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      $('html').removeClass();
-      $('html').addClass('retro');
-      break;
-    case 'eidolon':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      $('html').removeClass();
-      $('html').addClass('eidolon');
-      break;
-    default:
-      // do nothing, defaults are set up already in dependencies
-      break;
-  }
   const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
 </script>

@@ -72,46 +72,27 @@
 
   // Theme loading
   const theme = $('#mode');
-  if (typeof localStorage.mode === 'undefined') {
+  if (typeof localStorage.mode === 'undefined' || localStorage.mode = null) {
     localStorage.mode = 'night';
   }
-  const themecustom = $('#mode-custom');
   switch (localStorage.mode) {
     case 'night':
       theme.attr('href', "/css/bootstrap-night.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
-      themecustom.attr('href', "/css/main.night.css?v={{lookup sums 'css/main.night.css'}}");
-      theme.toggleClass('night');
+      http.toggleClass('night');
       break;
     case 'retro':
       theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.retro.css?v={{lookup sums 'css/main.retro.css'}}");
-      theme.toggleClass('retro');
+      $('html').removeClass();
+      $('html').addClass('retro');
       break;
     case 'eidolon':
       theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.eidolon.css?v={{lookup sums 'css/main.eidolon.css'}}");
-      theme.toggleClass('eidolon');
+      $('html').removeClass();
+      $('html').addClass('eidolon');
       break;
     default:
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.css?v={{lookup sums 'css/main.css'}}");
+      // do nothing, defaults are set up already in dependencies
       break;
   }
   const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
-
-  // Cookie Consent setup
-  window.addEventListener("load", () => {
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#000"
-        },
-        "button": {
-          "background": "#f1d600"
-        }
-      },
-      "theme": "classic",
-      "position": "bottom-right"
-    })
-  });
 </script>

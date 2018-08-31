@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, updateGrid,
+/* globals $, moment, updateGrid,
   localStorage, Notification, sendNotification,
   addNotifiedId, isNotifiable, getImage,
   getObjects, calculateInventory,
@@ -25,8 +25,9 @@ let earthCurrentIndicatorColor;
 // Update worldstate timestamp
 function updateWorldStateTime() {
   if (document.getElementById('worldstateinfo')) {
-    document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
-      Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+    document
+      .getElementById('worldstateinfo')
+      .setAttribute('data-original-title', `World State for ${localStorage.platform} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
   }
 }
 
@@ -39,12 +40,12 @@ function updateDataDependencies() {
 function updateEarthTitle() {
   if (!earthIsDay) {
     earthCurrentIndicator = 'Night';
-    earthCurrentIndicatorColor = 'darkblue';
+    earthCurrentIndicatorColor = 'night';
     earthCurrentTitle = 'Time until day: ';
     earthCurrentTitleTimezone = 'Time at day: ';
   } else {
     earthCurrentIndicator = 'Day';
-    earthCurrentIndicatorColor = 'orange';
+    earthCurrentIndicatorColor = 'day';
     earthCurrentTitle = 'Time until night: ';
     earthCurrentTitleTimezone = 'Time at night: ';
   }
@@ -124,7 +125,7 @@ function updateEvents() {
       }
     });
     $('#event-title').hide();
-    if (Cookies.get('event') === 'true') {
+    if (localStorage.event === 'true') {
       $('#component-event').show();
     }
   } else {
@@ -136,12 +137,12 @@ function updateEvents() {
 function updateCetusTitle() {
   if (!cetusIsDay) {
     cetusCurrentIndicator = 'Night';
-    cetusCurrentIndicatorColor = 'darkblue';
+    cetusCurrentIndicatorColor = 'night';
     cetusCurrentTitle = 'Time until day: ';
     cetusCurrentTitleTimezone = 'Time at day: ';
   } else {
     cetusCurrentIndicator = 'Day';
-    cetusCurrentIndicatorColor = 'orange';
+    cetusCurrentIndicatorColor = 'day';
     cetusCurrentTitle = 'Time until night: ';
     cetusCurrentTitleTimezone = 'Time at night: ';
   }
@@ -185,7 +186,7 @@ function updateCetusCycle() {
       addNotifiedId(worldState.cetusCycle.id);
     }
   } else if (isNotifiable(worldState.cetusCycle.id, 'cetus.night')) {
-    const sound = JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('sound_cetus_night');
+    const sound = JSON.parse(localStorage.notificationfilters || '[]').includes('sound_cetus_night');
     sendNotification(worldState.cetusCycle.shortString, 'Cetus - It\'s Hunting Time!', sound ? 'audio/eidolon.mp3' : undefined);
     addNotifiedId(worldState.cetusCycle.id);
   }
@@ -565,7 +566,7 @@ function updateAlerts() {
           $('#alertbody').before(alertRow);
 
           if (isNotifiable(alert.id, 'alerts', alert.rewardTypes)) {
-            const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_alert');
+            const sound = JSON.parse(localStorage.soundoptions || '[]').includes('sound_alert');
             sendNotification(
               `${alert.mission.reward.asString}\n${alert.eta} Remaining`,
               `${alert.mission.type} - ${alert.mission.node}`, sound ? 'audio/TextMessage_SingleDrumHit.mp3' : undefined,
@@ -711,7 +712,7 @@ function updateSortie() {
 
 function updateFissure() {
   const {fissures} = worldState;
-  const filteredPlanets = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
+  const filteredPlanets = JSON.parse(localStorage.fissurefilters || '[]');
 
   if (fissures.length !== 0) {
     $('#fissuretitle').hide();
@@ -974,7 +975,7 @@ function updateInvasions() {
         invasionRow += `${progress.get(0).outerHTML}</div></li>`;
 
         if (isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
-          const sound = JSON.parse(localStorage.getItem('soundoptions') || '[]').includes('sound_invasion');
+          const sound = JSON.parse(localStorage.soundoptions || '[]').includes('sound_invasion');
           const rewards = `${invasion.attackerReward.asString.length ? `${invasion.attackerReward.asString} vs ` : ''}${invasion.defenderReward.asString}`;
           sendNotification(
             `${invasion.desc} • ${invasion.node}\n${invasion.attackingFaction} vs ${invasion.defendingFaction}\n${invasion.eta.replace('-Infinityd', '??').replace('Infinityd', '??')} Remaining`,
@@ -1034,12 +1035,12 @@ function updatePage() {
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform')}`, data => {
+  $.getJSON(`https://api.warframestat.us/${localStorage.platform}`, data => {
     worldState = JSON.parse(JSON.stringify(data)); // eslint-disable-line no-global-assign
     updateTime = (new Date()).getTime();
     updateDataDependencies();
     updatePage();
-    if (JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('wsUpdate')) {
+    if (JSON.parse(localStorage.notificationfilters || '[]').includes('wsUpdate')) {
       sendNotification('Worldstate Updated');
     }
   });

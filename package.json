@@ -34,8 +34,10 @@
     "express-handlebars": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.9.4",
+    "gulp-less": "^4.0.1",
     "gulp-minify": "git://github.com/zbennett10/gulp-minify.git#e1d8905041af230fd0fb980aa8a26c12c53e03f7",
     "hbs": "^4.0.1",
+    "nodemon": "^1.18.4",
     "serve-favicon": "~2.5.0",
     "sinon": "6.0.1",
     "supertest": "^3.0.0",
@@ -51,5 +53,15 @@
     "gulp-hashsum": "^1.2.0",
     "mocha": "^5.1.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/js/*",
+      "public/css/*",
+      "public/sums.json"
+    ],
+    "env": {
+      "PORT": 9002
+    }
   }
 }

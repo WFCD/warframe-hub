@@ -1,13 +1,12 @@
 /* globals $, localStorage, Notification */
 /* eslint-disable no-unused-vars */
-
 function calculateInventory(total, sold) {
   return `${total - sold}/${total}`;
 }
 
 // load filter settings
 const loadNotificationFilterData = () => {
-  const filterData = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  const filterData = JSON.parse(localStorage.notificationfilters || '[]');
   filterData.forEach(filter => {
     $(`.notif-filter-check[data-notif="${filter}"]`)
       .prop('checked', true);
@@ -15,7 +14,7 @@ const loadNotificationFilterData = () => {
 };
 
 const loadFissuresFilterData = () => {
-  const filterData = JSON.parse(localStorage.getItem('fissurefilters') || '[]');
+  const filterData = JSON.parse(localStorage.fissurefilters || '[]');
   filterData.forEach(filter => {
     $(`.fissure-filter-check[data-fissure="${filter}"]`)
       .prop('checked', true);
@@ -23,7 +22,7 @@ const loadFissuresFilterData = () => {
 };
 
 const loadSoundOptionsData = () => {
-  const filterData = JSON.parse(localStorage.getItem('soundoptions') || '[]');
+  const filterData = JSON.parse(localStorage.soundoptions || '[]');
   filterData.forEach(filter => {
     $(`.sound-option-check[data-sound="${filter}"]`)
       .prop('checked', true);
@@ -60,18 +59,18 @@ const sendNotification = (body, title = 'Warframe Hub', sound, link) => {
 };
 
 const isNotNotified = id => {
-  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
+  const notifiedIds = JSON.parse(localStorage.notifiedIds || '[]');
   return !notifiedIds.includes(id);
 };
 
 const addNotifiedId = id => {
-  const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
+  const notifiedIds = JSON.parse(localStorage.notifiedIds || '[]');
   notifiedIds.push(id);
-  localStorage.setItem('notifiedIds', JSON.stringify(notifiedIds));
+  localStorage.notifiedIds = JSON.stringify(notifiedIds);
 };
 
 const isNotifiable = (id, event, items) => {
-  const tracked = JSON.parse(localStorage.getItem('notificationfilters') || '[]');
+  const tracked = JSON.parse(localStorage.notificationfilters || '[]');
   const includesItems = (typeof items !== 'undefined' && items.length > 0) ? tracked.some(r => items.indexOf(r) >= 0) : true;
   return isNotNotified(id) && tracked.includes(event) && (includesItems);
 };
@@ -86,11 +85,11 @@ const getImage = (
 ) => {
   if (typeof SVGRect !== 'undefined' && !forcePng) {
     return `<img src="img/${type}/${image}.svg" class="${className} inv" title="${title}" alt="${title}" />`;
-  } else if (type === 'fissure') {
+  } if (type === 'fissure') {
     return `<img src="${fissureGlyphs[parseInt(image, 10) - 1]}" class="${className}" title="${title}" alt="${title}" />`;
-  } else if (type === 'archwing') {
+  } if (type === 'archwing') {
     return `<img src="https://i.imgur.com/R1kpRx4.png" class="${className}" title="${title}" alt="${title}" />`;
-  } else if (type === 'nightmare') {
+  } if (type === 'nightmare') {
     return `<img src="https://i.imgur.com/x5XoktW.png" class="${className}" title="${title}" alt="${title}" />`;
   }
   return `<img src="img/${type}/${image}.png" class="${className}" alt="${image}" />`;

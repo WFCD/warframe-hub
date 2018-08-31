@@ -1,45 +1,47 @@
 <script>
-	/* globals $, updateGrid, Cookies, sums */
-	$(function() {
-		$('#nightmode').click(function() {
-			setTheme('night', 'night');
-		});
-	});
-	$(function() {
-		$('#retro').click(function() {
-			setTheme('retro', 'night');
-		});
-	});
-	$(function() {
-		$('#no-theme').click(function() {
-			setTheme(undefined, undefined, true);
-		});
-	});
-	$(function() {
-		$('#eidolon').click(function() {
-			setTheme('eidolon', 'default', false);
-		});
-	});
+  /* globals $, updateGrid, Cookies, sums */
+  const html = $('html');
+  $(function() {
+    $('#nightmode').click(function() {
+      setTheme('night', 'night');
+    });
+  });
+  $(function() {
+    $('#retro').click(function() {
+      setTheme('retro', 'night');
+    });
+  });
+  $(function() {
+    $('#no-theme').click(function() {
+      setTheme(undefined, undefined, true);
+    });
+  });
+  $(function() {
+    $('#eidolon').click(function() {
+      setTheme('eidolon', 'default', false);
+    });
+  });
 
   const setTheme = (themeName, superTheme, reset) => {
-    
     const theme = $('#mode');
-    const themecustom = $('#mode-custom');
     if (!reset) {
       if (theme.hasClass(themeName)) {
         setTheme(false, false, true);
       } else {
         theme.attr('href', `css/bootstrap-${superTheme}.min.css?v=${sums[`css/bootstrap-${superTheme}.min.css`]}`);
-        themecustom.attr('href', `css/main.${themeName}.css?v=${sums[`css/main.${themeName}.css`]}`);
         theme.removeClass();
         theme.addClass(themeName);
-        Cookies.set('mode', themeName, {expires: 365});
+        html.removeClass(localStorage.mode);
+        localStorage.mode = themeName;
+        html.addClass(themeName);
       }
     } else {
       theme.attr('href', `css/bootstrap-default.min.css?v=${sums[`css/bootstrap-${superTheme}.min.css`]}`);
-      themecustom.attr('href', `css/main.css?v=${sums['css/main.css']}`);
       theme.removeClass();
-      Cookies.set('mode', 'day', {expires: 365});
+      html.removeClass(localStorage.mode);
+      localStorage.mode = 'day';
+      html.attr('data-theme', 'day');
+      html.addClass('day');
     }
     if (typeof updateGrid !== 'undefined') {
       updateGrid();

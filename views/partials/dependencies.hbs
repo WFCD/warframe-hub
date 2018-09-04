@@ -24,9 +24,6 @@
 <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
 <!-- Cookies CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
-<!-- Cookie Consent -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 
 <!-- FontAwesome CDN -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -34,62 +31,51 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel='stylesheet' href="https://cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css">
 <link rel="stylesheet" href="/css/common.css?v={{lookup sums 'css/common.css'}}" id="common-css">
-<link rel="stylesheet" href="/css/main.night.css?v={{lookup sums 'css/main.night.css'}}" id="mode-custom">
+<link rel="stylesheet" href="/css/main.css?v={{lookup sums 'css/main.css'}}">
+<link rel="stylesheet" href="/css/main.eidolon.css?v={{lookup sums 'css/main.eidolon.css'}}">
+<link rel="stylesheet" href="/css/main.retro.css?v={{lookup sums 'css/main.retro.css'}}">
+<link rel="stylesheet" href="/css/main.night.css?v={{lookup sums 'css/main.night.css'}}">
 
 <script>
   /* global $, Cookies */
+  const components = ['event', 'acolytes', 'cetus', 'earth', 'bounties',
+    'alerts', 'news', 'invasions', 'reset', 'sortie', 'fissures', 'baro',
+    'darvo', 'deals'];
+
   // Wait until page is ready to display
   document.getElementsByTagName("html")[0].style.visibility = "hidden";
   $(document).ready(function() {
     document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    // Theme loading
+    if (!localStorage.getItem('mode')) {
+      localStorage.setItem('mode', 'night');
+    }
+    if (!$('html').hasClass(localStorage.getItem('mode'))) {
+      setTheme(localStorage.getItem('mode'));
+    }
   });
 
-  // Theme loading
-  const theme = $('#mode');
-  if (typeof Cookies.get('mode') === 'undefined') {
-    Cookies.set('mode', 'night', {expires: 365 });
-  }
-  const themecustom = $('#mode-custom');
-  switch (Cookies.get('mode')) {
-    case 'night':
-      theme.attr('href', "/css/bootstrap-night.min.css?v={{lookup sums 'css/bootstrap-night.min.css'}}");
-      themecustom.attr('href', "/css/main.night.css?v={{lookup sums 'css/main.night.css'}}");
-      theme.toggleClass('night');
-      break;
-    case 'retro':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.retro.css?v={{lookup sums 'css/main.retro.css'}}");
-      theme.toggleClass('retro');
-      break;
-    case 'eidolon':
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.eidolon.css?v={{lookup sums 'css/main.eidolon.css'}}");
-      theme.toggleClass('eidolon');
-      break;
-    default:
-      theme.attr('href', "/css/bootstrap-default.min.css?v={{lookup sums 'css/bootstrap-default.min.css'}}");
-      themecustom.attr('href', "/css/main.css?v={{lookup sums 'css/main.css'}}");
-      break;
-  }
-  const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
-  
-  // Cookie Consent setup
-  window.addEventListener("load", () => {
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#000"
-        },
-        "button": {
-          "background": "#f1d600"
+  const checkForCookies = () => {
+    if (!localStorage.getItem('cookiesMigrated')) {
+      if (Cookies.get('mode')) {
+        localStorage.setItem('mode', Cookies.get('mode'));
+      } else {
+        localStorage.setItem('mode', 'night');
+      }
+      if (Cookies.get('platform')) {
+        localStorage.setItem('platform', Cookies.get('platform'));
+      }
+      components.forEach(component => {
+        if (Cookies.get(component)) {
+          localStorage.setItem(component, Cookies.get(component));
         }
-      },
-      "theme": "classic",
-      "position": "bottom-right"
-    })
-  });
-</script>
+      });
+      localStorage.setItem('cookiesMigrated', 'true');
+      console.debug('Cookies Migrated');
+    }
+  };
 
-<script>
-  
+  checkForCookies();
+  const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
 </script>

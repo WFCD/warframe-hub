@@ -1,4 +1,4 @@
-/* globals $, moment, Cookies, updateGrid,
+/* globals $, moment, updateGrid,
   localStorage, Notification, sendNotification,
   addNotifiedId, isNotifiable, getImage,
   getObjects, calculateInventory,
@@ -25,8 +25,9 @@ let earthCurrentIndicatorColor;
 // Update worldstate timestamp
 function updateWorldStateTime() {
   if (document.getElementById('worldstateinfo')) {
-    document.getElementById('worldstateinfo').setAttribute('data-original-title', `World State for ${
-      Cookies.get('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
+    document
+      .getElementById('worldstateinfo')
+      .setAttribute('data-original-title', `World State for ${localStorage.getItem('platform')} updated at ${moment(updateTime).format('MMMM Do YYYY, h:mm:ss a')}`);
   }
 }
 
@@ -39,12 +40,12 @@ function updateDataDependencies() {
 function updateEarthTitle() {
   if (!earthIsDay) {
     earthCurrentIndicator = 'Night';
-    earthCurrentIndicatorColor = 'darkblue';
+    earthCurrentIndicatorColor = 'night';
     earthCurrentTitle = 'Time until day: ';
     earthCurrentTitleTimezone = 'Time at day: ';
   } else {
     earthCurrentIndicator = 'Day';
-    earthCurrentIndicatorColor = 'orange';
+    earthCurrentIndicatorColor = 'day';
     earthCurrentTitle = 'Time until night: ';
     earthCurrentTitleTimezone = 'Time at night: ';
   }
@@ -124,7 +125,7 @@ function updateEvents() {
       }
     });
     $('#event-title').hide();
-    if (Cookies.get('event') === 'true') {
+    if (localStorage.getItem('event') === 'true') {
       $('#component-event').show();
     }
   } else {
@@ -136,12 +137,12 @@ function updateEvents() {
 function updateCetusTitle() {
   if (!cetusIsDay) {
     cetusCurrentIndicator = 'Night';
-    cetusCurrentIndicatorColor = 'darkblue';
+    cetusCurrentIndicatorColor = 'night';
     cetusCurrentTitle = 'Time until day: ';
     cetusCurrentTitleTimezone = 'Time at day: ';
   } else {
     cetusCurrentIndicator = 'Day';
-    cetusCurrentIndicatorColor = 'orange';
+    cetusCurrentIndicatorColor = 'day';
     cetusCurrentTitle = 'Time until night: ';
     cetusCurrentTitleTimezone = 'Time at night: ';
   }
@@ -1034,7 +1035,7 @@ function updatePage() {
 
 // Retrieves the easy to parse worldstate from WFCD
 function getWorldState() {
-  $.getJSON(`https://api.warframestat.us/${Cookies.get('platform')}`, data => {
+  $.getJSON(`https://api.warframestat.us/${localStorage.getItem('platform')}`, data => {
     worldState = JSON.parse(JSON.stringify(data)); // eslint-disable-line no-global-assign
     updateTime = (new Date()).getTime();
     updateDataDependencies();

@@ -1,0 +1,388 @@
+.retro {
+  /*
+  The timers currently call for a font that's hosted on my Dropbox. I don't ever plan to move it, but you could download the font, save it locally, and change the source url. (in the first argument of the CSS code)
+
+  The font I used is free to use personally, or commercially.
+  http://www.1001fonts.com/digital-dream-font.html
+  I used the "Digital dream Fat Narrow" version.
+  */
+
+  /* Designed by AJman14 */
+
+  body {
+  	color: #0a0;
+  	font-weight: bold;
+  	background-color: #070707;
+    font-size: 1em;
+    font-family: "Hack";
+  }
+
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Hack";
+  }
+
+  /* Grid padding */
+  .grid {
+    margin-top: 50px;
+  }
+
+  /* Highlighted (selected) text */
+  ::selection {
+  	color: black;
+  	background: #0f0;
+  	/* WebKit and Blink Browsers */
+  }
+
+  ::-moz-selection {
+  	color: black;
+  	background: #0f0;
+  	/* Gecko Browsers */
+  }
+
+  /* Links */
+  a, a:hover, a:focus {
+  	color: #0f0;
+  }
+
+  a:focus {
+  	outline: 5px auto #0f0;
+  }
+
+  /* Header */
+  .navbar-default,
+  .navbar-footer,
+  .navbar-footer a,
+  .navbar-default .navbar-nav > li > a,
+  .navbar-default .navbar-brand,
+  .dropdown-menu > li > a,
+  .dropdown-menu {
+  	color: #0f0;
+  	font-weight: bold;
+  	background-color: black;
+  }
+
+  /* Header :Hover: :Focus: */
+  .dropdown-menu > li > a:focus,
+  .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav > .open > a,
+  .navbar-default .navbar-nav > .open > a:hover,
+  .navbar-default .navbar-nav > .open > a:focus,
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus,
+  .navbar-default .navbar-brand:hover,
+  .navbar-default .navbar-brand:focus {
+  	color: #0f0;
+  	background-color: #070707;
+  }
+
+  /* Credits pop-up */
+  .modal-content {
+  	color: #0a0;
+  	background-color: black;
+  }
+
+  /* Credits pop-up lines */
+  .modal-header {
+  	border-bottom: 1px solid #070;
+  }
+
+  .modal-footer {
+  	border-top: 1px solid #070;
+  }
+
+  /* Credits pop-up Button */
+  .btn, .btn:focus, .btn.focus {
+  	color: #0a0;
+  	background-color: #070707;
+  }
+
+  .btn:hover {
+  	color: #0f0;
+  }
+
+  .btn:focus, .btn:active:focus {
+  	color: #0f0;
+  	outline: 5px auto #0a0;
+  }
+
+  /* Credits pop-up Close Button */
+  button.close, .close:hover, .close:focus {
+  	color: #0f0;
+  }
+
+  .close:active.focus {
+  	outline: 5px auto #0a0;
+  }
+
+  /* WFCD Credits pop-up banner */
+  .wfcd-banner {
+  	background-color: black;
+  }
+
+  /* How to Fish page */
+  .panel-primary > .panel-heading, .panel {
+  	color: #0f0;
+  	font-weight: bold;
+  	background-color: black;
+  }
+
+  /* Fish Map pop-up text color */
+  .gm-style .gm-style-iw {
+  	color: #0f0;
+  	background-color: black;
+  	border-style: solid;
+  	border-width: 10px 10px 10px 10px;
+  	border-color: black;
+  }
+
+  /* Expanding Maps Border Color */
+  .panel-primary > .panel-heading, .panel-primary, .list-group-item-borderbottom, .list-group-item  {
+  	border-color: #040;
+  }
+
+  .list-group-item-borderless {
+    border-top: #040;
+  }
+
+  .list-group-item-borderbottom {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .list-group-item:not(.list-group-item-borderbottom) {
+    border: 0 transparent;
+  }
+
+  .list-group-item-borderbottom {
+    border-bottom: 1px solid #040;
+  }
+
+  /* Fish information picture pop-ups */
+  .fish-tooltip-inner img,
+  .fish-tooltip:hover div {
+  	background-color: black;
+  	background: black;
+  	border: 1px solid #070;
+  }
+
+  /* Fish names, etc. (pop-up text) color */
+  .fish-tooltip {
+  	font-weight: normal;
+  	color: #0a0;
+  }
+
+  /* Table Borders, and text color */
+  .fish-info, .fish-info > tbody > tr > td {
+  	font-weight: normal;
+  	border: 2px solid #040;
+  	/* Was too bright at #070 */
+  	color: #0a0;
+  }
+
+  /* Table Headers */
+  .fish-info thead tr th {
+  	color: #0f0;
+  	background-color: black;
+  	font-weight: normal;
+  }
+
+  /* Table background colors odd */
+  .color1 > td, .color3 > td, .color5 > td, .color7 > td {
+  	background-color: #070707;
+  }
+
+  /* Table background colors even */
+  .color2 > td, .color4 > td, .color6 > td {
+  	background-color: black;
+  }
+
+  /* Timer Boxes */
+  .list-group-item, .table-striped > tbody > tr:nth-of-type(odd) {
+  	background-color: black;
+  	color: #0a0;
+  }
+
+  /* Timers */
+
+  /* Day */
+  .orange {
+  	color: #0a0;
+  	text-shadow: 0 0 15px orange;
+  	font-weight: normal;
+  	font-family: "Hack";
+  }
+
+  /* Night */
+  .darkblue {
+  	color: #0a0;
+    text-shadow: 0 0 15px #009dff;
+  	font-weight: normal;
+  	font-family: "Hack";
+  }
+
+  /* Green */
+  .label-success {
+    color: #0a0;
+    text-shadow: 0 0 15px #ff9c00;
+  }
+
+  /* Orange */
+  .label-warning {
+  	color: #0a0;
+    text-shadow: 0 0 15px #ff9c00;
+  }
+
+  /* Red */
+  .label-danger {
+  	color: #0a0;
+    text-shadow: 0 0 15px #ff1900;
+  }
+
+  /* Blue - Standard, no warnings */
+  .label {
+  	color: #0a0;
+    text-shadow: 0 0 15px #009dff;
+  	background: none;
+  	font-weight: normal;
+  	font-family: "Hack";
+    font-size: 1.1em!important;
+  }
+
+  /* Picker dropdown style */
+  .component-selector ul li .checkbox {
+    margin-left: 30px;
+  }
+
+  .platform-picker ul li,
+  .theme-picker ul li,
+  .component-selector ul li {
+    border-top: 1px solid #040;
+  }
+
+  .platform-picker ul a span,
+  .theme-picker ul a span,
+  .component-selector ul a span {
+    flex-grow: 1;
+    color: #0f0;
+  }
+
+  .inv {
+    filter: invert(100%);
+  }
+
+  .archwing, .nightmare, .sortie .faction-image {
+  	background-color: #f5f!important;
+  	/* Pink, then Inverted */
+  	-webkit-filter: invert(100%);
+  	filter: invert(100%);
+  }
+
+  .progress-bar {
+    border: 1px solid #040;
+    background-color: transparent;
+  }
+  .progress {
+    height: 15px;
+    margin-bottom: 10px;
+    background-color: black;
+  }
+
+  .winning-right, .winning-left {
+    background-color: #0a0;
+  }
+
+  .corpus-invasion {
+    background-color: transparent;
+  }
+
+  .grineer-invasion {
+    background-color: transparent;
+  }
+
+  .infested-invasion {
+    background-color: transparent;
+  }
+
+  .corrupted-invasion {
+    background-color: transparent;
+  }
+
+  .default-invasion {
+    background-color: transparent;
+  }
+
+  /* Scrollbar */
+  *::-webkit-scrollbar {
+  	width: 10px;
+  	height: 10px;
+  	background: #1e1e1e;
+  	border: 1px solid #252525;
+  }
+
+  *::-webkit-scrollbar-button {
+  	display: none;
+  }
+
+  *::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-track {
+  	border: 0;
+  	box-shadow: none;
+  }
+
+  *::-webkit-scrollbar-thumb {
+  	min-height: 28px;
+  	background: #0c0c0c;
+  }
+
+  *::-webkit-scrollbar-corner,
+  *::-webkit-scrollbar-track {
+  	background: black;
+  }
+
+  /* Bounty rewards */
+  /* Tables stuff */
+  .bountiesList tbody tr td {
+    font-size: 11px;
+  }
+
+  .bountiesList tbody tr td ul {
+    padding-left: 16px;
+  }
+
+  /* mobile width fix */
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    /* For list items that go over labels */
+    .list-group-item {
+      font-size: .9em;
+    }
+
+    .label {
+      font-size: .9em;
+      margin-top: 2px;
+    }
+
+    .fissure-body {
+      display: inline-block;
+      max-width: 80%;
+      overflow: scroll;
+    }
+  }
+
+  .dropdown-menu li.list-group-item-success a {
+    background-color: #1d1d1d;
+  }
+  .container .jumbotron, .container-fluid .jumbotron {
+    background: transparent;
+  }
+
+  /* Loader */
+  .loader {
+    fill: #0f0;
+  }
+}

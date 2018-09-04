@@ -1,6 +1,5 @@
 /* globals $, localStorage, Notification */
 /* eslint-disable no-unused-vars */
-
 function calculateInventory(total, sold) {
   return `${total - sold}/${total}`;
 }
@@ -86,11 +85,11 @@ const getImage = (
 ) => {
   if (typeof SVGRect !== 'undefined' && !forcePng) {
     return `<img src="img/${type}/${image}.svg" class="${className} inv" title="${title}" alt="${title}" />`;
-  } else if (type === 'fissure') {
+  } if (type === 'fissure') {
     return `<img src="${fissureGlyphs[parseInt(image, 10) - 1]}" class="${className}" title="${title}" alt="${title}" />`;
-  } else if (type === 'archwing') {
+  } if (type === 'archwing') {
     return `<img src="https://i.imgur.com/R1kpRx4.png" class="${className}" title="${title}" alt="${title}" />`;
-  } else if (type === 'nightmare') {
+  } if (type === 'nightmare') {
     return `<img src="https://i.imgur.com/x5XoktW.png" class="${className}" title="${title}" alt="${title}" />`;
   }
   return `<img src="img/${type}/${image}.png" class="${className}" alt="${image}" />`;

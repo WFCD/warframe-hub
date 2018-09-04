@@ -120,16 +120,16 @@ function updateTimeBadges() {
 }
 
 // Set default platform to PC if there isn't one
-if (typeof Cookies.get('platform') === 'undefined') {
-  Cookies.set('platform', 'pc', {expires: 365});
+if (!localStorage.getItem('platform')) {
+  localStorage.setItem('platform', 'pc');
 }
-selectPlatform(Cookies.get('platform'));
+selectPlatform(localStorage.getItem('platform'));
 
 // Platform switcher
 $('.platform-picker li').click(e => {
   const platform = $(e.currentTarget).attr('data-platform');
   selectPlatform(platform);
-  Cookies.set('platform', platform, {expires: 365});
+  localStorage.setItem('platform', platform);
   platformSwapped = true; // eslint-disable-line no-global-assign
   getWorldState();
   setTimeout(updatePlatformSwitch, 30000);
@@ -139,14 +139,9 @@ $('.platform-picker li').click(e => {
 [['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
   ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
   ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
-  let value = Cookies.get(component);
-  if (typeof value === 'undefined') {
-    if (typeof defValue === 'undefined') {
-      value = 'true';
-    } else {
-      value = defValue;
-    }
-    Cookies.set(component, value, {expires: 365});
+  const value = localStorage.getItem(component);
+  if (typeof value === 'undefined' || value === null) {
+    localStorage.setItem(component, defValue || 'true');
   }
   if (value === 'true') {
     $(`.component-check[data-component="${component}"]`)

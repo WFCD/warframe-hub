@@ -3,6 +3,7 @@ const minify = require('gulp-minify');
 const cleanCss = require('gulp-clean-css');
 const del = require('del');
 const hashsum = require('gulp-hashsum');
+const less = require('gulp-less');
 
 gulp.task('clean-js', () => del([
   './public/js/main.js',
@@ -29,6 +30,11 @@ gulp.task('pack-js', () => gulp.src(['assets/js/*.js'])
   }))
   .pipe(gulp.dest('public/js')));
 
+gulp.task('compile-less', () => gulp.src(['assets/less/*.less'])
+  .pipe(less())
+  .pipe(cleanCss())
+  .pipe(gulp.dest('./public/css')));
+
 gulp.task('pack-css', () => gulp.src(['./assets/css/*.css'])
   .pipe(cleanCss())
   .pipe(gulp.dest('./public/css')));
@@ -41,6 +47,6 @@ gulp.task('hash', () => gulp.src(['public/js/**/*.js', 'public/css/**/*.css'])
     filename: 'sums.json',
   })));
 
-gulp.task('default', gulp.series('clean-js', 'clean-css', 'pack-css', 'pack-js'));
+gulp.task('default', gulp.series('clean-js', 'clean-css', 'compile-less', 'pack-css', 'pack-js'));
 
 gulp.task('default-hash', gulp.series('default', 'hash'));

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-/* globals $, moment, Cookies, Draggabilly, Packery, updateGrid,
+/* globals $, moment, Draggabilly, Packery, updateGrid,
   localStorage, Notification, loadFilterData, sendNotification,
   formatDurationShort, formatTimer, getWorldState, worldState,
   selectPlatform, updatePlatformSwitch, platformSwapped,
@@ -162,8 +162,7 @@ $('.component-check').click(e => {
   const status = target.prop('checked');
   const component = target.attr('data-component');
   const componentElement = $(`#component-${component}`);
-
-  Cookies.set(component, status, {expires: 365});
+  localStorage.setItem(component, status ? 'true' : 'false')
   if (status) {
     componentElement.show();
   } else {
@@ -280,7 +279,7 @@ $('#filters-picker').removeClass('hide');
   });
 
   // get saved dragged positions
-  const initPositions = Cookies.getJSON('dragPositions');
+  const initPositions = JSON.parse(localStorage.getItem('dragPositions'));
   // init layout with saved positions
   grid.packery('initShiftLayout', initPositions);
 
@@ -294,7 +293,7 @@ $('#filters-picker').removeClass('hide');
   grid.on('dragItemPositioned', () => {
     // save drag positions
     const positions = grid.packery('getShiftPositions');
-    Cookies.set('dragPositions', positions, {expires: 365});
+    localStorage.setItem('dragPositions', JSON.stringify(positions));
   });
 
   this.updateGrid = () => {

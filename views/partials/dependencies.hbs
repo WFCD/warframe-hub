@@ -66,11 +66,18 @@
       if (Cookies.get('platform')) {
         localStorage.setItem('platform', Cookies.get('platform'));
       }
+      if (Cookies.get('dragPositions')) {
+        localStorage.setItem('dragPositions', JSON.stringify(Cookies.getJSON('dragPositions')));
+      }
       components.forEach(component => {
         if (Cookies.get(component)) {
           localStorage.setItem(component, Cookies.get(component));
+          Cookies.remove(component);
         }
       });
+      Cookies.remove('mode');
+      Cookies.remove('platform');
+      Cookies.remove('dragPositions');
       localStorage.setItem('cookiesMigrated', 'true');
       console.debug('Cookies Migrated');
     }

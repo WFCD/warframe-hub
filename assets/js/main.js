@@ -162,7 +162,7 @@ $('.component-check').click(e => {
   const status = target.prop('checked');
   const component = target.attr('data-component');
   const componentElement = $(`#component-${component}`);
-  localStorage.setItem(component, status)
+  localStorage.setItem(component, status ? 'true' : 'false')
   if (status) {
     componentElement.show();
   } else {

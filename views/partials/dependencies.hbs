@@ -22,8 +22,6 @@
 <script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
 <!-- draggabilly CDN -->
 <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
-<!-- Cookies CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 
 <!-- FontAwesome CDN -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -37,7 +35,7 @@
 <link rel="stylesheet" href="/css/main.night.css?v={{lookup sums 'css/main.night.css'}}">
 
 <script>
-  /* global $, Cookies */
+  /* global $ */
   const components = ['event', 'acolytes', 'cetus', 'earth', 'bounties',
     'alerts', 'news', 'invasions', 'reset', 'sortie', 'fissures', 'baro',
     'darvo', 'deals'];
@@ -56,33 +54,5 @@
     }
   });
 
-  const checkForCookies = () => {
-    if (!localStorage.getItem('cookiesMigrated')) {
-      if (Cookies.get('mode')) {
-        localStorage.setItem('mode', Cookies.get('mode'));
-      } else {
-        localStorage.setItem('mode', 'night');
-      }
-      if (Cookies.get('platform')) {
-        localStorage.setItem('platform', Cookies.get('platform'));
-      }
-      if (Cookies.get('dragPositions')) {
-        localStorage.setItem('dragPositions', JSON.stringify(Cookies.getJSON('dragPositions')));
-      }
-      components.forEach(component => {
-        if (Cookies.get(component)) {
-          localStorage.setItem(component, Cookies.get(component));
-          Cookies.remove(component);
-        }
-      });
-      Cookies.remove('mode');
-      Cookies.remove('platform');
-      Cookies.remove('dragPositions');
-      localStorage.setItem('cookiesMigrated', 'true');
-      console.debug('Cookies Migrated');
-    }
-  };
-
-  checkForCookies();
   const sums = JSON.parse("{{json sums}}".replace(/&quot;/ig, '"'));
 </script>

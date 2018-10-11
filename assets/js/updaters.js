@@ -59,23 +59,19 @@ function updateEvents() {
   if (events.length) {
     const componentBody = $('#component-event-body');
     events.forEach((event, index) => {
+      const eventContainerID = `event-${event.id}-title`;
+      let eventContainer = $(`#${eventContainerID}`);
       let title;
       let body = event.tooltip ? `<div class="text-center">${event.tooltip}</div><br />` : '';
-      if ($(`#event-${event.id}-title`).length === 0) {
+
+      if (eventContainer.length === 0) {
         if (index === 0) {
           title = `<h2 class="display-3 text-center">${event.description}</h2>`;
         } else {
           title = `<p class="text-center">${event.description}</p>`;
         }
-        let healthState = 'success';
-        const healthPerc = parseFloat(event.health);
-        if (healthPerc > 50 && healthPerc < 100) {
-          healthState = 'warning';
-        } else if (healthPerc < 50) {
-          healthState = 'danger';
-        }
         const victim = event.victimNode ? `<span class="label label-danger">${event.victimNode || ''}</span>` : '';
-        const health = event.health ? `<span class="label label-${healthState}">${event.health || 0}% Remaining</span>` : '';
+        const health = event.health ? '<span><span class="event-health-value"></span>% Remaining</span>' : '';
         body += `<div class="text-center d-inline">${victim}${health}</div><br />`;
         if (event.jobs) {
           let listItems = '<div class="container-fluid">';
@@ -114,14 +110,29 @@ function updateEvents() {
           body += event.rewards.length > 0 ? event.rewards.map(reward => `<div class="text-center d-inline"><span class="label label-success">${reward.asString}</span></div><br />`).join(' ') : '';
         }
         if (title && body) {
-          componentBody.append(`<li class="list-group-item list-group-item-borderless" id="event-${event.id}-title">${title}${body}</li>`);
+          componentBody.append(`<li class="list-group-item list-group-item-borderless" id="${eventContainerID}">${title}${body}</li>`);
+          eventContainer = $(`#${eventContainerID}`);
         }
         if (isNotifiable(event.id, 'operations')) {
           sendNotification(event.tooltip, event.description);
           addNotifiedId(event.id);
         }
-      } else if (event.expired) {
-        $(`#event-${event.id}-title`).remove();
+      }
+
+      if (event.expired) {
+        eventContainer.remove();
+      } else {
+        let healthState = 'success';
+        const healthPerc = parseFloat(event.health);
+        if (healthPerc > 50 && healthPerc < 100) {
+          healthState = 'warning';
+        } else if (healthPerc < 50) {
+          healthState = 'danger';
+        }
+
+        const healthContainer = eventContainer.find('.event-health-value');
+        healthContainer.text(event.health || 0);
+        healthContainer.parent().attr('class', `label label-${healthState}`);
       }
     });
     $('#event-title').hide();

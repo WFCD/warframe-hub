@@ -2,7 +2,7 @@
   <b-col md="6">
     <h3 class="text-center">Alerts</h3>
     <b-list-group>
-      <b-list-group-item :style="styleObject" v-for="alert in alerts" :key="alert.id" class="list-group-item-borderless">
+      <b-list-group-item :style="styleObject" v-for="alert in getAlerts" :key="alert.id" class="list-group-item-borderless">
         <span class="pull-left">
           <HubImg :src="archwing" name="Archwing Required for Mission" class="hubimage1" v-if="alert.archwingRequired" />
           <HubImg :src="nightmare" name="Nightmare Mission" class="hubimage1" v-if="alert.nightmare" />
@@ -52,6 +52,11 @@ import nightmare from '@/assets/img/nightmare.svg'
 export default {
   props: ['alerts'],
   name: 'AlertPanel',
+  computed: {
+  getAlerts() {
+    return this.$store.getters.worldstate.alerts;
+    }
+  },
   data () {
     return {
       styleObject: {

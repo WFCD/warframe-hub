@@ -1,0 +1,14 @@
+{
+  "pc": {
+    "display": "PC",
+    "key": "pc"
+  },
+  "ps4": {
+    "display": "PS4",
+    "key": "ps4"
+  },
+  "xb1": {
+    "display": "XB1",
+    "key": "xb1"
+  }
+}

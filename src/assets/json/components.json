@@ -1,0 +1,72 @@
+{
+  "event": {
+    "state": true,
+    "display": "Events",
+    "key": "event"
+  },
+  "acolytes": {
+    "state": true,
+    "display": "Acolytes",
+    "key": "acolytes"
+  },
+  "cetus": {
+    "state": true,
+    "display": "Cetus Cycle",
+    "key": "cetus"
+  },
+  "earth": {
+    "state": true,
+    "display": "Earth Cycle",
+    "key": "earth"
+  },
+  "bounties": {
+    "state": true,
+    "display": "Bounties Timer",
+    "key": "bounties"
+  },
+  "alerts": {
+    "state": true,
+    "display": "Alerts",
+    "key": "alerts"
+  },
+  "news": {
+    "state": true,
+    "display": "News",
+    "key": "news"
+  },
+  "invasions": {
+    "state": true,
+    "display": "Invasions",
+    "key": "invasions"
+  },
+  "reset": {
+    "state": true,
+    "display": "Reset Timer",
+    "key": "reset"
+  },
+  "sortie": {
+    "state": true,
+    "display": "Sortie",
+    "key": "sortie"
+  },
+  "fissures": {
+    "state": true,
+    "display": "Fissures",
+    "key": "fissures"
+  },
+  "baro": {
+    "state": true,
+    "display": "Void Trader",
+    "key": "baro"
+  },
+  "darvo": {
+    "state": true,
+    "display": "Darvo Deals",
+    "key": "darvo"
+  },
+  "deals": {
+    "state": false,
+    "display": "Sales",
+    "key": "deals"
+  }
+}

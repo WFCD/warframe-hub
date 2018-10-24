@@ -5,11 +5,10 @@
           <b-carousel-slide   v-for="(newsitem,index) in news" :key="index"
           v-if="newsitem.translations['en']"
           :text="newsitem.translations['en']">
-          <img slot="img" class="d-block   w-100" width="1024" height="250"
+          <img slot="img" class="d-block w-100" width="1024" height="250"
           :src="newsitem.imageLink" alt="image slot">
-          <p style="color: 'black'!important">
-            <b>Posted: {{newsitem.eta}} | More Info: <a :href="newsitem.link" target="_blank">Click</a>
-            </b>
+          <p>
+            Posted: {{newsitem.eta}} | More Info: <a :href="newsitem.link" target="_blank">Click</a>
           </p>
         </b-carousel-slide>
       </b-carousel>
@@ -17,16 +16,16 @@
 </template>
 <style>
   .carousel-caption {
-    background-color: rgba(248, 247, 216, 0.6) !important;
-    color: black !important;
-    width: 100% !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    font-weight: bolder !important;
-    padding-bottom: 0 !important;
+    background-color: rgba(64,64,64, 0.7)!important;
+    color: white;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    font-weight: bolder;
+    padding-bottom: 0;
   }
   .carousel-caption a {
-    color: black !important;
+    color: white;
   }
 </style>
 <script>

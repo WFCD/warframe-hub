@@ -3,9 +3,9 @@
     <b-container fluid>
       <b-row>
         <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
-        <TimePanel :time="this.$store.getters.worldstate.earthCycle"  :location="'Earth'" v-if="this.$store.getters.componentState.earth.state"/>
-        <TimePanel :time="this.$store.getters.worldstate.cetusCycle"  :location="'Cetus'" v-if="this.$store.getters.componentState.cetus.state"/>
-        <NewsPanel :news="this.$store.getters.worldstate.news"  v-if="this.$store.getters.componentState.news.state"/>
+        <TimePanel  v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle"  :location="'Earth'" />
+        <TimePanel  v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle"  :location="'Cetus'" />
+        <NewsPanel  v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
         <ResetPanel />
       </b-row>
     </b-container>

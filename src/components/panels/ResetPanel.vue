@@ -4,7 +4,7 @@
   <b-list-group>
     <b-list-group-item :style="styleObject" class="list-group-item-borderless">
       <span class="pull-left">
-        <b>Currently it is:</b>
+        <b>Rward Timer Reset in:</b>
       </span>
       <TimeBadge :starttime="this.time2" :endtime="this.time1"/>
     </b-list-group-item>

@@ -1,13 +1,17 @@
 <template>
   <b-badge
     v-bind:variant="mutableVariant"
-    class="pull-right"
-    style="margin-right: 5px"
+    class="pull-right timebadage"
   >
   {{disp}}
   </b-badge>
 </template>
 
+<style scoped>
+.timebadage {
+  margin-right: 5px
+}
+</style>
 <script>
 import moment from 'moment'
 

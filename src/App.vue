@@ -81,8 +81,10 @@
     background-color: transparent!important;
   }
 
-  .navbar.fixed-top {
-    height: 60px;
+  @media only screen and (min-width: 700px){
+    .navbar.fixed-top {
+      height: 60px;
+    }
   }
 
   .navbar.fixed-bottom {

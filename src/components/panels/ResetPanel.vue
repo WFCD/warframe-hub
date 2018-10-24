@@ -1,7 +1,7 @@
 <template>
 <b-col md="6">
   <h3 class="text-center">{{headertext}}</h3>
-  <b-list-group style="width: 100%">
+  <b-list-group>
     <b-list-group-item :style="styleObject" class="list-group-item-borderless">
       <span class="pull-left">
         <b>Currently it is:</b>
@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      time1: "",
-      time2: "",
+      time1: moment().toISOString(),
+      time2: moment().endOf('day').add(1,"seconds").toISOString(),
       styleObject: {
         display: 'inline'
       }

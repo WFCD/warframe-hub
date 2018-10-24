@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/part/bones.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0c8b8e.1428127f.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/bones.bef2bd6a.png\";"],"sourceRoot":""}

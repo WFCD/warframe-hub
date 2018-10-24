@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/guide/hotspot.gif"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d210497.25285776.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/hotspot.8cb07f87.gif\";"],"sourceRoot":""}

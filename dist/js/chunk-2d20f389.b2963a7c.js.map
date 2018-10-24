@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/karkina.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d20f389.b2963a7c.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/karkina.6dc726f3.png\";"],"sourceRoot":""}

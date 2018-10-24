@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/mawfish.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0a404e.f02a172f.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/mawfish.e33d4b9b.png\";"],"sourceRoot":""}

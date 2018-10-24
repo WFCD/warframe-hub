@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/part/tendrils.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0e1d8f.3f8c037a.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/tendrils.fd2a6475.png\";"],"sourceRoot":""}

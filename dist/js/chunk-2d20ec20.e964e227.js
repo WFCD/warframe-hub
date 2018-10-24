@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d20ec20"],{b172:function(n,p,c){n.exports=c.p+"img/murkray-bait.e468dc04.png"}}]);
+//# sourceMappingURL=chunk-2d20ec20.e964e227.js.map

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/img/fish/part/stomach.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0d0085.ea3ee29c.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/stomach.f79b752f.png\";"],"sourceRoot":""}

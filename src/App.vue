@@ -2,6 +2,7 @@
   <div id="app">
     <Navbar />
     <router-view/>
+    <Footer />
   </div>
 </template>
 
@@ -15,6 +16,14 @@
     text-align: center;
     color: #bbbbbb;
     margin-top: 75px;
+  }
+
+  body a {
+    color: rgb(171, 171, 171);
+  }
+
+  body a:hover {
+    text-decoration: none;
   }
 
   body {
@@ -37,6 +46,10 @@
     color: white;
   }
 
+  h1, h2, h3, h4 {
+    clear: both;
+  }
+
   .pull-right {
     float: right;
   }
@@ -57,21 +70,40 @@
     padding: .2em .6em .3em;
   }
 
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
   /* Bootstrap overrides */
   .dropdown-item:hover, .dropdown-item:focus {
     color: #00bd8e!important;
     background-color: transparent!important;
   }
 
-  </style>
+  .navbar.fixed-top {
+    height: 60px;
+  }
 
-  <script>
+  .navbar.fixed-bottom {
+    height: 30px;
+  }
+
+  .row {
+    display: inline;
+  }
+
+</style>
+
+<script>
   import Navbar from '@/components/Navbar.vue'
+  import Footer from '@/components/Footer.vue'
 
   export default {
     name: 'app',
     components: {
-      Navbar
+      Navbar,
+      Footer
     }
   }
 

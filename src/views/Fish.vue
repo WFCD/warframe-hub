@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <b-col md="12">
-      <div class="row">
+      <b-row>
         <div role="tablist" style="width: 100%;">
           <b-card no-body>
             <b-card-header header-tag="header" class="p-1" role="tab">
@@ -16,7 +16,7 @@
             </b-collapse>
           </b-card>
         </div>
-      </div>
+      </b-row>
 
       <div class="row">
         <table class="table fish-info">

@@ -161,12 +161,12 @@
 </style>
 
 <script>
-import FishImg from '@/components/FishImg.vue'
+import FishImg from '@/components/FishImg.vue';
 
 export default {
   name: 'HowToFish',
   components: {
     FishImg
   }
-}
+};
 </script>

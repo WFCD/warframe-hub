@@ -30,5 +30,5 @@ export default {
       default: '12px',
     }
   }
-}
+};
 </script>

@@ -43,9 +43,13 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/html-indent": "warning"
+      "vue/html-indent": "warning",
+      "semi": 1,
+      "arrow-parens": 1,
+      "quotes": [1, "single"]
     }
   },
+  "eslintIgnore": ["src/assets/**.*"],
   "postcss": {
     "plugins": {
       "autoprefixer": {}

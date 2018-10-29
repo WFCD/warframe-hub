@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment';
 
 export default {
   namme: 'TimeBadge',
@@ -42,7 +42,7 @@ export default {
     return {
       disp: this.text,
       mutableVariant: this.variant
-    }
+    };
   },
   methods: {
     formatDurationShort(duration) {
@@ -113,6 +113,6 @@ export default {
       setTimeout(this.onBadgeUpdate, this.interval);
     }
   },
-}
+};
 
 </script>

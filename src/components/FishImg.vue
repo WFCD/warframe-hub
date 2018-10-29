@@ -84,7 +84,7 @@ export default {
       typeId: this.type,
       itemId: this.item,
       src: ''
-    }
+    };
   },
   mounted: function() {
     this.getImg();
@@ -92,10 +92,10 @@ export default {
   methods: {
     getImg: function() {
       this.imgs[this.typeId][this.itemId]
-        .then(img => {
+        .then((img) => {
           this.src = img.default;
         });
     }
   }
-}
+};
 </script>

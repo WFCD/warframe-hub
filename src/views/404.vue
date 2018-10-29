@@ -33,16 +33,16 @@
 </style>
 
 <script>
-  import wfcdLogo from '@/assets/img/logos/wfcd.svg'
+  import wfcdLogo from '@/assets/img/logos/wfcd.svg';
 
   export default {
     name: '404',
     data() {
       return {
         wfcdLogo: wfcdLogo,
-      }
+      };
     }
-  }
+  };
 </script>
 
 <!-- script>

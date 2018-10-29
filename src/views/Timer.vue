@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import AlertPanel from '@/components/panels/AlertPanel.vue'
+import AlertPanel from '@/components/panels/AlertPanel.vue';
 
 export default {
   name: 'timers',
   components: {
     AlertPanel
   }
-}
+};
 </script>

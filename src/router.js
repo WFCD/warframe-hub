@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 import Timer from './views/Timer.vue';
 import Fish from './views/Fish.vue';
 import HowToFish from './views/HowToFish.vue';
 import error404 from './views/404.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -42,4 +42,4 @@ export default new Router({
   ]
 });
 
-'/howtofish'
+'/howtofish';

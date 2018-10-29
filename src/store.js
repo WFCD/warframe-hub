@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-import fetch from 'node-fetch'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
+import fetch from 'node-fetch';
 
-import components from '@/assets/json/components.json'
+import components from '@/assets/json/components.json';
 
 const apiBase = 'https://api.warframestat.us';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -38,9 +38,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    worldstate: state => state.worldstates[state.platform],
-    platform: state => state.platform,
-    componentState: state => state.components,
+    worldstate: (state) => state.worldstates[state.platform],
+    platform: (state) => state.platform,
+    componentState: (state) => state.components,
   },
   plugins: [createPersistedState()]
-})
+});

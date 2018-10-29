@@ -170,7 +170,7 @@
         fullWidth: {
           width: '100%'
         }
-      }
+      };
     }
-  }
+  };
 </script>

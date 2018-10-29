@@ -87,12 +87,12 @@
 <!-- Navbar.vue -->
 
 <script>
-  import HubImg from '@/components/HubImg.vue'
-  import pc from '@/assets/img/platforms/pc.svg'
-  import ps4 from '@/assets/img/platforms/ps4.svg'
-  import xb1 from '@/assets/img/platforms/xb1.svg'
+  import HubImg from '@/components/HubImg.vue';
+  import pc from '@/assets/img/platforms/pc.svg';
+  import ps4 from '@/assets/img/platforms/ps4.svg';
+  import xb1 from '@/assets/img/platforms/xb1.svg';
 
-  import platforms from '@/assets/json/platforms.json'
+  import platforms from '@/assets/json/platforms.json';
 
   export default {
     name: 'Navbar',
@@ -120,7 +120,7 @@
           ps4: ps4,
           xb1: xb1
         }
-      }
+      };
     },
     methods: {
       savePlatform(platform) {
@@ -136,5 +136,5 @@
         return this.$store.getters.componentState;
       }
     }
-  }
+  };
 </script>

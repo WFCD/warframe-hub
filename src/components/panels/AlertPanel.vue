@@ -31,11 +31,11 @@
 
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue'
-import HubImg from '@/components/HubImg.vue'
+import TimeBadge from '@/components/TimeBadge.vue';
+import HubImg from '@/components/HubImg.vue';
 
-import archwing from '@/assets/img/archwing.svg'
-import nightmare from '@/assets/img/nightmare.svg'
+import archwing from '@/assets/img/archwing.svg';
+import nightmare from '@/assets/img/nightmare.svg';
 
 export default {
   name: 'AlertPanel',
@@ -51,12 +51,12 @@ export default {
       },
       archwing: archwing,
       nightmare: nightmare,
-    }
+    };
   },
   components: {
     TimeBadge,
     HubImg
   }
-}
+};
 </script>
 <!-- AlertPanel.vue -->

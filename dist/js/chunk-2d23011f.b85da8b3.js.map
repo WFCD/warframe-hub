@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/guide/clem.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d23011f.b85da8b3.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/clem.0c6d1d69.png\";"],"sourceRoot":""}

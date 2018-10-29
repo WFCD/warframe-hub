@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/glappid.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d2100ca.d8da6212.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/glappid.43185504.png\";"],"sourceRoot":""}

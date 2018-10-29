@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/tralok.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d2105ad.8d12049e.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/tralok.b5d81ad4.png\";"],"sourceRoot":""}

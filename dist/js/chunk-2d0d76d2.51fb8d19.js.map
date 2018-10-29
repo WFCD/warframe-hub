@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/part/electroplax.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0d76d2.51fb8d19.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/electroplax.9bf55ece.png\";"],"sourceRoot":""}

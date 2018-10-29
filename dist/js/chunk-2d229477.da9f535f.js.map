@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/part/teeth.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d229477.da9f535f.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/teeth.e79eb13a.png\";"],"sourceRoot":""}

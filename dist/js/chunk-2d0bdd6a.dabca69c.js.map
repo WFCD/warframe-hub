@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/part/shell.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0bdd6a.dabca69c.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/shell.0071525e.png\";"],"sourceRoot":""}

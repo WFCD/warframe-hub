@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/yogwun.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0dd602.ef22bc7c.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/yogwun.057dd1bc.png\";"],"sourceRoot":""}

@@ -6,7 +6,8 @@
     "start": "node ./server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi "
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.1",

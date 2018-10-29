@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fishmap.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0e44d1.91d46384.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/fishmap.ba6cb14b.png\";"],"sourceRoot":""}

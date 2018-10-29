@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/goopola.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d0ab0b7.2dd348e7.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/goopola.86b29d30.png\";"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/img/fish/charceel.png"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"js/chunk-2d226cf5.779c7867.js","sourcesContent":["module.exports = __webpack_public_path__ + \"img/charceel.ec3ba683.png\";"],"sourceRoot":""}

@@ -48,10 +48,15 @@
       "vue/html-indent": "warning",
       "semi": 1,
       "arrow-parens": 1,
-      "quotes": [1, "single"]
+      "quotes": [
+        1,
+        "single"
+      ]
     }
   },
-  "eslintIgnore": ["src/assets/**.*"],
+  "eslintIgnore": [
+    "src/assets/**.*"
+  ],
   "postcss": {
     "plugins": {
       "autoprefixer": {}

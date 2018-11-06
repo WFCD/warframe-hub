@@ -9,9 +9,16 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-import 'bootswatch/dist/darkly/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import '@fortawesome/fontawesome-free/css/regular.min.css';
+import '@fortawesome/fontawesome-free/css/solid.min.css';
+import '@fortawesome/fontawesome-free/css/brands.min.css';
+
+import 'bootswatch/dist/darkly/bootstrap.min.css';
+
+import '@/assets/less/common.less';
+import '@/assets/less/night.less';
+import '@/assets/less/day.less';
 
 Vue.config.productionTip = false;
 

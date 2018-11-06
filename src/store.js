@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 import fetch from 'node-fetch';
 
 import components from '@/assets/json/components.json';
+import trackables from '@/assets/json/trackables.json';
 
 const apiBase = 'https://api.warframestat.us';
 
@@ -17,7 +18,9 @@ export default new Vuex.Store({
       xb1: {}
     },
     platform: 'pc',
-    components: components
+    theme: 'night',
+    components: components,
+    trackables: trackables,
   },
   mutations: {
     commitWs: (state, [platform, worldstate]) => {
@@ -28,6 +31,17 @@ export default new Vuex.Store({
     },
     commitComponentState: (state, [key, newState]) => {
       state.components[key].state = newState;
+    },
+    setTheme: (state, [key]) => {
+      state.theme = key;
+    },
+    commitRewardState: (state, [key, newState]) => {
+      const toSet = state.trackables.rewardTypes[key];
+      toSet.state = newState;
+    },
+    commitEventState: (state, [key, newState]) => {
+      const toSet = state.trackables.eventTypes[key];
+      toSet.state = newState;
     }
   },
   actions: {
@@ -40,7 +54,9 @@ export default new Vuex.Store({
   getters: {
     worldstate: (state) => state.worldstates[state.platform],
     platform: (state) => state.platform,
+    theme: (state) => state.theme,
     componentState: (state) => state.components,
+    trackableState: (state) => state.trackables,
   },
   plugins: [createPersistedState()]
 });

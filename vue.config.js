@@ -5,8 +5,8 @@ module.exports = {
     msTileColor: '#1a5072'
   },
 
-  lintOnSave: undefined,
-  baseUrl: undefined,
+  lintOnSave: true,
+  baseUrl: '/',
   outputDir: undefined,
   assetsDir: undefined,
   runtimeCompiler: undefined,
@@ -14,6 +14,27 @@ module.exports = {
   parallel: undefined,
 
   css: {
-    sourceMap: true
-  }
+    sourceMap: true,
+    loaderOptions: {
+      less: {
+        modules: {
+          rules: [{
+            test: /\.css$/,
+            use: [{
+              loader: 'css-loader'
+            }]
+          }, {
+            test: /\.less$/,
+            use: [{
+              loader: 'style-loader'
+            }, {
+              loader: 'css-loader'
+            }, {
+              loader: 'less-loader'
+            }]
+          }]
+        }
+      },
+    },
+  },
 };

@@ -2,7 +2,6 @@
   <b-badge
     v-bind:variant="mutableVariant"
     class="pull-right"
-    style="margin-right: 5px"
   >
   {{disp}}
   </b-badge>
@@ -98,7 +97,7 @@ export default {
         this.mutableVariant = 'info';
         this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
       } else if (diff < 0) {
-        this.mutableVariant = 'default';
+        this.mutableVariant = 'info';
         this.disp = `Expired: ${this.formatDurationShort(duration)}`;
       } else {
         if (diff < 600000) { // 0 min to 10 min
@@ -107,6 +106,8 @@ export default {
           this.mutableVariant = 'warning';
         } else if (diff > 1800000) { // 30 min to 1 hour
           this.mutableVariant = 'success';
+        } else {
+          this.mutableVariant = 'info';
         }
         this.disp = this.formatTimer(diff);
       }

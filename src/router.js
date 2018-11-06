@@ -21,12 +21,12 @@ export default new Router({
       component: Timer
     },
     {
-      path: '/fish',
+      path: '/poe/fish',
       name: 'fish',
       component: Fish
     },
     {
-      path: '/howtofish',
+      path: '/poe/fish/howto',
       name: 'howtofish',
       component: HowToFish
     },
@@ -41,5 +41,3 @@ export default new Router({
     }
   ]
 });
-
-'/howtofish';

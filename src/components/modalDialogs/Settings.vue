@@ -1,0 +1,143 @@
+<template>
+  <b-modal id="settings-modal" centered size="md" lazy title="Settings">
+      <b-tabs card vertical>
+        <b-tab title="Platform">
+          <b-form-group label="Platform">
+            <b-form-radio-group id="platform-radios" stacked v-model="platform" name="platform radios"
+              v-on:change="val => savePlatform(val)">
+              <b-form-radio
+                v-for="platform in this.platforms"
+                :key="platform.key"
+                :value="platform.key" >
+                  <HubImg :src="platformImg[platform.key]"
+                    :name="platform.display"
+                    width="16px"
+                    height="16px"
+                    :style="platformIconStyle"
+                    />
+                </b-form-radio>
+            </b-form-radio-group>
+          </b-form-group>
+        </b-tab>
+        <b-tab title="Components">
+          <b-form-group label="Components">
+            <b-form-checkbox-group id="components-checks" name="Components" :options="componentStates"
+                v-model="activeComponents" v-on:input="vals => updateComponentState(vals)"
+                stacked>
+            </b-form-checkbox-group>
+          </b-form-group>
+        </b-tab>
+        <b-tab title="Theme">
+          <b-form-group label="Theme">
+            <b-form-radio-group id="theme-radios" stacked v-model="theme" name="theme radios"
+              v-on:change="val => updateTheme(val)">
+              <b-form-radio
+                v-for="theme in getThemes"
+                :key="theme.key"
+                :value="theme.key" >
+                  <i :class="theme.faclass" :style="themeIconStyle"></i>
+                  <span :style="platformLabelStyle">{{ theme.display }}</span>
+                </b-form-radio>
+            </b-form-radio-group>
+          </b-form-group>
+        </b-tab>
+        <b-tab title="Notifications">
+          <NotifFilters />
+        </b-tab>
+        <b-tab title="Fissure Filters">
+          Tab Contents 3
+        </b-tab>
+        <b-tab title="Sound Filters">
+          Tab Contents 3
+        </b-tab>
+      </b-tabs>
+  </b-modal>
+</template>
+
+<script>
+  import HubImg from '@/components/HubImg.vue';
+  import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
+
+  import pc from '@/assets/img/platforms/pc.svg';
+  import ps4 from '@/assets/img/platforms/ps4.svg';
+  import xb1 from '@/assets/img/platforms/xb1.svg';
+
+  import platforms from '@/assets/json/platforms.json';
+  import themes from '@/assets/json/themes.json';
+
+  export default {
+    name: 'SettingsModal',
+    components: {
+      HubImg,
+      NotifFilters,
+    },
+    data() {
+      return {
+        platform: this.$store.getters.platform,
+        theme:  this.$store.getters.theme,
+        themeIconStyle: {
+          color: 'white',
+          'margin-top': '3px',
+        },
+        platformIconStyle: {
+          filter: 'invert(100%)',
+          'margin-top': '3px',
+        },
+        platformLabelStyle: {
+          'flex-grow': 1,
+        },
+        platforms: platforms,
+        platformImg: {
+          pc: pc,
+          ps4: ps4,
+          xb1: xb1
+        },
+        themes: themes,
+      };
+    },
+    methods: {
+      savePlatform(platform) {
+        this.$store.commit('commitPlatform', platform);
+        this.$store.dispatch('updateWorldstate');
+      },
+      updateComponentState(enabledComponents) {
+        Object.keys(this.$store.getters.componentState).forEach(component => {
+          this.$store.commit('commitComponentState', [component, enabledComponents.includes(component)]);
+        });
+      },
+      updateTheme(key) {
+        this.$store.commit('setTheme', [key]);
+      },
+    },
+    computed: {
+      activeComponents: {
+        get: function() {
+          const components = Object.keys(this.$store.getters.componentState)
+            .map(component => this.$store.getters.componentState[component]);
+
+          return components
+            .filter(component => component.state)
+            .map(component => component.key);
+        },
+        set: function(){},
+      },
+      componentStates() {
+        const cs = this.$store.getters.componentState;
+
+        return Object.keys(cs).map(component => {
+          return {
+            text: this.$store.getters.componentState[component].display,
+            value: this.$store.getters.componentState[component].key,
+          }
+        });
+      },
+      getComponents() {
+        return this.$store.getters.componentState;
+      },
+      getThemes() {
+        return this.themes;
+      },
+    }
+  }
+
+</script>

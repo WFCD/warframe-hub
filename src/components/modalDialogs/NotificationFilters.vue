@@ -1,0 +1,76 @@
+<template>
+  <div id="notificationsTabBody">
+    Checking the checkbox next to an item below will enable delivery of notifications for alerts or invasions with the corresponding item.
+    <div class="tab-wrap">
+      <b-form-group label="Reward Filters">
+        <b-form-checkbox-group id="reward-checks" name="Reward Filters" :options="rewardStates"
+            v-model="activeRewards" v-on:input="vals => updateRewardStates(vals)"
+            stacked>
+        </b-form-checkbox-group>
+      </b-form-group>
+    </div>
+    <hr />
+    Checking the checkbox next to an event below will enable delivery of notifications the corresponding events.
+    <div class="tab-wrap">
+      <b-form-group label="Event Filters">
+        <b-form-checkbox-group id="event-checks" name="Event Filters" :options="eventStates"
+            v-model="activeEvents" v-on:input="vals => updateEventStates(vals)"
+            stacked>
+        </b-form-checkbox-group>
+      </b-form-group>
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'NotificationFilters',
+  components: {},
+  data() {
+    return {}
+  },
+  computed: {
+    activeRewards: {
+      get: function() {
+        const components = Object.keys(this.$store.getters.trackableState.rewardTypes)
+          .map(component => this.$store.getters.trackableState.rewardTypes[component]);
+
+        return components
+          .filter(component => component.state)
+          .map(component => component.value);
+      },
+      set: function(){},
+    },
+    rewardStates() {
+      return this.$store.getters.trackableState.rewardTypes;
+    },
+    activeEvents: {
+      get: function() {
+        const components = Object.keys(this.$store.getters.trackableState.eventTypes)
+          .map(component => this.$store.getters.trackableState.eventTypes[component]);
+
+        return components
+          .filter(component => component.state)
+          .map(component => component.value);
+      },
+      set: function(){},
+    },
+    eventStates() {
+      return this.$store.getters.trackableState.eventTypes;
+    },
+  },
+  methods: {
+    updateRewardStates(enabledRewards, state) {
+      Object.keys(this.$store.getters.trackableState.rewardTypes).forEach((reward) => {
+        this.$store.commit('commitRewardState', [reward, enabledRewards.includes(reward)]);
+      });
+    },
+    updateEventStates(enabledEvents, state) {
+      this.$store.getters.trackableState.eventTypes.forEach((event) => {
+        this.$store.commit('commitEventState', [event, enabledEvents.includes(event)]);
+      });
+    }
+  }
+}
+</script>

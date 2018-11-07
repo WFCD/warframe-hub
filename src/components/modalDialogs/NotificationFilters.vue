@@ -5,7 +5,7 @@
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group id="reward-checks" name="Reward Filters" :options="rewardStates"
             v-model="activeRewards" v-on:input="vals => updateRewardStates(vals)"
-            stacked>
+            stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>
     </div>
@@ -15,7 +15,7 @@
       <b-form-group label="Event Filters">
         <b-form-checkbox-group id="event-checks" name="Event Filters" :options="eventStates"
             v-model="activeEvents" v-on:input="vals => updateEventStates(vals)"
-            stacked>
+            stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>
     </div>
@@ -23,54 +23,53 @@
 </template>
 
 <script>
+  export default {
+    name: 'NotificationFilters',
+    components: {},
+    data() {
+      return {};
+    },
+    computed: {
+      activeRewards: {
+        get: function() {
+          const components = Object.keys(this.$store.getters.trackableState.rewardTypes)
+            .map((component) => this.$store.getters.trackableState.rewardTypes[component]);
 
-export default {
-  name: 'NotificationFilters',
-  components: {},
-  data() {
-    return {}
-  },
-  computed: {
-    activeRewards: {
-      get: function() {
-        const components = Object.keys(this.$store.getters.trackableState.rewardTypes)
-          .map(component => this.$store.getters.trackableState.rewardTypes[component]);
-
-        return components
-          .filter(component => component.state)
-          .map(component => component.value);
+          return components
+            .filter((component) => component.state)
+            .map((component) => component.value);
+        },
+        set: function(){},
       },
-      set: function(){},
-    },
-    rewardStates() {
-      return this.$store.getters.trackableState.rewardTypes;
-    },
-    activeEvents: {
-      get: function() {
-        const components = Object.keys(this.$store.getters.trackableState.eventTypes)
-          .map(component => this.$store.getters.trackableState.eventTypes[component]);
-
-        return components
-          .filter(component => component.state)
-          .map(component => component.value);
+      rewardStates() {
+        return this.$store.getters.trackableState.rewardTypes;
       },
-      set: function(){},
+      activeEvents: {
+        get: function() {
+          const components = Object.keys(this.$store.getters.trackableState.eventTypes)
+            .map((component) => this.$store.getters.trackableState.eventTypes[component]);
+
+          return components
+            .filter((component) => component.state)
+            .map((component) => component.value);
+        },
+        set: function(){},
+      },
+      eventStates() {
+        return this.$store.getters.trackableState.eventTypes;
+      },
     },
-    eventStates() {
-      return this.$store.getters.trackableState.eventTypes;
-    },
-  },
-  methods: {
-    updateRewardStates(enabledRewards, state) {
-      Object.keys(this.$store.getters.trackableState.rewardTypes).forEach((reward) => {
-        this.$store.commit('commitRewardState', [reward, enabledRewards.includes(reward)]);
-      });
-    },
-    updateEventStates(enabledEvents, state) {
-      this.$store.getters.trackableState.eventTypes.forEach((event) => {
-        this.$store.commit('commitEventState', [event, enabledEvents.includes(event)]);
-      });
+    methods: {
+      updateRewardStates(enabledRewards) {
+        Object.keys(this.$store.getters.trackableState.rewardTypes).forEach((reward) => {
+          this.$store.commit('commitRewardState', [reward, enabledRewards.includes(reward)]);
+        });
+      },
+      updateEventStates(enabledEvents) {
+        Object.keys(this.$store.getters.trackableState.eventTypes).forEach((event) => {
+          this.$store.commit('commitEventState', [event, enabledEvents.includes(event)]);
+        });
+      }
     }
-  }
-}
+  };
 </script>

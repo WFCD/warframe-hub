@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
+import fissurePlanets from '@/assets/json/planets.json';
 
 const apiBase = 'https://api.warframestat.us';
 
@@ -21,6 +22,8 @@ export default new Vuex.Store({
     theme: 'night',
     components: components,
     trackables: trackables,
+    fissurePlanets: fissurePlanets,
+    soundFilters: []
   },
   mutations: {
     commitWs: (state, [platform, worldstate]) => {
@@ -42,7 +45,14 @@ export default new Vuex.Store({
     commitEventState: (state, [key, newState]) => {
       const toSet = state.trackables.eventTypes[key];
       toSet.state = newState;
-    }
+    },
+    commitFissurePlanetState: (state, [key, newState]) => {
+      const toSet = state.fissurePlanets[key];
+      toSet.state = newState;
+    },
+    commitSounds: (state, [sounds]) => {
+      state.soundFilters = sounds;
+    },
   },
   actions: {
     async updateWorldstate({commit, getters}) {
@@ -57,6 +67,8 @@ export default new Vuex.Store({
     theme: (state) => state.theme,
     componentState: (state) => state.components,
     trackableState: (state) => state.trackables,
+    fissurePlanetStates: (state) => state.fissurePlanets,
+    sounds: (state) => state.soundFilters,
   },
   plugins: [createPersistedState()]
 });

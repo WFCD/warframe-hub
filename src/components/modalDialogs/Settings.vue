@@ -23,14 +23,14 @@
           <b-form-group label="Components">
             <b-form-checkbox-group id="components-checks" name="Components" :options="componentStates"
                 v-model="activeComponents" v-on:input="vals => updateComponentState(vals)"
-                stacked>
+                stacked class="settings-group">
             </b-form-checkbox-group>
           </b-form-group>
         </b-tab>
         <b-tab title="Theme">
           <b-form-group label="Theme">
             <b-form-radio-group id="theme-radios" stacked v-model="theme" name="theme radios"
-              v-on:change="val => updateTheme(val)">
+              v-on:change="val => updateTheme(val)" class="settings-group">
               <b-form-radio
                 v-for="theme in getThemes"
                 :key="theme.key"
@@ -45,10 +45,10 @@
           <NotifFilters />
         </b-tab>
         <b-tab title="Fissure Filters">
-          Tab Contents 3
+          <FissureFilters />
         </b-tab>
         <b-tab title="Sound Filters">
-          Tab Contents 3
+          <SoundFilters />
         </b-tab>
       </b-tabs>
   </b-modal>
@@ -57,6 +57,8 @@
 <script>
   import HubImg from '@/components/HubImg.vue';
   import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
+  import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
+  import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
 
   import pc from '@/assets/img/platforms/pc.svg';
   import ps4 from '@/assets/img/platforms/ps4.svg';
@@ -70,6 +72,8 @@
     components: {
       HubImg,
       NotifFilters,
+      FissureFilters,
+      SoundFilters,
     },
     data() {
       return {
@@ -101,7 +105,7 @@
         this.$store.dispatch('updateWorldstate');
       },
       updateComponentState(enabledComponents) {
-        Object.keys(this.$store.getters.componentState).forEach(component => {
+        Object.keys(this.$store.getters.componentState).forEach((component) => {
           this.$store.commit('commitComponentState', [component, enabledComponents.includes(component)]);
         });
       },
@@ -113,22 +117,22 @@
       activeComponents: {
         get: function() {
           const components = Object.keys(this.$store.getters.componentState)
-            .map(component => this.$store.getters.componentState[component]);
+            .map((component) => this.$store.getters.componentState[component]);
 
           return components
-            .filter(component => component.state)
-            .map(component => component.key);
+            .filter((component) => component.state)
+            .map((component) => component.key);
         },
         set: function(){},
       },
       componentStates() {
         const cs = this.$store.getters.componentState;
 
-        return Object.keys(cs).map(component => {
+        return Object.keys(cs).map((component) => {
           return {
             text: this.$store.getters.componentState[component].display,
             value: this.$store.getters.componentState[component].key,
-          }
+          };
         });
       },
       getComponents() {
@@ -138,6 +142,6 @@
         return this.themes;
       },
     }
-  }
+  };
 
 </script>

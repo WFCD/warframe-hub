@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="settings-modal" centered size="md" lazy title="Settings">
+  <b-modal @shown="checkNotifications" id="settings-modal" centered size="md" lazy title="Settings">
       <b-tabs card vertical>
         <b-tab title="Platform">
           <b-form-group label="Platform">
@@ -111,6 +111,9 @@
       },
       updateTheme(key) {
         this.$store.commit('setTheme', [key]);
+      },
+      async checkNotifications() {
+        return this.$store.dispatch('checkNotifPermissions');
       },
     },
     computed: {

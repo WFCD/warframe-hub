@@ -1,6 +1,6 @@
 {
-  "name": "hub-vue",
-  "short_name": "hub-vue",
+  "name": "Warframe Hub",
+  "short_name": "Warframe Hub",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

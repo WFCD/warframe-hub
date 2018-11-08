@@ -12,7 +12,11 @@ module.exports = {
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-
+  configureWebpack: {
+    plugins: [
+      
+    ]
+  },
   css: {
     sourceMap: true,
     loaderOptions: {

@@ -27,13 +27,15 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
+/* Packery */
 import VuePackeryPlugin from 'vue-packery-plugin';
 Vue.use(VuePackeryPlugin);
 
+/* Native notifications */
 import VueNativeNotification from 'vue-native-notification';
-
 Vue.use(VueNativeNotification, { requestOnNotify: true });
 
+// Kick off worldstate refresh
 store.dispatch('updateWorldstate');
 
 new Vue({

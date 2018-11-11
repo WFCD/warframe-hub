@@ -32,7 +32,7 @@ const makeNotification = (type, data) => {
       return {
         head: 'Cetus - Rise and Shine! Hunting\'s Over!',
         body: {
-          body: data.cetusCycle.shortString,
+          body: data.shortString,
           icon: wfcdLogoUrl,
         },
       };
@@ -40,7 +40,7 @@ const makeNotification = (type, data) => {
       return {
         head: 'Cetus - It\'s Hunting Time!',
         body: {
-          body: data.cetusCycle.shortString,
+          body: data.shortString,
           icon: wfcdLogoUrl,
         },
       };
@@ -138,18 +138,8 @@ class Notifier {
     });
   }
 
-  async checkNotifications () {
-    const ws = this.store.getters.worldstate;
+  generateNotifications(ws) {
     const toNotify = [];
-    this.trackedRewards = Object.keys(this.store.getters.trackableState.rewardTypes)
-      .map((reward) => this.store.getters.trackableState.rewardTypes[reward])
-      .filter((reward) => reward.state)
-      .map((reward) => reward.value);
-    this.trackedEvents = Object.keys(this.store.getters.trackableState.eventTypes)
-      .map((event) => this.store.getters.trackableState.eventTypes[event])
-      .filter((event) => event.state)
-      .map((event) => event.value);
-
     // look for things to be notified
     // run notifications for each
     for (const alert of ws.alerts) {
@@ -164,13 +154,15 @@ class Notifier {
       }
     }
 
-    if (ws.cetusCycle.isDay) {
-      if (this.isNotifiable(ws.cetusCycle.id, 'cetus.day')) {
-        toNotify.push(makeNotification('cetus.day', ws.cetusCycle));
-      }
-    } else {
-      if (this.isNotifiable(ws.cetusCycle.id, 'cetus.night')) {
-        toNotify.push(makeNotification('cetus.night', ws.cetusCycle));
+    if (ws.cetusCycle.shortString) {
+      if (ws.cetusCycle.isDay) {
+        if (this.isNotifiable(ws.cetusCycle.id, 'cetus.day')) {
+          toNotify.push(makeNotification('cetus.day', ws.cetusCycle));
+        }
+      } else {
+        if (this.isNotifiable(ws.cetusCycle.id, 'cetus.night')) {
+          toNotify.push(makeNotification('cetus.night', ws.cetusCycle));
+        }
       }
     }
 
@@ -230,6 +222,21 @@ class Notifier {
         toNotify.push(makeNotification('invasions', invasion));
       }
     }
+    return toNotify;
+  }
+
+  async checkNotifications () {
+    const ws = this.store.getters.worldstate;
+    this.trackedRewards = Object.keys(this.store.getters.trackableState.rewardTypes)
+      .map((reward) => this.store.getters.trackableState.rewardTypes[reward])
+      .filter((reward) => reward.state)
+      .map((reward) => reward.value);
+    this.trackedEvents = Object.keys(this.store.getters.trackableState.eventTypes)
+      .map((event) => this.store.getters.trackableState.eventTypes[event])
+      .filter((event) => event.state)
+      .map((event) => event.value);
+
+    const toNotify = this.generateNotifications(ws);
 
     await this.notify(toNotify);
     return this.store.dispatch('updateNotifiedIds');

@@ -4,15 +4,15 @@
 
 <style>
   #plains-of-eidolon-m {
-    height: 600px;
-    weight: 400px;
+    height: calc(100vh - 200px);
+    weight: 600px;
   }
 </style>
 
 <script>
   /* map stuff */
   import L from 'leaflet';
-  import plains from '@/assets/img/poe.jpg';
+  import plains from '@/assets/img/plains.png';
 
   export default {
     name: 'Poemap',
@@ -21,14 +21,22 @@
     },
     mounted: function () {
       const map = L.map('plains-of-eidolon-m', {
-        crs: L.CRS.Simple
+        crs: L.CRS.Simple,
+        zoomControl: true,
+        attributionControl: false,
       });
 
-      const bounds = [[0,0], [1000,1000]];
+      const bounds = [[0,0], [1012, 994]];
       const image = L.imageOverlay(plains, bounds).addTo(map);
 
+      map.on('click', function(e){
+        var coord = e.latlng;
+        var lat = coord.lat;
+        var lng = coord.lng;
+        console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+      });
       map.fitBounds(bounds);
-      map.setView( [500,500], 1);
+      map.setView( [472, 535], 0);
     },
   };
 </script>

@@ -1,6 +1,8 @@
 'use strict';
 /* globals document */
 import Vue from 'vue';
+import drum from '@/assets/audio/drum.mp3';
+import eidolon from '@/assets/audio/eidolon.mp3';
 
 const wfcdLogoUrl = 'https://warframestat.us/wfcd_logo_color.png';
 
@@ -43,6 +45,7 @@ const makeNotification = (type, data) => {
           body: data.shortString,
           icon: wfcdLogoUrl,
         },
+        sound: 'eidolon',
       };
     case 'syndicate.ostrons':
       return {
@@ -110,6 +113,7 @@ const makeNotification = (type, data) => {
           body: `${data.desc} • ${data.node}\n${data.eta.replace('-Infinityd', '??').replace('Infinityd', '??')} Remaining`,
           icon: wfcdLogoUrl,
         },
+        sound: 'drum',
       };
     default:
       return defaultNotificationBody;
@@ -133,7 +137,24 @@ class Notifier {
     const usePush = true || !document.hasFocus();
     notifications.forEach((notification) => {
       if (usePush) {
-        this.notifier.show(notification.head, notification.body, {});
+        this.notifier.show(notification.head, notification.body, {
+          onclick: (event) => {
+            if (notification.link) {
+              event.preventDefault();
+              window.open(notification.link, '_blank');
+            }
+          }
+        });
+        if (notification.sound === 'drum') {
+          const audio = new Audio(drum);
+          audio.volume = 0.2;
+          audio.play();
+        }
+        if (notification.sound === 'eidolon') {
+          const audio = new Audio(eidolon);
+          audio.volume = 0.2;
+          audio.play();
+        }
       }
     });
   }

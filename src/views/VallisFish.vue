@@ -88,7 +88,7 @@
     {
       species: 'Eye-Eye',
       location: 'Pond',
-      time: 'Cold',
+      time: 'Warm',
       hotspot: 'No',
       resource: 'Rotoblade',
       basic: '3 Scrap/45 Standing',

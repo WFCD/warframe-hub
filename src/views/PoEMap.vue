@@ -4,8 +4,8 @@
 
 <style>
   #plains-of-eidolon-m {
-    height: calc(100vh - 200px);
-    weight: 600px;
+    height: calc(100vh - 100px);
+    width: 600px;
   }
 </style>
 

@@ -4,8 +4,8 @@
 
 <style>
   #orb-vallis-m {
-    height: calc(100vh - 200px);
-    weight: 400px;
+    height: calc(100vh - 100px);
+    width: 400px;
   }
 </style>
 

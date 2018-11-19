@@ -1,11 +1,17 @@
 <template>
-  <div id="orb-vallis-m"></div>
+  <b-container fluid>
+    <b-row>
+      <b-col>
+        <div id="orb-vallis-m"></div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <style>
   #orb-vallis-m {
     height: calc(100vh - 100px);
-    width: 400px;
+    width: 100%;
   }
 </style>
 

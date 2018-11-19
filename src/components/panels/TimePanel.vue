@@ -22,7 +22,7 @@
         <span class="pull-left" v-else>
           <b>
             Time until
-            <span v-if="!time.isWarm">Cold</span>
+            <span v-if="time.isWarm">Cold</span>
             <span v-else>Warm</span>:
           </b>
         </span>
@@ -39,7 +39,7 @@
         <span class="pull-left" v-else>
           <b>
             Time at
-            <span v-if="!time.isWarm">Cold</span>
+            <span v-if="time.isWarm">Cold</span>
             <span v-else>Warm</span>:
           </b>
         </span>

@@ -86,7 +86,7 @@
         },
         platformIconStyle: {
           filter: 'invert(100%)',
-          'margin-top': '3px',
+          'margin-top': '-3px',
         },
         platformLabelStyle: {
           'flex-grow': 1,

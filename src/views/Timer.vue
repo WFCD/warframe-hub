@@ -2,11 +2,11 @@
   <div class="timers">
     <b-container fluid>
       <b-row>
-      <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
-      <NewsPanel  v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
-        <TimePanel  v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle"  :location="'Earth'" />
-        <TimePanel  v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle"  :location="'Cetus'" />
-        <TimePanel  v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle"  :location="'Vallis'" />
+        <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
+        <NewsPanel v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
+        <TimePanel v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle" location="Earth" />
+        <TimePanel v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle" location="Cetus" />
+        <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
         <ResetPanel />
       </b-row>
     </b-container>

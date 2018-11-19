@@ -69,34 +69,34 @@
 </style>
 <script>
   import TimeBadge from '@/components/TimeBadge.vue';
-  import moment from "moment";
+  import moment from 'moment';
 
   export default {
-    props: ["time", "location"],
-    name: "TimePanel",
+    props: ['time', 'location'],
+    name: 'TimePanel',
     computed: {
       earthtimezonetime() {
-        return moment(this.$props.time.expiry).format("llll");
+        return moment(this.$props.time.expiry).format('llll');
       },
       now() {
         return moment().toISOString();
       },
       headertext() {
-        if (this.$props.location == "Vallis") {
-          return this.$props.location + " Cold/Warm Cycle";
+        if (this.$props.location === 'Vallis') {
+          return `${this.$props.location} Cold/Warm Cycle`;
         } else {
-          return this.$props.location + " Day/Night Cycle";
+          return `${this.$props.location} Day/Night Cycle`;
         }
       }
     },
     components: {
-      TimeBadge
+      TimeBadge,
     },
     data() {
       return {
         styleObject: {
-          display: "inline"
-        }
+          display: 'inline'
+        },
       };
     }
   };

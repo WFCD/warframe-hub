@@ -2,9 +2,9 @@
 <b-col md="6">
   <h3 class="text-center">{{headertext}}</h3>
   <b-list-group>
-    <b-list-group-item :style="styleObject" class="list-group-item-borderless">
+    <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
       <span class="pull-left">
-        <b>Rward Timer Reset in:</b>
+        <b>Reward Timer Reset in:</b>
       </span>
       <TimeBadge :starttime="this.time2" :endtime="this.time1"/>
     </b-list-group-item>

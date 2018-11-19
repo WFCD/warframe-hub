@@ -10,5 +10,9 @@
   "xb1": {
     "display": "XB1",
     "key": "xb1"
+  },
+  "swi": {
+    "display": "Switch",
+    "key": "swi"
   }
 }

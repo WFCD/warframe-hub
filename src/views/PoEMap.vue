@@ -1,11 +1,17 @@
 <template>
-  <div id="plains-of-eidolon-m"></div>
+  <b-container fluid>
+    <b-row>
+      <b-col>
+        <div id="plains-of-eidolon-m"></div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <style>
   #plains-of-eidolon-m {
     height: calc(100vh - 100px);
-    width: 600px;
+    width: 100%;
   }
 </style>
 

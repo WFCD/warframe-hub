@@ -19,6 +19,11 @@
     "display": "Earth Cycle",
     "key": "earth"
   },
+  "vallis": {
+    "state": true,
+    "display": "Vallis Cycle",
+    "key": "vallis"
+  },
   "bounties": {
     "state": true,
     "display": "Bounties Timer",

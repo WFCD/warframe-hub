@@ -54,53 +54,50 @@
   </b-col>
 </template>
 <style scoped>
-.timebadage {
-  margin-right: 5px;
-}
-.night:before {
-  color: rgba(51, 211, 255, 0.8);
-  content: "🌙 ";
-}
-.cold:before {
-  color: rgba(51, 211, 255, 0.8);
-  content: "\2744 ";
-}
-.day:before {
-  color: rgba(249, 168, 6, 0.8);
-  content: "☀ ";
-}
+  .night:before {
+    color: rgba(51, 211, 255, 0.8);
+    content: "🌙 ";
+  }
+  .cold:before {
+    color: rgba(51, 211, 255, 0.8);
+    content: "\2744 ";
+  }
+  .day:before {
+    color: rgba(249, 168, 6, 0.8);
+    content: "☀ ";
+  }
 </style>
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
-import moment from "moment";
+  import TimeBadge from '@/components/TimeBadge.vue';
+  import moment from "moment";
 
-export default {
-  props: ["time", "location"],
-  name: "TimePanel",
-  computed: {
-    earthtimezonetime() {
-      return moment(this.$props.time.expiry).format("llll");
-    },
-    now() {
-      return moment().toISOString();
-    },
-    headertext() {
-      if (this.$props.location == "Vallis") {
-        return this.$props.location + " Cold/Warm Cycle";
-      } else {
-        return this.$props.location + " Day/Night Cycle";
+  export default {
+    props: ["time", "location"],
+    name: "TimePanel",
+    computed: {
+      earthtimezonetime() {
+        return moment(this.$props.time.expiry).format("llll");
+      },
+      now() {
+        return moment().toISOString();
+      },
+      headertext() {
+        if (this.$props.location == "Vallis") {
+          return this.$props.location + " Cold/Warm Cycle";
+        } else {
+          return this.$props.location + " Day/Night Cycle";
+        }
       }
+    },
+    components: {
+      TimeBadge
+    },
+    data() {
+      return {
+        styleObject: {
+          display: "inline"
+        }
+      };
     }
-  },
-  components: {
-    TimeBadge
-  },
-  data() {
-    return {
-      styleObject: {
-        display: "inline"
-      }
-    };
-  }
-};
+  };
 </script>

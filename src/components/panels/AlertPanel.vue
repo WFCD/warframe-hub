@@ -28,42 +28,41 @@
   </b-col>
 </template>
 
-
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
-import HubImg from '@/components/HubImg.vue';
+  import TimeBadge from '@/components/TimeBadge.vue';
+  import HubImg from '@/components/HubImg.vue';
 
-import archwing from '@/assets/img/archwing.svg';
-import nightmare from '@/assets/img/nightmare.svg';
+  import archwing from '@/assets/img/archwing.svg';
+  import nightmare from '@/assets/img/nightmare.svg';
 
-export default {
-  name: 'AlertPanel',
-  props: ['alerts'],
-  computed: {
-    headertext() {
-      return 'Alerts';
+  export default {
+    name: 'AlertPanel',
+    props: ['alerts'],
+    computed: {
+      headertext() {
+        return 'Alerts';
+      }
+    },
+    data () {
+      return {
+        styleObject: {
+          display: 'inline',
+        },
+        archwing: archwing,
+        nightmare: nightmare,
+        missionType: {
+          'filter': 'invert(100%)',
+          'margin-top': '-3px',
+          'margin-right': '5px',
+          'width': '15px',
+          'height': '15px',
+        },
+      };
+    },
+    components: {
+      TimeBadge,
+      HubImg
     }
-  },
-  data () {
-    return {
-      styleObject: {
-        display: 'inline',
-      },
-      archwing: archwing,
-      nightmare: nightmare,
-      missionType: {
-        'filter': 'invert(100%)',
-        'margin-top': '-3px',
-        'margin-right': '5px',
-        'width': '15px',
-        'height': '15px',
-      },
-    };
-  },
-  components: {
-    TimeBadge,
-    HubImg
-  }
-};
+  };
 </script>
 <!-- AlertPanel.vue -->

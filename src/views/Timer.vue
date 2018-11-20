@@ -26,6 +26,11 @@ export default {
     NewsPanel,
     TimePanel,
     ResetPanel
+  },
+  methods: {
+    track () {
+      this.$ga.page('/')
+    }
   }
 };
 </script>

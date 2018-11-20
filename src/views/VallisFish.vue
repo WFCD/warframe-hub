@@ -18,7 +18,7 @@
   </b-row>
   <b-col md="12">
     <div class="row">
-      <b-table striped hover :items="items"></b-table>
+      <b-table striped hover :items="items" class="fish-info b-table"></b-table>
     </div>
   </b-col>
 </b-container>
@@ -182,5 +182,10 @@
         vallismap: vallismap,
       };
     },
+    methods: {
+      track () {
+        this.$ga.page('/vallis/fish');
+      }
+    }
   };
 </script>

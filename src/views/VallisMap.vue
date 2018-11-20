@@ -20,8 +20,6 @@
   import L from 'leaflet';
   import vallis from '@/assets/img/orbvallis.png';
 
-  import fishMap from '@/assets/img/map_icons/fish.png';
-
   const fishIcon = L.icon({
     iconUrl: '@/assets/img/map_icons/fish.png',
   });
@@ -30,6 +28,11 @@
     name: 'Poemap',
     data() {
       return {};
+    },
+    methods: {
+      track () {
+        this.$ga.page('/vallis/map');
+      }
     },
     mounted: function () {
       const map = L.map('orb-vallis-m', {
@@ -40,12 +43,13 @@
       });
 
       const bounds = [[0,0], [2150,2153]];
-      const image = L.imageOverlay(vallis, bounds).addTo(map);
+      L.imageOverlay(vallis, bounds).addTo(map);
 
       map.on('click', function(e){
         var coord = e.latlng;
         var lat = coord.lat;
         var lng = coord.lng;
+        // eslint-disable-next-line
         console.log(`Clicked (${lat},${lng},${map.getZoom()})`);
       });
       map.fitBounds(bounds);

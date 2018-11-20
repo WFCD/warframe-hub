@@ -25,6 +25,11 @@
     data() {
       return {};
     },
+    methods: {
+      track () {
+        this.$ga.page('/poe/map');
+      }
+    },
     mounted: function () {
       const map = L.map('plains-of-eidolon-m', {
         crs: L.CRS.Simple,
@@ -33,13 +38,14 @@
       });
 
       const bounds = [[0,0], [1012, 994]];
-      const image = L.imageOverlay(plains, bounds).addTo(map);
+      L.imageOverlay(plains, bounds).addTo(map);
 
       map.on('click', function(e){
         var coord = e.latlng;
         var lat = coord.lat;
         var lng = coord.lng;
-        console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        // eslint-disable-next-line
+        console.log(`Clicked (${lat},${lng},${map.getZoom()})`);
       });
       map.fitBounds(bounds);
       map.setView( [472, 535], 0);

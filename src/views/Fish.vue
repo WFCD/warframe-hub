@@ -19,7 +19,7 @@
       </b-row>
 
       <div class="row">
-        <table class="table fish-info">
+        <table class="table fish-info striped hover">
           <thead>
             <tr>
               <th title="The name of the fish">Fish Name</th>
@@ -104,56 +104,6 @@
     </b-col>
   </b-container>
 </template>
-
-<style>
-.fish-tooltip {
-  text-decoration: none !important;
-}
-
-.fish-tooltip div {
-  display: none;
-  margin-left: 8px;
-}
-
-.fish-tooltip-inner img {
-  object-fit: contain;
-  max-width: 200px;
-  max-height: 125px;
-  background-color:#23272A!important;
-}
-
-.fish-tooltip:hover div {
-  display: inline;
-  margin-top: -55px;
-  position: absolute;
-  border: 2px solid;
-}
-
-/* Table styles */
-.fish-info, .fish-info>tbody>tr>td {
-  border: 2px solid #737373;
-}
-
-.table>thead>tr>th {
-  border-bottom: 2px solid #737373;
-}
-
-.fish-info.table td, .fish-info.table th {
-  vertical-align: middle;
-}
-
-.table td {
-  padding: 0!important;
-}
-
-.table th {
-  padding: 0.75rem 0;
-}
-
-.color1 > td {
-  background-color: #363540;
-}
-</style>
 
 <script>
   import fish from '@/assets/json/fish.json';

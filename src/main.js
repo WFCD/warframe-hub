@@ -30,11 +30,19 @@ Vue.use(VuePackeryPlugin);
 import VueNativeNotification from 'vue-native-notification';
 Vue.use(VueNativeNotification, { requestOnNotify: true });
 
+/* Analytics */
+import VueAnalytics from 'vue-analytics';
+Vue.use(VueAnalytics, {
+  id: 'UA-47080716-6',
+});
+
 /* Leaflet */
 import 'leaflet/dist/leaflet.css';
 
 /* Themes */
 import '@/assets/less/common.less';
+import '@/assets/less/fish.less';
+import '@/assets/less/tables.less';
 import '@/assets/less/night.less';
 import '@/assets/less/day.less';
 

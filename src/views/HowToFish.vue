@@ -167,6 +167,11 @@ export default {
   name: 'HowToFish',
   components: {
     FishImg
+  },
+  methods: {
+    track () {
+      this.$ga.page('/vallis/fish');
+    }
   }
 };
 </script>

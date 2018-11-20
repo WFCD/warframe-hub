@@ -8,6 +8,7 @@
         <TimePanel v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle" location="Cetus" />
         <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
         <ResetPanel />
+        <SortiePanel v-if="this.$store.getters.componentState.sortie.state" :sortie="this.$store.getters.worldstate.sortie"/>
       </b-row>
     </b-container>
   </div>
@@ -18,6 +19,7 @@ import AlertPanel from '@/components/panels/AlertPanel.vue';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
+import SortiePanel from '@/components/panels/SortiePanel.vue';
 
 export default {
   name: 'timers',
@@ -25,7 +27,8 @@ export default {
     AlertPanel,
     NewsPanel,
     TimePanel,
-    ResetPanel
+    ResetPanel,
+    SortiePanel
   },
   methods: {
     track () {

@@ -21,6 +21,7 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
         sound: 'drum',
+        type: 'alert',
       };
     case 'operation':
       return {
@@ -29,6 +30,7 @@ const makeNotification = (type, data) => {
           body: data.tooltip,
           icon: wfcdLogoUrl,
         },
+        type: 'operation',
       };
     case 'cetus.day':
       return {
@@ -37,6 +39,7 @@ const makeNotification = (type, data) => {
           body: data.shortString,
           icon: wfcdLogoUrl,
         },
+        type: 'cetus.day',
       };
     case 'cetus.night':
       return {
@@ -46,6 +49,7 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
         sound: 'eidolon',
+        type: 'night'
       };
     case 'syndicate.ostrons':
       return {
@@ -54,6 +58,7 @@ const makeNotification = (type, data) => {
           body: `Remaining: ${data.eta}`,
           icon: wfcdLogoUrl,
         },
+        type: 'syndicate.ostrons'
       };
     case 'baro':
       return {
@@ -62,6 +67,7 @@ const makeNotification = (type, data) => {
           body: `See Component for more details\nBaro Ki'Teer departs in ${data.endString} from ${data.location}`,
           icon: wfcdLogoUrl,
         },
+        type: 'baro',
       };
     case 'darvo':
       return {
@@ -70,6 +76,7 @@ const makeNotification = (type, data) => {
           body: `${data.discount}% off • ${data.total - data.sold} remaining\nEnds in ${data.eta}`,
           icon: wfcdLogoUrl,
         },
+        type: 'darvo',
       };
     case 'enemies':
       return {
@@ -78,6 +85,7 @@ const makeNotification = (type, data) => {
           body: `${(data.healthPercent * 100).toFixed(2)}% Health Remaining • Discovered at ${data.lastDiscoveredAt}`,
           icon: wfcdLogoUrl,
         },
+        type: 'enemies',
       };
     case 'sortie':
       return {
@@ -94,6 +102,7 @@ const makeNotification = (type, data) => {
           body: `${data.tier} ${data.missionType} • ${data.node}`,
           icon: wfcdLogoUrl,
         },
+        type: 'fissure',
       };
     case 'news':
       return {
@@ -103,6 +112,7 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
         link: data.link,
+        type: 'news',
       };
     case 'invasions':
       var rewards = `${data.attackerReward.asString.length ? `${data.attackerReward.asString} vs ` : ''}${data.defenderReward.asString}`;
@@ -114,6 +124,25 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
         sound: 'drum',
+        type: 'invasion',
+      };
+    case 'vallis.warm':
+      return {
+        head: 'Vallis - Get your Warm Fishing on!',
+        body: {
+          body: data.shortString,
+          icon: wfcdLogoUrl,
+        },
+        type: 'warm',
+      };
+    case 'vallis.cold':
+      return {
+        head: 'Vallis - Back to the Cold!',
+        body: {
+          body: data.shortString,
+          icon: wfcdLogoUrl,
+        },
+        type: 'cold',
       };
     default:
       return defaultNotificationBody;
@@ -145,16 +174,20 @@ class Notifier {
             }
           }
         });
-        if (notification.sound === 'drum') {
-          const audio = new Audio(drum);
-          audio.volume = 0.2;
-          audio.play();
+
+        if (this.store.getters.sounds.includes(notification.type)) {
+          if (notification.sound === 'drum') {
+            const audio = new Audio(drum);
+            audio.volume = 0.2;
+            audio.play();
+          }
+          if (notification.sound === 'eidolon') {
+            const audio = new Audio(eidolon);
+            audio.volume = 0.2;
+            audio.play();
+          }
         }
-        if (notification.sound === 'eidolon') {
-          const audio = new Audio(eidolon);
-          audio.volume = 0.2;
-          audio.play();
-        }
+
       }
     });
   }
@@ -241,6 +274,18 @@ class Notifier {
     for (const invasion of ws.invasions) {
       if (this.isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
         toNotify.push(makeNotification('invasions', invasion));
+      }
+    }
+
+    if (ws.vallisCycle.shortString) {
+      if (ws.vallisCycle.isWarm) {
+        if (this.isNotifiable(ws.vallisCycle.id, 'vallis.warm')) {
+          toNotify.push(makeNotification('vallis.warm', ws.vallisCycle));
+        }
+      } else {
+        if (this.isNotifiable(ws.vallisCycle.id, 'vallis.cold')) {
+          toNotify.push(makeNotification('vallis.cold', ws.vallisCycle));
+        }
       }
     }
     return toNotify;

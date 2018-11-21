@@ -11,7 +11,9 @@
         </span>
         <TimeBadge :starttime="now" :endtime="sortie.expiry" :interval="1000"/>
       </b-list-group-item>
-      <b-list-group-item :style="styleObject" v-for="(mission, index) in sortie.variants" :key="`sortie-${index}`" class="list-group-item-borderless">
+      <b-list-group-item :style="styleObject" v-for="(mission, index) in sortie.variants" :key="`sortie-${index}`"
+        v-bind:class="{ 'list-group-item-borderless': index !== sortie.variants.length - 1,
+          'list-group-item-borderbottom': index === sortie.variants.length - 1 }">
         <div class="indent-1">
           <span class="pull-left">
             <b>{{mission.missionType}} - {{mission.node}}</b>
@@ -22,7 +24,6 @@
           </span>
         </div>
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom"></b-list-group-item>
     </b-list-group>
   </b-col>
 </template>
@@ -39,7 +40,7 @@
   import HubImg from '@/components/HubImg.vue';
   import TimeBadge from '@/components/TimeBadge.vue';
   import moment from 'moment';
-  
+
   import corpus from '@/assets/img/factions/corpus.svg';
   import corrupted from '@/assets/img/factions/corrupted.svg';
   import grineer from '@/assets/img/factions/grineer.svg';

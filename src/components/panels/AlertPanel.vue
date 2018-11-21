@@ -2,7 +2,8 @@
   <b-col md="6">
     <h3 class="text-center">{{headertext}}</h3>
     <b-list-group>
-      <b-list-group-item :style="styleObject" v-for="alert in alerts" :key="alert.id" class="list-group-item-borderless">
+      <b-list-group-item :style="styleObject" v-for="(alert, index) in alerts" :key="alert.id"
+      v-bind:class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }">
         <span class="pull-left">
           <HubImg :src="archwing" name="Archwing Required for Mission" :style="missionType" v-if="alert.archwingRequired" />
           <HubImg :src="nightmare" name="Nightmare Mission" :style="missionType" v-if="alert.nightmare" />
@@ -21,8 +22,6 @@
         <div style="margin-top:2px" class="pull-left">
           <b>{{alert.mission.type}}</b> ({{alert.mission.faction}}) | <b>Level: </b>{{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}
         </div>
-      </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom">
       </b-list-group-item>
     </b-list-group>
   </b-col>

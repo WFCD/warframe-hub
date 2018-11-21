@@ -2,14 +2,11 @@
   <b-col md="6">
         <h3 class="text-center">{{headertext}}</h3>
         <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
-          <b-carousel-slide   v-for="(newsitem,index) in news" :key="index"
+          <b-carousel-slide v-for="(newsitem,index) in news" :key="index"
           v-if="newsitem.translations['en']"
-          :text="newsitem.translations['en']">
-          <b-img slot="img" class="d-block slide-image" fluid center 
+          :text="title(newsitem)" v-on:click.native="open(newsitem.link)">
+          <b-img slot="img" class="d-block slide-image" fluid center
           :src="newsitem.imageLink" alt="image slot"/>
-            <p>
-            Posted: {{newsitem.eta}} | More Info: <a :href="newsitem.link" target="_blank">Click</a>
-            </p>
         </b-carousel-slide>
       </b-carousel>
     </b-col>
@@ -39,6 +36,14 @@ export default {
   computed: {
     headertext() {
       return 'News';
+    }
+  },
+  methods: {
+    open: function (url) {
+      window.open(url, '_blank');
+    },
+    title: function(newsitem) {
+      return `${newsitem.eta.split(' ')[0]} ago: ${newsitem.translations['en']}`;
     }
   },
   data() {

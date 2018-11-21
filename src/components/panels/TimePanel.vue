@@ -28,7 +28,7 @@
         </span>
         <TimeBadge :starttime="now" :endtime="time.expiry" :interval="1000"/>
       </b-list-group-item>
-      <b-list-group-item :style="styleObject" class="list-group-item-borderless">
+      <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <span class="pull-left" v-if="location !=='Vallis'">
           <b>
             Time at
@@ -49,7 +49,6 @@
           class="pull-right timebadage"
         >{{earthtimezonetime}}</b-badge>
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom"></b-list-group-item>
     </b-list-group>
   </b-col>
 </template>

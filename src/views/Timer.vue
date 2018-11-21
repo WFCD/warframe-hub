@@ -7,7 +7,7 @@
         <TimePanel v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle" location="Earth" />
         <TimePanel v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle" location="Cetus" />
         <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
-        <ResetPanel />
+        <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
         <SortiePanel v-if="this.$store.getters.componentState.sortie.state" :sortie="this.$store.getters.worldstate.sortie"/>
       </b-row>
     </b-container>

@@ -15,6 +15,13 @@ let cetusCurrentTitleTimezone;
 let cetusCurrentIndicator;
 let cetusCurrentIndicatorColor;
 
+// Vallis timer stuff
+let vallisIsWarm;
+let vallisCurrentTitle;
+let vallisCurrentTitleTimezone;
+let vallisCurrentIndicator;
+let vallisCurrentIndicatorColor;
+
 // Earth timer stuff
 let earthIsDay;
 let earthCurrentTitle;
@@ -35,6 +42,7 @@ function updateWorldStateTime() {
 function updateDataDependencies() {
   cetusIsDay = worldState.cetusCycle.isDay;
   earthIsDay = worldState.earthCycle.isDay;
+  vallisIsWarm = worldState.vallisCycle.isWarm;
 }
 
 function updateEarthTitle() {
@@ -200,6 +208,63 @@ function updateCetusCycle() {
     const sound = JSON.parse(localStorage.getItem('notificationfilters') || '[]').includes('sound_cetus_night');
     sendNotification(worldState.cetusCycle.shortString, 'Cetus - It\'s Hunting Time!', sound ? 'audio/eidolon.mp3' : undefined);
     addNotifiedId(worldState.cetusCycle.id);
+  }
+}
+
+function updateVallisTitle() {
+  if (!vallisIsWarm) {
+    vallisCurrentIndicator = 'Cold';
+    vallisCurrentIndicatorColor = 'darkblue';
+    vallisCurrentTitle = 'Time until warm cycle: ';
+    vallisCurrentTitleTimezone = 'Time at warm cycle: ';
+  } else {
+    vallisCurrentIndicator = 'Warm';
+    vallisCurrentIndicatorColor = 'orange';
+    vallisCurrentTitle = 'Time until cold cycle: ';
+    vallisCurrentTitleTimezone = 'Time at cold cycle: ';
+  }
+}
+
+function updateVallisCycle() {
+  let expiryTime = moment(worldState.vallisCycle.expiry).unix();
+  const currentTime = moment().unix();
+
+  // Oh no, cycle expired before we can fetch a new one
+  if (currentTime > expiryTime) {
+    vallisIsWarm = !vallisIsWarm;
+    if (vallisIsWarm) {
+      expiryTime = moment(worldState.vallisCycle.expiry).add(400, 's').unix(); // Add 400 seconds* for day, temporarily
+    } else {
+      expiryTime = moment(worldState.vallisCycle.expiry).add(1200, 's').unix(); // Add 1200 seconds for night, temporarily
+    }
+  }
+
+  updateVallisTitle();
+
+  const cycleIndicator = $('#valliscycleindicator');
+  cycleIndicator.html(vallisCurrentIndicator);
+  if (!cycleIndicator.hasClass(vallisCurrentIndicatorColor)) {
+    cycleIndicator.attr('class', vallisCurrentIndicatorColor);
+    cycleIndicator.addClass('pull-right');
+  }
+
+  $('#valliscycletitle').html(cetusCurrentTitle);
+  $('#vallistimezonetitle').html(cetusCurrentTitleTimezone);
+  $('#vallistimezonetime').html(moment.unix(expiryTime).format('llll'));
+
+  const timeBadge = $('#valliscycletime');
+  timeBadge.attr('data-endtime', expiryTime);
+  timeBadge.addClass('label timer');
+
+  if (worldState.vallisCycle.isWarm) {
+    // Warm notification
+    if (isNotifiable(worldState.vallisCycle.id, 'vallis.warm')) {
+      sendNotification(worldState.vallisCycle.shortString, 'Orb Vallis - Venus is now warm!');
+      addNotifiedId(worldState.vallisCycle.id);
+    }
+  } else if (isNotifiable(worldState.vallisCycle.id, 'vallis.cold')) {
+    sendNotification(worldState.vallisCycle.shortString, 'Orb Vallis - Venus is now cold!');
+    addNotifiedId(worldState.vallisCycle.id);
   }
 }
 
@@ -1027,6 +1092,7 @@ function updatePage() {
     updateEvents();
     updateEarthCycle();
     updateCetusCycle();
+    updateVallisCycle();
     updateVoidTrader();
     updateVoidTraderInventory();
     updateDarvoDeals();

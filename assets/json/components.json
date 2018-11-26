@@ -16,6 +16,10 @@
     "display": "Earth Cycle"
   },
   {
+    "key": "vallis",
+    "display": "Orb Vallis Cycle"
+  },
+  {
     "key": "reset",
     "display": "Reset Timer"
   },

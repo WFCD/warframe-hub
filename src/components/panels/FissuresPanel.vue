@@ -21,10 +21,10 @@
   import NoDataItem from '@/components/NoDataItem.vue';
 
   const fissureIcons = [];
-  import lith from '@/assets/img/fissures/1.svg'
-  import meso from '@/assets/img/fissures/2.svg'
-  import neo from '@/assets/img/fissures/3.svg'
-  import axi from '@/assets/img/fissures/4.svg'
+  import lith from '@/assets/img/fissures/1.svg';
+  import meso from '@/assets/img/fissures/2.svg';
+  import neo from '@/assets/img/fissures/3.svg';
+  import axi from '@/assets/img/fissures/4.svg';
   fissureIcons.push(lith);
   fissureIcons.push(meso);
   fissureIcons.push(neo);
@@ -39,13 +39,13 @@
       },
       filteredFissures: function() {
         const pState = [];
-        Object.keys(this.$store.getters.fissurePlanetStates).forEach(p => {
+        Object.keys(this.$store.getters.fissurePlanetStates).forEach((p) => {
           if (this.$store.getters.fissurePlanetStates[p].state) {
             pState.push(p);
           }
         });
         const planets = new RegExp(`(${pState.join('|')})`, 'i');
-        return this.fissures.filter(fissure => {
+        return this.fissures.filter((fissure) => {
           const isFiltered = planets.test(fissure.node);
           return (pState.length > 0 ? !isFiltered : true) && !fissure.expired;
         });

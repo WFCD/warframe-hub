@@ -25,7 +25,6 @@
 
 <script>
   import NoDataItem from '@/components/NoDataItem.vue';
-  import moment from 'moment';
 
   export default {
     name: 'AcolytesPanel',
@@ -47,6 +46,7 @@
         } else if (health <= 20) {
           labelClass = 'danger';
         }
+        return labelClass;
       }
     },
     data () {

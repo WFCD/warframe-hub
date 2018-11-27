@@ -11,7 +11,6 @@
 
 <script>
 import NoDataItem from '@/components/NoDataItem.vue';
-import moment from 'moment';
 
 export default {
   name: 'NoDataItem',

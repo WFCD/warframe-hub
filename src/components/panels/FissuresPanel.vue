@@ -44,7 +44,7 @@
             pState.push(p);
           }
         });
-        // eslint-ignore-next-line security/detect-non-literal-regexp
+        // eslint-disable-next-line security/detect-non-literal-regexp
         const planets = new RegExp(`(${pState.join('|')})`, 'i');
         return this.fissures.filter((fissure) => {
           const isFiltered = planets.test(fissure.node);

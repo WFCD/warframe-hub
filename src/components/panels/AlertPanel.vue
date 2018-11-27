@@ -23,6 +23,7 @@
           <b>{{alert.mission.type}}</b> ({{alert.mission.faction}}) | <b>Level: </b>{{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}
         </div>
       </b-list-group-item>
+      <NoDataItem v-if="alerts.length === 0" :text="headertext" />
     </b-list-group>
   </b-col>
 </template>
@@ -30,6 +31,7 @@
 <script>
   import TimeBadge from '@/components/TimeBadge.vue';
   import HubImg from '@/components/HubImg.vue';
+  import NoDataItem from '@/components/NoDataItem.vue';
 
   import archwing from '@/assets/img/archwing.svg';
   import nightmare from '@/assets/img/nightmare.svg';
@@ -53,7 +55,8 @@
     },
     components: {
       TimeBadge,
-      HubImg
+      HubImg,
+      NoDataItem,
     }
   };
 </script>

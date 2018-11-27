@@ -29,6 +29,11 @@
     "display": "Bounties Timer",
     "key": "bounties"
   },
+  "solaris-bounties": {
+    "state": true,
+    "display": "Solaris Bounties Timer",
+    "key": "solaris-bounties"
+  },
   "alerts": {
     "state": true,
     "display": "Alerts",

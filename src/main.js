@@ -56,4 +56,4 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app');
 
-setInterval(() => {store.dispatch('updateWorldstate');}, 60000);
+setInterval(() => {store.dispatch('updateWorldstate');}, 30000);

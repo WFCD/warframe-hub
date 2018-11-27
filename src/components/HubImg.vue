@@ -1,5 +1,5 @@
 <template>
-  <a href="#" v-b-tooltip :title="name">
+  <span v-b-tooltip.auto :title="name" class="pull-left">
     <img
       :src="src"
       :name="name"
@@ -7,7 +7,7 @@
       :width="width"
       :alt="name"
     />
-  </a>
+  </span>
 </template>
 
 

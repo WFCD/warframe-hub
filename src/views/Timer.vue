@@ -2,6 +2,7 @@
   <div class="timers">
     <b-container fluid>
       <b-row>
+        <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
         <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
         <NewsPanel v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
         <TimePanel v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle" location="Earth" />
@@ -9,6 +10,7 @@
         <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
         <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
         <SortiePanel v-if="this.$store.getters.componentState.sortie.state" :sortie="this.$store.getters.worldstate.sortie"/>
+        <FissuresPanel v-if="this.$store.getters.componentState.fissures.state" :fissures="this.$store.getters.worldstate.fissures"/>
       </b-row>
     </b-container>
   </div>
@@ -20,6 +22,8 @@ import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
+import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
+import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 
 export default {
   name: 'timers',
@@ -28,7 +32,9 @@ export default {
     NewsPanel,
     TimePanel,
     ResetPanel,
-    SortiePanel
+    SortiePanel,
+    AcolytesPanel,
+    FissuresPanel,
   },
   methods: {
     track () {

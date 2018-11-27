@@ -1,5 +1,5 @@
 <template>
-<b-col md="6">
+<b-col md="6" class="panel-header">
   <h3 class="text-center">{{headertext}}</h3>
   <b-list-group>
     <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">

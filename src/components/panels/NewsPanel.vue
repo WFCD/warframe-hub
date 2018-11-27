@@ -1,5 +1,5 @@
 <template>
-  <b-col md="6">
+  <b-col md="6" class="panel-header">
         <h3 class="text-center">{{headertext}}</h3>
         <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
           <b-carousel-slide v-for="(newsitem,index) in news" :key="index"

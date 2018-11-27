@@ -1,12 +1,12 @@
 <template>
-  <b-col md="6">
+  <b-col md="6" class="panel-header">
     <h3 class="text-center">{{headertext}}</h3>
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(alert, index) in alerts" :key="alert.id"
-      v-bind:class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }">
+      v-bind:class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }" v-if="alert.active">
         <span class="pull-left">
-          <HubImg :src="archwing" name="Archwing Required for Mission" :style="missionType" v-if="alert.archwingRequired" />
-          <HubImg :src="nightmare" name="Nightmare Mission" :style="missionType" v-if="alert.nightmare" />
+          <HubImg :src="archwing" name="Archwing Required for Mission" style="li-misssion-decorator" v-if="alert.archwingRequired" />
+          <HubImg :src="nightmare" name="Nightmare Mission" style="li-misssion-decorator" v-if="alert.nightmare" />
           <b>{{alert.mission.node}}</b>
         </span>
         <TimeBadge :starttime="alert.activation" :endtime="alert.expiry" :interval="1000"/>
@@ -49,13 +49,6 @@
         },
         archwing: archwing,
         nightmare: nightmare,
-        missionType: {
-          'filter': 'invert(100%)',
-          'margin-top': '-3px',
-          'margin-right': '5px',
-          'width': '15px',
-          'height': '15px',
-        },
       };
     },
     components: {

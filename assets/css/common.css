@@ -85,6 +85,17 @@ a.panel-heading {
   content: "🌙  ";
 }
 
+/* Cold/warm */
+.warm:before {
+  color: rgba(249, 168, 6, .8);
+  content: "♨  ";
+}
+
+.cold:before {
+  color: rgba(51, 211, 255, .8);
+  content: "❄  ";
+}
+
 /* mobile width fix */
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

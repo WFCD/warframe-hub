@@ -59,6 +59,8 @@
     "streams": "Stream Announcements",
     "cetus.day": "Cetus' Day Start",
     "cetus.night": "Cetus' Night Start",
+    "vallis.warm": "Orb Vallis Warm Cycle",
+    "vallis.cold": "Orb Vallis Cold Cycle",
     "syndicate.ostrons": "Bounties",
     "operations": "Operations",
     "fissures.t1.excavation": "Lith Excavation Fissure",

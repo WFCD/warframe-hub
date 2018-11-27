@@ -26,6 +26,24 @@
           </ul>
       </div>
 
+      <div class="grid-item col-md-6" id="component-vallis">
+          <h3 class="text-center">Orb Vallis Warm/Cold Cycle</h3>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-borderless">
+              Currently it is:
+              <span id="valliscycleindicator"></span>
+            </li>
+            <li class="list-group-item list-group-item-borderless">
+              <span id="valliscycletitle">{{> loading}}</span>
+              <span class="pull-right" id="valliscycletime"></span>
+            </li>
+            <li class="list-group-item list-group-item-borderbottom">
+              <span class="pull-right label label-primary" id="vallistimezonetime" title="This is in your timezone!"></span>
+              <span id="vallistimezonetitle">{{> loading}}</span>
+            </li>
+          </ul>
+      </div>
+
       <div class="grid-item col-md-6" id="component-earth">
           <h3 class="text-center">Earth Day/Night Cycle</h3>
           <ul class="list-group">

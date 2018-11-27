@@ -20,6 +20,7 @@ const cleanupNotifiedIds = () => {
     .concat(worldState.conclaveChallenges.map(item => item.id))
     .concat(worldState.conclaveChallenges.map(item => item.id))
     .concat([worldState.cetusCycle.id])
+    .concat([worldState.vallisCycle.id])
     .concat([worldState.voidTrader.id])
     .concat(worldState.persistentEnemies.map(enemy => enemy.pid));
   const notifiedIds = JSON.parse(localStorage.getItem('notifiedIds') || '[]');
@@ -86,6 +87,9 @@ function updateTimeBadges() {
       case 'earthcycletime':
         updateEarthCycle();
         break;
+      case 'valliscycletime':
+        updateVallisCycle();
+        break;
       case 'resettimertime':
         updateResetTime();
         break;
@@ -136,7 +140,7 @@ $('.platform-picker li').click(e => {
 });
 
 // Set default component selections if there aren't any
-[['event'], ['acolytes'], ['cetus'], ['earth'], ['bounties'], ['alerts'],
+[['event'], ['acolytes'], ['cetus'], ['earth'], ['vallis'], ['bounties'], ['alerts'],
   ['news'], ['invasions'], ['reset'], ['sortie'], ['fissures'],
   ['baro'], ['darvo'], ['deals', 'false']].forEach(([component, defValue]) => {
   const value = localStorage.getItem(component);

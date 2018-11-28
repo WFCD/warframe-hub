@@ -48,12 +48,12 @@ export default {
   computed: {
     ostrons: function() {
       const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter(syndicate => syndicate.syndicate === 'Ostrons');
+        .filter((syndicate) => syndicate.syndicate === 'Ostrons');
       return filtered[0];
     },
     solaris: function() {
       const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter(syndicate => syndicate.syndicate === 'Solaris United');
+        .filter((syndicate) => syndicate.syndicate === 'Solaris United');
       return filtered[0];
     },
   }

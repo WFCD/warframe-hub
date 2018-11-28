@@ -40,11 +40,11 @@
     },
     data () {
       return {
-        items: this.syndicate.jobs.map(job => ({
+        items: this.syndicate.jobs.map((job) => ({
           type: job.type,
           standing: job.standingStages.join(', '),
           'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
-          rewards: `<ul>${job.rewardPool.map(reward => `<li>${reward}</li>`).join('')}</ul>`,
+          rewards: `<ul>${job.rewardPool.map((reward) => `<li>${reward}</li>`).join('')}</ul>`,
         })),
         fields: [
           {

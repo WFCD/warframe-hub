@@ -44,7 +44,7 @@
           type: job.type,
           standing: job.standingStages.join(', '),
           'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
-          rewards: `<ul>${job.rewardPool.map((reward) => `<li>${reward}</li>`).join('')}</ul>`,
+          rewards: `${job.rewardPool.map((reward) => `<span>${reward}</span>`).join('<br />')}`,
         })),
         fields: [
           {

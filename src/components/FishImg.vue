@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" :name="name" :height="height" :width="width" :alt="name">
+  <img :src="src" :name="name" :height="height" :width="width" :alt="name" />
 </template>
 
 <!--  -->
@@ -9,24 +9,24 @@ export default {
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     item: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      default: 'Name'
+      default: 'Name',
     },
     width: {
       type: String,
-      default: '12px'
+      default: '12px',
     },
     height: {
       type: String,
-      default: '12px'
-    }
+      default: '12px',
+    },
   },
   data() {
     return {
@@ -78,7 +78,7 @@ export default {
           guide3: import('@/assets/img/fish/guide/guide3.png'),
           guide5: import('@/assets/img/fish/guide/guide5.png'),
           clem: import('@/assets/img/fish/guide/clem.png')
-        }
+        },
       },
       typeId: this.type,
       itemId: this.item,

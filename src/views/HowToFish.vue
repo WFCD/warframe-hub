@@ -7,14 +7,7 @@
         <h3 class="text-center">The definitive guide to fishing in Warframe</h3>
         <br>
         <h4 class="text-center">By /u/cranem258 aka PepsiMan</h4>
-        <FishImg
-          type="guide"
-          item="clem"
-          name="Map"
-          height="100%"
-          width="100%"
-          class="center-block"
-        />
+        <FishImg type="guide" item="clem" name="Map" height="100%" width="100%" class="center-block"/>
         <br>
         <br>
         <p>

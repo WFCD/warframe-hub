@@ -9,14 +9,7 @@
         :text="title(newsitem)"
         v-on:click.native="open(newsitem.link)"
       >
-        <b-img
-          slot="img"
-          class="d-block slide-image"
-          fluid
-          center
-          :src="newsitem.imageLink.replace('http://', 'https://')"
-          alt="image slot"
-        />
+        <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" alt="image slot" />
       </b-carousel-slide>
     </b-carousel>
   </b-col>

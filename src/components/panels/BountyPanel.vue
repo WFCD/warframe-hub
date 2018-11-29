@@ -7,8 +7,8 @@
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000"/>
       </b-list-group-item>
       <b-list-group-item v-if="syndicate.active" class="list-group-item-borderbottom">
-        <b-btn variant="primary" v-b-toggle="`bounty-table-${headertext}`">{{headertext}} Bounties <i class="fas fa-chevron-down"></i></b-btn>
-        <b-collapse :id="`bounty-table-${headertext}`">
+        <b-btn variant="primary" v-b-toggle="`bounty-table-${headertext.replace(/\s/ig, '-').toLowerCase()}`">{{headertext}} Bounties <i class="fas fa-chevron-down"></i></b-btn>
+        <b-collapse :id="`bounty-table-${headertext.replace(/\s/ig, '-').toLowerCase()}`">
           <b-card>
             <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
               <span slot="rewards" slot-scope="data" v-html="data.value"></span>

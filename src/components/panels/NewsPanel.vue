@@ -1,15 +1,18 @@
 <template>
   <b-col md="6" class="panel-header">
-        <h3 class="text-center">{{headertext}}</h3>
-        <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
-          <b-carousel-slide v-for="(newsitem,index) in news" :key="index"
-          v-if="newsitem.translations['en']"
-          :text="title(newsitem)" v-on:click.native="open(newsitem.link)">
-          <b-img slot="img" class="d-block slide-image" fluid center
-          :src="newsitem.imageLink.replace('http://', 'https://')" alt="image slot"/>
-        </b-carousel-slide>
-      </b-carousel>
-    </b-col>
+    <h3 class="text-center">{{headertext}}</h3>
+    <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
+      <b-carousel-slide
+        v-for="(newsitem,index) in news"
+        :key="index"
+        v-if="newsitem.translations['en']"
+        :text="title(newsitem)"
+        v-on:click.native="open(newsitem.link)"
+      >
+        <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" alt="image slot" />
+      </b-carousel-slide>
+    </b-carousel>
+  </b-col>
 </template>
 <style>
 .carousel-caption {
@@ -19,7 +22,7 @@
   left: 0 !important;
   bottom: 0 !important;
   font-weight: bolder;
-  padding-bottom: 0px !important
+  padding-bottom: 0px !important;
 }
 .carousel-caption a {
   color: white;
@@ -39,11 +42,16 @@ export default {
     }
   },
   methods: {
-    open: function (url) {
+    open: function(url) {
       window.open(url, '_blank');
     },
+    getimgling: function(url) {
+      return 'https://img.mybitti.de/o_webp/' + url;
+    },
     title: function(newsitem) {
-      return `${newsitem.eta.split(' ')[0]} ago: ${newsitem.translations['en']}`;
+      return `${newsitem.eta.split(' ')[0]} ago: ${
+        newsitem.translations['en']
+      }`;
     }
   },
   data() {

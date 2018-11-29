@@ -152,6 +152,11 @@ const routes = [
   },
 ];
 
+const router = new Router({
+  routes,
+  mode: 'history'
+});
+
 // From https://alligator.io/vuejs/vue-router-modify-head/
 // This callback runs before every route change, including on page load.
 router.beforeEach((to, from, next) => {
@@ -189,12 +194,6 @@ router.beforeEach((to, from, next) => {
   .forEach(tag => document.head.appendChild(tag));
 
   next();
-});
-
-
-const router = new VueRouter({
-  routes,
-  mode: 'history'
 });
 
 export default router;

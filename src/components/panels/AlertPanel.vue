@@ -5,8 +5,8 @@
       <b-list-group-item :style="styleObject" v-for="(alert, index) in alerts" :key="alert.id"
       v-bind:class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }" v-if="alert.active">
         <span class="pull-left">
-          <HubImg :src="archwing" name="Archwing Required for Mission" style="li-misssion-decorator" v-if="alert.mission.archwingRequired" />
-          <HubImg :src="nightmare" name="Nightmare Mission" style="li-misssion-decorator" v-if="alert.mission.nightmare" />
+          <HubImg :src="archwing" name="Archwing Required for Mission" style="li-mission-decorator" v-if="alert.mission.archwingRequired" />
+          <HubImg :src="nightmare" name="Nightmare Mission" style="li-msssion-decorator" v-if="alert.mission.nightmare" />
           <b>{{alert.mission.node}}</b>
         </span>
         <TimeBadge :starttime="alert.activation" :endtime="alert.expiry" :interval="1000"/>

@@ -5,7 +5,7 @@
       <b-list-group-item :style="styleObject" v-for="(fissure, index) in filteredFissures" :key="fissure.id"
       v-bind:class="{ 'list-group-item-borderless': index !== filteredFissures.length - 1, 'list-group-item-borderbottom': index === filteredFissures.length - 1 }">
         <span class="pull-left">
-          <HubImg :src="determineImg(fissure)" :name="fissure.tier" class="li-misssion-decorator li-misssion-decorator-lg" height="32px" width="32px" />
+          <HubImg :src="determineImg(fissure)" :name="fissure.tier" class="li-mission-decorator li-mission-decorator-lg" height="32px" width="32px" />
           <b>{{fissure.node}}</b> | {{fissure.missionType}} | {{fissure.tier}}
         </span>
         <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000"/>

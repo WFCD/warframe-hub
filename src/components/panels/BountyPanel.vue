@@ -13,7 +13,7 @@
             <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
               <span slot="rewards" slot-scope="data" v-html="data.value"></span>
               <template slot="HEAD_standing" slot-scope="data">
-                  <HubImg :src="standing" name="Standing" class="text-center li-misssion-decorator li-misssion-decorator-lg" />
+                  <HubImg :src="standing" name="Standing" class="text-center li-mission-decorator li-msssion-decorator-lg" />
               </template>
             </b-table>
           </b-card>

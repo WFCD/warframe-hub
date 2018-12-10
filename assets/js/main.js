@@ -275,8 +275,9 @@ $('#filters-picker').removeClass('hide');
   };
 
   // initialize Packery
+  const packeryItemSelector = '.grid-item';
   const grid = $('.grid').packery({
-    itemSelector: '.grid-item',
+    itemSelector: packeryItemSelector,
     columnWidth: '.grid-sizer',
     percentPosition: true,
     initLayout: false, // disable initial layout
@@ -284,6 +285,24 @@ $('#filters-picker').removeClass('hide');
 
   // get saved dragged positions
   const initPositions = JSON.parse(localStorage.getItem('dragPositions'));
+
+  if (initPositions) {
+    // check if new components have been added since save
+    const savedComponentKeys = initPositions.reduce(
+      (obj, component) => {
+        obj[component.attr] = true;
+        return obj;
+      },
+      {}
+    );
+
+    $(packeryItemSelector).each((index, component) => {
+      if (!(component.id in savedComponentKeys)) {
+        initPositions.unshift({attr: component.id, x: 0});
+      }
+    });
+  }
+
   // init layout with saved positions
   grid.packery('initShiftLayout', initPositions);
 

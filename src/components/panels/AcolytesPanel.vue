@@ -1,10 +1,8 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(acolyte, index) in acolytes" :key="acolyte.id" v-bind:class="{ 'list-group-item-borderless': index !== acolytes.length - 1, 'list-group-item-borderbottom': index === acolytes.length - 1 }">
         <span :class="`label label-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>
-
         <b>
           <i class="far fa-eye faIconStyle" :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-if="acolyte.isRequired"></i>
           <i class="far fa-eye-slash faIconStyle" :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-else></i>
@@ -20,11 +18,12 @@
       </b-list-group-item>
       <NoDataItem v-if="acolytes.length === 0" :text="headertext" />
     </b-list-group>
-  </b-col>
+  </HubPanelWrap>
 </template>
 
 <script>
   import NoDataItem from '@/components/NoDataItem.vue';
+  import HubPanelWrap from '@/components/HubPanelWrap';
 
   export default {
     name: 'AcolytesPanel',
@@ -61,6 +60,7 @@
     },
     components: {
       NoDataItem,
+      HubPanelWrap,
     }
   };
 </script>

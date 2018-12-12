@@ -1,12 +1,11 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(alert, index) in alerts" :key="alert.id"
-      v-bind:class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }" v-if="alert.active">
+      :class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }" v-if="alert.active">
         <span class="pull-left">
-          <HubImg :src="archwing" name="Archwing Required for Mission" style="li-mission-decorator" v-if="alert.mission.archwingRequired" />
-          <HubImg :src="nightmare" name="Nightmare Mission" style="li-msssion-decorator" v-if="alert.mission.nightmare" />
+          <HubImg :src="archwing" name="Archwing Required for Mission" class="li-mission-decorator" v-if="alert.mission.archwingRequired" />
+          <HubImg :src="nightmare" name="Nightmare Mission" class="li-mission-decorator" v-if="alert.mission.nightmare" />
           <b>{{alert.mission.node}}</b>
         </span>
         <TimeBadge :starttime="alert.activation" :endtime="alert.expiry" :interval="1000"/>
@@ -25,7 +24,7 @@
       </b-list-group-item>
       <NoDataItem v-if="alerts.length === 0" :text="headertext" />
     </b-list-group>
-  </b-col>
+  </HubPanelWrap>
 </template>
 
 <script>
@@ -35,6 +34,7 @@
 
   import archwing from '@/assets/img/archwing.svg';
   import nightmare from '@/assets/img/nightmare.svg';
+  import HubPanelWrap from '@/components/HubPanelWrap';
 
   export default {
     name: 'AlertPanel',
@@ -57,6 +57,7 @@
       TimeBadge,
       HubImg,
       NoDataItem,
+      HubPanelWrap,
     }
   };
 </script>

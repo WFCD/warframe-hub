@@ -1,6 +1,5 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
       <b-carousel-slide
         v-for="(newsitem,index) in news"
@@ -12,7 +11,7 @@
         <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" alt="image slot" />
       </b-carousel-slide>
     </b-carousel>
-  </b-col>
+  </HubPanelWrap>
 </template>
 <style>
 .carousel-caption {
@@ -33,9 +32,12 @@
 }
 </style>
 <script>
+import HubPanelWrap from '@/components/HubPanelWrap';
+
 export default {
   props: ['news'],
   name: 'NewsPanel',
+  components: { HubPanelWrap },
   computed: {
     headertext() {
       return 'News';

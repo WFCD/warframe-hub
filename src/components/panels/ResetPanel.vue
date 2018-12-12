@@ -1,20 +1,20 @@
 <template>
-<b-col md="6" class="panel-header">
-  <h3 class="text-center">{{headertext}}</h3>
-  <b-list-group>
-    <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
-      <span class="pull-left">
-        <b>Reward Timer Reset in:</b>
-      </span>
-      <TimeBadge :starttime="this.time2" :endtime="this.time1"/>
-    </b-list-group-item>
-  </b-list-group>
-</b-col>
+  <HubPanelWrap :title="headertext">
+    <b-list-group>
+      <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
+        <span class="pull-left">
+          <b>Reward Timer Reset in:</b>
+        </span>
+        <TimeBadge :starttime="this.time2" :endtime="this.time1"/>
+      </b-list-group-item>
+    </b-list-group>
+  </HubPanelWrap>
 </template>
 
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
 import moment from 'moment';
+import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
   props: ['time', 'location'],
@@ -49,7 +49,8 @@ export default {
     }
   },
   components: {
-    TimeBadge
+    TimeBadge,
+    HubPanelWrap,
   }
 };
 </script>

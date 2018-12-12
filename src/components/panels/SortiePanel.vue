@@ -1,6 +1,5 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderless no-padding-bot">
         <span class="pull-left">
@@ -25,7 +24,7 @@
         </div>
       </b-list-group-item>
     </b-list-group>
-  </b-col>
+  </HubPanelWrap>
 </template>
 <style scoped>
   .no-padding-bot {
@@ -40,6 +39,7 @@
   import HubImg from '@/components/HubImg.vue';
   import TimeBadge from '@/components/TimeBadge.vue';
   import moment from 'moment';
+  import HubPanelWrap from '@/components/HubPanelWrap';
 
   import corpus from '@/assets/img/factions/corpus.svg';
   import corrupted from '@/assets/img/factions/corrupted.svg';
@@ -75,7 +75,8 @@
     },
     components: {
       TimeBadge,
-      HubImg
+      HubImg,
+      HubPanelWrap,
     },
     data() {
       return {

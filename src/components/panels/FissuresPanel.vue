@@ -1,6 +1,5 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(fissure, index) in filteredFissures" :key="fissure.id"
       v-bind:class="{ 'list-group-item-borderless': index !== filteredFissures.length - 1, 'list-group-item-borderbottom': index === filteredFissures.length - 1 }">
@@ -12,13 +11,14 @@
       </b-list-group-item>
       <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" />
     </b-list-group>
-  </b-col>
+  </HubPanelWrap>
 </template>
 
 <script>
   import TimeBadge from '@/components/TimeBadge.vue';
   import HubImg from '@/components/HubImg.vue';
   import NoDataItem from '@/components/NoDataItem.vue';
+  import HubPanelWrap from '@/components/HubPanelWrap';
 
   const fissureIcons = [];
   import lith from '@/assets/img/fissures/1.svg';
@@ -68,6 +68,7 @@
       TimeBadge,
       HubImg,
       NoDataItem,
+      HubPanelWrap,
     }
   };
 </script>

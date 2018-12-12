@@ -1,6 +1,5 @@
 <template>
-  <b-col md="6" class="panel-header">
-    <h3 class="text-center">{{headertext}}</h3>
+  <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderless">
         <span class="pull-left">
@@ -50,7 +49,7 @@
         >{{earthtimezonetime}}</b-badge>
       </b-list-group-item>
     </b-list-group>
-  </b-col>
+  </HubPanelWrap>
 </template>
 <style scoped>
   .night:before {
@@ -69,6 +68,7 @@
 <script>
   import TimeBadge from '@/components/TimeBadge.vue';
   import moment from 'moment';
+  import HubPanelWrap from '@/components/HubPanelWrap';
 
   export default {
     props: ['time', 'location'],
@@ -90,6 +90,7 @@
     },
     components: {
       TimeBadge,
+      HubPanelWrap,
     },
     data() {
       return {

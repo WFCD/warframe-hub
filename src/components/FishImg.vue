@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     getImg: function() {
-      this.imgs[this.typeId][this.itemId].then(img => {
+      this.imgs[this.typeId][this.itemId].then((img) => {
         this.src = img.default;
       });
     }

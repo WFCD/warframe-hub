@@ -248,8 +248,8 @@ function updateVallisCycle() {
     cycleIndicator.addClass('pull-right');
   }
 
-  $('#valliscycletitle').html(cetusCurrentTitle);
-  $('#vallistimezonetitle').html(cetusCurrentTitleTimezone);
+  $('#valliscycletitle').html(vallisCurrentTitle);
+  $('#vallistimezonetitle').html(vallisCurrentTitleTimezone);
   $('#vallistimezonetime').html(moment.unix(expiryTime).format('llll'));
 
   const timeBadge = $('#valliscycletime');

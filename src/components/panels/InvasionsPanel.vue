@@ -7,17 +7,20 @@
         'list-group-item-borderbottom': index === invasions.length - 1 }"
         v-if="!invasion.completed">
 
-        <b-row :id="`${invasion.id}_info`" class="text-center">
+        <div :id="`${invasion.id}_info`" class="text-center">
           <span><b>{{invasion.node}}</b></span>
           <br/>
           {{invasion.desc}} {{eta(invasion)}}
-        </b-row>
+        </div>
         <b-row>
-          <b-badge tag="div" v-for="item in invasion.attackerReward.items" :key="item" :variant="getLabelColor(invasion.attackingFaction)" class="text-left">{{item}}</b-badge>
-          <b-badge tag="div" v-for="item in invasion.attackerReward.countedItems" :key="item.type" :variant="getLabelColor(invasion.attackingFaction)" class="text-left">{{countedItem(item)}}</b-badge>
-
-          <b-badge tag="div" v-for="item in invasion.defenderReward.items" :key="item" :variant="getLabelColor(invasion.defendingFaction)" class="text-right">{{item}}</b-badge>
-          <b-badge tag="div" v-for="item in invasion.defenderReward.countedItems" :key="item.type" :variant="getLabelColor(invasion.defendingFaction)" class="text-right">{{countedItem(item)}}</b-badge>
+          <div class="pull-left">
+            <b-badge tag="div" v-for="item in invasion.attackerReward.items" :key="item" :variant="getLabelColor(invasion.attackingFaction)">{{item}}</b-badge>
+            <b-badge tag="div" v-for="item in invasion.attackerReward.countedItems" :key="item.type" :variant="getLabelColor(invasion.attackingFaction)">{{countedItem(item)}}</b-badge>
+          </div>
+          <div class="pull-right">
+            <b-badge v-for="item in invasion.defenderReward.items" :key="item" :variant="getLabelColor(invasion.defendingFaction)">{{item}}</b-badge>
+            <b-badge v-for="item in invasion.defenderReward.countedItems" :key="item.type" :variant="getLabelColor(invasion.defendingFaction)">{{countedItem(item)}}</b-badge>
+          </div>
         </b-row>
         <b-row>
           <b-progress :max="100" class="w-100 h-125">

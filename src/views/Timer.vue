@@ -3,6 +3,7 @@
     <b-container fluid class="grid">
       <b-row ref="timerComponentGrid" v-packery='{itemSelector: ".packery-item", percentPosition: true}'>
         <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
+        <EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
         <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
         <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
         <InvasionsPanel v-if="this.$store.getters.componentState.invasions.state" :invasions="this.$store.getters.worldstate.invasions"/>
@@ -29,6 +30,7 @@ import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
+import EventsPanel from '@/components/panels/EventsPanel.vue';
 
 export default {
   name: 'timers',
@@ -42,6 +44,7 @@ export default {
     FissuresPanel,
     BountyPanel,
     InvasionsPanel,
+    EventsPanel,
   },
   methods: {
     track () {

@@ -11,15 +11,8 @@
   </div>
 </template>
 <script>
-  import {packeryEvents} from 'vue-packery-plugin'
-
-  import TimeBadge from '@/components/TimeBadge.vue';
-  import NoDataItem from '@/components/NoDataItem.vue';
-  import HubImg from '@/components/HubImg.vue';
-  import HubPanelWrap from '@/components/HubPanelWrap';
+  import {packeryEvents} from 'vue-packery-plugin';
   import Collapsible from '@/components/Collapsible';
-
-  import standing from '@/assets/img/general/standing.svg';
 
   export default {
     name: 'Collapsible',

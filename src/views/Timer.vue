@@ -15,6 +15,8 @@
         <BountyPanel v-if="this.$store.getters.componentState.bounties.state" :syndicate="this.ostrons" type="Ostron" />
         <BountyPanel v-if="this.$store.getters.componentState['solaris-bounties'].state" :syndicate="this.solaris" type="Solaris United" />
         <FissuresPanel v-if="this.$store.getters.componentState.fissures.state" :fissures="this.$store.getters.worldstate.fissures"/>
+        <DarvoDealsPanel v-if="this.$store.getters.componentState.darvo.state" :deals="this.$store.getters.worldstate.dailyDeals" />
+        <SalesPanel v-if="this.$store.getters.componentState.deals.state" :sales="this.$store.getters.worldstate.flashSales" />
       </b-row>
     </b-container>
   </div>
@@ -31,6 +33,8 @@ import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
+import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
+import SalesPanel from '@/components/panels/SalesPanel.vue';
 
 export default {
   name: 'timers',
@@ -45,6 +49,8 @@ export default {
     BountyPanel,
     InvasionsPanel,
     EventsPanel,
+    DarvoDealsPanel,
+    SalesPanel,
   },
   methods: {
     track () {

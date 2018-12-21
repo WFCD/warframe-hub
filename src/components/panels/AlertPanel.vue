@@ -58,7 +58,7 @@
       HubImg,
       NoDataItem,
       HubPanelWrap,
-    }
+    },
   };
 </script>
 <!-- AlertPanel.vue -->

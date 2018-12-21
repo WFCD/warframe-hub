@@ -166,6 +166,7 @@ router.beforeEach((to, from, next) => {
 
   // Find the nearest route element with meta tags.
   const nearestWithMeta = to.matched.slice().reverse().find((r) => r.meta && r.meta.metaTags);
+  // eslint-disable-next-line no-unused-vars
   const previousNearestWithMeta = from.matched.slice().reverse().find((r) => r.meta && r.meta.metaTags);
 
   // If a route with a title was found, set the document (page) title to that value.

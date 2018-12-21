@@ -12,13 +12,13 @@
 </template>
 <script>
   import {packeryEvents} from 'vue-packery-plugin';
-  import Collapsible from '@/components/Collapsible';
 
   export default {
     name: 'Collapsible',
     props: ['headertext'],
     methods: {
       reflow: function() {
+        // eslint-disable-next-line no-console
         console.log('triggered reflow');
         packeryEvents.$emit('layout', this.$refs.timerComponentGrid);
       }

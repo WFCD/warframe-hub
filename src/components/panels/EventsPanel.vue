@@ -12,13 +12,13 @@
         <div class="text-center" v-if="event.rewards.length">
           <b-badge tag="div" v-for="item in event.rewards" :key="item" variant="success">{{item}}</b-badge>
         </div><br v-if="event.rewards.length">
-        <div class="text-center" v-for="(job, jIndex) in event.jobs" :id="`${job.type.replace(/\s/ig, '-').toLowerCase()}-${index}`">
+        <div class="text-center" v-for="(job, jIndex) in event.jobs" :key="`${job.type.replace(/\s/ig, '-').toLowerCase()}-${index}`">
           <div>{{job.type}} <b-badge variant="info">{{job.enemyLevels[0]}}-{{job.enemyLevels[1]}}</b-badge></div>
           <Collapsible headertext="Rewards">
-            <div><span v-for="s in job.standingStages" :id="`${s}-${jIndex}`">{{s}}</span><br></div>
+            <div><span v-for="s in job.standingStages" :key="`${s}-${jIndex}`">{{s}}</span><br></div>
           </Collapsible>
           <Collapsible headertext="Standing Stages">
-            <span><div v-for="r in job.rewardPool" :id="`${r}-${jIndex}`">{{r}}</div><br></span>
+            <span><div v-for="r in job.rewardPool" :key="`${r}-${jIndex}`">{{r}}</div><br></span>
           </Collapsible>
         </div><br v-if="event.rewards.length">
       </b-list-group-item>

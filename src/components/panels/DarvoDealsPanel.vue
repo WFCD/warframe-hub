@@ -17,7 +17,7 @@
               <td>{{item.item}}</td>
               <td>{{item.discount}}%</td>
               <td>{{item.salePrice}}</td>
-              <td>{{(item.total - item.sold)/item.total}}</td>
+              <td>{{(((item.total - item.sold)/item.total)*100).toFixed(2)}}%</td>
               <td><TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" /></td>
             </tr>
           </tbody>

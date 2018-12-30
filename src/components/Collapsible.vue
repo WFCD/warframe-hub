@@ -1,9 +1,9 @@
 <template>
   <div>
-    <b-btn variant="primary" v-b-toggle="`${headertext.replace(/\s/ig, '-').toLowerCase()}-collapsible`">
+    <b-btn variant="primary" v-b-toggle="`${headertext.replace(/[\s']/ig, '-').toLowerCase()}-collapsible`">
       {{headertext}} <i class="fas fa-chevron-down"></i>
     </b-btn>
-    <b-collapse :id="`${headertext.replace(/\s/ig, '-').toLowerCase()}-collapsible`" @hidden="reflow()" @shown="reflow()">
+    <b-collapse :id="`${headertext.replace(/[\s']/ig, '-').toLowerCase()}-collapsible`" @hidden="reflow()" @shown="reflow()">
       <b-card>
         <slot></slot>
       </b-card>

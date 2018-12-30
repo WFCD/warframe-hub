@@ -11,12 +11,6 @@ cache:
 git:
   depth: 3
 
-branches:
-  only:
-  - dev
-  - master
-  - /^greenkeeper/.*$/
-
 install: npm install
 
 before_script:

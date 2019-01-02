@@ -19,7 +19,7 @@
     data: function() {
       return {
         id: 0
-      }
+      };
     },
     methods: {
       reflow: function() {
@@ -28,8 +28,8 @@
         packeryEvents.$emit('layout', this.$refs.timerComponentGrid);
       },
       makeid: function() {
-        let text = "";
-        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let text = '';
+        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
         for (let i = 0; i < 5; i++) {
           text += possible.charAt(Math.floor(Math.random() * possible.length));

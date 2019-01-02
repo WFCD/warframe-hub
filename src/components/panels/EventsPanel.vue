@@ -9,21 +9,21 @@
           <b-badge variant="danger">{{event.victimNode}}</b-badge>
           <b-badge :variant="eventHealthVariant(event)">{{event.health}}% Remaining</b-badge>
         </div>
-        <div class="text-center bottom-pad" v-for="reward in event.rewards" :key="makeid()">
-          <b-badge v-for="item in reward.items" :key="makeid()" variant="success">{{item}}</b-badge>
-          <b-badge v-for="item in reward.countedItems" :key="makeid()" variant="success">{{item}}</b-badge>
+        <div class="text-center bottom-pad" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
+          <b-badge v-for="item in reward.items" :key="`${item}-${makeid()}`" variant="success">{{item}}</b-badge>
+          <b-badge v-for="item in reward.countedItems" :key="`${item}-${makeid()}`" variant="success">{{item}}</b-badge>
           <b-badge v-if="reward.credits" variant="info">{{reward.credits}}cr</b-badge>
         </div>
 
         <b-row>
-          <b-col md="6" v-for="(job, jIndex) in event.jobs" :key="`${job.type.replace(/\s/ig, '-').toLowerCase()}-${index}`" class="bottom-pad">
+          <b-col md="6" v-for="(job) in event.jobs" :key="`${job.type.replace(/\s/ig, '-').toLowerCase()}-${index}`" class="bottom-pad">
             <div class="text-center">
               <div class="bottom-pad">{{job.type}} <b-badge variant="info">{{job.enemyLevels[0]}}-{{job.enemyLevels[1]}}</b-badge></div>
               <Collapsible headertext="Standing Stages" class="bottom-pad">>
-                <div v-for="s in job.standingStages" :key="`standing-${makeid()}`">{{s}}</div>
+                <div v-for="s in job.standingStages" :key="`standing-${s}-${makeid()}`">{{s}}</div>
               </Collapsible>
               <Collapsible headertext="Rewards">
-                <div v-for="r in job.rewardPool" :key="`rewards-${makeid()}`">{{r}}</div>
+                <div v-for="r in job.rewardPool" :key="`rewards-${r}-${makeid()}`">{{r}}</div>
               </Collapsible>
             </div>
           </b-col>

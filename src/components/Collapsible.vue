@@ -41,9 +41,10 @@
     computed: {
       cid: function() {
         if (this.id) {
-          return id;
+          return this.id;
+        } else {
+          this.id = this.makeid(); // eslint-disable-line vue/no-side-effects-in-computed-properties
         }
-        this.id = this.makeid();
         return this.id;
       }
     }

@@ -51,13 +51,18 @@
   import grineer from '@/assets/json/geo/grineer.json';
   import lorefish from '@/assets/json/geo/lorefish.json';
   import wisp from '@/assets/json/geo/wisp.json';
+  import lure from '@/assets/json/geo/lure.json';
+  import cave from '@/assets/json/geo/cave.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import grineerIcon from '@/assets/img/map_icons/grineer.png';
   import oddityIcon from '@/assets/img/map_icons/oddity.png';
   import homeIcon from '@/assets/img/map_icons/home.png';
   import wispIcon from '@/assets/img/map_icons/wisp.png';
+  import lureIcon from '@/assets/img/map_icons/lure.png';
+  import caveIcon from '@/assets/img/map_icons/caves.png';
 
   import MapPopup from '@/components/MapPopup.vue';
+  import OddityPopup from '@/components/OddityPopup.vue';
 
   const fishMarker = L.icon({
     iconUrl: fishIcon,
@@ -79,15 +84,37 @@
     iconSize: [25, 25],
   });
 
+  const lureMarker = L.icon({
+    iconUrl: lureIcon,
+    iconSize: [25, 25],
+  });
+
+  const caveMarker = L.icon({
+    iconUrl: caveIcon,
+    iconSize: [25, 25],
+  });
+
   function onEachFeature (feature, layer) {
     let Popup = Vue.extend(MapPopup);
     let popup = new Popup({
       propsData: {
         type: feature.geometry.type,
-        text: feature.properties.name,
+        text: feature.properties.name
       }
     });
     layer.bindPopup(popup.$mount().$el);
+  }
+
+  function onEachOddity (feature, layer) {
+    let Popup = Vue.extend(OddityPopup);
+    let popup = new Popup({
+      propsData: {
+        type: feature.geometry.type,
+        name: feature.properties.name,
+        video: feature.properties.video
+      }
+    });
+    layer.bindPopup(popup.$mount().$el, { minWidth: 320});
   }
 
   const markerAlias = L.marker;
@@ -112,8 +139,8 @@
           width: '100%',
         },
         geo: [
-          { 
-            name: 'Fish map',
+          {
+            name: 'Fishing',
             json: fish,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -122,8 +149,8 @@
               onEachFeature: onEachFeature
             }
           },
-          { 
-            name: 'Grineer map',
+          {
+            name: 'Grineer Camp',
             json: grineer,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -132,18 +159,18 @@
               onEachFeature: onEachFeature
             }
           },
-          { 
-            name: 'Lorefish map',
+          {
+            name: 'Oddity',
             json: lorefish,
             opts: {
               pointToLayer: function(feature, latlng) {
                 return markerAlias(latlng, {icon: oddityMarker});
               },
-              onEachFeature: onEachFeature
+              onEachFeature: onEachOddity
             }
           },
-          { 
-            name: 'Wisp map',
+          {
+            name: 'Wisp Spawn',
             json: wisp,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -151,13 +178,29 @@
               },
               onEachFeature: onEachFeature
             }
+          },
+          {
+            name: 'Lure Locations',
+            json: lure,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: lureMarker});
+              },
+              onEachFeature: onEachFeature
+            }
+          },
+          {
+            name: 'Cave Entrances',
+            json: cave,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: caveMarker});
+              },
+              onEachFeature: onEachFeature
+            }
           }
         ],
         icons: {
-          fish: {
-            src: fishIcon,
-            size: [25, 25],
-          },
           home: {
             src: homeIcon,
             size: [25, 25],

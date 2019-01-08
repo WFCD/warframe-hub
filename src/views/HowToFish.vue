@@ -1,13 +1,13 @@
 <template>
   <b-container fluid>
-    <b-col md="8" offset="2">
-      <b-row class="text-center">
-        <h2 class="text-center">How do Fish?</h2>
+    <b-row class="text-center">
+      <b-col md="8" offset="2">
+        <h2>How do Fish?</h2>
         <br>
-        <h3 class="text-center">The definitive guide to fishing in Warframe</h3>
+        <h3>The definitive guide to fishing in Warframe</h3>
         <br>
-        <h4 class="text-center">By /u/cranem258 aka PepsiMan</h4>
-        <FishImg type="guide" item="clem" name="Map" height="100%" width="100%" class="center-block"/>
+        <h4>By /u/cranem258 aka PepsiMan</h4>
+        <FishImg type="guide" item="clem" name="Map" class="center-block"/>
         <br>
         <br>
         <p>
@@ -27,8 +27,8 @@
         <br>
         <br>
         <p>Here's the map for reference (you can ignore the black circles for now)</p>
-      </b-row>
-      <b-row>
+      </b-col>
+      <b-col md="8" offset="2">
         <div role="tablist" style="width: 100%;">
           <b-card no-body>
             <b-card-header header-tag="header" class="p-1" role="tab">
@@ -37,19 +37,19 @@
             <b-collapse id="fishmap-accordion" accordion="fishmap-accordion" role="tabpanel">
               <b-card-body>
                 <p class="card-text">
-                  <FishImg type="misc" item="map" name="Map" height="100%" width="100%"/>
+                  <FishImg type="misc" item="map" name="Map" />
                 </p>
               </b-card-body>
             </b-collapse>
           </b-card>
         </div>
-      </b-row>
-      <b-row>
+      </b-col>
+      <b-col md="8" offset="2">
         <p>
           Equip your spear on your gear wheel, and enter the plains,
           let's go to this spot since it's the easier to farm fish in the beginning:
         </p>
-        <FishImg type="guide" item="guide1" name="Guide 1" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide1" name="Guide 1" />
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <br>
         <br>
@@ -114,7 +114,7 @@
           Once you get enough standing, it's time to go to the Sea, so I'd recommend going here,
           you'll need a bunch of Goopola for resources, and they spawn quite consistently:
         </p>
-        <FishImg type="guide" item="guide2" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide2" />
         <br>
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <br>
@@ -128,11 +128,11 @@
         <br>
         <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>
         <br>
-        <FishImg type="guide" item="guide3" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide3" />
         <br>
         <h6 class="text-center">[Image by Narration]</h6>
         <br>
-        <video autoplay height="100%" width="100%">
+        <video autoplay loop>
           <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm">
           <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4">
         </video>
@@ -169,16 +169,16 @@
         <br>
         <p>As Honorable mention: The Sentient Lake, the only "lake" in PoE (that we're aware of!).</p>
         <br>
-        <FishImg type="guide" item="guide5" name="Guide 5" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide5" name="Guide 5" />
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <p>Thanks for reading! Hope it helped.</p>
         <br>
         <h4>
           <b>Now go and fish on!</b>
         </h4>
-      </b-row>
+      </b-col>
       <div class="row text-center"></div>
-    </b-col>
+    </b-row>
   </b-container>
 </template>
 

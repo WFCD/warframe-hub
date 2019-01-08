@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" :name="name" :height="height" :width="width" :alt="name" />
+  <b-img :src="src" :name="name" :height="height" :width="width" fluid :alt="name" />
 </template>
 
 <!--  -->
@@ -21,11 +21,11 @@ export default {
     },
     width: {
       type: String,
-      default: '12px',
+      default: 'auto',
     },
     height: {
       type: String,
-      default: '12px',
+      default: 'auto',
     },
   },
   data() {

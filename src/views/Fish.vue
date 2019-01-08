@@ -10,7 +10,7 @@
             <b-collapse id="fishmap-accordion" accordion="fishmap-accordion" role="tabpanel">
               <b-card-body>
                 <p class="card-text">
-                  <FishImg type="misc" item="map" name="Map" height="100%" width="100%" />
+                  <FishImg type="misc" item="map" name="Map" />
                 </p>
               </b-card-body>
             </b-collapse>
@@ -42,7 +42,7 @@
                 <a name="Fish tooltip" class="fish-tooltip" href="#/" v-if="fish.thumb">
                   <i class="far fa-image"></i> {{fish.name}}
                     <div class="fish-tooltip-inner">
-                      <FishImg type="fish" :item="fish.thumb" :name="fish.name" height="100%" width="100%" />
+                      <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" />
                     </div>
                 </a>
                 <span v-else> {{fish.name}}</span>
@@ -56,7 +56,7 @@
                 <a v-if="fish.unique.thumb" name="Wikia Article" rel="noopener" class="fish-tooltip" :href="fish.unique.wiki" target="_blank">
                   <i class="far fa-image"></i> {{fish.unique.name}}
                   <div class="fish-tooltip-inner">
-                    <FishImg type="parts" :item="fish.unique.thumb" :name="fish.unique.name" height="100%" width="100%" />
+                    <FishImg type="parts" :item="fish.unique.thumb" :name="fish.unique.name" width="200" />
                   </div>
                 </a>
                 <span v-else> {{fish.unique.name}}</span>
@@ -69,13 +69,16 @@
                 <br v-if="fish.hotspot" />
                 <a v-if="fish.hotspot" name="Fish tooltip" class="fish-tooltip" href="#/">(<i class="far fa-image"></i>Hotspots)
                   <div class="fish-tooltip-inner">
-                    <FishImg type="misc" item="hotspot" name="Hotspot" height="100%" width="100%" />
+                   <video autoplay loop height="150">
+                     <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm">
+                     <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4">
+                   </video>
                   </div>
                 </a>
                 <br v-if="fish.bait" />
                 <a v-if="fish.bait" name="Fish tooltip" class="fish-tooltip" href="#/"><i class="far fa-image"></i> {{fish.bait.name}}
                   <div class="fish-tooltip-inner">
-                    <FishImg type="bait" :item="fish.bait.thumb" :name="fish.bait.name" height="100%" width="100%" />
+                    <FishImg type="bait" :item="fish.bait.thumb" :name="fish.bait.name" width="200" />
                   </div>
                 </a>
               </td>

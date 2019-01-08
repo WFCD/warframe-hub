@@ -1,7 +1,7 @@
 <template>
-  <b-container fluid>
-    <b-col md="8" offset="2">
-      <b-row class="text-center">
+  <b-container>
+    <b-row class="text-center">
+      <b-col md="8" offset="2">
         <h2 class="text-center">How do Fish?</h2>
         <br>
         <h3 class="text-center">The definitive guide to fishing in Warframe</h3>
@@ -27,8 +27,8 @@
         <br>
         <br>
         <p>Here's the map for reference (you can ignore the black circles for now)</p>
-      </b-row>
-      <b-row>
+      </b-col>
+      <b-col md="8" offset="2">
         <div role="tablist" style="width: 100%;">
           <b-card no-body>
             <b-card-header header-tag="header" class="p-1" role="tab">
@@ -43,8 +43,8 @@
             </b-collapse>
           </b-card>
         </div>
-      </b-row>
-      <b-row>
+      </b-col>
+      <b-col md="8" offset="2">
         <p>
           Equip your spear on your gear wheel, and enter the plains,
           let's go to this spot since it's the easier to farm fish in the beginning:
@@ -176,9 +176,8 @@
         <h4>
           <b>Now go and fish on!</b>
         </h4>
-      </b-row>
-      <div class="row text-center"></div>
-    </b-col>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 

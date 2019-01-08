@@ -7,7 +7,7 @@
         <h3 class="text-center">The definitive guide to fishing in Warframe</h3>
         <br>
         <h4 class="text-center">By /u/cranem258 aka PepsiMan</h4>
-        <FishImg type="guide" item="clem" name="Map" height="100%" width="100%" class="center-block"/>
+        <FishImg type="guide" item="clem" name="Map" height="125px" width="125px" class="center-block"/>
         <br>
         <br>
         <p>
@@ -37,7 +37,7 @@
             <b-collapse id="fishmap-accordion" accordion="fishmap-accordion" role="tabpanel">
               <b-card-body>
                 <p class="card-text">
-                  <FishImg type="misc" item="map" name="Map" height="100%" width="100%"/>
+                  <FishImg type="misc" item="map" name="Map" height="500px" width="100%"/>
                 </p>
               </b-card-body>
             </b-collapse>
@@ -49,7 +49,7 @@
           Equip your spear on your gear wheel, and enter the plains,
           let's go to this spot since it's the easier to farm fish in the beginning:
         </p>
-        <FishImg type="guide" item="guide1" name="Guide 1" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide1" name="Guide 1" height="" width="100%"/>
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <br>
         <br>
@@ -114,7 +114,7 @@
           Once you get enough standing, it's time to go to the Sea, so I'd recommend going here,
           you'll need a bunch of Goopola for resources, and they spawn quite consistently:
         </p>
-        <FishImg type="guide" item="guide2" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide2" height="" width="100%"/>
         <br>
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <br>
@@ -128,11 +128,11 @@
         <br>
         <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>
         <br>
-        <FishImg type="guide" item="guide3" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide3" height="" width="100%"/>
         <br>
         <h6 class="text-center">[Image by Narration]</h6>
         <br>
-        <video autoplay height="100%" width="100%">
+        <video autoplay height="" width="100%">
           <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm">
           <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4">
         </video>
@@ -169,7 +169,7 @@
         <br>
         <p>As Honorable mention: The Sentient Lake, the only "lake" in PoE (that we're aware of!).</p>
         <br>
-        <FishImg type="guide" item="guide5" name="Guide 5" height="100%" width="100%"/>
+        <FishImg type="guide" item="guide5" name="Guide 5" height="" width="100%"/>
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <p>Thanks for reading! Hope it helped.</p>
         <br>

@@ -7,46 +7,21 @@
         <b-nav-item><router-link to="/"><i class="fas fa-clock faIconStyle"></i> Timers</router-link></b-nav-item>
 
         <b-nav-item-dropdown text="<i class='fas fa-mountain fa-sm faIconStyle'></i> Plains" left class="text-center">
-          <b-dropdown-item>
-            <router-link to="/poe/map">
-              <i class="fas fa-map-marker-alt faIconStyle"></i>
-              <span :style="navItemLabelStyle">Map</span>
-            </router-link>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <router-link to="/poe/fish" :style="navItemParent">
-              <i class="fas fa-fish faIconStyle"></i>
-              <span :style="navItemLabelStyle">Fishing Data</span>
-            </router-link>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <router-link to="/poe/fish/howto" :style="navItemParent">
-              <i class="fas fa-info faIconStyle"></i>
-              <span :style="navItemLabelStyle">How to Fish</span>
-            </router-link>
-          </b-dropdown-item>
+          <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" label="Map" />
+          <DropdownItem :isLocal="true" icon="fas fa-fish" target="/poe/fish" label="Fishing Data" />
+          <DropdownItem :isLocal="true" icon="fas fa-info" target="/poe/fish/howto" label="How to Fish" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="<i class='fas fa-spa fa-sm faIconStyle'></i> Orb Vallis" left class="text-center">
-          <b-dropdown-item>
-            <router-link to="/vallis/map">
-              <i class="fas fa-map-marker-alt faIconStyle"></i>
-              <span :style="navItemLabelStyle">Map</span>
-            </router-link>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <router-link to="/vallis/fish" :style="navItemParent">
-              <i class="fas fa-fish faIconStyle"></i>
-              <span :style="navItemLabelStyle">Fishing Data</span>
-            </router-link>
-          </b-dropdown-item>
+          <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" label="Map" />
+          <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" label="Fishing Data" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="<i class='fas fa-code faIconStyle'></i> Projects" left>
-          <b-dropdown-item href="https://drops.warframestat.us" target="_blank">Drops</b-dropdown-item>
-          <b-dropdown-item href="https://genesis.warframestat.us" target="_blank">Genesis</b-dropdown-item>
-          <b-dropdown-item href="https://docs.warframestat.us" target="_blank">API Docs</b-dropdown-item>
-          <b-dropdown-item href="https://warframestat.us" target="_blank">Status</b-dropdown-item>
+          <DropdownItem icon="fas fa-download" target="https://drops.warframestat.us" label="Drops" />
+          <DropdownItem icon="fas fa-robot" target="https://genesis.warframestat.us" label="Genesis" />
+          <DropdownItem icon="fas fa-terminal" target="https://docs.warframestat.us" label="API Docs" />
+          <DropdownItem icon="fas fa-tachometer-alt" target="https://warframestat.us" label="Status" />
         </b-nav-item-dropdown>
       </b-navbar-nav>
 
@@ -60,33 +35,21 @@
   </b-navbar>
 </template>
 
-<style>
-  .faIconStyle {
-    margin-top: 3px;
-    margin-left: 10px;
-    margin-right: 5px;
-  }
-</style>
-
 <script>
+  import DropdownItem from '@/components/DropdownNavItem.vue';
+
   export default {
     name: 'Navbar',
+    components: {
+      DropdownItem
+    },
     data() {
       return {
-        faIconStyle: {
-          color: 'white',
-          'margin-top': '3px',
-          'margin-left': '10px',
-          'margin-right': '10px',
-        },
         navItemParent: {
           display: 'flex',
           'justify-content': 'space-between',
           padding: '10px 0',
           'text-align': 'center',
-        },
-        navItemLabelStyle: {
-          'flex-grow': 1,
         },
       };
     },

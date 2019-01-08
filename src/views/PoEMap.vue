@@ -12,10 +12,19 @@
             @click="checkLatLng"
           >
           <l-image-overlay :url="url" :bounds="bounds"/>
-          <l-geo-json :geojson="geo.fish" :options="geoOpts.fish" />
-          <l-geo-json :geojson="geo.grineer" :options="geoOpts.grineer" />
-          <l-geo-json :geojson="geo.lorefish" :options="geoOpts.lorefish" />
-          <l-geo-json :geojson="geo.wisp" :options="geoOpts.wisp" />
+          <l-control-layers
+            :position="'topright'"
+            :collapsed="false"
+            :sort-layers="true"
+          />
+          <l-layer-group
+          v-for="geojson in geo"
+            layer-type="overlay"
+            :key="geojson.name"
+            :name="geojson.name"
+          >
+            <l-geo-json :geojson="geojson.json" :options="geojson.opts"/>
+          </l-layer-group>
 
           <l-marker :lat-lng="markers.cetus.loc">
             <l-icon
@@ -102,41 +111,48 @@
           height: 'calc(100vh - 100px)',
           width: '100%',
         },
-        geo: {
-          fish,
-          grineer,
-          lorefish,
-          wisp,
-        },
-        geoOpts: {
-          base: {
-            onEachFeature: onEachFeature
+        geo: [
+          { 
+            name: 'Fish map',
+            json: fish,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: fishMarker});
+              },
+              onEachFeature: onEachFeature
+            }
           },
-          fish: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, {icon: fishMarker});
-            },
-            onEachFeature: onEachFeature
+          { 
+            name: 'Grineer map',
+            json: grineer,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: grineerMarker});
+              },
+              onEachFeature: onEachFeature
+            }
           },
-          grineer: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, {icon: grineerMarker});
-            },
-            onEachFeature: onEachFeature
+          { 
+            name: 'Lorefish map',
+            json: lorefish,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: oddityMarker});
+              },
+              onEachFeature: onEachFeature
+            }
           },
-          lorefish: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, {icon: oddityMarker});
-            },
-            onEachFeature: onEachFeature
-          },
-          wisp: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, {icon: wispMarker});
-            },
-            onEachFeature: onEachFeature
-          },
-        },
+          { 
+            name: 'Wisp map',
+            json: wisp,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: wispMarker});
+              },
+              onEachFeature: onEachFeature
+            }
+          }
+        ],
         icons: {
           fish: {
             src: fishIcon,

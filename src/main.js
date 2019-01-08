@@ -57,6 +57,8 @@ Vue.component('l-polyline', Vue2Leaflet.LPolyline);
 Vue.component('l-geo-json', Vue2Leaflet.LGeoJson);
 Vue.component('l-tooltip', Vue2Leaflet.LTooltip);
 Vue.component('l-icon', Vue2Leaflet.LIcon);
+Vue.component('l-control-layers', Vue2Leaflet.LControlLayers);
+Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
 
 
 /* Themes */

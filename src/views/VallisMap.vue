@@ -3,13 +3,17 @@
     <b-row>
       <b-col>
         <l-map
+            ref="v-map"
             :zoom="zoom"
             :center="center"
             :options="mapOptions"
             :crs="crs"
             :style="mapStyle"
+            @click="checkLatLng"
           >
           <l-image-overlay :url="url" :bounds="bounds"/>
+
+          <l-marker ></l-marker>
         </l-map>
       </b-col>
     </b-row>
@@ -24,13 +28,15 @@
 </style>
 
 <script>
+  import Vue from 'vue';
+  import MapPopup from '@/components/MapPopup.vue';
   import vallis from '@/assets/img/orbvallis.png';
 
-  import { LMap, LImageOverlay, LMarker, LPopup, LPolyline, LGeoJson } from 'vue2-leaflet';
-
-  const fishIcon = L.icon({
-    iconUrl: '@/assets/img/map_icons/fish.png',
-  });
+  function onEachFeature (feature, layer) {
+    let Popup = Vue.extend(MapPopup);
+    let popup = new Popup({ propsData: { type: feature.geometry.type, text: feature.properties.popupContent } });
+    layer.bindPopup(popup.$mount().$el);
+  }
 
   export default {
     name: 'Poemap',
@@ -50,23 +56,26 @@
           height: 'calc(100vh - 100px)',
           width: '100%',
         },
-        geo: {}
+        geo: {},
+        geoOpts: {
+          onEachFeature: onEachFeature
+        },
       };
-    },
-    components: {
-      LMap,
-      LImageOverlay,
-      LMarker,
-      LPopup,
-      LPolyline,
-      LGeoJson,
     },
     methods: {
       track () {
         this.$ga.page('/vallis/map');
       },
+      checkLatLng(e) {
+        var coord = e.latlng;
+        var lat = coord.lat;
+        var lng = coord.lng;
+        // eslint-disable-next-line
+        console.log(`Clicked (${lat},${lng}})`);
+      },
     },
     mounted: function () {
+      // L.marker([1154,768], {title: 'Helena\'s Fishing Spot', icon: { }}).addTo(this.$refs['v-map'])
       // L.marker([1154,768], {title: 'Helena\'s Fishing Spot', icon: { fishIcon }}).addTo(map);
     },
   };

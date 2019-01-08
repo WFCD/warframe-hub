@@ -35,7 +35,7 @@ import VueAnalytics from 'vue-analytics';
 Vue.use(VueAnalytics, { id: 'UA-47080716-6' });
 
 /* Leaflet */
-import { L } from 'vue2-leaflet';
+import Vue2Leaflet, { L } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // this part resolve an issue where the markers would not appear
@@ -49,6 +49,15 @@ L.Icon.Default.mergeOptions({
 });
 
 Vue.use(L);
+Vue.component('l-map', Vue2Leaflet.LMap);
+Vue.component('l-image-overlay', Vue2Leaflet.LImageOverlay);
+Vue.component('l-marker', Vue2Leaflet.LMarker);
+Vue.component('l-popup', Vue2Leaflet.LPopup);
+Vue.component('l-polyline', Vue2Leaflet.LPolyline);
+Vue.component('l-geo-json', Vue2Leaflet.LGeoJson);
+Vue.component('l-tooltip', Vue2Leaflet.LTooltip);
+Vue.component('l-icon', Vue2Leaflet.LIcon);
+
 
 /* Themes */
 import '@/assets/less/common.less';

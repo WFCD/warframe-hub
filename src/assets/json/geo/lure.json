@@ -3,14 +3,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ancient History",
-         "video":"https://streamable.com/s/7wh17/kzyebr"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            841.569395,
-            36
+            813.578021,
+            152.953125
          ]
       }
    },
@@ -18,14 +17,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Unum",
-         "video":"https://streamable.com/s/t70y1/mantny"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            851.647126,
-            397.476563
+            352.721627,
+            191.322266
          ]
       }
    },
@@ -33,14 +31,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"AMPs (Cave)",
-         "video":"https://streamable.com/s/134f8/exnxcc"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            813.641246,
-            506.976563
+            416.731529,
+            292.322266
          ]
       }
    },
@@ -48,14 +45,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Life in Cetus (Cave)",
-         "video":"https://streamable.com/s/e56co/glomla"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            873.918149,
-            653.333984
+            291.569859,
+            298.25
          ]
       }
    },
@@ -63,14 +59,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Cetus",
-         "video":"https://streamable.com/s/q2rbe/kemrbh"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            939.328659,
-            826.427734
+            382.683293,
+            384.472656
          ]
       }
    },
@@ -78,14 +73,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Quills of Cetus",
-         "video":"https://streamable.com/s/heep2/lnptdc"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            623.684125,
-            823.621094
+            121.64291,
+            300.472656
          ]
       }
    },
@@ -93,14 +87,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Plains Animals",
-         "video":"https://streamable.com/s/0xrdm/dlikrp"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            577.901652,
-            915.050781
+            434.917937,
+            447.228516
          ]
       }
    },
@@ -108,14 +101,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Tower's Flesh",
-         "video":"https://streamable.com/s/rxt9k/nybmka"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            446.646971,
-            838.689453
+            433.417705,
+            474.228516
          ]
       }
    },
@@ -123,14 +115,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Grineer Excavations",
-         "video":"https://streamable.com/s/g1s5o/ajrvfb"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            281.658556,
-            878.554688
+            538.053033,
+            512.277344
          ]
       }
    },
@@ -138,14 +129,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Merchants of Cetus",
-         "video":"https://streamable.com/s/eiuln/rvjdly"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            195.703853,
-            887.8125
+            221.298952,
+            525.451172
          ]
       }
    },
@@ -153,14 +143,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Remnants of Orokin",
-         "video":"https://streamable.com/s/7wsr4/tnlsg"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            140.695343,
-            690.8125
+            435.363318,
+            637.615234
          ]
       }
    },
@@ -168,14 +157,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Ostrons",
-         "video":"https://streamable.com/s/o5xjy/brapdq"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            333.805296,
-            665.546875
+            232.386605,
+            646.169922
          ]
       }
    },
@@ -183,14 +171,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Grineer Tusks",
-         "video":"https://streamable.com/s/ftpm0/jompq"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            98.622428,
-            546.695313
+            138.872138,
+            684.169922
          ]
       }
    },
@@ -198,14 +185,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Tools of Harvest",
-         "video":"https://streamable.com/s/9suln/emxegf"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            110.936833,
-            248.626953
+            342.450507,
+            786.994141
          ]
       }
    },
@@ -213,14 +199,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ostron Artisans",
-         "video":"https://streamable.com/s/fwlz3/oxnndt"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            204.988492,
-            123.085938
+            289.500909,
+            865.599609
          ]
       }
    },
@@ -228,14 +213,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ostron Patios",
-         "video":"https://streamable.com/s/imkze/aqrvus"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            312.005048,
-            73.085938
+            287.000522,
+            890.599609
          ]
       }
    },
@@ -243,14 +227,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Scavenging Way of Life (Cave)",
-         "video":"https://streamable.com/s/ls3yx/dskgkv"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            405.171805,
-            291.310547
+            576.766053,
+            900.423828
          ]
       }
    },
@@ -258,14 +241,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Plains of Eidolon",
-         "video":"https://streamable.com/s/owhfk/qvrbnr"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            575.700139,
-            451.984375
+            578.266285,
+            926.923828
          ]
       }
    },
@@ -273,14 +255,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Harvesting the Tower",
-         "video":"https://streamable.com/s/rx638/cwjgcf"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            462.682655,
-            486.984375
+            642.618037,
+            821.074219
          ]
       }
    },
@@ -288,14 +269,97 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Teralyst Eidolon",
-         "video":"https://streamable.com/s/7hpw4/sgcbgl"
+         "name":"Lure"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            213.593339,
-            320.355469
+            855.90494,
+            737.107422
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            824.400066,
+            693.673828
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            827.40053,
+            680.673828
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            874.038604,
+            656.443359
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            751.597729,
+            369.873047
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            812.577866,
+            176.453125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Lure"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            813.578021,
+            152.953125
          ]
       }
    }

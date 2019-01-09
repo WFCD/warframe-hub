@@ -47,12 +47,12 @@
 
   /* map stuff */
   import plains from '@/assets/img/plains.png';
-  import fish from '@/assets/json/geo/fishing.json';
-  import grineer from '@/assets/json/geo/grineer.json';
-  import lorefish from '@/assets/json/geo/lorefish.json';
-  import wisp from '@/assets/json/geo/wisp.json';
-  import lure from '@/assets/json/geo/lure.json';
-  import cave from '@/assets/json/geo/cave.json';
+  import fish from '@/assets/json/geo/plains/fishing.json';
+  import grineer from '@/assets/json/geo/plains/grineer.json';
+  import lorefish from '@/assets/json/geo/plains/lorefish.json';
+  import wisp from '@/assets/json/geo/plains/wisp.json';
+  import lure from '@/assets/json/geo/plains/lure.json';
+  import cave from '@/assets/json/geo/plains/cave.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import grineerIcon from '@/assets/img/map_icons/grineer.png';
   import oddityIcon from '@/assets/img/map_icons/oddity.png';

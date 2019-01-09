@@ -105,6 +105,7 @@
   import toroidFishCave from '@/assets/json/geo/vallis/toroidfishcave.json';
   import toroidCave from '@/assets/json/geo/vallis/toroidcave.json';
   import kdrive from '@/assets/json/geo/vallis/kdrive.json';
+  import oddity from '@/assets/json/geo/vallis/memoryfrag.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import fishRecommendIcon from '@/assets/img/map_icons/fish-recommend.png';
   import mineRecommendIcon from '@/assets/img/map_icons/mine-recommend.png';
@@ -116,8 +117,10 @@
   import solaIcon from '@/assets/img/map_icons/sola-toroid.png';
   import vegaIcon from '@/assets/img/map_icons/vega-toroid.png';
   import kdriveIcon from '@/assets/img/map_icons/kdrive.png';
+  import oddityIcon from '@/assets/img/map_icons/memoryfrag.png';
 
   import MapPopup from '@/components/MapPopup.vue';
+  import OddityPopup from '@/components/OddityPopup.vue';
 
   const fishMarker = L.icon({
     iconUrl: fishIcon,
@@ -146,7 +149,12 @@
 
   const kdriveMarker = L.icon({
     iconUrl: kdriveIcon,
-    iconSize: [50, 34],
+    iconSize: [33, 50],
+  });
+
+  const oddityMarker = L.icon({
+    iconUrl: oddityIcon,
+    iconSize: [50, 50],
   });
 
   function onEachFeature (feature, layer) {
@@ -158,6 +166,19 @@
       }
     });
     layer.bindPopup(popup.$mount().$el);
+  }
+
+  function onEachOddity (feature, layer) {
+    let Popup = Vue.extend(OddityPopup);
+    let popup = new Popup({
+      propsData: {
+        type: feature.geometry.type,
+        set: feature.properties.set,
+        name: feature.properties.name,
+        video: feature.properties.video
+      }
+    });
+    layer.bindPopup(popup.$mount().$el, { minWidth: 320});
   }
 
   const markerAlias = L.marker;
@@ -220,7 +241,17 @@
               },
               onEachFeature: onEachFeature
             }
-          }
+          },
+          {
+            name: 'Oddity',
+            json: oddity,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: oddityMarker});
+              },
+              onEachFeature: onEachOddity
+            }
+          },
         ],
         caves: {
           fishcave: {

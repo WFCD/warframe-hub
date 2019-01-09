@@ -55,7 +55,7 @@
   import cave from '@/assets/json/geo/plains/cave.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import grineerIcon from '@/assets/img/map_icons/grineer.png';
-  import oddityIcon from '@/assets/img/map_icons/oddity.png';
+  import oddityIcon from '@/assets/img/map_icons/lorefish.png';
   import homeIcon from '@/assets/img/map_icons/home.png';
   import wispIcon from '@/assets/img/map_icons/wisp.png';
   import lureIcon from '@/assets/img/map_icons/lure.png';
@@ -110,6 +110,7 @@
     let popup = new Popup({
       propsData: {
         type: feature.geometry.type,
+        set: feature.properties.set,
         name: feature.properties.name,
         video: feature.properties.video
       }

@@ -4,6 +4,7 @@
       "properties":{
          "type":"marker",
          "name":"Ancient History",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/7wh17/kzyebr"
       },
       "geometry":{
@@ -19,6 +20,7 @@
       "properties":{
          "type":"marker",
          "name":"The Unum",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/t70y1/mantny"
       },
       "geometry":{
@@ -34,6 +36,7 @@
       "properties":{
          "type":"marker",
          "name":"AMPs (Cave)",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/134f8/exnxcc"
       },
       "geometry":{
@@ -49,6 +52,7 @@
       "properties":{
          "type":"marker",
          "name":"Life in Cetus (Cave)",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/e56co/glomla"
       },
       "geometry":{
@@ -64,6 +68,7 @@
       "properties":{
          "type":"marker",
          "name":"Cetus",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/q2rbe/kemrbh"
       },
       "geometry":{
@@ -79,6 +84,7 @@
       "properties":{
          "type":"marker",
          "name":"The Quills of Cetus",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/heep2/lnptdc"
       },
       "geometry":{
@@ -94,6 +100,7 @@
       "properties":{
          "type":"marker",
          "name":"Plains Animals",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/0xrdm/dlikrp"
       },
       "geometry":{
@@ -109,6 +116,7 @@
       "properties":{
          "type":"marker",
          "name":"The Tower's Flesh",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/rxt9k/nybmka"
       },
       "geometry":{
@@ -124,6 +132,7 @@
       "properties":{
          "type":"marker",
          "name":"Grineer Excavations",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/g1s5o/ajrvfb"
       },
       "geometry":{
@@ -139,6 +148,7 @@
       "properties":{
          "type":"marker",
          "name":"Merchants of Cetus",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/eiuln/rvjdly"
       },
       "geometry":{
@@ -154,6 +164,7 @@
       "properties":{
          "type":"marker",
          "name":"Remnants of Orokin",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/7wsr4/tnlsg"
       },
       "geometry":{
@@ -169,6 +180,7 @@
       "properties":{
          "type":"marker",
          "name":"The Ostrons",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/o5xjy/brapdq"
       },
       "geometry":{
@@ -184,6 +196,7 @@
       "properties":{
          "type":"marker",
          "name":"The Grineer Tusks",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/ftpm0/jompq"
       },
       "geometry":{
@@ -199,6 +212,7 @@
       "properties":{
          "type":"marker",
          "name":"Tools of Harvest",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/9suln/emxegf"
       },
       "geometry":{
@@ -214,6 +228,7 @@
       "properties":{
          "type":"marker",
          "name":"Ostron Artisans",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/fwlz3/oxnndt"
       },
       "geometry":{
@@ -229,6 +244,7 @@
       "properties":{
          "type":"marker",
          "name":"Ostron Patios",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/imkze/aqrvus"
       },
       "geometry":{
@@ -244,6 +260,7 @@
       "properties":{
          "type":"marker",
          "name":"Scavenging Way of Life (Cave)",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/ls3yx/dskgkv"
       },
       "geometry":{
@@ -259,6 +276,7 @@
       "properties":{
          "type":"marker",
          "name":"Plains of Eidolon",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/owhfk/qvrbnr"
       },
       "geometry":{
@@ -274,6 +292,7 @@
       "properties":{
          "type":"marker",
          "name":"Harvesting the Tower",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/rx638/cwjgcf"
       },
       "geometry":{
@@ -289,6 +308,7 @@
       "properties":{
          "type":"marker",
          "name":"Teralyst Eidolon",
+         "set":"Thousand-Year Fish Statuette",
          "video":"https://streamable.com/s/7hpw4/sgcbgl"
       },
       "geometry":{

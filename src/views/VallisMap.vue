@@ -104,6 +104,7 @@
   import mineRecommend from '@/assets/json/geo/vallis/mining-recommend.json';
   import toroidFishCave from '@/assets/json/geo/vallis/toroidfishcave.json';
   import toroidCave from '@/assets/json/geo/vallis/toroidcave.json';
+  import kdrive from '@/assets/json/geo/vallis/kdrive.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import fishRecommendIcon from '@/assets/img/map_icons/fish-recommend.png';
   import mineRecommendIcon from '@/assets/img/map_icons/mine-recommend.png';
@@ -114,6 +115,7 @@
   import caldaIcon from '@/assets/img/map_icons/calda-toroid.png';
   import solaIcon from '@/assets/img/map_icons/sola-toroid.png';
   import vegaIcon from '@/assets/img/map_icons/vega-toroid.png';
+  import kdriveIcon from '@/assets/img/map_icons/kdrive.png';
 
   import MapPopup from '@/components/MapPopup.vue';
 
@@ -124,12 +126,12 @@
 
   const fishRecommendMarker = L.icon({
     iconUrl: fishRecommendIcon,
-    iconSize: [50, 50],
+    iconSize: [50, 34],
   });
 
   const mineRecommendMarker = L.icon({
     iconUrl: mineRecommendIcon,
-    iconSize: [50, 50],
+    iconSize: [50, 34],
   });
 
   const fishToroidCaveMarker = L.icon({
@@ -139,6 +141,11 @@
 
   const toroidCaveMarker = L.icon({
     iconUrl: toroidCaveIcon,
+    iconSize: [50, 34],
+  });
+
+  const kdriveMarker = L.icon({
+    iconUrl: kdriveIcon,
     iconSize: [50, 34],
   });
 
@@ -200,6 +207,16 @@
             opts: {
               pointToLayer: function(feature, latlng) {
                 return markerAlias(latlng, {icon: mineRecommendMarker});
+              },
+              onEachFeature: onEachFeature
+            }
+          },
+          {
+            name: 'K-Drive',
+            json: kdrive,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: kdriveMarker});
               },
               onEachFeature: onEachFeature
             }

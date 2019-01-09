@@ -1,0 +1,16 @@
+[
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Mining Location"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            869.312297,
+            451.564453
+         ]
+      }
+   }
+]

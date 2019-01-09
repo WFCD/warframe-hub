@@ -3,14 +3,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ancient History",
-         "video":"https://streamable.com/s/7wh17/kzyebr"
+         "name":"Ginding the Void"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            841.569395,
-            36
+            416.736732,
+            1955.367188
          ]
       }
    },
@@ -18,14 +17,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Unum",
-         "video":"https://streamable.com/s/t70y1/mantny"
+         "name":"Deathgrip"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            851.647126,
-            397.476563
+            1616.922404,
+            1821.367188
          ]
       }
    },
@@ -33,14 +31,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"AMPs (Cave)",
-         "video":"https://streamable.com/s/134f8/exnxcc"
+         "name":"Sky-Eye"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            813.641246,
-            506.976563
+            1773.872118,
+            1786.960938
          ]
       }
    },
@@ -48,14 +45,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Life in Cetus (Cave)",
-         "video":"https://streamable.com/s/e56co/glomla"
+         "name":"Anyo's Ointment"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            873.918149,
-            653.333984
+            306.719712,
+            1489.367188
          ]
       }
    },
@@ -63,14 +59,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Cetus",
-         "video":"https://streamable.com/s/q2rbe/kemrbh"
+         "name":"Roky's Roll"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            939.328659,
-            826.427734
+            1240.864227,
+            1525.367188
          ]
       }
    },
@@ -78,14 +73,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Quills of Cetus",
-         "video":"https://streamable.com/s/heep2/lnptdc"
+         "name":"Pobber's Drop"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            623.684125,
-            823.621094
+            1631.963794,
+            1334.867188
          ]
       }
    },
@@ -93,14 +87,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Plains Animals",
-         "video":"https://streamable.com/s/0xrdm/dlikrp"
+         "name":"Breakdown or Bust"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            577.901652,
-            915.050781
+            1205.89788,
+            1280.867188
          ]
       }
    },
@@ -108,14 +101,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Tower's Flesh",
-         "video":"https://streamable.com/s/rxt9k/nybmka"
+         "name":"Puffin' Pastures"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            446.646971,
-            838.689453
+            1263.906854,
+            1226.867188
          ]
       }
    },
@@ -123,14 +115,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Grineer Excavations",
-         "video":"https://streamable.com/s/g1s5o/ajrvfb"
+         "name":"Shaving Nef"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            281.658556,
-            878.554688
+            281.262881,
+            1260.796875
          ]
       }
    },
@@ -138,14 +129,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Merchants of Cetus",
-         "video":"https://streamable.com/s/eiuln/rvjdly"
+         "name":"Taxman's Curve"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            195.703853,
-            887.8125
+            383.278663,
+            1112.796875
          ]
       }
    },
@@ -153,14 +143,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Remnants of Orokin",
-         "video":"https://streamable.com/s/7wsr4/tnlsg"
+         "name":"Skeggin' Out"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            140.695343,
-            690.8125
+            603.312703,
+            1018.796875
          ]
       }
    },
@@ -168,14 +157,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Ostrons",
-         "video":"https://streamable.com/s/o5xjy/brapdq"
+         "name":"River Run"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            333.805296,
-            665.546875
+            207.251431,
+            1004.796875
          ]
       }
    },
@@ -183,14 +171,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Grineer Tusks",
-         "video":"https://streamable.com/s/ftpm0/jompq"
+         "name":"Catalyst"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            98.622428,
-            546.695313
+            230.770695,
+            740.648438
          ]
       }
    },
@@ -198,14 +185,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Tools of Harvest",
-         "video":"https://streamable.com/s/9suln/emxegf"
+         "name":"Mumsie Dadsie"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            110.936833,
-            248.626953
+            846.866006,
+            736.648438
          ]
       }
    },
@@ -213,14 +199,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ostron Artisans",
-         "video":"https://streamable.com/s/fwlz3/oxnndt"
+         "name":"The Hard Way"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            204.988492,
-            123.085938
+            1062.899428,
+            776.648438
          ]
       }
    },
@@ -228,14 +213,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ostron Patios",
-         "video":"https://streamable.com/s/imkze/aqrvus"
+         "name":"Fortuna's Folley"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            312.005048,
-            73.085938
+            1154.780752,
+            439.75
          ]
       }
    },
@@ -243,14 +227,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Scavenging Way of Life (Cave)",
-         "video":"https://streamable.com/s/ls3yx/dskgkv"
+         "name":"Kubrodon Twist"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            405.171805,
-            291.310547
+            796.545722,
+            444.328125
          ]
       }
    },
@@ -258,14 +241,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Plains of Eidolon",
-         "video":"https://streamable.com/s/owhfk/qvrbnr"
+         "name":"Dog Line"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            575.700139,
-            451.984375
+            180.45041,
+            280.328125
          ]
       }
    },
@@ -273,14 +255,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Harvesting the Tower",
-         "video":"https://streamable.com/s/rx638/cwjgcf"
+         "name":"Lord of the Board"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            462.682655,
-            486.984375
+            1140.481742,
+            286.570313
          ]
       }
    },
@@ -288,14 +269,41 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Teralyst Eidolon",
-         "video":"https://streamable.com/s/7hpw4/sgcbgl"
+         "name":"Frost Merchant"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            213.593339,
-            320.355469
+            1322.509903,
+            202.570313
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Bomb the Spaceport"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1478.53404,
+            312.570313
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Meat and Greet"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1578.549513,
+            76.570313
          ]
       }
    }

@@ -9,6 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "lint:raw": "npx lint .",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi "
   },
   "dependencies": {

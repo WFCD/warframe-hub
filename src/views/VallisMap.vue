@@ -106,6 +106,7 @@
   import toroidCave from '@/assets/json/geo/vallis/toroidcave.json';
   import kdrive from '@/assets/json/geo/vallis/kdrive.json';
   import oddity from '@/assets/json/geo/vallis/memoryfrag.json';
+  import somachord from '@/assets/json/geo/vallis/somachord.json';
   import fishIcon from '@/assets/img/map_icons/fish.png';
   import fishRecommendIcon from '@/assets/img/map_icons/fish-recommend.png';
   import mineRecommendIcon from '@/assets/img/map_icons/mine-recommend.png';
@@ -118,6 +119,7 @@
   import vegaIcon from '@/assets/img/map_icons/vega-toroid.png';
   import kdriveIcon from '@/assets/img/map_icons/kdrive.png';
   import oddityIcon from '@/assets/img/map_icons/memoryfrag.png';
+  import somachordIcon from '@/assets/img/map_icons/somachord.png';
 
   import MapPopup from '@/components/MapPopup.vue';
   import OddityPopup from '@/components/OddityPopup.vue';
@@ -155,6 +157,11 @@
   const oddityMarker = L.icon({
     iconUrl: oddityIcon,
     iconSize: [50, 50],
+  });
+
+  const somachordMarker = L.icon({
+    iconUrl: somachordIcon,
+    iconSize: [32, 32],
   });
 
   function onEachFeature (feature, layer) {
@@ -252,6 +259,16 @@
               onEachFeature: onEachOddity
             }
           },
+          {
+            name: 'Somachord Tone',
+            json: somachord,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return markerAlias(latlng, {icon: somachordMarker});
+              },
+              onEachFeature: onEachFeature
+            }
+          }
         ],
         caves: {
           fishcave: {

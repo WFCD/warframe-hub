@@ -81,13 +81,14 @@ export default {
       let diffactivate;
       let durationactivate;
 
+      const start = new Date(this.starttime).getTime() / 1000;
+
       if (typeof start !== 'undefined' && start !== false) {
         diffactivate = moment().diff(moment.unix(start)) * -1;
         durationactivate = moment.duration(diffactivate, 'milliseconds');
       }
 
       if(!this.counter){
-        const start = new Date(this.starttime).getTime() / 1000;
         const end = new Date(this.endtime).getTime() / 1000;
 
         // Get the diff and duration until "end"
@@ -116,16 +117,14 @@ export default {
           this.disp = this.formatTimer(diff);
         }
       } else {
-        const start = new Date(this.starttime).getTime() / 1000;
-
         const diff = moment().diff(moment.unix(start));
         const duration = moment.duration(diff, 'milliseconds');
 
         if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
-          this.mutableVariant = 'info';
+          this.mutableVariant = 'transparent';
           this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
         } else {
-          this.mutableVariant = 'secondary';
+          this.mutableVariant = 'transparent';
           this.disp = `Ongoing for: ${this.formatDurationShort(duration)}`;
         }
       }

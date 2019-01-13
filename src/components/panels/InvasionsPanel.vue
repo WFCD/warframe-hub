@@ -11,7 +11,7 @@
           <span><b>{{invasion.node}}</b></span>
           <b-btn :id="`${invasion.id}_tooltip`" class="pull-right" :size="sm" :variant="secondary">?</b-btn>
           <b-tooltip :target="`${invasion.id}_tooltip`" placement="top">
-            &nbsp
+            &nbsp;
             <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000"/>
           </b-tooltip>
           <br/>

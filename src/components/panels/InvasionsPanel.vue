@@ -9,6 +9,7 @@
 
         <div :id="`${invasion.id}_info`" class="text-center">
           <span><b>{{invasion.node}}</b></span>
+          <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000"/>
           <br/>
           {{invasion.desc}} {{eta(invasion)}}
         </div>

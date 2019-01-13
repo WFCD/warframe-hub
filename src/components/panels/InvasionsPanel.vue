@@ -9,7 +9,11 @@
 
         <div :id="`${invasion.id}_info`" class="text-center">
           <span><b>{{invasion.node}}</b></span>
-          <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000"/>
+          <b-btn :id="`${invasion.id}_tooltip`" class="pull-right" :size="sm" :variant="secondary">?</b-btn>
+          <b-tooltip :target="`${invasion.id}_tooltip`" placement="top">
+            &nbsp
+            <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000"/>
+          </b-tooltip>
           <br/>
           {{invasion.desc}} {{eta(invasion)}}
         </div>

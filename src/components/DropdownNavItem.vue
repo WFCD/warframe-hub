@@ -1,7 +1,7 @@
 <template>
   <span>
     <b-dropdown-item v-if="isLocal">
-      <router-link :to="target" class="navItemParent">
+      <router-link :to="target" class="navItemParent" exact>
         <i :class="`${icon} faIconStyle`"></i>
         <span class="navItemLabel">{{label}}</span>
       </router-link>

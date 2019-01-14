@@ -123,7 +123,7 @@
         <br>
         <br>
         <h4>
-          <b>Hotspots</b>
+          <b id="hotspots">Hotspots</b>
         </h4>
         <br>
         <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>

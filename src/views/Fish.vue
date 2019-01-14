@@ -1,22 +1,10 @@
 <template>
   <b-container fluid>
     <b-col md="12">
-      <b-row>
-        <div role="tablist" style="width: 100%;">
-          <b-card no-body>
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-btn block href="#" v-b-toggle.fishmap-accordion variant="info">Fishing Map</b-btn>
-            </b-card-header>
-            <b-collapse id="fishmap-accordion" accordion="fishmap-accordion" role="tabpanel">
-              <b-card-body>
-                <p class="card-text">
-                  <FishImg type="misc" item="map" name="Map" />
-                </p>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-        </div>
-      </b-row>
+
+      <router-link to="/poe/map">
+        <b-button variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-button>
+      </router-link>
 
       <div class="row">
         <table class="table fish-info striped hover">
@@ -36,16 +24,14 @@
               <th title="The maximum weight possible for this fish">Max Weight</th>
             </tr>
           </thead>
-          <tbody v-for="fish in this.fishes" :key="fish.name">
-            <tr class="color1">
+          <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
+            <tr :class="'color' + ((index % 2) + 1)">
               <td rowspan="3">
-                <a name="Fish tooltip" class="fish-tooltip" href="#/" v-if="fish.thumb">
-                  <i class="far fa-image"></i> {{fish.name}}
-                    <div class="fish-tooltip-inner">
-                      <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" />
-                    </div>
-                </a>
-                <span v-else> {{fish.name}}</span>
+                <b-button :id="`${fish.name}_tooltip`" size="md" variant="primary" class="m-3">{{fish.name}}</b-button>
+                <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
+                  <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" v-if="fish.thumb" />
+                  <span v-else> No image available</span>
+                </b-tooltip>
               </td>
               <td v-if="fish.smallLabel">{{fish.smallLabel}}</td>
               <td v-else>S</td>
@@ -53,48 +39,43 @@
               <td>{{fish.small.resources.scales}}</td>
               <td>{{fish.small.resources.oil}}</td>
               <td rowspan="3">
-                <a v-if="fish.unique.thumb" name="Wikia Article" rel="noopener" class="fish-tooltip" :href="fish.unique.wiki" target="_blank">
-                  <i class="far fa-image"></i> {{fish.unique.name}}
-                  <div class="fish-tooltip-inner">
-                    <FishImg type="parts" :item="fish.unique.thumb" :name="fish.unique.name" width="200" />
-                  </div>
-                </a>
-                <span v-else> {{fish.unique.name}}</span>
+                <b-button :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="primary" class="m-3">{{fish.unique.name}}</b-button>
+                <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
+                  <FishImg type="parts" :item="fish.unique.thumb" :name="fish.unique.name" width="200" v-if="fish.unique.thumb" />
+                  <span v-else> No image available</span>
+                  <b-button :href="fish.unique.wiki" target="_blank" size="sm" rel="noopener" variant="secondary" v-if="fish.unique.thumb">Wikia Article</b-button>
+                </b-tooltip>
               </td>
               <td>{{fish.small.standing}}</td>
               <td rowspan="3">{{fish.location}}</td>
               <td rowspan="3">{{fish.time}}</td>
               <td rowspan="3">
-                {{fish.rarity}}
+                <span>{{fish.rarity}}</span>
+
                 <br v-if="fish.hotspot" />
-                <a v-if="fish.hotspot" name="Fish tooltip" class="fish-tooltip" href="#/">(<i class="far fa-image"></i>Hotspots)
-                  <div class="fish-tooltip-inner">
-                   <video autoplay loop height="150">
-                     <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm">
-                     <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4">
-                   </video>
-                  </div>
-                </a>
+                <span v-if="fish.hotspot">Hotspot Required</span>
+
                 <br v-if="fish.bait" />
-                <a v-if="fish.bait" name="Fish tooltip" class="fish-tooltip" href="#/"><i class="far fa-image"></i> {{fish.bait.name}}
-                  <div class="fish-tooltip-inner">
-                    <FishImg type="bait" :item="fish.bait.thumb" :name="fish.bait.name" width="200" />
-                  </div>
-                </a>
+                <b-button v-if="fish.bait" :id="`${fish.name}_${fish.bait.name}_bait_tooltip`" size="md" variant="primary" class="mb-1">{{fish.bait.name}}</b-button>
+                <b-tooltip v-if="fish.bait" :target="`${fish.name}_${fish.bait.name}_bait_tooltip`" placement="top">
+                  <FishImg type="bait" :item="fish.bait.thumb" :name="fish.bait.name" width="200" v-if="fish.bait.thumb" />
+                  <span v-else> No image available</span>
+                </b-tooltip>
+
               </td>
               <td rowspan="3">
                 <span v-for="spear in fish.spear" :key="spear">{{spear}} <br /></span>
               </td>
               <td rowspan="3">{{fish.maximumMass}}</td>
             </tr>
-            <tr class="color1" v-if="fish.medium">
+            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.medium">
               <td>M</td>
               <td>{{fish.medium.resources.meat}}</td>
               <td>{{fish.medium.resources.scales}}</td>
               <td>{{fish.medium.resources.oil}}</td>
               <td>{{fish.medium.standing}}</td>
             </tr>
-            <tr class="color1" v-if="fish.large">
+            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.large">
               <td>L</td>
               <td>{{fish.large.resources.meat}}</td>
               <td>{{fish.large.resources.scales}}</td>
@@ -104,25 +85,23 @@
           </tbody>
         </table>
       </div>
+
+      <router-link to="/poe/fish/howto#hotspots">
+        <b-button variant="info" class="btn-block">What is a Hotspot?</b-button>
+      </router-link>
+
     </b-col>
   </b-container>
 </template>
 
 <script>
   import fish from '@/assets/json/fish.json';
-  import FishImg from '@/components/FishImg.vue';
 
   export default {
     name: 'fish',
-    components: {
-      FishImg
-    },
     data() {
       return {
         fishes: fish,
-        fullWidth: {
-          width: '100%'
-        }
       };
     }
   };

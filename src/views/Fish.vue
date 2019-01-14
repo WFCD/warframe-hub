@@ -96,9 +96,13 @@
 
 <script>
   import fish from '@/assets/json/fish.json';
+  import FishImg from '@/components/FishImg.vue';
 
   export default {
     name: 'fish',
+    components: {
+      FishImg
+    },
     data() {
       return {
         fishes: fish,

@@ -27,7 +27,7 @@
           <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
             <tr :class="'color' + ((index % 2) + 1)">
               <td rowspan="3">
-                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="secondary" class="m-3 btn-link">{{fish.name}}</b-btn>
+                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link" class="m-3">{{fish.name}}</b-btn>
                 <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
                   <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" v-if="fish.thumb" />
                   <span v-else> No image available</span>
@@ -39,11 +39,11 @@
               <td>{{fish.small.resources.scales}}</td>
               <td>{{fish.small.resources.oil}}</td>
               <td rowspan="3">
-                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="secondary" class="m-3 btn-link">{{fish.unique.name}}</b-btn>
+                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link" class="m-3">{{fish.unique.name}}</b-btn>
                 <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
                   <FishImg type="parts" :item="fish.unique.thumb" :name="fish.unique.name" width="200" v-if="fish.unique.thumb" />
                   <span v-else> No image available</span>
-                  <b-btn :href="fish.unique.wiki" target="_blank" size="sm" rel="noopener" variant="secondary" class="btn-link" v-if="fish.unique.thumb">Wikia Article</b-btn>
+                  <b-btn :href="fish.unique.wiki" target="_blank" size="sm" rel="noopener" variant="link" v-if="fish.unique.thumb">Wikia Article</b-btn>
                 </b-tooltip>
               </td>
               <td>{{fish.small.standing}}</td>
@@ -56,7 +56,7 @@
                 <span v-if="fish.hotspot">Hotspot Required</span>
 
                 <br v-if="fish.bait" />
-                <b-btn v-if="fish.bait" :id="`${fish.name}_${fish.bait.name}_bait_tooltip`" size="md" variant="secondary" class="mb-1 btn-link">{{fish.bait.name}}</b-btn>
+                <b-btn v-if="fish.bait" :id="`${fish.name}_${fish.bait.name}_bait_tooltip`" size="md" variant="link" class="mb-1">{{fish.bait.name}}</b-btn>
                 <b-tooltip v-if="fish.bait" :target="`${fish.name}_${fish.bait.name}_bait_tooltip`" placement="top">
                   <FishImg type="bait" :item="fish.bait.thumb" :name="fish.bait.name" width="200" v-if="fish.bait.thumb" />
                   <span v-else> No image available</span>

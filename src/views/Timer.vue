@@ -12,7 +12,16 @@
             :margin="[10, 10]"
             :use-css-transforms="true"
       >
-        <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :grid="layout[0]" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
+        <grid-item v-for="panel in layout" 
+             v-if="panel.props.if"
+             :x="panel.x"
+             :y="panel.y"
+             :w="panel.w"
+             :h="panel.h"
+             :i="panel.i"
+             :key="panel.i">
+          <div :is="panel.component" v-bind="panel.props"></div>
+        </grid-item>
       </grid-layout>
         <!--<EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
         <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
@@ -48,6 +57,7 @@ import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 import VueGridLayout from 'vue-grid-layout';
+import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
   name: 'timers',
@@ -66,12 +76,22 @@ export default {
     SalesPanel,
     VoidTraderPanel,
     GridLayout: VueGridLayout.GridLayout,
-    GridItem: VueGridLayout.GridItem
+    GridItem: VueGridLayout.GridItem,
+    HubPanelWrap
   },
   data() {
     return {
       layout: [
-        {"x":0,"y":0,"w":3,"h":2,"i":"0"},
+        {"x":0,"y":0,"w":3,"h":3,"i":"0", component: AcolytesPanel, props: {
+            if: this.$store.getters.componentState.acolytes.state,
+            acolytes: this.$store.getters.worldstate.persistentEnemies
+          }
+        },
+        {"x":3,"y":3,"w":6,"h":4,"i":"1", component: AlertPanel, props: {
+            if: this.$store.getters.componentState.alerts.state, 
+            alerts: this.$store.getters.worldstate.alerts
+          }
+        },
       ],
     };
   },
@@ -90,6 +110,9 @@ export default {
       const filtered = this.$store.getters.worldstate.syndicateMissions
         .filter((syndicate) => syndicate.syndicate === 'Solaris United');
       return filtered[0];
+    },
+    panel: function() {
+      return "";
     },
   }
 };

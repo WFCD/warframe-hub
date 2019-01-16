@@ -154,7 +154,14 @@ const routes = [
 
 const router = new Router({
   routes,
-  mode: 'hash'
+  mode: 'hash',
+  scrollBehavior (to) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    }
+  }
 });
 
 // From https://alligator.io/vuejs/vue-router-modify-head/

@@ -32,6 +32,10 @@ export default {
     interval: {
       type: Number,
       default: 60000,
+    },
+    counter: {
+      type: Boolean,
+      default: false,
     }
   },
   mounted: function() {
@@ -74,43 +78,57 @@ export default {
       return stringArray.join(' ');
     },
     onBadgeUpdate () {
-      const start = new Date(this.starttime).getTime() / 1000;
-      const end = new Date(this.endtime).getTime() / 1000;
-
       let diffactivate;
       let durationactivate;
 
-      // Get the diff and duration since "start"
+      const start = new Date(this.starttime).getTime() / 1000;
+
       if (typeof start !== 'undefined' && start !== false) {
         diffactivate = moment().diff(moment.unix(start)) * -1;
         durationactivate = moment.duration(diffactivate, 'milliseconds');
       }
 
-      // Get the diff and duration until "end"
-      const diff = moment().diff(moment.unix(end)) * -1;
-      const duration = moment.duration(diff, 'milliseconds');
+      if(!this.counter){
+        const end = new Date(this.endtime).getTime() / 1000;
 
-      // Format based on there being no end time, being after the end, or being before the start
-      if (!this.endtime) {
-        this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
-      } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
-        this.mutableVariant = 'info';
-        this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
-      } else if (diff < 0) {
-        this.mutableVariant = 'info';
-        this.disp = `Expired: ${this.formatDurationShort(duration)}`;
-      } else {
-        if (diff < 600000) { // 0 min to 10 min
-          this.mutableVariant = 'danger';
-        } else if (diff < 1800000) { // 10 min to 30 min
-          this.mutableVariant = 'warning';
-        } else if (diff > 1800000) { // 30 min to 1 hour
-          this.mutableVariant = 'success';
-        } else {
+        // Get the diff and duration until "end"
+        const diff = moment().diff(moment.unix(end)) * -1;
+        const duration = moment.duration(diff, 'milliseconds');
+
+        // Format based on there being no end time, being after the end, or being before the start
+        if (!this.endtime) {
+          this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
+        } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
           this.mutableVariant = 'info';
+          this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
+        } else if (diff < 0) {
+          this.mutableVariant = 'info';
+          this.disp = `Expired: ${this.formatDurationShort(duration)}`;
+        } else {
+          if (diff < 600000) { // 0 min to 10 min
+            this.mutableVariant = 'danger';
+          } else if (diff < 1800000) { // 10 min to 30 min
+            this.mutableVariant = 'warning';
+          } else if (diff > 1800000) { // 30 min to 1 hour
+            this.mutableVariant = 'success';
+          } else {
+            this.mutableVariant = 'info';
+          }
+          this.disp = this.formatTimer(diff);
         }
-        this.disp = this.formatTimer(diff);
+      } else {
+        const diff = moment().diff(moment.unix(start));
+        const duration = moment.duration(diff, 'milliseconds');
+
+        if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+          this.mutableVariant = 'transparent';
+          this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
+        } else {
+          this.mutableVariant = 'transparent';
+          this.disp = `Ongoing for: ${this.formatDurationShort(duration)}`;
+        }
       }
+
       setTimeout(this.onBadgeUpdate, this.interval);
     }
   },

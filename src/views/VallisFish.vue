@@ -1,22 +1,11 @@
 <template>
 <b-container fluid>
-  <b-row>
-    <div role="tablist" style="width: 100%;">
-      <b-card no-body>
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-btn block href="#" v-b-toggle.vallismap-accordion variant="info">Orb Vallis Map</b-btn>
-        </b-card-header>
-        <b-collapse id="vallismap-accordion" accordion="vallismap-accordion" role="tabpanel">
-          <b-card-body>
-            <p class="card-text">
-              <HubImg :src="vallismap" height="100%" width="100%" />
-            </p>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
-    </div>
-  </b-row>
   <b-col md="12">
+
+    <router-link to="/vallis/map">
+      <b-button variant="info" class="btn-block mb-3">Orb Vallis Map</b-button>
+    </router-link>
+
     <div class="row">
       <b-table striped hover :items="items" class="fish-info b-table"></b-table>
     </div>
@@ -167,19 +156,11 @@
     },
   ];
 
-  import vallismap from '@/assets/img/orbvallis.png';
-
-  import HubImg from '@/components/HubImg.vue';
-
   export default {
     name: 'vallisfish',
-    components: {
-      HubImg
-    },
     data() {
       return {
         items: items,
-        vallismap: vallismap,
       };
     },
     methods: {

@@ -26,23 +26,12 @@
         <p>There are three kinds of water bodies: Lakes, Ponds and Sea. They have their own fishes and the spawns are also day-night dependant.</p>
         <br>
         <br>
-        <p>Here's the map for reference (you can ignore the black circles for now)</p>
+        <p>Here's the map for reference</p>
       </b-col>
       <b-col md="8" offset="2">
-        <div role="tablist" style="width: 100%;">
-          <b-card no-body>
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-btn block href="#" v-b-toggle.fishmap-accordion variant="info">Fishing Map</b-btn>
-            </b-card-header>
-            <b-collapse id="fishmap-accordion" accordion="fishmap-accordion" role="tabpanel">
-              <b-card-body>
-                <p class="card-text">
-                  <FishImg type="misc" item="map" name="Map" />
-                </p>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-        </div>
+        <router-link to="/poe/map">
+          <b-btn variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-btn>
+        </router-link>
       </b-col>
       <b-col md="8" offset="2">
         <p>
@@ -123,7 +112,7 @@
         <br>
         <br>
         <h4>
-          <b>Hotspots</b>
+          <b id="hotspots">Hotspots</b>
         </h4>
         <br>
         <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>

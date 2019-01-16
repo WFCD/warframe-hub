@@ -4,7 +4,7 @@
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-nav-item><router-link to="/"><i class="fas fa-clock faIconStyle"></i> Timers</router-link></b-nav-item>
+        <b-nav-item><router-link to="/" exact><i class="fas fa-clock faIconStyle"></i> Timers</router-link></b-nav-item>
 
         <b-nav-item-dropdown text="<i class='fas fa-mountain fa-sm faIconStyle'></i> Plains" left class="text-center">
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" label="Map" />

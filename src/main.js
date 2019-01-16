@@ -22,9 +22,9 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Packery */
-import VuePackeryPlugin from 'vue-packery-plugin';
-Vue.use(VuePackeryPlugin);
+/* Grid Layout */
+import VueGridLayout from 'vue-grid-layout';
+Vue.use(VueGridLayout);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';

@@ -1,9 +1,20 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <b-row ref="timerComponentGrid" v-packery='{itemSelector: ".packery-item", percentPosition: true}'>
-        <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
-        <EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
+      <grid-layout
+            :layout.sync="layout"
+            :col-num="12"
+            :row-height="100"
+            :is-draggable="true"
+            :is-resizable="true"
+            :is-mirrored="false"
+            :vertical-compact="true"
+            :margin="[10, 10]"
+            :use-css-transforms="true"
+      >
+        <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :grid="layout[0]" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
+      </grid-layout>
+        <!--<EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
         <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
         <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
         <InvasionsPanel v-if="this.$store.getters.componentState.invasions.state" :invasions="this.$store.getters.worldstate.invasions"/>
@@ -17,8 +28,7 @@
         <FissuresPanel v-if="this.$store.getters.componentState.fissures.state" :fissures="this.$store.getters.worldstate.fissures"/>
         <DarvoDealsPanel v-if="this.$store.getters.componentState.darvo.state" :deals="this.$store.getters.worldstate.dailyDeals" />
         <SalesPanel v-if="this.$store.getters.componentState.deals.state" :sales="this.$store.getters.worldstate.flashSales" />
-        <VoidTraderPanel v-if="this.$store.getters.componentState.baro.state" :voidTrader="this.$store.getters.worldstate.voidTrader" />
-      </b-row>
+        <VoidTraderPanel v-if="this.$store.getters.componentState.baro.state" :voidTrader="this.$store.getters.worldstate.voidTrader" />-->
     </b-container>
   </div>
 </template>
@@ -37,6 +47,7 @@ import EventsPanel from '@/components/panels/EventsPanel.vue';
 import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
+import VueGridLayout from 'vue-grid-layout';
 
 export default {
   name: 'timers',
@@ -54,6 +65,15 @@ export default {
     DarvoDealsPanel,
     SalesPanel,
     VoidTraderPanel,
+    GridLayout: VueGridLayout.GridLayout,
+    GridItem: VueGridLayout.GridItem
+  },
+  data() {
+    return {
+      layout: [
+        {"x":0,"y":0,"w":3,"h":2,"i":"0"},
+      ],
+    };
   },
   methods: {
     track () {

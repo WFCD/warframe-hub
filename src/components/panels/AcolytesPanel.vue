@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :grid="grid" :title="headertext">
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(acolyte, index) in acolytes" :key="acolyte.id" v-bind:class="{ 'list-group-item-borderless': index !== acolytes.length - 1, 'list-group-item-borderbottom': index === acolytes.length - 1 }">
         <span :class="`label label-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>
@@ -27,7 +27,10 @@
 
   export default {
     name: 'AcolytesPanel',
-    props: ['acolytes'],
+    props: [
+      'grid',
+      'acolytes'
+    ],
     computed: {
       headertext() {
         return 'Acolytes';

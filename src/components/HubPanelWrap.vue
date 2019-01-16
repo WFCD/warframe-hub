@@ -1,14 +1,21 @@
 <template>
-  <b-col md="6" v-packery-item class="panel-header packery-item">
-    <h3 class="text-center dragger">{{title}}</h3>
+  <grid-item :x="grid.x"
+             :y="grid.y"
+             :w="grid.w"
+             :h="grid.h"
+             :i="grid.i">
+    <h3 class="text-center">{{title}}</h3>
     <slot></slot>
-  </b-col>
+  </grid-item>
 </template>
 
 <script>
 export default {
   name: 'HubPanelWrap',
-  props: ['title'],
+  props: [
+    'title',
+    'grid'
+  ],
   data () { return { }; },
   components: {}
 };

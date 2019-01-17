@@ -16,8 +16,8 @@
              v-if="panel.props.if"
              :x="panel.x"
              :y="panel.y"
-             :w="panel.w"
-             :h="panel.h"
+             :w="panel.component.grid_dims.w"
+             :h="panel.component.grid_dims.h"
              :i="panel.i"
              :key="panel.i">
           <div :is="panel.component" v-bind="panel.props"></div>
@@ -110,10 +110,7 @@ export default {
       const filtered = this.$store.getters.worldstate.syndicateMissions
         .filter((syndicate) => syndicate.syndicate === 'Solaris United');
       return filtered[0];
-    },
-    panel: function() {
-      return "";
-    },
+    }
   }
 };
 </script>

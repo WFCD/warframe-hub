@@ -38,6 +38,10 @@
 
   export default {
     name: 'AlertPanel',
+    grid_dims: {
+      w: 6,
+      h: 3
+    },
     props: ['alerts'],
     computed: {
       headertext() {

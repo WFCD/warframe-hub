@@ -1,8 +1,8 @@
 <template>
-  <b-col md="6" v-packery-item class="panel-header packery-item">
+  <div v-packery-item class="panel-header packery-item">
     <h3 class="text-center">{{title}}</h3>
     <slot></slot>
-  </b-col>
+  </div>
 </template>
 
 <script>

@@ -27,10 +27,6 @@
 
   export default {
     name: 'AcolytesPanel',
-    grid_dims: {
-      w: 2,
-      h: 3
-    },
     props: [
       'acolytes'
     ],

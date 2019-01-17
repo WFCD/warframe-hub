@@ -7,7 +7,14 @@
   "acolytes": {
     "state": true,
     "display": "Acolytes",
-    "key": "acolytes"
+    "key": "acolytes",
+    "position": {
+      "x": 6,
+      "y": 0,
+      "w": 6,
+      "h": 3,
+      "i": "acolytes"
+    }
   },
   "cetus": {
     "state": true,
@@ -37,7 +44,14 @@
   "alerts": {
     "state": true,
     "display": "Alerts",
-    "key": "alerts"
+    "key": "alerts",
+    "position": {
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 3,
+      "i": "alerts"
+    }
   },
   "news": {
     "state": true,
@@ -78,23 +92,5 @@
     "state": false,
     "display": "Sales",
     "key": "deals"
-  },
-  "grid_layout": [
-    {
-      "i": "acolytes",
-      "component": "AcolytesPanel",
-      "x": 0,
-      "y": 0,
-      "w": 6,
-      "h": 2
-    },
-    {
-      "i": "alerts",
-      "component": "AlertPanel",
-      "x": 0,
-      "y": 0,
-      "w": 6,
-      "h": 3
-    }
-  ]
+  }
 }

@@ -42,6 +42,10 @@ const mutations = {
   commitComponentState: (state, [key, newState]) => {
     state.components[key].state = newState;
   },
+  commitComponentPosition: (state, [key, x, y]) => {
+    state.components[key].position.x = x;
+    state.components[key].position.y = y;
+  },
   setTheme: (state, [key]) => {
     state.theme = key;
   },

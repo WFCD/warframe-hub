@@ -2,7 +2,7 @@
   <div class="timers">
     <b-container fluid class="grid">
       <grid-layout
-            :layout="getActiveComponents"
+            :layout="layout"
             :col-num="12"
             :row-height="100"
             :is-draggable="true"
@@ -12,14 +12,15 @@
             :margin="[10, 10]"
             :use-css-transforms="true"
       >
-        <grid-item v-for="panel in getActiveComponents"
+        <grid-item v-for="panel in layout" v-if="panel.state"
              :x="panel.x"
              :y="panel.y"
              :w="panel.w"
              :h="panel.h"
              :i="panel.i"
-             :key="panel.i">
-          <div :is="panelDetails[panel.i].component" v-bind="panelDetails[panel.i].props"></div>
+             :key="panel.i"
+             @moved="moved">
+          <div :is="panel.component" v-bind="panel.props"></div>
         </grid-item>
       </grid-layout>
         <!--<EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
@@ -79,12 +80,38 @@ export default {
     HubPanelWrap
   },
   data() {
-    return {};
+    return {
+      layout: null
+    };
+  },
+  created: function() {
+    const getters = this.$store.getters;
+    this.layout = [
+        {
+          ...getters.componentState.alerts.position,
+          state: getters.componentState.alerts.state,
+          component: AlertPanel,
+          props: {
+            alerts: getters.worldstate.alerts
+          }
+        },
+        {
+          ...getters.componentState.acolytes.position,
+          state: getters.componentState.acolytes.state,
+          component: AcolytesPanel,
+          props: {
+            acolytes: getters.worldstate.persistentEnemies
+          }
+        }
+      ];
   },
   methods: {
     track () {
       this.$ga.page('/');
     },
+    moved (i, newX, newY) {
+      this.$store.commit('commitComponentPosition', [i, newX, newY]);
+    }
   },
   computed: {
     ostrons: function() {
@@ -98,21 +125,8 @@ export default {
       return filtered[0];
     },
     getActiveComponents: function() {
-      const activeComponents = this.$store.getters.componentState.grid_layout
-        .filter((panel) => this.$store.getters.componentState[panel.i].state);
+      const activeComponents = this.layout.filter((panel) => panel.state);
       return activeComponents;
-    },
-    panelDetails: function() {
-      return {
-        alerts: {
-          component: AlertPanel,
-          props: { alerts: this.$store.getters.worldstate.alerts }
-        },
-        acolytes: {
-          component: AcolytesPanel,
-          props: { acolytes: this.$store.getters.worldstate.persistentEnemies }
-        }
-      };
     }
   }
 };

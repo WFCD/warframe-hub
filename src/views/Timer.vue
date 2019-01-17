@@ -2,42 +2,31 @@
   <div class="timers">
     <b-container fluid class="grid">
       <grid-layout
-            :layout="layout"
-            :col-num="12"
-            :row-height="100"
-            :is-draggable="true"
-            :is-resizable="true"
-            :is-mirrored="false"
-            :vertical-compact="true"
-            :margin="[10, 10]"
-            :use-css-transforms="true"
+        :layout="layout"
+        :col-num="2"
+        :row-height="14"
+        :is-draggable="true"
+        :is-resizable="true"
+        :is-mirrored="false"
+        :vertical-compact="true"
+        :margin="[10, 10]"
+        :use-css-transforms="true"
       >
-        <grid-item v-for="panel in layout" v-if="panel.state"
-             :x="panel.x"
-             :y="panel.y"
-             :w="panel.w"
-             :h="panel.h"
-             :i="panel.i"
-             :key="panel.i"
-             @moved="moved">
+        <grid-item
+          v-for="panel in layout"
+          v-if="panel.state"
+          :x="panel.x"
+          :y="panel.y"
+          :w="panel.w"
+          :h="panel.h"
+          :i="panel.i"
+          :key="panel.i"
+          @moved="moved"
+          @resized="resized"
+        >
           <div :is="panel.component" v-bind="panel.props"></div>
         </grid-item>
       </grid-layout>
-        <!--<EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
-        <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
-        <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
-        <InvasionsPanel v-if="this.$store.getters.componentState.invasions.state" :invasions="this.$store.getters.worldstate.invasions"/>
-        <NewsPanel v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
-        <TimePanel v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle" location="Earth" />
-        <TimePanel v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle" location="Cetus" />
-        <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
-        <SortiePanel v-if="this.$store.getters.componentState.sortie.state" :sortie="this.$store.getters.worldstate.sortie"/>
-        <BountyPanel v-if="this.$store.getters.componentState.bounties.state" :syndicate="this.ostrons" type="Ostron" />
-        <BountyPanel v-if="this.$store.getters.componentState['solaris-bounties'].state" :syndicate="this.solaris" type="Solaris United" />
-        <FissuresPanel v-if="this.$store.getters.componentState.fissures.state" :fissures="this.$store.getters.worldstate.fissures"/>
-        <DarvoDealsPanel v-if="this.$store.getters.componentState.darvo.state" :deals="this.$store.getters.worldstate.dailyDeals" />
-        <SalesPanel v-if="this.$store.getters.componentState.deals.state" :sales="this.$store.getters.worldstate.flashSales" />
-        <VoidTraderPanel v-if="this.$store.getters.componentState.baro.state" :voidTrader="this.$store.getters.worldstate.voidTrader" />-->
     </b-container>
   </div>
 </template>
@@ -87,41 +76,145 @@ export default {
   created: function() {
     const getters = this.$store.getters;
     this.layout = [
-        {
-          ...getters.componentState.alerts.position,
-          state: getters.componentState.alerts.state,
-          component: AlertPanel,
-          props: {
-            alerts: getters.worldstate.alerts
-          }
-        },
-        {
-          ...getters.componentState.acolytes.position,
-          state: getters.componentState.acolytes.state,
-          component: AcolytesPanel,
-          props: {
-            acolytes: getters.worldstate.persistentEnemies
-          }
+      {
+        ...getters.componentState.alerts.position,
+        state: getters.componentState.alerts.state,
+        component: AlertPanel,
+        props: {
+          alerts: getters.worldstate.alerts
         }
-      ];
+      },
+      {
+        ...getters.componentState.acolytes.position,
+        state: getters.componentState.acolytes.state,
+        component: AcolytesPanel,
+        props: {
+          acolytes: getters.worldstate.persistentEnemies
+        }
+      },
+      {
+        ...getters.componentState.event.position,
+        state: getters.componentState.event.state,
+        component: EventsPanel,
+        props: { events: getters.worldstate.events }
+      },
+      {
+        ...getters.componentState.news.position,
+        state: getters.componentState.news.state,
+        component: NewsPanel,
+        props: { news: getters.worldstate.news }
+      },
+      {
+        ...getters.componentState.earth.position,
+        state: getters.componentState.earth.state,
+        component: TimePanel,
+        props: {
+          time: getters.worldstate.earthCycle,
+          location: 'Earth'
+        }
+      },
+      {
+        ...getters.componentState.cetus.position,
+        state: getters.componentState.cetus.state,
+        component: TimePanel,
+        props: {
+          time: getters.worldstate.cetusCycle,
+          location: 'Cetus'
+        }
+      },
+      {
+        ...getters.componentState.vallis.position,
+        state: getters.componentState.vallis.state,
+        component: TimePanel,
+        props: {
+          time: getters.worldstate.vallisCycle,
+          location: 'Vallis'
+        }
+      },
+      {
+        ...getters.componentState.sortie.position,
+        state: getters.componentState.sortie.state,
+        component: SortiePanel,
+        props: { sortie: getters.worldstate.sortie }
+      },
+      {
+        ...getters.componentState.bounties.position,
+        state: getters.componentState.bounties.state,
+        component: BountyPanel,
+        props: {
+          syndicate: this.ostrons,
+          type: 'Ostron'
+        }
+      },
+      {
+        ...getters.componentState['solaris-bounties'].position,
+        state: getters.componentState['solaris-bounties'].state,
+        component: BountyPanel,
+        props: {
+          syndicate: this.solaris,
+          type: 'Solaris United'
+        }
+      },
+      {
+        ...getters.componentState.fissures.position,
+        state: getters.componentState.fissures.state,
+        component: FissuresPanel,
+        props: { fissures: getters.worldstate.fissures }
+      },
+      {
+        ...getters.componentState.darvo.position,
+        state: getters.componentState.darvo.state,
+        component: DarvoDealsPanel,
+        props: { deals: getters.worldstate.dailyDeals }
+      },
+      {
+        ...getters.componentState.deals.position,
+        state: getters.componentState.deals.state,
+        component: SalesPanel,
+        props: { sales: getters.worldstate.flashSales }
+      },
+      {
+        ...getters.componentState.baro.position,
+        state: getters.componentState.baro.state,
+        component: VoidTraderPanel,
+        props: { voidTrader: getters.worldstate.voidTrader }
+      },
+      {
+        ...getters.componentState.invasions.position,
+        state: getters.componentState.invasions.state,
+        component: InvasionsPanel,
+        props: { invasions: getters.worldstate.invasions }
+      },
+      {
+        ...getters.componentState.reset.position,
+        state: getters.componentState.reset.state,
+        component: ResetPanel,
+        props: {}
+      }
+    ];
   },
   methods: {
-    track () {
+    track() {
       this.$ga.page('/');
     },
-    moved (i, newX, newY) {
+    moved(i, newX, newY) {
       this.$store.commit('commitComponentPosition', [i, newX, newY]);
+    },
+    resized(i, newW, newH) {
+      this.$store.commit('commitComponentResize', [i, newW, newH]);
     }
   },
   computed: {
     ostrons: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter((syndicate) => syndicate.syndicate === 'Ostrons');
+      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
+        (syndicate) => syndicate.syndicate === 'Ostrons'
+      );
       return filtered[0];
     },
     solaris: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter((syndicate) => syndicate.syndicate === 'Solaris United');
+      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
+        (syndicate) => syndicate.syndicate === 'Solaris United'
+      );
       return filtered[0];
     },
     getActiveComponents: function() {

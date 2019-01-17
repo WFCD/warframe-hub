@@ -46,6 +46,10 @@ const mutations = {
     state.components[key].position.x = x;
     state.components[key].position.y = y;
   },
+  commitComponentResize: (state, [key, w, h]) => {
+    state.components[key].position.w = w;
+    state.components[key].position.h = h;
+  },
   setTheme: (state, [key]) => {
     state.theme = key;
   },

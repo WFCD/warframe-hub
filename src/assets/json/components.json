@@ -2,95 +2,193 @@
   "event": {
     "state": true,
     "display": "Events",
-    "key": "event"
+    "key": "event",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "event"
+    }
   },
   "acolytes": {
     "state": true,
     "display": "Acolytes",
     "key": "acolytes",
     "position": {
-      "x": 6,
-      "y": 0,
-      "w": 6,
-      "h": 3,
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
       "i": "acolytes"
     }
   },
   "cetus": {
     "state": true,
     "display": "Cetus Cycle",
-    "key": "cetus"
+    "key": "cetus",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "cetus"
+    }
   },
   "earth": {
     "state": true,
     "display": "Earth Cycle",
-    "key": "earth"
+    "key": "earth",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "earth"
+    }
   },
   "vallis": {
     "state": true,
     "display": "Vallis Cycle",
-    "key": "vallis"
+    "key": "vallis",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "vallis"
+    }
   },
   "bounties": {
     "state": true,
     "display": "Bounties Timer",
-    "key": "bounties"
+    "key": "bounties",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "bounties"
+    }
   },
   "solaris-bounties": {
     "state": true,
     "display": "Solaris Bounties Timer",
-    "key": "solaris-bounties"
+    "key": "solaris-bounties",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "solaris"
+    }
   },
   "alerts": {
     "state": true,
     "display": "Alerts",
     "key": "alerts",
     "position": {
-      "x": 0,
-      "y": 0,
-      "w": 6,
-      "h": 3,
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
       "i": "alerts"
     }
   },
   "news": {
     "state": true,
     "display": "News",
-    "key": "news"
+    "key": "news",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "news"
+    }
   },
   "invasions": {
     "state": true,
     "display": "Invasions",
-    "key": "invasions"
+    "key": "invasions",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "invasions"
+    }
   },
   "reset": {
     "state": true,
     "display": "Reset Timer",
-    "key": "reset"
+    "key": "reset",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "reset"
+    }
   },
   "sortie": {
     "state": true,
     "display": "Sortie",
-    "key": "sortie"
+    "key": "sortie",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "sortie"
+    }
   },
   "fissures": {
     "state": true,
     "display": "Fissures",
-    "key": "fissures"
+    "key": "fissures",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "fissures"
+    }
   },
   "baro": {
     "state": true,
     "display": "Void Trader",
-    "key": "baro"
+    "key": "baro",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "baro"
+    }
   },
   "darvo": {
     "state": true,
     "display": "Darvo Deals",
-    "key": "darvo"
+    "key": "darvo",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "darvo"
+    }
   },
   "deals": {
     "state": false,
     "display": "Sales",
-    "key": "deals"
+    "key": "deals",
+    "position": {
+      "x": 3,
+      "y": 3,
+      "w": 1,
+      "h": 4,
+      "i": "deals"
+    }
   }
 }

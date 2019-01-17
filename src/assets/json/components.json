@@ -78,5 +78,23 @@
     "state": false,
     "display": "Sales",
     "key": "deals"
-  }
+  },
+  "grid_layout": [
+    {
+      "i": "acolytes",
+      "component": "AcolytesPanel",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 2
+    },
+    {
+      "i": "alerts",
+      "component": "AlertPanel",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 3
+    }
+  ]
 }

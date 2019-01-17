@@ -2,7 +2,7 @@
   <div class="timers">
     <b-container fluid class="grid">
       <grid-layout
-            :layout.sync="layout"
+            :layout="getActiveComponents"
             :col-num="12"
             :row-height="100"
             :is-draggable="true"
@@ -12,15 +12,14 @@
             :margin="[10, 10]"
             :use-css-transforms="true"
       >
-        <grid-item v-for="panel in layout" 
-             v-if="panel.props.if"
+        <grid-item v-for="panel in getActiveComponents"
              :x="panel.x"
              :y="panel.y"
-             :w="panel.component.grid_dims.w"
-             :h="panel.component.grid_dims.h"
+             :w="panel.w"
+             :h="panel.h"
              :i="panel.i"
              :key="panel.i">
-          <div :is="panel.component" v-bind="panel.props"></div>
+          <div :is="panelDetails[panel.i].component" v-bind="panelDetails[panel.i].props"></div>
         </grid-item>
       </grid-layout>
         <!--<EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
@@ -80,20 +79,7 @@ export default {
     HubPanelWrap
   },
   data() {
-    return {
-      layout: [
-        {"x":0,"y":0,"w":3,"h":3,"i":"0", component: AcolytesPanel, props: {
-            if: this.$store.getters.componentState.acolytes.state,
-            acolytes: this.$store.getters.worldstate.persistentEnemies
-          }
-        },
-        {"x":3,"y":3,"w":6,"h":4,"i":"1", component: AlertPanel, props: {
-            if: this.$store.getters.componentState.alerts.state, 
-            alerts: this.$store.getters.worldstate.alerts
-          }
-        },
-      ],
-    };
+    return {};
   },
   methods: {
     track () {
@@ -110,6 +96,23 @@ export default {
       const filtered = this.$store.getters.worldstate.syndicateMissions
         .filter((syndicate) => syndicate.syndicate === 'Solaris United');
       return filtered[0];
+    },
+    getActiveComponents: function() {
+      const activeComponents = this.$store.getters.componentState.grid_layout
+        .filter((panel) => this.$store.getters.componentState[panel.i].state);
+      return activeComponents;
+    },
+    panelDetails: function() {
+      return {
+        alerts: {
+          component: AlertPanel,
+          props: { alerts: this.$store.getters.worldstate.alerts }
+        },
+        acolytes: {
+          component: AcolytesPanel,
+          props: { acolytes: this.$store.getters.worldstate.persistentEnemies }
+        }
+      };
     }
   }
 };

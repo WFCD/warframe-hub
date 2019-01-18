@@ -200,7 +200,7 @@ export default {
     moved(i, newX, newY) {
       this.$store.commit('commitComponentPosition', [i, newX, newY]);
     },
-    resized(i, newW, newH) {
+    resized(i, newH, newW) {
       this.$store.commit('commitComponentResize', [i, newW, newH]);
     }
   },

@@ -4,10 +4,10 @@
     "display": "Events",
     "key": "event",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 0,
       "w": 1,
-      "h": 4,
+      "h": 9,
       "i": "event"
     }
   },
@@ -16,10 +16,10 @@
     "display": "Acolytes",
     "key": "acolytes",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 0,
       "w": 1,
-      "h": 4,
+      "h": 12,
       "i": "acolytes"
     }
   },
@@ -28,10 +28,10 @@
     "display": "Cetus Cycle",
     "key": "cetus",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 22,
       "w": 1,
-      "h": 4,
+      "h": 9,
       "i": "cetus"
     }
   },
@@ -40,10 +40,10 @@
     "display": "Earth Cycle",
     "key": "earth",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 32,
       "w": 1,
-      "h": 4,
+      "h": 9,
       "i": "earth"
     }
   },
@@ -52,10 +52,10 @@
     "display": "Vallis Cycle",
     "key": "vallis",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 35,
       "w": 1,
-      "h": 4,
+      "h": 9,
       "i": "vallis"
     }
   },
@@ -64,10 +64,10 @@
     "display": "Bounties Timer",
     "key": "bounties",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 36,
       "w": 1,
-      "h": 4,
+      "h": 8,
       "i": "bounties"
     }
   },
@@ -76,11 +76,11 @@
     "display": "Solaris Bounties Timer",
     "key": "solaris-bounties",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 38,
       "w": 1,
-      "h": 4,
-      "i": "solaris"
+      "h": 8,
+      "i": "solaris-bounties"
     }
   },
   "alerts": {
@@ -88,10 +88,10 @@
     "display": "Alerts",
     "key": "alerts",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 65,
       "w": 1,
-      "h": 4,
+      "h": 14,
       "i": "alerts"
     }
   },
@@ -100,10 +100,10 @@
     "display": "News",
     "key": "news",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 0,
       "w": 1,
-      "h": 4,
+      "h": 13,
       "i": "news"
     }
   },
@@ -112,10 +112,10 @@
     "display": "Invasions",
     "key": "invasions",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 1,
       "w": 1,
-      "h": 4,
+      "h": 27,
       "i": "invasions"
     }
   },
@@ -124,10 +124,10 @@
     "display": "Reset Timer",
     "key": "reset",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 44,
       "w": 1,
-      "h": 4,
+      "h": 5,
       "i": "reset"
     }
   },
@@ -136,10 +136,10 @@
     "display": "Sortie",
     "key": "sortie",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 45,
       "w": 1,
-      "h": 4,
+      "h": 13,
       "i": "sortie"
     }
   },
@@ -148,10 +148,10 @@
     "display": "Fissures",
     "key": "fissures",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 63,
       "w": 1,
-      "h": 4,
+      "h": 15,
       "i": "fissures"
     }
   },
@@ -160,10 +160,10 @@
     "display": "Void Trader",
     "key": "baro",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 0,
+      "y": 66,
       "w": 1,
-      "h": 4,
+      "h": 5,
       "i": "baro"
     }
   },
@@ -172,10 +172,10 @@
     "display": "Darvo Deals",
     "key": "darvo",
     "position": {
-      "x": 3,
-      "y": 3,
+      "x": 1,
+      "y": 0,
       "w": 1,
-      "h": 4,
+      "h": 8,
       "i": "darvo"
     }
   },

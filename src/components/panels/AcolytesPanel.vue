@@ -1,18 +1,27 @@
 <template>
   <HubPanelWrap :title="headertext">
     <b-list-group>
-      <b-list-group-item :style="styleObject" v-for="(acolyte, index) in acolytes" :key="acolyte.id" v-bind:class="{ 'list-group-item-borderless': index !== acolytes.length - 1, 'list-group-item-borderbottom': index === acolytes.length - 1 }">
-        <span :class="`label label-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>% <i class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i></span>
-        <b>
-          <i class="far fa-eye faIconStyle" :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-if="acolyte.isRequired"></i>
-          <i class="far fa-eye-slash faIconStyle" :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-else></i>
-          {{acolyte.agentType}}
-        </b>
+      <b-list-group-item :style="styleObject" v-for="(acolyte, index) in acolytes"
+        :key="acolyte.id"
+        v-bind:class="{ 'list-group-item-borderless': index !== acolytes.length - 1, 'list-group-item-borderbottom': index === acolytes.length - 1 }">
+
+        <span :class="`label label-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>%
+          <i v-b-tooltip class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i>
+        </span>
+        <span class="pull-left">
+          <b>
+            <i class="far fa-eye faIconStyle" v-b-tooltip :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-if="acolyte.isRequired"></i>
+            <i class="far fa-eye-slash faIconStyle" v-b-tooltip :title="`${acolyte.agentType} ${discovery(acolyte)}`" :style="acolyteIcons" v-else></i>
+            {{acolyte.agentType}}
+          </b>
+        </span>
         <br />
         <div style="margin-top:2px">
-          <b>
-            <span :id="`${acolyte.id}-loc`">{{acolyte.isDiscovered ? '' : 'Last '}} @ {{acolyte.lastDiscoveredAt}}</span>
-          </b> | <b>Level: </b>{{acolyte.rank}}
+          <span class="pull-left">
+            <b>
+              <span :id="`${acolyte.id}-loc`">{{acolyte.isDiscovered ? '' : 'Last '}} @{{acolyte.lastDiscoveredAt}}</span>
+            </b> | <b>Level: </b>{{acolyte.rank}}
+          </span>
           <b-badge :id="`${acolyte.id}-lastDicoveredTime`" variant="info" class="pull-right timebadage">{{moment(acolyte.lastDiscoveredTime).fromNow()}}</b-badge>
         </div>
       </b-list-group-item>
@@ -24,6 +33,7 @@
 <script>
   import NoDataItem from '@/components/NoDataItem.vue';
   import HubPanelWrap from '@/components/HubPanelWrap';
+  import moment from 'moment';
 
   export default {
     name: 'AcolytesPanel',
@@ -31,6 +41,12 @@
     computed: {
       headertext() {
         return 'Acolytes';
+      },
+    },
+    methods: {
+      moment: moment,
+      discovery(acolyte) {
+        return acolyte.isDiscovered ? 'Discovered' : 'Hiding'
       },
       health(acolyte) {
         return (acolyte.healthPercent * 100).toFixed(2);
@@ -46,7 +62,7 @@
           labelClass = 'danger';
         }
         return labelClass;
-      }
+      },
     },
     data () {
       return {

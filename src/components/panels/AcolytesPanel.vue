@@ -46,7 +46,7 @@
     methods: {
       moment: moment,
       discovery(acolyte) {
-        return acolyte.isDiscovered ? 'Discovered' : 'Hiding'
+        return acolyte.isDiscovered ? 'Discovered' : 'Hiding';
       },
       health(acolyte) {
         return (acolyte.healthPercent * 100).toFixed(2);

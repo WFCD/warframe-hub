@@ -10,7 +10,7 @@
         </span>
         <span class="pull-left">
           <b>
-            <i class="far fa-eye faIconStyle" v-b-tooltip :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-if="acolyte.isRequired"></i>
+            <i class="far fa-eye faIconStyle" v-b-tooltip :title="`${acolyte.agentType} Discovered`" :style="acolyteIcons" v-if="acolyte.isDiscovered"></i>
             <i class="far fa-eye-slash faIconStyle" v-b-tooltip :title="`${acolyte.agentType} ${discovery(acolyte)}`" :style="acolyteIcons" v-else></i>
             {{acolyte.agentType}}
           </b>

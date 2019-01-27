@@ -28,6 +28,7 @@
     "vue-analytics": "^5.16.1",
     "vue-native-notification": "^1.0.5",
     "vue-packery-plugin": "^1.4.1",
+    "vue-raven": "^1.0.3",
     "vue-router": "^3.0.2",
     "vue2-leaflet": "^1.2.3",
     "vuex": "^3.0.1",

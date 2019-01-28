@@ -23,8 +23,8 @@ import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
 /* Grid Layout */
-import VueGridLayout from 'vue-grid-layout';
-Vue.use(VueGridLayout);
+import VueResponsiveGridLayout from 'vue-responsive-grid-layout';
+Vue.use(VueResponsiveGridLayout);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';

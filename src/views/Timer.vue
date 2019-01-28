@@ -2,18 +2,14 @@
   <div class="timers">
     <b-container fluid class="grid">
       <grid-layout
-        :layout="layout"
-        :col-num="2"
-        :row-height="14"
-        :is-draggable="true"
-        :is-resizable="true"
-        :is-mirrored="false"
-        :vertical-compact="true"
+        :layouts="layout"
+        :cols="12"
+        :rowHeight="1"
         :margin="[10, 10]"
-        :use-css-transforms="true"
       >
+      <template slot-scope="props">
         <grid-item
-          v-for="panel in layout"
+          v-for="panel in props.layout"
           v-if="panel.state"
           :x="panel.x"
           :y="panel.y"
@@ -21,11 +17,13 @@
           :h="panel.h"
           :i="panel.i"
           :key="panel.i"
-          @moved="moved"
-          @resized="resized"
+          :is-draggable="true"
+          :is-resizable="true"
+          :containerWidth="props.containerWidth"
         >
           <div :is="panel.component" v-bind="panel.props"></div>
         </grid-item>
+        </template>
       </grid-layout>
     </b-container>
   </div>
@@ -45,7 +43,7 @@ import EventsPanel from '@/components/panels/EventsPanel.vue';
 import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
-import VueGridLayout from 'vue-grid-layout';
+import VueResponsiveGridLayout from 'vue-responsive-grid-layout';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
@@ -64,8 +62,8 @@ export default {
     DarvoDealsPanel,
     SalesPanel,
     VoidTraderPanel,
-    GridLayout: VueGridLayout.GridLayout,
-    GridItem: VueGridLayout.GridItem,
+    GridLayout: VueResponsiveGridLayout.VueResponsiveGridLayout,
+    GridItem: VueResponsiveGridLayout.VueGridItem,
     HubPanelWrap
   },
   data() {
@@ -75,8 +73,8 @@ export default {
   },
   created: function() {
     const getters = this.$store.getters;
-    this.layout = [
-      {
+    this.layout = {
+      'lg': [{
         ...getters.componentState.alerts.position,
         state: getters.componentState.alerts.state,
         component: AlertPanel,
@@ -191,7 +189,8 @@ export default {
         component: ResetPanel,
         props: {}
       }
-    ];
+      ]
+    };
   },
   methods: {
     track() {

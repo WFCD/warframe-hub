@@ -11,15 +11,12 @@
       <vue-responsive-grid-layout 
         :style='{border: "1px solid #000"}'
         @layout-update='onLayoutUpdate'
-        layout-change='onLayoutChange'
+        @layout-change='onLayoutChange'
         @layout-init='onLayoutInit'
-        width-change='onWidthChange'
-        @breakpoint-change='onBreakpointChange'
         :layouts='layouts'
-        :compact-type='"vertical"'
         :breakpoint='breakpoint'
         :cols='cols'
-        ref='layout'
+        :rowHeight='10'
       >
         <template slot-scope='props'>
           <vue-grid-item v-for='item in props.layout'
@@ -31,14 +28,16 @@
                   :y='item.y'
                   :container-width='props.containerWidth'
                   :row-height='props.rowHeight'
-                  :is-draggable='true'
-                  :is-resizable='true'
                   :class-name='"grid-item"'
                   :cols='props.cols'
                   :height-from-children='false'
                   :max-rows='props.maxRows'
+                  :is-draggable='true'
+                  :is-resizable='true'
+                  handle='h2'
+                  :heightFromChildren='true'
           >
-              <div>Test{{item.i}}</div>
+              <div><h2>Test{{item.i}}</h2><span>rawr</span></div>
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
@@ -74,15 +73,15 @@ export default {
     return {
       layouts: {
         'md': [
-          { x: 0, y: 0, w: 2, h: 3, i: '1'},
-          { x: 2, y: 0, w: 2, h: 3, i: '2'},
-          { x: 4, y: 0, w: 2, h: 3, i: '3'},
-          { x: 0, y: 3, w: 2, h: 3, i: '4'},
-          { x: 0, y: 6, w: 2, h: 3, i: '5'},
-          { x: 0, y: 9, w: 2, h: 3, i: '6'},
-          { x: 0, y: 12, w: 2, h: 3, i: '7'},
-          { x: 0, y: 15, w: 2, h: 3, i: '8'},
-          { x: 0, y: 18, w: 2, h: 3, i: '9'}
+          {"w":2,"h":3,"x":0,"y":0,"i":"1"},
+          {"w":2,"h":3,"x":2,"y":0,"i":"2"},
+          {"w":2,"h":3,"x":4,"y":0,"i":"3"},
+          {"w":2,"h":3,"x":0,"y":3,"i":"4"},
+          {"w":2,"h":3,"x":0,"y":6,"i":"5"},
+          {"w":2,"h":3,"x":2,"y":6,"i":"6"},
+          {"w":2,"h":3,"x":4,"y":6,"i":"7"},
+          {"w":2,"h":3,"x":4,"y":3,"i":"8"},
+          {"w":2,"h":3,"x":2,"y":3,"i":"9"}
         ]
       },
       breakpoint: 'md',

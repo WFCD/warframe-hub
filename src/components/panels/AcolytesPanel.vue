@@ -19,7 +19,7 @@
         <div style="margin-top:2px">
           <span class="pull-left">
             <b>
-              <span :id="`${acolyte.id}-loc`">{{acolyte.isDiscovered ? '' : 'Last '}} @{{acolyte.lastDiscoveredAt}}</span>
+              <span :id="`${acolyte.id}-loc`">{{acolyte.isDiscovered ? '' : 'Last '}} @{{acolyte.lastDiscoveredAt || 'Nowhere'}}</span>
             </b> | <b>Level: </b>{{acolyte.rank}}
           </span>
           <b-badge :id="`${acolyte.id}-lastDicoveredTime`" variant="info" class="pull-right timebadage">{{moment(acolyte.lastDiscoveredTime).fromNow()}}</b-badge>

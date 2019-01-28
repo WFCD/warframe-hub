@@ -5,7 +5,7 @@
         :key="acolyte.id"
         v-bind:class="{ 'list-group-item-borderless': index !== acolytes.length - 1, 'list-group-item-borderbottom': index === acolytes.length - 1 }">
 
-        <span :class="`label label-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>%
+        <span :class="`badge badge-${healthLabel(acolyte)} pull-right`"><span :id="`${acolyte.id}-health`">{{health(acolyte)}}</span>%
           <i v-b-tooltip class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i>
         </span>
         <span class="pull-left">

@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
+// import createPersistedState from 'vuex-persistedstate';
 import fetch from 'node-fetch';
 import Notifier from '@/Notifier';
 
+import grid from '@/assets/json/grid.json';
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
 import fissurePlanets from '@/assets/json/planets.json';
@@ -20,6 +21,7 @@ const state = {
   },
   platform: 'pc',
   theme: 'night',
+  grid: grid,
   components: components,
   trackables: trackables,
   fissurePlanets: fissurePlanets,
@@ -138,8 +140,15 @@ const store = new Vuex.Store({
   state,
   mutations,
   actions,
-  getters,
-  plugins: [createPersistedState()]
+  getters
 });
+
+// const store = new Vuex.Store({
+//   state,
+//   mutations,
+//   actions,
+//   getters,
+//   plugins: [createPersistedState()]
+// });
 
 export default store;

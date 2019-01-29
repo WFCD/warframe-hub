@@ -2,27 +2,32 @@
   <div class="timers">
     <b-container fluid class="grid">
       <grid-layout
+        @layout-update="onLayoutUpdate"
         :layouts="layout"
-        :cols="12"
-        :rowHeight="1"
-        :margin="[10, 10]"
+        :cols="2"
+        :rowHeight="10"
+        :colsAll="cols"
       >
-      <template slot-scope="props">
-        <grid-item
-          v-for="panel in props.layout"
-          v-if="panel.state"
-          :x="panel.x"
-          :y="panel.y"
-          :w="panel.w"
-          :h="panel.h"
-          :i="panel.i"
-          :key="panel.i"
-          :is-draggable="true"
-          :is-resizable="true"
-          :containerWidth="props.containerWidth"
-        >
-          <div :is="panel.component" v-bind="panel.props"></div>
-        </grid-item>
+        <template slot-scope="props">
+          <grid-item
+            v-for="panel in props.layout"
+            v-if="panel.state"
+            :cols="props.cols"
+            :containerWidth="props.containerWidth"
+            :rowHeight="props.rowHeight"
+            :maxRows="props.maxRows"
+            :x="panel.x"
+            :y="panel.y"
+            :w="panel.w"
+            :h="panel.h"
+            :i="panel.i"
+            :key="panel.i"
+            :is-draggable="true"
+            :is-resizable="true"
+            :heightFromChildren="true"
+          >
+            <div :is="panel.component" v-bind="panel.props"></div>
+          </grid-item>
         </template>
       </grid-layout>
     </b-container>
@@ -30,24 +35,27 @@
 </template>
 
 <script>
-import AlertPanel from '@/components/panels/AlertPanel.vue';
-import NewsPanel from '@/components/panels/NewsPanel.vue';
-import TimePanel from '@/components/panels/TimePanel.vue';
-import ResetPanel from '@/components/panels/ResetPanel.vue';
-import SortiePanel from '@/components/panels/SortiePanel.vue';
-import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
-import FissuresPanel from '@/components/panels/FissuresPanel.vue';
-import BountyPanel from '@/components/panels/BountyPanel.vue';
-import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
-import EventsPanel from '@/components/panels/EventsPanel.vue';
-import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
-import SalesPanel from '@/components/panels/SalesPanel.vue';
-import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
-import VueResponsiveGridLayout from 'vue-responsive-grid-layout';
-import HubPanelWrap from '@/components/HubPanelWrap';
+/* eslint-disable */
+import { mapState, mapGetters } from "vuex";
+
+import AlertPanel from "@/components/panels/AlertPanel.vue";
+import NewsPanel from "@/components/panels/NewsPanel.vue";
+import TimePanel from "@/components/panels/TimePanel.vue";
+import ResetPanel from "@/components/panels/ResetPanel.vue";
+import SortiePanel from "@/components/panels/SortiePanel.vue";
+import AcolytesPanel from "@/components/panels/AcolytesPanel.vue";
+import FissuresPanel from "@/components/panels/FissuresPanel.vue";
+import BountyPanel from "@/components/panels/BountyPanel.vue";
+import InvasionsPanel from "@/components/panels/InvasionsPanel.vue";
+import EventsPanel from "@/components/panels/EventsPanel.vue";
+import DarvoDealsPanel from "@/components/panels/DarvoDealsPanel.vue";
+import SalesPanel from "@/components/panels/SalesPanel.vue";
+import VoidTraderPanel from "@/components/panels/VoidTraderPanel.vue";
+import VueResponsiveGridLayout from "vue-responsive-grid-layout";
+import HubPanelWrap from "@/components/HubPanelWrap";
 
 export default {
-  name: 'timers',
+  name: "timers",
   components: {
     AlertPanel,
     NewsPanel,
@@ -67,158 +75,102 @@ export default {
     HubPanelWrap
   },
   data() {
-    return {
-      layout: null
-    };
-  },
-  created: function() {
-    const getters = this.$store.getters;
-    this.layout = {
-      'lg': [{
-        ...getters.componentState.alerts.position,
-        state: getters.componentState.alerts.state,
-        component: AlertPanel,
-        props: {
-          alerts: getters.worldstate.alerts
-        }
-      },
-      {
-        ...getters.componentState.acolytes.position,
-        state: getters.componentState.acolytes.state,
-        component: AcolytesPanel,
-        props: {
-          acolytes: getters.worldstate.persistentEnemies
-        }
-      },
-      {
-        ...getters.componentState.event.position,
-        state: getters.componentState.event.state,
-        component: EventsPanel,
-        props: { events: getters.worldstate.events }
-      },
-      {
-        ...getters.componentState.news.position,
-        state: getters.componentState.news.state,
-        component: NewsPanel,
-        props: { news: getters.worldstate.news }
-      },
-      {
-        ...getters.componentState.earth.position,
-        state: getters.componentState.earth.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.earthCycle,
-          location: 'Earth'
-        }
-      },
-      {
-        ...getters.componentState.cetus.position,
-        state: getters.componentState.cetus.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.cetusCycle,
-          location: 'Cetus'
-        }
-      },
-      {
-        ...getters.componentState.vallis.position,
-        state: getters.componentState.vallis.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.vallisCycle,
-          location: 'Vallis'
-        }
-      },
-      {
-        ...getters.componentState.sortie.position,
-        state: getters.componentState.sortie.state,
-        component: SortiePanel,
-        props: { sortie: getters.worldstate.sortie }
-      },
-      {
-        ...getters.componentState.bounties.position,
-        state: getters.componentState.bounties.state,
-        component: BountyPanel,
-        props: {
-          syndicate: this.ostrons,
-          type: 'Ostron'
-        }
-      },
-      {
-        ...getters.componentState['solaris-bounties'].position,
-        state: getters.componentState['solaris-bounties'].state,
-        component: BountyPanel,
-        props: {
-          syndicate: this.solaris,
-          type: 'Solaris United'
-        }
-      },
-      {
-        ...getters.componentState.fissures.position,
-        state: getters.componentState.fissures.state,
-        component: FissuresPanel,
-        props: { fissures: getters.worldstate.fissures }
-      },
-      {
-        ...getters.componentState.darvo.position,
-        state: getters.componentState.darvo.state,
-        component: DarvoDealsPanel,
-        props: { deals: getters.worldstate.dailyDeals }
-      },
-      {
-        ...getters.componentState.deals.position,
-        state: getters.componentState.deals.state,
-        component: SalesPanel,
-        props: { sales: getters.worldstate.flashSales }
-      },
-      {
-        ...getters.componentState.baro.position,
-        state: getters.componentState.baro.state,
-        component: VoidTraderPanel,
-        props: { voidTrader: getters.worldstate.voidTrader }
-      },
-      {
-        ...getters.componentState.invasions.position,
-        state: getters.componentState.invasions.state,
-        component: InvasionsPanel,
-        props: { invasions: getters.worldstate.invasions }
-      },
-      {
-        ...getters.componentState.reset.position,
-        state: getters.componentState.reset.state,
-        component: ResetPanel,
-        props: {}
-      }
-      ]
-    };
+    return {};
   },
   methods: {
     track() {
-      this.$ga.page('/');
+      this.$ga.page("/");
     },
-    moved(i, newX, newY) {
-      this.$store.commit('commitComponentPosition', [i, newX, newY]);
+    onLayoutUpdate(layout, layouts, last) {
+      last;
     },
     resized(i, newH, newW) {
-      this.$store.commit('commitComponentResize', [i, newW, newH]);
+      this.$store.commit("commitComponentResize", [i, newW, newH]);
     }
   },
   computed: {
+    ...mapState({
+      gridState: "grid",
+      componentState: "components",
+      worldstate: state => state.worldstates[state.platform]
+    }),
     ostrons: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
-        (syndicate) => syndicate.syndicate === 'Ostrons'
+      const filtered = this.worldstate.syndicateMissions.filter(
+        syndicate => syndicate.syndicate === "Ostrons"
       );
       return filtered[0];
     },
     solaris: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
-        (syndicate) => syndicate.syndicate === 'Solaris United'
+      const filtered = this.worldstate.syndicateMissions.filter(
+        syndicate => syndicate.syndicate === "Solaris United"
       );
       return filtered[0];
     },
     getActiveComponents: function() {
-      const activeComponents = this.layout.filter((panel) => panel.state);
+      const activeComponents = this.layout.filter(panel => panel.state);
       return activeComponents;
+    },
+    cols: function() {
+      return { lg: 2 };
+    },
+    componentInfo: function() {
+      const resolve_props = (props, obj=this, object_identifier='@', separator='.') => {
+        if (typeof(props) !== 'object' || Array.isArray(props)) throw "props should be an object.";
+        return Object.entries(props).reduce((prev, [key, prop]) => {
+          if (prop[0] === object_identifier) {
+            var target_object = prop.slice(1).split(separator).reduce((prev, curr) => prev && prev[curr], obj);
+            prev[key] = target_object;
+          } else {
+            prev[key] = prop;
+          }
+          return prev;
+        }, {});
+      }
+      
+      return {
+        earth: {
+          state: this.componentState.earth.state,
+          component: this.componentState.earth.component,
+          props: resolve_props(this.componentState.earth.props)
+        }
+      }
+    },
+    layout: function() {
+      return this.gridState.layouts;
+
+
+      // return {
+      //   lg: [
+      //     {
+      //       state: this.componentState.earth.state,
+      //       component: this.componentState.earth.component,
+      //       props: resolve_props(this.componentState.earth.props),
+      //       x: 1,
+      //       y: 0,
+      //       w: 1,
+      //       h: 6,
+      //       i: "earth"
+      //     },
+      //     {
+      //       ...this.componentState.cetus.position,
+      //       state: this.componentState.cetus.state,
+      //       component: "TimePanel",
+      //       props: {
+      //         time: this.worldstate.cetusCycle,
+      //         location: "Cetus"
+      //       }
+      //     },
+      //     {
+      //       ...this.componentState.vallis.position,
+      //       state: this.componentState.vallis.state,
+      //       component: "TimePanel",
+      //       props: {
+      //         time: this.worldstate.vallisCycle,
+      //         location: "Vallis"
+      //       }
+      //     }
+      //   ]
+      // };
     }
   }
 };

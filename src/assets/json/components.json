@@ -27,12 +27,10 @@
     "state": true,
     "display": "Cetus Cycle",
     "key": "cetus",
-    "position": {
-      "x": 0,
-      "y": 0,
-      "w": 1,
-      "h": 9,
-      "i": "cetus"
+    "component": "TimePanel",
+    "props": {
+      "time": "@worldstate.cetusCycle",
+      "location": "Cetus"
     }
   },
   "earth": {
@@ -41,7 +39,7 @@
     "key": "earth",
     "component": "TimePanel",
     "props": {
-      "time": "@worldstate.cetusCycle",
+      "time": "@worldstate.earthCycle",
       "location": "Earth"
     }
   },

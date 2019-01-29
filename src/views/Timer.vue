@@ -11,10 +11,10 @@
         <template slot-scope="props">
           <grid-item
             v-for="panel in props.layout"
-            v-if="panel.state"
+            v-if="componentInfo[panel.i].state"
             :cols="props.cols"
             :containerWidth="props.containerWidth"
-            :rowHeight="props.rowHeight"
+            :row-height="props.rowHeight"
             :maxRows="props.maxRows"
             :x="panel.x"
             :y="panel.y"
@@ -26,7 +26,7 @@
             :is-resizable="true"
             :heightFromChildren="true"
           >
-            <div :is="panel.component" v-bind="panel.props"></div>
+            <div :is="componentInfo[panel.i].component" v-bind="resolve_props(componentInfo[panel.i].props)"></div>
           </grid-item>
         </template>
       </grid-layout>
@@ -82,10 +82,22 @@ export default {
       this.$ga.page("/");
     },
     onLayoutUpdate(layout, layouts, last) {
-      last;
+      this.$store.commit("commitLayoutUpdate", [layouts]);
     },
     resized(i, newH, newW) {
       this.$store.commit("commitComponentResize", [i, newW, newH]);
+    },
+    resolve_props(props, obj=this, object_identifier='@', separator='.') {
+      if (typeof(props) !== 'object' || Array.isArray(props)) throw "props should be an object.";
+      return Object.entries(props).reduce((prev, [key, prop]) => {
+        if (prop[0] === object_identifier) {
+          var target_object = prop.slice(1).split(separator).reduce((prev, curr) => prev && prev[curr], obj);
+          prev[key] = target_object;
+        } else {
+          prev[key] = prop;
+        }
+        return prev;
+      }, {});
     }
   },
   computed: {
@@ -113,27 +125,8 @@ export default {
     cols: function() {
       return { lg: 2 };
     },
-    componentInfo: function() {
-      const resolve_props = (props, obj=this, object_identifier='@', separator='.') => {
-        if (typeof(props) !== 'object' || Array.isArray(props)) throw "props should be an object.";
-        return Object.entries(props).reduce((prev, [key, prop]) => {
-          if (prop[0] === object_identifier) {
-            var target_object = prop.slice(1).split(separator).reduce((prev, curr) => prev && prev[curr], obj);
-            prev[key] = target_object;
-          } else {
-            prev[key] = prop;
-          }
-          return prev;
-        }, {});
-      }
-      
-      return {
-        earth: {
-          state: this.componentState.earth.state,
-          component: this.componentState.earth.component,
-          props: resolve_props(this.componentState.earth.props)
-        }
-      }
+    componentInfo: function() {      
+      return this.componentState;
     },
     layout: function() {
       return this.gridState.layouts;

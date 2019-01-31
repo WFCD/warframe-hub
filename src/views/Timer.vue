@@ -60,7 +60,7 @@ import VueResponsiveGridLayout from 'vue-responsive-grid-layout';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
-  name: 'timers',
+  name: "timers",
   components: {
     'vue-grid-item': VueResponsiveGridLayout.VueGridItem,
     'vue-responsive-grid-layout': VueResponsiveGridLayout.VueResponsiveGridLayout,
@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     track() {
-      this.$ga.page('/');
+      this.$ga.page("/");
     },
     onLayoutUpdate(layout, layouts) {
       const currentTime = Date.now();

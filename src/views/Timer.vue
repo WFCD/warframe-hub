@@ -29,7 +29,7 @@
             :is-draggable='isDraggable'
             :is-resizable='isResizable'
             :heightFromChildren='true'
-            v-if="componentState[item.i].state
+            v-if="componentState[item.i].state"
           >
             <HubPanelWrap :title="componentState[item.i].display">
               <div :is="componentState[item.i].component" v-bind="resolve_props(componentState[item.i].props)" />

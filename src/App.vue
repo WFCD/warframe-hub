@@ -1,6 +1,8 @@
 <template>
   <div id="app" :class="this.$store.getters.theme">
+    <Navbar />
     <Settings />
+    <About />
     <router-view/>
   </div>
 </template>

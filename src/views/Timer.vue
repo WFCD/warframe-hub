@@ -1,21 +1,15 @@
 <template>
-  <div id='wrapper' style='align-items: stretch;width: 100%; height: 100%;'>
-    <div style='position:relative;width:100%;height:100%;'>
-      <div style='height: 30px;'>
-        <div class='pull-right'>
-          <div @click='switchLayout()' class='btn btn-md'><span class='glyphicon glyphicon-share-alt'></span></div>
-          <div @click='gridMode()' class='btn btn-md'><span class='glyphicon glyphicon-th-large'></span></div>
-          <div @click='listMode()' class='btn btn-md'><span class='glyphicon glyphicon-list'></span></div>
-        </div>
-      </div>
+  <div class="timers">
+    <b-container fluid class="grid">
       <vue-responsive-grid-layout 
-        :style='{border: "1px solid #000"}'
         @layout-update='onLayoutUpdate'
         @layout-change='onLayoutChange'
         @layout-init='onLayoutInit'
         :layouts='layouts'
         :breakpoint='breakpoint'
+        :breakpoints='breakpoints'
         :cols='cols'
+        :colsAll="colsAll"
         :rowHeight='10'
       >
         <template slot-scope='props'>
@@ -32,21 +26,23 @@
                   :cols='props.cols'
                   :height-from-children='false'
                   :max-rows='props.maxRows'
-                  :is-draggable='true'
-                  :is-resizable='true'
-                  handle='h2'
+                  :is-draggable='isDraggable'
+                  :is-resizable='isResizable'
                   :heightFromChildren='true'
           >
-              <div><h2>Test{{item.i}}</h2><span>rawr</span></div>
+              <HubPanelWrap :title="componentState[item.i].display">
+                <div :is="componentState[item.i].component" v-bind="resolve_props(componentState[item.i].props)" />
+              </HubPanelWrap>
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
-    </div>
+    </b-container>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
+import { mapState } from 'vuex';
+
 import AlertPanel from '@/components/panels/AlertPanel.vue';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
@@ -67,124 +63,101 @@ export default {
   name: 'timers',
   components: {
     'vue-grid-item': VueResponsiveGridLayout.VueGridItem,
-    'vue-responsive-grid-layout': VueResponsiveGridLayout.VueResponsiveGridLayout
+    'vue-responsive-grid-layout': VueResponsiveGridLayout.VueResponsiveGridLayout,
+    'AlertPanel': AlertPanel,
+    'NewsPanel': NewsPanel,
+    'TimePanel': TimePanel,
+    'ResetPanel': ResetPanel,
+    'SortiePanel': SortiePanel,
+    'AcolytesPanel': AcolytesPanel,
+    'FissuresPanel': FissuresPanel,
+    'BountyPanel': BountyPanel,
+    'InvasionsPanel': InvasionsPanel,
+    'EventsPanel': EventsPanel,
+    'DarvoDealsPanel': DarvoDealsPanel,
+    'SalesPanel': SalesPanel,
+    'VoidTraderPanel': VoidTraderPanel,
+    'HubPanelWrap': HubPanelWrap
   },
   data() {
     return {
-      layouts: {
-        'md': [
-          {"w":2,"h":3,"x":0,"y":0,"i":"1"},
-          {"w":2,"h":3,"x":2,"y":0,"i":"2"},
-          {"w":2,"h":3,"x":4,"y":0,"i":"3"},
-          {"w":2,"h":3,"x":0,"y":3,"i":"4"},
-          {"w":2,"h":3,"x":0,"y":6,"i":"5"},
-          {"w":2,"h":3,"x":2,"y":6,"i":"6"},
-          {"w":2,"h":3,"x":4,"y":6,"i":"7"},
-          {"w":2,"h":3,"x":4,"y":3,"i":"8"},
-          {"w":2,"h":3,"x":2,"y":3,"i":"9"}
-        ]
-      },
-      breakpoint: 'md',
-      components: {
-        '1': { i: '1', component: 'example-component', defaultSize: 2},
-        '2': { i: '2', component: 'example-component', defaultSize: 2},
-        '3': { i: '3', component: 'example-component', defaultSize: 2},
-        '4': { i: '4', component: 'example-component', defaultSize: 2},
-      },
-      cols: 10,
+      heightChanged: false,
+      layouts: {},
+      breakpoint: 'lg',
+      cols: 2,
       breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
-      colsAll: { lg: 10, md: 8, sm: 6, xs: 4, xxs: 2 },
+      colsAll: { lg: 2, md: 2, sm: 2, xs: 2, xxs: 2 },
       isDraggable: true,
       isResizable: true,
     };
   },
+  mounted() {
+    this.layouts = Object.assign({}, this.gridState.layouts);
+  },
   methods: {
-        onLayoutUpdate(layout, layouts) {
-						this.$set(this.layouts, this.breakpoint, layout);
-        },
-
-        onLayoutChange(layout, layouts, breakpoint) {
-						this.$set(this.layouts, breakpoint, layout);
-        },
-
-        onLayoutInit(layout, layouts, cols, breakpoint) {
-            this.cols = cols;
-            this.breakpoint = breakpoint;
-						this.$set(this.layouts, breakpoint, layout);
-        },
-
-        onBreakpointChange(breakpoint) {
-            this.breakpoint = breakpoint;
-        },
-
-        onWidthChange(width, cols) {
-            this.cols = cols;
-        },
-        gridMode() {
-            this.$refs.layout.resizeAllItems(2, 'vertical');
-        },
-        listMode() {
-            this.$refs.layout.resizeAllItems(this.cols, 'horizontal');
-        },
+    track() {
+      this.$ga.page('/');
     },
+    onLayoutUpdate(layout, layouts) {
+      const currentTime = Date.now();
+      if (currentTime - this.lastUpdate > 500) {
+        this.$store.commit('commitLayoutUpdate', [layouts]);
+        this.lastUpdate = currentTime;
+      }
+      this.$set(this.layouts, this.breakpoint, layout);
+    },
+
+    onLayoutChange(layout, layouts, breakpoint) {
+      this.$set(this.layouts, breakpoint, layout);
+    },
+
+    onLayoutInit(layout, layouts, cols, breakpoint) {
+      this.cols = cols;
+      this.breakpoint = breakpoint;
+      this.$set(this.layouts, breakpoint, layout);
+    },
+
+    onBreakpointChange(breakpoint) {
+      this.breakpoint = breakpoint;
+    },
+
+    onWidthChange(width, cols) {
+        this.cols = cols;
+    },
+    // Replaces a string that starts with the object_identifier with the respective object.
+    // Ex. '@worldstate.syndicateMissions' sets the object property to obj.worldstate.syndicateMissions
+    resolve_props(props, obj=this, object_identifier='@', separator='.') {
+      if (typeof(props) !== 'object' || Array.isArray(props)) throw 'props should be an object.';
+      return Object.entries(props).reduce((prev, [key, value]) => {
+        if (value[0] === object_identifier) {
+          var target_object = value.slice(1).split(separator).reduce((prev, curr) => prev && prev[curr], obj);
+          prev[key] = target_object;
+        } else {
+          prev[key] = value;
+        }
+        return prev;
+      }, {});
+    }
+  },
+  computed: {
+    //Simplifies this.$state.grid to just this.gridState
+    ...mapState({
+      gridState: 'grid',
+      componentState: 'components',
+      worldstate: (state) => state.worldstates[state.platform]
+    }),
+    ostrons: function() {
+      const filtered = this.worldstate.syndicateMissions.filter(
+        (syndicate) => syndicate.syndicate === 'Ostrons'
+      );
+      return filtered[0];
+    },
+    solaris: function() {
+      const filtered = this.worldstate.syndicateMissions.filter(
+        (syndicate) => syndicate.syndicate === 'Solaris United'
+      );
+      return filtered[0];
+    }
+  }
 };
 </script>
-<style>
-#app {
-  background: #fff;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-}
-
-#content {
-  padding: 0px 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-  width: 100%;
-}
-
-.resizable-handle {
-  position:absolute;
-  width:20px;
-  height:20px;
-  bottom:0;
-  right:0px;
-  text-align:right;
-}
-.resizable-handle::after {
-  content: '';
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  width: 5px;
-  height: 5px;
-  border-right: 2px solid #000000;
-  border-bottom: 2px solid #000000;
-}
-.vue-grid-draggable-container {
-  width: 100%;
-  height: 100%;
-}
-.grid-item {
-  border: 1px dotted #000;
-}
-.vue-grid-placeholder {
-  background: #ddd; border: 2px dashed #aaa;
-}
-
-.vue-grid-layout {
-  width: 100%;
-  display:block;
-  position:relative;
-  height: 100%;
-}
-
-</style>

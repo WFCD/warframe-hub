@@ -13,7 +13,7 @@
           >
           <l-image-overlay :url="url" :bounds="bounds"/>
           <l-control-layers
-            position="'topright'"
+            position="topright"
             :collapsed="false"
             :sort-layers="true"
           />

@@ -14,25 +14,26 @@
       >
         <template slot-scope='props'>
           <vue-grid-item v-for='item in props.layout'
-                  :i='item.i'
-                  :key='item.i'
-                  :w.sync='item.w'
-                  :h.sync='item.h'
-                  :x='item.x'
-                  :y='item.y'
-                  :container-width='props.containerWidth'
-                  :row-height='props.rowHeight'
-                  :class-name='"grid-item"'
-                  :cols='props.cols'
-                  :height-from-children='false'
-                  :max-rows='props.maxRows'
-                  :is-draggable='isDraggable'
-                  :is-resizable='isResizable'
-                  :heightFromChildren='true'
+            :i='item.i'
+            :key='item.i'
+            :w.sync='item.w'
+            :h.sync='item.h'
+            :x='item.x'
+            :y='item.y'
+            :container-width='props.containerWidth'
+            :row-height='props.rowHeight'
+            :class-name='"grid-item"'
+            :cols='props.cols'
+            :height-from-children='false'
+            :max-rows='props.maxRows'
+            :is-draggable='isDraggable'
+            :is-resizable='isResizable'
+            :heightFromChildren='true'
+            v-if="componentState[item.i].state
           >
-              <HubPanelWrap :title="componentState[item.i].display">
-                <div :is="componentState[item.i].component" v-bind="resolve_props(componentState[item.i].props)" />
-              </HubPanelWrap>
+            <HubPanelWrap :title="componentState[item.i].display">
+              <div :is="componentState[item.i].component" v-bind="resolve_props(componentState[item.i].props)" />
+            </HubPanelWrap>
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>

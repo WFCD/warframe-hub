@@ -1,226 +1,141 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <grid-layout
-        :layout="layout"
-        :col-num="2"
-        :row-height="14"
-        :is-draggable="true"
-        :is-resizable="true"
-        :is-mirrored="false"
-        :vertical-compact="true"
-        :margin="[10, 10]"
-        :use-css-transforms="true"
+      <vue-responsive-grid-layout
+        :style="{border: '1px solid #000'}"
+        @layout-update="onLayoutUpdate"
+        @layout-change="onLayoutChange"
+        @layout-init="onLayoutInit"
+        @width-change="onWidthChange"
+        @breakpoint-change="onBreakpointChange"
+        :layouts="layouts"
+        :compact-type="'vertical'"
+        :breakpoint="breakpoint"
+        :cols="cols"
+        ref="layout"
       >
-        <grid-item
-          v-for="panel in layout"
-          v-if="panel.state"
-          :x="panel.x"
-          :y="panel.y"
-          :w="panel.w"
-          :h="panel.h"
-          :i="panel.i"
-          :key="panel.i"
-          @moved="moved"
-          @resized="resized"
-        >
-          <div :is="panel.component" v-bind="panel.props"></div>
-        </grid-item>
-      </grid-layout>
+        <template slot-scope="props">
+          <vue-grid-item
+            v-for="item in props.layout"
+            :i="item.i"
+            :key="item.i"
+            :w.sync="item.w"
+            :h.sync="item.h"
+            :x="item.x"
+            :y="item.y"
+            :container-width="props.containerWidth"
+            :row-height="props.rowHeight"
+            :is-draggable="true"
+            :is-resizable="true"
+            :class-name="'grid-item'"
+            :cols="props.cols"
+            :height-from-children="true"
+            :max-rows="props.maxRows"
+          >
+            <div>Test{{item.i}}
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </vue-grid-item>
+        </template>
+      </vue-responsive-grid-layout>
     </b-container>
   </div>
 </template>
 
 <script>
-import AlertPanel from '@/components/panels/AlertPanel.vue';
-import NewsPanel from '@/components/panels/NewsPanel.vue';
-import TimePanel from '@/components/panels/TimePanel.vue';
-import ResetPanel from '@/components/panels/ResetPanel.vue';
-import SortiePanel from '@/components/panels/SortiePanel.vue';
-import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
-import FissuresPanel from '@/components/panels/FissuresPanel.vue';
-import BountyPanel from '@/components/panels/BountyPanel.vue';
-import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
-import EventsPanel from '@/components/panels/EventsPanel.vue';
-import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
-import SalesPanel from '@/components/panels/SalesPanel.vue';
-import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
-import VueGridLayout from 'vue-grid-layout';
-import HubPanelWrap from '@/components/HubPanelWrap';
-
 export default {
   name: 'timers',
-  components: {
-    AlertPanel,
-    NewsPanel,
-    TimePanel,
-    ResetPanel,
-    SortiePanel,
-    AcolytesPanel,
-    FissuresPanel,
-    BountyPanel,
-    InvasionsPanel,
-    EventsPanel,
-    DarvoDealsPanel,
-    SalesPanel,
-    VoidTraderPanel,
-    GridLayout: VueGridLayout.GridLayout,
-    GridItem: VueGridLayout.GridItem,
-    HubPanelWrap
-  },
   data() {
     return {
-      layout: null
+      layouts: {
+        md: [
+          { x: 0, y: 0, w: 2, h: 3, i: '1' },
+          { x: 2, y: 0, w: 2, h: 3, i: '2' },
+          { x: 4, y: 0, w: 2, h: 3, i: '3' },
+          { x: 0, y: 3, w: 2, h: 3, i: '4' }
+        ]
+      },
+      breakpoint: 'md',
+      components: {
+        '1': { i: '1', component: 'example-component', defaultSize: 2 },
+        '2': { i: '2', component: 'example-component', defaultSize: 2 },
+        '3': { i: '3', component: 'example-component', defaultSize: 2 },
+        '4': { i: '4', component: 'example-component', defaultSize: 2 }
+      },
+      cols: 10,
+      breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
+      colsAll: { lg: 10, md: 8, sm: 6, xs: 4, xxs: 2 },
+      isDraggable: true,
+      isResizable: true
     };
-  },
-  created: function() {
-    const getters = this.$store.getters;
-    this.layout = [
-      {
-        ...getters.componentState.alerts.position,
-        state: getters.componentState.alerts.state,
-        component: AlertPanel,
-        props: {
-          alerts: getters.worldstate.alerts
-        }
-      },
-      {
-        ...getters.componentState.acolytes.position,
-        state: getters.componentState.acolytes.state,
-        component: AcolytesPanel,
-        props: {
-          acolytes: getters.worldstate.persistentEnemies
-        }
-      },
-      {
-        ...getters.componentState.event.position,
-        state: getters.componentState.event.state,
-        component: EventsPanel,
-        props: { events: getters.worldstate.events }
-      },
-      {
-        ...getters.componentState.news.position,
-        state: getters.componentState.news.state,
-        component: NewsPanel,
-        props: { news: getters.worldstate.news }
-      },
-      {
-        ...getters.componentState.earth.position,
-        state: getters.componentState.earth.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.earthCycle,
-          location: 'Earth'
-        }
-      },
-      {
-        ...getters.componentState.cetus.position,
-        state: getters.componentState.cetus.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.cetusCycle,
-          location: 'Cetus'
-        }
-      },
-      {
-        ...getters.componentState.vallis.position,
-        state: getters.componentState.vallis.state,
-        component: TimePanel,
-        props: {
-          time: getters.worldstate.vallisCycle,
-          location: 'Vallis'
-        }
-      },
-      {
-        ...getters.componentState.sortie.position,
-        state: getters.componentState.sortie.state,
-        component: SortiePanel,
-        props: { sortie: getters.worldstate.sortie }
-      },
-      {
-        ...getters.componentState.bounties.position,
-        state: getters.componentState.bounties.state,
-        component: BountyPanel,
-        props: {
-          syndicate: this.ostrons,
-          type: 'Ostron'
-        }
-      },
-      {
-        ...getters.componentState['solaris-bounties'].position,
-        state: getters.componentState['solaris-bounties'].state,
-        component: BountyPanel,
-        props: {
-          syndicate: this.solaris,
-          type: 'Solaris United'
-        }
-      },
-      {
-        ...getters.componentState.fissures.position,
-        state: getters.componentState.fissures.state,
-        component: FissuresPanel,
-        props: { fissures: getters.worldstate.fissures }
-      },
-      {
-        ...getters.componentState.darvo.position,
-        state: getters.componentState.darvo.state,
-        component: DarvoDealsPanel,
-        props: { deals: getters.worldstate.dailyDeals }
-      },
-      {
-        ...getters.componentState.deals.position,
-        state: getters.componentState.deals.state,
-        component: SalesPanel,
-        props: { sales: getters.worldstate.flashSales }
-      },
-      {
-        ...getters.componentState.baro.position,
-        state: getters.componentState.baro.state,
-        component: VoidTraderPanel,
-        props: { voidTrader: getters.worldstate.voidTrader }
-      },
-      {
-        ...getters.componentState.invasions.position,
-        state: getters.componentState.invasions.state,
-        component: InvasionsPanel,
-        props: { invasions: getters.worldstate.invasions }
-      },
-      {
-        ...getters.componentState.reset.position,
-        state: getters.componentState.reset.state,
-        component: ResetPanel,
-        props: {}
-      }
-    ];
   },
   methods: {
     track() {
       this.$ga.page('/');
     },
-    moved(i, newX, newY) {
-      this.$store.commit('commitComponentPosition', [i, newX, newY]);
+    onLayoutUpdate(layout) {
+      this.$set(this.layouts, this.breakpoint, layout);
     },
-    resized(i, newH, newW) {
-      this.$store.commit('commitComponentResize', [i, newW, newH]);
-    }
-  },
-  computed: {
-    ostrons: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
-        (syndicate) => syndicate.syndicate === 'Ostrons'
-      );
-      return filtered[0];
+
+    onLayoutChange(layout, layouts, breakpoint) {
+      this.$set(this.layouts, breakpoint, layout);
     },
-    solaris: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions.filter(
-        (syndicate) => syndicate.syndicate === 'Solaris United'
-      );
-      return filtered[0];
+
+    onLayoutInit(layout, layouts, cols, breakpoint) {
+      this.cols = cols;
+      this.breakpoint = breakpoint;
+      this.$set(this.layouts, breakpoint, layout);
     },
-    getActiveComponents: function() {
-      const activeComponents = this.layout.filter((panel) => panel.state);
-      return activeComponents;
+
+    onBreakpointChange(breakpoint) {
+      this.breakpoint = breakpoint;
+    },
+
+    onWidthChange(width, cols) {
+      this.cols = cols;
     }
   }
 };
 </script>
+<style>
+
+.resizable-handle {
+  position:absolute;
+  width:20px;
+  height:20px;
+  bottom:0;
+  right:0px;
+  text-align:right;
+}
+.resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 5px;
+  height: 5px;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+}
+.vue-grid-draggable-container {
+  width: 100%;
+  height: 100%;
+}
+.grid-item {
+  border: 1px dotted #000;
+  background-color: rgb(146, 146, 146);
+}
+.vue-grid-placeholder {
+  background: #ddd; border: 2px dashed #aaa;
+}
+
+.vue-grid-layout {
+  width: 100%;
+  display:block;
+  position:relative;
+  height: 100%;
+}
+</style>

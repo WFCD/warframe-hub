@@ -26,7 +26,6 @@
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.21",
     "vue-analytics": "^5.16.1",
-    "vue-grid-layout": "^2.3.3",
     "vue-native-notification": "^1.0.5",
     "vue-packery-plugin": "^1.4.1",
     "vue-responsive-grid-layout": "^1.1.3",

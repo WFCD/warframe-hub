@@ -34,7 +34,7 @@
             :height-from-children="true"
             :max-rows="props.maxRows"
           >
-            <TimePanel location="Vallis" :time="{'id':'earthCycle1549641600000','expiry':'2019-02-08T16:00:00.260Z','isDay':false,'timeLeft':'40m 37s'}" />
+            <TimePanel location="Vallis" :time="worldstate[`${item.i}Cycle`]" />
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import TimePanel from '@/components/panels/TimePanel.vue';
 
 export default {
@@ -92,6 +93,14 @@ export default {
     onWidthChange(width, cols) {
       this.cols = cols;
     }
+  },
+  computed: {
+    ...mapState({
+
+    }),
+    ...mapGetters({
+      worldstate: 'worldstate'
+    })
   }
 };
 </script>

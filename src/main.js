@@ -79,4 +79,5 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app');
 
-setInterval(() => {store.dispatch('updateWorldstate');}, 30000);
+const interval = ((process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL)));
+setInterval(() => {store.dispatch('updateWorldstate');}, interval);

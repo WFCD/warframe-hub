@@ -133,13 +133,25 @@ const getters = {
 };
 
 Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state,
-  mutations,
-  actions,
-  getters,
-  plugins: [createPersistedState()]
-});
+const shouldPersist = ((process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true');
+var tStore;
+if (shouldPersist) {
+  tStore = new Vuex.Store({
+    state,
+    mutations,
+    actions,
+    getters,
+    plugins: [createPersistedState()]
+  });
+} else {
+  tStore = new Vuex.Store({
+    state,
+    mutations,
+    actions,
+    getters,
+    plugins: []
+  });
+}
+const store = tStore;
 
 export default store;

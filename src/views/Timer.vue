@@ -33,8 +33,11 @@
             :cols="props.cols"
             :height-from-children="true"
             :max-rows="props.maxRows"
+            :canBeResizedWithAll="false"
           >
-            <TimePanel location="Vallis" :time="worldstate[`${item.i}Cycle`]" />
+            <div ref="panelElement">
+              <TimePanel location="Vallis" :time="worldstate[`${item.i}Cycle`]"/>
+            </div>
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
@@ -92,6 +95,18 @@ export default {
 
     onWidthChange(width, cols) {
       this.cols = cols;
+    }
+  },
+  watch: {
+    worldstate: {
+      handler: function() {
+        this.$refs['panelElement'].forEach((element) => {
+          element.toggleAttribute('updating');
+          element.toggleAttribute('updating');
+        });
+        this.$refs.layout.resizeAllItems(2, 'vertical');
+      },
+      deep: true
     }
   },
   computed: {

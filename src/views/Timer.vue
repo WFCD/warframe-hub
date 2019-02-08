@@ -12,6 +12,8 @@
         :compact-type="'vertical'"
         :breakpoint="breakpoint"
         :cols="cols"
+        :colsAll="colsAll"
+        :rowHeight="1"
         ref="layout"
       >
         <template slot-scope="props">
@@ -26,18 +28,13 @@
             :container-width="props.containerWidth"
             :row-height="props.rowHeight"
             :is-draggable="true"
-            :is-resizable="true"
-            :class-name="'grid-item'"
+            :is-resizable="false"
+            class-name="grid-item panel-header"
             :cols="props.cols"
             :height-from-children="true"
             :max-rows="props.maxRows"
           >
-            <div>Test{{item.i}}
-              <br>
-              <br>
-              <br>
-              <br>
-            </div>
+            <TimePanel location="Vallis" :time="{'id':'earthCycle1549641600000','expiry':'2019-02-08T16:00:00.260Z','isDay':false,'timeLeft':'40m 37s'}" />
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
@@ -46,28 +43,26 @@
 </template>
 
 <script>
+import TimePanel from '@/components/panels/TimePanel.vue';
+
 export default {
   name: 'timers',
+  components: {
+    TimePanel
+  },
   data() {
     return {
       layouts: {
         md: [
-          { x: 0, y: 0, w: 2, h: 3, i: '1' },
-          { x: 2, y: 0, w: 2, h: 3, i: '2' },
-          { x: 4, y: 0, w: 2, h: 3, i: '3' },
-          { x: 0, y: 3, w: 2, h: 3, i: '4' }
+          { x: 0, y: 0, w: 1, h: 3, i: 'earth' },
+          { x: 1, y: 0, w: 1, h: 3, i: 'cetus' },
+          { x: 0, y: 3, w: 1, h: 3, i: 'vallis' }
         ]
       },
       breakpoint: 'md',
-      components: {
-        '1': { i: '1', component: 'example-component', defaultSize: 2 },
-        '2': { i: '2', component: 'example-component', defaultSize: 2 },
-        '3': { i: '3', component: 'example-component', defaultSize: 2 },
-        '4': { i: '4', component: 'example-component', defaultSize: 2 }
-      },
-      cols: 10,
+      cols: 2,
       breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
-      colsAll: { lg: 10, md: 8, sm: 6, xs: 4, xxs: 2 },
+      colsAll: { lg: 2, md: 2, sm: 2, xs: 2, xxs: 2 },
       isDraggable: true,
       isResizable: true
     };
@@ -101,7 +96,8 @@ export default {
 };
 </script>
 <style>
-
+/* Saved for testing purposes */
+/*
 .resizable-handle {
   position:absolute;
   width:20px;
@@ -138,4 +134,5 @@ export default {
   position:relative;
   height: 100%;
 }
+*/
 </style>

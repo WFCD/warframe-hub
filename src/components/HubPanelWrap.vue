@@ -1,5 +1,5 @@
 <template>
-  <div v-packery-item class="panel-header packery-item">
+  <div class="">
     <h3 class="text-center">{{title}}</h3>
     <slot></slot>
   </div>

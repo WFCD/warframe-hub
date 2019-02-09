@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 import fetch from 'node-fetch';
 import Notifier from '@/Notifier';
 
+import grid from '@/assets/json/grid.json';
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
 import fissurePlanets from '@/assets/json/planets.json';
@@ -20,6 +21,7 @@ const state = {
   },
   platform: 'pc',
   theme: 'night',
+  grid: grid,
   components: components,
   trackables: trackables,
   fissurePlanets: fissurePlanets,
@@ -42,13 +44,8 @@ const mutations = {
   commitComponentState: (state, [key, newState]) => {
     state.components[key].state = newState;
   },
-  commitComponentPosition: (state, [key, x, y]) => {
-    state.components[key].position.x = x;
-    state.components[key].position.y = y;
-  },
-  commitComponentResize: (state, [key, w, h]) => {
-    state.components[key].position.w = w;
-    state.components[key].position.h = h;
+  commitGridLayout: (state, [components]) => {
+    state.grid.components = components;
   },
   setTheme: (state, [key]) => {
     state.theme = key;

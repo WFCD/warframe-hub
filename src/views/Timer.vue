@@ -58,24 +58,19 @@ export default {
   },
   data() {
     return {
-      components: {
-        earth: {
-          md: { x: 0, y: 0, w: 1, h: 181, i: 'earth' }
-        },
-        vallis: {
-          md: { x: 0, y: 3, w: 1, h: 181, i: 'vallis' }
-        },
-        cetus: {
-          md: { x: 1, y: 0, w: 1, h: 181, i: 'cetus' }
-        }
-      },
+      components: {},
       breakpoint: 'md',
       cols: 2,
       breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
       colsAll: { lg: 2, md: 2, sm: 2, xs: 2, xxs: 2 },
       isDraggable: true,
-      isResizable: true
+      isResizable: true,
+      lastUpdate: 0
     };
+  },
+  mounted() {
+    this.components = this.gridState.components;
+    this.lastUpdate = Date.now();
   },
   methods: {
     track() {
@@ -85,6 +80,11 @@ export default {
       layout.forEach((itemSize) => {
         this.$set(this.components[itemSize.i], breakpoint, itemSize);
       });
+      const currTime = Date.now();
+      if (currTime - this.lastUpdate > 500) {
+        this.$store.commit('commitGridLayout', [this.components]);
+        this.lastUpdate = currTime;
+      }
     },
 
     onLayoutUpdate(layout) {
@@ -114,12 +114,8 @@ export default {
       handler: function() {
         if (this.$refs.panelObserver) {
           this.$refs.panelObserver.forEach((element) => {
-            element.toggleAttribute(
-              'updating'
-            );
-            element.toggleAttribute(
-              'updating'
-            );
+            element.toggleAttribute('updating');
+            element.toggleAttribute('updating');
           });
           this.$refs.layout.resizeAllItems(2, 'vertical');
         }
@@ -129,7 +125,8 @@ export default {
   },
   computed: {
     ...mapState({
-      componentState: 'components'
+      componentState: 'components',
+      gridState: 'grid'
     }),
     ...mapGetters({
       worldstate: 'worldstate'

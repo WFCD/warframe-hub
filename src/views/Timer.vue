@@ -35,8 +35,7 @@
             :max-rows="props.maxRows"
             :canBeResizedWithAll="false"
           >
-            <div ref="panelElement">
-              <TimePanel location="Vallis" :time="worldstate[`${item.i}Cycle`]"/>
+            <div ref="panelObserver" :id="item.i">
             </div>
           </vue-grid-item>
         </template>
@@ -100,11 +99,17 @@ export default {
   watch: {
     worldstate: {
       handler: function() {
-        this.$refs['panelElement'].forEach((element) => {
-          element.toggleAttribute('updating');
-          element.toggleAttribute('updating');
+        if (this.$refs.panelObserver) {
+          this.$refs.panelObserver.forEach((element) => {
+            element.toggleAttribute(
+              'updating'
+            );
+            element.toggleAttribute(
+              'updating'
+            );
         });
         this.$refs.layout.resizeAllItems(2, 'vertical');
+        }
       },
       deep: true
     }

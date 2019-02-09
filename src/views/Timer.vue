@@ -2,7 +2,6 @@
   <div class="timers">
     <b-container fluid class="grid">
       <vue-responsive-grid-layout
-        :style="{border: '1px solid #000'}"
         @layout-update="onLayoutUpdate"
         @layout-change="onLayoutChange"
         @layout-init="onLayoutInit"
@@ -36,6 +35,10 @@
             :canBeResizedWithAll="false"
           >
             <div ref="panelObserver" :id="item.i">
+              <TimePanel
+                :location="componentState[item.i].display"
+                :time="worldstate[`${item.i}Cycle`]"
+              />
             </div>
           </vue-grid-item>
         </template>
@@ -55,12 +58,16 @@ export default {
   },
   data() {
     return {
-      layouts: {
-        md: [
-          { x: 0, y: 0, w: 1, h: 3, i: 'earth' },
-          { x: 1, y: 0, w: 1, h: 3, i: 'cetus' },
-          { x: 0, y: 3, w: 1, h: 3, i: 'vallis' }
-        ]
+      components: {
+        earth: {
+          md: { x: 0, y: 0, w: 1, h: 181, i: 'earth' }
+        },
+        vallis: {
+          md: { x: 0, y: 3, w: 1, h: 181, i: 'vallis' }
+        },
+        cetus: {
+          md: { x: 1, y: 0, w: 1, h: 181, i: 'cetus' }
+        }
       },
       breakpoint: 'md',
       cols: 2,
@@ -74,18 +81,24 @@ export default {
     track() {
       this.$ga.page('/');
     },
+    updateComponents(layout, breakpoint) {
+      layout.forEach((itemSize) => {
+        this.$set(this.components[itemSize.i], breakpoint, itemSize);
+      });
+    },
+
     onLayoutUpdate(layout) {
-      this.$set(this.layouts, this.breakpoint, layout);
+      this.updateComponents(layout, this.breakpoint);
     },
 
     onLayoutChange(layout, layouts, breakpoint) {
-      this.$set(this.layouts, breakpoint, layout);
+      this.updateComponents(layout, breakpoint);
     },
 
     onLayoutInit(layout, layouts, cols, breakpoint) {
       this.cols = cols;
       this.breakpoint = breakpoint;
-      this.$set(this.layouts, breakpoint, layout);
+      this.updateComponents(layout, breakpoint);
     },
 
     onBreakpointChange(breakpoint) {
@@ -107,8 +120,8 @@ export default {
             element.toggleAttribute(
               'updating'
             );
-        });
-        this.$refs.layout.resizeAllItems(2, 'vertical');
+          });
+          this.$refs.layout.resizeAllItems(2, 'vertical');
         }
       },
       deep: true
@@ -116,52 +129,29 @@ export default {
   },
   computed: {
     ...mapState({
-
+      componentState: 'components'
     }),
     ...mapGetters({
       worldstate: 'worldstate'
-    })
+    }),
+    layouts: function() {
+      return Object.entries(this.components)
+        .filter(([key]) => this.componentState[key].state)
+        .reduce((acc, [, sizes]) => {
+          Object.entries(sizes).forEach(([size, itemSize]) => {
+            if (!acc[size]) acc[size] = [];
+            acc[size].push(itemSize);
+          });
+          return acc;
+        }, {});
+    }
   }
 };
 </script>
 <style>
 /* Saved for testing purposes */
-/*
-.resizable-handle {
-  position:absolute;
-  width:20px;
-  height:20px;
-  bottom:0;
-  right:0px;
-  text-align:right;
-}
-.resizable-handle::after {
-  content: "";
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  width: 5px;
-  height: 5px;
-  border-right: 2px solid #000000;
-  border-bottom: 2px solid #000000;
-}
-.vue-grid-draggable-container {
-  width: 100%;
-  height: 100%;
-}
 .grid-item {
   border: 1px dotted #000;
   background-color: rgb(146, 146, 146);
 }
-.vue-grid-placeholder {
-  background: #ddd; border: 2px dashed #aaa;
-}
-
-.vue-grid-layout {
-  width: 100%;
-  display:block;
-  position:relative;
-  height: 100%;
-}
-*/
 </style>

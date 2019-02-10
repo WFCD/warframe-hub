@@ -65,7 +65,7 @@ import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 
 export default {
-  name: 'timers',
+  name: "timers",
   components: {
     AlertPanel,
     NewsPanel,
@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     track() {
-      this.$ga.page('/');
+      this.$ga.page("/");
     },
     updateComponents(layout, breakpoint) {
       layout.forEach((itemSize) => {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
+// import createPersistedState from 'vuex-persistedstate';
 import fetch from 'node-fetch';
 import Notifier from '@/Notifier';
 

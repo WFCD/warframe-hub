@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 import fetch from 'node-fetch';
 import Notifier from '@/Notifier';
 
+import grid from '@/assets/json/grid.json';
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
 import fissurePlanets from '@/assets/json/planets.json';
@@ -20,6 +21,7 @@ const state = {
   },
   platform: 'pc',
   theme: 'night',
+  grid: grid,
   components: components,
   trackables: trackables,
   fissurePlanets: fissurePlanets,
@@ -41,6 +43,9 @@ const mutations = {
   },
   commitComponentState: (state, [key, newState]) => {
     state.components[key].state = newState;
+  },
+  commitGridLayout: (state, [components]) => {
+    state.grid.components = components;
   },
   setTheme: (state, [key]) => {
     state.theme = key;
@@ -114,6 +119,20 @@ const actions = {
 };
 const getters = {
   worldstate: (state) => state.worldstates[state.platform],
+  ostronSyndicate: (state) => {
+    const worldstate = state.worldstates[state.platform];
+    const filtered = (worldstate.syndicateMissions || []).filter(
+      (syndicate) => syndicate.syndicate === 'Ostrons'
+    );
+    return filtered[0];
+  },
+  solarisSyndicate: (state) => {
+    const worldstate = state.worldstates[state.platform];
+    const filtered = (worldstate.syndicateMissions || []).filter(
+      (syndicate) => syndicate.syndicate === 'Solaris United'
+    );
+    return filtered[0];
+  },
   platform: (state) => state.platform,
   theme: (state) => state.theme,
   componentState: (state) => state.components,
@@ -125,13 +144,25 @@ const getters = {
 };
 
 Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state,
-  mutations,
-  actions,
-  getters,
-  plugins: [createPersistedState()]
-});
+const shouldPersist = ((process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true');
+var tStore;
+if (shouldPersist) {
+  tStore = new Vuex.Store({
+    state,
+    mutations,
+    actions,
+    getters,
+    plugins: [createPersistedState()]
+  });
+} else {
+  tStore = new Vuex.Store({
+    state,
+    mutations,
+    actions,
+    getters,
+    plugins: []
+  });
+}
+const store = tStore;
 
 export default store;

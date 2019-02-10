@@ -32,9 +32,11 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Packery */
-import VuePackeryPlugin from 'vue-packery-plugin';
-Vue.use(VuePackeryPlugin);
+/* Grid Layout */
+import {VueResponsiveGridLayout, VueGridItem, VueGridLayout} from 'vue-responsive-grid-layout';
+Vue.component('vue-responsive-grid-layout', VueResponsiveGridLayout);
+Vue.component('vue-grid-item', VueGridItem);
+Vue.component('vue-grid-layout', VueGridLayout);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';
@@ -87,4 +89,5 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app');
 
-setInterval(() => {store.dispatch('updateWorldstate');}, 30000);
+const interval = ((process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL)));
+setInterval(() => {store.dispatch('updateWorldstate');}, interval);

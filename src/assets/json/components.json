@@ -3,24 +3,18 @@
     "state": true,
     "display": "Events",
     "key": "event",
-    "position": {
-      "x": 1,
-      "y": 0,
-      "w": 6,
-      "h": 9,
-      "i": "event"
+    "component": "EventsPanel",
+    "props": {
+      "events": "@worldstate.events"
     }
   },
   "acolytes": {
     "state": true,
     "display": "Acolytes",
     "key": "acolytes",
-    "position": {
-      "x": 1,
-      "y": 0,
-      "w": 1,
-      "h": 12,
-      "i": "acolytes"
+    "component": "AcolytesPanel",
+    "props": {
+      "acolytes": "@worldstate.persistentEnemies"
     }
   },
   "cetus": {
@@ -57,132 +51,99 @@
     "state": true,
     "display": "Bounties Timer",
     "key": "bounties",
-    "position": {
-      "x": 0,
-      "y": 36,
-      "w": 1,
-      "h": 8,
-      "i": "bounties"
+    "component": "BountyPanel",
+    "props": {
+      "syndicate": "@ostron",
+      "type": "Ostron"
     }
   },
   "solaris-bounties": {
     "state": true,
     "display": "Solaris Bounties Timer",
     "key": "solaris-bounties",
-    "position": {
-      "x": 0,
-      "y": 38,
-      "w": 1,
-      "h": 8,
-      "i": "solaris-bounties"
+    "component": "BountyPanel",
+    "props": {
+      "syndicate": "@solaris",
+      "type": "Solaris United"
     }
   },
   "alerts": {
     "state": true,
     "display": "Alerts",
     "key": "alerts",
-    "position": {
-      "x": 0,
-      "y": 65,
-      "w": 1,
-      "h": 14,
-      "i": "alerts"
+    "component": "AlertPanel",
+    "props": {
+      "alerts": "@worldstate.alerts"
     }
   },
   "news": {
     "state": true,
     "display": "News",
     "key": "news",
-    "position": {
-      "x": 1,
-      "y": 0,
-      "w": 1,
-      "h": 13,
-      "i": "news"
+    "component": "NewsPanel",
+    "props": {
+      "news": "@worldstate.news"
     }
   },
   "invasions": {
     "state": true,
     "display": "Invasions",
     "key": "invasions",
-    "position": {
-      "x": 1,
-      "y": 1,
-      "w": 1,
-      "h": 27,
-      "i": "invasions"
+    "component": "InvasionsPanel",
+    "props": {
+      "invasions": "@worldstate.invasions"
     }
   },
   "reset": {
     "state": true,
     "display": "Reset Timer",
     "key": "reset",
-    "position": {
-      "x": 0,
-      "y": 44,
-      "w": 1,
-      "h": 5,
-      "i": "reset"
-    }
+    "component": "ResetPanel",
+    "props": {}
   },
   "sortie": {
     "state": true,
     "display": "Sortie",
     "key": "sortie",
-    "position": {
-      "x": 1,
-      "y": 45,
-      "w": 1,
-      "h": 13,
-      "i": "sortie"
+    "component": "SortiePanel",
+    "props": {
+      "sortie": "@worldstate.sortie"
     }
   },
   "fissures": {
     "state": true,
     "display": "Fissures",
     "key": "fissures",
-    "position": {
-      "x": 0,
-      "y": 63,
-      "w": 1,
-      "h": 15,
-      "i": "fissures"
+    "component": "FissuresPanel",
+    "props": {
+      "fissures": "@worldstate.fissures"
     }
   },
   "baro": {
     "state": true,
     "display": "Void Trader",
     "key": "baro",
-    "position": {
-      "x": 0,
-      "y": 66,
-      "w": 1,
-      "h": 5,
-      "i": "baro"
+    "component": "VoidTraderPanel",
+    "props": {
+      "voidTrader": "@worldstate.voidTrader"
     }
   },
   "darvo": {
     "state": true,
     "display": "Darvo Deals",
     "key": "darvo",
-    "position": {
-      "x": 1,
-      "y": 0,
-      "w": 1,
-      "h": 8,
-      "i": "darvo"
+    "component": "DarvoDealsPanel",
+    "props": {
+      "deals": "@worldstate.dailyDeals"
     }
   },
   "deals": {
-    "state": false,
+    "state": true,
     "display": "Sales",
     "key": "deals",
-    "position": {
-      "x": 3,
-      "y": 3,
-      "w": 1,
-      "h": 4,
-      "i": "deals"
+    "component": "SalesPanel",
+    "props": {
+      "sales": "@worldstate.flashSales"
     }
   }
 }

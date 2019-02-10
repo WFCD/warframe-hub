@@ -33,11 +33,12 @@
             :height-from-children="true"
             :max-rows="props.maxRows"
             :canBeResizedWithAll="false"
+            handle=".header-panel"
           >
             <div ref="panelObserver" :id="item.i">
-              <TimePanel
-                :location="componentState[item.i].display"
-                :time="worldstate[`${item.i}Cycle`]"
+              <div
+                :is="componentState[item.i].component"
+                v-bind="resolveProps(componentState[item.i].props)"
               />
             </div>
           </vue-grid-item>
@@ -49,12 +50,36 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import AlertPanel from '@/components/panels/AlertPanel.vue';
+import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
+import ResetPanel from '@/components/panels/ResetPanel.vue';
+import SortiePanel from '@/components/panels/SortiePanel.vue';
+import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
+import FissuresPanel from '@/components/panels/FissuresPanel.vue';
+import BountyPanel from '@/components/panels/BountyPanel.vue';
+import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
+import EventsPanel from '@/components/panels/EventsPanel.vue';
+import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
+import SalesPanel from '@/components/panels/SalesPanel.vue';
+import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 
 export default {
   name: 'timers',
   components: {
-    TimePanel
+    AlertPanel,
+    NewsPanel,
+    TimePanel,
+    ResetPanel,
+    SortiePanel,
+    AcolytesPanel,
+    FissuresPanel,
+    BountyPanel,
+    InvasionsPanel,
+    EventsPanel,
+    DarvoDealsPanel,
+    SalesPanel,
+    VoidTraderPanel
   },
   data() {
     return {
@@ -62,7 +87,7 @@ export default {
       breakpoint: 'md',
       cols: 2,
       breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
-      colsAll: { lg: 2, md: 2, sm: 2, xs: 2, xxs: 2 },
+      colsAll: { lg: 4, md: 3, sm: 2, xs: 2, xxs: 2 },
       isDraggable: true,
       isResizable: true,
       lastUpdate: 0
@@ -107,6 +132,25 @@ export default {
 
     onWidthChange(width, cols) {
       this.cols = cols;
+    },
+
+    // Replaces a string that starts with the object_identifier with the respective object.
+    // Ex. '@worldstate.syndicateMissions' sets the object property to obj.worldstate.syndicateMissions
+    resolveProps(props, obj = this, object_identifier = '@', separator = '.') {
+      if (typeof props !== 'object' || Array.isArray(props))
+        throw 'props should be an object.';
+      return Object.entries(props).reduce((prev, [key, value]) => {
+        if (value[0] === object_identifier) {
+          var target_object = value
+            .slice(1)
+            .split(separator)
+            .reduce((prev, curr) => prev && prev[curr], obj);
+          prev[key] = target_object;
+        } else {
+          prev[key] = value;
+        }
+        return prev;
+      }, {});
     }
   },
   watch: {
@@ -129,11 +173,15 @@ export default {
       gridState: 'grid'
     }),
     ...mapGetters({
-      worldstate: 'worldstate'
+      worldstate: 'worldstate',
+      ostron: 'ostronSyndicate',
+      solaris: 'solarisSyndicate'
     }),
     layouts: function() {
       return Object.entries(this.components)
-        .filter(([key]) => this.componentState[key].state)
+        .filter(([key]) => {
+          return this.componentState[key].state;
+        })
         .reduce((acc, [, sizes]) => {
           Object.entries(sizes).forEach(([size, itemSize]) => {
             if (!acc[size]) acc[size] = [];

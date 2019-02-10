@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <h3 class="text-center">{{title}}</h3>
+  <div>
+    <h3 class="text-center header-panel">{{title}}</h3>
     <slot></slot>
   </div>
 </template>

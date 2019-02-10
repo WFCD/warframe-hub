@@ -119,6 +119,20 @@ const actions = {
 };
 const getters = {
   worldstate: (state) => state.worldstates[state.platform],
+  ostronSyndicate: (state) => {
+    const worldstate = state.worldstates[state.platform];
+    const filtered = (worldstate.syndicateMissions || []).filter(
+      (syndicate) => syndicate.syndicate === 'Ostrons'
+    );
+    return filtered[0];
+  },
+  solarisSyndicate: (state) => {
+    const worldstate = state.worldstates[state.platform];
+    const filtered = (worldstate.syndicateMissions || []).filter(
+      (syndicate) => syndicate.syndicate === 'Solaris United'
+    );
+    return filtered[0];
+  },
   platform: (state) => state.platform,
   theme: (state) => state.theme,
   componentState: (state) => state.components,

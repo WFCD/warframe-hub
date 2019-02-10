@@ -80,7 +80,7 @@
         return moment(this.available ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
       },
       locationLabel() {
-        return `${this.available ? 'Departs from' : 'Arrives to'} ${this.voidTrader.location}:`;
+        return `${this.available ? 'Departs' : 'Arrives'} ${this.voidTrader.location}:`;
       },
     }
   };

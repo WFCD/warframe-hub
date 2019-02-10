@@ -152,7 +152,7 @@ export default {
         }
         return prev;
       }, {});
-    }
+    },
   },
   watch: {
     worldstate: {
@@ -198,8 +198,10 @@ export default {
 </script>
 <style>
 /* Saved for testing purposes */
+/*
 .grid-item {
   border: 1px dotted #000;
   background-color: rgb(146, 146, 146);
 }
+*/
 </style>

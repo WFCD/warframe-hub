@@ -5,7 +5,7 @@
         <span class="pull-left">{{locationLabel()}}</span>
         <TimeBadge :starttime="voidTrader.activation" :endtime="voidTrader.expiry" :interval="1000"/>
       </b-list-group-item>
-      <b-list-group-item :class="{ 'list-group-item-borderless': voidTrader.inventory.length > 0, 'list-group-item-borderbottom': voidTrader.inventory.length < 1 }" v-if="voidTrader.inventory.length">
+      <b-list-group-item :class="{ 'list-group-item-borderbottom': voidTrader.inventory.length > 0, 'list-group-item-borderless': voidTrader.inventory.length < 1 }" v-if="voidTrader.inventory.length">
         <span class="pull-left">{{hereLabel()}}</span>
         <b-badge variant="info" class="pull-right">{{hereTime().toLocaleString()}}</b-badge>
       </b-list-group-item>
@@ -80,7 +80,7 @@
         return moment(this.available ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
       },
       locationLabel() {
-        return `${this.available ? 'Departs' : 'Arrives'} ${this.voidTrader.location}:`;
+        return `${this.available ? 'Departs' : 'Arrives at'} ${this.voidTrader.location}:`;
       },
     }
   };

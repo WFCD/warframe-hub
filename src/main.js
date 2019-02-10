@@ -23,9 +23,6 @@ if (process.env.VUE_APP_DSN) {
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-/* Bootswatch */
-import 'bootswatch/dist/darkly/bootstrap.min.css';
-
 /* FontAwesome */
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import '@fortawesome/fontawesome-free/css/regular.min.css';
@@ -79,6 +76,8 @@ import '@/assets/less/fish.less';
 import '@/assets/less/tables.less';
 import '@/assets/less/night.less';
 import '@/assets/less/day.less';
+import '@/assets/less/retro.less';
+import '@/assets/less/eidolon.less';
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');

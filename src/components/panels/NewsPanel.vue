@@ -8,7 +8,8 @@
         :text="title(newsitem)"
         v-on:click.native="open(newsitem.link)"
       >
-        <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" alt="image slot" />
+        <span slot="img" class="middling-helper"></span>
+        <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" :alt="title(newsitem)" />
       </b-carousel-slide>
     </b-carousel>
   </HubPanelWrap>
@@ -26,9 +27,15 @@
 .carousel-caption a {
   color: white;
 }
-.slide-image {
-  max-height: 250px !important;
-  min-height: 230px !important;
+.carousel-item {
+  max-height: 250px;
+  min-height: 230px;
+}
+
+.middling-helper {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
 </style>
 <script>

@@ -11,8 +11,6 @@
   </div>
 </template>
 <script>
-  import {packeryEvents} from 'vue-packery-plugin';
-
   export default {
     name: 'Collapsible',
     props: ['headertext'],
@@ -24,8 +22,7 @@
     methods: {
       reflow: function() {
         // eslint-disable-next-line no-console
-        console.log('triggered reflow');
-        packeryEvents.$emit('layout', this.$refs.timerComponentGrid);
+        console.error('triggered reflow --- this does nothing, needs to trigger the resize for the grid item');
       },
       makeid: function() {
         let text = '';

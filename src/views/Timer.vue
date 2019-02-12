@@ -86,8 +86,8 @@ export default {
       components: {},
       breakpoint: 'md',
       cols: 2,
-      breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 },
-      colsAll: { lg: 4, md: 2, sm: 1, xs: 1, xxs: 1 },
+      breakpoints: { lg: 2200, md: 1200, sm: 996, xs: 768, xxs: 480 },
+      colsAll: { lg: 4, md: 3, sm: 2, xs: 1, xxs: 1 },
       isDraggable: true,
       isResizable: true,
       lastUpdate: 0

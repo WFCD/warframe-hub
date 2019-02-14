@@ -69,7 +69,6 @@ Vue.component('l-icon', Vue2Leaflet.LIcon);
 Vue.component('l-control-layers', Vue2Leaflet.LControlLayers);
 Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
 
-
 /* Themes */
 import '@/assets/less/common.less';
 import '@/assets/less/fish.less';

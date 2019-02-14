@@ -21,8 +21,6 @@
 </template>
 
 <script>
-  import {packeryEvents} from 'vue-packery-plugin';
-
   import TimeBadge from '@/components/TimeBadge.vue';
   import NoDataItem from '@/components/NoDataItem.vue';
   import HubImg from '@/components/HubImg.vue';
@@ -77,7 +75,6 @@
           },
         ],
         standing: standing,
-        packeryEvents: packeryEvents,
       };
     },
     components: {

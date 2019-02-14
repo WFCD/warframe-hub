@@ -138,7 +138,7 @@
     }
   },
   "deals": {
-    "state": true,
+    "state": false,
     "display": "Sales",
     "key": "deals",
     "component": "SalesPanel",

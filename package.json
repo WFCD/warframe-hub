@@ -10,7 +10,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:raw": "npx lint .",
-    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi "
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
+    "updateWorldstate": "node ./initialWorldstateUpdater.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.6.3",

@@ -8,16 +8,17 @@ import grid from '@/assets/json/grid.json';
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
 import fissurePlanets from '@/assets/json/planets.json';
+import initialWorldstate from '@/assets/json/initialWorldstate.json';
 
 const apiBase = 'https://api.warframestat.us';
 let notifier;
 
 const state = {
   worldstates: {
-    pc: {},
-    ps4: {},
-    xb1: {},
-    switch: {}
+    pc: initialWorldstate.pc,
+    ps4: initialWorldstate.ps4,
+    xb1: initialWorldstate.xb1,
+    switch: initialWorldstate.swi
   },
   platform: 'pc',
   theme: 'night',

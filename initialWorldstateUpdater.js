@@ -1,21 +1,22 @@
+/* eslint-disable no-console */
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const jsonFileName = "initialWorldstate.json";
-const jsonFolder = "./src/assets/json";
-const apiBaseUrl = "api.warframestat.us";
+const jsonFileName = 'initialWorldstate.json';
+const jsonFolder = './src/assets/json';
+const apiBaseUrl = 'api.warframestat.us';
 const apiPlatforms = [
-  "pc",
-  "ps4",
-  "xb1",
-  "swi"
+  'pc',
+  'ps4',
+  'xb1',
+  'swi'
 ];
 
 
 function main() {
   Promise.all(apiPlatforms.map((platform) => {
     return fetch(`https://${apiBaseUrl}/${platform}`)
-      .then(t => t.text())
+      .then((t) => t.text())
       .then(JSON.parse)
       .then(parseBase.bind(null, platform))
       .catch(onError);
@@ -47,7 +48,7 @@ function parseBase(platform, data) {
   return [platform, platformOutput];
 }
 
-function parseObject(data, key, objectPath = "") {
+function parseObject(data, key, objectPath = '') {
   if (typeof(data) !== 'object') {
     return null;
   }
@@ -83,29 +84,32 @@ function parseArray(data) {
 }
 
 function parseBoolean(data, key) {
-  if (typeof(data) !== 'boolean') return null;
+  if (typeof(data) !== 'boolean') {
+     return null;
+  }
 
   return key.toLowerCase().includes('expired');
 }
 
 function parseDate(data) {
-  return !isNaN(new Date(data)) ? "2000-01-01T01:00:00.000Z" : null;
+  return !isNaN(new Date(data)) ? '2000-01-01T01:00:00.000Z' : null;
 }
 
 function parseId(data, key) {
-  return key.toLowerCase().includes('id') ? "12345" : null;
+  return key.toLowerCase().includes('id') ? '12345' : null;
 }
 
 function parseNumber(data) {
-  return !isNaN(data) ? "0.00" : null;
+  return !isNaN(data) ? '0.00' : null;
 }
 
 function parseETA(data) {
-  return /([-\d]+y |)([-\d]+d |)([-\d]+h |)([-\d]+m |)[-\d]+s/.test(data) ? "1h 1m 1s" : null;
+  //Matches the format 0s with optional dates up to 0y 0d 0h 0m 0s
+  return /([-\d]+y |)([-\d]+d |)([-\d]+h |)([-\d]+m |)[-\d]+s/.test(data) ? '1h 1m 1s' : null;
 }
 
 function parseDefault(data, key, objectPath) {
-  const defaultOutput = "Loading...";
+  const defaultOutput = 'Loading...';
   console.info(`Defaulting ${objectPath} - ${data} to ${defaultOutput}`);
   return defaultOutput;
 }

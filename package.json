@@ -10,9 +10,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:raw": "npx lint .",
-    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
     "updateWorldstate": "node ./initialWorldstateUpdater.js"
   },
+  "heroku-run-build-script": true,
   "dependencies": {
     "express": "^4.16.4"
   },

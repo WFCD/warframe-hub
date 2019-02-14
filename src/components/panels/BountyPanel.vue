@@ -31,15 +31,7 @@
 
   export default {
     name: 'BountyPanel',
-    props: {
-      syndicate: {
-        type: Object,
-        default: function() {
-          return { active: false };
-        }
-      },
-      type: String
-    },
+    props: ['syndicate'],
     computed: {
       headertext() {
         return `${this.type} Bounty Cycle`;

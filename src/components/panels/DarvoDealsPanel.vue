@@ -43,14 +43,7 @@
   import platinum from '@/assets/img/general/plat.png';
   export default {
     name: 'DarvoDealsPanel',
-    props: {
-      deals: {
-        type: Array,
-        default: function() {
-          return [];
-        }
-      }
-    },
+    props: ['deals'],
     computed: {
       headertext() {
         return 'Darvo\'s Deals';

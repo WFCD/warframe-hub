@@ -144,6 +144,14 @@ const makeNotification = (type, data) => {
         },
         type: 'cold',
       };
+    case 'nightwave':
+      return {
+        head: `Nightwave - ${data.title}`,
+        body: {
+          body: `${data.daily ? 'Daily: ' : (data.isElite ? 'Weekly Elite: ' : 'Weekly: ')}${data.desc}`,
+          icon: wfcdLogoUrl,
+        },
+      };
     default:
       return defaultNotificationBody;
   }
@@ -285,6 +293,13 @@ class Notifier {
       } else {
         if (this.isNotifiable(ws.vallisCycle.id, 'vallis.cold')) {
           toNotify.push(makeNotification('vallis.cold', ws.vallisCycle));
+        }
+      }
+    }
+    if (ws.nightwave && ws.nightwave.activeChallenges.length) {
+      for (const challenge of ws.nightwave.activeChallenges) {
+        if (this.isNotifiable(challenge.id, 'nightwave')) {
+          toNotify.push(makeNotification('nightwave', challenge));
         }
       }
     }

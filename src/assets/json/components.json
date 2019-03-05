@@ -145,5 +145,14 @@
     "props": {
       "sales": "@worldstate.flashSales"
     }
+  },
+  "nightwave": {
+    "state": true,
+    "display": "Nightwave",
+    "key": "nightwave",
+    "component": "NightwavePanel",
+    "props": {
+      "nightwave": "@worldstate.nightwave"
+    }
   }
 }

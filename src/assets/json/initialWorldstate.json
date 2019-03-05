@@ -4,6 +4,9 @@
     "news": [],
     "events": [],
     "alerts": [],
+    "nightwave": {
+      "activeChallenges": []
+    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -85,6 +88,9 @@
     "news": [],
     "events": [],
     "alerts": [],
+    "nightwave": {
+      "activeChallenges": []
+    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -166,6 +172,9 @@
     "news": [],
     "events": [],
     "alerts": [],
+    "nightwave": {
+      "activeChallenges": []
+    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -247,6 +256,9 @@
     "news": [],
     "events": [],
     "alerts": [],
+    "nightwave": {
+      "activeChallenges": []
+    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",

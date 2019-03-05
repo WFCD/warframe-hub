@@ -463,6 +463,35 @@
         "moved": false,
         "immobile": false
       }
+    },
+    "nightwave": {
+      "md": {
+        "w": 1,
+        "h": 30,
+        "x": 0,
+        "y": 1007,
+        "i": "nightwave",
+        "moved": false,
+        "immobile": false
+      },
+      "sm": {
+        "w": 1,
+        "h": 181,
+        "x": 0,
+        "y": 837,
+        "i": "nightwave",
+        "moved": false,
+        "immobile": false
+      },
+      "lg": {
+        "w": 1,
+        "h": 42,
+        "x": 2,
+        "y": 108,
+        "i": "nightwave",
+        "moved": false,
+        "immobile": false
+      }
     }
   }
 }

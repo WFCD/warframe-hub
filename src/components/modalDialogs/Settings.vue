@@ -9,12 +9,7 @@
                 v-for="platform in this.platforms"
                 :key="platform.key"
                 :value="platform.key" >
-                  <HubImg :src="platformImg[platform.key]"
-                    :name="platform.display"
-                    width="16px"
-                    height="16px"
-                    :style="platformIconStyle"
-                    />
+                  <i :class="`${platform.icon} fa-lg`" :style="themeIconStyle"></i>
                 </b-form-radio>
             </b-form-radio-group>
           </b-form-group>
@@ -60,11 +55,6 @@
   import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
   import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
 
-  import pc from '@/assets/img/platforms/pc.svg';
-  import ps4 from '@/assets/img/platforms/ps4.svg';
-  import xb1 from '@/assets/img/platforms/xb1.svg';
-  import swi from '@/assets/img/platforms/swi.svg';
-
   import platforms from '@/assets/json/platforms.json';
   import themes from '@/assets/json/themes.json';
 
@@ -83,21 +73,12 @@
         themeIconStyle: {
           color: 'white',
           'margin-top': '3px',
-        },
-        platformIconStyle: {
-          filter: 'invert(100%)',
-          'margin-top': '-3px',
+          'padding-right': '10px'
         },
         platformLabelStyle: {
           'flex-grow': 1,
         },
         platforms: platforms,
-        platformImg: {
-          pc: pc,
-          ps4: ps4,
-          xb1: xb1,
-          swi: swi,
-        },
         themes: themes,
       };
     },

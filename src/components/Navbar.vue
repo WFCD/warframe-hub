@@ -6,18 +6,18 @@
       <b-navbar-nav>
         <b-nav-item><router-link to="/" exact><i class="fas fa-clock faIconStyle"></i> Timers</router-link></b-nav-item>
 
-        <b-nav-item-dropdown text="<i class='fas fa-mountain fa-sm faIconStyle'></i> Plains" left class="text-center">
+        <b-nav-item-dropdown text="Plains" left class="text-center">
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" label="Map" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/poe/fish" label="Fishing Data" />
           <DropdownItem :isLocal="true" icon="fas fa-info" target="/poe/fish/howto" label="How to Fish" />
         </b-nav-item-dropdown>
 
-        <b-nav-item-dropdown text="<i class='fas fa-spa fa-sm faIconStyle'></i> Orb Vallis" left class="text-center">
+        <b-nav-item-dropdown text="Orb Vallis" left class="text-center">
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" label="Map" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" label="Fishing Data" />
         </b-nav-item-dropdown>
 
-        <b-nav-item-dropdown text="<i class='fas fa-code faIconStyle'></i> Projects" left>
+        <b-nav-item-dropdown text="Projects" left>
           <DropdownItem icon="fas fa-download" target="https://drops.warframestat.us" label="Drops" />
           <DropdownItem icon="fas fa-robot" target="https://genesis.warframestat.us" label="Genesis" />
           <DropdownItem icon="fas fa-terminal" target="https://docs.warframestat.us" label="API Docs" />

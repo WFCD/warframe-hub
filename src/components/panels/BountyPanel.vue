@@ -31,7 +31,7 @@
 
   export default {
     name: 'BountyPanel',
-    props: ['syndicate'],
+    props: ['syndicate', 'type'],
     computed: {
       headertext() {
         return `${this.type} Bounty Cycle`;

@@ -63,6 +63,7 @@ import EventsPanel from '@/components/panels/EventsPanel.vue';
 import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
+import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 
 export default {
   name: 'timers',
@@ -79,15 +80,16 @@ export default {
     EventsPanel,
     DarvoDealsPanel,
     SalesPanel,
-    VoidTraderPanel
+    VoidTraderPanel,
+    NightwavePanel,
   },
   data() {
     return {
       components: {},
       breakpoint: 'md',
       cols: 2,
-      breakpoints: { lg: 2200, md: 1200, sm: 996, xs: 768, xxs: 480 },
-      colsAll: { lg: 4, md: 3, sm: 2, xs: 1, xxs: 1 },
+      breakpoints: { lg: 1800, md: 1200, sm: 996, xs: 768, xxs: 480 },
+      colsAll: { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 },
       isDraggable: true,
       isResizable: true,
       lastUpdate: 0

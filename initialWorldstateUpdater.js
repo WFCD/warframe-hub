@@ -12,33 +12,6 @@ const apiPlatforms = [
   'swi'
 ];
 
-
-function main() {
-  Promise.all(apiPlatforms.map((platform) => {
-    return fetch(`https://${apiBaseUrl}/${platform}`)
-      .then((t) => t.text())
-      .then(JSON.parse)
-      .then(parseBase.bind(null, platform))
-      .catch(onError);
-  })).then((platformsData) => {
-    const output = platformsData.reduce((acc, data) => {
-      acc[data[0]] = data[1];
-      return acc;
-    }, {});
-    fs.writeFile(
-      `${jsonFolder}/${jsonFileName}`,
-      JSON.stringify(output, null, 2),
-      function(err) {
-        if(err) {
-          return console.log(err);
-        }
-        console.info();
-        console.info(`${jsonFileName} updated at ${jsonFolder}/${jsonFileName}`);
-      }
-    );
-  });
-}
-
 function onError(error) {
   console.error(error);
 }
@@ -112,6 +85,32 @@ function parseDefault(data, key, objectPath) {
   const defaultOutput = 'Loading...';
   console.info(`Defaulting ${objectPath} - ${data} to ${defaultOutput}`);
   return defaultOutput;
+}
+
+function main() {
+  Promise.all(apiPlatforms.map((platform) => {
+    return fetch(`https://${apiBaseUrl}/${platform}`)
+      .then((t) => t.text())
+      .then(JSON.parse)
+      .then(parseBase.bind(null, platform))
+      .catch(onError);
+  })).then((platformsData) => {
+    const output = platformsData.reduce((acc, data) => {
+      acc[data[0]] = data[1];
+      return acc;
+    }, {});
+    fs.writeFile(
+      `${jsonFolder}/${jsonFileName}`,
+      JSON.stringify(output, null, 2),
+      function(err) {
+        if(err) {
+          return console.log(err);
+        }
+        console.info();
+        console.info(`${jsonFileName} updated at ${jsonFolder}/${jsonFileName}`);
+      }
+    );
+  });
 }
 
 main();

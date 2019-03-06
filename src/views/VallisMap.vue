@@ -79,16 +79,6 @@
               </l-tooltip>
             </l-marker>
           </l-layer-group>
-
-          <l-marker :lat-lng="markers.vallis.loc">
-            <l-icon
-              :icon-size="icons.home.size"
-              :icon-url="icons.home.src" >
-            </l-icon>
-            <l-tooltip :options="{permanent: false, interactive: true, position: markers.vallis.position}">
-              <div>{{markers.vallis.title}}</div>
-            </l-tooltip>
-          </l-marker>
         </l-map>
       </b-col>
     </b-row>
@@ -110,13 +100,11 @@
   import kdrive from '@/assets/json/geo/vallis/kdrive.json';
   import oddity from '@/assets/json/geo/vallis/memoryfrag.json';
   import somachord from '@/assets/json/geo/vallis/somachord.json';
-  import fishIcon from '@/assets/img/map_icons/fish.png';
   import fishRecommendIcon from '@/assets/img/map_icons/fish-recommend.png';
   import mineRecommendIcon from '@/assets/img/map_icons/mine-recommend.png';
   import fishCaveIcon from '@/assets/img/map_icons/fishing-cave.png';
   import fishToroidCaveIcon from '@/assets/img/map_icons/toroid-fishing-cave.png';
   import toroidCaveIcon from '@/assets/img/map_icons/toroid-normal-cave.png';
-  import homeIcon from '@/assets/img/map_icons/home.png';
   import caldaIcon from '@/assets/img/map_icons/calda-toroid.png';
   import solaIcon from '@/assets/img/map_icons/sola-toroid.png';
   import vegaIcon from '@/assets/img/map_icons/vega-toroid.png';
@@ -126,11 +114,6 @@
 
   import MapPopup from '@/components/MapPopup.vue';
   import OddityPopup from '@/components/OddityPopup.vue';
-
-  const fishMarker = L.icon({
-    iconUrl: fishIcon,
-    iconSize: [25, 25],
-  });
 
   const fishRecommendMarker = L.icon({
     iconUrl: fishRecommendIcon,
@@ -237,7 +220,7 @@
             json: fish,
             opts: {
               pointToLayer: function(feature, latlng) {
-                return markerAlias(latlng, {icon: fishMarker});
+                return markerAlias(latlng);
               },
               onEachFeature: onEachFeature
             }
@@ -319,10 +302,6 @@
           }
         },
         icons: {
-          home: {
-            src: homeIcon,
-            size: [25, 25],
-          },
           calda: {
             src: caldaIcon,
             size: [90, 62],
@@ -341,11 +320,6 @@
           }
         },
         markers: {
-          vallis: {
-            loc: L.latLng(900.25,1067.33),
-            title: 'Fortuna',
-            position: 'bottom'
-          },
           calda: {
             loc: L.latLng(642.88,688.49),
             title: 'Calda Toroid',

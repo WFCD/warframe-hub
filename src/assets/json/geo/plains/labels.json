@@ -3,13 +3,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Temple of Profit"
+         "name":"Gara Toht Lake"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            524.357651,
-            1742.609375
+            590.092643,
+            393.085938
          ]
       }
    },
@@ -17,13 +17,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Ustara Crater"
+         "name":"Hek's Stiletto"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            1174.256228,
-            1722
+            437.630396,
+            486.015625
          ]
       }
    },
@@ -31,13 +31,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Reflector"
+         "name":"Seaside Ruin"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            1673.317809,
-            1622.460938
+            73.418575,
+            481.136719
          ]
       }
    },
@@ -45,13 +45,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Temple Fabrication"
+         "name":"Renthi Spring"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            544.132756,
-            1220
+            553.492844,
+            704.136719
          ]
       }
    },
@@ -59,13 +59,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Grow Site"
+         "name":"The Ribs"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            892.186601,
-            1284
+            157.431572,
+            709.136719
          ]
       }
    },
@@ -73,13 +73,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Central Maintenance"
+         "name":"Mount Nang"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            1198.233947,
-            1188
+            340.459887,
+            909.136719
          ]
       }
    },
@@ -87,13 +87,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Harindi Crater"
+         "name":"The Seethe"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            1736.31719,
-            942
+            576.095312,
+            904
          ]
       }
    },
@@ -101,13 +101,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Fortuna"
+         "name":"Ostwan Range"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            1017.127804,
-            871.421875
+            887.143432,
+            745
          ]
       }
    },
@@ -115,13 +115,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Coolant Reservoir"
+         "name":"Hillside Ruin"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            675.074888,
-            885.421875
+            904.118714,
+            184.496094
          ]
       }
    },
@@ -129,13 +129,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Enrichment Labs"
+         "name":"Mer-sah Bay"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            583.060653,
-            645.421875
+            527.724547,
+            57.929688
          ]
       }
    },
@@ -143,13 +143,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"The Pearl"
+         "name":"Cetus"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            142.992573,
-            703.421875
+            532.725321,
+            202.929688
          ]
       }
    },
@@ -157,13 +157,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Asta Crater"
+         "name":"Twin Horns"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            455.040848,
-            489.421875
+            377.701338,
+            273.929688
          ]
       }
    },
@@ -171,41 +171,13 @@
       "type":"Feature",
       "properties":{
          "type":"marker",
-         "name":"Transit Depot"
+         "name":"Er-phryah's Vigil"
       },
       "geometry":{
          "type":"Point",
          "coordinates":[
-            897.109237,
-            381.421875
-         ]
-      }
-   },
-   {
-      "type":"Feature",
-      "properties":{
-         "type":"marker",
-         "name":"Spaceport"
-      },
-      "geometry":{
-         "type":"Point",
-         "coordinates":[
-            1393.185982,
-            455.421875
-         ]
-      }
-   },
-   {
-      "type":"Feature",
-      "properties":{
-         "type":"marker",
-         "name":"Orokin Dig Site"
-      },
-      "geometry":{
-         "type":"Point",
-         "coordinates":[
-            1651.225901,
-            557.421875
+            95.657705,
+            288.929688
          ]
       }
    }

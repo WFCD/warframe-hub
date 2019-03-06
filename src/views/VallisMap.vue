@@ -12,8 +12,8 @@
           >
           <l-control-layers
             position="topright"
-            collapsed="false"
-            sort-layers="true"
+            :collapsed="false"
+            :sort-layers="true"
           />
           <l-image-overlay
             :url="url"

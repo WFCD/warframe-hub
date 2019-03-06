@@ -13,8 +13,8 @@
           <l-image-overlay :url="url" :bounds="bounds"/>
           <l-control-layers
             position="topright"
-            collapsed="false"
-            sort-layers="true"
+            :collapsed="false"
+            :sort-layers="true"
           />
           <l-layer-group
           v-for="geojson in geo"

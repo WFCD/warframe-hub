@@ -16,42 +16,6 @@ function onError(error) {
   console.error(error);
 }
 
-function parseBase(platform, data) {
-  const platformOutput = parseObject(data, platform, platform);
-  return [platform, platformOutput];
-}
-
-function parseObject(data, key, objectPath = '') {
-  if (typeof(data) !== 'object') {
-    return null;
-  }
-
-  const orderedParseFunctions = [
-    parseArray,
-    parseObject,
-    parseBoolean,
-    parseDate,
-    parseId,
-    parseNumber,
-    parseETA,
-    parseDefault
-  ];
-  const cleanedData = {};
-
-  Object.entries(data).forEach(([key, prop]) => {
-    let temp;
-    for (let fun of orderedParseFunctions) {
-      temp = fun(prop, key, `${objectPath}.${key}`);
-      if (temp !== null) {
-        break;
-      }
-    }
-    cleanedData[key] = temp;
-  });
-
-  return cleanedData;
-}
-
 function parseArray(data) {
   return Array.isArray(data) ? [] : null;
 }
@@ -85,6 +49,42 @@ function parseDefault(data, key, objectPath) {
   const defaultOutput = 'Loading...';
   console.info(`Defaulting ${objectPath} - ${data} to ${defaultOutput}`);
   return defaultOutput;
+}
+
+function parseObject(data, key, objectPath = '') {
+  if (typeof(data) !== 'object') {
+    return null;
+  }
+
+  const orderedParseFunctions = [
+    parseArray,
+    parseObject,
+    parseBoolean,
+    parseDate,
+    parseId,
+    parseNumber,
+    parseETA,
+    parseDefault
+  ];
+  const cleanedData = {};
+
+  Object.entries(data).forEach(([key, prop]) => {
+    let temp;
+    for (let fun of orderedParseFunctions) {
+      temp = fun(prop, key, `${objectPath}.${key}`);
+      if (temp !== null) {
+        break;
+      }
+    }
+    cleanedData[key] = temp;
+  });
+
+  return cleanedData;
+}
+
+function parseBase(platform, data) {
+  const platformOutput = parseObject(data, platform, platform);
+  return [platform, platformOutput];
 }
 
 function main() {

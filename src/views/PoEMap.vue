@@ -9,11 +9,10 @@
             :options="mapOptions"
             :crs="crs"
             :style="mapStyle"
-            @click="checkLatLng"
           >
           <l-image-overlay :url="url" :bounds="bounds"/>
           <l-control-layers
-            position="'topright'"
+            position="topright"
             :collapsed="false"
             :sort-layers="true"
           />
@@ -25,16 +24,6 @@
           >
             <l-geo-json :geojson="geojson.json" :options="geojson.opts"/>
           </l-layer-group>
-
-          <l-marker :lat-lng="markers.cetus.loc">
-            <l-icon
-              :icon-size="icons.home.size"
-              :icon-url="icons.home.src" >
-            </l-icon>
-            <l-tooltip :options="{permanent: false, interactive: true, position: markers.cetus.position}">
-              <div>{{markers.cetus.title}}</div>
-            </l-tooltip>
-          </l-marker>
         </l-map>
       </b-col>
     </b-row>
@@ -47,27 +36,20 @@
 
   /* map stuff */
   import plains from '@/assets/img/plains.png';
+  import labels from '@/assets/json/geo/plains/labels.json';
   import fish from '@/assets/json/geo/plains/fishing.json';
   import grineer from '@/assets/json/geo/plains/grineer.json';
   import lorefish from '@/assets/json/geo/plains/lorefish.json';
   import wisp from '@/assets/json/geo/plains/wisp.json';
   import lure from '@/assets/json/geo/plains/lure.json';
   import cave from '@/assets/json/geo/plains/cave.json';
-  import fishIcon from '@/assets/img/map_icons/fish.png';
   import grineerIcon from '@/assets/img/map_icons/grineer.png';
   import oddityIcon from '@/assets/img/map_icons/lorefish.png';
-  import homeIcon from '@/assets/img/map_icons/home.png';
   import wispIcon from '@/assets/img/map_icons/wisp.png';
   import lureIcon from '@/assets/img/map_icons/lure.png';
-  import caveIcon from '@/assets/img/map_icons/caves.png';
-
+  import caveIcon from '@/assets/img/map_icons/normal-cave.png';
   import MapPopup from '@/components/MapPopup.vue';
   import OddityPopup from '@/components/OddityPopup.vue';
-
-  const fishMarker = L.icon({
-    iconUrl: fishIcon,
-    iconSize: [25, 25],
-  });
 
   const grineerMarker = L.icon({
     iconUrl: grineerIcon,
@@ -76,17 +58,17 @@
 
   const oddityMarker = L.icon({
     iconUrl: oddityIcon,
-    iconSize: [25, 25],
+    iconSize: [33, 25],
   });
 
   const wispMarker = L.icon({
     iconUrl: wispIcon,
-    iconSize: [25, 25],
+    iconSize: [50, 33],
   });
 
   const lureMarker = L.icon({
     iconUrl: lureIcon,
-    iconSize: [25, 25],
+    iconSize: [50, 50],
   });
 
   const caveMarker = L.icon({
@@ -119,6 +101,7 @@
   }
 
   const markerAlias = L.marker;
+  const labelAlias = L.circleMarker;
 
   export default {
     name: 'Poemap',
@@ -141,11 +124,30 @@
         },
         geo: [
           {
+            name: 'Map Label',
+            json: labels,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return labelAlias(latlng)
+                  .setStyle({
+                    stroke: false,
+                    fill: false
+                  })
+                  .bindTooltip(feature.properties.name, {
+                    permanent: true,
+                    direction: 'center',
+                    className: 'map-label'
+                  })
+                  .openTooltip();
+              }
+            }
+          },
+          {
             name: 'Fishing',
             json: fish,
             opts: {
               pointToLayer: function(feature, latlng) {
-                return markerAlias(latlng, {icon: fishMarker});
+                return markerAlias(latlng);
               },
               onEachFeature: onEachFeature
             }
@@ -171,7 +173,7 @@
             }
           },
           {
-            name: 'Wisp Spawn',
+            name: 'Cetus Wisp',
             json: wisp,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -181,7 +183,7 @@
             }
           },
           {
-            name: 'Lure Locations',
+            name: 'Vomvalyst Lure',
             json: lure,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -191,7 +193,7 @@
             }
           },
           {
-            name: 'Cave Entrances',
+            name: 'Cave Entrance',
             json: cave,
             opts: {
               pointToLayer: function(feature, latlng) {
@@ -200,33 +202,13 @@
               onEachFeature: onEachFeature
             }
           }
-        ],
-        icons: {
-          home: {
-            src: homeIcon,
-            size: [25, 25],
-          }
-        },
-        markers: {
-          cetus: {
-            loc: L.latLng(173.77,535.09),
-            title: 'Cetus',
-            position: 'bottom'
-          },
-        },
+        ]
       };
     },
     methods: {
       track () {
         this.$ga.page('/poe/map');
-      },
-      checkLatLng(e){
-        var coord = e.latlng;
-        var lat = coord.lat;
-        var lng = coord.lng;
-        // eslint-disable-next-line
-        console.log(`Clicked (${lat.toFixed(2)},${lng.toFixed(2)})`);
-      },
+      }
     },
     mounted: function () {},
   };

@@ -9,14 +9,16 @@
             :options="mapOptions"
             :crs="crs"
             :style="mapStyle"
-            @click="checkLatLng"
           >
-          <l-image-overlay :url="url" :bounds="bounds"/>
           <l-control-layers
             :position="'topright'"
             :collapsed="false"
             :sort-layers="true"
           />
+          <l-image-overlay
+            :url="url"
+            :bounds="bounds"
+            />
           <l-layer-group
           v-for="geojson in geo"
             layer-type="overlay"
@@ -100,6 +102,7 @@
   /* map stuff */
   import vallis from '@/assets/img/orbvallis.png';
   import fish from '@/assets/json/geo/vallis/fishing.json';
+  import labels from '@/assets/json/geo/vallis/labels.json';
   import fishRecommend from '@/assets/json/geo/vallis/fishing-recommend.json';
   import mineRecommend from '@/assets/json/geo/vallis/mining-recommend.json';
   import toroidFishCave from '@/assets/json/geo/vallis/toroidfishcave.json';
@@ -189,6 +192,7 @@
   }
 
   const markerAlias = L.marker;
+  const labelAlias = L.circleMarker;
 
   export default {
     name: 'Vallismap',
@@ -209,6 +213,25 @@
           width: '100%',
         },
         geo: [
+          {
+            name: 'Map Label',
+            json: labels,
+            opts: {
+              pointToLayer: function(feature, latlng) {
+                return labelAlias(latlng)
+                  .setStyle({
+                    stroke: false,
+                    fill: false
+                  })
+                  .bindTooltip(feature.properties.name, {
+                    permanent: true,
+                    direction: 'center',
+                    className: 'map-label'
+                  })
+                  .openTooltip();
+              }
+            }
+          },
           {
             name: 'Fishing',
             json: fish,
@@ -344,14 +367,7 @@
     methods: {
       track () {
         this.$ga.page('/vallis/map');
-      },
-      checkLatLng(e) {
-        var coord = e.latlng;
-        var lat = coord.lat;
-        var lng = coord.lng;
-        // eslint-disable-next-line
-        console.log(`Clicked (${lat.toFixed(2)},${lng.toFixed(2)})`);
-      },
+      }
     },
     mounted: function () {},
   };

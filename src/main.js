@@ -68,6 +68,7 @@ Vue.component('l-tooltip', Vue2Leaflet.LTooltip);
 Vue.component('l-icon', Vue2Leaflet.LIcon);
 Vue.component('l-control-layers', Vue2Leaflet.LControlLayers);
 Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
+Vue.component('l-circle-marker', Vue2Leaflet.LCircleMarker);
 
 /* Themes */
 import '@/assets/less/common.less';

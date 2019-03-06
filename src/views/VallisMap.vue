@@ -11,9 +11,9 @@
             :style="mapStyle"
           >
           <l-control-layers
-            :position="'topright'"
-            :collapsed="false"
-            :sort-layers="true"
+            position="topright"
+            collapsed="false"
+            sort-layers="true"
           />
           <l-image-overlay
             :url="url"

@@ -21,7 +21,7 @@ export default {
   name: 'ResetPanel',
   computed: {
     headertext() {
-      return 'Daily Reward Timer reset';
+      return 'Daily Reward Timer Reset';
     }
   },
   data() {

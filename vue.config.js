@@ -7,16 +7,13 @@ module.exports = {
 
   lintOnSave: true,
   baseUrl: '/',
+  publicPath: '/',
   outputDir: undefined,
   assetsDir: undefined,
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-  configureWebpack: {
-    plugins: [
-      
-    ]
-  },
+  configureWebpack: { plugins: [] },
   css: {
     sourceMap: true,
     loaderOptions: {

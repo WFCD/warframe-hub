@@ -1,29 +1,55 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <b-row ref="timerComponentGrid" v-packery='{itemSelector: ".packery-item", percentPosition: true}'>
-        <AcolytesPanel v-if="this.$store.getters.componentState.acolytes.state" :acolytes="this.$store.getters.worldstate.persistentEnemies" />
-        <EventsPanel v-if="this.$store.getters.componentState.event.state" :events="this.$store.getters.worldstate.events" />
-        <ResetPanel v-if="this.$store.getters.componentState.reset.state" />
-        <AlertPanel v-if="this.$store.getters.componentState.alerts.state" :alerts="this.$store.getters.worldstate.alerts"/>
-        <InvasionsPanel v-if="this.$store.getters.componentState.invasions.state" :invasions="this.$store.getters.worldstate.invasions"/>
-        <NewsPanel v-if="this.$store.getters.componentState.news.state" :news="this.$store.getters.worldstate.news" />
-        <TimePanel v-if="this.$store.getters.componentState.earth.state" :time="this.$store.getters.worldstate.earthCycle" location="Earth" />
-        <TimePanel v-if="this.$store.getters.componentState.cetus.state" :time="this.$store.getters.worldstate.cetusCycle" location="Cetus" />
-        <TimePanel v-if="this.$store.getters.componentState.vallis.state" :time="this.$store.getters.worldstate.vallisCycle" location="Vallis" />
-        <SortiePanel v-if="this.$store.getters.componentState.sortie.state" :sortie="this.$store.getters.worldstate.sortie"/>
-        <BountyPanel v-if="this.$store.getters.componentState.bounties.state" :syndicate="this.ostrons" type="Ostron" />
-        <BountyPanel v-if="this.$store.getters.componentState['solaris-bounties'].state" :syndicate="this.solaris" type="Solaris United" />
-        <FissuresPanel v-if="this.$store.getters.componentState.fissures.state" :fissures="this.$store.getters.worldstate.fissures"/>
-        <DarvoDealsPanel v-if="this.$store.getters.componentState.darvo.state" :deals="this.$store.getters.worldstate.dailyDeals" />
-        <SalesPanel v-if="this.$store.getters.componentState.deals.state" :sales="this.$store.getters.worldstate.flashSales" />
-        <VoidTraderPanel v-if="this.$store.getters.componentState.baro.state" :voidTrader="this.$store.getters.worldstate.voidTrader" />
-      </b-row>
+      <vue-responsive-grid-layout
+        @layout-update="onLayoutUpdate"
+        @layout-change="onLayoutChange"
+        @layout-init="onLayoutInit"
+        @width-change="onWidthChange"
+        @breakpoint-change="onBreakpointChange"
+        :layouts="layouts"
+        :compact-type="'vertical'"
+        :breakpoint="breakpoint"
+        :cols="cols"
+        :colsAll="colsAll"
+        :rowHeight="1"
+        ref="layout"
+      >
+        <template slot-scope="props">
+          <vue-grid-item
+            v-for="item in props.layout"
+            :i="item.i"
+            :key="item.i"
+            :w.sync="item.w"
+            :h.sync="item.h"
+            :x="item.x"
+            :y="item.y"
+            :container-width="props.containerWidth"
+            :row-height="props.rowHeight"
+            :is-draggable="true"
+            :is-resizable="false"
+            class-name="grid-item panel-header"
+            :cols="props.cols"
+            :height-from-children="true"
+            :max-rows="props.maxRows"
+            :canBeResizedWithAll="false"
+            handle=".header-panel"
+          >
+            <div ref="panelObserver" :id="item.i">
+              <div
+                :is="componentState[item.i].component"
+                v-bind="resolveProps(componentState[item.i].props)"
+              />
+            </div>
+          </vue-grid-item>
+        </template>
+      </vue-responsive-grid-layout>
     </b-container>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import AlertPanel from '@/components/panels/AlertPanel.vue';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
@@ -37,6 +63,7 @@ import EventsPanel from '@/components/panels/EventsPanel.vue';
 import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
+import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 
 export default {
   name: 'timers',
@@ -54,23 +81,129 @@ export default {
     DarvoDealsPanel,
     SalesPanel,
     VoidTraderPanel,
+    NightwavePanel,
+  },
+  data() {
+    return {
+      components: {},
+      breakpoint: 'md',
+      cols: 2,
+      breakpoints: { lg: 1800, md: 1200, sm: 996, xs: 768, xxs: 480 },
+      colsAll: { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 },
+      isDraggable: true,
+      isResizable: true,
+      lastUpdate: 0
+    };
+  },
+  mounted() {
+    this.components = this.gridState.components;
+    this.lastUpdate = Date.now();
   },
   methods: {
-    track () {
+    track() {
       this.$ga.page('/');
     },
+    updateComponents(layout, breakpoint) {
+      layout.forEach((itemSize) => {
+        this.$set(this.components[itemSize.i], breakpoint, itemSize);
+      });
+      const currTime = Date.now();
+      if (currTime - this.lastUpdate > 500) {
+        this.$store.commit('commitGridLayout', [this.components]);
+        this.lastUpdate = currTime;
+      }
+    },
+
+    onLayoutUpdate(layout) {
+      this.updateComponents(layout, this.breakpoint);
+    },
+
+    onLayoutChange(layout, layouts, breakpoint) {
+      this.updateComponents(layout, breakpoint);
+    },
+
+    onLayoutInit(layout, layouts, cols, breakpoint) {
+      this.cols = cols;
+      this.breakpoint = breakpoint;
+      this.updateComponents(layout, breakpoint);
+    },
+
+    onBreakpointChange(breakpoint) {
+      this.breakpoint = breakpoint;
+    },
+
+    onWidthChange(width, cols) {
+      this.cols = cols;
+    },
+
+    // Replaces a string that starts with the object_identifier with the respective object.
+    // Ex. '@worldstate.syndicateMissions' sets the object property to obj.worldstate.syndicateMissions
+    resolveProps(props, obj = this, objIdentifier = '@', separator = '.') {
+      if (typeof props !== 'object' || Array.isArray(props)) {
+        throw 'props should be an object.';
+      }
+      return Object.entries(props).reduce((prev, [key, value]) => {
+        if (value[0] === objIdentifier) {
+          var target = value
+            .slice(1)
+            .split(separator)
+            .reduce((prev, curr) => prev && prev[curr], obj);
+          prev[key] = target;
+        } else {
+          prev[key] = value;
+        }
+        return prev;
+      }, {});
+    },
+  },
+  watch: {
+    worldstate: {
+      handler: function() {
+        if (this.$refs.panelObserver) {
+          this.$refs.panelObserver.forEach((element) => {
+            element.toggleAttribute('updating');
+            element.toggleAttribute('updating');
+          });
+          this.$refs.layout.resizeAllItems(2, 'vertical');
+        }
+      },
+      deep: true
+    }
   },
   computed: {
-    ostrons: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter((syndicate) => syndicate.syndicate === 'Ostrons');
-      return filtered[0];
-    },
-    solaris: function() {
-      const filtered = this.$store.getters.worldstate.syndicateMissions
-        .filter((syndicate) => syndicate.syndicate === 'Solaris United');
-      return filtered[0];
-    },
+    ...mapState({
+      componentState: 'components',
+      gridState: 'grid'
+    }),
+    ...mapGetters({
+      worldstate: 'worldstate',
+      ostron: 'ostronSyndicate',
+      solaris: 'solarisSyndicate'
+    }),
+    layouts: function() {
+      return Object.entries(this.components)
+        .filter(([key]) => {
+          return this.componentState[key].state;
+        })
+        .reduce((acc, [, sizes]) => {
+          Object.entries(sizes).forEach(([size, itemSize]) => {
+            if (!acc[size]) {
+              acc[size] = [];
+            }
+            acc[size].push(itemSize);
+          });
+          return acc;
+        }, {});
+    }
   }
 };
 </script>
+<style>
+/* Saved for testing purposes */
+/*
+.grid-item {
+  border: 1px dotted #000;
+  background-color: rgb(146, 146, 146);
+}
+*/
+</style>

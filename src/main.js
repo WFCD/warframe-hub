@@ -23,18 +23,17 @@ if (process.env.VUE_APP_DSN) {
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-/* Bootswatch */
-import 'bootswatch/dist/darkly/bootstrap.min.css';
-
 /* FontAwesome */
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Packery */
-import VuePackeryPlugin from 'vue-packery-plugin';
-Vue.use(VuePackeryPlugin);
+/* Grid Layout */
+import {VueResponsiveGridLayout, VueGridItem, VueGridLayout} from 'vue-responsive-grid-layout';
+Vue.component('vue-responsive-grid-layout', VueResponsiveGridLayout);
+Vue.component('vue-grid-item', VueGridItem);
+Vue.component('vue-grid-layout', VueGridLayout);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';
@@ -69,7 +68,7 @@ Vue.component('l-tooltip', Vue2Leaflet.LTooltip);
 Vue.component('l-icon', Vue2Leaflet.LIcon);
 Vue.component('l-control-layers', Vue2Leaflet.LControlLayers);
 Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
-
+Vue.component('l-circle-marker', Vue2Leaflet.LCircleMarker);
 
 /* Themes */
 import '@/assets/less/common.less';
@@ -77,6 +76,8 @@ import '@/assets/less/fish.less';
 import '@/assets/less/tables.less';
 import '@/assets/less/night.less';
 import '@/assets/less/day.less';
+import '@/assets/less/retro.less';
+import '@/assets/less/eidolon.less';
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');
@@ -87,4 +88,5 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app');
 
-setInterval(() => {store.dispatch('updateWorldstate');}, 30000);
+const interval = ((process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL)));
+setInterval(() => {store.dispatch('updateWorldstate');}, interval);

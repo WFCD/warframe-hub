@@ -1,6 +1,6 @@
 <template>
   <div id="notificationsTabBody">
-    Checking the checkbox next to an item below will enable delivery of notifications for alerts or invasions with the corresponding item.
+    Check the checkbock for entries you want notifications for:
     <div class="tab-wrap">
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group id="reward-checks" name="Reward Filters" :options="rewardStates"
@@ -10,7 +10,6 @@
       </b-form-group>
     </div>
     <hr />
-    Checking the checkbox next to an event below will enable delivery of notifications the corresponding events.
     <div class="tab-wrap">
       <b-form-group label="Event Filters">
         <b-form-checkbox-group id="event-checks" name="Event Filters" :options="eventStates"

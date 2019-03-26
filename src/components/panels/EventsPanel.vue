@@ -7,8 +7,8 @@
         <div class="text-center">{{event.tooltip}}</div><br>
         <div class="text-center bottom-pad">
           <b-badge variant="danger">{{event.victimNode}}</b-badge>
-          <b-badge :variant="eventHealthVariant(event)">{{event.health}}% Remaining</b-badge>
         </div>
+        <b-badge :variant="eventHealthVariant(event)">{{event.health || (100 - ((event.currentScore/event.maximumScore)*100)).toFixed(2)}}% Remaining</b-badge>
         <div class="text-center bottom-pad" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
           <b-badge v-for="item in reward.items" :key="`${item}-${makeid()}`" variant="success">{{item}}</b-badge>
           <b-badge v-for="item in reward.countedItems" :key="`${item}-${makeid()}`" variant="success">{{item}}</b-badge>

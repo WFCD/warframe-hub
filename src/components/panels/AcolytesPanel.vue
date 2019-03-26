@@ -37,7 +37,9 @@
 
   export default {
     name: 'AcolytesPanel',
-    props: ['acolytes'],
+    props: [
+      'acolytes'
+    ],
     computed: {
       headertext() {
         return 'Acolytes';

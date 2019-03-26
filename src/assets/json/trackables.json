@@ -60,91 +60,6 @@
       "value": "aura",
       "text": "Aura Mods"
     },
-    "neuralSensors": {
-      "state": false,
-      "value": "neuralSensors",
-      "text": "Neural Sensors"
-    },
-    "orokinCell": {
-      "state": false,
-      "value": "orokinCell",
-      "text": "Orokin Cells"
-    },
-    "alloyPlate": {
-      "state": false,
-      "value": "alloyPlate",
-      "text": "Alloy Plates"
-    },
-    "circuits": {
-      "state": false,
-      "value": "circuits",
-      "text": "Circuits"
-    },
-    "controlModule": {
-      "state": false,
-      "value": "controlModule",
-      "text": "Control Modules"
-    },
-    "ferrite": {
-      "state": false,
-      "value": "ferrite",
-      "text": "Ferrite"
-    },
-    "gallium": {
-      "state": false,
-      "value": "gallium",
-      "text": "Gallium"
-    },
-    "morphics": {
-      "state": false,
-      "value": "morphics",
-      "text": "Morphics"
-    },
-    "nanoSpores": {
-      "state": false,
-      "value": "nanoSpores",
-      "text": "Nano Spores"
-    },
-    "oxium": {
-      "state": false,
-      "value": "oxium",
-      "text": "Oxium"
-    },
-    "rubedo": {
-      "state": false,
-      "value": "rubedo",
-      "text": "Rubedo"
-    },
-    "salvage": {
-      "state": false,
-      "value": "salvage",
-      "text": "Salvage"
-    },
-    "plastids": {
-      "state": false,
-      "value": "plastids",
-      "text": "Plastids"
-    },
-    "polymerBundle": {
-      "state": false,
-      "value": "polymerBundle",
-      "text": "Polymer Bundles"
-    },
-    "argonCrystal": {
-      "state": false,
-      "value": "argonCrystal",
-      "text": "Argon Crystals"
-    },
-    "cryotic": {
-      "state": false,
-      "value": "cryotic",
-      "text": "Cryotic"
-    },
-    "tellurium": {
-      "state": false,
-      "value": "tellurium",
-      "text": "Tellurium"
-    },
     "neurodes": {
       "state": false,
       "value": "neurodes",
@@ -154,11 +69,6 @@
       "state": false,
       "value": "nightmare",
       "text": "Nightmare Mods"
-    },
-    "endo": {
-      "state": false,
-      "value": "endo",
-      "text": "Endo"
     },
     "reactor": {
       "state": false,
@@ -190,33 +100,18 @@
       "value": "riven",
       "text": "Riven Mods"
     },
-    "kavatGene": {
-      "state": false,
-      "value": "kavatGene",
-      "text": "Kavat Genes"
-    },
-    "kubrowEgg": {
-      "state": false,
-      "value": "kubrowEgg",
-      "text": "Kubrow Eggs"
-    },
     "traces": {
       "state": false,
       "value": "traces",
       "text": "Void Traces"
-    },
-    "other": {
-      "state": false,
-      "value": "other",
-      "text": "Other Items"
-    },
-    "credits": {
-      "state": false,
-      "value": "credits",
-      "text": "Credits"
     }
   },
   "eventTypes": {
+    "nightwave": {
+      "state": false,
+      "value": "nightwave",
+      "text": "Nightwave"
+    },
     "alerts": {
       "state": false,
       "value": "alerts",

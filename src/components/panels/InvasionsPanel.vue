@@ -3,8 +3,8 @@
     <b-list-group>
       <b-list-group-item :style="styleObject" v-for="(invasion, index) in invasions" :key="invasion.id"
       v-bind:class="{
-        'list-group-item-borderless': index !== invasions.length - 1,
-        'list-group-item-borderbottom': index === invasions.length - 1 }"
+        'list-group-item-borderless': index < (invasions.length - 1),
+        'list-group-item-borderbottom': index === (invasions.length - 1) }"
         v-if="!invasion.completed">
 
         <div :id="`${invasion.id}_info`" class="text-center">

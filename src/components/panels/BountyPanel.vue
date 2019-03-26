@@ -21,8 +21,6 @@
 </template>
 
 <script>
-  import {packeryEvents} from 'vue-packery-plugin';
-
   import TimeBadge from '@/components/TimeBadge.vue';
   import NoDataItem from '@/components/NoDataItem.vue';
   import HubImg from '@/components/HubImg.vue';
@@ -37,16 +35,18 @@
     computed: {
       headertext() {
         return `${this.type} Bounty Cycle`;
-      }
-    },
-    data () {
-      return {
-        items: this.syndicate.jobs.map((job) => ({
+      },
+      items: function() {
+        return this.syndicate.jobs.map((job) => ({
           type: job.type,
           standing: job.standingStages.join(', '),
           'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
           rewards: `${job.rewardPool.map((reward) => `<span>${reward}</span>`).join('<br />')}`,
-        })),
+        }));
+      }
+    },
+    data () {
+      return {
         fields: [
           {
             key: 'type',
@@ -67,7 +67,6 @@
           },
         ],
         standing: standing,
-        packeryEvents: packeryEvents,
       };
     },
     components: {

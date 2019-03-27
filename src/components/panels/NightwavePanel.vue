@@ -14,7 +14,19 @@
             />
           {{challenge.title}}
         </span>
-        <TimeBadge :starttime="challenge.activation" :endtime="challenge.expiry" :interval="1000"/>
+        <TimeBadge class="pull-right" :starttime="challenge.activation" :endtime="challenge.expiry" :interval="1000"/>
+        <b-badge
+          v-bind:variant="challenge.isDaily ? 'success' : (challenge.isElite ? 'danger' : 'warning')"
+          class="pull-right"
+          >
+          <HubImg
+            :src="standing"
+            name="Standing Gain"
+            class="invert"
+            height="12px"
+            width="12px"
+            /> {{challenge.reputation}}
+        </b-badge>
       </b-list-group-item>
       <NoDataItem v-if="nightwave.activeChallenges.length === 0" :text="headertext" />
     </b-list-group>
@@ -30,6 +42,7 @@
   import daily from '@/assets/img/nightwave/daily.png';
   import weekly from '@/assets/img/nightwave/weekly.png';
   import elite from '@/assets/img/nightwave/elite.png';
+  import standing from '@/assets/img/general/standing.svg';
 
   export default {
     name: 'Nightwave',
@@ -47,6 +60,7 @@
         daily: daily,
         weekly: weekly,
         elite: elite,
+        standing: standing,
       };
     },
     components: {

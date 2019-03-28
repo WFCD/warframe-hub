@@ -4,7 +4,7 @@
       <b-list-group-item :style="styleObject" v-for="(challenge, index) in nightwave.activeChallenges" :key="challenge.id"
       v-bind:class="{ 'list-group-item-borderless': index !== nightwave.activeChallenges.length - 1,
         'list-group-item-borderbottom': index === nightwave.activeChallenges.length - 1 }">
-        <span v-b-tooltip.right :title="challenge.desc" class="pull-left">
+        <span class="pull-left">
           <HubImg
             :src="challenge.isDaily ? daily : (challenge.isElite ? elite : weekly)"
             :name="challenge.isDaily ? 'Daily' : (challenge.isElite ? 'Elite Weekly' : 'Weekly')"
@@ -12,8 +12,11 @@
             :height="challenge.isDaily ? '20px' : '32px'"
             width="32px"
             />
+        </span>
+        <span v-b-tooltip.right :title="challenge.desc" class="pull-left">
           {{challenge.title}}
         </span>
+        
         <TimeBadge class="pull-right" :starttime="challenge.activation" :endtime="challenge.expiry" :interval="1000"/>
         <b-badge
           v-bind:variant="challenge.isDaily ? 'success' : (challenge.isElite ? 'danger' : 'warning')"

@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="about-modal" centered size="lg" lazy title="About">
+  <b-modal id="about-modal" centered size="lg" title="About">
     <b-tabs>
       <b-tab title="Community Devs">
         <br>This project is part of the Warframe Community Developers.<br>

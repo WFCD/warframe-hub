@@ -26,9 +26,9 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item right href="https://discord.gg/jGZxH9f" target="_blank"><i class="fab fa-discord faIconStyle"></i> Discord</b-nav-item>
-        <b-nav-item right v-b-modal.about-modal><i class="fas fa-info faIconStyle"></i> About</b-nav-item>
-        <b-nav-item right v-b-modal.settings-modal><i class="fas fa-cog faIconStyle"></i> Settings</b-nav-item>
+        <b-nav-item right href="https://discord.gg/jGZxH9f" target="_blank" v-b-tooltip.bottom title="Discord"><i class="fab fa-discord faIconStyle"></i></b-nav-item>
+        <b-nav-item right v-b-modal.about-modal v-b-tooltip.bottom title="Information"><i class="fas fa-info faIconStyle"></i></b-nav-item>
+        <b-nav-item right v-b-modal.settings-modal v-b-tooltip.bottom title="Settings"><i class="fas fa-cog faIconStyle"></i></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

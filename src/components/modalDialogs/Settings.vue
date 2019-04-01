@@ -1,5 +1,5 @@
 <template>
-  <b-modal @shown="checkNotifications" id="settings-modal" centered size="md" lazy title="Settings">
+  <b-modal @shown="checkNotifications" id="settings-modal" centered size="md" title="Settings">
       <b-tabs card vertical>
         <b-tab title="Platform">
           <b-form-group label="Platform">

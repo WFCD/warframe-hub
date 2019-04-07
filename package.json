@@ -51,7 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "7.11.1",
     "greenkeeper-lockfile": "^1.14.0",
-    "mocha": "^5.1.1",
+    "mocha": "^6.1.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "nodemonConfig": {

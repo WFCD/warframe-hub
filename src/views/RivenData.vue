@@ -17,7 +17,7 @@
 										href="#"
 										v-b-toggle="'accordion' + index + index2"
 										variant="info"
-										>{{ capitalizeFirstLetter(index2) }}</b-button
+										>{{ checktitle(index2) }}</b-button
 									>
 								</b-card-header>
 								<b-collapse
@@ -28,7 +28,7 @@
 									<b-card-body>
 										<b-card-group class="pl-0 pr-0">
 											<b-card
-												no-body:title="'Rerolled: '+ items.rerolled"
+												:title="'Rerolled: ' + items.rerolled"
 												v-for="(items, iindex) in item2"
 												:key="iindex"
 											>
@@ -114,16 +114,16 @@ export default {
 		...mapGetters({
 			platform: 'platform'
 		})
-  },
-    watch: {
-    platform: function (val) {
-		this.url =
-			'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens' +
-			val.toUpperCase() +
-			'.json';
-    this.getdata();    
-    }
-    },
+	},
+	watch: {
+		platform: function(val) {
+			this.url =
+				'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens' +
+				val.toUpperCase() +
+				'.json';
+			this.getdata();
+		}
+	},
 	mounted() {
 		this.url =
 			'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens' +
@@ -134,6 +134,13 @@ export default {
 	methods: {
 		capitalizeFirstLetter(string) {
 			return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+		},
+		checktitle(title) {
+			if (title == 'null') {
+				return ' No compatibility returned';
+			} else {
+				return this.capitalizeFirstLetter(title);
+			}
 		},
 		track() {
 			this.$ga.page('/riven/data');

@@ -43,6 +43,14 @@ Vue.use(VueNativeNotification, { requestOnNotify: true });
 import VueAnalytics from 'vue-analytics';
 Vue.use(VueAnalytics, { id: 'UA-47080716-6' });
 
+/* Axios */
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+Vue.use(VueAxios, axios);
+/* math */
+import VueLodash from 'vue-lodash';
+const options1 = { name: 'lodash' }; // customize the way you want to call it
+Vue.use(VueLodash, options1); // options is optional
 /* Leaflet */
 import Vue2Leaflet, { L } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';

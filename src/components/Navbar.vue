@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="dark" variant="primary" fixed="top">
+  <b-navbar toggleable="md" type="dark" variant="primary" fixed="top" class="vw-100">
     <b-navbar-brand href="/">Warframe Hub</b-navbar-brand>
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
@@ -15,6 +15,9 @@
         <b-nav-item-dropdown text="Orb Vallis" left class="text-center">
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" label="Map" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" label="Fishing Data" />
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Riven" left class="text-center">
+          <DropdownItem :isLocal="true" icon="fas fa-info" target="/riven/data" label="Riven Data (Alpha)" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="Projects" left>

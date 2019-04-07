@@ -14,7 +14,9 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
-    "express": "^4.16.4"
+    "axios": "^0.18.0",
+    "vue-axios": "^2.1.4",
+    "vue-lodash": "^2.0.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",

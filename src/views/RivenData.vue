@@ -113,7 +113,7 @@ import _ from 'lodash';
 
 const repoBaseUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://warframe.com'
+    ? 'https://n9e5v4d8.ssl.hwcdn.net'
     : 'http://n9e5v4d8.ssl.hwcdn.net';
 
 export default {

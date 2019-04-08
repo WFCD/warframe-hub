@@ -15,7 +15,7 @@ import VueRaven from 'vue-raven';
 
 if (process.env.VUE_APP_DSN) {
   Vue.use(VueRaven, {
-    dsn: process.env.VUE_APP_DSN,
+    dsn: process.env.VUE_APP_DSN
   });
 }
 
@@ -30,7 +30,11 @@ import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
 /* Grid Layout */
-import {VueResponsiveGridLayout, VueGridItem, VueGridLayout} from 'vue-responsive-grid-layout';
+import {
+  VueResponsiveGridLayout,
+  VueGridItem,
+  VueGridLayout
+} from 'vue-responsive-grid-layout';
 Vue.component('vue-responsive-grid-layout', VueResponsiveGridLayout);
 Vue.component('vue-grid-item', VueGridItem);
 Vue.component('vue-grid-layout', VueGridLayout);
@@ -44,7 +48,9 @@ import VueAnalytics from 'vue-analytics';
 Vue.use(VueAnalytics, { id: 'UA-47080716-6' });
 
 /* Leaflet */
-import Vue2Leaflet, { L } from 'vue2-leaflet';
+import * as Vue2Leaflet from 'vue2-leaflet';
+import L from 'leaflet';
+
 import 'leaflet/dist/leaflet.css';
 
 // this part resolve an issue where the markers would not appear
@@ -54,7 +60,6 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-
 });
 
 Vue.use(L);
@@ -88,5 +93,10 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app');
 
-const interval = ((process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL)));
-setInterval(() => {store.dispatch('updateWorldstate');}, interval);
+const interval =
+  process.env.VUE_APP_INTERVAL === undefined
+    ? 30000
+    : Number(process.env.VUE_APP_INTERVAL);
+setInterval(() => {
+  store.dispatch('updateWorldstate');
+}, interval);

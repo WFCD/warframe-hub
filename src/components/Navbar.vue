@@ -16,8 +16,8 @@
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" label="Map" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" label="Fishing Data" />
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="Riven" left class="text-center">
-          <DropdownItem :isLocal="true" icon="fas fa-info" target="/riven/data" label="Riven Data (Alpha)" />
+        <b-nav-item-dropdown text="Tools" left class="text-center">
+          <DropdownItem :isLocal="true" icon="fas fa-database" target="/riven/data" label="Riven Data (Alpha)" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="Projects" left>

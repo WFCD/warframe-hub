@@ -1,0 +1,9 @@
+.theme-dark {
+  --page-background-color: hsl(214, 72%, 53%);
+  --text-default-color: green;
+  background-image: url('https://images3.alphacoders.com/723/thumb-1920-723154.jpg');
+  background-size: cover; /* <------ */
+  background-color: hsla(0, 0%, 100%, 0.7);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+}

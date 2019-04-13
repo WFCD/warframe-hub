@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="app"
-    class="theme-dark h-screen w-full"
-  >
+  <div id="app" class="theme-dark h-screen w-full">
     <Navbar class="card " />
     <!-- <Setting s />
     <About />-->

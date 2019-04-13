@@ -58,10 +58,12 @@
   color: rgba(51, 211, 255, 0.8);
   content: '🌙 ';
 }
+
 .cold:before {
   color: rgba(51, 211, 255, 0.8);
   content: '\2744 ';
 }
+
 .day:before {
   color: rgba(249, 168, 6, 0.8);
   content: '☀ ';

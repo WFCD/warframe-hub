@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-2/3">
     <h3 class="text-center header-panel">{{title}}</h3>
     <slot></slot>
   </div>

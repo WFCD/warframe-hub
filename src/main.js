@@ -6,10 +6,6 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
-/* Bootstrap  */
-import BootstrapVue from 'bootstrap-vue';
-Vue.use(BootstrapVue);
-
 /* Sentry Reporting */
 import VueRaven from 'vue-raven';
 
@@ -18,11 +14,6 @@ if (process.env.VUE_APP_DSN) {
     dsn: process.env.VUE_APP_DSN
   });
 }
-
-/* Load bootstrap css */
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-
 /* FontAwesome */
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import '@fortawesome/fontawesome-free/css/regular.min.css';
@@ -75,14 +66,14 @@ Vue.component('l-control-layers', Vue2Leaflet.LControlLayers);
 Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
 Vue.component('l-circle-marker', Vue2Leaflet.LCircleMarker);
 
-/* Themes */
+/* Themes
 import '@/assets/less/common.less';
 import '@/assets/less/fish.less';
 import '@/assets/less/tables.less';
 import '@/assets/less/night.less';
 import '@/assets/less/day.less';
 import '@/assets/less/retro.less';
-import '@/assets/less/eidolon.less';
+import '@/assets/less/eidolon.less';*/
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');

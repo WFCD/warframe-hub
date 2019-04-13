@@ -1,107 +1,120 @@
 <template>
-  <b-container fluid class="pl-0 pr-0 ">
-    <b-alert v-if="loading" show variant="info">
-      <h4 class="alert-heading">Loading Riven Data for {{ platforms[platform].display }}</h4>
-      <hr />
-      <p class="mb-0">
-        If this card stays active for more than a minute, please reload the site
-        or try agin later.
-      </p>
-    </b-alert>
-    <b-tabs v-else content-class="mt-3">
-      <b-tab :title="index" v-for="(item, index) in data" :key="index" active>
-        <b-card-group>
-          <b-col class="pl-0 pr-0 ml-0 mr-0" sm="10">
-            <b-card class="vw-100" :title="index">
-              <b-card
-                no-body
-                class="mb-1"
-                v-for="(item2, index2) in item"
-                :key="index2"
+  <div class="h-auto  timers  ">
+    <div class=" text-center bg-purple-500 text-white sm:bg-green-500 md:bg-blue-500 md:text-yellow-500 lg:bg-red-500 xl:bg-orange-500 ...">
+      ...
+    </div>
+<div class="bg-red-500 text-white font-bold rounded-t px-2 mx-2 mt-1 py-2">
+    Danger
+  </div>
+  <div class="border border-t-0 border-red-400 rounded-b bg-red-100 mx-2 px-2 py-3 text-red-700">
+    <p>Something not ideal might be happening.</p>
+  </div>
+    <div class=" pt-2   flex flex-wrap text-black text-left">
+      <div class="h-auto  flex w-full   lg:w-1/2  md:pb-1 px-2">
+        <div
+          class="card-image lg:w-1/2"
+          style="background-image: url('https://vignette.wikia.nocookie.net/warframe/images/b/b3/RivenVeiledMod.png')"
+        ></div>
+        <div class="xs:w-screen  lg:w-full  md:w-screen xl:w-full  md:w-screen  lg:p-3 card-riven-desc">
+          <div class="mb-4 ">
+            <p class="text-sm text-grey-dark flex items-start">
+              <svg
+                class=" stroke-current text-purple-500 w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                <b-card-header header-tag="header" class="p-1" role="tab">
-                  <b-button
-                    block
-                    href="#"
-                    v-b-toggle="`accordion${index}${index2}`"
-                    variant="info"
-                  >
-                    {{ checktitle(index2) }}
-                  </b-button>
-                </b-card-header>
-                <b-collapse
-                  :id="'accordion' + index + index2"
-                  accordion="my-accordion"
-                  role="tabpanel"
-                >
-                  <b-card-body>
-                    <b-card-group class="pl-0 pr-0">
-                      <b-card
-                        :title="items.rerolled ? 'Rerolled' : 'Unrolled'"
-                        v-for="(items, iindex) in item2"
-                        :key="iindex"
-                      >
-                        <b-card-body>
-                          <b-list-group>
-                            <b-list-group-item
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              Average value of trades
-                              <b-badge variant="primary" pill>{{
-                                items.avg.toFixed(2)
-                              }}</b-badge>
-                            </b-list-group-item>
-
-                            <b-list-group-item
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              The average price variation
-                              <b-badge variant="primary" pill>{{
-                                items.stddev.toFixed(2)
-                              }}</b-badge>
-                            </b-list-group-item>
-
-                            <b-list-group-item
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              Lowest price for this riven
-                              <b-badge variant="primary" pill>{{
-                                items.min.toFixed(2)
-                              }}</b-badge>
-                            </b-list-group-item>
-                            <b-list-group-item
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              Highest price for this riven
-                              <b-badge variant="primary" pill>{{
-                                items.max.toFixed(2)
-                              }}</b-badge>
-                            </b-list-group-item>
-                            <b-list-group-item
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              Popularity of this Riven Type
-                              <b-badge variant="primary" pill
-                                >{{ items.pop.toFixed(4) }} %</b-badge
-                              >
-                            </b-list-group-item>
-                          </b-list-group>
-                        </b-card-body>
-                      </b-card>
-                    </b-card-group>
-                    <b-card-text>
-                      Raw Data <span>{{ item2 }}</span> <br />Platform:
-                      {{ platforms[platform].display }}
-                    </b-card-text>
-                  </b-card-body>
-                </b-collapse>
-              </b-card>
-            </b-card>
-          </b-col>
-        </b-card-group>
-      </b-tab>
-    </b-tabs>
-  </b-container>
+                <path
+                  stroke-width="2"
+                  d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"
+                />
+                <line
+                  stroke-width="2"
+                  y2="0.0"
+                  x2="24.0"
+                  y1="24.0"
+                  x1="0.0"
+                />
+              </svg>
+              Not Rerolled
+            </p>
+            <div class="text-black font-bold text-xl mb-1">
+              Kitgun Riven Mod
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Avg. value of trades</div>
+              <div class="w-1/4   text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Avg. price variation</div>
+              <div class="w-1/4   text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Min price for this riven</div>
+              <div class="w-1/4   text-right h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Max. price for this riven</div>
+              <div class="w-1/4   text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Popularity of this Type</div>
+              <div class="w-1/4   text-right   h-6">xx.xx</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-auto  flex w-full   lg:w-1/2  md:pb-1 px-2">
+        <div
+          class="card-image lg:w-1/2"
+          style="background-image: url('https://vignette.wikia.nocookie.net/warframe/images/b/b3/RivenVeiledMod.png')"
+        ></div>
+        <div class="xs:w-screen  lg:w-full  md:w-screen xl:w-full  md:w-screen  lg:p-3 card-riven-desc">
+          <div class="mb-4 ">
+            <p class="text-sm text-grey-dark flex items-center">
+              <svg
+                class=" stroke-current text-purple-500 w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  stroke-width="2"
+                  d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"
+                />
+              </svg>
+              Rerolled
+            </p>
+            <div class="text-black font-bold text-xl mb-1">
+              Kitgun Riven Mod
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Avg. value of trades</div>
+              <div class="w-1/4 text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Avg. price variation</div>
+              <div class="w-1/4  text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Min price for this riven</div>
+              <div class="w-1/4 text-right h-6">xx.xx</div>
+            </div>
+            <div class="flex mb-1 text-black text-left">
+              <div class="w-3/4   h-6 mr-1">Max. price for this riven</div>
+              <div class="w-1/4  text-right   h-6">xx.xx</div>
+            </div>
+            <div class="flex  mb-1 text-black text-left">
+              <div class="w-3/4  flex-1 h-6 mr-1">
+                Popularity of this Type
+              </div>
+              <div class="w-1/4   text-right   h-6">xx.xx</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -121,6 +134,7 @@ export default {
   data() {
     return {
       url: '',
+      open: false,
       platforms: platforms,
       data: {
         'Riven Mod': {
@@ -149,7 +163,7 @@ export default {
     })
   },
   watch: {
-    platform: (val) => {
+    platform: val => {
       this.loading = true;
       this.url = `${repoBaseUrl}/repos/weeklyRivens${val.toUpperCase()}.json`;
       this.getdata();
@@ -160,6 +174,9 @@ export default {
     this.getdata();
   },
   methods: {
+    toggle() {
+      this.open = !this.open;
+    },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     },
@@ -173,17 +190,17 @@ export default {
     },
     async getdata() {
       const res = JSON.parse(
-        (await fetch(this.url).then((res) => res.text())).replace(/NaN/g, 0)
+        (await fetch(this.url).then(res => res.text())).replace(/NaN/g, 0)
       );
 
-      const rivenData = _.mapValues(_.groupBy(res, 'itemType'), (clist) =>
-        clist.map((car) => _.omit(car, 'itemType'))
+      const rivenData = _.mapValues(_.groupBy(res, 'itemType'), clist =>
+        clist.map(car => _.omit(car, 'itemType'))
       );
 
-      Object.keys(rivenData).forEach((key) => {
+      Object.keys(rivenData).forEach(key => {
         rivenData[key] = _.mapValues(
           _.groupBy(rivenData[key], 'compatibility'),
-          (clist2) => clist2.map((car1) => _.omit(car1, 'compatibility'))
+          clist2 => clist2.map(car1 => _.omit(car1, 'compatibility'))
         );
       });
       this.data = rivenData;

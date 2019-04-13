@@ -1,10 +1,9 @@
 <template>
-  <b-badge
-    v-bind:variant="mutableVariant"
-    class="pull-right"
+  <div
+    class=" bg-blue-400 text-white rounded-full inline-block py-0 px-3"
   >
   {{disp}}
-  </b-badge>
+  </div>
 </template>
 
 <script>

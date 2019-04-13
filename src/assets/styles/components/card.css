@@ -1,17 +1,16 @@
-.theme-dark  .card {
-background-color: #195072;
-background-image: url('https://n8k6e2y6.ssl.hwcdn.net/images/warframeLogo.png');
-    background-size:     contain;                      /* <------ */
+.theme-dark .card {
+    background-color: #195072;
+    background-image: url('https://n8k6e2y6.ssl.hwcdn.net/images/warframeLogo.png');
+    background-size:     contain;                      /* <------   */
     background-repeat:   no-repeat;
     background-position: center right;
 }
-.theme-eidelon  .card{
-
-background-image: url('http://orig00.deviantart.net/e1c6/f/2014/324/1/9/warframe_lotus_emblem_2_0_by_jackshepardn7-d87344n.png');
-    background-size:     contain;                      /* <------ */
+.theme-eidelon .card{
+    background-image: url('http://orig00.deviantart.net/e1c6/f/2014/324/1/9/warframe_lotus_emblem_2_0_by_jackshepardn7-d87344n.png');
+    background-size:     contain;                      /* <------  */
     background-repeat:   no-repeat;
     background-position: center right;
-background-color: #001820;
+    background-color: #001820;
 }
 .card-image {
   @apply h-auto;

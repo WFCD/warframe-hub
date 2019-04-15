@@ -1,9 +1,20 @@
 <template>
   <div class="timers pt-12">
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-  <strong class="font-bold">Holy smokes!</strong>
-  <span class="block sm:inline">Something seriously bad happened.</span>
-</div>
+    <div
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+      role="alert"
+    >
+      <strong class="font-bold">Holy smokes!</strong>
+      <span class="block sm:inline">Something seriously bad happened.</span>
+    </div>
+
+    <div ref="panelObserver">
+      <div
+        :is="componentState['news'].component"
+        v-bind="resolveProps(componentState['news'].props)"
+      />
+    </div>
+    <!--
     <b-container fluid class="grid">
       <vue-responsive-grid-layout
         @layout-update="onLayoutUpdate"
@@ -39,16 +50,10 @@
             :canBeResizedWithAll="false"
             handle=".header-panel"
           >
-            <div ref="panelObserver" :id="item.i">
-              <div
-                :is="componentState[item.i].component"
-                v-bind="resolveProps(componentState[item.i].props)"
-              />
-            </div>
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>
-    </b-container>
+    </b-container>-->
   </div>
 </template>
 
@@ -85,7 +90,7 @@ export default {
     DarvoDealsPanel,
     SalesPanel,
     VoidTraderPanel,
-    NightwavePanel,
+    NightwavePanel
   },
   data() {
     return {
@@ -108,7 +113,7 @@ export default {
       this.$ga.page('/');
     },
     updateComponents(layout, breakpoint) {
-      layout.forEach((itemSize) => {
+      layout.forEach(itemSize => {
         this.$set(this.components[itemSize.i], breakpoint, itemSize);
       });
       const currTime = Date.now();
@@ -158,13 +163,13 @@ export default {
         }
         return prev;
       }, {});
-    },
+    }
   },
   watch: {
     worldstate: {
       handler: function() {
         if (this.$refs.panelObserver) {
-          this.$refs.panelObserver.forEach((element) => {
+          this.$refs.panelObserver.forEach(element => {
             element.toggleAttribute('updating');
             element.toggleAttribute('updating');
           });

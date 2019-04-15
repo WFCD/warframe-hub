@@ -13,7 +13,9 @@
     "updateWorldstate": "node ./initialWorldstateUpdater.js"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "vue-glide-js": "^1.3.10",
+    "vue2-hammer": "^2.1.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",

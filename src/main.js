@@ -67,13 +67,6 @@ Vue.component('l-layer-group', Vue2Leaflet.LLayerGroup);
 Vue.component('l-circle-marker', Vue2Leaflet.LCircleMarker);
 
 /* News Glide */
-import VueGlide from 'vue-glide-js';
-import 'vue-glide-js/dist/vue-glide.css';
-Vue.use(VueGlide);
-
-/* better touch support */
-import { VueHammer } from 'vue2-hammer';
-Vue.use(VueHammer);
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');

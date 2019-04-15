@@ -7,15 +7,17 @@
       <strong class="font-bold">Holy smokes!</strong>
       <span class="block sm:inline">Something seriously bad happened.</span>
     </div>
-
-    <div ref="panelObserver">
-      <div
+<div
         :is="componentState['news'].component"
         v-bind="resolveProps(componentState['news'].props)"
       />
     </div>
-    <!--
-    <b-container fluid class="grid">
+    <!--    <div
+        :is="componentState['news'].component"
+        v-bind="resolveProps(componentState['news'].props)"
+      />
+    </div>
+      <b-container fluid class="grid">
       <vue-responsive-grid-layout
         @layout-update="onLayoutUpdate"
         @layout-change="onLayoutChange"
@@ -50,6 +52,7 @@
             :canBeResizedWithAll="false"
             handle=".header-panel"
           >
+
           </vue-grid-item>
         </template>
       </vue-responsive-grid-layout>

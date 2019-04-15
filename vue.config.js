@@ -6,7 +6,7 @@ module.exports = {
   },
 
   lintOnSave: true,
-  baseUrl: '/',
+  publicPath: '/',
   outputDir: undefined,
   assetsDir: undefined,
   runtimeCompiler: undefined,
@@ -18,23 +18,32 @@ module.exports = {
     loaderOptions: {
       less: {
         modules: {
-          rules: [{
-            test: /\.css$/,
-            use: [{
-              loader: 'css-loader'
-            }]
-          }, {
-            test: /\.less$/,
-            use: [{
-              loader: 'style-loader'
-            }, {
-              loader: 'css-loader'
-            }, {
-              loader: 'less-loader'
-            }]
-          }]
+          rules: [
+            {
+              test: /\.css$/,
+              use: [
+                {
+                  loader: 'css-loader'
+                }
+              ]
+            },
+            {
+              test: /\.less$/,
+              use: [
+                {
+                  loader: 'style-loader'
+                },
+                {
+                  loader: 'css-loader'
+                },
+                {
+                  loader: 'less-loader'
+                }
+              ]
+            }
+          ]
         }
-      },
-    },
-  },
+      }
+    }
+  }
 };

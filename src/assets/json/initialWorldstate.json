@@ -1,12 +1,37 @@
 {
   "pc": {
     "timestamp": "2000-01-01T01:00:00.000Z",
-    "news": [],
+    "news": [
+      {
+        "id": "5c76e0e457904a84a0312bd4",
+        "message": "Ondes Nocturnes: 1ère Série est maintenant disponible",
+        "link": "https://www.warframe.com/news/nightwave-series-1-the-wolf-of-saturn-six?utm_source=in-game&utm_medium=ign",
+        "imageLink": "https://n9e5v4d8.ssl.hwcdn.net/uploads/8544f149575162b05e3184c5f2072a7d.png",
+        "priority": false,
+        "date": "2019-02-27T18:45:34.000Z",
+        "eta": "46d 22h 38m 16s ago",
+        "update": false,
+        "primeAccess": false,
+        "stream": false,
+        "translations": {
+          "fr": "Ondes Nocturnes: 1ère Série est maintenant disponible",
+          "it": "Nightwave: Serie 1 Disponibile Ora",
+          "de": "Nightwave: Serie 1 jetzt verfügbar",
+          "es": "Onda Nocturna: Serie 1 ya está disponible",
+          "pt": "Nightwave: Série 1 já está disponível",
+          "ru": "Ночная Волна: 1 Серия Уже Доступна",
+          "pl": "Gwiezdny Szlak: Seria Pierwsza -- Już dostępna!",
+          "tr": "Nightwave: Seri 1 Şimdi Sizlerle",
+          "ja": "Nightwave: シリーズ1 が登場",
+          "zh": "午夜电波：系列 1 现已登场",
+          "ko": "나이트웨이브: 시리즈 1 출시",
+          "tc": "午夜電波：系列 1 現已登場"
+        },
+        "asString": "[46d 22h 38m 16s ago] [Ondes Nocturnes: 1ère Série est maintenant disponible](https://www.warframe.com/news/nightwave-series-1-the-wolf-of-saturn-six?utm_source=in-game&utm_medium=ign)"
+      }
+    ],
     "events": [],
     "alerts": [],
-    "nightwave": {
-      "activeChallenges": []
-    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -60,18 +85,11 @@
       "isCetus": false,
       "shortString": "Loading..."
     },
-    "weeklyChallenges": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "challenges": []
-    },
+    "weeklyChallenges": [],
     "constructionProgress": {
       "id": "12345",
-      "fomorianProgress": "0.00",
-      "razorbackProgress": "2000-01-01T01:00:00.000Z",
+      "fomorianProgress": "2000-01-01T01:00:00.000Z",
+      "razorbackProgress": "0.00",
       "unknownProgress": "0.00"
     },
     "vallisCycle": {
@@ -80,6 +98,24 @@
       "isWarm": false,
       "timeLeft": "1h 1m 1s",
       "shortString": "Loading..."
+    },
+    "nightwave": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "season": "2000-01-01T01:00:00.000Z",
+      "tag": "Loading...",
+      "phase": "2000-01-01T01:00:00.000Z",
+      "params": {
+        "wgsc": "2000-01-01T01:00:00.000Z",
+        "wsr": "2000-01-01T01:00:00.000Z",
+        "wcc": "2000-01-01T01:00:00.000Z"
+      },
+      "possibleChallenges": [],
+      "activeChallenges": [],
+      "rewardTypes": []
     },
     "twitter": []
   },
@@ -88,9 +124,6 @@
     "news": [],
     "events": [],
     "alerts": [],
-    "nightwave": {
-      "activeChallenges": []
-    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -144,98 +177,7 @@
       "isCetus": false,
       "shortString": "Loading..."
     },
-    "weeklyChallenges": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "challenges": []
-    },
-    "constructionProgress": {
-      "id": "12345",
-      "fomorianProgress": "2000-01-01T01:00:00.000Z",
-      "razorbackProgress": "0.00",
-      "unknownProgress": "0.00"
-    },
-    "vallisCycle": {
-      "id": "12345",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "isWarm": false,
-      "timeLeft": "1h 1m 1s",
-      "shortString": "Loading..."
-    },
-    "twitter": []
-  },
-  "xb1": {
-    "timestamp": "2000-01-01T01:00:00.000Z",
-    "news": [],
-    "events": [],
-    "alerts": [],
-    "nightwave": {
-      "activeChallenges": []
-    },
-    "sortie": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "rewardPool": "Loading...",
-      "variants": [],
-      "boss": "Loading...",
-      "faction": "Loading...",
-      "expired": true,
-      "eta": "1h 1m 1s"
-    },
-    "syndicateMissions": [],
-    "fissures": [],
-    "globalUpgrades": [],
-    "flashSales": [],
-    "invasions": [],
-    "darkSectors": [],
-    "voidTrader": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "character": "Loading...",
-      "location": "Loading...",
-      "inventory": [],
-      "psId": "12345",
-      "endString": "1h 1m 1s"
-    },
-    "dailyDeals": [],
-    "simaris": {
-      "target": "Loading...",
-      "isTargetActive": false,
-      "asString": "Loading..."
-    },
-    "conclaveChallenges": [],
-    "persistentEnemies": [],
-    "earthCycle": {
-      "id": "12345",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "isDay": false,
-      "timeLeft": "1h 1m 1s"
-    },
-    "cetusCycle": {
-      "id": "12345",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "isDay": false,
-      "timeLeft": "1h 1m 1s",
-      "isCetus": false,
-      "shortString": "Loading..."
-    },
-    "weeklyChallenges": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "challenges": []
-    },
+    "weeklyChallenges": [],
     "constructionProgress": {
       "id": "12345",
       "fomorianProgress": "0.00",
@@ -249,16 +191,31 @@
       "timeLeft": "1h 1m 1s",
       "shortString": "Loading..."
     },
+    "nightwave": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "season": "2000-01-01T01:00:00.000Z",
+      "tag": "Loading...",
+      "phase": "2000-01-01T01:00:00.000Z",
+      "params": {
+        "wgsc": "2000-01-01T01:00:00.000Z",
+        "wsr": "2000-01-01T01:00:00.000Z",
+        "wcc": "2000-01-01T01:00:00.000Z"
+      },
+      "possibleChallenges": [],
+      "activeChallenges": [],
+      "rewardTypes": []
+    },
     "twitter": []
   },
-  "swi": {
+  "xb1": {
     "timestamp": "2000-01-01T01:00:00.000Z",
     "news": [],
     "events": [],
     "alerts": [],
-    "nightwave": {
-      "activeChallenges": []
-    },
     "sortie": {
       "id": "12345",
       "activation": "2000-01-01T01:00:00.000Z",
@@ -312,17 +269,10 @@
       "isCetus": false,
       "shortString": "Loading..."
     },
-    "weeklyChallenges": {
-      "id": "12345",
-      "activation": "2000-01-01T01:00:00.000Z",
-      "startString": "1h 1m 1s",
-      "expiry": "2000-01-01T01:00:00.000Z",
-      "active": false,
-      "challenges": []
-    },
+    "weeklyChallenges": [],
     "constructionProgress": {
       "id": "12345",
-      "fomorianProgress": "2000-01-01T01:00:00.000Z",
+      "fomorianProgress": "0.00",
       "razorbackProgress": "0.00",
       "unknownProgress": "0.00"
     },
@@ -332,6 +282,116 @@
       "isWarm": false,
       "timeLeft": "1h 1m 1s",
       "shortString": "Loading..."
+    },
+    "nightwave": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "season": "2000-01-01T01:00:00.000Z",
+      "tag": "Loading...",
+      "phase": "2000-01-01T01:00:00.000Z",
+      "params": {
+        "wgsc": "2000-01-01T01:00:00.000Z",
+        "wsr": "2000-01-01T01:00:00.000Z",
+        "wcc": "2000-01-01T01:00:00.000Z"
+      },
+      "possibleChallenges": [],
+      "activeChallenges": [],
+      "rewardTypes": []
+    },
+    "twitter": []
+  },
+  "swi": {
+    "timestamp": "2000-01-01T01:00:00.000Z",
+    "news": [],
+    "events": [],
+    "alerts": [],
+    "sortie": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "rewardPool": "Loading...",
+      "variants": [],
+      "boss": "Loading...",
+      "faction": "Loading...",
+      "expired": true,
+      "eta": "1h 1m 1s"
+    },
+    "syndicateMissions": [],
+    "fissures": [],
+    "globalUpgrades": [],
+    "flashSales": [],
+    "invasions": [],
+    "darkSectors": [],
+    "voidTrader": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "character": "Loading...",
+      "location": "Loading...",
+      "inventory": [],
+      "psId": "12345",
+      "endString": "1h 1m 1s"
+    },
+    "dailyDeals": [],
+    "simaris": {
+      "target": "Loading...",
+      "isTargetActive": false,
+      "asString": "Loading..."
+    },
+    "conclaveChallenges": [],
+    "persistentEnemies": [],
+    "earthCycle": {
+      "id": "12345",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "isDay": false,
+      "timeLeft": "1h 1m 1s"
+    },
+    "cetusCycle": {
+      "id": "12345",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "isDay": false,
+      "timeLeft": "1h 1m 1s",
+      "isCetus": false,
+      "shortString": "Loading..."
+    },
+    "weeklyChallenges": [],
+    "constructionProgress": {
+      "id": "12345",
+      "fomorianProgress": "0.00",
+      "razorbackProgress": "0.00",
+      "unknownProgress": "0.00"
+    },
+    "vallisCycle": {
+      "id": "12345",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "isWarm": false,
+      "timeLeft": "1h 1m 1s",
+      "shortString": "Loading..."
+    },
+    "nightwave": {
+      "id": "12345",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "startString": "1h 1m 1s",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "active": false,
+      "season": "2000-01-01T01:00:00.000Z",
+      "tag": "Loading...",
+      "phase": "2000-01-01T01:00:00.000Z",
+      "params": {
+        "wgsc": "2000-01-01T01:00:00.000Z",
+        "wsr": "2000-01-01T01:00:00.000Z",
+        "wcc": "2000-01-01T01:00:00.000Z"
+      },
+      "possibleChallenges": [],
+      "activeChallenges": [],
+      "rewardTypes": []
     },
     "twitter": []
   }

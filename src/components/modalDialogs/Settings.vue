@@ -1,133 +1,196 @@
 <template>
-  <b-modal @shown="checkNotifications" id="settings-modal" centered size="md" title="Settings">
-      <b-tabs card vertical>
-        <b-tab title="Platform">
-          <b-form-group label="Platform">
-            <b-form-radio-group id="platform-radios" stacked v-model="platform" name="platform radios"
-              v-on:change="val => savePlatform(val)">
-              <b-form-radio
-                v-for="platform in this.platforms"
-                :key="platform.key"
-                :value="platform.key" >
-                  <i :class="`${platform.icon} fa-lg`" :style="themeIconStyle"></i>
-                </b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
-        </b-tab>
-        <b-tab title="Components">
-          <b-form-group label="Components">
-            <b-form-checkbox-group id="components-checks" name="Components" :options="componentStates"
-                v-model="activeComponents" v-on:input="vals => updateComponentState(vals)"
-                stacked class="settings-group">
-            </b-form-checkbox-group>
-          </b-form-group>
-        </b-tab>
-        <b-tab title="Theme">
-          <b-form-group label="Theme">
-            <b-form-radio-group id="theme-radios" stacked v-model="theme" name="theme radios"
-              v-on:change="val => updateTheme(val)" class="settings-group">
-              <b-form-radio
-                v-for="theme in getThemes"
-                :key="theme.key"
-                :value="theme.key" >
-                  <i :class="theme.faclass" :style="themeIconStyle"></i>
-                  <span :style="platformLabelStyle">{{ theme.display }}</span>
-                </b-form-radio>
-            </b-form-radio-group>
-          </b-form-group>
-        </b-tab>
-        <b-tab title="Notifications">
-          <NotifFilters />
-        </b-tab>
-        <b-tab title="Fissure Filters">
-          <FissureFilters />
-        </b-tab>
-        <b-tab title="Sound Filters">
-          <SoundFilters />
-        </b-tab>
-      </b-tabs>
-  </b-modal>
+  <div id="settings-modal" size="md" title="Settings">
+    <div
+      class="modal pointer-events-none absolute w-full h-full top-0 left-0 flex items-center justify-center"
+    >
+      <div
+        class="modal-overlay absolute w-full h-full bg-black opacity-25 top-0 left-0 cursor-pointer"
+      ></div>
+      <div class="absolute w-1/2 h-64 bg-white rounded-sm shadow-lg flex  ">
+        <div id="tabs" class="container">
+          <div class="tabs">
+            <a
+              v-on:click="activetab = 1"
+              v-bind:class="[activetab === 1 ? 'active' : '']"
+              >Tab 1</a
+            >
+            <a
+              v-on:click="activetab = 2"
+              v-bind:class="[activetab === 2 ? 'active' : '']"
+              >Tab 2</a
+            >
+            <a
+              v-on:click="activetab = 3"
+              v-bind:class="[activetab === 3 ? 'active' : '']"
+              >Tab 3</a
+            >
+          </div>
+
+          <div class="content">
+            <div v-if="activetab === 1" class="tabcontent">
+              Content for tab one
+            </div>
+            <div v-if="activetab === 2" class="tabcontent">
+              Content for tab two
+            </div>
+            <div v-if="activetab === 3" class="tabcontent">
+              Content for tab three
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <b-tabs card vertical>
+      <b-tab title="Platform">
+        <b-form-group label="Platform">
+          <b-form-radio-group
+            id="platform-radios"
+            stacked
+            v-model="platform"
+            name="platform radios"
+            v-on:change="val => savePlatform(val)"
+          >
+            <b-form-radio
+              v-for="platform in this.platforms"
+              :key="platform.key"
+              :value="platform.key"
+            >
+              <i :class="`${platform.icon} fa-lg`" :style="themeIconStyle"></i>
+            </b-form-radio>
+          </b-form-radio-group>
+        </b-form-group>
+      </b-tab>
+      <b-tab title="Components">
+        <b-form-group label="Components">
+          <b-form-checkbox-group
+            id="components-checks"
+            name="Components"
+            :options="componentStates"
+            v-model="activeComponents"
+            v-on:input="vals => updateComponentState(vals)"
+            stacked
+            class="settings-group"
+          >
+          </b-form-checkbox-group>
+        </b-form-group>
+      </b-tab>
+      <b-tab title="Theme">
+        <b-form-group label="Theme">
+          <b-form-radio-group
+            id="theme-radios"
+            stacked
+            v-model="theme"
+            name="theme radios"
+            v-on:change="val => updateTheme(val)"
+            class="settings-group"
+          >
+            <b-form-radio
+              v-for="theme in getThemes"
+              :key="theme.key"
+              :value="theme.key"
+            >
+              <i :class="theme.faclass" :style="themeIconStyle"></i>
+              <span :style="platformLabelStyle">{{ theme.display }}</span>
+            </b-form-radio>
+          </b-form-radio-group>
+        </b-form-group>
+      </b-tab>
+      <b-tab title="Notifications">
+        <NotifFilters />
+      </b-tab>
+      <b-tab title="Fissure Filters">
+        <FissureFilters />
+      </b-tab>
+      <b-tab title="Sound Filters">
+        <SoundFilters />
+      </b-tab>
+    </b-tabs>-->
+  </div>
 </template>
 
 <script>
-  import HubImg from '@/components/HubImg.vue';
-  import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
-  import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
-  import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
+import HubImg from '@/components/HubImg.vue';
+import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
+import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
+import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
 
-  import platforms from '@/assets/json/platforms.json';
-  import themes from '@/assets/json/themes.json';
+import platforms from '@/assets/json/platforms.json';
+import themes from '@/assets/json/themes.json';
 
-  export default {
-    name: 'SettingsModal',
-    components: {
-      HubImg,
-      NotifFilters,
-      FissureFilters,
-      SoundFilters,
+export default {
+  name: 'SettingsModal',
+  components: {
+    HubImg,
+    NotifFilters,
+    FissureFilters,
+    SoundFilters
+  },
+  data() {
+    return {
+      platform: this.$store.getters.platform,
+      theme: this.$store.getters.theme,
+      themeIconStyle: {
+        color: 'white',
+        'margin-top': '3px',
+        'padding-right': '10px'
+      },
+      platformLabelStyle: {
+        'flex-grow': 1
+      },
+      platforms: platforms,
+      themes: themes
+    };
+  },
+  methods: {
+    savePlatform(platform) {
+      this.$store.commit('commitPlatform', platform);
+      this.$store.dispatch('updateWorldstate');
     },
-    data() {
-      return {
-        platform: this.$store.getters.platform,
-        theme:  this.$store.getters.theme,
-        themeIconStyle: {
-          color: 'white',
-          'margin-top': '3px',
-          'padding-right': '10px'
-        },
-        platformLabelStyle: {
-          'flex-grow': 1,
-        },
-        platforms: platforms,
-        themes: themes,
-      };
+    updateComponentState(enabledComponents) {
+      Object.keys(this.$store.getters.componentState).forEach(component => {
+        this.$store.commit('commitComponentState', [
+          component,
+          enabledComponents.includes(component)
+        ]);
+      });
     },
-    methods: {
-      savePlatform(platform) {
-        this.$store.commit('commitPlatform', platform);
-        this.$store.dispatch('updateWorldstate');
-      },
-      updateComponentState(enabledComponents) {
-        Object.keys(this.$store.getters.componentState).forEach((component) => {
-          this.$store.commit('commitComponentState', [component, enabledComponents.includes(component)]);
-        });
-      },
-      updateTheme(key) {
-        this.$store.commit('setTheme', [key]);
-      },
-      async checkNotifications() {
-        return this.$store.dispatch('checkNotifPermissions');
-      },
+    updateTheme(key) {
+      this.$store.commit('setTheme', [key]);
     },
-    computed: {
-      activeComponents: {
-        get: function() {
-          const components = Object.keys(this.$store.getters.componentState)
-            .map((component) => this.$store.getters.componentState[component]);
-
-          return components
-            .filter((component) => component.state)
-            .map((component) => component.key);
-        },
-        set: function(){},
-      },
-      componentStates() {
-        const cs = this.$store.getters.componentState;
-
-        return Object.keys(cs).map((component) => {
-          return {
-            text: this.$store.getters.componentState[component].display,
-            value: this.$store.getters.componentState[component].key,
-          };
-        });
-      },
-      getComponents() {
-        return this.$store.getters.componentState;
-      },
-      getThemes() {
-        return this.themes;
-      },
+    async checkNotifications() {
+      return this.$store.dispatch('checkNotifPermissions');
     }
-  };
+  },
+  computed: {
+    activeComponents: {
+      get: function() {
+        const components = Object.keys(this.$store.getters.componentState).map(
+          component => this.$store.getters.componentState[component]
+        );
 
+        return components
+          .filter(component => component.state)
+          .map(component => component.key);
+      },
+      set: function() {}
+    },
+    componentStates() {
+      const cs = this.$store.getters.componentState;
+
+      return Object.keys(cs).map(component => {
+        return {
+          text: this.$store.getters.componentState[component].display,
+          value: this.$store.getters.componentState[component].key
+        };
+      });
+    },
+    getComponents() {
+      return this.$store.getters.componentState;
+    },
+    getThemes() {
+      return this.themes;
+    }
+  }
+};
 </script>

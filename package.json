@@ -35,6 +35,7 @@
     "postcss-preset-env": "^6.6.0",
     "register-service-worker": "^1.6.2",
     "tailwindcss": "next",
+    "tailwindcss-elevation": "^0.1.1",
     "vue": "^2.6.10",
     "vue-analytics": "^5.16.4",
     "vue-native-notification": "^1.0.5",

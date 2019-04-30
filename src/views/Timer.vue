@@ -1,5 +1,5 @@
 <template>
-  <div class="timers pt-12">
+  <div class="timers pt-12 mx-2">
     <div
       class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
       role="alert"
@@ -7,30 +7,42 @@
       <strong class="font-bold">Holy smokes!</strong>
       <span class="block sm:inline">Something seriously bad happened.</span>
     </div>
-    <div class="flex">
-      <button class="w-48 h-48 mr-3 mt-2 elevation-2">
-        <span class="text-4xl">Alerts</span><br />
-        {{ worldstate.alerts.length }}
-      </button>
-      <button class=" ml-2 mt-2  w-48 h-48 elevation-2">
-        <span class="text-4xl">Invasions</span><br />
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-        >
-          All: {{ worldstate.invasions.length }}
-        </button>
-        <button
-          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
-        >
-          vs Infested: {{ test123 }}
-        </button>
-      </button>
-    </div>
+    <div
+      :is="componentState['baro'].component"
+      v-bind="resolveProps(componentState['baro'].props)"
+    />
+    <div
+      :is="componentState['cetus'].component"
+      v-bind="resolveProps(componentState['cetus'].props)"
+    />
+    <div
+      :is="componentState['bounties'].component"
+      v-bind="resolveProps(componentState['bounties'].props)"
+    />
+    <div
+      :is="componentState['solaris-bounties'].component"
+      v-bind="resolveProps(componentState['solaris-bounties'].props)"
+    />
+    <div
+      :is="componentState['darvo'].component"
+      v-bind="resolveProps(componentState['darvo'].props)"
+    />
+    <div
+      :is="componentState['fissures'].component"
+      v-bind="resolveProps(componentState['fissures'].props)"
+    />
     <div
       :is="componentState['news'].component"
       v-bind="resolveProps(componentState['news'].props)"
     />
+    <!--<div v-for="(component, index) in layouts['lg']" :key="index">
+      <div
+        :is="componentState[component.i].component"
+        v-bind="resolveProps(componentState[component.i].props)"
+      />
+    </div>-->
   </div>
+
   <!--    <div
         :is="componentState['news'].component"
         v-bind="resolveProps(componentState['news'].props)"
@@ -133,16 +145,13 @@ export default {
   methods: {
     countinfested1() {
       this.test123 = null;
-      console.log(this.worldstate.invasions);
       var x = this.worldstate.invasions;
       var y = 0;
       x.forEach(function(element) {
         if (element.vsInfestation) {
-          console.log(element.vsInfestation + 'ok');
           y++;
         }
       });
-      console.log('y=' + y);
       this.test123 = y;
     },
     track() {
@@ -205,7 +214,6 @@ export default {
     worldstate: {
       handler: function() {
         this.countinfested1();
-
         if (this.$refs.panelObserver) {
           this.$refs.panelObserver.forEach(element => {
             element.toggleAttribute('updating');
@@ -219,7 +227,6 @@ export default {
   },
   computed: {
     countinfested: function() {
-      console.log(this.worldstate.invasions);
       return 0;
     },
     ...mapState({

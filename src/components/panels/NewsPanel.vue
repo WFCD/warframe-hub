@@ -1,13 +1,16 @@
 <template>
   <div class=" max-w-md  h-auto rounded overflow-hidden  border-transparent">
-    <div class="font-bold text-4xl mt-1 bg-transparent ">News</div>
+    <div class="font-bold  text-default text-4xl mt-1 bg-transparent ">
+      {{ headertext }}
+    </div>
     <div class="bg-page shadow-lg" style="height: 300px">
       <hooper style="height: 300px" :autoPlay="true" :playSpeed="4000">
         <slide
           class="bg-cover relative bg-center bg-no-repeat max-w-full"
           v-for="(newsitem, index) in news"
           v-if="newsitem.translations['en']"
-          :key="index"
+          :key="newsitem.date"
+          :index="index"
           :style="{
             height: '300px',
             'background-image': 'url(' + getimgling(newsitem.imageLink) + ')'

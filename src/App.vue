@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="theme-dark h-screen w-full">
+  <div id="app" class=" theme-eidelon min-h-screen  w-full">
     <Navbar class="card " />
-    <router-view />
+    <router-view class="" />
   </div>
 </template>
 
@@ -20,7 +20,4 @@ export default {
 
 <style>
 @import 'assets/styles/tailwind.postcss';
-#app {
-  padding-top: 0px !important;
-}
 </style>

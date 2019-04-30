@@ -1,69 +1,79 @@
 <template>
-  <HubPanelWrap :title="headertext">
-    <b-list-group>
-      <b-list-group-item class="list-group-item-borderbottom" v-if="deals.length">
-        <table class="table" style="table-layout: fixed">
-          <thead>
-            <tr>
-              <th class="text-center col-xs-2">Item</th>
-              <th class="text-center col-xs-2">% Off</th>
-              <th class="text-center col-xs-2"><HubImg :src="platinum" name="Platinum" /></th>
-              <th class="text-center col-xs-2">Stock</th>
-              <th class="text-center col-xs-4"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in deals" :key="`${item.id}-deal`">
-              <td>{{item.item}}</td>
-              <td>{{item.discount}}%</td>
-              <td>{{item.salePrice}}</td>
-              <td>{{(((item.total - item.sold)/item.total)*100).toFixed(2)}}%</td>
-              <td><TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </b-list-group-item>
+  <div class=" max-w-md  h-auto rounded overflow-hidden  border-transparent">
+    <div class="font-bold  text-default text-4xl mt-1">
+      {{ headertext }}
+    </div>
+    <div class="bg-bgnew  text-default  py-2">
+      <div v-if="deals.length">
+        <div class="flex mx-1 items-center">
+          <div class="w-1/5 bg-bgnew h-auto">Item</div>
+          <div class="w-1/6 bg-bgnew h-auto">% off</div>
+          <div class="w-1/6 bg-bgnew h-auto">
+            <HubImg :src="platinum" name="Platinum" />
+          </div>
+          <div class="w-1/6 bg-bgnew h-auto">Stock</div>
+
+          <div class="w-1/5 bg-bgnew h-auto"></div>
+        </div>
+
+        <div v-for="item in deals" :key="`${item.id}-deal`" class="flex mx-1  ">
+          <div class="w-1/5 bg-bgnew h-6">{{ item.item }}</div>
+          <div class="w-1/6 bg-bgnew h-6">{{ item.discount }}%</div>
+          <div class="w-1/6 bg-bgnew h-6">{{ item.salePrice }}</div>
+          <div class="w-1/6 bg-bgnew h-6">
+            {{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}%
+          </div>
+          <TimeBadge
+            class="flex-1 h-6 text-sm "
+            :starttime="now()"
+            :endtime="item.expiry"
+            :interval="10000"
+          />
+        </div>
+      </div>
       <NoDataItem v-else :text="headertext" />
-    </b-list-group>
-  </HubPanelWrap>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-  table.table td, table.table th, table.table > thead > tr {
-    border: 0;
-  }
+table.table div,
+table.table th,
+table.table > thead > tr {
+  border: 0;
+}
 </style>
 
 <script>
-  import HubImg from '@/components/HubImg.vue';
-  import TimeBadge from '@/components/TimeBadge.vue';
-  import HubPanelWrap from '@/components/HubPanelWrap';
-  import NoDataItem from '@/components/NoDataItem.vue';
+import HubImg from '@/components/HubImg.vue';
+import TimeBadge from '@/components/TimeBadge.vue';
+import HubPanelWrap from '@/components/HubPanelWrap';
+import NoDataItem from '@/components/NoDataItem.vue';
 
-  import platinum from '@/assets/img/general/plat.png';
-  export default {
-    name: 'DarvoDealsPanel',
-    props: ['deals'],
-    computed: {
-      headertext() {
-        return 'Darvo\'s Deals';
-      }
-    },
-    data() {
-      return {
-          platinum: platinum,
-      };
-    },
-    components: {
-      HubImg,
-      HubPanelWrap,
-      TimeBadge,
-      NoDataItem,
-    },
-    methods: {
-      now() {
-        return new Date().toString();
-      }
+import platinum from '@/assets/img/general/plat.png';
+export default {
+  name: 'DarvoDealsPanel',
+  props: ['deals'],
+  computed: {
+    headertext() {
+      return "Darvo's Deals";
     }
-  };
+  },
+  data() {
+    return {
+      platinum: platinum
+    };
+  },
+  components: {
+    HubImg,
+    HubPanelWrap,
+    TimeBadge,
+    NoDataItem
+  },
+  methods: {
+    now() {
+      return new Date().toString();
+    }
+  }
+};
 </script>

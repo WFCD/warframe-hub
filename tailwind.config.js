@@ -9,7 +9,7 @@ module.exports = {
         cyan: 'cyan',
         default: 'var(--text-default-color)',
         hover: 'var(--text-default-hover)',
-        yellow: 'yellow'
+        bgnew: '#2f3030'
       },
       fill: {
         default: 'var(--text-default-color)',

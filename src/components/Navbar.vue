@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-page py-6">
+  <nav class="flex items-center justify-between flex-wrap bg-page py-6 px-2">
     <div class=" group flex items-center flex-no-shrink mr-6">
       <svg
         class="group-hover:fill-hover fill-default  h-8 w-8 mr-2 text-red-100 "

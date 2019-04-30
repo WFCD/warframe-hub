@@ -11,7 +11,7 @@
           <div class="w-1/6 bg-bgnew h-auto">
             <HubImg :src="platinum" name="Platinum" />
           </div>
-          <div class="w-1/6 bg-bgnew h-auto">Stock</div>
+          <div class="w-1/5 bg-bgnew h-auto">Stock</div>
 
           <div class="w-1/5 bg-bgnew h-auto"></div>
         </div>
@@ -20,14 +20,14 @@
           <div class="w-1/5 bg-bgnew h-6">{{ item.item }}</div>
           <div class="w-1/6 bg-bgnew h-6">{{ item.discount }}%</div>
           <div class="w-1/6 bg-bgnew h-6">{{ item.salePrice }}</div>
-          <div class="w-1/6 bg-bgnew h-6">
+          <div class="w-1/4 bg-bgnew h-6">
             {{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}%
           </div>
           <TimeBadge
-            class="flex-1 h-6 text-sm "
-            :starttime="now()"
+            class="flex  h-6 text-sm "
+            :starttime="now2"
             :endtime="item.expiry"
-            :interval="10000"
+            :interval="1000"
           />
         </div>
       </div>
@@ -57,6 +57,9 @@ export default {
   computed: {
     headertext() {
       return "Darvo's Deals";
+    },
+    now2() {
+      return new Date().toISOString();
     }
   },
   data() {

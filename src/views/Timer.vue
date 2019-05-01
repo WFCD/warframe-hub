@@ -31,9 +31,10 @@
       :is="componentState['fissures'].component"
       v-bind="resolveProps(componentState['fissures'].props)"
     />
+    <!-- -->
     <div
-      :is="componentState['news'].component"
-      v-bind="resolveProps(componentState['news'].props)"
+      :is="componentState['nightwave'].component"
+      v-bind="resolveProps(componentState['nightwave'].props)"
     />
     <!--<div v-for="(component, index) in layouts['lg']" :key="index">
       <div

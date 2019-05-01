@@ -1,6 +1,9 @@
 module.exports = {
   theme: {
     extend: {
+      inset: {
+        full: '100%'
+      },
       opacity: {
         '10': '0.1',
         '90': '0.9'
@@ -20,7 +23,6 @@ module.exports = {
       }
     }
   },
-
   variants: {
     appearance: ['responsive'],
     backgroundAttachment: ['responsive'],
@@ -68,11 +70,11 @@ module.exports = {
     inset: ['responsive'],
     resize: ['responsive'],
     boxShadow: ['responsive', 'hover', 'focus'],
-    fill: ['responsive', 'hover', 'group-hover'],
+    fill: [],
     stroke: [],
     tableLayout: ['responsive'],
     textAlign: ['responsive'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus'],
     fontSize: ['responsive'],
     fontStyle: ['responsive'],
     textTransform: ['responsive'],
@@ -90,5 +92,5 @@ module.exports = {
   corePlugins: {
     container: false
   },
-  plugins: [require('tailwindcss-elevation')(['responsive'])]
+  plugins: []
 };

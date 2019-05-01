@@ -1,7 +1,7 @@
 <template>
   <div id="app" class=" theme-eidelon min-h-screen  w-full">
-    <Navbar class="card " />
-    <router-view class="" />
+    <Navbar class="card z-50 " />
+    <router-view class="z-0 " />
   </div>
 </template>
 

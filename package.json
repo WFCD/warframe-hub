@@ -19,7 +19,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "@ky-is/vue-cli-plugin-tailwind": "^1.7.0",
+    "@ky-is/vue-cli-plugin-tailwind": "next",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-pwa": "^3.7.0",
@@ -34,7 +34,7 @@
     "node-fetch": "^2.4.1",
     "postcss-preset-env": "^6.6.0",
     "register-service-worker": "^1.6.2",
-    "tailwindcss": "next",
+    "tailwindcss": "^1.0.0-beta.8",
     "tailwindcss-elevation": "^0.2.0",
     "vue": "^2.6.10",
     "vue-analytics": "^5.16.4",

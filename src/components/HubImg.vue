@@ -1,6 +1,13 @@
 <template>
   <span>
-    <img :src="src" :name="name" :height="height" :width="width" :alt="name" />
+    <img
+      class="inline"
+      :src="src"
+      :name="name"
+      :height="height"
+      :width="width"
+      :alt="name"
+    />
   </span>
 </template>
 

@@ -34,9 +34,9 @@
     </div>
     <div
       :class="open ? 'block' : 'hidden'"
-      class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
+      class="z-50 w-full flex-grow sm:flex sm:items-center sm:w-auto"
     >
-      <div class="text-sm sm:flex-grow">
+      <div class="  text-sm sm:flex-grow">
         <router-link
           to="/"
           exact

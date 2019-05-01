@@ -1,6 +1,6 @@
 <template>
   <div class=" max-w-md  h-auto rounded overflow-hidden  border-transparent">
-    <div class="font-bold  text-default text-4xl mt-1">
+    <div class="font-bold text-default text-4xl mt-1">
       {{ headertext }}
     </div>
     <div class="bg-bgnew  text-default  py-2">
@@ -20,7 +20,7 @@
           <div class="w-1/5 bg-bgnew h-6">{{ item.item }}</div>
           <div class="w-1/6 bg-bgnew h-6">{{ item.discount }}%</div>
           <div class="w-1/6 bg-bgnew h-6">{{ item.salePrice }}</div>
-          <div class="w-1/4 bg-bgnew h-6">
+          <div class="w-1/5 bg-bgnew h-6">
             {{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}%
           </div>
           <TimeBadge

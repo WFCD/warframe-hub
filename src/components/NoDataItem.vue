@@ -10,13 +10,8 @@
 </template>
 
 <script>
-import NoDataItem from '@/components/NoDataItem.vue';
-
 export default {
   name: 'NoDataItem',
   props: ['text'],
-  components: {
-    NoDataItem,
-  }
 };
 </script>

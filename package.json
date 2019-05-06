@@ -9,7 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lint:raw": "npx lint .",
+    "lint:raw": "npx eslint  src/ initialWorldstateUpdater.js",
     "updateWorldstate": "node ./initialWorldstateUpdater.js"
   },
   "heroku-run-build-script": true,
@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
-    "@vue/cli-plugin-babel": "^3.5.1",
-    "@vue/cli-plugin-eslint": "^3.5.1",
-    "@vue/cli-plugin-pwa": "^3.5.1",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-plugin-pwa": "^3.7.0",
     "@vue/cli-service": "^3.5.2",
     "bootstrap-vue": "^2.0.0-rc.15",
     "bootswatch": "^4.3.1",
@@ -62,7 +62,9 @@
       "quotes": [
         1,
         "single"
-      ]
+      ],
+      "vue/no-use-v-if-with-v-for": "off",
+      "vue/script-indent": "warning"
     }
   },
   "eslintIgnore": [

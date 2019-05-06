@@ -50,7 +50,6 @@
 </template>
 
 <script>
-  import HubImg from '@/components/HubImg.vue';
   import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
   import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
   import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
@@ -61,7 +60,6 @@
   export default {
     name: 'SettingsModal',
     components: {
-      HubImg,
       NotifFilters,
       FissureFilters,
       SoundFilters,

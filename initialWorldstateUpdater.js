@@ -106,7 +106,6 @@ function main() {
         if(err) {
           return console.log(err);
         }
-        console.info();
         console.info(`${jsonFileName} updated at ${jsonFolder}/${jsonFileName}`);
       }
     );

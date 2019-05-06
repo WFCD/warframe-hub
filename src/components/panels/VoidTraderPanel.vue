@@ -42,10 +42,8 @@
 <script>
   import moment from 'moment';
 
-  import HubImg from '@/components/HubImg.vue';
   import TimeBadge from '@/components/TimeBadge.vue';
   import HubPanelWrap from '@/components/HubPanelWrap';
-  import NoDataItem from '@/components/NoDataItem.vue';
   import Collapsible from '@/components/Collapsible.vue';
 
   export default {
@@ -60,10 +58,8 @@
       return {};
     },
     components: {
-      HubImg,
       HubPanelWrap,
       TimeBadge,
-      NoDataItem,
       Collapsible,
     },
     methods: {

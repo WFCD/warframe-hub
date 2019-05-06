@@ -114,11 +114,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Fish Information and resources for the Ob Vallis'
+          content: 'Fish Information and resources for the Orb Vallis'
         },
         {
           name: 'og:description',
-          content: 'Fish Information and resources for the Ob Vallis'
+          content: 'Fish Information and resources for the Orb Vallis'
         },
       ],
     },

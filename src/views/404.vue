@@ -12,7 +12,7 @@
         <h3>How could you?</h3>
 
         <br><br>
-        <p>Don't worry, one of the developer will clean up the mess, you can carry on though!</p>
+        <p>Don't worry, one of the developers will clean up the mess. You can carry on though!</p>
         <p>This interaction will be logged, so we can solve the problem faster.</p>
         <p>Speaking of which, one of the developers is probably panicking right now just because of this error log.</p>
         <p>Oh well, poor him.</p>

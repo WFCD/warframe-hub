@@ -5,8 +5,6 @@ module.exports = {
     msTileColor: '#1a5072'
   },
 
-  lintOnSave: true,
-  baseUrl: '/',
   publicPath: '/',
   outputDir: undefined,
   assetsDir: undefined,
@@ -14,6 +12,7 @@ module.exports = {
   productionSourceMap: undefined,
   parallel: undefined,
   configureWebpack: { plugins: [] },
+
   css: {
     sourceMap: true,
     loaderOptions: {
@@ -37,5 +36,5 @@ module.exports = {
         }
       },
     },
-  },
+  }
 };

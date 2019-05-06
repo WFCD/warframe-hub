@@ -171,6 +171,8 @@ class Notifier {
   }
 
   async notify (notifications) {
+    // TODO: Implement vue-notification so these can be used when visitor
+    //  is already in the app and doesn't clog browser/system notifications
     const usePush = true || !document.hasFocus();
     notifications.forEach((notification) => {
       if (usePush) {

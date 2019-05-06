@@ -35,11 +35,11 @@
 </template>
 
 <script>
-  import TimeBadge from '@/components/TimeBadge.vue';
-  import HubImg from '@/components/HubImg.vue';
   import NoDataItem from '@/components/NoDataItem.vue';
   import HubPanelWrap from '@/components/HubPanelWrap';
   import Collapsible from '@/components/Collapsible';
+
+  import util from '@/utilities';
 
   export default {
     name: 'EventsPanel',
@@ -51,28 +51,22 @@
     },
     methods: {
       eventHealthVariant(event) {
-        let healthState = 'success';
-        if (event.health > 50 && event.health < 100) {
-          healthState = 'warning';
-        } else if (event.health < 50) {
-          healthState = 'danger';
+        const health = event.health;
+        let labelClass = 'success';
+        if (health <= 80 && health > 50) {
+          labelClass = 'info';
+        } else if (health <= 50 && health > 20) {
+          labelClass = 'warning';
+        } else if (health <= 20) {
+          labelClass = 'danger';
         }
-        return healthState;
+        return labelClass;
       },
       makeid: function() {
-        let text = '';
-        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-        for (let i = 0; i < 5; i++) {
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-
-        return text;
+        return util.makeid();
       }
     },
     components: {
-      TimeBadge,
-      HubImg,
       NoDataItem,
       HubPanelWrap,
       Collapsible

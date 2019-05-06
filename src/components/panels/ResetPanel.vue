@@ -5,7 +5,7 @@
         <span class="pull-left">
           <b>Reward Timer Reset in:</b>
         </span>
-        <TimeBadge :starttime="this.time2" :endtime="this.time1"/>
+        <TimeBadge :starttime="this.now" :endtime="this.nextDay"/>
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     gettime: function() {
-      this.time2 = moment().toISOString();
-      this.time1 = moment()
+      this.now = moment().toISOString();
+      this.nextDay = moment()
         .endOf('day')
         .add(1, 'seconds')
         .toISOString();

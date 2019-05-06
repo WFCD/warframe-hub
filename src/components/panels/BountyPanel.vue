@@ -9,7 +9,7 @@
         <Collapsible :headertext="`${headertext} Bounties`">
           <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
             <span slot="rewards" slot-scope="data" v-html="data.value"></span>
-            <template slot="HEAD_standing" slot-scope="data">
+            <template slot="HEAD_standing">
                 <HubImg :src="standing" name="Standing" width="32px" height="32px" class="text-center li-mission-decorator li-mission-decorator-lg" />
             </template>
           </b-table>

@@ -11,6 +11,8 @@
   </div>
 </template>
 <script>
+  import util from '@/utilities';
+
   export default {
     name: 'Collapsible',
     props: ['headertext'],
@@ -25,14 +27,7 @@
         console.error('triggered reflow --- this does nothing, needs to trigger the resize for the grid item');
       },
       makeid: function() {
-        let text = '';
-        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-        for (let i = 0; i < 5; i++) {
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-
-        return text;
+        return util.makeid();
       }
     },
     computed: {

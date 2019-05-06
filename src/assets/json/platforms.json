@@ -1,0 +1,22 @@
+{
+  "pc": {
+    "display": "PC",
+    "key": "pc",
+    "icon": "fab fa-windows"
+  },
+  "ps4": {
+    "display": "PS4",
+    "key": "ps4",
+    "icon": "fab fa-playstation"
+  },
+  "xb1": {
+    "display": "XB1",
+    "key": "xb1",
+    "icon": "fab fa-xbox"
+  },
+  "swi": {
+    "display": "Switch",
+    "key": "swi",
+    "icon": "fab fa-nintendo-switch"
+  }
+}

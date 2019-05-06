@@ -34,17 +34,15 @@ Our builds goes through Travis-CI's tester.
 
 You can see the latest results [here](https://travis-ci.org/WFCD/warframe-hub) or by clicking on the badge at the top of the page.
 
-The repo also includes a mocha script that is used for Travi CI's unit testing. You can run this manually by installing mocha first globally on your machine, then run the specifications named mochaspec.js
+~~The repo also includes a mocha script that is used for Travis CI's unit testing. You can run this manually by installing mocha first globally on your machine, then run the specifications named mochaspec.js~~
 ```bash
 $ npm install -g mocha
 $ mocha spec mochaspec.js
 ```
 
-Another things that's very helpful for development is nodemon. This will automatically restart the express server if any changes is detected in the project folder. No more restarting the node server manually! Just run it in the project directory and it should take care of the rest.
-```bash
-$ npm install -g nodemon
-$ nodemon
-```
+At present, the testing is not going to work while migrating to vue.js
+
+Nodemon is no longer needed as vue comes with its own hot reloader
 
 ## License
 The distribution of this software is protected under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)

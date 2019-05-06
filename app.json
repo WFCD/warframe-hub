@@ -11,6 +11,10 @@
   "scripts": {
   },
   "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    }
   },
   "formation": {
     "web": {

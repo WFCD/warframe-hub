@@ -1,0 +1,556 @@
+{
+  "rewardTypes": {
+    "vauban": {
+      "state": false,
+      "value": "vauban",
+      "text": "Vauban Parts"
+    },
+    "vandal": {
+      "state": false,
+      "value": "vandal",
+      "text": "Vandal Weapon Part"
+    },
+    "wraith": {
+      "state": false,
+      "value": "wraith",
+      "text": "Wraith Weapon Part"
+    },
+    "skin": {
+      "state": false,
+      "value": "skin",
+      "text": "Skin Blueprint"
+    },
+    "helmet": {
+      "state": false,
+      "value": "helmet",
+      "text": "Helmet Blueprint"
+    },
+    "nitain": {
+      "state": false,
+      "value": "nitain",
+      "text": "Nitain Extract"
+    },
+    "mutalist": {
+      "state": false,
+      "value": "mutalist",
+      "text": "Mutalist Alad V Nav Coordinate"
+    },
+    "weapon": {
+      "state": false,
+      "value": "weapon",
+      "text": "Weapon Blueprints"
+    },
+    "fieldron": {
+      "state": false,
+      "value": "fieldron",
+      "text": "Fieldron Sample"
+    },
+    "detonite": {
+      "state": false,
+      "value": "detonite",
+      "text": "Detonite Ampule"
+    },
+    "mutagen": {
+      "state": false,
+      "value": "mutagen",
+      "text": "Mutagen Samples"
+    },
+    "aura": {
+      "state": false,
+      "value": "aura",
+      "text": "Aura Mods"
+    },
+    "neurodes": {
+      "state": false,
+      "value": "neurodes",
+      "text": "Neurodes"
+    },
+    "nightmare": {
+      "state": false,
+      "value": "nightmare",
+      "text": "Nightmare Mods"
+    },
+    "reactor": {
+      "state": false,
+      "value": "reactor",
+      "text": "Orokin Reactors"
+    },
+    "catalyst": {
+      "state": false,
+      "value": "catalyst",
+      "text": "Orokin Caralyst"
+    },
+    "forma": {
+      "state": false,
+      "value": "forma",
+      "text": "Forma"
+    },
+    "synthula": {
+      "state": false,
+      "value": "synthula",
+      "text": "Synthula"
+    },
+    "exilus": {
+      "state": false,
+      "value": "exilus",
+      "text": "Exilus Adapater"
+    },
+    "riven": {
+      "state": false,
+      "value": "riven",
+      "text": "Riven Mods"
+    },
+    "traces": {
+      "state": false,
+      "value": "traces",
+      "text": "Void Traces"
+    }
+  },
+  "eventTypes": {
+    "nightwave": {
+      "state": false,
+      "value": "nightwave",
+      "text": "Nightwave"
+    },
+    "alerts": {
+      "state": false,
+      "value": "alerts",
+      "text": "Alerts"
+    },
+    "invasions": {
+      "state": false,
+      "value": "invasions",
+      "text": "Invasions"
+    },
+    "news": {
+      "state": false,
+      "value": "news",
+      "text": "News"
+    },
+    "sorties": {
+      "state": false,
+      "value": "sorties",
+      "text": "Sorties"
+    },
+    "baro": {
+      "state": false,
+      "value": "baro",
+      "text": "Baro Ki'Teer Arrival"
+    },
+    "darvo": {
+      "state": false,
+      "value": "darvo",
+      "text": "Darvo's Daily Deals"
+    },
+    "deals.featured": {
+      "state": false,
+      "value": "deals.featured",
+      "text": "Featured Deals"
+    },
+    "deals.popular": {
+      "state": false,
+      "value": "deals.popular",
+      "text": "Popular Deals"
+    },
+    "enemies": {
+      "state": false,
+      "value": "enemies",
+      "text": "Acolytes"
+    },
+    "updates": {
+      "state": false,
+      "value": "updates",
+      "text": "Warframe Update News"
+    },
+    "primeaccess": {
+      "state": false,
+      "value": "primeaccess",
+      "text": "Prime Access News"
+    },
+    "streams": {
+      "state": false,
+      "value": "streams",
+      "text": "Stream Announcements"
+    },
+    "cetus.day": {
+      "state": false,
+      "value": "cetus.day",
+      "text": "Cetus' Day Start"
+    },
+    "cetus.night": {
+      "state": false,
+      "value": "cetus.night",
+      "text": "Cetus' Night Start"
+    },
+    "syndicate.ostrons": {
+      "state": false,
+      "value": "syndicate.ostrons",
+      "text": "Bounties"
+    },
+    "operations": {
+      "state": false,
+      "value": "operations",
+      "text": "Operations"
+    },
+    "fissures.t1.excavation": {
+      "state": false,
+      "value": "fissures.t1.excavation",
+      "text": "Lith Excavation Fissure"
+    },
+    "fissures.t1.sabotage": {
+      "state": false,
+      "value": "fissures.t1.sabotage",
+      "text": "Lith Sabotage Fissure"
+    },
+    "fissures.t1.mobiledefense": {
+      "state": false,
+      "value": "fissures.t1.mobiledefense",
+      "text": "Lith Mobile Defense Fissure"
+    },
+    "fissures.t1.assassination": {
+      "state": false,
+      "value": "fissures.t1.assassination",
+      "text": "Lith Assassination Fissure"
+    },
+    "fissures.t1.exterminate": {
+      "state": false,
+      "value": "fissures.t1.exterminate",
+      "text": "Lith Extermination Fissure"
+    },
+    "fissures.t1.hive": {
+      "state": false,
+      "value": "fissures.t1.hive",
+      "text": "Lith Hive Fissure"
+    },
+    "fissures.t1.defense": {
+      "state": false,
+      "value": "fissures.t1.defense",
+      "text": "Lith Defense Fissure"
+    },
+    "fissures.t1.interception": {
+      "state": false,
+      "value": "fissures.t1.interception",
+      "text": "Lith Interception Fissure"
+    },
+    "fissures.t1.rathuum": {
+      "state": false,
+      "value": "fissures.t1.rathuum",
+      "text": "Lith Arena Fissure"
+    },
+    "fissures.t1.conclave": {
+      "state": false,
+      "value": "fissures.t1.conclave",
+      "text": "Lith Conclave Fissure"
+    },
+    "fissures.t1.rescue": {
+      "state": false,
+      "value": "fissures.t1.rescue",
+      "text": "Lith Rescue Fissure"
+    },
+    "fissures.t1.spy": {
+      "state": false,
+      "value": "fissures.t1.spy",
+      "text": "Lith Spy Fissure"
+    },
+    "fissures.t1.survival": {
+      "state": false,
+      "value": "fissures.t1.survival",
+      "text": "Lith Survival Fissure"
+    },
+    "fissures.t1.capture": {
+      "state": false,
+      "value": "fissures.t1.capture",
+      "text": "Lith Capture Fissure"
+    },
+    "fissures.t1.darksector": {
+      "state": false,
+      "value": "fissures.t1.darksector",
+      "text": "Lith Dark Sector Fissure"
+    },
+    "fissures.t1.hijack": {
+      "state": false,
+      "value": "fissures.t1.hijack",
+      "text": "Lith Hijack Fissure"
+    },
+    "fissures.t1.assault": {
+      "state": false,
+      "value": "fissures.t1.assault",
+      "text": "Lith Assault Fissure"
+    },
+    "fissures.t1.evacuation": {
+      "state": false,
+      "value": "fissures.t1.evacuation",
+      "text": "Lith Evacuation Fissure"
+    },
+    "fissures.t2.excavation": {
+      "state": false,
+      "value": "fissures.t2.excavation",
+      "text": "Meso Excavation Fissure"
+    },
+    "fissures.t2.sabotage": {
+      "state": false,
+      "value": "fissures.t2.sabotage",
+      "text": "Meso Sabotage Fissure"
+    },
+    "fissures.t2.mobiledefense": {
+      "state": false,
+      "value": "fissures.t2.mobiledefense",
+      "text": "Meso Mobile Defense Fissure"
+    },
+    "fissures.t2.assassination": {
+      "state": false,
+      "value": "fissures.t2.assassination",
+      "text": "Meso Assassination Fissure"
+    },
+    "fissures.t2.exterminate": {
+      "state": false,
+      "value": "fissures.t2.exterminate",
+      "text": "Meso Extermination Fissure"
+    },
+    "fissures.t2.hive": {
+      "state": false,
+      "value": "fissures.t2.hive",
+      "text": "Meso Hive Fissure"
+    },
+    "fissures.t2.defense": {
+      "state": false,
+      "value": "fissures.t2.defense",
+      "text": "Meso Defense Fissure"
+    },
+    "fissures.t2.interception": {
+      "state": false,
+      "value": "fissures.t2.interception",
+      "text": "Meso Interception Fissure"
+    },
+    "fissures.t2.rathuum": {
+      "state": false,
+      "value": "fissures.t2.rathuum",
+      "text": "Meso Arena Fissure"
+    },
+    "fissures.t2.conclave": {
+      "state": false,
+      "value": "fissures.t2.conclave",
+      "text": "Meso Conclave Fissure"
+    },
+    "fissures.t2.rescue": {
+      "state": false,
+      "value": "fissures.t2.rescue",
+      "text": "Meso Rescue Fissure"
+    },
+    "fissures.t2.spy": {
+      "state": false,
+      "value": "fissures.t2.spy",
+      "text": "Meso Spy Fissure"
+    },
+    "fissures.t2.survival": {
+      "state": false,
+      "value": "fissures.t2.survival",
+      "text": "Meso Survival Fissure"
+    },
+    "fissures.t2.capture": {
+      "state": false,
+      "value": "fissures.t2.capture",
+      "text": "Meso Capture Fissure"
+    },
+    "fissures.t2.darksector": {
+      "state": false,
+      "value": "fissures.t2.darksector",
+      "text": "Meso Dark Sector Fissure"
+    },
+    "fissures.t2.hijack": {
+      "state": false,
+      "value": "fissures.t2.hijack",
+      "text": "Meso Hijack Fissure"
+    },
+    "fissures.t2.assault": {
+      "state": false,
+      "value": "fissures.t2.assault",
+      "text": "Meso Assault Fissure"
+    },
+    "fissures.t2.evacuation": {
+      "state": false,
+      "value": "fissures.t2.evacuation",
+      "text": "Meso Evacuation Fissure"
+    },
+    "fissures.t3.excavation": {
+      "state": false,
+      "value": "fissures.t3.excavation",
+      "text": "Neo Excavation Fissure"
+    },
+    "fissures.t3.sabotage": {
+      "state": false,
+      "value": "fissures.t3.sabotage",
+      "text": "Neo Sabotage Fissure"
+    },
+    "fissures.t3.mobiledefense": {
+      "state": false,
+      "value": "fissures.t3.mobiledefense",
+      "text": "Neo Mobile Defense Fissure"
+    },
+    "fissures.t3.assassination": {
+      "state": false,
+      "value": "fissures.t3.assassination",
+      "text": "Neo Assassination Fissure"
+    },
+    "fissures.t3.exterminate": {
+      "state": false,
+      "value": "fissures.t3.exterminate",
+      "text": "Neo Extermination Fissure"
+    },
+    "fissures.t3.hive": {
+      "state": false,
+      "value": "fissures.t3.hive",
+      "text": "Neo Hive Fissure"
+    },
+    "fissures.t3.defense": {
+      "state": false,
+      "value": "fissures.t3.defense",
+      "text": "Neo Defense Fissure"
+    },
+    "fissures.t3.interception": {
+      "state": false,
+      "value": "fissures.t3.interception",
+      "text": "Neo Interception Fissure"
+    },
+    "fissures.t3.rathuum": {
+      "state": false,
+      "value": "fissures.t3.rathuum",
+      "text": "Neo Arena Fissure"
+    },
+    "fissures.t3.conclave": {
+      "state": false,
+      "value": "fissures.t3.conclave",
+      "text": "Neo Conclave Fissure"
+    },
+    "fissures.t3.rescue": {
+      "state": false,
+      "value": "fissures.t3.rescue",
+      "text": "Neo Rescue Fissure"
+    },
+    "fissures.t3.spy": {
+      "state": false,
+      "value": "fissures.t3.spy",
+      "text": "Neo Spy Fissure"
+    },
+    "fissures.t3.survival": {
+      "state": false,
+      "value": "fissures.t3.survival",
+      "text": "Neo Survival Fissure"
+    },
+    "fissures.t3.capture": {
+      "state": false,
+      "value": "fissures.t3.capture",
+      "text": "Neo Capture Fissure"
+    },
+    "fissures.t3.darksector": {
+      "state": false,
+      "value": "fissures.t3.darksector",
+      "text": "Neo Dark Sector Fissure"
+    },
+    "fissures.t3.hijack": {
+      "state": false,
+      "value": "fissures.t3.hijack",
+      "text": "Neo Hijack Fissure"
+    },
+    "fissures.t3.assault": {
+      "state": false,
+      "value": "fissures.t3.assault",
+      "text": "Neo Assault Fissure"
+    },
+    "fissures.t3.evacuation": {
+      "state": false,
+      "value": "fissures.t3.evacuation",
+      "text": "Neo Evacuation Fissure"
+    },
+    "fissures.t4.excavation": {
+      "state": false,
+      "value": "fissures.t4.excavation",
+      "text": "Axi Excavation Fissure"
+    },
+    "fissures.t4.sabotage": {
+      "state": false,
+      "value": "fissures.t4.sabotage",
+      "text": "Axi Sabotage Fissure"
+    },
+    "fissures.t4.mobiledefense": {
+      "state": false,
+      "value": "fissures.t4.mobiledefense",
+      "text": "Axi Mobile Defense Fissure"
+    },
+    "fissures.t4.assassination": {
+      "state": false,
+      "value": "fissures.t4.assassination",
+      "text": "Axi Assassination Fissure"
+    },
+    "fissures.t4.exterminate": {
+      "state": false,
+      "value": "fissures.t4.exterminate",
+      "text": "Axi Extermination Fissure"
+    },
+    "fissures.t4.hive": {
+      "state": false,
+      "value": "fissures.t4.hive",
+      "text": "Axi Hive Fissure"
+    },
+    "fissures.t4.defense": {
+      "state": false,
+      "value": "fissures.t4.defense",
+      "text": "Axi Defense Fissure"
+    },
+    "fissures.t4.interception": {
+      "state": false,
+      "value": "fissures.t4.interception",
+      "text": "Axi Interception Fissure"
+    },
+    "fissures.t4.rathuum": {
+      "state": false,
+      "value": "fissures.t4.rathuum",
+      "text": "Axi Arena Fissure"
+    },
+    "fissures.t4.conclave": {
+      "state": false,
+      "value": "fissures.t4.conclave",
+      "text": "Axi Conclave Fissure"
+    },
+    "fissures.t4.rescue": {
+      "state": false,
+      "value": "fissures.t4.rescue",
+      "text": "Axi Rescue Fissure"
+    },
+    "fissures.t4.spy": {
+      "state": false,
+      "value": "fissures.t4.spy",
+      "text": "Axi Spy Fissure"
+    },
+    "fissures.t4.survival": {
+      "state": false,
+      "value": "fissures.t4.survival",
+      "text": "Axi Survival Fissure"
+    },
+    "fissures.t4.capture": {
+      "state": false,
+      "value": "fissures.t4.capture",
+      "text": "Axi Capture Fissure"
+    },
+    "fissures.t4.darksector": {
+      "state": false,
+      "value": "fissures.t4.darksector",
+      "text": "Axi Dark Sector Fissure"
+    },
+    "fissures.t4.hijack": {
+      "state": false,
+      "value": "fissures.t4.hijack",
+      "text": "Axi Hijack Fissure"
+    },
+    "fissures.t4.assault": {
+      "state": false,
+      "value": "fissures.t4.assault",
+      "text": "Axi Assault Fissure"
+    },
+    "fissures.t4.evacuation": {
+      "state": false,
+      "value": "fissures.t4.evacuation",
+      "text": "Axi Evacuation Fissure"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "key": "night",
+    "class": "night",
+    "display": "Night",
+    "faclass": "fas fa-moon"
+  },
+  {
+    "key": "day",
+    "class": "day",
+    "display": "Day",
+    "faclass": "fas fa-sun"
+  },
+  {
+    "key": "eidolon",
+    "class": "eidolon",
+    "display": "Eidolon",
+    "faclass": "fas fa-cloud-moon"
+  },
+  {
+    "key": "retro",
+    "class": "retro",
+    "display": "Retro",
+    "faclass": "fas fa-terminal"
+  }
+]

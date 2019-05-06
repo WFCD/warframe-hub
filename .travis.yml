@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  # - "node" removing until stabilized
-  - "6"
+  - "node"
   - "lts/*"
 
 cache:
@@ -12,15 +11,6 @@ cache:
 git:
   depth: 3
 
-branches:
-  only:
-  - dev
-  - master
-  - /^greenkeeper/.*$/
-
-before_install:
-  - npm i -g npm@5.5.1
-
 install: npm install
 
 before_script:
@@ -28,11 +18,11 @@ before_script:
   - export AUTHOR_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
 
 script:
-  - npm test
+  - npm install
 
 after_success:
-  - chmod +x success.sh
-  - ./success.sh
+  - chmod +x ./.github/travis/success.sh
+  - ./.github/travis/success.sh
 after_failure:
-  - chmod +x fail.sh
-  - ./fail.sh
+  - chmod +x ./.github/travis/fail.sh
+  - ./.github/travis/fail.sh

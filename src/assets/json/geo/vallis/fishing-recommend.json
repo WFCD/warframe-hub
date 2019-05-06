@@ -1,0 +1,100 @@
+[
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location (Cave)"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1615.390918,
+            202.546875
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1109.187606,
+            521.828125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1229.846898,
+            934.015625
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            334.14583,
+            898.046875
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location (Cave)"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1764.570246,
+            1411.78125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location (Cave)"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1514.531564,
+            1933.78125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Recommended Fishing Location"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1042.530094,
+            2035.609375
+         ]
+      }
+   }
+]

@@ -1,0 +1,92 @@
+{
+  "mercury": {
+    "state": false,
+    "value": "mercury",
+    "text": "Mercury"
+  },
+  "venus": {
+    "state": false,
+    "value": "venus",
+    "text": "Venus"
+  },
+  "earth": {
+    "state": false,
+    "value": "earth",
+    "text": "Earth"
+  },
+  "lua": {
+    "state": false,
+    "value": "lua",
+    "text": "Lua"
+  },
+  "mars": {
+    "state": false,
+    "value": "mars",
+    "text": "Mars"
+  },
+  "phobos": {
+    "state": false,
+    "value": "phobos",
+    "text": "Phobos"
+  },
+  "ceres": {
+    "state": false,
+    "value": "ceres",
+    "text": "Ceres"
+  },
+  "jupiter": {
+    "state": false,
+    "value": "jupiter",
+    "text": "Jupiter"
+  },
+  "europa": {
+    "state": false,
+    "value": "europa",
+    "text": "Europa"
+  },
+  "saturn": {
+    "state": false,
+    "value": "saturn",
+    "text": "Saturn"
+  },
+  "uranus": {
+    "state": false,
+    "value": "uranus",
+    "text": "Uranus"
+  },
+  "neptune": {
+    "state": false,
+    "value": "neptune",
+    "text": "Neptune"
+  },
+  "pluto": {
+    "state": false,
+    "value": "pluto",
+    "text": "Pluto"
+  },
+  "sedna": {
+    "state": false,
+    "value": "sedna",
+    "text": "Sedna"
+  },
+  "kuva": {
+    "state": false,
+    "value": "kuva",
+    "text": "Kuva Fortress"
+  },
+  "eris": {
+    "state": false,
+    "value": "eris",
+    "text": "Eris"
+  },
+  "derelict": {
+    "state": false,
+    "value": "derelict",
+    "text": "Orokin Derelict"
+  },
+  "void": {
+    "state": false,
+    "value": "void",
+    "text": "Void"
+  }
+}

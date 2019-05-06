@@ -1,0 +1,86 @@
+[
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 1"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            431.259129,
+            461.605469
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 2"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            100.766266,
+            296.580078
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 3"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            816.103493,
+            165.476563
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 4"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            279.542859,
+            877.605469
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 5"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            572.966521,
+            925.066406
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Grineer Camp 6"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            826.929638,
+            685.142578
+         ]
+      }
+   }
+]

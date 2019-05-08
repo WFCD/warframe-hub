@@ -55,7 +55,7 @@ export default {
       window.open(url, '_blank');
     },
     getimgling: function(url) {
-      return 'https://img.mybitti.de/o_webp/' + url;
+      return 'https://cdn.warframestat.us/o_webp/' + url;
     },
     title: function(newsitem) {
       return `${newsitem.eta.split(' ')[0]} ago: ${

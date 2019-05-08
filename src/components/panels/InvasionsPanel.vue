@@ -31,8 +31,8 @@
         </b-row>
         <b-row>
           <b-progress :max="100" class="w-100 h-125">
-            <b-progress-bar :variant="getLabelColor(invasion.attackingFaction)" :value="invasion.completion" animated></b-progress-bar>
-            <b-progress-bar :variant="getLabelColor(invasion.defendingFaction)" :value="100 - invasion.completion" animated></b-progress-bar>
+            <b-progress-bar :variant="getLabelColor(invasion.attackingFaction)" :value="invasion.completion"></b-progress-bar>
+            <b-progress-bar :variant="getLabelColor(invasion.defendingFaction)" :value="100 - invasion.completion"></b-progress-bar>
           </b-progress>
         </b-row>
       </b-list-group-item>

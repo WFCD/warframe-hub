@@ -1,7 +1,7 @@
 # Warframe Hub
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/WFCD/warframe-hub.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/WFCD/warframe-hub.svg?branch=dev)](https://travis-ci.org/WFCD/warframe-hub) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e3152d74ab44e78a8e5a42c3de9e836)](https://www.codacy.com/app/MainlandHero/warframe-hub?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WFCD/warframe-hub&amp;utm_campaign=Badge_Grade) [![Waffle.io - Columns and their card count](https://badge.waffle.io/WFCD/warframe-hub.svg?columns=in%20progress,review,done)](http://waffle.io/WFCD/warframe-hub)
+[![Build Status](https://travis-ci.org/WFCD/warframe-hub.svg?branch=dev)](https://travis-ci.com/WFCD/warframe-hub) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e3152d74ab44e78a8e5a42c3de9e836)](https://www.codacy.com/app/MainlandHero/warframe-hub?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WFCD/warframe-hub&amp;utm_campaign=Badge_Grade)
 
 [![Supported by Warframe Community Developers](https://warframestat.us/wfcd.png)](https://github.com/WFCD "Supported by Warframe Community Developers")
 
@@ -27,7 +27,7 @@ $ npm start
 
 You can develop the application through the Vue UI, which you can install through `npm i -g @vue/cli`
 
-The express website should be accessible at http://localhost:8000
+The Vue dashboard will be accessible at http://localhost:8000
 
 ## Bug/Issue Report
 Found a bug or an issue? Please submit a bug/issue report under the [issue tab](htps://github.com/wfcd/warframe-hub/issues).

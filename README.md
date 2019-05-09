@@ -1,7 +1,7 @@
 # Warframe Hub
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/WFCD/warframe-hub.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/WFCD/warframe-hub.svg?branch=dev)](https://travis-ci.com/WFCD/warframe-hub) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e3152d74ab44e78a8e5a42c3de9e836)](https://www.codacy.com/app/MainlandHero/warframe-hub?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WFCD/warframe-hub&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.com/WFCD/warframe-hub.svg?branch=dev)](https://travis-ci.com/WFCD/warframe-hub) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e3152d74ab44e78a8e5a42c3de9e836)](https://www.codacy.com/app/MainlandHero/warframe-hub?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WFCD/warframe-hub&amp;utm_campaign=Badge_Grade)
 
 [![Supported by Warframe Community Developers](https://warframestat.us/wfcd.png)](https://github.com/WFCD "Supported by Warframe Community Developers")
 
@@ -13,7 +13,7 @@ In order to run your own version of Warframe Hub, you are required to have the f
 ## Dependencies
 Most software related dependencies should be managed by NPM, and will be automatically installed when you try to run the project. We'll cover those dependencies in the following section.
 
-Warframe Hub also relies on the availability of the internet, as it will parse the Warframe WorldState. It uses a slightly easier to parse WorldState provided by [Warframe Stat](https://docs.warframestat.us/)
+Warframe Hub also relies on the availability of the internet, as it will parse the Warframe WorldState. It uses a slightly easier to parse WorldState provided by [Warframe Stat.us](https://docs.warframestat.us/), [API](https://api.warframestat.us).
 
 ## Installation
 Clone or download and unpack this repository. Install the dependencies using NPM

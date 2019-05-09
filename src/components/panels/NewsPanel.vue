@@ -9,7 +9,7 @@
         v-on:click.native="open(newsitem.link)"
       >
         <span slot="img" class="middling-helper"></span>
-        <b-img slot="img" class="d-block slide-image" fluid center :src="getimgling(newsitem.imageLink)" :alt="title(newsitem)" />
+        <b-img slot="img" class="d-block slide-image" fluid center :src="getImgSrc(newsitem.imageLink)" :alt="title(newsitem)" />
       </b-carousel-slide>
     </b-carousel>
   </HubPanelWrap>
@@ -54,8 +54,8 @@ export default {
     open: function(url) {
       window.open(url, '_blank');
     },
-    getimgling: function(url) {
-      return 'https://img.mybitti.de/o_webp/' + url;
+    getImgSrc: function(url) {
+      return 'https://cdn.warframestat.us/o_webp,rs_760_fit/' + url;
     },
     title: function(newsitem) {
       return `${newsitem.eta.split(' ')[0]} ago: ${

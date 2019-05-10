@@ -1,15 +1,11 @@
 <template>
   <HubPanelWrap :title="headertext">
     <b-list-group>
-      <b-list-group-item class="list-group-item-borderless">
+      <b-list-group-item :class="`${available() ? 'list-group-item-borderless' : 'list-group-item-borderbottom'}`">
         <span class="pull-left">{{locationLabel()}}</span>
         <TimeBadge :starttime="voidTrader.activation" :endtime="voidTrader.expiry" :interval="1000"/>
       </b-list-group-item>
-      <b-list-group-item :class="{ 'list-group-item-borderless': voidTrader.inventory.length > 0, 'list-group-item-borderbottom': voidTrader.inventory.length < 1 }" v-if="voidTrader.inventory.length">
-        <span class="pull-left">{{hereLabel()}}</span>
-        <b-badge variant="info" class="pull-right">{{hereTime().toLocaleString()}}</b-badge>
-      </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom" v-if="voidTrader.inventory.length">
+      <b-list-group-item class="list-group-item-borderbottom" v-if="available()">
         <Collapsible :headertext="`${voidTrader.character} Inventory`">
           <table class="table">
             <thead>
@@ -67,16 +63,13 @@
         return new Date().toString();
       },
       available() {
-        return this.voidTrader.inventory.length < 1;
-      },
-      hereLabel() {
-        return `${this.available ? 'Leaves' : 'Arrives'} at:`;
+        return this.voidTrader.inventory.length > 0;
       },
       hereTime() {
-        return moment(this.available ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
+        return moment(this.available() ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
       },
       locationLabel() {
-        return `${this.available ? 'Departs' : 'Arrives at'} ${this.voidTrader.location}:`;
+        return `${this.available() ? 'Departs' : 'Arrives at'} ${this.voidTrader.location}:`;
       },
     }
   };

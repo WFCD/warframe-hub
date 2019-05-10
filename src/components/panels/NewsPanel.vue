@@ -5,8 +5,8 @@
         <b-carousel id="infoscreen-carousel" :interval="0"  :value="(activeElemIndex % filteredNews.length)"
           :indicators="false" :controls="false">
           <b-carousel-slide
-            v-for="(newsitem,index) in filteredNews"
-            :key="index"
+            v-for="newsitem in filteredNews"
+            :key="`${newsitem.id}-img`"
           >
             <b-img slot="img" class="d-block slide-image" fluid center :src="getImgSrc(newsitem.imageLink)"/>
           </b-carousel-slide>
@@ -15,7 +15,7 @@
       <b-list-group-item class="list-group-item-borderbottom">
         <b-list-group>
           <b-list-group-item :data-news-item="newsitem.id"
-            :id="`${newsitem.id}-li`"
+            :key="`${newsitem.id}-li`"
             :class="`list-group-item-borderless ${index === (activeElemIndex % filteredNews.length) ? 'active' : ''}`"
             v-for="(newsitem,index) in filteredNews">
 
@@ -43,6 +43,11 @@ body .list-group .list-group-item-borderbottom {
 .list-group-item.active .news-title a {
   font-weight: normal;
   color: white;
+}
+
+.list-group-item.active .news-title a:hover {
+  font-weight: normal;
+  color: grey;
 }
 </style>
 <script>

@@ -49,6 +49,10 @@ body .list-group .list-group-item-borderbottom {
   font-weight: normal;
   color: grey;
 }
+
+.list-group .list-group .list-group-item {
+    padding-top: 0px;
+}
 </style>
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';

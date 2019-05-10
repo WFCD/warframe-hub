@@ -40,6 +40,11 @@ body .list-group .list-group-item-borderbottom {
   margin: 0;
 }
 
+body .list-group .list-group-item-borderbottom .list-group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .list-group-item.active .news-title a {
   font-weight: normal;
   color: white;
@@ -52,6 +57,8 @@ body .list-group .list-group-item-borderbottom {
 
 .list-group .list-group .list-group-item {
     padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .news-title {

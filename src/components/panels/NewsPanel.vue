@@ -21,7 +21,7 @@
 
             <span class="news-title">
               <b-link target="_blank" rel="noopener" :href="newsitem.link">
-                <span class="news-time">{{title(newsitem).time}} ago:</span> <span class="news-label">{{title(newsitem).label}}</span>
+                <div class="news-time">{{title(newsitem).time}} ago: </div><span class="news-label">{{title(newsitem).label}}</span>
               </b-link>
             </span>
           </b-list-group-item>

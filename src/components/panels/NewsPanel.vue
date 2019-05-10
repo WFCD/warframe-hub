@@ -59,7 +59,7 @@ body .list-group .list-group-item-borderbottom {
 }
 
 .news-time {
-  width: 10em;
+  width: 4em;
   float: left;
 }
 

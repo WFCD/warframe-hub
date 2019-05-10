@@ -16,12 +16,12 @@
         <b-list-group>
           <b-list-group-item :data-news-item="newsitem.id"
             :key="`${newsitem.id}-li`"
-            :class="`list-group-item-borderless ${index === (activeElemIndex % filteredNews.length) ? 'active' : ''}`"
+            :class="`d-flex justify-content-between align-items-center list-group-item-borderless ${index === (activeElemIndex % filteredNews.length) ? 'active' : ''}`"
             v-for="(newsitem,index) in filteredNews">
 
             <span class="news-title">
               <b-link target="_blank" rel="noopener" :href="newsitem.link">
-                {{title(newsitem)}}
+                <div class="news-time">{{title(newsitem).time}} ago: </div><span class="news-label">{{title(newsitem).label}}</span>
               </b-link>
             </span>
           </b-list-group-item>
@@ -40,6 +40,12 @@ body .list-group .list-group-item-borderbottom {
   margin: 0;
 }
 
+body .list-group .list-group-item-borderbottom .list-group {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
 .list-group-item.active .news-title a {
   font-weight: normal;
   color: white;
@@ -49,6 +55,22 @@ body .list-group .list-group-item-borderbottom {
   font-weight: normal;
   color: grey;
 }
+
+.list-group .list-group .list-group-item {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.news-title {
+  text-align: left;
+}
+
+.news-time {
+  width: 4em;
+  float: left;
+}
+
 </style>
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';
@@ -76,7 +98,7 @@ export default {
     getImgSrc: (url) => {
       return 'https://cdn.warframestat.us/o_webp,rs_404x110/' + url;
     },
-    title: (newsitem) => `${newsitem.eta.split(' ')[0]} ago: ${newsitem.translations['en']}`,
+    title: (newsitem) => ({ time: newsitem.eta.split(' ')[0], label: newsitem.translations['en'] }),
   },
   data() {
     return {

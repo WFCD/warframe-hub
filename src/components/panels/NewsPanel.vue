@@ -57,7 +57,7 @@ export default {
       return 'News';
     },
     filteredNews() {
-      return this.news.filter(item => item.translations['en']);
+      return this.news.filter((item) => item.translations['en']);
     }
   },
   methods: {

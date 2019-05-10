@@ -43,6 +43,7 @@ body .list-group .list-group-item-borderbottom {
 body .list-group .list-group-item-borderbottom .list-group {
   margin-left: auto;
   margin-right: auto;
+  display: inline-block;
 }
 
 .list-group-item.active .news-title a {

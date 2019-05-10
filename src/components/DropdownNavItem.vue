@@ -1,36 +1,25 @@
 <template>
   <span>
-    <b-dd-item v-if="isLocal">
-      <router-link :to="target" class="navItemParent" exact>
-        <i :class="`${icon} faIconStyle`"></i>
-        <span class="navItemLabel">{{label}}</span>
-      </router-link>
+    <b-dd-item v-if="isLocal" :to="target" exact>
+      <i :class="`${icon} faIcon`"></i>
+      {{label}}
     </b-dd-item>
-    <b-dd-item :href="target" rel="noopener" target="_blank" class="navItemParent" v-else>
-      <i :class="`${icon} faIconStyle`"></i>
-      <span class="navItemLabel">{{label}}</span>
+    <b-dd-item :href="target" rel="noopener" target="_blank" v-else>
+      <i :class="`${icon} faIcon`"></i>
+      {{label}}
     </b-dd-item>
   </span>
 </template>
 
-<style>
-  .faIconStyle {
+<style scoped>
+  .b-nav-dropdown .dropdown-menu .dropdown-item i,
+  .b-nav-dropdown .dropdown-menu .dropdown-header i {
     margin-top: 3px;
-    margin-left: 10px;
     margin-right: 10px;
     width: 1em;
-  }
-
-  .navItemLabel {
-    flex-grow: 1;
-  }
-
-  .navItemParent, .dropdown-item.navItemParent {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
     text-align: center;
   }
+
 </style>
 
 <script>

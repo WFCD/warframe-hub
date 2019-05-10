@@ -4,7 +4,7 @@
       <b-list-group-item :style="styleObject" class="list-group-item-borderless no-padding-bot">
         <span class="pull-left">
           <h4>
-            <HubImg :src="factionImg" :name="sortie.faction" :style="missionType" />
+            <HubImg :src="factionImg" :name="sortie.faction" :style="missionType" width="22px" height="22px" />
             {{sortie.boss}}
           </h4>
         </span>

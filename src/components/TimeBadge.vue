@@ -59,6 +59,10 @@ export default {
       } else {
         timeText += `${duration.seconds()}s`;
       }
+      if (timeText.includes('-') - 1) {
+        this.$raven.captureMessage(`Forcing reload on ${this.$parent.name}`);
+        this.$parent.$forceUpdate();
+      }
       return timeText;
     },
     formatTimer(diff) {

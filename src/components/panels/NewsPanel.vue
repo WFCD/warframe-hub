@@ -1,41 +1,48 @@
 <template>
   <HubPanelWrap :title="headertext">
-    <b-carousel id="infoscreen-carousel" :interval="9000" :indicators="false" :controls="true">
-      <b-carousel-slide
-        v-for="(newsitem,index) in news"
-        :key="index"
-        v-if="newsitem.translations['en']"
-        :text="title(newsitem)"
-        v-on:click.native="open(newsitem.link)"
-      >
-        <span slot="img" class="middling-helper"></span>
-        <b-img slot="img" class="d-block slide-image" fluid center :src="getImgSrc(newsitem.imageLink)" :alt="title(newsitem)" />
-      </b-carousel-slide>
-    </b-carousel>
+    <b-list-group>
+      <b-list-group-item class="list-group-item-borderless">
+        <b-carousel id="infoscreen-carousel" :interval="0"  :value="(activeElemIndex % filteredNews.length)"
+          :indicators="false" :controls="false">
+          <b-carousel-slide
+            v-for="(newsitem,index) in filteredNews"
+            :key="index"
+          >
+            <b-img slot="img" class="d-block slide-image" fluid center :src="getImgSrc(newsitem.imageLink)"/>
+          </b-carousel-slide>
+        </b-carousel>
+      </b-list-group-item>
+      <b-list-group-item class="list-group-item-borderbottom">
+        <b-list-group>
+          <b-list-group-item :data-news-item="newsitem.id"
+            :id="`${newsitem.id}-li`"
+            :class="`list-group-item-borderless ${index === (activeElemIndex % filteredNews.length) ? 'active' : ''}`"
+            v-for="(newsitem,index) in filteredNews">
+
+            <span class="news-title">
+              <b-link target="_blank" rel="noopener" :href="newsitem.link">
+                {{title(newsitem)}}
+              </b-link>
+            </span>
+          </b-list-group-item>
+        </b-list-group>
+      </b-list-group-item>
+    </b-list-group>
   </HubPanelWrap>
 </template>
-<style>
-.carousel-caption {
-  background-color: rgba(64, 64, 64, 0.7) !important;
-  color: white;
-  width: 100% !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  font-weight: bolder;
-  padding-bottom: 0px !important;
-}
-.carousel-caption a {
-  color: white;
-}
-.carousel-item {
-  max-height: 250px;
-  min-height: 230px;
+<style scoped>
+
+.list-group .list-group {
+  margin: 0 -5px -5px -5px;
 }
 
-.middling-helper {
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+body .list-group .list-group-item-borderbottom {
+  margin: 0;
+}
+
+.list-group-item.active .news-title a {
+  font-weight: normal;
+  color: white;
 }
 </style>
 <script>
@@ -48,27 +55,47 @@ export default {
   computed: {
     headertext() {
       return 'News';
+    },
+    filteredNews() {
+      return this.news.filter(item => item.translations['en']);
     }
   },
   methods: {
+    increment() {
+      this.activeElemIndex++;
+    },
     open: function(url) {
       window.open(url, '_blank');
+      this.increment();
     },
-    getImgSrc: function(url) {
-      return 'https://cdn.warframestat.us/o_webp,rs_760_fit/' + url;
+    getImgSrc: (url) => {
+      return 'https://cdn.warframestat.us/o_webp,rs_404x110/' + url;
     },
-    title: function(newsitem) {
-      return `${newsitem.eta.split(' ')[0]} ago: ${
-        newsitem.translations['en']
-      }`;
-    }
+    title: (newsitem) => `${newsitem.eta.split(' ')[0]} ago: ${newsitem.translations['en']}`,
   },
   data() {
     return {
       styleObject: {
         display: 'inline'
-      }
+      },
+      activeElemIndex: 0,
+      interval: {},
     };
+  },
+  mounted() {
+    this.interval = setInterval(this.increment, 3000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
+  beforeUpdate() {
+    clearInterval(this.interval);
+    this.interval = undefined;
+  },
+  updated() {
+    if (!this.interval) {
+      this.interval = setInterval(this.increment, 3000);
+    }
   }
 };
 </script>

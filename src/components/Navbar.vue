@@ -26,6 +26,7 @@
           <DropdownItem icon="fas fa-robot" target="https://genesis.warframestat.us" label="Genesis" />
           <DropdownItem icon="fas fa-terminal" target="https://docs.warframestat.us" label="API Docs" />
           <DropdownItem icon="fas fa-tachometer-alt" target="https://warframestat.us" label="Status" />
+          <DropdownItem icon="fas fa-scroll" target="https://old-hub.warframestat.us" label="Old Hub" />
         </b-nav-item-dropdown>
       </b-navbar-nav>
 

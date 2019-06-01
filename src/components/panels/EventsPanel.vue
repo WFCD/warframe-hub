@@ -19,7 +19,7 @@
           <b-col md="6" v-for="(job) in event.jobs" :key="`${job.type.replace(/\s/ig, '-').toLowerCase()}-${index}`" class="bottom-pad">
             <div class="text-center">
               <div class="bottom-pad">{{job.type}} <b-badge variant="info">{{job.enemyLevels[0]}}-{{job.enemyLevels[1]}}</b-badge></div>
-              <Collapsible headertext="Standing Stages" class="bottom-pad">>
+              <Collapsible headertext="Standing Stages" class="bottom-pad">
                 <div v-for="s in job.standingStages" :key="`standing-${s}-${makeid()}`">{{s}}</div>
               </Collapsible>
               <Collapsible headertext="Rewards">

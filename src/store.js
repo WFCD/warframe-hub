@@ -115,7 +115,7 @@ const actions = {
       .concat([ws.cetusCycle.id])
       .concat([ws.voidTrader.id])
       .concat(ws.persistentEnemies.map((enemy) => enemy.pid))
-      .concat(ws.nightwave.activeChallenges.map((challenge) => challenge.id));
+      .concat((ws.nightwave || { activeChallenges: [] }).activeChallenges.map((challenge) => challenge.id));
     commit('notifiedIds', [newIds]);
   },
 };

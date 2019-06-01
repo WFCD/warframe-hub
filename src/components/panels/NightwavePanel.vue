@@ -1,6 +1,6 @@
 <template>
   <HubPanelWrap :title="headertext">
-    <b-list-group>
+    <b-list-group v-if="nightwave && nightwave.activeChallenges">
       <b-list-group-item :style="styleObject" v-for="(challenge, index) in nightwave.activeChallenges" :key="challenge.id"
       v-bind:class="{ 'list-group-item-borderless': index !== nightwave.activeChallenges.length - 1,
         'list-group-item-borderbottom': index === nightwave.activeChallenges.length - 1 }">
@@ -31,7 +31,9 @@
             /> {{challenge.reputation}}
         </b-badge>
       </b-list-group-item>
-      <NoDataItem v-if="nightwave.activeChallenges.length === 0" :text="headertext" />
+    </b-list-group>
+    <b-list-group v-if="!nightwave || nightwave.activeChallenges.length === 0">
+      <NoDataItem :text="headertext" />
     </b-list-group>
   </HubPanelWrap>
 </template>

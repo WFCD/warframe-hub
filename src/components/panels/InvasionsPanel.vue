@@ -38,7 +38,7 @@
         return 'Invasions';
       },
       maxInvasions() {
-        return 5
+        return 5;
       }
     },
     data () {

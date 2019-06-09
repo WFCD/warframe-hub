@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const serveStatic = require('serve-static');
 const app = express();

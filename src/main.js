@@ -1,3 +1,5 @@
+'use strict';
+
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -30,7 +32,7 @@ import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
 /* Grid Layout */
-import {VueResponsiveGridLayout, VueGridItem, VueGridLayout} from 'vue-responsive-grid-layout';
+import { VueResponsiveGridLayout, VueGridItem, VueGridLayout } from 'vue-responsive-grid-layout';
 Vue.component('vue-responsive-grid-layout', VueResponsiveGridLayout);
 Vue.component('vue-grid-item', VueGridItem);
 Vue.component('vue-grid-layout', VueGridLayout);
@@ -56,8 +58,7 @@ delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
 Vue.use(L);
@@ -88,8 +89,10 @@ store.dispatch('updateWorldstate');
 new Vue({
   router,
   store,
-  render: (h) => h(App)
+  render: (h) => h(App),
 }).$mount('#app');
 
-const interval = ((process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL)));
-setInterval(() => {store.dispatch('updateWorldstate');}, interval);
+const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL);
+setInterval(() => {
+  store.dispatch('updateWorldstate');
+}, interval);

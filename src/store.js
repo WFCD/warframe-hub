@@ -1,3 +1,5 @@
+'use strict';
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
@@ -18,7 +20,7 @@ const state = {
     pc: initialWorldstate.pc,
     ps4: initialWorldstate.ps4,
     xb1: initialWorldstate.xb1,
-    switch: initialWorldstate.swi
+    switch: initialWorldstate.swi,
   },
   platform: 'pc',
   theme: 'night',
@@ -81,7 +83,7 @@ const mutations = {
 };
 const actions = {
   async updateWorldstate(context) {
-    const {commit, getters} = context;
+    const { commit, getters } = context;
     const res = await fetch(`${apiBase}/${getters.platform}`);
     const ws = await res.json();
     commit('commitWs', [getters.platform, ws]);
@@ -90,7 +92,7 @@ const actions = {
     }
     notifier.checkNotifications();
   },
-  async checkNotifPermissions({commit, getters, dispatch}) {
+  async checkNotifPermissions({ commit, getters, dispatch }) {
     if (getters.notificationAllowance === 'granted') {
       return true;
     } else if (getters.notificationAllowance === 'denied') {
@@ -98,17 +100,23 @@ const actions = {
     } else if (getters.notificationAllowance === 'default') {
       const result = await Vue.notification.requestPermission();
       if (result === 'granted') {
-        Vue.notification.show('Thanks!', {
-          body: 'You can now receive notifications like this.',
-          icon: 'https://warframestat.us/wfcd_logo_color.png'}, {});
+        Vue.notification.show(
+          'Thanks!',
+          {
+            body: 'You can now receive notifications like this.',
+            icon: 'https://warframestat.us/wfcd_logo_color.png',
+          },
+          {}
+        );
       }
       commit('commitNotificationAllowance', [result]);
       return dispatch('checkNotifPermissions');
     }
   },
-  async updateNotifiedIds({commit, getters}) {
+  async updateNotifiedIds({ commit, getters }) {
     const ws = getters.worldstate;
-    const newIds = ws.alerts.map((alert) => alert.id)
+    const newIds = ws.alerts
+      .map((alert) => alert.id)
       .concat(ws.invasions.map((invasion) => invasion.id))
       .concat(ws.news.map((item) => item.id))
       .concat(ws.events.map((event) => event.id))
@@ -129,9 +137,7 @@ const getters = {
   worldstate: (state) => state.worldstates[state.platform],
   ostronSyndicate: (state) => {
     const worldstate = state.worldstates[state.platform];
-    const filtered = (worldstate.syndicateMissions || []).filter(
-      (syndicate) => syndicate.syndicate === 'Ostrons'
-    );
+    const filtered = (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.syndicate === 'Ostrons');
     return filtered[0];
   },
   solarisSyndicate: (state) => {
@@ -152,7 +158,7 @@ const getters = {
 };
 
 Vue.use(Vuex);
-const shouldPersist = ((process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true');
+const shouldPersist = (process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true';
 var tStore;
 if (shouldPersist) {
   tStore = new Vuex.Store({
@@ -160,7 +166,7 @@ if (shouldPersist) {
     mutations,
     actions,
     getters,
-    plugins: [createPersistedState()]
+    plugins: [createPersistedState()],
   });
 } else {
   tStore = new Vuex.Store({
@@ -168,7 +174,7 @@ if (shouldPersist) {
     mutations,
     actions,
     getters,
-    plugins: []
+    plugins: [],
   });
 }
 const store = tStore;

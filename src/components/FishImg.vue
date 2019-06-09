@@ -44,7 +44,7 @@ export default {
           norg: import('@/assets/img/fish/norg.png'),
           sharrac: import('@/assets/img/fish/sharrac.png'),
           tralok: import('@/assets/img/fish/tralok.png'),
-          yogwun: import('@/assets/img/fish/yogwun.png')
+          yogwun: import('@/assets/img/fish/yogwun.png'),
         },
         parts: {
           antenna: import('@/assets/img/fish/part/antenna.png'),
@@ -59,7 +59,7 @@ export default {
           spleen: import('@/assets/img/fish/part/spleen.png'),
           stomach: import('@/assets/img/fish/part/stomach.png'),
           teeth: import('@/assets/img/fish/part/teeth.png'),
-          tendrils: import('@/assets/img/fish/part/tendrils.png')
+          tendrils: import('@/assets/img/fish/part/tendrils.png'),
         },
         bait: {
           cuthol: import('@/assets/img/fish/bait/cuthol-bait.png'),
@@ -67,22 +67,22 @@ export default {
           murkray: import('@/assets/img/fish/bait/murkray-bait.png'),
           norg: import('@/assets/img/fish/bait/norg-bait.png'),
           peppered: import('@/assets/img/fish/bait/peppered-bait.png'),
-          twilight: import('@/assets/img/fish/bait/twilight-bait.png')
+          twilight: import('@/assets/img/fish/bait/twilight-bait.png'),
         },
         misc: {
-          map: import('@/assets/img/fishmap.png')
+          map: import('@/assets/img/fishmap.png'),
         },
         guide: {
           guide1: import('@/assets/img/fish/guide/guide1.png'),
           guide2: import('@/assets/img/fish/guide/guide2.png'),
           guide3: import('@/assets/img/fish/guide/guide3.png'),
           guide5: import('@/assets/img/fish/guide/guide5.png'),
-          clem: import('@/assets/img/fish/guide/clem.png')
+          clem: import('@/assets/img/fish/guide/clem.png'),
         },
       },
       typeId: this.type,
       itemId: this.item,
-      src: ''
+      src: '',
     };
   },
   mounted: function() {
@@ -93,7 +93,7 @@ export default {
       this.imgs[this.typeId][this.itemId].then((img) => {
         this.src = img.default;
       });
-    }
-  }
+    },
+  },
 };
 </script>

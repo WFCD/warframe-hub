@@ -1,3 +1,5 @@
+'use strict';
+
 const makeid = () => {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -10,5 +12,5 @@ const makeid = () => {
 };
 
 module.exports = {
-  makeid
+  makeid,
 };

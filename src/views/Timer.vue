@@ -36,10 +36,7 @@
             handle=".header-panel"
           >
             <div ref="panelObserver" :id="item.i">
-              <div
-                :is="componentState[item.i].component"
-                v-bind="resolveProps(componentState[item.i].props)"
-              />
+              <div :is="componentState[item.i].component" v-bind="resolveProps(componentState[item.i].props)" />
             </div>
           </vue-grid-item>
         </template>
@@ -92,7 +89,7 @@ export default {
       colsAll: { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 },
       isDraggable: true,
       isResizable: true,
-      lastUpdate: 0
+      lastUpdate: 0,
     };
   },
   mounted() {
@@ -167,18 +164,18 @@ export default {
           this.$refs.layout.resizeAllItems(2, 'vertical');
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   computed: {
     ...mapState({
       componentState: 'components',
-      gridState: 'grid'
+      gridState: 'grid',
     }),
     ...mapGetters({
       worldstate: 'worldstate',
       ostron: 'ostronSyndicate',
-      solaris: 'solarisSyndicate'
+      solaris: 'solarisSyndicate',
     }),
     layouts: function() {
       return Object.entries(this.components)
@@ -194,8 +191,8 @@ export default {
           });
           return acc;
         }, {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

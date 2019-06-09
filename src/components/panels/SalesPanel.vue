@@ -6,15 +6,19 @@
           <thead>
             <tr>
               <th class="text-center col-xs-2">Item</th>
-              <th class="text-center col-xs-2"><HubImg :src="platinum" name="Platinum" /></th>
+              <th class="text-center col-xs-2">
+                <HubImg :src="platinum" name="Platinum" />
+              </th>
               <th class="text-center col-xs-4"></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in sales" :key="`${item.id}-deal`">
-              <td>{{item.item}}</td>
-              <td>{{item.premiumOverride}}</td>
-              <td><TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" /></td>
+              <td>{{ item.item }}</td>
+              <td>{{ item.premiumOverride }}</td>
+              <td>
+                <TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -25,41 +29,43 @@
 </template>
 
 <style scoped>
-  table.table td, table.table th, table.table > thead > tr {
-    border: 0;
-  }
+table.table td,
+table.table th,
+table.table > thead > tr {
+  border: 0;
+}
 </style>
 
 <script>
-  import HubImg from '@/components/HubImg.vue';
-  import TimeBadge from '@/components/TimeBadge.vue';
-  import HubPanelWrap from '@/components/HubPanelWrap';
-  import NoDataItem from '@/components/NoDataItem.vue';
+import HubImg from '@/components/HubImg.vue';
+import TimeBadge from '@/components/TimeBadge.vue';
+import HubPanelWrap from '@/components/HubPanelWrap';
+import NoDataItem from '@/components/NoDataItem.vue';
 
-  import platinum from '@/assets/img/general/plat.png';
-  export default {
-    name: 'SalesPanel',
-    props: ['sales'],
-    computed: {
-      headertext() {
-        return 'Sales and Featured Deals';
-      }
+import platinum from '@/assets/img/general/plat.png';
+export default {
+  name: 'SalesPanel',
+  props: ['sales'],
+  computed: {
+    headertext() {
+      return 'Sales and Featured Deals';
     },
-    data() {
-      return {
-          platinum: platinum,
-      };
+  },
+  data() {
+    return {
+      platinum: platinum,
+    };
+  },
+  components: {
+    HubImg,
+    HubPanelWrap,
+    TimeBadge,
+    NoDataItem,
+  },
+  methods: {
+    now() {
+      return new Date().toString();
     },
-    components: {
-      HubImg,
-      HubPanelWrap,
-      TimeBadge,
-      NoDataItem,
-    },
-    methods: {
-      now() {
-        return new Date().toString();
-      }
-    }
-  };
+  },
+};
 </script>

@@ -2,7 +2,8 @@
   <HubPanelWrap :title="headertext">
     <b-list-group>
       <b-list-group-item class="list-group-item-borderless">
-        <b-carousel id="infoscreen-carousel" :interval="0"  :value="(activeElemIndex % filteredNews.length)"
+        <b-carousel id="infoscreen-carousel" :interval="0"
+          :value="cycle ? (activeElemIndex % filteredNews.length) : hover"
           :indicators="false" :controls="false">
           <b-carousel-slide
             v-for="newsitem in filteredNews"
@@ -12,12 +13,13 @@
           </b-carousel-slide>
         </b-carousel>
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom">
+      <b-list-group-item class="list-group-item-borderless">
         <b-list-group>
           <b-list-group-item :data-news-item="newsitem.id"
             :key="`${newsitem.id}-li`"
-            :class="`d-flex justify-content-between align-items-center list-group-item-borderless ${index === (activeElemIndex % filteredNews.length) ? 'active' : ''}`"
-            v-for="(newsitem,index) in filteredNews">
+            :class="`d-flex justify-content-between align-items-center list-group-item-borderless ${cycle && (index === (activeElemIndex % filteredNews.length)) ? 'active' : ''} ${hover === index ? 'hover' : ''}`"
+            v-for="(newsitem,index) in filteredNews"
+            @mouseover="hover = index">
 
             <span class="news-title">
               <b-link target="_blank" rel="noopener" :href="newsitem.link">
@@ -26,6 +28,17 @@
             </span>
           </b-list-group-item>
         </b-list-group>
+      </b-list-group-item>
+      <b-list-group-item class="list-group-item-borderbottom">
+        <b-form-checkbox
+          id="news-cycle-checkbox"
+          class="float-right"
+          name="news-cycle-checkbox"
+          switch
+          v-model="check"
+        >
+          Auto-progress
+        </b-form-checkbox>
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -46,9 +59,13 @@ body .list-group .list-group-item-borderbottom .list-group {
   display: inline-block;
 }
 
-.list-group-item.active .news-title a {
+.list-group-item.active .news-title a, .list-group-item.hover .news-title a {
   font-weight: normal;
   color: white;
+}
+
+.list-group-item.active + .hover .news-title a {
+  color: grey;
 }
 
 .list-group-item.active .news-title a:hover {
@@ -57,9 +74,9 @@ body .list-group .list-group-item-borderbottom .list-group {
 }
 
 .list-group .list-group .list-group-item {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .news-title {
@@ -85,11 +102,23 @@ export default {
     },
     filteredNews() {
       return this.news.filter((item) => item.translations['en']).reverse();
-    }
+    },
+    check: {
+      get() {
+        return this.cycle;
+      },
+      set() {
+        this.hover = null;
+        this.cycle = !this.cycle;
+        this.$store.commit('autoProgressNews', [this.cycle]);
+      },
+    },
   },
   methods: {
     increment() {
-      this.activeElemIndex++;
+      if (this.cycle) {
+        this.activeElemIndex++;
+      }
     },
     open: function(url) {
       window.open(url, '_blank');
@@ -107,6 +136,8 @@ export default {
       },
       activeElemIndex: 0,
       interval: {},
+      cycle: this.$store.getters.componentState.news.autoCycle,
+      hover: null,
     };
   },
   mounted() {

@@ -83,7 +83,8 @@
     "component": "NewsPanel",
     "props": {
       "news": "@worldstate.news"
-    }
+    },
+    "autoCycle": true
   },
   "invasions": {
     "state": true,

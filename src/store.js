@@ -71,6 +71,9 @@ const mutations = {
   },
   notifiedIds: (state, [notifiedIds, platform]) => {
     state.notifiedIds[platform || state.platform] = notifiedIds;
+  },
+  autoProgressNews: (state, [newState]) => {
+    state.components.news.autoCycle = newState;
   }
 };
 const actions = {

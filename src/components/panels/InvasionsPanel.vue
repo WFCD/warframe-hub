@@ -7,8 +7,8 @@
         'list-group-item-borderbottom': index === (ongoing(invasions).length - 1) }">
         <Invasion :invasion="invasion"></Invasion>
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom" v-if="ongoing(invasions).length>2">
-        <Collapsible :headertext="`Show More (${ongoing(invasions).length-maxInvasions})`">
+      <b-list-group-item class="list-group-item-borderbottom" v-if="ongoing(invasions).length>maxInvasions" style="padding:0;">
+        <Spoiler>
           <b-list-group>
             <b-list-group-item :style="styleObject" v-for="(invasion, index) in ongoing(invasions).splice(maxInvasions)" :key="invasion.id"
               v-bind:class="{
@@ -17,7 +17,7 @@
                 <Invasion :invasion="invasion"></Invasion>
             </b-list-group-item>
           </b-list-group>
-        </Collapsible>
+        </Spoiler>
       </b-list-group-item>
       <NoDataItem v-if="invasions.length === 0" :text="headertext" />
     </b-list-group>
@@ -27,7 +27,7 @@
 <script>
   import NoDataItem from '@/components/NoDataItem.vue';
   import HubPanelWrap from '@/components/HubPanelWrap';
-  import Collapsible from '@/components/Collapsible';
+  import Spoiler from '@/components/Spoiler';
   import Invasion from '@/components/Invasion';
 
   export default {
@@ -61,7 +61,7 @@
     },
     components: {
       Invasion,
-      Collapsible,
+      Spoiler,
       NoDataItem,
       HubPanelWrap,
     }

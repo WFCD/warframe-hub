@@ -62,6 +62,25 @@ export default {
       }
     ]
   ],
+  
+   /*
+   ** PurgeCSS
+   ** https://github.com/Developmint/nuxt-purgecss
+   */
+  purgeCSS: {
+    whitelistPatterns: [
+      /(^|\.)fa-/,
+      /-fa($|\.)/,
+      /^vueperslide/,
+      /^badger/,
+      /^vs/,
+      /^flag/,
+      /-(leave|enter|appear)(|-(to|from|active))$/,
+      /^(?!(|.*?:)cursor-move).+-move$/,
+      /^nuxt-link(|-exact)-active$/
+    ]
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

@@ -10,6 +10,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "now-build": "nuxt build --spa",
     "generate": "nuxt generate"
   },
   "dependencies": {

@@ -35,7 +35,10 @@
               <div class="popper">
                 Ongoing for {{ placeholder(invasion.startString) }}
               </div>
-              <button slot="reference" class="self-center text-center">
+              <button
+                slot="reference"
+                class="bg-tooltipbtn py-2 px-4 rounded-lg self-center text-center"
+              >
                 ?
               </button>
             </popper>

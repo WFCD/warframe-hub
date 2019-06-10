@@ -27,7 +27,8 @@ module.exports = {
         primary: 'var(--color-bg-primary)',
         secondary: 'var(--color-bg-secondary)',
         default: 'var(--color-bg-default)',
-        inverse: 'var(--color-bg-inverse)'
+        inverse: 'var(--color-bg-inverse)',
+        tooltipbtn: 'var(--color-bg-tooltipbtn)'
       },
       fontFamily: {
         display: 'var(--font-display)',

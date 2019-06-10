@@ -14,7 +14,7 @@
       <TimePanel
         class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 px-1 h-64"
         :timer="worldstate.vallisCycle"
-        type="Valis"
+        type="Vallis"
       />
     </div>
   </div>

@@ -3,7 +3,7 @@
     <b-collapse :id="`collapsible-${this.cid}`" @hidden="reflow()" @shown="reflow()">
       <slot></slot>
     </b-collapse>
-    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`">
+    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`" style="margin: 3px 0px;">
       {{headertext}} <i class="fas fa-chevron-down"></i>
     </b-btn>
   </div>

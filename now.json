@@ -3,5 +3,8 @@
   "builds": [{
     "src": "package.json",
     "use": "@now/static-build"
-  }]
+  }],
+  "github": {
+    "silent": true
+  }
 }

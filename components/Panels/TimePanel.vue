@@ -105,7 +105,7 @@
         <div class="flex items-center  w-full  py-2 border-b border-gray-600">
           <div
             v-if="type == 'Earth' || type == 'Cetus'"
-            class="ml-4 text-left w-1/2 h-auto"
+            class="ml-4 text-left w-time h-auto"
           >
             Time at
             <fa v-if="timer.isDay" icon="moon" fixed-width /><fa
@@ -117,7 +117,7 @@
               }"
             />
           </div>
-          <div v-else class="ml-4 text-left w-1/3 h-auto">
+          <div v-else class="ml-4 text-left w-time h-auto">
             Time at
             <fa
               v-if="!timer.isWarm"

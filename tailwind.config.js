@@ -7,6 +7,9 @@
 module.exports = {
   theme: {
     extend: {
+      width: {
+        time: '34.33333%'
+      },
       textColor: {
         primary: 'var(--color-text-primary)',
         secondary: 'var(--color-text-secondary)',

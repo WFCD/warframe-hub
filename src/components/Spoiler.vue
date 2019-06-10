@@ -1,10 +1,10 @@
 <template>
   <div>
-    <b-collapse :id="`collapsible-${this.cid}`" @hidden="reflow()" @shown="reflow()">
+    <b-collapse :id="`spoiler-${this.cid}`" @hidden="reflow();downArrow();" @shown="reflow();upArrow();">
       <slot></slot>
     </b-collapse>
-    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`" style="margin: 3px 0px;">
-      {{headertext}} <i class="fas fa-chevron-down"></i>
+    <b-btn variant="primary" v-b-toggle="`spoiler-${this.cid}`" style="margin: 3px 0px;">
+      {{headertext}} <i class="fas fa-chevron-down" ref="arrow"></i>
     </b-btn>
   </div>
 </template>
@@ -26,6 +26,12 @@
       },
       makeid: function() {
         return util.makeid();
+      },
+      upArrow: function() {
+        this.$refs.arrow.className='fas fa-chevron-up';
+      },
+      downArrow: function() {
+        this.$refs.arrow.className='fas fa-chevron-down';
       }
     },
     computed: {

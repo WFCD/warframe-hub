@@ -1,0 +1,562 @@
+[
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Rude Zuud",
+         "name":"Rude Zuud - 5",
+         "video":"https://streamable.com/s/gchxj/bddcfi"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1303.45745,
+            908.992188
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - The Business",
+         "name":"The Business - 3",
+         "video":"https://streamable.com/s/j7lvy/tymnsh"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            63.989672,
+            1918.28125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Legs",
+         "name":"Legs - 4",
+         "video":"https://streamable.com/s/7ocga/hwxqqo"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            539.32102,
+            1974.097656
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Rude Zuud",
+         "name":"Rude Zuud - 2",
+         "video":"https://streamable.com/s/e7ugz/asvcma"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            666.34067,
+            1854.097656
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Eudico",
+         "name":"Eudico - 2",
+         "video":"https://streamable.com/s/2hwgf/gfzld"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            427.30369,
+            1766.097656
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Smokefinger",
+         "name":"Smokefinger - 4",
+         "video":"https://streamable.com/s/y2rxh/dqhtub"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1181.834481,
+            1819.136719
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Ticker",
+         "name":"Ticker - 5",
+         "video":"https://streamable.com/s/s66jq/viexoi"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1032.351423,
+            1607.640625
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Little Duck",
+         "name":"Little Duck - 5",
+         "video":"https://streamable.com/s/bxok1/avtxfp"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1570.809725,
+            1801.785156
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Ticker",
+         "name":"Ticker - 2",
+         "video":"https://streamable.com/s/k7ahg/pbfvgn"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1442.117941,
+            1519.472656
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Legs",
+         "name":"Legs - 1",
+         "video":"https://streamable.com/s/d640u/ojrplz"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1799.911574,
+            1593.859375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Ticker",
+         "name":"Ticker - 1",
+         "video":"https://streamable.com/s/xqkyu/bcjrbo"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1961.936639,
+            1427.859375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Ticker",
+         "name":"Ticker - 4",
+         "video":"https://streamable.com/s/s2qb0/bkgfga"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            519.975282,
+            1278.03125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Rude Zuud",
+         "name":"Rude Zuud - 4",
+         "video":"https://streamable.com/s/mhefg/zinbto"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            286.939231,
+            1165.03125
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Eudico",
+         "name":"Eudico - 4",
+         "video":"https://streamable.com/s/5wer4/xieaxt"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            312.716656,
+            1071.714844
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Smokefinger",
+         "name":"Smokefinger - 1",
+         "video":"https://streamable.com/s/gkqkv/lzgrtb"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            248.706754,
+            1100.714844
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Little Duck",
+         "name":"Little Duck - 2",
+         "video":"https://streamable.com/s/mb4hp/lcvyno"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            923.9284,
+            1345.988281
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Eudico",
+         "name":"Eudico - 1",
+         "video":"https://streamable.com/s/kl4kr/meuodx"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            806.910297,
+            1165.988281
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Smokefinger",
+         "name":"Smokefinger - 5",
+         "video":"https://streamable.com/s/u54nx/mtntdd"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            755.902406,
+            1031.988281
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Little Duck",
+         "name":"Little Duck - 3",
+         "video":"https://streamable.com/s/m1ejl/npwanr"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1630.138171,
+            930
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - The Business",
+         "name":"The Business - 2",
+         "video":"https://streamable.com/s/a24zc/gfyvoc"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1546.308796,
+            831.007813
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - The Business",
+         "name":"The Business - 4",
+         "video":"https://streamable.com/s/pqvuo/afixq"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1724.711396,
+            586.320313
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Little Duck",
+         "name":"Little Duck - 1",
+         "video":"https://streamable.com/s/askr9/qojtna"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1931.551988,
+            827.421875
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Ticker",
+         "name":"Ticker - 3",
+         "video":"https://streamable.com/s/0clyv/cnzti"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1947.554464,
+            614.421875
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Smokefinger",
+         "name":"Smokefinger - 3",
+         "video":"https://streamable.com/s/gif5z/rcajxz"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1484.068699,
+            190.4375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Legs",
+         "name":"Legs - 5",
+         "video":"https://streamable.com/s/b1fr9/nzqrbl"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1236.030326,
+            270.4375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Rude Zuud",
+         "name":"Rude Zuud - 1",
+         "video":"https://streamable.com/s/gipxp/yxqux"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1153.197199,
+            339.507813
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Little Duck",
+         "name":"Little Duck - 4",
+         "video":"https://streamable.com/s/kd3z8/neyepq"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1278.21654,
+            480.507813
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Legs",
+         "name":"Legs - 3",
+         "video":"https://streamable.com/s/vjd4d/miwwtq"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            1147.772513,
+            583.542969
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Eudico",
+         "name":"Eudico - 3",
+         "video":"https://streamable.com/s/5d068/vdrwfu"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            881.401246,
+            485.234375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Rude Zuud",
+         "name":"Rude Zuud - 3",
+         "video":"https://streamable.com/s/0svh2/lerhqs"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            805.389486,
+            488.234375
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Eudico",
+         "name":"Eudico - 5",
+         "video":"https://streamable.com/s/r9des/nlwumq"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            693.801911,
+            265.136719
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - The Business",
+         "name":"The Business - 1",
+         "video":"https://streamable.com/s/rrpe6/nlzerv"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            607.788604,
+            215.136719
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Smokefinger",
+         "name":"Smokefinger - 2",
+         "video":"https://streamable.com/s/zk3z3/bdkhaj"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            289.739401,
+            92.136719
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - Legs",
+         "name":"Legs - 2",
+         "video":"https://streamable.com/s/089to/ecbqc"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            136.481317,
+            171.855469
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "set":"Memory Fragment - The Business",
+         "name":"The Business - 5",
+         "video":"https://streamable.com/s/k2s0d/xglljx"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            257.410181,
+            690.089844
+         ]
+      }
+   }
+]

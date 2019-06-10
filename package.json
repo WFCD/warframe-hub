@@ -8,6 +8,8 @@
     "start": "node ./server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "now-build": "vue-cli-service build",
+    "now-dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "lint:raw": "npx eslint  src/ initialWorldstateUpdater.js",
     "updateWorldstate": "node ./initialWorldstateUpdater.js"

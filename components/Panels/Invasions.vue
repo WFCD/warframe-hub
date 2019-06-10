@@ -86,11 +86,12 @@
 
 <style lang="postcss">
 .popper {
-  @apply bg-black;
+  @apply bg-black !important;
   @apply text-white;
   @apply border-0;
   @apply text-xs;
-  @apply px-3;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   width: auto;
   text-align: center;
   display: inline-block;
@@ -99,6 +100,12 @@
   font-weight: normal;
   z-index: 200000;
   box-shadow: rgb(58, 58, 58) 0 0 6px 0;
+}
+.popper .popper__arrow {
+  color: black !important;
+}
+.popper[x-placement^='top'] .popper__arrow {
+  border-color: black transparent transparent transparent !important;
 }
 </style>
 

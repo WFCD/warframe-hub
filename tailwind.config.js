@@ -41,6 +41,9 @@ module.exports = {
       borderRadius: {
         none: '0',
         btn: 'var(--rounded-btn)'
+      },
+      borderColor: {
+        box: 'var(--color-border-box)'
       }
     }
   },

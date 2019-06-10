@@ -5,7 +5,7 @@
     <div class="text-center text-primary text-4xl mt-1 bg-transparent">
       {{ type }} Cycle
     </div>
-    <div class="bg-box text-primary pt-0 ">
+    <div class="bg-box text-primary pt-0  border-box border-b-2 rounded">
       <div v-if="!timer" class="text-primary ">
         <div
           class="bg-transparent border border-red-400 text-red-700 px-4 py-3 rounded relative"
@@ -102,7 +102,7 @@
             {{ timer.timeLeft }}
           </div>
         </div>
-        <div class="flex items-center  w-full  py-2 border-b border-gray-600">
+        <div class="flex items-center  w-full  py-2">
           <div
             v-if="type == 'Earth' || type == 'Cetus'"
             class="ml-4 text-left w-time h-auto"
@@ -143,17 +143,6 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-table.table div,
-table.table th,
-table.table > thead > tr {
-  border: 0;
-}
-circles-text[style] {
-  line-height: 90px !important;
-}
-</style>
 
 <script>
 import moment from 'moment'

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="max-w-lg md:max-w-md sm:max-w-sm xl:max-w-xl h-auto   overflow-hidden border-transparent"
+    class="max-w-lg md:max-w-md sm:max-w-sm xl:max-w-xl h-auto overflow-hidden border-transparent"
   >
     <div class="text-primary text-center text-4xl mt-1">
       {{ syndicate }} Bounty Cycle
     </div>
-    <div class="bg-box text-primary pt-0 ">
+    <div class="bg-box text-primary pt-0 border-box border-b-2 rounded ">
       <div v-if="!syndicatedata" class="text-primary ">
         <div
           class="bg-transparent border border-red-400 text-red-700 px-4 py-3 rounded relative"
@@ -14,10 +14,7 @@
           <strong class="font-bold">No Jobs today</strong>
         </div>
       </div>
-      <div
-        v-if="syndicatedata"
-        class="flex items-center py-2 border-b border-gray-600"
-      >
+      <div v-if="syndicatedata" class="flex items-center py-2">
         <div class="w-1/3 h-auto pl-2">Ends</div>
         <div class="w-full text-right h-auto  mr-3">
           {{ timezonetime(syndicatedata.expiry) }}
@@ -34,7 +31,7 @@
             >
           </div>
           <div slot="content" class="break-all">
-            <div class="flex  items-center border-b border-gray-600">
+            <div class="flex  items-center">
               <div class="w-full bg-box h-auto pl-2">
                 Rewards
               </div>
@@ -43,7 +40,7 @@
               </div>
             </div>
             <div
-              class="flex bg-box text-primary items-center px-2 border-b border-gray-600"
+              class="flex bg-box text-primary items-center px-2 border-t border-gray-600"
             >
               <div class="w-full break-all h-auto">
                 <span
@@ -75,7 +72,7 @@
 .js-badger-accordion-header {
   @apply bg-box;
   @apply border-gray-600;
-  @apply border-b;
+  @apply border-t;
   display: block !important;
   &:hover,
   &.-ba-is-active {

@@ -27,7 +27,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vselect.js', ssr: false }],
+  plugins: [
+    { src: '~/plugins/vselect.js', ssr: false },
+    { src: '~/plugins/accordion.js', ssr: false }
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -62,8 +65,8 @@ export default {
       }
     ]
   ],
-  
-   /*
+
+  /*
    ** PurgeCSS
    ** https://github.com/Developmint/nuxt-purgecss
    */

@@ -29,7 +29,8 @@ export default {
    */
   plugins: [
     { src: '~/plugins/vselect.js', ssr: false },
-    { src: '~/plugins/accordion.js', ssr: false }
+    { src: '~/plugins/accordion.js', ssr: false },
+    { src: '~/plugins/tooltip.js', ssr: false }
   ],
   /*
    ** Nuxt.js modules

@@ -38,7 +38,7 @@
         return 'Invasions';
       },
       maxInvasions() {
-        return 2;
+        return 5;
       },
       initialStatus() {
         return this.$store.getters.expandInvasions;

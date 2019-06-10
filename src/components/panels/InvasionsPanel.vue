@@ -8,7 +8,7 @@
         <Invasion :invasion="invasion"></Invasion>
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom" v-if="ongoing(invasions).length>maxInvasions" style="padding:0;">
-        <Spoiler>
+        <Spoiler :init="initialStatus" @toggle='updatePanelStatus()'>
           <b-list-group>
             <b-list-group-item :style="styleObject" v-for="(invasion, index) in ongoing(invasions).splice(maxInvasions)" :key="invasion.id"
               v-bind:class="{
@@ -38,7 +38,10 @@
         return 'Invasions';
       },
       maxInvasions() {
-        return 5;
+        return 2;
+      },
+      initialStatus() {
+        return this.$store.getters.expandInvasions;
       }
     },
     data () {
@@ -57,6 +60,10 @@
           }
         }
         return ongoingInvasions;
+      },
+      updatePanelStatus: function() {
+        var currentStatus = this.$store.getters.expandInvasions;
+        this.$store.commit('commitExpandInvasions', !currentStatus);
       }
     },
     components: {

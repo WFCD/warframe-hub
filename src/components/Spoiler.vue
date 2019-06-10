@@ -1,10 +1,10 @@
 <template>
   <div>
-    <b-collapse :id="`spoiler-${this.cid}`" @hidden="reflow();downArrow();" @shown="reflow();upArrow();">
+    <b-collapse :id="`spoiler-${this.cid}`" @hidden="toggled();downArrow();" @shown="toggled();upArrow();" v-bind:visible="init">
       <slot></slot>
     </b-collapse>
     <b-btn variant="primary" v-b-toggle="`spoiler-${this.cid}`" style="margin: 3px 0px;">
-      {{headertext}} <i class="fas fa-chevron-down" ref="arrow"></i>
+      {{headertext}} <i :class="this.initialArrow" ref="arrow"></i>
     </b-btn>
   </div>
 </template>
@@ -13,16 +13,15 @@
 
   export default {
     name: 'Collapsible',
-    props: ['headertext'],
+    props: ['headertext', 'init'],
     data: function() {
       return {
         id: 0
       };
     },
     methods: {
-      reflow: function() {
-        // eslint-disable-next-line no-console
-        console.error('triggered reflow --- this does nothing, needs to trigger the resize for the grid item');
+      toggled: function() {
+        this.$emit('toggle');
       },
       makeid: function() {
         return util.makeid();
@@ -42,6 +41,12 @@
           this.id = this.makeid(); // eslint-disable-line vue/no-side-effects-in-computed-properties
         }
         return this.id;
+      },
+      initialArrow: function() {
+        if (this.init) {
+          return 'fas fa-chevron-up';
+        }
+        return 'fas fa-chevron-down';
       }
     }
   };

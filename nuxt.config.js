@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/vselect.js', ssr: false }],
   /*
    ** Nuxt.js modules
    */
@@ -36,7 +36,31 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    [
+      'nuxt-fontawesome',
+      {
+        component: 'fa',
+        imports: [
+          // import whole set
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: [
+              'faDesktop',
+              'faSun',
+              'faMoon',
+              'faBars',
+              'faGamepad',
+              'faSnowflake'
+            ]
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['faXbox', 'faPlaystation']
+          }
+        ]
+      }
+    ]
   ],
   /*
    ** Axios module configuration

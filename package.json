@@ -13,10 +13,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/tailwindcss": "^0.1.0",
-    "nuxt": "^2.0.0"
+    "node-fetch": "^2.6.0",
+    "nuxt": "^2.0.0",
+    "nuxt-fontawesome": "^0.4.0",
+    "vue-select": "^3.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

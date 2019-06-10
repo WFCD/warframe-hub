@@ -6,5 +6,8 @@
   }],
   "github": {
     "silent": true
+  },
+  {
+    "scope": "bitti06"
   }
 }

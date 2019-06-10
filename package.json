@@ -20,6 +20,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/tailwindcss": "^0.1.0",
+    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",

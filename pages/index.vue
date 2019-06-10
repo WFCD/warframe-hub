@@ -1,35 +1,39 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        hub-vue
-      </h1>
-      <h2 class="subtitle">
-        Utility page to check current warframe status
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-          >Documentation</a
-        >
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-          >GitHub</a
-        >
-      </div>
+  <div>
+    <div class="flex flex-wrap xl:px-1">
+      <TimePanel
+        class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 px-1 h-64"
+        :timer="worldstate.earthCycle"
+        type="Earth"
+      />
+      <TimePanel
+        class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 px-1 h-64"
+        :timer="worldstate.cetusCycle"
+        type="Cetus"
+      />
+      <TimePanel
+        class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 px-1 h-64"
+        :timer="worldstate.vallisCycle"
+        type="Valis"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TimePanel from '~/components/Panels/TimePanel.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    Logo
-  }
+    TimePanel
+  },
+  computed: mapGetters({
+    worldstate: 'worldstate',
+    ostron: 'ostronSyndicate',
+    solaris: 'solarisSyndicate',
+    platform: 'platform'
+  })
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`">
+    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`" style="margin-bottom: 4px;">
       {{headertext}} <i class="fas fa-chevron-down"></i>
     </b-btn>
     <b-collapse :id="`collapsible-${this.cid}`" @hidden="reflow()" @shown="reflow()">

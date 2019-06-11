@@ -4,7 +4,7 @@
     <div class="tab-wrap">
       <b-form-group label="Fissure Filters">
         <b-form-checkbox-group id="fissure-checks" name="Fissure Filters" :options="fissureStates"
-            v-model="activeFissures" v-on:input="vals => updateFissureStates(vals)"
+            v-model="activeFissures" v-on:input="vals => updateFissureStates(vals)" switches
             stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>

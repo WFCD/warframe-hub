@@ -2,7 +2,11 @@ module.exports = {
   pwa: {
     name: 'Warframe Hub',
     themeColor: '#1a5072',
-    msTileColor: '#1a5072'
+    msTileColor: '#1a5072',
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    }
   },
 
   publicPath: '/',

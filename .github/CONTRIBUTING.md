@@ -35,7 +35,7 @@ Use the provided `.eslintrc.json` to lint your files, include any ignores in you
 
 ### Resources
 
-Nothin here yet
+Nothing here yet
 
 ## Contributors
 

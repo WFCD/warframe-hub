@@ -31,7 +31,7 @@ Use the provided `.eslintrc.json` to lint your files, include any ignores in you
 
 5. View logs in `pm2 logs warframe-hub` if you wish to see logs for the process.
 
-6. Check in your browser at http://localhost:3000 (by default) or whatever you changed the prot to.
+6. Check in your browser at http://localhost:3000 (by default) or whatever you changed the port to.
 
 ### Resources
 

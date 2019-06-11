@@ -17,7 +17,7 @@
         <b-tab title="Components">
           <b-form-group label="Components">
             <b-form-checkbox-group id="components-checks" name="Components" :options="componentStates"
-                v-model="activeComponents" v-on:input="vals => updateComponentState(vals)"
+                v-model="activeComponents" v-on:input="vls => updateComponentState(vals)" switches
                 stacked class="settings-group">
             </b-form-checkbox-group>
           </b-form-group>

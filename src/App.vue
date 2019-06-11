@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="this.$store.getters.theme">
+    <notifications group="hub" :max="5" :duration="30000" position="bottom right" />
     <Navbar />
     <Settings />
     <About />

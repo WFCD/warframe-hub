@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        time: '34.33333%'
+        time: '34.33333%',
+        timebox: '32.33333%'
       },
       textColor: {
         primary: 'var(--color-text-primary)',

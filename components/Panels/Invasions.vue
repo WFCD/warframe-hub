@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="max-w-xl md:max-w-md sm:max-w-sm xl:max-w-xl h-auto overflow-hidden border-transparent"
-  >
+  <div class="w-1/3 xl:max-w-lg h-auto overflow-hidden border-transparent">
     <div class="text-primary text-center text-4xl mt-1">
       Invasions
     </div>

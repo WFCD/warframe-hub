@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-lg md:max-w-md sm:max-w-sm xl:max-w-xl h-auto rounded overflow-hidden border-transparent"
+    class="w-1/3 xl:max-w-lg   lg:w-timebox h-auto overflow-hidden border-transparent"
   >
     <div class="text-center text-primary text-4xl mt-1 bg-transparent">
       {{ type }} Cycle
@@ -19,8 +19,8 @@
           v-if="type == 'Earth' || type == 'Cetus'"
           class="flex items-center  w-full  py-2"
         >
-          <div class="ml-4 text-left w-1/2 h-auto">Currently it is:</div>
-          <div class="w-full text-right h-auto mr-4">
+          <div class="ml-2 text-left w-1/2 h-auto">Currently it is:</div>
+          <div class="w-full text-right h-auto mr-2">
             <fa
               v-if="timer.isDay"
               icon="sun"
@@ -40,8 +40,8 @@
           </div>
         </div>
         <div v-else class="flex items-center  w-full  py-2">
-          <div class="ml-4 text-left w-1/2 h-auto">Currently it is:</div>
-          <div class="w-1/2 text-right h-auto mr-4">
+          <div class="ml-2 text-left w-1/2 h-auto">Currently it is:</div>
+          <div class="w-full text-right h-auto mr-2">
             <fa
               v-if="!timer.isWarm"
               icon="snowflake"
@@ -64,7 +64,7 @@
           v-if="type == 'Earth' || type == 'Cetus'"
           class="flex items-center  w-full  py-2"
         >
-          <div class="ml-4 text-left w-1/2 h-auto">
+          <div class="ml-2 text-left w-1/2 h-auto">
             Time until
             <fa v-if="timer.isDay" icon="moon" fixed-width /><fa
               v-else
@@ -75,12 +75,12 @@
               }"
             />
           </div>
-          <div class="w-1/2 text-right h-auto mr-4">
+          <div class="w-1/2 text-right h-auto mr-2">
             {{ timer.timeLeft }}
           </div>
         </div>
         <div v-else class="flex items-center  w-full  py-2">
-          <div class="ml-4 text-left w-1/2 h-auto">
+          <div class="ml-2 text-left w-1/2 h-auto">
             Time until
             <fa
               v-if="!timer.isWarm"
@@ -98,14 +98,14 @@
               }"
             />
           </div>
-          <div class="w-1/2 text-right h-auto mr-4">
+          <div class="w-1/2 text-right h-auto mr-2">
             {{ timer.timeLeft }}
           </div>
         </div>
         <div class="flex items-center  w-full  py-2">
           <div
             v-if="type == 'Earth' || type == 'Cetus'"
-            class="ml-4 text-left w-time h-auto"
+            class="ml-2 text-left w-time h-auto"
           >
             Time at
             <fa v-if="timer.isDay" icon="moon" fixed-width /><fa
@@ -117,7 +117,7 @@
               }"
             />
           </div>
-          <div v-else class="ml-4 text-left w-time h-auto">
+          <div v-else class="ml-2 text-left w-time h-auto">
             Time at
             <fa
               v-if="!timer.isWarm"
@@ -135,7 +135,7 @@
               }"
             />
           </div>
-          <div class="w-full text-right h-auto  mr-4">
+          <div class="w-full text-right h-auto  mr-2">
             {{ timezonetime(timer.expiry) }}
           </div>
         </div>

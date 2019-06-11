@@ -34,7 +34,6 @@ const state = {
     xb1: [],
     switch: [],
   },
-  expandInvasions: false
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -73,8 +72,8 @@ const mutations = {
   notifiedIds: (state, [notifiedIds, platform]) => {
     state.notifiedIds[platform || state.platform] = notifiedIds;
   },
-  commitExpandInvasions: (state, expandInvasions) => {
-    state.expandInvasions = expandInvasions;
+  commitComponent: (state, [key, newState]) => {
+    state.components[key] = newState;
   }
 };
 const actions = {
@@ -147,7 +146,6 @@ const getters = {
   sounds: (state) => state.soundFilters,
   notificationAllowance: (state) => state.notificationsAllowed,
   notifiedIds: (state) => state.notifiedIds[state.platform],
-  expandInvasions: (state) => state.expandInvasions,
 };
 
 Vue.use(Vuex);

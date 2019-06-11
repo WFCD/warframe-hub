@@ -41,7 +41,7 @@
         return 5;
       },
       initialStatus() {
-        var state = this.$store.getters.componentState['invasions'];
+        var state = this.$store.getters.componentState.invasions;
         return state.expand;
       }
     },
@@ -64,9 +64,7 @@
       },
       updatePanelStatus: function() {
         var state = this.$store.getters.componentState['invasions'];
-        state.expand= !state.expand;
-        // eslint-disable-next-line no-console
-        console.log(state);
+        state.expand = !state.expand;
         this.$store.commit('commitComponent', ['invasions', state]);
       }
     },

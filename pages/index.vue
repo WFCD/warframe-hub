@@ -30,6 +30,10 @@
         class="flex-auto w-full sm:w-1/2 md:w-1/3 lg:w-timebox xl:w-1/4 mx-1 h-64"
         :invasions="worldstate.invasions"
       />
+      <EventsPanel
+        class="flex-auto w-full sm:w-1/2 md:w-1/3 lg:w-timebox xl:w-1/4 mx-1 h-64"
+        :events="worldstate.events"
+      />
     </div>
   </div>
 </template>
@@ -38,6 +42,8 @@
 import TimePanel from '~/components/Panels/TimePanel.vue'
 import BountyPanel from '~/components/Panels/BountyPanel.vue'
 import InvasionsPanel from '~/components/Panels/Invasions.vue'
+import EventsPanel from '~/components/Panels/Events.vue'
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -45,7 +51,8 @@ export default {
   components: {
     TimePanel,
     BountyPanel,
-    InvasionsPanel
+    InvasionsPanel,
+    EventsPanel
   },
   computed: mapGetters({
     worldstate: 'worldstate',

@@ -4,7 +4,7 @@
     <div class="tab-wrap">
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group id="reward-checks" name="Reward Filters" :options="rewardStates"
-            v-model="activeRewards" v-on:input="vals => updateRewardStates(vals)"
+            v-model="activeRewards" v-on:input="vals => updateRewardStates(vals)" switches
             stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>
@@ -13,7 +13,7 @@
     <div class="tab-wrap">
       <b-form-group label="Event Filters">
         <b-form-checkbox-group id="event-checks" name="Event Filters" :options="eventStates"
-            v-model="activeEvents" v-on:input="vals => updateEventStates(vals)"
+            v-model="activeEvents" v-on:input="vals => updateEventStates(vals)" switches
             stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>

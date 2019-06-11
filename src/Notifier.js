@@ -171,9 +171,7 @@ class Notifier {
   }
 
   async notify (notifications) {
-    // TODO: Implement vue-notification so these can be used when visitor
-    //  is already in the app and doesn't clog browser/system notifications
-    const usePush = true || !document.hasFocus();
+    const usePush = !document.hasFocus();
     notifications.forEach((notification) => {
       if (usePush) {
         this.notifier.show(notification.head, notification.body, {
@@ -184,20 +182,27 @@ class Notifier {
             }
           }
         });
+      } else {
+        Vue.notify({
+          group: 'hub',
+          title: notification.head,
+          text: notification.body.body,
+        });
+      }
 
-        if (this.store.getters.sounds.includes(notification.type)) {
-          if (notification.sound === 'drum') {
-            const audio = new Audio(drum);
-            audio.volume = 0.2;
-            audio.play();
-          }
-          if (notification.sound === 'eidolon') {
-            const audio = new Audio(eidolon);
-            audio.volume = 0.2;
-            audio.play();
-          }
+      if (this.store.getters.sounds.includes(notification.type)) {
+        let audio;
+        switch (notification.sound) {
+          case 'drum':
+            audio = new Audio(drum);
+            break;
+          case 'eidolon':
+            audio = new Audio(eidolon);
         }
-
+        if (audio) {
+          audio.volume = 0.2;
+          audio.play();
+        }
       }
     });
   }

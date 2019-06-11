@@ -33,7 +33,7 @@ const state = {
     ps4: [],
     xb1: [],
     switch: [],
-  }
+  },
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -72,9 +72,12 @@ const mutations = {
   notifiedIds: (state, [notifiedIds, platform]) => {
     state.notifiedIds[platform || state.platform] = notifiedIds;
   },
+  commitComponent: (state, [key, newState]) => {
+    state.components[key] = newState;
+  },
   autoProgressNews: (state, [newState]) => {
     state.components.news.autoCycle = newState;
-  }
+  },
 };
 const actions = {
   async updateWorldstate(context) {

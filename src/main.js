@@ -39,6 +39,9 @@ Vue.component('vue-grid-layout', VueGridLayout);
 import VueNativeNotification from 'vue-native-notification';
 Vue.use(VueNativeNotification, { requestOnNotify: true });
 
+import Notifications from 'vue-notification';
+Vue.use(Notifications);
+
 /* Analytics */
 import VueAnalytics from 'vue-analytics';
 Vue.use(VueAnalytics, { id: 'UA-47080716-6' });

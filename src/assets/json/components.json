@@ -91,6 +91,7 @@
     "display": "Invasions",
     "key": "invasions",
     "component": "InvasionsPanel",
+    "expand":false,
     "props": {
       "invasions": "@worldstate.invasions"
     }

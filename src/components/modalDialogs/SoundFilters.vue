@@ -5,7 +5,7 @@
     <div class="tab-wrap">
       <b-form-group label="Sound Filters">
         <b-form-checkbox-group id="sound-checks" name="Sound Filters" :options="options"
-            v-model="activeSounds" v-on:change="vals => updateSounds(vals)"
+            v-model="activeSounds" v-on:change="vals => updateSounds(vals)" switches
             stacked class="settings-group">
         </b-form-checkbox-group>
       </b-form-group>

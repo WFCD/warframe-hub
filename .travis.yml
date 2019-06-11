@@ -21,8 +21,10 @@ script:
   - npm install
 
 after_success:
-  - chmod +x ./.github/travis/success.sh
-  - ./.github/travis/success.sh
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
 after_failure:
-  - chmod +x ./.github/travis/fail.sh
-  - ./.github/travis/fail.sh
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL

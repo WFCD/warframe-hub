@@ -1,5 +1,9 @@
 <template>
   <div class="h-auto overflow-hidden border-transparent">
+    <div class="text-center w-full h-auto py-2">
+      <span class=" font-bold "> {{ eventdata.description }}</span
+      ><br />{{ eventdata.tooltip }}
+    </div>
     <div class="flex items-center py-2">
       <div class="w-1/3 h-auto pl-2">Ends</div>
       <div class="w-full text-right h-auto  mr-3">

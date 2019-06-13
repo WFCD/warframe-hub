@@ -1,7 +1,7 @@
 {
   "event": {
-    "state": true,
-    "display": "Events",
+    "display": true,
+    "displayName": "Events",
     "key": "event",
     "component": "EventsPanel",
     "props": {
@@ -9,8 +9,8 @@
     }
   },
   "acolytes": {
-    "state": true,
-    "display": "Acolytes",
+    "display": true,
+    "displayName": "Acolytes",
     "key": "acolytes",
     "component": "AcolytesPanel",
     "props": {
@@ -18,8 +18,8 @@
     }
   },
   "cetus": {
-    "state": true,
-    "display": "Cetus Cycle",
+    "display": true,
+    "displayName": "Cetus Cycle",
     "key": "cetus",
     "component": "TimePanel",
     "props": {
@@ -28,8 +28,8 @@
     }
   },
   "earth": {
-    "state": true,
-    "display": "Earth Cycle",
+    "display": true,
+    "displayName": "Earth Cycle",
     "key": "earth",
     "component": "TimePanel",
     "props": {
@@ -38,8 +38,8 @@
     }
   },
   "vallis": {
-    "state": true,
-    "display": "Vallis Cycle",
+    "display": true,
+    "displayName": "Vallis Cycle",
     "key": "vallis",
     "component": "TimePanel",
     "props": {
@@ -48,8 +48,8 @@
     }
   },
   "bounties": {
-    "state": true,
-    "display": "Bounties Timer",
+    "display": true,
+    "displayName": "Bounties Timer",
     "key": "bounties",
     "component": "BountyPanel",
     "props": {
@@ -58,8 +58,8 @@
     }
   },
   "solaris-bounties": {
-    "state": true,
-    "display": "Solaris Bounties Timer",
+    "display": true,
+    "displayName": "Solaris Bounties Timer",
     "key": "solaris-bounties",
     "component": "BountyPanel",
     "props": {
@@ -68,8 +68,8 @@
     }
   },
   "alerts": {
-    "state": true,
-    "display": "Alerts",
+    "display": true,
+    "displayName": "Alerts",
     "key": "alerts",
     "component": "AlertPanel",
     "props": {
@@ -77,8 +77,8 @@
     }
   },
   "news": {
-    "state": true,
-    "display": "News",
+    "display": true,
+    "displayName": "News",
     "key": "news",
     "component": "NewsPanel",
     "props": {
@@ -87,8 +87,8 @@
     "autoCycle": true
   },
   "invasions": {
-    "state": true,
-    "display": "Invasions",
+    "display": true,
+    "displayName": "Invasions",
     "key": "invasions",
     "component": "InvasionsPanel",
     "expand":false,
@@ -97,15 +97,15 @@
     }
   },
   "reset": {
-    "state": true,
-    "display": "Reset Timer",
+    "display": true,
+    "displayName": "Reset Timer",
     "key": "reset",
     "component": "ResetPanel",
     "props": {}
   },
   "sortie": {
-    "state": true,
-    "display": "Sortie",
+    "display": true,
+    "displayName": "Sortie",
     "key": "sortie",
     "component": "SortiePanel",
     "props": {
@@ -113,8 +113,8 @@
     }
   },
   "fissures": {
-    "state": true,
-    "display": "Fissures",
+    "display": true,
+    "displayName": "Fissures",
     "key": "fissures",
     "component": "FissuresPanel",
     "props": {
@@ -122,8 +122,8 @@
     }
   },
   "baro": {
-    "state": true,
-    "display": "Void Trader",
+    "display": true,
+    "displayName": "Void Trader",
     "key": "baro",
     "component": "VoidTraderPanel",
     "props": {
@@ -131,8 +131,8 @@
     }
   },
   "darvo": {
-    "state": true,
-    "display": "Darvo Deals",
+    "display": true,
+    "displayName": "Darvo Deals",
     "key": "darvo",
     "component": "DarvoDealsPanel",
     "props": {
@@ -140,8 +140,8 @@
     }
   },
   "deals": {
-    "state": false,
-    "display": "Sales",
+    "display": false,
+    "displayName": "Sales",
     "key": "deals",
     "component": "SalesPanel",
     "props": {
@@ -149,8 +149,8 @@
     }
   },
   "nightwave": {
-    "state": true,
-    "display": "Nightwave",
+    "display": true,
+    "displayName": "Nightwave",
     "key": "nightwave",
     "component": "NightwavePanel",
     "props": {

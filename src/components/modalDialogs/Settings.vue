@@ -17,7 +17,7 @@
         <b-tab title="Components">
           <b-form-group label="Components">
             <b-form-checkbox-group id="components-checks" name="Components" :options="componentStates"
-                v-model="activeComponents" v-on:input="vls => updateComponentState(vals)" switches
+                v-model="activeComponents" v-on:input="vals => updateComponentState(vals)" switches
                 stacked class="settings-group">
             </b-form-checkbox-group>
           </b-form-group>
@@ -87,7 +87,7 @@
       },
       updateComponentState(enabledComponents) {
         Object.keys(this.$store.getters.componentState).forEach((component) => {
-          this.$store.commit('commitComponentState', [component, enabledComponents.includes(component)]);
+          this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
         });
       },
       updateTheme(key) {
@@ -104,7 +104,7 @@
             .map((component) => this.$store.getters.componentState[component]);
 
           return components
-            .filter((component) => component.state)
+            .filter((component) => component.display)
             .map((component) => component.key);
         },
         set: function(){},
@@ -114,7 +114,7 @@
 
         return Object.keys(cs).map((component) => {
           return {
-            text: this.$store.getters.componentState[component].display,
+            text: this.$store.getters.componentState[component].display_name,
             value: this.$store.getters.componentState[component].key,
           };
         });

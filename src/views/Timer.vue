@@ -183,7 +183,7 @@ export default {
     layouts: function() {
       return Object.entries(this.components)
         .filter(([key]) => {
-          return this.componentState[key].state;
+          return this.componentState[key].display;
         })
         .reduce((acc, [, sizes]) => {
           Object.entries(sizes).forEach(([size, itemSize]) => {

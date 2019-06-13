@@ -86,6 +86,7 @@
         this.$store.dispatch('updateWorldstate');
       },
       updateComponentState(enabledComponents) {
+        //store to state
         Object.keys(this.$store.getters.componentState).forEach((component) => {
           this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
         });

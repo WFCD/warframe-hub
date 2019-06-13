@@ -35,7 +35,7 @@
             .map((component) => this.$store.getters.trackableState.rewardTypes[component]);
 
           return components
-            .filter((component) => component.state)
+            .filter((component) => component.display)
             .map((component) => component.value);
         },
         set: function(){},
@@ -49,7 +49,7 @@
             .map((component) => this.$store.getters.trackableState.eventTypes[component]);
 
           return components
-            .filter((component) => component.state)
+            .filter((component) => component.display)
             .map((component) => component.value);
         },
         set: function(){},

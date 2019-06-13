@@ -42,8 +42,8 @@ const mutations = {
   commitPlatform: (state, platform) => {
     state.platform = platform;
   },
-  commitComponentState: (state, [key, newState]) => {
-    state.components[key].state = newState;
+  commitComponentDisplayMode: (state, [key, newState]) => {
+    state.components[key].display = newState;
   },
   commitGridLayout: (state, [components]) => {
     state.grid.components = components;

@@ -10,6 +10,8 @@ import HowToFish from './views/HowToFish.vue';
 import VallisFish from './views/VallisFish.vue';
 import VallisMap from './views/VallisMap.vue';
 
+import RivenData from './views/RivenData.vue';
+
 import error404 from './views/404.vue';
 
 Vue.use(Router);
@@ -137,6 +139,24 @@ const routes = [
         {
           name: 'og:description',
           content: 'Overworld map for the Orb Vallis',
+        },
+      ],
+    },
+  },
+  {
+    path: '/riven/data',
+    name: 'Riven Data',
+    component: RivenData,
+    meta: {
+      title: 'Warframe Hub | Riven Data',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Riven trading data provided by Digital Extremes',
+        },
+        {
+          name: 'og:description',
+          content: 'Riven trading data provided by Digital Extremes',
         },
       ],
     },

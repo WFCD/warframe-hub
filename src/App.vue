@@ -4,22 +4,21 @@
     <Navbar />
     <Settings />
     <About />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue';
-  import Settings from '@/components/modalDialogs/Settings.vue';
-  import About from '@/components/modalDialogs/About.vue';
+import Navbar from '@/components/Navbar.vue';
+import Settings from '@/components/modalDialogs/Settings.vue';
+import About from '@/components/modalDialogs/About.vue';
 
-  export default {
-    name: 'app',
-    components: {
-      Navbar,
-      Settings,
-      About,
-    }
-  };
-
+export default {
+  name: 'app',
+  components: {
+    Navbar,
+    Settings,
+    About,
+  },
+};
 </script>

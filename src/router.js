@@ -24,11 +24,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Warframe hub strives to be the community center of the Warframe game.'
+          content: 'Warframe hub strives to be the community center of the Warframe game.',
         },
         {
           name: 'og:description',
-          content: 'Warframe hub strives to be the community center of the Warframe game.'
+          content: 'Warframe hub strives to be the community center of the Warframe game.',
         },
       ],
     },
@@ -42,11 +42,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Warframe hub strives to be the community center of the Warframe game.'
+          content: 'Warframe hub strives to be the community center of the Warframe game.',
         },
         {
           name: 'og:description',
-          content: 'Warframe hub strives to be the community center of the Warframe game.'
+          content: 'Warframe hub strives to be the community center of the Warframe game.',
         },
       ],
     },
@@ -60,11 +60,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Overworld map for the Plains of Eidolon'
+          content: 'Overworld map for the Plains of Eidolon',
         },
         {
           name: 'og:description',
-          content: 'Overworld map for the Plains of Eidolon'
+          content: 'Overworld map for the Plains of Eidolon',
         },
       ],
     },
@@ -78,11 +78,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Fish Information and resources for the Plains of Eidolon'
+          content: 'Fish Information and resources for the Plains of Eidolon',
         },
         {
           name: 'og:description',
-          content: 'Fish Information and resources for the Plains of Eidolon'
+          content: 'Fish Information and resources for the Plains of Eidolon',
         },
       ],
     },
@@ -96,11 +96,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Guide on how to fish on the Plains of Eidolon'
+          content: 'Guide on how to fish on the Plains of Eidolon',
         },
         {
           name: 'og:description',
-          content: 'Guide on how to fish on the Plains of Eidolon'
+          content: 'Guide on how to fish on the Plains of Eidolon',
         },
       ],
     },
@@ -114,11 +114,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Fish Information and resources for the Orb Vallis'
+          content: 'Fish Information and resources for the Orb Vallis',
         },
         {
           name: 'og:description',
-          content: 'Fish Information and resources for the Orb Vallis'
+          content: 'Fish Information and resources for the Orb Vallis',
         },
       ],
     },
@@ -132,11 +132,11 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Overworld map for the Orb Vallis'
+          content: 'Overworld map for the Orb Vallis',
         },
         {
           name: 'og:description',
-          content: 'Overworld map for the Orb Vallis'
+          content: 'Overworld map for the Orb Vallis',
         },
       ],
     },
@@ -148,20 +148,20 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/404'
+    redirect: '/404',
   },
 ];
 
 const router = new Router({
   routes,
   mode: 'hash',
-  scrollBehavior (to) {
+  scrollBehavior(to) {
     if (to.hash) {
       return {
-        selector: to.hash
+        selector: to.hash,
       };
     }
-  }
+  },
 });
 
 // From https://alligator.io/vuejs/vue-router-modify-head/
@@ -169,15 +169,24 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // This goes through the matched routes from last to first, finding the closest route with a title.
   // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
-  const nearestWithTitle = to.matched.slice().reverse().find((r) => r.meta && r.meta.title);
+  const nearestWithTitle = to.matched
+    .slice()
+    .reverse()
+    .find((r) => r.meta && r.meta.title);
 
   // Find the nearest route element with meta tags.
-  const nearestWithMeta = to.matched.slice().reverse().find((r) => r.meta && r.meta.metaTags);
+  const nearestWithMeta = to.matched
+    .slice()
+    .reverse()
+    .find((r) => r.meta && r.meta.metaTags);
   // eslint-disable-next-line no-unused-vars
-  const previousNearestWithMeta = from.matched.slice().reverse().find((r) => r.meta && r.meta.metaTags);
+  const previousNearestWithMeta = from.matched
+    .slice()
+    .reverse()
+    .find((r) => r.meta && r.meta.metaTags);
 
   // If a route with a title was found, set the document (page) title to that value.
-  if(nearestWithTitle) {
+  if (nearestWithTitle) {
     document.title = nearestWithTitle.meta.title;
   }
 
@@ -185,25 +194,26 @@ router.beforeEach((to, from, next) => {
   Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map((el) => el.parentNode.removeChild(el));
 
   // Skip rendering meta tags if there are none.
-  if(!nearestWithMeta) {
+  if (!nearestWithMeta) {
     return next();
   }
 
   // Turn the meta tag definitions into actual elements in the head.
-  nearestWithMeta.meta.metaTags.map((tagDef) => {
-    const tag = document.createElement('meta');
+  nearestWithMeta.meta.metaTags
+    .map((tagDef) => {
+      const tag = document.createElement('meta');
 
-    Object.keys(tagDef).forEach((key) => {
-      tag.setAttribute(key, tagDef[key]);
-    });
+      Object.keys(tagDef).forEach((key) => {
+        tag.setAttribute(key, tagDef[key]);
+      });
 
-    // We use this to track which meta tags we create, so we don't interfere with other ones.
-    tag.setAttribute('data-vue-router-controlled', '');
+      // We use this to track which meta tags we create, so we don't interfere with other ones.
+      tag.setAttribute('data-vue-router-controlled', '');
 
-    return tag;
-  })
-  // Add the meta tags to the document head.
-  .forEach((tag) => document.head.appendChild(tag));
+      return tag;
+    })
+    // Add the meta tags to the document head.
+    .forEach((tag) => document.head.appendChild(tag));
 
   next();
 });

@@ -1,25 +1,45 @@
 <template>
   <HubPanelWrap :title="headertext">
     <b-list-group>
-      <b-list-group-item :style="styleObject" v-for="(alert, index) in alerts" :key="alert.id"
-      :class="{ 'list-group-item-borderless': index !== alerts.length - 1, 'list-group-item-borderbottom': index === alerts.length - 1 }" v-if="alert.active">
+      <b-list-group-item
+        :style="styleObject"
+        v-for="(alert, index) in alerts"
+        :key="alert.id"
+        :class="{
+          'list-group-item-borderless': index !== alerts.length - 1,
+          'list-group-item-borderbottom': index === alerts.length - 1,
+        }"
+        v-if="alert.active"
+      >
         <span class="pull-left">
-          <HubImg :src="archwing" name="Archwing Required for Mission" class="li-mission-decorator" v-if="alert.mission.archwingRequired" />
-          <HubImg :src="nightmare" name="Nightmare Mission" class="li-mission-decorator" v-if="alert.mission.nightmare" />
-          <b>{{alert.mission.node}}</b>
+          <HubImg
+            :src="archwing"
+            name="Archwing Required for Mission"
+            class="li-mission-decorator"
+            v-if="alert.mission.archwingRequired"
+          />
+          <HubImg
+            :src="nightmare"
+            name="Nightmare Mission"
+            class="li-mission-decorator"
+            v-if="alert.mission.nightmare"
+          />
+          <b>{{ alert.mission.node }}</b>
         </span>
-        <TimeBadge :starttime="alert.activation" :endtime="alert.expiry" :interval="1000"/>
+        <TimeBadge :starttime="alert.activation" :endtime="alert.expiry" :interval="1000" />
         <b-badge
           variant="info"
           :style="styleObject"
           v-for="item in alert.mission.reward.items"
           :key="item"
           class="pull-right"
-        >{{item}}</b-badge>
+          >{{ item }}</b-badge
+        >
         <br />
         <b-badge variant="info" :style="styleObject" class="pull-right">{{ alert.mission.reward.credits }}cr</b-badge>
         <div style="margin-top:2px" class="pull-left">
-          <b>{{alert.mission.type}}</b> ({{alert.mission.faction}}) | <b>Level: </b>{{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}
+          <b>{{ alert.mission.type }}</b> ({{ alert.mission.faction }}) | <b>Level: </b>
+          {{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}
         </div>
       </b-list-group-item>
       <NoDataItem v-if="alerts.length === 0" :text="headertext" />
@@ -28,37 +48,37 @@
 </template>
 
 <script>
-  import TimeBadge from '@/components/TimeBadge.vue';
-  import HubImg from '@/components/HubImg.vue';
-  import NoDataItem from '@/components/NoDataItem.vue';
+import TimeBadge from '@/components/TimeBadge.vue';
+import HubImg from '@/components/HubImg.vue';
+import NoDataItem from '@/components/NoDataItem.vue';
 
-  import archwing from '@/assets/img/archwing.svg';
-  import nightmare from '@/assets/img/nightmare.svg';
-  import HubPanelWrap from '@/components/HubPanelWrap';
+import archwing from '@/assets/img/archwing.svg';
+import nightmare from '@/assets/img/nightmare.svg';
+import HubPanelWrap from '@/components/HubPanelWrap';
 
-  export default {
-    name: 'AlertPanel',
-    props: ['alerts'],
-    computed: {
-      headertext() {
-        return 'Alerts';
-      }
+export default {
+  name: 'AlertPanel',
+  props: ['alerts'],
+  computed: {
+    headertext() {
+      return 'Alerts';
     },
-    data () {
-      return {
-        styleObject: {
-          display: 'inline',
-        },
-        archwing: archwing,
-        nightmare: nightmare,
-      };
-    },
-    components: {
-      TimeBadge,
-      HubImg,
-      NoDataItem,
-      HubPanelWrap,
-    },
-  };
+  },
+  data() {
+    return {
+      styleObject: {
+        display: 'inline',
+      },
+      archwing: archwing,
+      nightmare: nightmare,
+    };
+  },
+  components: {
+    TimeBadge,
+    HubImg,
+    NoDataItem,
+    HubPanelWrap,
+  },
+};
 </script>
 <!-- AlertPanel.vue -->

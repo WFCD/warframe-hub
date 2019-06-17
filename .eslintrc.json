@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:prettier/recommended",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "rules": {
+    "vue/html-indent": "warning",
+    "semi": 1,
+    "arrow-parens": 1,
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "vue/no-use-v-if-with-v-for": "off",
+    "vue/script-indent": "warning"
+  }
+}

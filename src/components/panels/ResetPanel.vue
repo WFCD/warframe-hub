@@ -5,7 +5,7 @@
         <span class="pull-left">
           <b>Reward Timer Reset in:</b>
         </span>
-        <TimeBadge :starttime="this.now" :endtime="this.nextDay" :interval="1000"/>
+        <TimeBadge :starttime="this.now" :endtime="this.nextDay" :interval="1000" />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -22,7 +22,7 @@ export default {
   computed: {
     headertext() {
       return 'Daily Reward Timer Reset';
-    }
+    },
   },
   data() {
     return {
@@ -33,8 +33,8 @@ export default {
         .add(1, 'seconds')
         .toISOString(),
       styleObject: {
-        display: 'inline'
-      }
+        display: 'inline',
+      },
     };
   },
   mounted() {
@@ -48,11 +48,11 @@ export default {
         .endOf('day')
         .add(1, 'seconds')
         .toISOString();
-    }
+    },
   },
   components: {
     TimeBadge,
     HubPanelWrap,
-  }
+  },
 };
 </script>

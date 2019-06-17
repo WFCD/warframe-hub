@@ -1,9 +1,6 @@
 <template>
-  <b-badge
-    v-bind:variant="mutableVariant"
-    class="pull-right"
-  >
-  {{disp}}
+  <b-badge v-bind:variant="mutableVariant" class="pull-right">
+    {{ disp }}
   </b-badge>
 </template>
 
@@ -27,7 +24,7 @@ export default {
     },
     variant: {
       type: String,
-      default: 'info'
+      default: 'info',
     },
     interval: {
       type: Number,
@@ -36,15 +33,15 @@ export default {
     counter: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   mounted: function() {
     this.onBadgeUpdate();
   },
-  data: function () {
+  data: function() {
     return {
       disp: this.text,
-      mutableVariant: this.variant
+      mutableVariant: this.variant,
     };
   },
   methods: {
@@ -69,19 +66,17 @@ export default {
       let timeLeft = diff;
       const stringArray = [];
 
-      [[86400000, 'd'], [3600000, 'h'], [60000, 'm'], [1000, 's']]
-        .forEach(([unit, suffix]) => {
-          const time = Math.floor(timeLeft / unit);
-          const first = stringArray.length === 0;
-          if (!first || time > 0) {
-            stringArray.push(time.toString()
-              .padStart(first ? 1 : 2, '0') + suffix);
-          }
-          timeLeft -= time * unit;
-        });
+      [[86400000, 'd'], [3600000, 'h'], [60000, 'm'], [1000, 's']].forEach(([unit, suffix]) => {
+        const time = Math.floor(timeLeft / unit);
+        const first = stringArray.length === 0;
+        if (!first || time > 0) {
+          stringArray.push(time.toString().padStart(first ? 1 : 2, '0') + suffix);
+        }
+        timeLeft -= time * unit;
+      });
       return stringArray.join(' ');
     },
-    onBadgeUpdate () {
+    onBadgeUpdate() {
       let diffactivate;
       let durationactivate;
 
@@ -92,7 +87,7 @@ export default {
         durationactivate = moment.duration(diffactivate, 'milliseconds');
       }
 
-      if(!this.counter){
+      if (!this.counter) {
         const end = new Date(this.endtime).getTime() / 1000;
 
         // Get the diff and duration until "end"
@@ -109,11 +104,14 @@ export default {
           this.mutableVariant = 'info';
           this.disp = `Expired: ${this.formatDurationShort(duration)}`;
         } else {
-          if (diff < 600000) { // 0 min to 10 min
+          if (diff < 600000) {
+            // 0 min to 10 min
             this.mutableVariant = 'danger';
-          } else if (diff < 1800000) { // 10 min to 30 min
+          } else if (diff < 1800000) {
+            // 10 min to 30 min
             this.mutableVariant = 'warning';
-          } else if (diff > 1800000) { // 30 min to 1 hour
+          } else if (diff > 1800000) {
+            // 30 min to 1 hour
             this.mutableVariant = 'success';
           } else {
             this.mutableVariant = 'info';
@@ -134,8 +132,7 @@ export default {
       }
 
       setTimeout(this.onBadgeUpdate, this.interval);
-    }
+    },
   },
 };
-
 </script>

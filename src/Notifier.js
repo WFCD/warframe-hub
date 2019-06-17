@@ -1,4 +1,5 @@
 'use strict';
+
 /* globals document */
 import Vue from 'vue';
 import drum from '@/assets/audio/drum.mp3';
@@ -8,7 +9,7 @@ const wfcdLogoUrl = 'https://warframestat.us/wfcd_logo_color.png';
 
 const defaultNotificationBody = {
   body: 'You can now receive notifications like this.',
-  icon: wfcdLogoUrl
+  icon: wfcdLogoUrl,
 };
 
 const makeNotification = (type, data) => {
@@ -34,7 +35,7 @@ const makeNotification = (type, data) => {
       };
     case 'cetus.day':
       return {
-        head: 'Cetus - Rise and Shine! Hunting\'s Over!',
+        head: 'Cetus - Rise and Shine! Hunting time Over!',
         body: {
           body: data.shortString,
           icon: wfcdLogoUrl,
@@ -43,13 +44,13 @@ const makeNotification = (type, data) => {
       };
     case 'cetus.night':
       return {
-        head: 'Cetus - It\'s Hunting Time!',
+        head: 'Cetus - Hunting Time!',
         body: {
           body: data.shortString,
           icon: wfcdLogoUrl,
         },
         sound: 'eidolon',
-        type: 'night'
+        type: 'night',
       };
     case 'syndicate.ostrons':
       return {
@@ -58,11 +59,11 @@ const makeNotification = (type, data) => {
           body: `Remaining: ${data.eta}`,
           icon: wfcdLogoUrl,
         },
-        type: 'syndicate.ostrons'
+        type: 'syndicate.ostrons',
       };
     case 'baro':
       return {
-        head: 'Baro Ki\'Teer',
+        head: "Baro Ki'Teer",
         body: {
           body: `See Component for more details\nBaro Ki'Teer departs in ${data.endString} from ${data.location}`,
           icon: wfcdLogoUrl,
@@ -91,7 +92,9 @@ const makeNotification = (type, data) => {
       return {
         head: `Sortie: ${data.boss}`,
         body: {
-          body: `${data.variants.map((variant) => `${variant.missionType} • ${variant.node} • ${variant.modifier}`).join('\n')}\n${data.eta}`,
+          body: `${data.variants
+            .map((variant) => `${variant.missionType} • ${variant.node} • ${variant.modifier}`)
+            .join('\n')}\n${data.eta}`,
           icon: wfcdLogoUrl,
         },
       };
@@ -115,12 +118,16 @@ const makeNotification = (type, data) => {
         type: 'news',
       };
     case 'invasions':
-      var rewards = `${data.attackerReward.asString.length ? `${data.attackerReward.asString} vs ` : ''}${data.defenderReward.asString}`;
+      var rewards = `${data.attackerReward.asString.length ? `${data.attackerReward.asString} vs ` : ''}${
+        data.defenderReward.asString
+      }`;
 
       return {
         head: rewards,
         body: {
-          body: `${data.desc} • ${data.node}\n${data.eta.replace('-Infinityd', '??').replace('Infinityd', '??')} Remaining`,
+          body: `${data.desc} • ${data.node}\n${data.eta
+            .replace('-Infinityd', '??')
+            .replace('Infinityd', '??')} Remaining`,
           icon: wfcdLogoUrl,
         },
         sound: 'drum',
@@ -148,7 +155,7 @@ const makeNotification = (type, data) => {
       return {
         head: `Nightwave - ${data.title}`,
         body: {
-          body: `${data.daily ? 'Daily: ' : (data.isElite ? 'Weekly Elite: ' : 'Weekly: ')}${data.desc}`,
+          body: `${data.daily ? 'Daily: ' : data.isElite ? 'Weekly Elite: ' : 'Weekly: '}${data.desc}`,
           icon: wfcdLogoUrl,
         },
       };
@@ -158,7 +165,7 @@ const makeNotification = (type, data) => {
 };
 
 class Notifier {
-  constructor (store) {
+  constructor(store) {
     this.store = store;
     this.notifier = Vue.notification;
   }
@@ -170,7 +177,7 @@ class Notifier {
     return eventGood && includesItems;
   }
 
-  async notify (notifications) {
+  async notify(notifications) {
     const usePush = !document.hasFocus();
     notifications.forEach((notification) => {
       if (usePush) {
@@ -180,7 +187,7 @@ class Notifier {
               event.preventDefault();
               window.open(notification.link, '_blank');
             }
-          }
+          },
         });
       } else {
         Vue.notify({
@@ -261,7 +268,7 @@ class Notifier {
     }
 
     for (const fissure of ws.fissures) {
-      const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/ig, '')}`;
+      const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
       if (this.isNotifiable(fissure.id, notifIdentifier)) {
         toNotify.push(makeNotification('fissure', fissure));
       }
@@ -313,7 +320,7 @@ class Notifier {
     return toNotify;
   }
 
-  async checkNotifications () {
+  async checkNotifications() {
     const ws = this.store.getters.worldstate;
     this.trackedRewards = Object.keys(this.store.getters.trackableState.rewardTypes)
       .map((reward) => this.store.getters.trackableState.rewardTypes[reward])

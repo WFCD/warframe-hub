@@ -6,7 +6,7 @@ module.exports = {
     workboxOptions: {
       skipWaiting: true,
       clientsClaim: true,
-    }
+    },
   },
 
   publicPath: '/',
@@ -15,30 +15,29 @@ module.exports = {
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-  configureWebpack: { plugins: [] },
-
+  configureWebpack: {
+    plugins: [],
+  },
   css: {
     sourceMap: true,
     loaderOptions: {
       less: {
         modules: {
-          rules: [{
-            test: /\.css$/,
-            use: [{
-              loader: 'css-loader'
-            }]
-          }, {
-            test: /\.less$/,
-            use: [{
-              loader: 'style-loader'
-            }, {
-              loader: 'css-loader'
-            }, {
-              loader: 'less-loader'
-            }]
-          }]
-        }
+          rules: [
+            { test: /\.css$/, use: [{ loader: 'css-loader' }] },
+            {
+              test: /\.less$/,
+              use: [
+                { loader: 'style-loader' },
+                { loader: 'css-loader' },
+                {
+                  loader: 'less-loader',
+                },
+              ],
+            },
+          ],
+        },
       },
     },
-  }
+  },
 };

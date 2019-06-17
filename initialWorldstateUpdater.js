@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint-disable no-console */
 const fetch = require('node-fetch');
 const fs = require('fs');
@@ -5,12 +7,7 @@ const fs = require('fs');
 const jsonFileName = 'initialWorldstate.json';
 const jsonFolder = './src/assets/json';
 const apiBaseUrl = 'api.warframestat.us';
-const apiPlatforms = [
-  'pc',
-  'ps4',
-  'xb1',
-  'swi'
-];
+const apiPlatforms = ['pc', 'ps4', 'xb1', 'swi'];
 
 function onError(error) {
   console.error(error);
@@ -21,8 +18,8 @@ function parseArray(data) {
 }
 
 function parseBoolean(data, key) {
-  if (typeof(data) !== 'boolean') {
-     return null;
+  if (typeof data !== 'boolean') {
+    return null;
   }
 
   return key.toLowerCase().includes('expired');
@@ -52,7 +49,7 @@ function parseDefault(data, key, objectPath) {
 }
 
 function parseObject(data, key, objectPath = '') {
-  if (typeof(data) !== 'object') {
+  if (typeof data !== 'object') {
     return null;
   }
 
@@ -64,7 +61,7 @@ function parseObject(data, key, objectPath = '') {
     parseId,
     parseNumber,
     parseETA,
-    parseDefault
+    parseDefault,
   ];
   const cleanedData = {};
 
@@ -88,27 +85,25 @@ function parseBase(platform, data) {
 }
 
 function main() {
-  Promise.all(apiPlatforms.map((platform) => {
-    return fetch(`https://${apiBaseUrl}/${platform}`)
-      .then((t) => t.text())
-      .then(JSON.parse)
-      .then(parseBase.bind(null, platform))
-      .catch(onError);
-  })).then((platformsData) => {
+  Promise.all(
+    apiPlatforms.map((platform) => {
+      return fetch(`https://${apiBaseUrl}/${platform}`)
+        .then((t) => t.text())
+        .then(JSON.parse)
+        .then(parseBase.bind(null, platform))
+        .catch(onError);
+    })
+  ).then((platformsData) => {
     const output = platformsData.reduce((acc, data) => {
       acc[data[0]] = data[1];
       return acc;
     }, {});
-    fs.writeFile(
-      `${jsonFolder}/${jsonFileName}`,
-      JSON.stringify(output, null, 2),
-      function(err) {
-        if(err) {
-          return console.log(err);
-        }
-        console.info(`${jsonFileName} updated at ${jsonFolder}/${jsonFileName}`);
+    fs.writeFile(`${jsonFolder}/${jsonFileName}`, JSON.stringify(output, null, 2), function(err) {
+      if (err) {
+        return console.log(err);
       }
-    );
+      console.info(`${jsonFileName} updated at ${jsonFolder}/${jsonFileName}`);
+    });
   });
 }
 

@@ -10,12 +10,8 @@
         </div>
         <div class="modal-body">
           Concepted and Crafted by
-          <a name="MainlandHero Github" rel="noopener" target="_blank" href="https://github.com/MainlandHero"
-            >MainlandHero</a
-          >
-          with contributions from others on the Warframe Community Developers team, especially the work of
-          <a href="https://github.com/Tithen-Firion" name="Titehn-Firion Github" rel="noopener" target="_blank"
-            >Tithen-Firion</a
+          <a name="Warframe Hub Team GitHub" rel="noopener" target="_blank" href="https://github.com/orgs/WFCD/teams/warframe-hub"
+            >the Warframe Hub Team</a
           >. <br /><br />
           The Warframe Hub project is committed to open source. This project is licensed and distributed under
           <a name="Apache License" rel="noopener" target="_blank" href="https://www.apache.org/licenses/LICENSE-2.0"

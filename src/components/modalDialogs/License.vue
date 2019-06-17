@@ -10,7 +10,11 @@
         </div>
         <div class="modal-body">
           Concepted and Crafted by
-          <a name="Warframe Hub Team GitHub" rel="noopener" target="_blank" href="https://github.com/orgs/WFCD/teams/warframe-hub"
+          <a
+            name="Warframe Hub Team GitHub"
+            rel="noopener"
+            target="_blank"
+            href="https://github.com/orgs/WFCD/teams/warframe-hub"
             >the Warframe Hub Team</a
           >. <br /><br />
           The Warframe Hub project is committed to open source. This project is licensed and distributed under

@@ -50,6 +50,8 @@ export default {
           {
             set: '@fortawesome/free-solid-svg-icons',
             icons: [
+              'faBan',
+              'faRedo',
               'faDesktop',
               'faSun',
               'faMoon',

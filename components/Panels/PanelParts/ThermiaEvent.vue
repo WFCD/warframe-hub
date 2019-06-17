@@ -39,8 +39,8 @@
     </div>
     <div
       v-for="(reward, i) in eventdata.rewards"
-      :index="i"
       :key="reward.asString"
+      :index="i"
     >
       <div v-if="reward.itemString" class="px-2 flex items-center">
         <p class="w-full">Event Reward Nr.{{ i + 1 }}</p>

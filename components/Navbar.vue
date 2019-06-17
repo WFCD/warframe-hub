@@ -6,11 +6,17 @@
       >
     </div>
     <div class="flex flex-grow">
-      <router-link to="/" exact>
-        <span class="-ml-2 mr-1"
+      <router-link to="/" exact class="mr-3">
+        <span class="-ml-2 mr-3"
           ><fa icon="moon" fixed-width class="fill-current"
         /></span>
         Timers</router-link
+      >
+      <router-link to="/riven" exact>
+        <span class="-ml-2 mr-1"
+          ><fa icon="sun" fixed-width class="fill-current"
+        /></span>
+        Riven</router-link
       >
     </div>
   </nav>

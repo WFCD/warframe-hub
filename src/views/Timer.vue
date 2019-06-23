@@ -95,6 +95,9 @@ export default {
   mounted() {
     this.components = this.gridState.components;
     this.lastUpdate = Date.now();
+    this.$root.$on('bv::collapse::sync::state', () => {
+      this.reflow();
+    });
   },
   methods: {
     track() {
@@ -152,17 +155,19 @@ export default {
         return prev;
       }, {});
     },
+    reflow() {
+      if (this.$refs.panelObserver) {
+        this.$refs.panelObserver.forEach((element) => {
+          element.toggleAttribute('updating');
+        });
+        this.$refs.layout.resizeAllItems(2, 'vertical');
+      }
+    },
   },
   watch: {
     worldstate: {
       handler: function() {
-        if (this.$refs.panelObserver) {
-          this.$refs.panelObserver.forEach((element) => {
-            element.toggleAttribute('updating');
-            element.toggleAttribute('updating');
-          });
-          this.$refs.layout.resizeAllItems(2, 'vertical');
-        }
+        this.reflow();
       },
       deep: true,
     },

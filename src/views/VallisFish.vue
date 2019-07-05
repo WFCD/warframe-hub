@@ -2,171 +2,141 @@
   <b-container fluid>
     <b-col md="12">
       <router-link to="/vallis/map">
-        <b-button variant="info" class="btn-block mb-3">Orb Vallis Map</b-button>
+        <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
       </router-link>
 
       <div class="row">
-        <b-table striped hover :items="items" class="fish-info b-table"></b-table>
+        <table class="table fish-info striped hover">
+          <thead>
+            <tr>
+              <th title="The name of the fish">Fish Name</th>
+              <th title="Number of scrap you receive is dependent on fish model">
+                Model
+              </th>
+              <th title="Number of scrap you will receive when dismantling">
+                Scrap
+              </th>
+              <th title="You will always receive 1 of these per fish when dismantling">
+                Unique
+              </th>
+              <th title="Solaris United standing gain when donating fish">Standing</th>
+              <th title="Location of where to find the fish">Location</th>
+              <th title="Time of when you can find the fish">Time</th>
+              <th title="How likely the fish will spawn">Rarity</th>
+              <th title="The appropriate spear needed for this fish">Spear</th>
+              <th title="The maximum point possible for this fish">
+                Max Point
+              </th>
+            </tr>
+          </thead>
+          <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
+            <tr :class="'color' + ((index % 2) + 1)">
+              <td rowspan="3">
+                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link" class="m-3">
+                  {{ fish.name }}
+                </b-btn>
+                <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
+                  <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" v-if="fish.thumb" />
+                  <span v-else> No image available</span>
+                </b-tooltip>
+              </td>
+              <td v-if="fish.smallLabel">{{ fish.smallLabel }}</td>
+              <td v-else>Basic</td>
+              <td>{{ fish.small.resources.scrap }}</td>
+              <td rowspan="3">
+                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link" class="m-3">
+                  {{ fish.unique.name }}
+                </b-btn>
+                <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
+                  <FishImg
+                    type="parts"
+                    :item="fish.unique.thumb"
+                    :name="fish.unique.name"
+                    width="200"
+                    v-if="fish.unique.thumb"
+                  />
+                  <span v-else> No image available</span>
+                  <b-btn
+                    :href="fish.unique.wiki"
+                    target="_blank"
+                    size="sm"
+                    rel="noopener"
+                    variant="link"
+                    v-if="fish.unique.thumb"
+                  >
+                    Wikia Article
+                  </b-btn>
+                </b-tooltip>
+              </td>
+              <td>{{ fish.small.standing }}</td>
+              <td rowspan="3">{{ fish.location }}</td>
+              <td rowspan="3">{{ fish.time }}</td>
+              <td rowspan="3">
+                <span>{{ fish.rarity }}</span>
+
+                <br v-if="fish.hotspot" />
+                <span v-if="fish.hotspot">Hotspot Required</span>
+
+                <br v-if="fish.bait" />
+                <b-btn
+                  v-if="fish.bait"
+                  :id="`${fish.name}_${fish.bait.name}_bait_tooltip`"
+                  size="md"
+                  variant="link"
+                  class="mb-1"
+                >
+                  {{ fish.bait.name }}
+                </b-btn>
+                <b-tooltip v-if="fish.bait" :target="`${fish.name}_${fish.bait.name}_bait_tooltip`" placement="top">
+                  <FishImg
+                    type="bait"
+                    :item="fish.bait.thumb"
+                    :name="fish.bait.name"
+                    width="200"
+                    v-if="fish.bait.thumb"
+                  />
+                  <span v-else> No image available</span>
+                </b-tooltip>
+              </td>
+              <td rowspan="3">
+                <span v-for="spear in fish.spear" :key="spear">{{ spear }} <br /></span>
+              </td>
+              <td rowspan="3">{{ fish.maximumPoint }}</td>
+            </tr>
+            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.medium">
+              <td>Adorned</td>
+              <td>{{ fish.medium.resources.scrap }}</td>
+              <td>{{ fish.medium.standing }}</td>
+            </tr>
+            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.large">
+              <td>Magnificent</td>
+              <td>{{ fish.large.resources.scrap }}</td>
+              <td>{{ fish.large.standing }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <router-link to="/poe/fish/howto#hotspots">
+        <b-btn variant="info" class="btn-block">What is a Hotspot?</b-btn>
+      </router-link>
     </b-col>
   </b-container>
 </template>
 
 <script>
-const items = [
-  {
-    species: 'Sapcaddy',
-    location: 'Lake',
-    time: 'Cold',
-    hotspot: 'No',
-    resource: 'Venedo Case',
-    basic: '3 Scrap/35 Standing',
-    adorned: '4 Scrap/45 Standing',
-    magnificent: '5 Scrap/70 Standing',
-  },
-  {
-    species: 'Echowinder',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Anoscopic Sensor',
-    basic: '2 Scrap/35 Standing',
-    adorned: '3 Scrap/45 Standing',
-    magnificent: '4 Scrap/70 Standing',
-  },
-  {
-    species: 'Kriller',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'Yes',
-    resource: 'Thermal Laser',
-    basic: '1 Scrap/45 Standing',
-    adorned: '2 Scrap/60 Standing',
-    magnificent: '3 Scrap/100 Standing',
-  },
-  {
-    species: 'Longwinder',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Lathe Coagulant',
-    basic: '2 Scrap/200 Standing',
-    adorned: '3 Scrap/300 Standing',
-    magnificent: '4 Scrap/500 Standing',
-  },
-  {
-    species: 'Brickie',
-    location: 'Pond',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Muon Battery',
-    basic: '2 Scrap/35 Standing',
-    adorned: '3 Scrap/45 Standing',
-    magnificent: '4 Scrap/70 Standing',
-  },
-  {
-    species: 'Tink',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'No',
-    resource: 'Dissipator Coil',
-    basic: '1 Scrap/35 Standing',
-    adorned: '2 Scrap/45 Standing',
-    magnificent: '3 Scrap/70 Standing',
-  },
-  {
-    species: 'Eye-Eye',
-    location: 'Pond',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Rotoblade',
-    basic: '3 Scrap/45 Standing',
-    adorned: '4 Scrap/60 Standing',
-    magnificent: '5 Scrap/100 Standing',
-  },
-  {
-    species: 'Recaster',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'Yes',
-    resource: 'Neural Relay',
-    basic: '3 Scrap/45 Standing',
-    adorned: '5 Scrap/60 Standing',
-    magnificent: '7 Scrap/100 Standing',
-  },
-  {
-    species: 'Tromyzon',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'Yes',
-    resource: 'Entroplasma',
-    basic: '3 Scrap/200 Standing',
-    adorned: '4 Scrap/300 Standing',
-    magnificent: '5 Scrap/500 Standing',
-  },
-  {
-    species: 'Scrubber',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'No',
-    resource: 'Exa Brain',
-    basic: '1 Scrap/35 Standing',
-    adorned: '2 Scrap/45 Standing',
-    magnificent: '3 Scrap/70 Standing',
-  },
-  {
-    species: 'Mirewinder',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'No',
-    resource: 'Parallel Biode',
-    basic: '4 Scrap/45 Standing',
-    adorned: '5 Scrap/60 Standing',
-    magnificent: '6 Scrap/100 Standing',
-  },
-  {
-    species: 'Charamote',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'Yes',
-    resource: 'Sagan Module',
-    basic: '1 Scrap/200 Standing',
-    adorned: '3 Scrap/300 Standing',
-    magnificent: '5 Scrap/500 Standing',
-  },
-  {
-    species: 'Synathid',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'Yes',
-    resource: 'Ecosynth Analyzer',
-    basic: '4 Scrap/600 Standing',
-    adorned: '6 Scrap/800 Standing',
-    magnificent: '8 Scrap/1000 Standing',
-  },
-  {
-    species: 'Crewman Boot',
-    location: 'Any',
-    time: 'Any',
-    hotspot: 'No',
-    resource: '400 Credits',
-    basic: 'u',
-    adorned: 'wot',
-    magnificent: 'm8?',
-  },
-];
+import fish from '@/assets/json/vallisfish.json';
+import FishImg from '@/components/FishImg.vue';
 
 export default {
-  name: 'vallisfish',
+  name: 'fish',
+  components: {
+    FishImg,
+  },
   data() {
     return {
-      items: items,
+      fishes: fish,
     };
-  },
-  methods: {
-    track() {
-      this.$ga.page('/vallis/fish');
-    },
   },
 };
 </script>

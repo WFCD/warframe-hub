@@ -91,8 +91,10 @@
         <p>
           Once you have latched onto a servofish with your spear, you want to try and click again when the moving 
           indicator reaches around the center of the red part. If you do not hit the red part of the bar, your catch 
-          will not be effective. Also in this picture is the item Luminous Dye that makes servofish easier to see, but 
-          you have to get them from the fish merchant in Cetus.
+          will not be as effective. When you do hit the red part, it will send out a shockwave from the location where you 
+          caught the fish to stun other fish. Shockprod has a shorter stun duration than Stunna spear. Also in this 
+          picture is the item Luminous Dye that makes servofish easier to see, but you have to get them from the fish 
+          merchant in Cetus. 
         </p>
         <br />
         <br />

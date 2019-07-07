@@ -349,9 +349,10 @@
       "thumb": "neuralrelay",
       "wiki": "https://warframe.fandom.com/wiki/Neural_Relay"
     },
-    "location": "Pond (hotspot)",
+    "location": "Pond",
     "time": "Cold",
     "rarity": "Uncommon",
+    "hotspot": true,
     "bait": {
       "name": "Narrow-spectrum Bait",
       "thumb": "narrowspectrum"
@@ -387,9 +388,10 @@
       "thumb": "entroplasma",
       "wiki": "https://warframe.fandom.com/wiki/Entroplasma"
     },
-    "location": "Pond (hotspot)",
+    "location": "Pond",
     "time": "Cold",
     "rarity": "Rare",
+    "hotspot": true,
     "bait": {
       "name": "Tromyzon Bait",
       "thumb": "tromyzon"
@@ -425,9 +427,10 @@
       "thumb": "saganmodule",
       "wiki": "https://warframe.fandom.com/wiki/Sagan_Module"
     },
-    "location": "Cave (hotspot)",
+    "location": "Cave",
     "time": "Prefers Warm",
     "rarity": "Rare",
+    "hotspot": true,
     "bait": {
       "name": "Charamote Bait",
       "thumb": "charamote"
@@ -463,9 +466,10 @@
       "thumb": "ecosynthanalyzer",
       "wiki": "https://warframe.fandom.com/wiki/Ecosynth_Analyzer"
     },
-    "location": "Cave (hotspot)",
+    "location": "Cave",
     "time": "Prefers Warm",
     "rarity": "Legendary",
+    "hotspot": true,
     "bait": {
       "name": "Synathid Bait",
       "thumb": "synathid"

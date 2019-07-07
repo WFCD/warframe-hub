@@ -20,6 +20,7 @@
           <b-dd-header><i class="fas fa-icicles faIcon"></i> Orb Vallis</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" label="Map" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" label="Fishing Data" />
+          <DropdownItem :isLocal="true" icon="fas fa-info" target="/vallis/fish/howto" label="How to Fish" />
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>
           <template slot="button-content"

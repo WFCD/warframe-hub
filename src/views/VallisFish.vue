@@ -4,28 +4,31 @@
       <router-link to="/vallis/map">
         <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
       </router-link>
-
+      <p style="color:firebrick">
+        <b>
+          All servofish in the Orb Vallis should be acquired with a shock spear to avoid damage to them
+        </b>
+      </p>
       <div class="row">
         <table class="table fish-info striped hover">
           <thead>
             <tr>
               <th title="The name of the fish">Fish Name</th>
-              <th title="Number of scrap you receive is dependent on fish model">
+              <th title="The model of servofish">
                 Model
               </th>
-              <th title="Number of scrap you will receive when dismantling">
+              <th title="Amount of scraps you will receive when dismantling, dependent on model">
                 Scrap
               </th>
+              <th title="Solaris United standing gain when donating fish">Standing</th>
               <th title="You will always receive 1 of these per fish when dismantling">
                 Unique
               </th>
-              <th title="Solaris United standing gain when donating fish">Standing</th>
               <th title="Location of where to find the fish">Location</th>
               <th title="Time of when you can find the fish">Time</th>
               <th title="How likely the fish will spawn">Rarity</th>
-              <th title="The appropriate spear needed for this fish">Spear</th>
-              <th title="The maximum point possible for this fish">
-                Max Point
+              <th title="The maximum points possible for this fish">
+                Max Points
               </th>
             </tr>
           </thead>
@@ -43,6 +46,7 @@
               <td v-if="fish.smallLabel">{{ fish.smallLabel }}</td>
               <td v-else>Basic</td>
               <td>{{ fish.small.resources.scrap }}</td>
+              <td>{{ fish.small.standing }}</td>
               <td rowspan="3">
                 <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link" class="m-3">
                   {{ fish.unique.name }}
@@ -68,7 +72,6 @@
                   </b-btn>
                 </b-tooltip>
               </td>
-              <td>{{ fish.small.standing }}</td>
               <td rowspan="3">{{ fish.location }}</td>
               <td rowspan="3">{{ fish.time }}</td>
               <td rowspan="3">
@@ -98,9 +101,6 @@
                   <span v-else> No image available</span>
                 </b-tooltip>
               </td>
-              <td rowspan="3">
-                <span v-for="spear in fish.spear" :key="spear">{{ spear }} <br /></span>
-              </td>
               <td rowspan="3">{{ fish.maximumPoint }}</td>
             </tr>
             <tr :class="'color' + ((index % 2) + 1)" v-if="fish.medium">
@@ -117,7 +117,7 @@
         </table>
       </div>
 
-      <router-link to="/poe/fish/howto#hotspots">
+      <router-link to="/vallis/fish/howto#hotspots">
         <b-btn variant="info" class="btn-block">What is a Hotspot?</b-btn>
       </router-link>
     </b-col>

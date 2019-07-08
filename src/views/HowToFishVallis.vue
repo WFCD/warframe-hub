@@ -104,7 +104,7 @@
         </h4>
         <p>
           Once you get enough standing and aquired the second fishing spear from The Business, you should consult the
-          <router-link to="/vallis/map">Orb Vallis Map</router-link>for recommended fishing locations for all types of
+          <router-link to="/vallis/map">Orb Vallis Map</router-link> for recommended fishing locations for all types of
           fish.
         </p>
         <br />
@@ -126,7 +126,7 @@
           insane amount of standing and resources that you will need for later on. To do so, you need the appropriate
           bait to maximize the chances for those fish to spawn. Rare fishes do spawn in Orb Vallis without their
           respective bait, but definitely not as often compared to when you do use their bait. Again, you can refer to
-          <router-link to="/vallis/fish">Super Fishing Reference Table</router-link>for its specific bait.
+          the <router-link to="/vallis/fish">Super Fishing Reference Table</router-link> for its specific bait.
         </p>
         <br />
         <p>

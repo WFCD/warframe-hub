@@ -14,19 +14,22 @@
           <thead>
             <tr>
               <th title="The name of the fish">Fish Name</th>
-              <th title="The model of servofish">
-                Model
+              <th title="Most common model of servofish">
+                Basic
               </th>
-              <th title="Amount of scraps you will receive when dismantling, dependent on model">
-                Scrap
+              <th title="Slightly more uncommon model of servofish">
+                Adorned
               </th>
-              <th title="Solaris United standing gain when donating fish">Standing</th>
-              <th title="You will always receive 1 of these per fish when dismantling">
+              <th title="Perfect condition of servofish model">
+                Magnificent
+              </th>
+              <th title="You will always receive 1 of these per fish regardless of model when dismantling">
                 Unique
               </th>
-              <th title="Location of where to find the fish">Location</th>
-              <th title="Time of when you can find the fish">Time</th>
+              <th title="Location of where to find the servofish">Location</th>
+              <th title="Cycle of when you can find the servofish">Time</th>
               <th title="How likely the fish will spawn">Rarity</th>
+              <th title="What bait will make this servofish more likely to spawn">Bait</th>
               <th title="The maximum points possible for this fish">
                 Max Points
               </th>
@@ -34,8 +37,8 @@
           </thead>
           <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
             <tr :class="'color' + ((index % 2) + 1)">
-              <td rowspan="3">
-                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link" class="m-3">
+              <td>
+                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link">
                   {{ fish.name }}
                 </b-btn>
                 <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
@@ -43,12 +46,11 @@
                   <span v-else> No image available</span>
                 </b-tooltip>
               </td>
-              <td v-if="fish.smallLabel">{{ fish.smallLabel }}</td>
-              <td v-else>Basic</td>
-              <td>{{ fish.small.resources.scrap }}</td>
-              <td>{{ fish.small.standing }}</td>
-              <td rowspan="3">
-                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link" class="m-3">
+              <td>{{ fish.small.resources.scrap }} Scrap + {{ fish.small.standing }} Standing</td>
+              <td>{{ fish.medium.resources.scrap }} Scrap + {{ fish.medium.standing }} Standing</td>
+              <td>{{ fish.large.resources.scrap }} Scrap + {{ fish.large.standing }} Standing</td>
+              <td>
+                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link">
                   {{ fish.unique.name }}
                 </b-btn>
                 <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
@@ -72,15 +74,14 @@
                   </b-btn>
                 </b-tooltip>
               </td>
-              <td rowspan="3">{{ fish.location }}</td>
-              <td rowspan="3">{{ fish.time }}</td>
-              <td rowspan="3">
+              <td>{{ fish.location }}</td>
+              <td>{{ fish.time }}</td>
+              <td>
                 <span>{{ fish.rarity }}</span>
-
                 <br v-if="fish.hotspot" />
                 <span v-if="fish.hotspot">Hotspot Required</span>
-
-                <br v-if="fish.bait" />
+              </td>
+              <td>
                 <b-btn
                   v-if="fish.bait"
                   :id="`${fish.name}_${fish.bait.name}_bait_tooltip`"
@@ -101,17 +102,7 @@
                   <span v-else> No image available</span>
                 </b-tooltip>
               </td>
-              <td rowspan="3">{{ fish.maximumPoint }}</td>
-            </tr>
-            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.medium">
-              <td>Adorned</td>
-              <td>{{ fish.medium.resources.scrap }}</td>
-              <td>{{ fish.medium.standing }}</td>
-            </tr>
-            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.large">
-              <td>Magnificent</td>
-              <td>{{ fish.large.resources.scrap }}</td>
-              <td>{{ fish.large.standing }}</td>
+              <td>{{ fish.maximumPoint }}</td>
             </tr>
           </tbody>
         </table>

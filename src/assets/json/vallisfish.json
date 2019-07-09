@@ -1,81 +1,5 @@
 [
   {
-    "name": "Eye-Eye",
-    "thumb": "eyeeye",
-    "unique": {
-      "name": "Rotoblade",
-      "thumb": "rotoblade",
-      "wiki": "https://warframe.fandom.com/wiki/Rotoblade"
-    },
-    "location": "Pond",
-    "time": "Warm",
-    "rarity": "Uncommon",
-    "bait": {
-      "name": "Narrow-Spectrum Bait",
-      "thumb": "narrowspectrum"
-    },
-    "spear": [
-      "Shock Spear"
-    ],
-    "maximumPoint": "10.0",
-    "small": {
-      "resources": {
-        "scrap": 3
-      },
-      "standing": 45
-    },
-    "medium": {
-      "resources": {
-        "scrap": 4
-      },
-      "standing": 60
-    },
-    "large": {
-      "resources": {
-        "scrap": 5
-      },
-      "standing": 100
-    }
-  },
-  {
-    "name": "Scrubber",
-    "thumb": "scrubber",
-    "unique": {
-      "name": "Exa Brain",
-      "thumb": "exabrain",
-      "wiki": "https://warframe.fandom.com/wiki/Exa_Brain"
-    },
-    "location": "Cave",
-    "time": "Any",
-    "rarity": "Common",
-    "bait": {
-      "name": "Broad-Spectrum Bait",
-      "thumb": "broadspectrum"
-    },
-    "spear": [
-      "Shock Spear"
-    ],
-    "maximumPoint": "7.0",
-    "small": {
-      "resources": {
-        "scrap": 1
-      },
-      "standing": 35
-    },
-    "medium": {
-      "resources": {
-        "scrap": 2
-      },
-      "standing": 45
-    },
-    "large": {
-      "resources": {
-        "scrap": 3
-      },
-      "standing": 70
-    }
-  },
-  {
     "name": "Echowinder",
     "thumb": "echowinder",
     "unique": {
@@ -114,39 +38,77 @@
     }
   },
   {
-    "name": "Mirewinder",
-    "thumb": "mirewinder",
+    "name": "Sapcaddy",
+    "thumb": "sapcaddy",
     "unique": {
-      "name": "Parallel Biode",
-      "thumb": "parallelbiode",
-      "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
+      "name": "Venedo Case",
+      "thumb": "venedocase",
+      "wiki": "https://warframe.fandom.com/wiki/Venedo_Case"
     },
-    "location": "Cave",
-    "time": "Any",
-    "rarity": "Uncommon",
+    "location": "Lake",
+    "time": "Cold",
+    "rarity": "Common",
     "bait": {
-      "name": "Mirewinder Bait",
-      "thumb": "mirewinder"
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
     },
     "spear": [
       "Shock Spear"
     ],
-    "maximumPoint": "15.0",
+    "maximumPoint": "12.0",
     "small": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 35
+    },
+    "medium": {
       "resources": {
         "scrap": 4
       },
       "standing": 45
     },
-    "medium": {
+    "large": {
       "resources": {
         "scrap": 5
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Kriller",
+    "thumb": "kriller",
+    "unique": {
+      "name": "Thermal Laser",
+      "thumb": "thermallaser",
+      "wiki": "https://warframe.fandom.com/wiki/Thermal_Laser"
+    },
+    "location": "Lake",
+    "time": "Warm",
+    "rarity": "Uncommon",
+    "bait": {
+      "name": "Kriller Bait",
+      "thumb": "kriller"
+    },
+    "spear": [
+      "Shock Spear"
+    ],
+    "maximumPoint": "12.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 2
       },
       "standing": 60
     },
     "large": {
       "resources": {
-        "scrap": 6
+        "scrap": 3
       },
       "standing": 100
     }
@@ -159,7 +121,8 @@
       "thumb": "lathecoagulant",
       "wiki": "https://warframe.fandom.com/wiki/Lathe_Coagulant"
     },
-    "location": "Lake (hotspot)",
+    "location": "Lake",
+    "hotspot": "true",
     "time": "Warm",
     "rarity": "Rare",
     "bait": {
@@ -266,77 +229,39 @@
     }
   },
   {
-    "name": "Sapcaddy",
-    "thumb": "sapcaddy",
+    "name": "Eye-Eye",
+    "thumb": "eyeeye",
     "unique": {
-      "name": "Venedo Case",
-      "thumb": "venedocase",
-      "wiki": "https://warframe.fandom.com/wiki/Venedo_Case"
+      "name": "Rotoblade",
+      "thumb": "rotoblade",
+      "wiki": "https://warframe.fandom.com/wiki/Rotoblade"
     },
-    "location": "Lake",
-    "time": "Cold",
-    "rarity": "Common",
+    "location": "Pond",
+    "time": "Warm",
+    "rarity": "Uncommon",
     "bait": {
-      "name": "Broad-Spectrum Bait",
-      "thumb": "broadspectrum"
+      "name": "Narrow-Spectrum Bait",
+      "thumb": "narrowspectrum"
     },
     "spear": [
       "Shock Spear"
     ],
-    "maximumPoint": "12.0",
+    "maximumPoint": "10.0",
     "small": {
       "resources": {
         "scrap": 3
       },
-      "standing": 35
+      "standing": 45
     },
     "medium": {
       "resources": {
         "scrap": 4
       },
-      "standing": 45
-    },
-    "large": {
-      "resources": {
-        "scrap": 5
-      },
-      "standing": 70
-    }
-  },
-  {
-    "name": "Kriller",
-    "thumb": "kriller",
-    "unique": {
-      "name": "Thermal Laser",
-      "thumb": "thermallaser",
-      "wiki": "https://warframe.fandom.com/wiki/Thermal_Laser"
-    },
-    "location": "Lake",
-    "time": "Warm",
-    "rarity": "Uncommon",
-    "bait": {
-      "name": "Kriller Bait",
-      "thumb": "kriller"
-    },
-    "spear": [
-      "Shock Spear"
-    ],
-    "maximumPoint": "12.0",
-    "small": {
-      "resources": {
-        "scrap": 1
-      },
-      "standing": 45
-    },
-    "medium": {
-      "resources": {
-        "scrap": 2
-      },
       "standing": 60
     },
     "large": {
       "resources": {
-        "scrap": 3
+        "scrap": 5
       },
       "standing": 100
     }
@@ -420,6 +345,82 @@
     }
   },
   {
+    "name": "Scrubber",
+    "thumb": "scrubber",
+    "unique": {
+      "name": "Exa Brain",
+      "thumb": "exabrain",
+      "wiki": "https://warframe.fandom.com/wiki/Exa_Brain"
+    },
+    "location": "Cave",
+    "time": "Any",
+    "rarity": "Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "spear": [
+      "Shock Spear"
+    ],
+    "maximumPoint": "7.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Mirewinder",
+    "thumb": "mirewinder",
+    "unique": {
+      "name": "Parallel Biode",
+      "thumb": "parallelbiode",
+      "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
+    },
+    "location": "Cave",
+    "time": "Any",
+    "rarity": "Uncommon",
+    "bait": {
+      "name": "Mirewinder Bait",
+      "thumb": "mirewinder"
+    },
+    "spear": [
+      "Shock Spear"
+    ],
+    "maximumPoint": "15.0",
+    "small": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 60
+    },
+    "large": {
+      "resources": {
+        "scrap": 6
+      },
+      "standing": 100
+    }
+  },
+  {
     "name": "Charamote",
     "thumb": "charamote",
     "unique": {
@@ -428,7 +429,7 @@
       "wiki": "https://warframe.fandom.com/wiki/Sagan_Module"
     },
     "location": "Cave",
-    "time": "Prefers Warm",
+    "time": "Warm Preferred",
     "rarity": "Rare",
     "hotspot": true,
     "bait": {
@@ -467,7 +468,7 @@
       "wiki": "https://warframe.fandom.com/wiki/Ecosynth_Analyzer"
     },
     "location": "Cave",
-    "time": "Prefers Warm",
+    "time": "Warm Preferred",
     "rarity": "Legendary",
     "hotspot": true,
     "bait": {

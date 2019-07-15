@@ -2,6 +2,7 @@
   {
     "name": "Echowinder",
     "thumb": "echowinder",
+    "wiki": "https://warframe.fandom.com/wiki/Echowinder",
     "unique": {
       "name": "Anoscopic Sensor",
       "thumb": "anoscopicsensor",
@@ -14,9 +15,6 @@
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "9.0",
     "small": {
       "resources": {
@@ -40,6 +38,7 @@
   {
     "name": "Sapcaddy",
     "thumb": "sapcaddy",
+    "wiki": "https://warframe.fandom.com/wiki/Sapcaddy",
     "unique": {
       "name": "Venedo Case",
       "thumb": "venedocase",
@@ -52,9 +51,6 @@
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "12.0",
     "small": {
       "resources": {
@@ -78,6 +74,7 @@
   {
     "name": "Kriller",
     "thumb": "kriller",
+    "wiki": "https://warframe.fandom.com/wiki/Kriller",
     "unique": {
       "name": "Thermal Laser",
       "thumb": "thermallaser",
@@ -90,9 +87,6 @@
       "name": "Kriller Bait",
       "thumb": "kriller"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "12.0",
     "small": {
       "resources": {
@@ -116,6 +110,7 @@
   {
     "name": "Longwinder",
     "thumb": "longwinder",
+    "wiki": "https://warframe.fandom.com/wiki/Longwinder",
     "unique": {
       "name": "Lathe Coagulant",
       "thumb": "lathecoagulant",
@@ -129,9 +124,6 @@
       "name": "Longwinder Bait",
       "thumb": "longwinder"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "15.0",
     "small": {
       "resources": {
@@ -155,6 +147,7 @@
   {
     "name": "Brickie",
     "thumb": "brickie",
+    "wiki": "https://warframe.fandom.com/wiki/Brickie",
     "unique": {
       "name": "Muon Battery",
       "thumb": "muonbattery",
@@ -167,9 +160,6 @@
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "10.0",
     "small": {
       "resources": {
@@ -193,6 +183,7 @@
   {
     "name": "Tink",
     "thumb": "tink",
+    "wiki": "https://warframe.fandom.com/wiki/Tink",
     "unique": {
       "name": "Dissipator Coil",
       "thumb": "dissipatorcoil",
@@ -205,9 +196,6 @@
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "9.0",
     "small": {
       "resources": {
@@ -231,6 +219,7 @@
   {
     "name": "Eye-Eye",
     "thumb": "eyeeye",
+    "wiki": "https://warframe.fandom.com/wiki/Eye-Eye",
     "unique": {
       "name": "Rotoblade",
       "thumb": "rotoblade",
@@ -243,9 +232,6 @@
       "name": "Narrow-Spectrum Bait",
       "thumb": "narrowspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "10.0",
     "small": {
       "resources": {
@@ -269,6 +255,7 @@
   {
     "name": "Recaster",
     "thumb": "recaster",
+    "wiki": "https://warframe.fandom.com/wiki/Recaster",
     "unique": {
       "name": "Neural Relay",
       "thumb": "neuralrelay",
@@ -282,9 +269,6 @@
       "name": "Narrow-spectrum Bait",
       "thumb": "narrowspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "12.0",
     "small": {
       "resources": {
@@ -308,6 +292,7 @@
   {
     "name": "Tromyzon",
     "thumb": "tromyzon",
+    "wiki": "https://warframe.fandom.com/wiki/Tromyzon",
     "unique": {
       "name": "Entroplasma",
       "thumb": "entroplasma",
@@ -321,9 +306,6 @@
       "name": "Tromyzon Bait",
       "thumb": "tromyzon"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "8.0",
     "small": {
       "resources": {
@@ -347,6 +329,7 @@
   {
     "name": "Scrubber",
     "thumb": "scrubber",
+    "wiki": "https://warframe.fandom.com/wiki/Scrubber",
     "unique": {
       "name": "Exa Brain",
       "thumb": "exabrain",
@@ -359,9 +342,6 @@
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "7.0",
     "small": {
       "resources": {
@@ -385,6 +365,7 @@
   {
     "name": "Mirewinder",
     "thumb": "mirewinder",
+    "wiki": "https://warframe.fandom.com/wiki/Mirewinder",
     "unique": {
       "name": "Parallel Biode",
       "thumb": "parallelbiode",
@@ -397,9 +378,6 @@
       "name": "Mirewinder Bait",
       "thumb": "mirewinder"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "15.0",
     "small": {
       "resources": {
@@ -423,6 +401,7 @@
   {
     "name": "Charamote",
     "thumb": "charamote",
+    "wiki": "https://warframe.fandom.com/wiki/Charamote",
     "unique": {
       "name": "Sagan Module",
       "thumb": "saganmodule",
@@ -436,9 +415,6 @@
       "name": "Charamote Bait",
       "thumb": "charamote"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "8.0",
     "small": {
       "resources": {
@@ -462,6 +438,7 @@
   {
     "name": "Synathid",
     "thumb": "synathid",
+    "wiki": "https://warframe.fandom.com/wiki/Synathid",
     "unique": {
       "name": "Ecosynth Analyzer",
       "thumb": "ecosynthanalyzer",
@@ -475,9 +452,6 @@
       "name": "Synathid Bait",
       "thumb": "synathid"
     },
-    "spear": [
-      "Shock Spear"
-    ],
     "maximumPoint": "9.0",
     "small": {
       "resources": {
@@ -499,4 +473,3 @@
     }
   }
 ]
-  

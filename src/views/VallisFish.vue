@@ -2,114 +2,85 @@
   <b-container fluid>
     <b-col md="12">
       <router-link to="/vallis/map">
-        <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
+        <b-button variant="info" class="btn-block mb-3">Orb Vallis Map</b-button>
       </router-link>
-      <p style="color:firebrick">
-        <b>
-          All servofish in the Orb Vallis should be acquired with a shock spear to avoid damage to them
-        </b>
-      </p>
+
       <div class="row">
-        <table class="table fish-info striped hover">
-          <thead>
-            <tr>
-              <th title="The name of the fish">Fish Name</th>
-              <th title="Most common model of servofish">
-                Basic
-              </th>
-              <th title="Slightly more uncommon model of servofish">
-                Adorned
-              </th>
-              <th title="Perfect condition of servofish model">
-                Magnificent
-              </th>
-              <th title="You will always receive 1 of these per fish regardless of model when dismantling">
-                Unique
-              </th>
-              <th title="Location of where to find the servofish">Location</th>
-              <th title="Cycle of when you can find the servofish">Time</th>
-              <th title="How likely the fish will spawn">Rarity</th>
-              <th title="What bait will make this servofish more likely to spawn">Bait</th>
-              <th title="The maximum points possible for this fish">
-                Max Points
-              </th>
-            </tr>
-          </thead>
-          <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
-            <tr :class="'color' + ((index % 2) + 1)">
-              <td>
-                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link">
-                  {{ fish.name }}
-                </b-btn>
-                <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
-                  <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" v-if="fish.thumb" />
-                  <span v-else> No image available</span>
-                </b-tooltip>
-              </td>
-              <td>{{ fish.small.resources.scrap }} Scrap + {{ fish.small.standing }} Standing</td>
-              <td>{{ fish.medium.resources.scrap }} Scrap + {{ fish.medium.standing }} Standing</td>
-              <td>{{ fish.large.resources.scrap }} Scrap + {{ fish.large.standing }} Standing</td>
-              <td>
-                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link">
-                  {{ fish.unique.name }}
-                </b-btn>
-                <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
+        <b-table striped hover :items="fish" :fields="fields" class="fish-info b-table">
+          <template slot="more_info" slot-scope="row">
+            <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+              {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+            </b-button>
+          </template>
+          <template slot="row-details" slot-scope="data">
+            <b-card>
+              <b-row>
+                <b-col>
+                  <b>{{ data.item.name }} Image:</b>
+                  <br />
                   <FishImg
-                    type="parts"
-                    :item="fish.unique.thumb"
-                    :name="fish.unique.name"
+                    type="fish"
+                    :item="data.item.thumb"
+                    :name="data.item.name"
                     width="200"
-                    v-if="fish.unique.thumb"
+                    v-if="data.item.thumb"
                   />
-                  <span v-else> No image available</span>
+                  <span v-else>No image available</span>
+                  <br />
                   <b-btn
-                    :href="fish.unique.wiki"
+                    :href="data.item.wiki"
                     target="_blank"
                     size="sm"
                     rel="noopener"
                     variant="link"
-                    v-if="fish.unique.thumb"
+                    v-if="data.item.thumb"
                   >
-                    Wikia Article
+                    {{ data.item.name }} - Wikia
                   </b-btn>
-                </b-tooltip>
-              </td>
-              <td>{{ fish.location }}</td>
-              <td>{{ fish.time }}</td>
-              <td>
-                <span>{{ fish.rarity }}</span>
-                <br v-if="fish.hotspot" />
-                <span v-if="fish.hotspot">Hotspot Required</span>
-              </td>
-              <td>
-                <b-btn
-                  v-if="fish.bait"
-                  :id="`${fish.name}_${fish.bait.name}_bait_tooltip`"
-                  size="md"
-                  variant="link"
-                  class="mb-1"
-                >
-                  {{ fish.bait.name }}
-                </b-btn>
-                <b-tooltip v-if="fish.bait" :target="`${fish.name}_${fish.bait.name}_bait_tooltip`" placement="top">
+                </b-col>
+                <b-col>
+                  <b>{{ data.item.unique.name }} Image:</b>
+                  <br />
+                  <FishImg
+                    type="parts"
+                    :item="data.item.unique.thumb"
+                    :name="data.item.unique.name"
+                    width="200"
+                    v-if="data.item.unique.thumb"
+                  />
+                  <span v-else>No image available</span>
+                  <br />
+                  <b-btn
+                    :href="data.item.unique.wiki"
+                    target="_blank"
+                    size="sm"
+                    rel="noopener"
+                    variant="link"
+                    v-if="data.item.unique.thumb"
+                  >
+                    {{ data.item.unique.name }} - Wikia
+                  </b-btn>
+                </b-col>
+                <b-col>
+                  <b>{{ data.item.bait.name }} Image:</b>
+                  <br />
                   <FishImg
                     type="bait"
-                    :item="fish.bait.thumb"
-                    :name="fish.bait.name"
+                    :item="data.item.bait.thumb"
+                    :name="data.item.bait.name"
                     width="200"
-                    v-if="fish.bait.thumb"
+                    v-if="data.item.bait.thumb"
                   />
-                  <span v-else> No image available</span>
-                </b-tooltip>
-              </td>
-              <td>{{ fish.maximumPoint }}</td>
-            </tr>
-          </tbody>
-        </table>
+                  <span v-else>No image available</span>
+                </b-col>
+              </b-row>
+            </b-card>
+          </template>
+        </b-table>
       </div>
 
       <router-link to="/vallis/fish/howto#hotspots">
-        <b-btn variant="info" class="btn-block">What is a Hotspot?</b-btn>
+        <b-button variant="info" class="btn-block mb-3">What is a Hotspot?</b-button>
       </router-link>
     </b-col>
   </b-container>
@@ -119,15 +90,91 @@
 import fish from '@/assets/json/vallisfish.json';
 import FishImg from '@/components/FishImg.vue';
 
+const fields = [
+  {
+    key: 'name',
+    label: 'Fish Name',
+    headerTitle: 'The name of the fish',
+    sortable: true,
+  },
+  {
+    key: 'unique.name',
+    label: 'Unique',
+    headerTitle: 'You will always receive 1 of these per fish regardless of model when dismantling',
+    sortable: true,
+  },
+  {
+    key: 'small',
+    label: 'Basic',
+    headerTitle: 'Most common model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
+  },
+  {
+    key: 'medium',
+    label: 'Adorned',
+    headerTitle: 'Slightly more uncommon model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
+  },
+  {
+    key: 'large',
+    label: 'Magnificent',
+    headerTitle: 'Rare and perfect model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
+  },
+  {
+    key: 'location',
+    label: 'Location',
+    headerTitle: 'Location of where to find the servofish',
+    sortable: true,
+  },
+  {
+    key: 'time',
+    label: 'Temperature',
+    headerTitle: 'Temperature of when you can find the servofish',
+    sortable: true,
+  },
+  {
+    key: 'rarity',
+    label: 'Rarity',
+    headerTitle: 'How likely the fish will spawn',
+    sortable: true,
+  },
+  {
+    key: 'bait.name',
+    label: 'Bait',
+    headerTitle: 'What bait will make this servofish more likely to spawn',
+    sortable: true,
+  },
+  {
+    key: 'maximumPoint',
+    label: 'Max Points',
+    headerTitle: 'The maximum points possible for this fish',
+    sortable: true,
+  },
+  'more_info',
+];
+
 export default {
-  name: 'fish',
+  name: 'vallisfish',
   components: {
     FishImg,
   },
   data() {
     return {
-      fishes: fish,
+      fish: fish,
+      fields: fields,
     };
+  },
+  methods: {
+    track() {
+      this.$ga.page('/vallis/fish');
+    },
   },
 };
 </script>

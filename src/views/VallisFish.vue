@@ -26,7 +26,16 @@
           <b-card>
             <b-row>
               <b-col>
-                <b>{{ data.item.name }} Image:</b>
+                <b-btn
+                  :href="data.item.wiki"
+                  target="_blank"
+                  size="sm"
+                  rel="noopener"
+                  variant="link"
+                  v-if="data.item.thumb"
+                >
+                  {{ data.item.name }}
+                </b-btn>
                 <br />
                 <FishImg
                   type="fish"
@@ -36,20 +45,18 @@
                   v-if="data.item.thumb"
                 />
                 <span v-else>No image available</span>
-                <br />
+              </b-col>
+              <b-col>
                 <b-btn
-                  :href="data.item.wiki"
+                  :href="data.item.unique.wiki"
                   target="_blank"
                   size="sm"
                   rel="noopener"
                   variant="link"
-                  v-if="data.item.thumb"
+                  v-if="data.item.unique.thumb"
                 >
-                  {{ data.item.name }} - Wikia
+                  {{ data.item.unique.name }}
                 </b-btn>
-              </b-col>
-              <b-col>
-                <b>{{ data.item.unique.name }} Image:</b>
                 <br />
                 <FishImg
                   type="parts"
@@ -59,20 +66,9 @@
                   v-if="data.item.unique.thumb"
                 />
                 <span v-else>No image available</span>
-                <br />
-                <b-btn
-                  :href="data.item.unique.wiki"
-                  target="_blank"
-                  size="sm"
-                  rel="noopener"
-                  variant="link"
-                  v-if="data.item.unique.thumb"
-                >
-                  {{ data.item.unique.name }} - Wikia
-                </b-btn>
               </b-col>
               <b-col>
-                <b>{{ data.item.bait.name }} Image:</b>
+                <b>{{ data.item.bait.name }}</b>
                 <br />
                 <FishImg
                   type="bait"
@@ -158,6 +154,15 @@ const fields = {
     label: 'Bait',
     headerTitle: 'What bait will make this servofish more likely to spawn',
     sortable: true,
+  },
+  hotspot: {
+    key: 'hotspot',
+    label: 'Hotspot Required',
+    headerTitle: 'Whether a hotspot is required for this fish to spawn',
+    sortable: true,
+    formatter: (value) => {
+      return value ? 'Yes' : 'No';
+    },
   },
   max_point: {
     key: 'maximumPoint',

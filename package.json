@@ -44,7 +44,6 @@
     "vue-notification": "^1.3.16",
     "vue-packery-plugin": "^1.4.8",
     "vue-raven": "^1.0.3",
-    "vue-responsive-grid-layout": "^1.1.8",
     "vue-router": "^3.0.3",
     "vue-template-compiler": "^2.6.10",
     "vue2-leaflet": "^1.2.3",

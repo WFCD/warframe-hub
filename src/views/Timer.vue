@@ -8,7 +8,7 @@
         <AlertPanel v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
         <InvasionsPanel v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
         <NewsPanel v-if="componentState.news.display" :news="worldstate.news" />
-        <NightwavePanel v-if="componentState.nightwave.display" :news="worldstate.nightwave" />
+        <NightwavePanel v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <TimePanel v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <TimePanel v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <TimePanel v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />

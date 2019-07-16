@@ -15,8 +15,7 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
-    "express": "^4.17.1",
-    "vue-awesome": "^3.5.4"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "5.8.2",

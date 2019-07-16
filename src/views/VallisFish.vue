@@ -18,8 +18,8 @@
       <b-table striped hover :items="fish" :fields="fields" class="fish-info b-table">
         <template slot="more_info" slot-scope="row">
           <b-button size="sm" @click="row.toggleDetails" class="mr-2">
-            <v-icon v-if="row.detailsShowing" name="times-circle" />
-            <v-icon v-else name="info-circle" />
+            <i v-if="row.detailsShowing" class="fas fa-times-circle"></i>
+            <i v-else class="fas fa-info-circle"></i>
           </b-button>
         </template>
         <template slot="row-details" slot-scope="data">
@@ -90,9 +90,6 @@
 <script>
 import fish from '@/assets/json/vallisfish.json';
 import FishImg from '@/components/FishImg.vue';
-import 'vue-awesome/icons/info-circle';
-import 'vue-awesome/icons/times-circle';
-import Icon from 'vue-awesome/components/Icon';
 
 const fields = {
   name: {
@@ -180,7 +177,6 @@ export default {
   name: 'vallisfish',
   components: {
     FishImg,
-    'v-icon': Icon,
   },
   data() {
     return {

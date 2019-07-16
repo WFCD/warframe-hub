@@ -57,9 +57,10 @@
           let's just hope they fix the bounty system.
         </p>
         <p>
-          From now on you should refer to the <router-link to="/fish">Super Fishing Reference Table</router-link>for
-          whatever other information more specific on what/where/how to catch each fish. It contains EVERYTHING you need
-          to know about them.
+          From now on you should refer to the
+          <router-link to="/poe/fish">Super Fishing Reference Table </router-link>
+          for whatever other information more specific on what/where/how to catch each fish. It contains EVERYTHING you
+          need to know about them.
         </p>
         <br />
         <br />
@@ -70,7 +71,7 @@
           To catch some fish, switch to your spear by clicking it on your gear wheel, keep in mind that when you do so,
           your gear wheel will switch to the fishing wheel that contains your bait and dye (if you have them, probably
           not now), so the only way to unequip the spear is pressing F (<del>to pay respects</del>to switch to your
-          weapons).
+          weapons) or E to quick melee.
         </p>
         <p>
           Once you grab your spear, fish will start to spawn at random in close proximity to you, so keep your eyes
@@ -97,9 +98,8 @@
           let it swim away.
         </p>
         <p>
-          In the
-          <router-link to="/fish">Super Fishing Reference Table</router-link>, the "Spear" column represents the spear
-          that can capture the fish in 1 hit.
+          In the <router-link to="/poe/fish">Super Fishing Reference Table</router-link>, the "Spear" column represents
+          the spear that can capture the fish in 1 hit.
         </p>
         <p>Fishing is all about patience, so keep at it!</p>
         <br />
@@ -141,10 +141,10 @@
         <h6 class="text-center">[Animated GIF by How4Much]</h6>
         <br />
         <p>
-          This is the time to learn to use your Dye and Bait, at night, you can catch Murkray, which gives an insane
+          This is the time to learn to use your Dye and Bait. At night, you can catch Murkray, which gives an insane
           amount of standing and resources that you will need for later on. To do so, you need the appropriate bait for
           fishes that "Require Bait" in the spreadsheet, take a look at it again to find the fish you're looking for and
-          it's specific bait (In this case, Murkray). For fishes that are not bait required, the proper bait specified
+          its specific bait (In this case, Murkray). For fishes that are not bait required, the proper bait specified
           will only attract them, making them easier to fish. To craft the Murkray Bait you'll need to catch Tralok,
           which are common in the sea at daytime.
         </p>
@@ -165,9 +165,6 @@
             you really need standing.
           </b>
         </p>
-        <br />
-        <p>(Expect more info to be added to this guide in a later date.)</p>
-        <br />
         <br />
         <p>
           As Honorable mention: The Sentient Lake, the only "lake" in PoE (that we're aware of!).
@@ -204,7 +201,7 @@ export default {
   },
   methods: {
     track() {
-      this.$ga.page('/vallis/fish');
+      this.$ga.page('/poe/fish/howto');
     },
   },
 };

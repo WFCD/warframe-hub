@@ -1,166 +1,187 @@
 <template>
   <b-container fluid>
-    <b-col md="12">
-      <router-link to="/vallis/map">
-        <b-button variant="info" class="btn-block mb-3">Orb Vallis Map</b-button>
-      </router-link>
+    <b-row>
+      <b-col md="12">
+        <router-link to="/vallis/map">
+          <b-button variant="info" class="mb-3 float-right">Orb Vallis Map</b-button>
+        </router-link>
+        <router-link to="/vallis/fish/howto#hotspots">
+          <b-button variant="info" class="mb-3 mr-3 float-right">What is a Hotspot?</b-button>
+        </router-link>
+      </b-col>
+    </b-row>
 
-      <div class="row">
-        <b-table striped hover :items="items" class="fish-info b-table"></b-table>
-      </div>
-    </b-col>
+    <b-row>
+      <b class="mx-auto" style="color:firebrick">
+        All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
+      </b>
+      <b-table striped responsive hover :items="fish" :fields="fields" class="fish-info b-table">
+        <template slot="more_info" slot-scope="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            <i v-if="row.detailsShowing" class="fas fa-times-circle"></i>
+            <i v-else class="fas fa-info-circle"></i>
+          </b-button>
+        </template>
+        <template slot="row-details" slot-scope="data">
+          <b-card>
+            <b-row>
+              <b-col>
+                <b-btn
+                  :href="data.item.wiki"
+                  target="_blank"
+                  size="sm"
+                  rel="noopener"
+                  variant="link"
+                  v-if="data.item.thumb"
+                >
+                  {{ data.item.name }}
+                </b-btn>
+                <br />
+                <FishImg
+                  type="fish"
+                  :item="data.item.thumb"
+                  :name="data.item.name"
+                  width="200"
+                  v-if="data.item.thumb"
+                />
+                <span v-else>No image available</span>
+              </b-col>
+              <b-col>
+                <b-btn
+                  :href="data.item.unique.wiki"
+                  target="_blank"
+                  size="sm"
+                  rel="noopener"
+                  variant="link"
+                  v-if="data.item.unique.thumb"
+                >
+                  {{ data.item.unique.name }}
+                </b-btn>
+                <br />
+                <FishImg
+                  type="parts"
+                  :item="data.item.unique.thumb"
+                  :name="data.item.unique.name"
+                  width="200"
+                  v-if="data.item.unique.thumb"
+                />
+                <span v-else>No image available</span>
+              </b-col>
+              <b-col>
+                <b>{{ data.item.bait.name }}</b>
+                <br />
+                <FishImg
+                  type="bait"
+                  :item="data.item.bait.thumb"
+                  :name="data.item.bait.name"
+                  width="200"
+                  v-if="data.item.bait.thumb"
+                />
+                <span v-else>No image available</span>
+              </b-col>
+            </b-row>
+          </b-card>
+        </template>
+      </b-table>
+    </b-row>
   </b-container>
 </template>
 
 <script>
-const items = [
-  {
-    species: 'Sapcaddy',
-    location: 'Lake',
-    time: 'Cold',
-    hotspot: 'No',
-    resource: 'Venedo Case',
-    basic: '3 Scrap/35 Standing',
-    adorned: '4 Scrap/45 Standing',
-    magnificent: '5 Scrap/70 Standing',
+import fish from '@/assets/json/vallisfish.json';
+import FishImg from '@/components/FishImg.vue';
+
+const fields = {
+  name: {
+    key: 'name',
+    label: 'Fish Name',
+    headerTitle: 'The name of the fish',
+    sortable: true,
   },
-  {
-    species: 'Echowinder',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Anoscopic Sensor',
-    basic: '2 Scrap/35 Standing',
-    adorned: '3 Scrap/45 Standing',
-    magnificent: '4 Scrap/70 Standing',
+  unique_name: {
+    key: 'unique.name',
+    label: 'Unique',
+    headerTitle: 'You will always receive 1 of these per fish regardless of model when dismantling',
+    sortable: true,
   },
-  {
-    species: 'Kriller',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'Yes',
-    resource: 'Thermal Laser',
-    basic: '1 Scrap/45 Standing',
-    adorned: '2 Scrap/60 Standing',
-    magnificent: '3 Scrap/100 Standing',
+  small: {
+    key: 'small',
+    label: 'Basic',
+    headerTitle: 'Most common model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
   },
-  {
-    species: 'Longwinder',
-    location: 'Lake',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Lathe Coagulant',
-    basic: '2 Scrap/200 Standing',
-    adorned: '3 Scrap/300 Standing',
-    magnificent: '4 Scrap/500 Standing',
+  medium: {
+    key: 'medium',
+    label: 'Adorned',
+    headerTitle: 'Slightly more uncommon model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
   },
-  {
-    species: 'Brickie',
-    location: 'Pond',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Muon Battery',
-    basic: '2 Scrap/35 Standing',
-    adorned: '3 Scrap/45 Standing',
-    magnificent: '4 Scrap/70 Standing',
+  large: {
+    key: 'large',
+    label: 'Magnificent',
+    headerTitle: 'Rare and perfect model of servofish',
+    formatter: (value) => {
+      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
+    },
   },
-  {
-    species: 'Tink',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'No',
-    resource: 'Dissipator Coil',
-    basic: '1 Scrap/35 Standing',
-    adorned: '2 Scrap/45 Standing',
-    magnificent: '3 Scrap/70 Standing',
+  location: {
+    key: 'location',
+    label: 'Location',
+    headerTitle: 'Location of where to find the servofish',
+    sortable: true,
   },
-  {
-    species: 'Eye-Eye',
-    location: 'Pond',
-    time: 'Warm',
-    hotspot: 'No',
-    resource: 'Rotoblade',
-    basic: '3 Scrap/45 Standing',
-    adorned: '4 Scrap/60 Standing',
-    magnificent: '5 Scrap/100 Standing',
+  time: {
+    key: 'time',
+    label: 'Temperature',
+    headerTitle: 'Temperature of when you can find the servofish',
+    sortable: true,
   },
-  {
-    species: 'Recaster',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'Yes',
-    resource: 'Neural Relay',
-    basic: '3 Scrap/45 Standing',
-    adorned: '5 Scrap/60 Standing',
-    magnificent: '7 Scrap/100 Standing',
+  rarity: {
+    key: 'rarity',
+    label: 'Rarity',
+    headerTitle: 'How likely the fish will spawn',
+    sortable: true,
   },
-  {
-    species: 'Tromyzon',
-    location: 'Pond',
-    time: 'Cold',
-    hotspot: 'Yes',
-    resource: 'Entroplasma',
-    basic: '3 Scrap/200 Standing',
-    adorned: '4 Scrap/300 Standing',
-    magnificent: '5 Scrap/500 Standing',
+  bait: {
+    key: 'bait.name',
+    label: 'Bait',
+    headerTitle: 'What bait will make this servofish more likely to spawn',
+    sortable: true,
   },
-  {
-    species: 'Scrubber',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'No',
-    resource: 'Exa Brain',
-    basic: '1 Scrap/35 Standing',
-    adorned: '2 Scrap/45 Standing',
-    magnificent: '3 Scrap/70 Standing',
+  hotspot: {
+    key: 'hotspot',
+    label: 'Hotspot Required',
+    headerTitle: 'Whether a hotspot is required for this fish to spawn',
+    sortable: true,
+    formatter: (value) => {
+      return value ? 'Yes' : 'No';
+    },
   },
-  {
-    species: 'Mirewinder',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'No',
-    resource: 'Parallel Biode',
-    basic: '4 Scrap/45 Standing',
-    adorned: '5 Scrap/60 Standing',
-    magnificent: '6 Scrap/100 Standing',
+  max_point: {
+    key: 'maximumPoint',
+    label: 'Max Points',
+    headerTitle: 'The maximum points possible for this fish',
+    sortable: true,
   },
-  {
-    species: 'Charamote',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'Yes',
-    resource: 'Sagan Module',
-    basic: '1 Scrap/200 Standing',
-    adorned: '3 Scrap/300 Standing',
-    magnificent: '5 Scrap/500 Standing',
+  more_info: {
+    label: 'Info',
+    headerTitle: 'Display pictures for fish, unique, and bait type',
   },
-  {
-    species: 'Synathid',
-    location: 'Cave',
-    time: 'N/A',
-    hotspot: 'Yes',
-    resource: 'Ecosynth Analyzer',
-    basic: '4 Scrap/600 Standing',
-    adorned: '6 Scrap/800 Standing',
-    magnificent: '8 Scrap/1000 Standing',
-  },
-  {
-    species: 'Crewman Boot',
-    location: 'Any',
-    time: 'Any',
-    hotspot: 'No',
-    resource: '400 Credits',
-    basic: 'u',
-    adorned: 'wot',
-    magnificent: 'm8?',
-  },
-];
+};
 
 export default {
   name: 'vallisfish',
+  components: {
+    FishImg,
+  },
   data() {
     return {
-      items: items,
+      fish: fish,
+      fields: fields,
     };
   },
   methods: {

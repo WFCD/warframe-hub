@@ -9,6 +9,7 @@ import HowToFish from './views/HowToFish.vue';
 
 import VallisFish from './views/VallisFish.vue';
 import VallisMap from './views/VallisMap.vue';
+import HowToFishVallis from './views/HowToFishVallis.vue';
 
 import RivenData from './views/RivenData.vue';
 
@@ -121,6 +122,24 @@ const routes = [
         {
           name: 'og:description',
           content: 'Fish Information and resources for the Orb Vallis',
+        },
+      ],
+    },
+  },
+  {
+    path: '/vallis/fish/howto',
+    name: 'howtofishvallis',
+    component: HowToFishVallis,
+    meta: {
+      title: 'Warframe Hub | OV - How to Fish',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Guide on how to fish in Orb Vallis',
+        },
+        {
+          name: 'og:description',
+          content: 'Guide on how to fish in Orb Vallis',
         },
       ],
     },

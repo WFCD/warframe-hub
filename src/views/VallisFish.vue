@@ -15,7 +15,7 @@
       <b class="mx-auto" style="color:firebrick">
         All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
       </b>
-      <b-table striped hover :items="fish" :fields="fields" class="fish-info b-table">
+      <b-table striped responsive hover :items="fish" :fields="fields" class="fish-info b-table">
         <template slot="more_info" slot-scope="row">
           <b-button size="sm" @click="row.toggleDetails" class="mr-2">
             <i v-if="row.detailsShowing" class="fas fa-times-circle"></i>

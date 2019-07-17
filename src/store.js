@@ -23,7 +23,6 @@ const state = {
   },
   platform: 'pc',
   theme: 'night',
-  grid: {},
   components: components,
   trackables: trackables,
   fissurePlanets: fissurePlanets,

@@ -31,11 +31,9 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Grid Layout */
-import { VueResponsiveGridLayout, VueGridItem, VueGridLayout } from 'vue-responsive-grid-layout';
-Vue.component('vue-responsive-grid-layout', VueResponsiveGridLayout);
-Vue.component('vue-grid-item', VueGridItem);
-Vue.component('vue-grid-layout', VueGridLayout);
+/* Packery */
+import VuePackeryPlugin from 'vue-packery-plugin';
+Vue.use(VuePackeryPlugin);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';

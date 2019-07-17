@@ -1,46 +1,25 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <vue-responsive-grid-layout
-        @layout-update="onLayoutUpdate"
-        @layout-change="onLayoutChange"
-        @layout-init="onLayoutInit"
-        @width-change="onWidthChange"
-        @breakpoint-change="onBreakpointChange"
-        :layouts="layouts"
-        :compact-type="'vertical'"
-        :breakpoint="breakpoint"
-        :cols="cols"
-        :colsAll="colsAll"
-        :rowHeight="1"
-        ref="layout"
-      >
-        <template slot-scope="props">
-          <vue-grid-item
-            v-for="item in props.layout"
-            :i="item.i"
-            :key="item.i"
-            :w.sync="item.w"
-            :h.sync="item.h"
-            :x="item.x"
-            :y="item.y"
-            :container-width="props.containerWidth"
-            :row-height="props.rowHeight"
-            :is-draggable="true"
-            :is-resizable="false"
-            class-name="grid-item panel-header"
-            :cols="props.cols"
-            :height-from-children="true"
-            :max-rows="props.maxRows"
-            :canBeResizedWithAll="false"
-            handle=".header-panel"
-          >
-            <div ref="panelObserver" :id="item.i">
-              <div :is="componentState[item.i].component" v-bind="resolveProps(componentState[item.i].props)" />
-            </div>
-          </vue-grid-item>
-        </template>
-      </vue-responsive-grid-layout>
+      <b-row ref="timerComponentGrid" v-packery="{ itemSelector: '.packery-item', percentPosition: true }">
+        <AcolytesPanel v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
+        <EventsPanel v-if="componentState.event.display" :events="worldstate.events" />
+        <ResetPanel v-if="componentState.reset.display" />
+        <AlertPanel v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
+        <InvasionsPanel v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
+        <NewsPanel v-if="componentState.news.display" :news="worldstate.news" />
+        <NightwavePanel v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
+        <TimePanel v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
+        <TimePanel v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
+        <TimePanel v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
+        <SortiePanel v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
+        <BountyPanel v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
+        <BountyPanel v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
+        <FissuresPanel v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
+        <DarvoDealsPanel v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
+        <SalesPanel v-if="componentState.deals.display" :sales="worldstate.flashSales" />
+        <VoidTraderPanel v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -100,58 +79,6 @@ export default {
     track() {
       this.$ga.page('/');
     },
-    updateComponents(layout, breakpoint) {
-      layout.forEach((itemSize) => {
-        this.$set(this.components[itemSize.i], breakpoint, itemSize);
-      });
-      const currTime = Date.now();
-      if (currTime - this.lastUpdate > 500) {
-        this.$store.commit('commitGridLayout', [this.components]);
-        this.lastUpdate = currTime;
-      }
-    },
-
-    onLayoutUpdate(layout) {
-      this.updateComponents(layout, this.breakpoint);
-    },
-
-    onLayoutChange(layout, layouts, breakpoint) {
-      this.updateComponents(layout, breakpoint);
-    },
-
-    onLayoutInit(layout, layouts, cols, breakpoint) {
-      this.cols = cols;
-      this.breakpoint = breakpoint;
-      this.updateComponents(layout, breakpoint);
-    },
-
-    onBreakpointChange(breakpoint) {
-      this.breakpoint = breakpoint;
-    },
-
-    onWidthChange(width, cols) {
-      this.cols = cols;
-    },
-
-    // Replaces a string that starts with the object_identifier with the respective object.
-    // Ex. '@worldstate.syndicateMissions' sets the object property to obj.worldstate.syndicateMissions
-    resolveProps(props, obj = this, objIdentifier = '@', separator = '.') {
-      if (typeof props !== 'object' || Array.isArray(props)) {
-        throw 'props should be an object.';
-      }
-      return Object.entries(props).reduce((prev, [key, value]) => {
-        if (value[0] === objIdentifier) {
-          var target = value
-            .slice(1)
-            .split(separator)
-            .reduce((prev, curr) => prev && prev[curr], obj);
-          prev[key] = target;
-        } else {
-          prev[key] = value;
-        }
-        return prev;
-      }, {});
-    },
   },
   watch: {
     worldstate: {
@@ -177,21 +104,6 @@ export default {
       ostron: 'ostronSyndicate',
       solaris: 'solarisSyndicate',
     }),
-    layouts: function() {
-      return Object.entries(this.components)
-        .filter(([key]) => {
-          return this.componentState[key].display;
-        })
-        .reduce((acc, [, sizes]) => {
-          Object.entries(sizes).forEach(([size, itemSize]) => {
-            if (!acc[size]) {
-              acc[size] = [];
-            }
-            acc[size].push(itemSize);
-          });
-          return acc;
-        }, {});
-    },
   },
 };
 </script>

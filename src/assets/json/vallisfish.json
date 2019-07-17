@@ -9,8 +9,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
     },
     "location": "Lake",
-    "time": "Warm",
-    "rarity": "Common",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -45,8 +55,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Venedo_Case"
     },
     "location": "Lake",
-    "time": "Cold",
-    "rarity": "Common",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -81,8 +101,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Thermal_Laser"
     },
     "location": "Lake",
-    "time": "Warm",
-    "rarity": "Uncommon",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2",
     "bait": {
       "name": "Kriller Bait",
       "thumb": "kriller"
@@ -118,8 +148,18 @@
     },
     "location": "Lake",
     "hotspot": "true",
-    "time": "Warm",
-    "rarity": "Rare",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "3",
     "bait": {
       "name": "Longwinder Bait",
       "thumb": "longwinder"
@@ -154,8 +194,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Muon_Battery"
     },
     "location": "Pond",
-    "time": "Warm",
-    "rarity": "Common",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -190,8 +240,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Dissipator_Coil"
     },
     "location": "Pond",
-    "time": "Cold",
-    "rarity": "Common",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -226,8 +286,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Rotoblade"
     },
     "location": "Pond",
-    "time": "Warm",
-    "rarity": "Uncommon",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2",
     "bait": {
       "name": "Narrow-Spectrum Bait",
       "thumb": "narrowspectrum"
@@ -262,8 +332,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Neural_Relay"
     },
     "location": "Pond",
-    "time": "Cold",
-    "rarity": "Uncommon",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2",
     "hotspot": true,
     "bait": {
       "name": "Narrow-spectrum Bait",
@@ -299,8 +379,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Entroplasma"
     },
     "location": "Pond",
-    "time": "Cold",
-    "rarity": "Rare",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3",
     "hotspot": true,
     "bait": {
       "name": "Tromyzon Bait",
@@ -336,8 +426,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Exa_Brain"
     },
     "location": "Cave",
-    "time": "Any",
-    "rarity": "Common",
+    "time": {
+      "string": "Any",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -372,8 +472,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
     },
     "location": "Cave",
-    "time": "Any",
-    "rarity": "Uncommon",
+    "time": {
+      "string": "Any",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2",
     "bait": {
       "name": "Mirewinder Bait",
       "thumb": "mirewinder"
@@ -408,8 +518,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Sagan_Module"
     },
     "location": "Cave",
-    "time": "Warm*",
-    "rarity": "Rare",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": true
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3",
     "hotspot": true,
     "bait": {
       "name": "Charamote Bait",
@@ -445,8 +565,18 @@
       "wiki": "https://warframe.fandom.com/wiki/Ecosynth_Analyzer"
     },
     "location": "Cave",
-    "time": "Warm*",
-    "rarity": "Legendary",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": true
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "4",
     "hotspot": true,
     "bait": {
       "name": "Synathid Bait",
@@ -480,8 +610,18 @@
       "name": "Crewmen's Boot"
     },
     "location": "Any",
-    "time": "Any",
-    "rarity": "LOL",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "0",
     "bait": {
       "name": "None"
     },

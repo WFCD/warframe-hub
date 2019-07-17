@@ -15,18 +15,15 @@
       <b class="mx-auto" style="color:firebrick">
         All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
       </b>
-      <b-table striped responsive hover :items="fish" :fields="fields" class="fish-info b-table mx-3">
-        <template slot="unique" slot-scope="data">
-          {{ data.item.unique.name }}
-          <br />
-          <FishImg
-            v-if="data.item.unique.thumb"
-            type="parts"
-            :item="data.item.unique.thumb"
-            :name="data.item.unique.name"
-            width="20"
-          />
-        </template>
+      <b-table
+        striped
+        responsive
+        hover
+        :items="fish"
+        :fields="fields"
+        class="fish-info b-table mx-3"
+        primary-key="name"
+      >
         <template slot="small" slot-scope="data">
           {{ data.item.small.resources.scrap }}
           <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
@@ -66,9 +63,12 @@
             invert="true"
           />
         </template>
+        <template slot="time" slot-scope="data">
+          <i class="fas fa-times-circle"></i>
+        </template>
         <template slot="rarity" slot-scope="data">
           <FishImg
-            v-if="data.item.rarity === 'Common'"
+            v-if="data.item.rarity === '1'"
             type="common"
             item="common"
             name="Common"
@@ -76,23 +76,16 @@
             width="20"
           />
           <FishImg
-            v-else-if="data.item.rarity === 'Uncommon'"
+            v-else-if="data.item.rarity === '2'"
             type="common"
             item="uncommon"
             name="Uncommon"
             title="Uncommon"
             width="20"
           />
+          <FishImg v-else-if="data.item.rarity === '3'" type="common" item="rare" name="Rare" title="Rare" width="20" />
           <FishImg
-            v-else-if="data.item.rarity === 'Rare'"
-            type="common"
-            item="rare"
-            name="Rare"
-            title="Rare"
-            width="20"
-          />
-          <FishImg
-            v-else-if="data.item.rarity === 'Legendary'"
+            v-else-if="data.item.rarity === '4'"
             type="common"
             item="legendary"
             name="Legendary"
@@ -149,6 +142,7 @@ const fields = {
     sortable: true,
   },
   unique: {
+    key: 'unique.name',
     label: 'Unique',
     headerTitle: 'Unique item when dismantling - you will receive one regardless of model',
     sortable: true,
@@ -172,7 +166,7 @@ const fields = {
     sortable: true,
   },
   time: {
-    key: 'time',
+    key: 'time.string',
     label: 'Temperature',
     headerTitle: 'Temperature of when you can find the servofish - * denotes preference',
     sortable: true,
@@ -181,6 +175,7 @@ const fields = {
     key: 'rarity',
     label: 'Rarity',
     headerTitle: 'How likely the fish will spawn',
+    sortable: true,
   },
   bait: {
     key: 'bait.name',

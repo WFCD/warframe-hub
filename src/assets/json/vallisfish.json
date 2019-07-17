@@ -408,7 +408,7 @@
       "wiki": "https://warframe.fandom.com/wiki/Sagan_Module"
     },
     "location": "Cave",
-    "time": "Warm Preferred",
+    "time": "Warm*",
     "rarity": "Rare",
     "hotspot": true,
     "bait": {
@@ -445,7 +445,7 @@
       "wiki": "https://warframe.fandom.com/wiki/Ecosynth_Analyzer"
     },
     "location": "Cave",
-    "time": "Warm Preferred",
+    "time": "Warm*",
     "rarity": "Legendary",
     "hotspot": true,
     "bait": {
@@ -470,6 +470,39 @@
         "scrap": 8
       },
       "standing": 1000
+    }
+  },
+  {
+    "name": "Crewmen's Boot",
+    "thumb": "crewmensboot",
+    "wiki": "https://warframe.fandom.com/wiki/Crewmen%27s_Boot",
+    "unique": {
+      "name": "Crewmen's Boot"
+    },
+    "location": "Any",
+    "time": "Any",
+    "rarity": "LOL",
+    "bait": {
+      "name": "None"
+    },
+    "maximumPoint": "Boot",
+    "small": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
+    },
+    "medium": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
+    },
+    "large": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
     }
   }
 ]

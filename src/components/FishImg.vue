@@ -1,5 +1,10 @@
 <template>
-  <b-img :src="src" :name="name" :height="height" :width="width" fluid :alt="name" />
+  <span v-if="invert === 'true'" class="invert">
+    <b-img :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
+  </span>
+  <span v-else>
+    <b-img :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
+  </span>
 </template>
 
 <!--  -->
@@ -19,6 +24,10 @@ export default {
       type: String,
       default: 'Name',
     },
+    title: {
+      type: String,
+      default: 'Name',
+    },
     width: {
       type: String,
       default: 'auto',
@@ -26,6 +35,10 @@ export default {
     height: {
       type: String,
       default: 'auto',
+    },
+    invert: {
+      type: String,
+      default: 'false',
     },
   },
   data() {
@@ -58,6 +71,7 @@ export default {
           tromyzon: import('@/assets/img/fish/tromyzon.png'),
           charamote: import('@/assets/img/fish/charamote.png'),
           synathid: import('@/assets/img/fish/synathid.png'),
+          crewmensboot: import('@/assets/img/fish/crewmensboot.png'),
         },
         parts: {
           antenna: import('@/assets/img/fish/part/antenna.png'),
@@ -86,6 +100,19 @@ export default {
           entroplasma: import('@/assets/img/fish/part/entroplasma.png'),
           saganmodule: import('@/assets/img/fish/part/saganmodule.png'),
           ecosynthanalyzer: import('@/assets/img/fish/part/ecosynthanalyzer.png'),
+          crewmensboot: import('@/assets/img/fish/crewmensboot.png'),
+        },
+        common: {
+          standing: import('@/assets/img/general/standing.svg'),
+          fishmeat: import('@/assets/img/fish/common/fishmeat.png'),
+          fishscale: import('@/assets/img/fish/common/fishscale.png'),
+          fishoil: import('@/assets/img/fish/common/fishoil.png'),
+          scrap: import('@/assets/img/fish/common/scrap.png'),
+          common: import('@/assets/img/fish/common/common.png'),
+          uncommon: import('@/assets/img/fish/common/uncommon.png'),
+          rare: import('@/assets/img/fish/common/rare.png'),
+          legendary: import('@/assets/img/fish/common/legendary.png'),
+          peculiar: import('@/assets/img/fish/common/peculiar.png'),
         },
         bait: {
           cuthol: import('@/assets/img/fish/bait/cuthol-bait.png'),

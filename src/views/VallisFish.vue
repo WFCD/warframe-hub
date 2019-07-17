@@ -16,6 +16,17 @@
         All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
       </b>
       <b-table striped responsive hover :items="fish" :fields="fields" class="fish-info b-table mx-3">
+        <template slot="unique" slot-scope="data">
+          {{ data.item.unique.name }}
+          <br />
+          <FishImg
+            v-if="data.item.unique.thumb"
+            type="parts"
+            :item="data.item.unique.thumb"
+            :name="data.item.unique.name"
+            width="20"
+          />
+        </template>
         <template slot="small" slot-scope="data">
           {{ data.item.small.resources.scrap }}
           <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
@@ -137,8 +148,7 @@ const fields = {
     headerTitle: 'The name of the fish',
     sortable: true,
   },
-  unique_name: {
-    key: 'unique.name',
+  unique: {
     label: 'Unique',
     headerTitle: 'Unique item when dismantling - you will receive one regardless of model',
     sortable: true,
@@ -171,7 +181,6 @@ const fields = {
     key: 'rarity',
     label: 'Rarity',
     headerTitle: 'How likely the fish will spawn',
-    sortable: true,
   },
   bait: {
     key: 'bait.name',

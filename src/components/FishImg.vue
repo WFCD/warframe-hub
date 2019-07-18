@@ -1,14 +1,22 @@
 <template>
-  <span v-if="invert === 'true'" class="invert">
-    <b-img :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
-  </span>
-  <span v-else>
-    <b-img :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
-  </span>
+  <HubImg
+    v-if="invert === 'true'"
+    :src="src"
+    :name="name"
+    :title="title"
+    :height="height"
+    :width="width"
+    class="invert"
+    fluid
+    :alt="name"
+  />
+  <HubImg v-else :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
 </template>
 
 <!--  -->
 <script>
+import HubImg from '@/components/HubImg';
+
 export default {
   name: 'FishImg',
   props: {
@@ -40,6 +48,9 @@ export default {
       type: String,
       default: 'false',
     },
+  },
+  components: {
+    HubImg,
   },
   data() {
     return {

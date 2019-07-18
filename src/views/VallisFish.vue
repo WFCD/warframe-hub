@@ -63,12 +63,18 @@
             invert="true"
           />
         </template>
-        <template slot="time" slot-scope="data">
-          <i class="fas fa-times-circle"></i>
+        <template slot="time.string" slot-scope="data">
+          <span v-bind:id="data.item.name + '-time'">
+            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:#32d2ff" />
+            <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
+            <i v-if="data.item.time.warm.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
+            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color:#f9a805" />
+          </span>
+          <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
         <template slot="rarity" slot-scope="data">
           <FishImg
-            v-if="data.item.rarity === '1'"
+            v-if="data.item.rarity === '1-Common'"
             type="common"
             item="common"
             name="Common"
@@ -76,16 +82,23 @@
             width="20"
           />
           <FishImg
-            v-else-if="data.item.rarity === '2'"
+            v-else-if="data.item.rarity === '2-Uncommon'"
             type="common"
             item="uncommon"
             name="Uncommon"
             title="Uncommon"
             width="20"
           />
-          <FishImg v-else-if="data.item.rarity === '3'" type="common" item="rare" name="Rare" title="Rare" width="20" />
           <FishImg
-            v-else-if="data.item.rarity === '4'"
+            v-else-if="data.item.rarity === '3-Rare'"
+            type="common"
+            item="rare"
+            name="Rare"
+            title="Rare"
+            width="20"
+          />
+          <FishImg
+            v-else-if="data.item.rarity === '4-Legendary'"
             type="common"
             item="legendary"
             name="Legendary"
@@ -93,6 +106,10 @@
             width="20"
           />
           <FishImg v-else type="common" item="peculiar" name="LOL" title="LOL" width="20" />
+        </template>
+        <template slot="hotspot" slot-scope="data">
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check" style="color:green" />
+          <i v-else class="fas fa-lg fa-times" style="color:red" />
         </template>
         <template slot="more_info" slot-scope="data">
           <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
@@ -108,19 +125,19 @@
                   {{ data.item.name }}
                 </b-btn>
                 <br />
-                <FishImg type="fish" :item="data.item.thumb" :name="data.item.name" width="200" />
+                <FishImg type="fish" :item="data.item.thumb" :title="data.item.name" width="200" />
               </b-col>
               <b-col v-if="data.item.unique.thumb">
                 <b-btn :href="data.item.unique.wiki" target="_blank" size="sm" rel="noopener" variant="link">
                   {{ data.item.unique.name }}
                 </b-btn>
                 <br />
-                <FishImg type="parts" :item="data.item.unique.thumb" :name="data.item.unique.name" width="200" />
+                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="200" />
               </b-col>
               <b-col v-if="data.item.bait.thumb">
                 <b>{{ data.item.bait.name }}</b>
                 <br />
-                <FishImg type="bait" :item="data.item.bait.thumb" :name="data.item.bait.name" width="200" />
+                <FishImg type="bait" :item="data.item.bait.thumb" :title="data.item.bait.name" width="200" />
               </b-col>
             </b-row>
           </b-card>

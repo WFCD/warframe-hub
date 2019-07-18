@@ -20,7 +20,7 @@
         "prefer": false
       }
     },
-    "rarity": "1",
+    "rarity": "1-Common",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -66,7 +66,7 @@
         "prefer": false
       }
     },
-    "rarity": "1",
+    "rarity": "1-Common",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -112,7 +112,7 @@
         "prefer": false
       }
     },
-    "rarity": "2",
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Kriller Bait",
       "thumb": "kriller"
@@ -159,7 +159,7 @@
         "prefer": false
       }
     },
-    "rarity": "3",
+    "rarity": "3-Rare",
     "bait": {
       "name": "Longwinder Bait",
       "thumb": "longwinder"
@@ -205,7 +205,7 @@
         "prefer": false
       }
     },
-    "rarity": "1",
+    "rarity": "1-Common",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -251,7 +251,7 @@
         "prefer": false
       }
     },
-    "rarity": "1",
+    "rarity": "1-Common",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -297,7 +297,7 @@
         "prefer": false
       }
     },
-    "rarity": "2",
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Narrow-Spectrum Bait",
       "thumb": "narrowspectrum"
@@ -343,7 +343,7 @@
         "prefer": false
       }
     },
-    "rarity": "2",
+    "rarity": "2-Uncommon",
     "hotspot": true,
     "bait": {
       "name": "Narrow-spectrum Bait",
@@ -390,7 +390,7 @@
         "prefer": false
       }
     },
-    "rarity": "3",
+    "rarity": "3-Rare",
     "hotspot": true,
     "bait": {
       "name": "Tromyzon Bait",
@@ -437,7 +437,7 @@
         "prefer": false
       }
     },
-    "rarity": "1",
+    "rarity": "1-Common",
     "bait": {
       "name": "Broad-Spectrum Bait",
       "thumb": "broadspectrum"
@@ -483,7 +483,7 @@
         "prefer": false
       }
     },
-    "rarity": "2",
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Mirewinder Bait",
       "thumb": "mirewinder"
@@ -519,7 +519,7 @@
     },
     "location": "Cave",
     "time": {
-      "string": "Warm",
+      "string": "Warm Preferred",
       "warm": {
         "appear": true,
         "prefer": true
@@ -529,7 +529,7 @@
         "prefer": false
       }
     },
-    "rarity": "3",
+    "rarity": "3-Rare",
     "hotspot": true,
     "bait": {
       "name": "Charamote Bait",
@@ -566,7 +566,7 @@
     },
     "location": "Cave",
     "time": {
-      "string": "Warm",
+      "string": "Warm Preferred",
       "warm": {
         "appear": true,
         "prefer": true
@@ -576,7 +576,7 @@
         "prefer": false
       }
     },
-    "rarity": "4",
+    "rarity": "4-Legendary",
     "hotspot": true,
     "bait": {
       "name": "Synathid Bait",
@@ -611,7 +611,7 @@
     },
     "location": "Any",
     "time": {
-      "string": "Warm",
+      "string": "Any",
       "warm": {
         "appear": true,
         "prefer": false
@@ -621,7 +621,7 @@
         "prefer": false
       }
     },
-    "rarity": "0",
+    "rarity": "0-Peculiar",
     "bait": {
       "name": "None"
     },

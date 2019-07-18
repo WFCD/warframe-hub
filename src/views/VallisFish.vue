@@ -65,10 +65,10 @@
         </template>
         <template slot="time.string" slot-scope="data">
           <span v-bind:id="data.item.name + '-time'">
-            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:#32d2ff" />
+            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:skyblue" />
             <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
             <i v-if="data.item.time.warm.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
-            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color:#f9a805" />
+            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
           </span>
           <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
@@ -82,8 +82,8 @@
           />
         </template>
         <template slot="hotspot" slot-scope="data">
-          <i v-if="data.item.hotspot" class="fas fa-lg fa-check" style="color:green" />
-          <i v-else class="fas fa-lg fa-times" style="color:red" />
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
         </template>
         <template slot="more_info" slot-scope="data">
           <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">

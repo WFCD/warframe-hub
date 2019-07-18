@@ -1,16 +1,14 @@
 <template>
   <HubImg
-    v-if="invert === 'true'"
     :src="src"
     :name="name"
     :title="title"
     :height="height"
     :width="width"
-    class="invert"
+    v-bind:class="{ invert: invert === 'true' }"
     fluid
     :alt="name"
   />
-  <HubImg v-else :src="src" :name="name" :title="title" :height="height" :width="width" fluid :alt="name" />
 </template>
 
 <!--  -->

@@ -74,38 +74,12 @@
         </template>
         <template slot="rarity" slot-scope="data">
           <FishImg
-            v-if="data.item.rarity === '1-Common'"
             type="common"
-            item="common"
-            name="Common"
-            title="Common"
+            :item="data.item.rarity.slice(2).toLowerCase()"
+            :name="data.item.rarity.slice(2)"
+            :title="data.item.rarity.slice(2)"
             width="20"
           />
-          <FishImg
-            v-else-if="data.item.rarity === '2-Uncommon'"
-            type="common"
-            item="uncommon"
-            name="Uncommon"
-            title="Uncommon"
-            width="20"
-          />
-          <FishImg
-            v-else-if="data.item.rarity === '3-Rare'"
-            type="common"
-            item="rare"
-            name="Rare"
-            title="Rare"
-            width="20"
-          />
-          <FishImg
-            v-else-if="data.item.rarity === '4-Legendary'"
-            type="common"
-            item="legendary"
-            name="Legendary"
-            title="Legendary"
-            width="20"
-          />
-          <FishImg v-else type="common" item="peculiar" name="LOL" title="LOL" width="20" />
         </template>
         <template slot="hotspot" slot-scope="data">
           <i v-if="data.item.hotspot" class="fas fa-lg fa-check" style="color:green" />

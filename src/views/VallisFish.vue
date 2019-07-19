@@ -15,69 +15,103 @@
       <b class="mx-auto" style="color:firebrick">
         All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
       </b>
-      <b-table striped responsive hover :items="fish" :fields="fields" class="fish-info b-table">
-        <template slot="more_info" slot-scope="row">
-          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
-            <i v-if="row.detailsShowing" class="fas fa-times-circle"></i>
+      <b-table
+        striped
+        responsive
+        hover
+        :items="fish"
+        :fields="fields"
+        class="fish-info b-table mx-3"
+        primary-key="name"
+      >
+        <template slot="small" slot-scope="data">
+          {{ data.item.small.resources.scrap }}
+          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          / {{ data.item.small.standing }}
+          <FishImg
+            type="common"
+            item="standing"
+            name="Solaris United Standing"
+            title="Solaris United Standing"
+            width="15"
+            invert="true"
+          />
+        </template>
+        <template slot="medium" slot-scope="data">
+          {{ data.item.medium.resources.scrap }}
+          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          / {{ data.item.medium.standing }}
+          <FishImg
+            type="common"
+            item="standing"
+            name="Solaris United Standing"
+            title="Solaris United Standing"
+            width="15"
+            invert="true"
+          />
+        </template>
+        <template slot="large" slot-scope="data">
+          {{ data.item.large.resources.scrap }}
+          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          / {{ data.item.large.standing }}
+          <FishImg
+            type="common"
+            item="standing"
+            name="Solaris United Standing"
+            title="Solaris United Standing"
+            width="15"
+            invert="true"
+          />
+        </template>
+        <template slot="time.string" slot-scope="data">
+          <span v-bind:id="data.item.name + '-time'">
+            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:skyblue" />
+            <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
+            <i v-if="data.item.time.warm.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
+            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
+          </span>
+          <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
+        </template>
+        <template slot="rarity" slot-scope="data">
+          <FishImg
+            type="common"
+            :item="data.item.rarity.slice(2).toLowerCase()"
+            :name="data.item.rarity.slice(2)"
+            :title="data.item.rarity.slice(2)"
+            width="20"
+          />
+        </template>
+        <template slot="hotspot" slot-scope="data">
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+        </template>
+        <template slot="more_info" slot-scope="data">
+          <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
+            <i v-if="data.detailsShowing" class="fas fa-times-circle"></i>
             <i v-else class="fas fa-info-circle"></i>
           </b-button>
         </template>
         <template slot="row-details" slot-scope="data">
           <b-card>
             <b-row>
-              <b-col>
-                <b-btn
-                  :href="data.item.wiki"
-                  target="_blank"
-                  size="sm"
-                  rel="noopener"
-                  variant="link"
-                  v-if="data.item.thumb"
-                >
+              <b-col v-if="data.item.thumb">
+                <b-btn :href="data.item.wiki" target="_blank" size="sm" rel="noopener" variant="link">
                   {{ data.item.name }}
                 </b-btn>
                 <br />
-                <FishImg
-                  type="fish"
-                  :item="data.item.thumb"
-                  :name="data.item.name"
-                  width="200"
-                  v-if="data.item.thumb"
-                />
-                <span v-else>No image available</span>
+                <FishImg type="fish" :item="data.item.thumb" :title="data.item.name" width="200" />
               </b-col>
-              <b-col>
-                <b-btn
-                  :href="data.item.unique.wiki"
-                  target="_blank"
-                  size="sm"
-                  rel="noopener"
-                  variant="link"
-                  v-if="data.item.unique.thumb"
-                >
+              <b-col v-if="data.item.unique.thumb">
+                <b-btn :href="data.item.unique.wiki" target="_blank" size="sm" rel="noopener" variant="link">
                   {{ data.item.unique.name }}
                 </b-btn>
                 <br />
-                <FishImg
-                  type="parts"
-                  :item="data.item.unique.thumb"
-                  :name="data.item.unique.name"
-                  width="200"
-                  v-if="data.item.unique.thumb"
-                />
-                <span v-else>No image available</span>
+                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="200" />
               </b-col>
-              <b-col>
+              <b-col v-if="data.item.bait.thumb">
                 <b>{{ data.item.bait.name }}</b>
                 <br />
-                <FishImg
-                  type="bait"
-                  :item="data.item.bait.thumb"
-                  :name="data.item.bait.name"
-                  width="200"
-                  v-if="data.item.bait.thumb"
-                />
-                <span v-else>No image available</span>
+                <FishImg type="bait" :item="data.item.bait.thumb" :title="data.item.bait.name" width="200" />
               </b-col>
             </b-row>
           </b-card>
@@ -94,39 +128,27 @@ import FishImg from '@/components/FishImg.vue';
 const fields = {
   name: {
     key: 'name',
-    label: 'Fish Name',
+    label: 'Name',
     headerTitle: 'The name of the fish',
     sortable: true,
   },
-  unique_name: {
+  unique: {
     key: 'unique.name',
     label: 'Unique',
-    headerTitle: 'You will always receive 1 of these per fish regardless of model when dismantling',
+    headerTitle: 'Unique item when dismantling - you will receive one regardless of model',
     sortable: true,
   },
   small: {
-    key: 'small',
     label: 'Basic',
-    headerTitle: 'Most common model of servofish',
-    formatter: (value) => {
-      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
-    },
+    headerTitle: 'Common model - you will get scrap if dismantled or standing if donated',
   },
   medium: {
-    key: 'medium',
     label: 'Adorned',
-    headerTitle: 'Slightly more uncommon model of servofish',
-    formatter: (value) => {
-      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
-    },
+    headerTitle: 'Uncommon model - you will get scrap if dismantled or standing if donated',
   },
   large: {
-    key: 'large',
     label: 'Magnificent',
-    headerTitle: 'Rare and perfect model of servofish',
-    formatter: (value) => {
-      return `${value.resources.scrap} Scrap & ${value.standing} Standing`;
-    },
+    headerTitle: 'Rare model - you will get scrap if dismantled or standing if donated',
   },
   location: {
     key: 'location',
@@ -135,9 +157,9 @@ const fields = {
     sortable: true,
   },
   time: {
-    key: 'time',
+    key: 'time.string',
     label: 'Temperature',
-    headerTitle: 'Temperature of when you can find the servofish',
+    headerTitle: 'Temperature of when you can find the servofish - * denotes preference',
     sortable: true,
   },
   rarity: {

@@ -1,7 +1,7 @@
 <template>
   <HubImg
     :src="src"
-    :name="name"
+    :name="title"
     :title="title"
     :height="height"
     :width="width"
@@ -25,10 +25,6 @@ export default {
     item: {
       type: String,
       required: true,
-    },
-    name: {
-      type: String,
-      default: 'Name',
     },
     title: {
       type: String,
@@ -57,7 +53,7 @@ export default {
           charceel: import('@/assets/img/fish/charceel.png'),
           cuthol: import('@/assets/img/fish/cuthol.png'),
           glappid: import('@/assets/img/fish/glappid.png'),
-          goopola: import('@/assets/img/fish/goopola.png'),
+          goopolla: import('@/assets/img/fish/goopolla.png'),
           karkina: import('@/assets/img/fish/karkina.png'),
           khutkhut: import('@/assets/img/fish/khutkhut.png'),
           mawfish: import('@/assets/img/fish/mawfish.png'),
@@ -113,15 +109,21 @@ export default {
         },
         common: {
           standing: import('@/assets/img/general/standing.svg'),
-          fishmeat: import('@/assets/img/fish/common/fishmeat.png'),
-          fishscale: import('@/assets/img/fish/common/fishscale.png'),
-          fishoil: import('@/assets/img/fish/common/fishoil.png'),
+          meat: import('@/assets/img/fish/common/fishmeat.png'),
+          scale: import('@/assets/img/fish/common/fishscale.png'),
+          oil: import('@/assets/img/fish/common/fishoil.png'),
           scrap: import('@/assets/img/fish/common/scrap.png'),
           common: import('@/assets/img/fish/common/common.png'),
           uncommon: import('@/assets/img/fish/common/uncommon.png'),
           rare: import('@/assets/img/fish/common/rare.png'),
           legendary: import('@/assets/img/fish/common/legendary.png'),
           peculiar: import('@/assets/img/fish/common/peculiar.png'),
+          lanzo: import('@/assets/img/fish/common/lanzo.png'),
+          tulok: import('@/assets/img/fish/common/tulok.png'),
+          peram: import('@/assets/img/fish/common/peram.png'),
+          lanzosm: import('@/assets/img/fish/common/lanzo-icon.png'),
+          tuloksm: import('@/assets/img/fish/common/tulok-icon.png'),
+          peramsm: import('@/assets/img/fish/common/peram-icon.png'),
         },
         bait: {
           cuthol: import('@/assets/img/fish/bait/cuthol-bait.png'),

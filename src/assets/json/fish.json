@@ -9,13 +9,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Charc_Electroplax"
     },
     "location": "Lake",
-    "time": "Any",
-    "rarity": "Common",
+    "time": {
+      "string": "Any",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "24kg",
     "small": {
       "resources": {
@@ -52,13 +66,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Mawfish_Bones"
     },
     "location": "Lake",
-    "time": "Day",
-    "rarity": "Common",
+    "time": {
+      "string": "Day",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "30kg",
     "small": {
       "resources": {
@@ -80,7 +108,7 @@
       "resources": {
         "meat": 5,
         "scales": 3,
-        "oil": 2
+        "oil": 4
       },
       "standing": 50
     }
@@ -95,13 +123,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Khut-Khut_Venom_Sac"
     },
     "location": "Pond",
-    "time": "Day",
-    "rarity": "Common",
+    "time": {
+      "string": "Day",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "20kg",
     "small": {
       "resources": {
@@ -138,13 +180,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Yogwun_Stomach"
     },
     "location": "Pond",
-    "time": "Day",
-    "rarity": "Common",
+    "time": {
+      "string": "Day",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "32kg",
     "small": {
       "resources": {
@@ -166,28 +222,42 @@
       "resources": {
         "meat": 6,
         "scales": 3,
-        "oil": 2
+        "oil": 3
       },
       "standing": 50
     }
   },
   {
-    "name": "Goopola",
-    "thumb": "goopola",
+    "name": "Goopolla",
+    "thumb": "goopolla",
     "wiki": "https://warframe.fandom.com/wiki/Goopolla",
     "unique": {
-      "name": "Goopola Spleen",
+      "name": "Goopolla Spleen",
       "thumb": "spleen",
       "wiki": "http://warframe.wikia.com/wiki/Goopolla_Spleen"
     },
     "location": "Sea",
-    "time": "Any",
-    "rarity": "Common",
+    "time": {
+      "string": "Any",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "24kg",
     "small": {
       "resources": {
@@ -224,13 +294,28 @@
       "wiki": "http://warframe.wikia.com/wiki/Karkina_Antenna"
     },
     "location": "Sea",
-    "time": "Any",
-    "rarity": "Rare",
+    "time": {
+      "string": "Any",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Twilight Bait",
-      "thumb": "twilight"
+      "thumb": "twilight",
+      "required": true
     },
-    "spear": ["Lanzo (T1)", "Tulok (T2)"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": false
+    },
     "maximumMass": "32kg",
     "small": {
       "resources": {
@@ -267,13 +352,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Mortus_Horn"
     },
     "location": "Pond",
-    "time": "Any",
-    "rarity": "Rare (Day), Common (Night)",
+    "time": {
+      "string": "Night Preferred",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": true
+      }
+    },
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Lanzo (T1)", "Peram (T3)"],
+    "spear": {
+      "lanzo": true,
+      "tulok": false,
+      "peram": true
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -310,13 +409,28 @@
       "wiki": "http://warframe.wikia.com/wiki/Sharrac_Teeth"
     },
     "location": "Sea",
-    "time": "Any",
-    "rarity": "Rare",
+    "time": {
+      "string": "Any",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Twilight Bait",
-      "thumb": "twilight"
+      "thumb": "twilight",
+      "required": true
     },
-    "spear": ["Lanzo (T1)", "Tulok (T2)"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": false
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -328,17 +442,17 @@
     },
     "medium": {
       "resources": {
-        "meat": 4,
-        "scales": 3,
-        "oil": 2
+        "meat": 3,
+        "scales": 6,
+        "oil": 3
       },
       "standing": 125
     },
     "large": {
       "resources": {
-        "meat": 5,
-        "scales": 4,
-        "oil": 3
+        "meat": 4,
+        "scales": 8,
+        "oil": 4
       },
       "standing": 200
     }
@@ -353,13 +467,27 @@
       "wiki": "http://warframe.wikia.com/wiki/Tralok_Eyes"
     },
     "location": "Sea",
-    "time": "Day",
-    "rarity": "Common",
+    "time": {
+      "string": "Day",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
     "bait": {
       "name": "Peppered Bait",
       "thumb": "peppered"
     },
-    "spear": ["Tulok (T2)", "Peram (T3)"],
+    "spear": {
+      "lanzo": false,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -396,14 +524,29 @@
       "wiki": "http://warframe.wikia.com/wiki/Cuthol_Tendrils"
     },
     "location": "Pond",
-    "time": "Night",
-    "rarity": "Bait Required",
+    "time": {
+      "string": "Night",
+      "day": {
+        "appear": false,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
     "hotspot": true,
     "bait": {
       "name": "Cuthol Bait",
-      "thumb": "cuthol"
+      "thumb": "cuthol",
+      "required": true
     },
-    "spear": ["Lanzo (T1)"],
+    "spear": {
+      "lanzo": true,
+      "tulok": false,
+      "peram": false
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -419,7 +562,7 @@
         "scales": 4,
         "oil": 3
       },
-      "standing": 625
+      "standing": 650
     },
     "large": {
       "resources": {
@@ -440,14 +583,29 @@
       "wiki": "http://warframe.wikia.com/wiki/Murkray_Liver"
     },
     "location": "Sea",
-    "time": "Any",
-    "rarity": "Bait Required",
+    "time": {
+      "string": "Any",
+      "day": {
+        "appear": true,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
     "hotspot": true,
     "bait": {
       "name": "Murkray Bait",
-      "thumb": "murkray"
+      "thumb": "murkray",
+      "required": true
     },
-    "spear": ["Lanzo (T1)"],
+    "spear": {
+      "lanzo": true,
+      "tulok": false,
+      "peram": false
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -461,9 +619,9 @@
       "resources": {
         "meat": 3,
         "scales": 4,
-        "oil": 7
+        "oil": 8
       },
-      "standing": 625
+      "standing": 650
     },
     "large": {
       "resources": {
@@ -484,14 +642,29 @@
       "wiki": "http://warframe.wikia.com/wiki/Norg_Brain"
     },
     "location": "Lake",
-    "time": "Night",
-    "rarity": "Bait Required",
+    "time": {
+      "string": "Night",
+      "day": {
+        "appear": false,
+        "prefer": false
+      },
+      "night": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
     "hotspot": true,
     "bait": {
       "name": "Norg Bait",
-      "thumb": "norg"
+      "thumb": "norg",
+      "required": true
     },
-    "spear": ["Peram (T3)"],
+    "spear": {
+      "lanzo": false,
+      "tulok": false,
+      "peram": true
+    },
     "maximumMass": "40kg",
     "small": {
       "resources": {
@@ -507,7 +680,7 @@
         "scales": 7,
         "oil": 5
       },
-      "standing": 625
+      "standing": 650
     },
     "large": {
       "resources": {
@@ -547,8 +720,8 @@
       "required": true
     },
     "spear": {
-      "Lanzo": false,
-      "Tulok": false,
+      "lanzo": false,
+      "tulok": false,
       "peram": true
     },
     "maximumMass": "44kg",
@@ -603,7 +776,11 @@
       "name": "None",
       "required": false
     },
-    "spear": ["Any"],
+    "spear": {
+      "lanzo": true,
+      "tulok": true,
+      "peram": true
+    },
     "maximumMass": "Boot",
     "small": {
       "resources": {

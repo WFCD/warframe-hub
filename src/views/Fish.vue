@@ -23,54 +23,33 @@
       >
         <template slot="small" slot-scope="data">
           {{ data.item.small.resources.meat }}
-          <FishImg type="common" item="meat" title="Meat" width="20" />
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
           {{ data.item.small.resources.scales }}
-          <FishImg type="common" item="scales" title="Scales" width="20" />
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
           {{ data.item.small.resources.oil }}
-          <FishImg type="common" item="oil" title="Oil" width="20" />
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
           / {{ data.item.small.standing }}
-          <FishImg
-            type="common"
-            item="standing"
-            name="Ostron Standing"
-            title="Ostron Standing"
-            width="15"
-            invert="true"
-          />
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
         </template>
         <template slot="medium" slot-scope="data">
           {{ data.item.medium.resources.meat }}
-          <FishImg type="common" item="meat" title="Meat" width="20" />
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
           {{ data.item.medium.resources.scales }}
-          <FishImg type="common" item="scales" title="Scales" width="20" />
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
           {{ data.item.medium.resources.oil }}
-          <FishImg type="common" item="oil" title="Oil" width="20" />
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
           / {{ data.item.medium.standing }}
-          <FishImg
-            type="common"
-            item="standing"
-            name="Ostron Standing"
-            title="Ostron Standing"
-            width="15"
-            invert="true"
-          />
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
         </template>
         <template slot="large" slot-scope="data">
           {{ data.item.large.resources.meat }}
-          <FishImg type="common" item="meat" title="Meat" width="20" />
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
           {{ data.item.large.resources.scales }}
-          <FishImg type="common" item="scales" title="Scales" width="20" />
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
           {{ data.item.large.resources.oil }}
-          <FishImg type="common" item="oil" title="Oil" width="20" />
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
           / {{ data.item.large.standing }}
-          <FishImg
-            type="common"
-            item="standing"
-            name="Ostron Standing"
-            title="Ostron Standing"
-            width="15"
-            invert="true"
-          />
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
         </template>
         <template slot="time.string" slot-scope="data">
           <span v-bind:id="data.item.name + '-time'">
@@ -90,9 +69,18 @@
             width="20"
           />
         </template>
+        <template slot="bait_required" slot-scope="data">
+          <i v-if="data.item.bait.required" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+        </template>
         <template slot="hotspot" slot-scope="data">
           <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
           <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+        </template>
+        <template slot="spear" slot-scope="data">
+          <FishImg v-if="data.item.spear.lanzo" type="common" item="lanzosm" title="Lanzo (T1)" width="30" />
+          <FishImg v-if="data.item.spear.tulok" type="common" item="tuloksm" title="Tulok (T2)" width="30" />
+          <FishImg v-if="data.item.spear.peram" type="common" item="peramsm" title="Peram (T3)" width="30" />
         </template>
         <template slot="more_info" slot-scope="data">
           <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
@@ -115,12 +103,12 @@
                   {{ data.item.unique.name }}
                 </b-btn>
                 <br />
-                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="200" />
+                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="150" />
               </b-col>
               <b-col v-if="data.item.bait.thumb">
                 <b>{{ data.item.bait.name }}</b>
                 <br />
-                <FishImg type="bait" :item="data.item.bait.thumb" :title="data.item.bait.name" width="200" />
+                <FishImg type="bait" :item="data.item.bait.thumb" :title="data.item.bait.name" width="120" />
               </b-col>
             </b-row>
           </b-card>
@@ -144,31 +132,31 @@ const fields = {
   unique: {
     key: 'unique.name',
     label: 'Unique',
-    headerTitle: 'Unique item when dismantling - you will receive one regardless of model',
+    headerTitle: 'Unique item when dismantling - you will receive one regardless of size',
     sortable: true,
   },
   small: {
-    label: 'Basic',
-    headerTitle: 'Common model - you will get scrap if dismantled or standing if donated',
+    label: 'Small',
+    headerTitle: 'Common size - you will get fish parts if dismantled or standing if donated',
   },
   medium: {
-    label: 'Adorned',
-    headerTitle: 'Uncommon model - you will get scrap if dismantled or standing if donated',
+    label: 'Medium',
+    headerTitle: 'Uncommon size - you will get fish parts if dismantled or standing if donated',
   },
   large: {
-    label: 'Magnificent',
-    headerTitle: 'Rare model - you will get scrap if dismantled or standing if donated',
+    label: 'Large',
+    headerTitle: 'Rare size - you will get fish parts if dismantled or standing if donated',
   },
   location: {
     key: 'location',
     label: 'Location',
-    headerTitle: 'Location of where to find the servofish',
+    headerTitle: 'Location of where to find the fish',
     sortable: true,
   },
   time: {
     key: 'time.string',
-    label: 'Temperature',
-    headerTitle: 'Temperature of when you can find the servofish - * denotes preference',
+    label: 'Time',
+    headerTitle: 'Time of when you can find the fish - arrow denotes preference',
     sortable: true,
   },
   rarity: {
@@ -180,22 +168,27 @@ const fields = {
   bait: {
     key: 'bait.name',
     label: 'Bait',
-    headerTitle: 'What bait will make this servofish more likely to spawn',
+    headerTitle: 'What bait will make this fish more likely to spawn',
+    sortable: true,
+  },
+  bait_required: {
+    label: 'Bait Required',
+    headerTitle: 'Whether bait is required in order for this fish to spawn',
     sortable: true,
   },
   hotspot: {
-    key: 'hotspot',
     label: 'Hotspot Required',
     headerTitle: 'Whether a hotspot is required for this fish to spawn',
     sortable: true,
-    formatter: (value) => {
-      return value ? 'Yes' : 'No';
-    },
   },
-  max_point: {
-    key: 'maximumPoint',
-    label: 'Max Points',
-    headerTitle: 'The maximum points possible for this fish',
+  spear: {
+    label: 'Spear',
+    headerTitle: 'What spear is effective at catching the fish',
+  },
+  max_mass: {
+    key: 'maximumMass',
+    label: 'Max Weight',
+    headerTitle: 'The maximum weight possible for this fish',
     sortable: true,
   },
   more_info: {

@@ -159,7 +159,7 @@ const fields = {
   time: {
     key: 'time.string',
     label: 'Temperature',
-    headerTitle: 'Temperature of when you can find the servofish - * denotes preference',
+    headerTitle: 'Temperature of when you can find the servofish - arrow denotes preference',
     sortable: true,
   },
   rarity: {

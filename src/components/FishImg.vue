@@ -76,6 +76,7 @@ export default {
           tromyzon: import('@/assets/img/fish/tromyzon.png'),
           charamote: import('@/assets/img/fish/charamote.png'),
           synathid: import('@/assets/img/fish/synathid.png'),
+          boot: import('@/assets/img/fish/boot.png'),
           crewmensboot: import('@/assets/img/fish/crewmensboot.png'),
         },
         parts: {

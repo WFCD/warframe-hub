@@ -74,7 +74,6 @@ Vue.component('l-circle-marker', Vue2Leaflet.LCircleMarker);
 
 /* Themes */
 import '@/assets/less/common.less';
-import '@/assets/less/fish.less';
 import '@/assets/less/tables.less';
 import '@/assets/less/night.less';
 import '@/assets/less/day.less';

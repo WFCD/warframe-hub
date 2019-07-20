@@ -26,7 +26,7 @@
       >
         <template slot="small" slot-scope="data">
           {{ data.item.small.resources.scrap }}
-          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.small.standing }}
           <FishImg
             type="common"
@@ -39,7 +39,7 @@
         </template>
         <template slot="medium" slot-scope="data">
           {{ data.item.medium.resources.scrap }}
-          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.medium.standing }}
           <FishImg
             type="common"
@@ -52,7 +52,7 @@
         </template>
         <template slot="large" slot-scope="data">
           {{ data.item.large.resources.scrap }}
-          <FishImg type="common" item="scrap" name="Scrap" title="Scrap" width="20" />
+          <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.large.standing }}
           <FishImg
             type="common"
@@ -159,7 +159,7 @@ const fields = {
   time: {
     key: 'time.string',
     label: 'Temperature',
-    headerTitle: 'Temperature of when you can find the servofish - * denotes preference',
+    headerTitle: 'Temperature of when you can find the servofish - arrow denotes preference',
     sortable: true,
   },
   rarity: {

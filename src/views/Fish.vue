@@ -1,144 +1,201 @@
 <template>
   <b-container fluid>
-    <b-col md="12">
-      <router-link to="/poe/map">
-        <b-btn variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-btn>
-      </router-link>
+    <b-row>
+      <b-col md="12">
+        <router-link to="/poe/map">
+          <b-button variant="info" class="mb-3 float-right">Plains of Eidolon Map</b-button>
+        </router-link>
+        <router-link to="/poe/fish/howto#hotspots">
+          <b-button variant="info" class="mb-3 mr-3 float-right">What is a Hotspot?</b-button>
+        </router-link>
+      </b-col>
+    </b-row>
 
-      <div class="row">
-        <table class="table fish-info striped hover">
-          <thead>
-            <tr>
-              <th title="The name of the fish">Fish Name</th>
-              <th title="Number of fish parts you receive is dependent on fish size">
-                Size
-              </th>
-              <th title="Number of fish meat you will receive when making bait">
-                Meat
-              </th>
-              <th title="Number of fish scale you will receive when making bait">
-                Scales
-              </th>
-              <th title="Number of fish oil you will receive when making bait">
-                Oil
-              </th>
-              <th title="You will always receive 1 of these per fish when making bait">
-                Unique
-              </th>
-              <th title="Ostron standing gain when donating fish">Standing</th>
-              <th title="Location of where to find the fish">Location</th>
-              <th title="Time of when you can find the fish">Time</th>
-              <th title="How likely the fish will spawn">Rarity</th>
-              <th title="The appropriate spear needed for this fish">Spear</th>
-              <th title="The maximum weight possible for this fish">
-                Max Weight
-              </th>
-            </tr>
-          </thead>
-          <tbody v-for="(fish, index) in this.fishes" :key="fish.name">
-            <tr :class="'color' + ((index % 2) + 1)">
-              <td rowspan="3">
-                <b-btn :id="`${fish.name}_tooltip`" size="md" variant="link" class="m-3">
-                  {{ fish.name }}
+    <b-row>
+      <b-table
+        striped
+        responsive
+        hover
+        :items="fish"
+        :fields="fields"
+        class="fish-info b-table mx-3"
+        primary-key="name"
+      >
+        <template slot="small" slot-scope="data">
+          {{ data.item.small.resources.meat }}
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
+          {{ data.item.small.resources.scales }}
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
+          {{ data.item.small.resources.oil }}
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
+          / {{ data.item.small.standing }}
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+        </template>
+        <template slot="medium" slot-scope="data">
+          {{ data.item.medium.resources.meat }}
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
+          {{ data.item.medium.resources.scales }}
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
+          {{ data.item.medium.resources.oil }}
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
+          / {{ data.item.medium.standing }}
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+        </template>
+        <template slot="large" slot-scope="data">
+          {{ data.item.large.resources.meat }}
+          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
+          {{ data.item.large.resources.scales }}
+          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
+          {{ data.item.large.resources.oil }}
+          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
+          / {{ data.item.large.standing }}
+          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+        </template>
+        <template slot="time.string" slot-scope="data">
+          <span v-bind:id="data.item.name + '-time'">
+            <i v-if="data.item.time.night.appear" class="fas fa-lg fa-moon" style="color:skyblue" />
+            <i v-if="data.item.time.night.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
+            <i v-if="data.item.time.day.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
+            <i v-if="data.item.time.day.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
+          </span>
+          <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
+        </template>
+        <template slot="rarity" slot-scope="data">
+          <FishImg
+            type="common"
+            :item="data.item.rarity.slice(2).toLowerCase()"
+            :name="data.item.rarity.slice(2)"
+            :title="data.item.rarity.slice(2)"
+            width="20"
+          />
+        </template>
+        <template slot="bait_required" slot-scope="data">
+          <i v-if="data.item.bait.required" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+        </template>
+        <template slot="hotspot" slot-scope="data">
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+        </template>
+        <template slot="spear" slot-scope="data">
+          <FishImg v-if="data.item.spear.lanzo" type="common" item="lanzosm" title="Lanzo (T1)" width="30" />
+          <FishImg v-if="data.item.spear.tulok" type="common" item="tuloksm" title="Tulok (T2)" width="30" />
+          <FishImg v-if="data.item.spear.peram" type="common" item="peramsm" title="Peram (T3)" width="30" />
+        </template>
+        <template slot="more_info" slot-scope="data">
+          <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
+            <i v-if="data.detailsShowing" class="fas fa-times-circle"></i>
+            <i v-else class="fas fa-info-circle"></i>
+          </b-button>
+        </template>
+        <template slot="row-details" slot-scope="data">
+          <b-card>
+            <b-row>
+              <b-col v-if="data.item.thumb">
+                <b-btn :href="data.item.wiki" target="_blank" size="sm" rel="noopener" variant="link">
+                  {{ data.item.name }}
                 </b-btn>
-                <b-tooltip :target="`${fish.name}_tooltip`" placement="top">
-                  <FishImg type="fish" :item="fish.thumb" :name="fish.name" width="200" v-if="fish.thumb" />
-                  <span v-else> No image available</span>
-                </b-tooltip>
-              </td>
-              <td v-if="fish.smallLabel">{{ fish.smallLabel }}</td>
-              <td v-else>S</td>
-              <td>{{ fish.small.resources.meat }}</td>
-              <td>{{ fish.small.resources.scales }}</td>
-              <td>{{ fish.small.resources.oil }}</td>
-              <td rowspan="3">
-                <b-btn :id="`${fish.unique.name}_unique_tooltip`" size="md" variant="link" class="m-3">
-                  {{ fish.unique.name }}
+                <br />
+                <FishImg type="fish" :item="data.item.thumb" :title="data.item.name" width="200" />
+              </b-col>
+              <b-col v-if="data.item.unique.thumb">
+                <b-btn :href="data.item.unique.wiki" target="_blank" size="sm" rel="noopener" variant="link">
+                  {{ data.item.unique.name }}
                 </b-btn>
-                <b-tooltip :target="`${fish.unique.name}_unique_tooltip`" placement="top">
-                  <FishImg
-                    type="parts"
-                    :item="fish.unique.thumb"
-                    :name="fish.unique.name"
-                    width="200"
-                    v-if="fish.unique.thumb"
-                  />
-                  <span v-else> No image available</span>
-                  <b-btn
-                    :href="fish.unique.wiki"
-                    target="_blank"
-                    size="sm"
-                    rel="noopener"
-                    variant="link"
-                    v-if="fish.unique.thumb"
-                  >
-                    Wikia Article
-                  </b-btn>
-                </b-tooltip>
-              </td>
-              <td>{{ fish.small.standing }}</td>
-              <td rowspan="3">{{ fish.location }}</td>
-              <td rowspan="3">{{ fish.time }}</td>
-              <td rowspan="3">
-                <span>{{ fish.rarity }}</span>
-
-                <br v-if="fish.hotspot" />
-                <span v-if="fish.hotspot">Hotspot Required</span>
-
-                <br v-if="fish.bait" />
-                <b-btn
-                  v-if="fish.bait"
-                  :id="`${fish.name}_${fish.bait.name}_bait_tooltip`"
-                  size="md"
-                  variant="link"
-                  class="mb-1"
-                >
-                  {{ fish.bait.name }}
-                </b-btn>
-                <b-tooltip v-if="fish.bait" :target="`${fish.name}_${fish.bait.name}_bait_tooltip`" placement="top">
-                  <FishImg
-                    type="bait"
-                    :item="fish.bait.thumb"
-                    :name="fish.bait.name"
-                    width="200"
-                    v-if="fish.bait.thumb"
-                  />
-                  <span v-else> No image available</span>
-                </b-tooltip>
-              </td>
-              <td rowspan="3">
-                <span v-for="spear in fish.spear" :key="spear">{{ spear }} <br /></span>
-              </td>
-              <td rowspan="3">{{ fish.maximumMass }}</td>
-            </tr>
-            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.medium">
-              <td>M</td>
-              <td>{{ fish.medium.resources.meat }}</td>
-              <td>{{ fish.medium.resources.scales }}</td>
-              <td>{{ fish.medium.resources.oil }}</td>
-              <td>{{ fish.medium.standing }}</td>
-            </tr>
-            <tr :class="'color' + ((index % 2) + 1)" v-if="fish.large">
-              <td>L</td>
-              <td>{{ fish.large.resources.meat }}</td>
-              <td>{{ fish.large.resources.scales }}</td>
-              <td>{{ fish.large.resources.oil }}</td>
-              <td>{{ fish.large.standing }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <router-link to="/poe/fish/howto#hotspots">
-        <b-btn variant="info" class="btn-block">What is a Hotspot?</b-btn>
-      </router-link>
-    </b-col>
+                <br />
+                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="150" />
+              </b-col>
+              <b-col v-if="data.item.bait.thumb">
+                <b>{{ data.item.bait.name }}</b>
+                <br />
+                <FishImg type="bait" :item="data.item.bait.thumb" :title="data.item.bait.name" width="120" />
+              </b-col>
+            </b-row>
+          </b-card>
+        </template>
+      </b-table>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 import fish from '@/assets/json/fish.json';
 import FishImg from '@/components/FishImg.vue';
+
+const fields = {
+  name: {
+    key: 'name',
+    label: 'Name',
+    headerTitle: 'The name of the fish',
+    sortable: true,
+  },
+  unique: {
+    key: 'unique.name',
+    label: 'Unique',
+    headerTitle: 'Unique item when dismantling - you will receive one regardless of size',
+    sortable: true,
+  },
+  small: {
+    label: 'Small',
+    headerTitle: 'Common size - you will get fish parts if dismantled or standing if donated',
+  },
+  medium: {
+    label: 'Medium',
+    headerTitle: 'Uncommon size - you will get fish parts if dismantled or standing if donated',
+  },
+  large: {
+    label: 'Large',
+    headerTitle: 'Rare size - you will get fish parts if dismantled or standing if donated',
+  },
+  location: {
+    key: 'location',
+    label: 'Location',
+    headerTitle: 'Location of where to find the fish',
+    sortable: true,
+  },
+  time: {
+    key: 'time.string',
+    label: 'Time',
+    headerTitle: 'Time of when you can find the fish - arrow denotes preference',
+    sortable: true,
+  },
+  rarity: {
+    key: 'rarity',
+    label: 'Rarity',
+    headerTitle: 'How likely the fish will spawn',
+    sortable: true,
+  },
+  bait: {
+    key: 'bait.name',
+    label: 'Bait',
+    headerTitle: 'What bait will make this fish more likely to spawn',
+    sortable: true,
+  },
+  bait_required: {
+    label: 'Bait Required',
+    headerTitle: 'Whether bait is required in order for this fish to spawn',
+    sortable: true,
+  },
+  hotspot: {
+    label: 'Hotspot Required',
+    headerTitle: 'Whether a hotspot is required for this fish to spawn',
+    sortable: true,
+  },
+  spear: {
+    label: 'Spear',
+    headerTitle: 'What spear is effective at catching the fish',
+  },
+  max_mass: {
+    key: 'maximumMass',
+    label: 'Max Weight',
+    headerTitle: 'The maximum weight possible for this fish',
+    sortable: true,
+  },
+  more_info: {
+    label: 'Info',
+    headerTitle: 'Display pictures for fish, unique, and bait type',
+  },
+};
 
 export default {
   name: 'fish',
@@ -147,8 +204,14 @@ export default {
   },
   data() {
     return {
-      fishes: fish,
+      fish: fish,
+      fields: fields,
     };
+  },
+  methods: {
+    track() {
+      this.$ga.page('/poe/fish');
+    },
   },
 };
 </script>

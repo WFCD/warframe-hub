@@ -46,7 +46,7 @@
     "vue-raven": "^1.0.3",
     "vue-router": "^3.0.3",
     "vue-template-compiler": "^2.6.10",
-    "vue2-leaflet": "^1.2.3",
+    "vue2-leaflet": "^2.2.0",
     "vuex": "^3.1.1",
     "vuex-persistedstate": "^2.5.4"
   },

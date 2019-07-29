@@ -18,7 +18,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "5.8.2",
+    "@fortawesome/fontawesome-free": "5.10.0",
     "@types/node-fetch": "^2.3.5",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",

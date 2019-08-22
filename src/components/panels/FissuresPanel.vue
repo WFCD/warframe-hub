@@ -63,7 +63,8 @@ export default {
       return this.fissures.filter((fissure) => {
         const isFiltered = planets.test(fissure.node);
         return (pState.length > 0 ? !isFiltered : true) && !fissure.expired;
-      });
+        })
+        .sort((a, b) => a.tierNum - b.tierNum);
     },
   },
   methods: {

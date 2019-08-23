@@ -2,8 +2,8 @@
   <div class="timers">
     <b-container fluid class="grid">
       <b-row ref="timerComponentGrid" v-packery="{ itemSelector: '.packery-item', percentPosition: true }">
-        <AcolytesPanel v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
-        <EventsPanel v-if="componentState.event.display" :events="worldstate.events" />
+        <AcolytesPanel v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies || []" />
+        <EventsPanel v-if="componentState.event.display" :events="worldstate.events || []" />
         <ResetPanel v-if="componentState.reset.display" />
         <AlertPanel v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
         <InvasionsPanel v-if="componentState.invasions.display" :invasions="worldstate.invasions" />

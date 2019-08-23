@@ -1,10 +1,14 @@
 <template>
   <HubPanelWrap :title="headertext">
     <b-list-group>
-      <b-list-group-item class="list-group-item-borderbottom">
+      <b-list-group-item
+        v-if="construction && Object.keys(construction).length > 2"
+        class="list-group-item-borderbottom"
+      >
         <div class="construction-wrapper text-center">
           <VueCircle
-            :progress="percent(construction.fomorianProgress)"
+            ref="fomoProgress"
+            :progress="0"
             :size="75"
             :fill="{ color: '#ff0000' }"
             class="prog-circle"
@@ -15,7 +19,8 @@
         </div>
         <div class="construction-wrapper text-center">
           <VueCircle
-            :progress="percent(construction.razorbackProgress)"
+            ref="razorProgress"
+            :progress="0"
             :size="75"
             :fill="{ color: '#5BACF7' }"
             class="prog-circle"
@@ -26,7 +31,8 @@
         </div>
         <div class="construction-wrapper text-center">
           <VueCircle
-            :progress="percent(construction.unknownProgress)"
+            ref="unkProgress"
+            :progress="0"
             :size="75"
             :fill="{ color: '#738BDA' }"
             class="prog-circle"
@@ -65,7 +71,17 @@ export default {
     },
   },
   methods: {
-    percent: (str) => Number.parseFloat(str),
+    percent: (str) => Number.parseFloat(str || '0.00'),
+  },
+  mounted() {
+    this.$refs.fomoProgress.updateProgress(this.percent(this.construction.fomorianProgress));
+    this.$refs.razorProgress.updateProgress(this.percent(this.construction.razorbackProgress));
+    this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
+  },
+  updated() {
+    this.$refs.fomoProgress.updateProgress(this.percent(this.construction.fomorianProgress));
+    this.$refs.razorProgress.updateProgress(this.percent(this.construction.razorbackProgress));
+    this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
   },
   data() {
     return {

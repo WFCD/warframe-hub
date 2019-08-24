@@ -1,11 +1,11 @@
 <template>
   <HubPanelWrap :title="headertext">
     <b-list-group>
-      <b-list-group-item v-if="syndicate.active" class="list-group-item-borderless">
+      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderless">
         <span class="pull-left">Bounties expire in:</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
       </b-list-group-item>
-      <b-list-group-item v-if="syndicate.active" class="list-group-item-borderbottom">
+      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
         <Collapsible :headertext="`${headertext} Bounties`">
           <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
             <span slot="rewards" slot-scope="data" v-html="data.value"></span>
@@ -43,7 +43,7 @@ export default {
       return `${this.type} Bounty Cycle`;
     },
     items: function() {
-      return this.syndicate.jobs.map((job) => ({
+      return (this.syndicate || { jobs: [] }).jobs.map((job) => ({
         type: job.type,
         standing: job.standingStages.join(', '),
         'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,

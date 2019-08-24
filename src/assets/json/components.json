@@ -156,5 +156,10 @@
     "props": {
       "nightwave": "@worldstate.nightwave"
     }
+  },
+  "construction": {
+    "display": true,
+    "displayName": "Construction",
+    "key": "construction"
   }
 }

@@ -57,7 +57,6 @@ export default {
         timeText += `${duration.seconds()}s`;
       }
       if (timeText.includes('-')) {
-        this.$raven.captureMessage(`Forcing reload on ${this.$parent.name}`);
         this.$parent.$forceUpdate();
       }
       return timeText;

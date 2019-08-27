@@ -79,6 +79,7 @@ import '@/assets/less/night.less';
 import '@/assets/less/day.less';
 import '@/assets/less/retro.less';
 import '@/assets/less/eidolon.less';
+import '@/assets/less/nightCompact.less';
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');

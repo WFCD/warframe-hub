@@ -22,5 +22,11 @@
     "class": "retro",
     "display": "Retro",
     "faclass": "fas fa-terminal"
+  },
+  {
+    "key": "night-compact",
+    "class": "night-compact",
+    "display": "Night Compact",
+    "faclass": "fas fa-th"
   }
 ]

@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" :class="{ 'no-content': events.length === 0 }">
     <b-list-group>
       <b-list-group-item
         v-for="(event, index) in events"

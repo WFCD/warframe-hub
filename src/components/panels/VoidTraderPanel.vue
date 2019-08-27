@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="baro">
     <b-list-group>
       <b-list-group-item :class="`${available() ? 'list-group-item-borderless' : 'list-group-item-borderbottom'}`">
         <span class="pull-left">{{ locationLabel() }}</span>

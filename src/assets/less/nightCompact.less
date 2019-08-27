@@ -1,0 +1,440 @@
+.night-compact {
+  &#app {
+    padding: 35px 0 10px 0;
+    background: #1A1D1F;
+  }
+
+  .navbar {
+    height: 20px;
+  }
+
+  .navbar.navbar-dark.bg-primary {
+    background: #1a5072 !important;
+  }
+
+  .list-group .list-group-item {
+    background: #2C2F33;
+  }
+
+  .badge-warning {
+    background: #684308;
+  }
+
+  .badge-danger {
+    background: #852d23;
+  }
+
+  .badge-info {
+    background: #004d80;
+  }
+
+  .badge-primary {
+    background: #194c6c;
+  }
+
+  .badge-success {
+    background: #00523d;
+  }
+
+  .router-link-exact-active.router-link-active, .router-link-active {
+    color: rgb(0, 188, 140);
+  }
+
+  h3, h4, h5 {
+    font-size: 1.1rem;
+  }
+
+  h4, h5 {
+    margin: 0;
+  }
+
+  .no-content {
+    display: none;
+  }
+
+  .no-content-warning {
+    font-size: 1.2rem;
+  }
+
+  .fa-3x {
+    font-size: 1.2rem;
+  }
+
+  .badge {
+    font-size: 90%;
+    color: inherit;
+    display: inline-block !important;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  .list-group-item {
+    padding: 2px 4px;
+  }
+
+  .panel-header {
+    margin: 5px 0;
+  }
+
+  .table {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+
+    tr td:first-child {
+      text-align: left;
+    }
+
+    td,
+    th {
+      padding: 0;
+      margin: 0;
+    }
+
+    tr:nth-child(2n) {
+      background: #0002;
+    }
+  }
+
+  .time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .list-group {
+      display: contents;
+    }
+
+    .header-panel {
+      flex: 0;
+      margin: 0;
+      font-size: 0;
+    }
+
+    .header-panel::after {
+      font-size: 1.1rem;
+    }
+
+    &.earth .header-panel::after {
+      content: "Earth";
+    }
+
+    &.cetus .header-panel::after {
+      content: "Cetus";
+    }
+
+    &.vallis .header-panel::after {
+      content: "Vallis";
+    }
+
+    .list-group-item {
+      flex: 0;
+      border: none !important;
+      background: none;
+      white-space: nowrap;
+    }
+
+    .pull-left {
+      display: none;
+    }
+
+    .pull-right {
+      float: none;
+    }
+
+    .header-panel {
+      margin: 0;
+    }
+  }
+
+  .reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .list-group {
+      display: contents;
+    }
+
+    .list-group-item {
+      display: contents !important;
+    }
+
+    .pull-left {
+      display: none;
+    }
+
+    .pull-right {
+      float: none;
+    }
+
+    .text-center {
+      padding: 0 0 0 8px;
+      margin: 0;
+    }
+  }
+
+  .construction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .list-group {
+      display: contents;
+    }
+
+    .list-group-item {
+      display: contents;
+    }
+
+    canvas {
+      display: none;
+    }
+
+    .construction-wrapper {
+      display: flex;
+    }
+
+    .circle-percent-text-body {
+      display: contents;
+    }
+
+    .percent-text {
+      font-size: inherit !important;
+      display: block;
+    }
+
+    .text-center {
+      padding: 0 0 0 8px;
+      flex: 0;
+      white-space: nowrap;
+      margin: 0;
+    }
+  }
+
+  .invasions {
+    .invasion-container {
+      display: grid;
+      grid-template: "info info info" "rewa prog rewb";
+      grid-template-columns: auto 1fr auto;
+      grid-gap: 0 8px;
+    }
+
+    .list-group .text-center {
+      grid-area: info;
+      display: flex;
+      justify-content: space-between;
+
+      br {
+        display: none;
+      }
+
+      button {
+        order: 2;
+        padding: 0px 8px;
+      }
+    }
+
+    .invasion-rewards {
+      display: contents;
+
+      div:not(.badge) {
+        display: contents;
+      }
+
+      .pull-left .badge {
+        grid-area: rewa;
+      }
+
+      .pull-right .badge {
+        grid-area: rewb;
+      }
+    }
+
+    .invasion-progress {
+      grid-area: prog;
+
+      .progress {
+        align-self: center;
+      }
+    }
+
+    div[id^=spoiler] {
+      display: block !important;
+    }
+
+    button[aria-controls^=spoiler] {
+      display: none;
+    }
+  }
+
+  .bounties {
+    button {
+      display: none;
+    }
+
+    div[id^=collapsible] {
+      display: block !important;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+  }
+
+  .bounty-table {
+    margin: 0;
+
+    th,
+    td,
+    br {
+      display: none;
+      border: none;
+    }
+
+    td:nth-child(3) {
+      white-space: nowrap;
+    }
+
+    td:nth-child(n+3) {
+      display: table-cell;
+    }
+
+    span > span {
+      display: inline-block;
+      background: #9ca2;
+      border-radius: 0.25rem;
+      padding: 0 4px;
+      margin: 2px;
+    }
+  }
+
+  .sortie {
+    .list-group-item:not(:first-child) {
+      display: flex !important;
+      justify-content: space-between;
+      padding: 1px 8px;
+    }
+
+    .list-group-item > div {
+      display: contents;
+    }
+
+    h4 span[data-original-title]::after {
+      content: "  " attr(data-original-title) ":";
+      filter: invert(100%);
+    }
+  }
+
+  .nightwave .list-group-item {
+    display: flex !important;
+    align-items: flex-start;
+
+    img[alt="Weekly"],
+    img[alt="Elite Weekly"] {
+      width: 32px;
+      height: 20px;
+      padding: 0 6px;
+    }
+
+    .pull-left[data-original-title] {
+      font-weight: 600;
+      text-align: left;
+      flex: 1;
+    }
+
+    .pull-left[data-original-title]::after {
+      content: " - " attr(data-original-title);
+      font-weight: normal;
+    }
+  }
+
+  .fissures {
+    .li-mission-decorator {
+      filter: none;
+      overflow: hidden;
+      border-radius: 100px;
+      display: inline-block;
+      width: 84px;
+      height: 20px;
+      margin: 3px 0 -3px 0;
+    }
+
+    .li-mission-decorator img {
+      filter: invert(100%);
+      width: 48px;
+      height: 48px;
+      max-width: none;
+      max-height: none;
+      margin: -20px;
+    }
+
+    span[data-original-title]::after {
+      content: attr(data-original-title);
+      display: inline-block;
+      min-width: 60px;
+      padding: 0 0 0 24px;
+      text-align: left;
+    }
+  }
+
+  .baro {
+    button {
+      display: none;
+    }
+
+    div[id^=collapsible] {
+      display: block !important;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+
+    table {
+      display: block;
+      columns: 2;
+
+      thead,
+      tbody {
+        display: contents;
+      }
+
+      tr {
+        display: flex;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        display: block;
+      }
+    }
+
+    .table {
+      td:nth-child(1) {
+        flex: 1;
+      }
+
+      td:nth-child(2)::after {
+        content: "d ";
+      }
+
+      td:nth-child(3)::after {
+        content: "c";
+      }
+
+      td:nth-child(n+2) {
+        text-align: right;
+      }
+    }
+  }
+}

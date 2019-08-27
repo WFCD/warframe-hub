@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="nightwave">
     <b-list-group v-if="nightwave && nightwave.activeChallenges">
       <b-list-group-item
         :style="styleObject"

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="invasion-container">
     <div :id="`${invasion.id}_info`" class="text-center">
       <span
         ><b>{{ invasion.node }}</b></span
@@ -12,7 +12,7 @@
       <br />
       {{ invasion.desc }} {{ eta(invasion) }}
     </div>
-    <b-row>
+    <b-row class="invasion-rewards">
       <b-col>
         <div class="pull-left">
           <b-badge
@@ -46,7 +46,7 @@
         </div>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row class="invasion-progress">
       <b-progress :max="100" class="w-100 h-125">
         <b-progress-bar
           :variant="getLabelColor(invasion.attackingFaction)"

@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="construction">
     <b-list-group>
       <b-list-group-item
         v-if="construction && Object.keys(construction).length > 2"

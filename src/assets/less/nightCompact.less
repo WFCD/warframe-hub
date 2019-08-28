@@ -64,6 +64,10 @@
     font-size: 90%;
     color: inherit;
     display: inline-block !important;
+
+    @media (max-width: 1500px) {
+      font-size: 85%;
+    }
   }
 
   .row {
@@ -183,6 +187,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
     .list-group {
       display: contents;
@@ -261,6 +266,11 @@
 
       .progress {
         align-self: center;
+        height: 1rem;
+      }
+
+      @media (max-width: 1500px) {
+        display: none;
       }
     }
 
@@ -282,6 +292,11 @@
       display: block !important;
     }
 
+    .card {
+      background: none;
+      border: none;
+    }
+
     .card-body {
       padding: 0;
     }
@@ -298,6 +313,7 @@
     }
 
     td:nth-child(3) {
+      padding: 0 0 0 2px !important;
       white-space: nowrap;
     }
 
@@ -318,11 +334,16 @@
     .list-group-item:not(:first-child) {
       display: flex !important;
       justify-content: space-between;
+      flex-wrap: wrap;
       padding: 1px 8px;
     }
 
     .list-group-item > div {
       display: contents;
+    }
+
+    br + .pull-left {
+      margin: 0 0 0 auto;
     }
 
     h4 span[data-original-title]::after {
@@ -348,9 +369,11 @@
       flex: 1;
     }
 
-    .pull-left[data-original-title]::after {
-      content: " - " attr(data-original-title);
-      font-weight: normal;
+    @media (min-width: 1500px) {
+      .pull-left[data-original-title]::after {
+        content: " - " attr(data-original-title);
+        font-weight: normal;
+      }
     }
   }
 
@@ -380,6 +403,16 @@
       min-width: 60px;
       padding: 0 0 0 24px;
       text-align: left;
+    }
+
+    @media (max-width: 1500px) {
+      .li-mission-decorator {
+        width: 24px;
+      }
+
+      span [data-original-title]::after {
+        display: none;
+      }
     }
   }
 
@@ -434,6 +467,33 @@
       td:nth-child(n+2) {
         text-align: right;
       }
+    }
+  }
+
+  .darvo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .compact-text {
+      display: block;
+
+      b {
+        margin: 0 8px;
+      }
+    }
+
+    .list-group {
+      display: none;
+    }
+
+    .text-center {
+      margin: 0 8px 0 0;
+    }
+
+    .badge {
+      margin: 0 0 0 8px;
     }
   }
 }

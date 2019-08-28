@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext" class="bounties" :class="[syndicate]">
+  <HubPanelWrap :title="headertext" class="bounties">
     <b-list-group>
       <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderless">
         <span class="pull-left">Bounties expire in:</span>

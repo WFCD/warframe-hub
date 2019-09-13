@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     theme() {
-      return themes.find(theme => theme.key === this.$store.getters.theme);
+      return themes.find((theme) => theme.key === this.$store.getters.theme);
     },
-  }
+  },
 };
 </script>

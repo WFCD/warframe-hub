@@ -1,43 +1,10 @@
-.night-compact {
+.compact {
   &#app {
     padding: 35px 0 10px 0;
-    background: #1A1D1F;
   }
 
   .navbar {
     height: 20px;
-  }
-
-  .navbar.navbar-dark.bg-primary {
-    background: #1a5072 !important;
-  }
-
-  .list-group .list-group-item {
-    background: #2C2F33;
-  }
-
-  .badge-warning {
-    background: #684308;
-  }
-
-  .badge-danger {
-    background: #852d23;
-  }
-
-  .badge-info {
-    background: #004d80;
-  }
-
-  .badge-primary {
-    background: #194c6c;
-  }
-
-  .badge-success {
-    background: #00523d;
-  }
-
-  .router-link-exact-active.router-link-active, .router-link-active {
-    color: rgb(0, 188, 140);
   }
 
   h3, h4, h5 {
@@ -494,6 +461,100 @@
 
     .badge {
       margin: 0 0 0 8px;
+    }
+  }
+
+  .events {
+    button {
+      display: none;
+    }
+
+    div[id^=collapsible] {
+      display: block !important;
+    }
+
+    .card,
+    .card-body {
+      display: contents;
+    }
+
+    .list-group-item {
+      position: relative;
+    }
+
+    .event-health {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    br,
+    div:empty {
+      display: none;
+    }
+
+    .event-job {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+
+      & > .text-center {
+        display: contents;
+      }
+
+      .event-job-title {
+        span:not(.badge) {
+          display: none;
+        }
+
+        .badge {
+          background: none;
+        }
+      }
+
+      .event-job-stages {
+        display: none;
+      }
+
+      .card-body div {
+        display: inline-block;
+        background: #9ca2;
+        border-radius: 0.25rem;
+        padding: 0 4px;
+        margin: 2px;
+      }
+    }
+  }
+
+  .sales {
+    .table {
+      display: block;
+      columns: 2;
+    }
+
+    .table thead,
+    .table tbody {
+      display: contents;
+    }
+
+    .table tr {
+      display: flex;
+
+      td,
+      th {
+        display: block;
+        text-align: left !important;
+
+        &:nth-child(1) {
+          flex: 1;
+        }
+
+        &:nth-child(3) {
+          display: none;
+        }
+      }
     }
   }
 }

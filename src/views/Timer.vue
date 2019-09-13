@@ -7,6 +7,7 @@
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
         <reset v-if="componentState.reset.display" />
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
+        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
         <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
         <events v-if="componentState.event.display" :events="worldstate.events" />
@@ -17,7 +18,6 @@
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
-        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
       </b-row>

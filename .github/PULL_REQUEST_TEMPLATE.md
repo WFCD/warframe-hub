@@ -1,10 +1,4 @@
-### Warframe Hub Pull Request
----
-**Summary (short):**
-
-
----
-**Description:**
+**Summary:**
 
 
 ---
@@ -15,8 +9,3 @@
 **Mockups, screenshots, evidence:**
 
 
----
-
-(Check one)
-- [ ] Issue fix
-- [ ] Suggestion fulfillment

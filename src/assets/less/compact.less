@@ -27,6 +27,15 @@
     font-size: 1.2rem;
   }
 
+  .card {
+    background: none;
+    border: none;
+  }
+
+  .card-body {
+    padding: 0;
+  }
+
   .badge {
     font-size: 90%;
     color: inherit;
@@ -66,6 +75,7 @@
     th {
       padding: 0;
       margin: 0;
+      height: auto !important;
     }
 
     tr:nth-child(2n) {
@@ -258,15 +268,6 @@
     div[id^=collapsible] {
       display: block !important;
     }
-
-    .card {
-      background: none;
-      border: none;
-    }
-
-    .card-body {
-      padding: 0;
-    }
   }
 
   .bounty-table {
@@ -392,10 +393,6 @@
       display: block !important;
     }
 
-    .card-body {
-      padding: 0;
-    }
-
     table {
       display: block;
       columns: 2;
@@ -471,11 +468,6 @@
 
     div[id^=collapsible] {
       display: block !important;
-    }
-
-    .card,
-    .card-body {
-      display: contents;
     }
 
     .list-group-item {

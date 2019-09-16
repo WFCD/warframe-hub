@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="sales">
     <b-list-group>
       <b-list-group-item class="list-group-item-borderbottom" v-if="sales.length">
         <table class="table" style="table-layout: fixed">

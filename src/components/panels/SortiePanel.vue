@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="sortie">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderless no-padding-bot">
         <span class="pull-left">

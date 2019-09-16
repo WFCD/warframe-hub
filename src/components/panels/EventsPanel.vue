@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="events" :class="{ 'no-content': events.length === 0 }">
     <b-list-group>
       <b-list-group-item
         v-for="(event, index) in events"
@@ -13,10 +13,10 @@
         <h5 class="display-5 text-center">{{ event.description }}</h5>
         <div class="text-center">{{ event.tooltip }}</div>
         <br />
-        <div class="text-center bottom-pad">
+        <div class="text-center bottom-pad" v-if="event.victimNode !== undefined">
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>
-        <b-badge :variant="eventHealthVariant(event)">
+        <b-badge class="event-health" :variant="eventHealthVariant(event)">
           {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Remaining
         </b-badge>
         <div class="text-center bottom-pad" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
@@ -29,24 +29,24 @@
           <b-badge v-if="reward.credits" variant="info">{{ reward.credits }}cr</b-badge>
         </div>
 
-        <b-row>
+        <b-row v-if="event.jobs">
           <b-col
             md="6"
             v-for="job in event.jobs"
             :key="`${job.type.replace(/\s/gi, '-').toLowerCase()}-${index}`"
-            class="bottom-pad"
+            class="event-job bottom-pad"
           >
             <div class="text-center">
-              <div class="bottom-pad">
-                {{ job.type }}
+              <div class="event-job-title bottom-pad">
+                <span>{{ job.type }}</span>
                 <b-badge variant="info">{{ job.enemyLevels[0] }}-{{ job.enemyLevels[1] }}</b-badge>
               </div>
-              <Collapsible headertext="Standing Stages" class="bottom-pad">
+              <Collapsible headertext="Standing Stages" class="event-job-stages bottom-pad">
                 <div v-for="s in job.standingStages" :key="`standing-${s}-${makeid()}`">
                   {{ s }}
                 </div>
               </Collapsible>
-              <Collapsible headertext="Rewards">
+              <Collapsible headertext="Rewards" class="event-job-rewards">
                 <div v-for="r in job.rewardPool" :key="`rewards-${r}-${makeid()}`">
                   {{ r }}
                 </div>

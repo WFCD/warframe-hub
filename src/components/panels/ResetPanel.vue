@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="reset">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <span class="pull-left">

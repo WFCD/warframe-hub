@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="invasions" :class="{ 'no-content': invasions.length === 0 }">
     <b-list-group>
       <b-list-group-item
         :style="styleObject"

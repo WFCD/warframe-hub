@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="time" :class="[location.toLowerCase()]">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderless">
         <span class="pull-left">

@@ -2,24 +2,24 @@
   <div class="timers">
     <b-container fluid class="grid">
       <b-row ref="timerComponentGrid" v-packery="{ itemSelector: '.packery-item', percentPosition: true }">
-        <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
-        <events v-if="componentState.event.display" :events="worldstate.events" />
-        <reset v-if="componentState.reset.display" />
-        <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
-        <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
-        <news v-if="componentState.news.display" :news="worldstate.news" />
-        <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
+        <reset v-if="componentState.reset.display" />
+        <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
+        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
+        <news v-if="componentState.news.display" :news="worldstate.news" />
+        <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
+        <events v-if="componentState.event.display" :events="worldstate.events" />
+        <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
+        <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
+        <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
+        <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
-        <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
-        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-        <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
       </b-row>
     </b-container>
   </div>

@@ -1,5 +1,11 @@
 <template>
-  <HubPanelWrap :title="headertext">
+  <HubPanelWrap :title="headertext" class="darvo">
+    <div class="compact-text" v-if="deals.length === 1">
+      <b>{{ deals[0].item }}</b>
+      {{ deals[0].salePrice }} <HubImg :src="platinum" name="Platinum" /> ({{ deals[0].discount }}% off)
+      {{ deals[0].total - deals[0].sold }}/{{ deals[0].total }} left
+      <TimeBadge :starttime="now()" :endtime="deals[0].expiry" :interval="10000" />
+    </div>
     <b-list-group>
       <b-list-group-item class="list-group-item-borderbottom" v-if="deals.length">
         <table class="table" style="table-layout: fixed">

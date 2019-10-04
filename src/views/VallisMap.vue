@@ -22,7 +22,7 @@ import fishRecommend from '@/assets/json/geo/vallis/fishing-recommend.json';
 import mineRecommend from '@/assets/json/geo/vallis/mining-recommend.json';
 import toroidFishCave from '@/assets/json/geo/vallis/toroidfishcave.json';
 import toroidCave from '@/assets/json/geo/vallis/toroidcave.json';
-import fishCave from '@/assets/json/geo/vallis/fishcave.json'
+import fishCave from '@/assets/json/geo/vallis/fishcave.json';
 import kdrive from '@/assets/json/geo/vallis/kdrive.json';
 import oddity from '@/assets/json/geo/vallis/memoryfrag.json';
 import somachord from '@/assets/json/geo/vallis/somachord.json';
@@ -54,7 +54,7 @@ const mineRecommendMarker = L.icon({
 
 const fishCaveMarker = L.icon({
   iconUrl: fishCaveIcon,
-  iconSize: [50,34]
+  iconSize: [50, 34],
 });
 
 const fishToroidCaveMarker = L.icon({
@@ -122,15 +122,27 @@ function onEachOddity(feature, layer) {
 }
 
 function toroidMarkerFromName(name) {
-  return name.startsWith('Calda') ? caldaMarker : 
-  name.startsWith('Sola') ? solaMarker : 
-  name.startsWith('Vega') ? vegaMarker : vegaMarker; 
+  if (name.startsWith('Calda')) {
+    return caldaMarker;
+  } else if (name.startsWith('Sola')) {
+    return solaMarker;
+  } else if (name.startsWith('Vega')) {
+    return vegaMarker;
+  }
+
+  return null;
 }
 
 function caveMarkerFromName(name) {
-  return name.startsWith('Fishing Cave') ? fishCaveMarker : 
-  name.startsWith('Toroid Cave') ? toroidCaveMarker : 
-  name.startsWith('Toroid Fish Cave') ? fishToroidCaveMarker : fishToroidCaveMarker; 
+  if (name.startsWith('Fishing Cave')) {
+    return fishCaveMarker;
+  } else if (name.startsWith('Toroid Cave')) {
+    return toroidCaveMarker;
+  } else if (name.startsWith('Toroid Fish Cave')) {
+    return fishToroidCaveMarker;
+  }
+
+  return null;
 }
 
 function defaultToggleValues() {
@@ -255,7 +267,6 @@ function dataFn() {
         json: fishCave.concat(toroidCave).concat(toroidFishCave),
         opts: {
           pointToLayer: function(feature, latlng) {
-            console.log('f', feature.properties.name)
             return markerAlias(latlng, { icon: caveMarkerFromName(feature.properties.name) });
           },
           onEachFeature: onEachFeature,

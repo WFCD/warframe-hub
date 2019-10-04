@@ -1,13 +1,13 @@
 [
    {
       "type":"Feature",
-      "properties":{
+      "properties": {
          "type":"marker",
          "name":"Fishing Cave"
       },
-      "geometry":{
+      "geometry": {
          "type":"Point",
-         "coordinates":[
+         "coordinates": [
             1480.74,
             1895.73
          ]

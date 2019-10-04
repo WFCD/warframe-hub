@@ -3,11 +3,7 @@
     <b-row>
       <b-col>
         <l-map ref="vmap" :zoom="zoom" :center="center" :options="mapOptions" :crs="crs" :style="mapStyle">
-          <l-control-layers position="topright" :collapsed="false" :sort-layers="true" />
           <l-image-overlay :url="url" :bounds="bounds" />
-          <l-layer-group v-for="geojson in geo" layer-type="overlay" :key="geojson.name" :name="geojson.name" ref="layerGroup">
-            <l-geo-json :geojson="geojson.json" :options="geojson.opts" />
-          </l-layer-group>
         </l-map>
       </b-col>
     </b-row>
@@ -137,140 +133,169 @@ function caveMarkerFromName(name) {
   name.startsWith('Toroid Fish Cave') ? fishToroidCaveMarker : fishToroidCaveMarker; 
 }
 
+function defaultToggleValues() {
+  let defaults = {};
+  dataFn().geo.forEach((g) => {
+    defaults[g.name + '-toggle-value'] = true;
+  });
+  return defaults;
+}
+
 const markerAlias = L.marker;
 const labelAlias = L.circleMarker;
 
-console.log('caves', fishCave.concat(toroidCave).concat(toroidFishCave));
+function dataFn() {
+  return {
+    zoom: -1,
+    center: L.latLng(942, 1060),
+    url: vallis,
+    bounds: [[0, 0], [2150, 2153]],
+    mapOptions: {
+      zoomSnap: 0.5,
+      minZoom: -10,
+      attributionControl: false,
+    },
+    crs: L.CRS.Simple,
+    mapStyle: {
+      height: 'calc(100vh - 100px)',
+      width: '100%',
+    },
+    geo: [
+      {
+        name: 'Map Label',
+        json: labels,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return labelAlias(latlng)
+              .setStyle({
+                stroke: false,
+                fill: false,
+              })
+              .bindTooltip(feature.properties.name, {
+                permanent: true,
+                direction: 'center',
+                className: 'map-label',
+              })
+              .openTooltip();
+          },
+        },
+      },
+      {
+        name: 'Fishing',
+        json: fish,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng);
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'Fishing Spots',
+        json: fishRecommend,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: fishRecommendMarker });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'Mining Spots',
+        json: mineRecommend,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: mineRecommendMarker });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'K-Drive',
+        json: kdrive,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: kdriveMarker });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'Oddity',
+        json: oddity,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: oddityMarker });
+          },
+          onEachFeature: onEachOddity,
+        },
+      },
+      {
+        name: 'Somachord Tone',
+        json: somachord,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: somachordMarker });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'Toroids',
+        json: toroids,
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            return markerAlias(latlng, { icon: toroidMarkerFromName(feature.properties.name) });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+      {
+        name: 'Special Caves',
+        json: fishCave.concat(toroidCave).concat(toroidFishCave),
+        opts: {
+          pointToLayer: function(feature, latlng) {
+            console.log('f', feature.properties.name)
+            return markerAlias(latlng, { icon: caveMarkerFromName(feature.properties.name) });
+          },
+          onEachFeature: onEachFeature,
+        },
+      },
+    ],
+  };
+}
 
 export default {
   name: 'Vallismap',
-  data() {
-    return {
-      zoom: -1,
-      center: L.latLng(942, 1060),
-      url: vallis,
-      bounds: [[0, 0], [2150, 2153]],
-      mapOptions: {
-        zoomSnap: 0.5,
-        minZoom: -10,
-        attributionControl: false,
-      },
-      crs: L.CRS.Simple,
-      mapStyle: {
-        height: 'calc(100vh - 100px)',
-        width: '100%',
-      },
-      geo: [
-        {
-          name: 'Map Label',
-          json: labels,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return labelAlias(latlng)
-                .setStyle({
-                  stroke: false,
-                  fill: false,
-                })
-                .bindTooltip(feature.properties.name, {
-                  permanent: true,
-                  direction: 'center',
-                  className: 'map-label',
-                })
-                .openTooltip();
-            },
-          },
-        },
-        {
-          name: 'Fishing',
-          json: fish,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng);
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'Fishing Spots',
-          json: fishRecommend,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: fishRecommendMarker });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'Mining Spots',
-          json: mineRecommend,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: mineRecommendMarker });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'K-Drive',
-          json: kdrive,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: kdriveMarker });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'Oddity',
-          json: oddity,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: oddityMarker });
-            },
-            onEachFeature: onEachOddity,
-          },
-        },
-        {
-          name: 'Somachord Tone',
-          json: somachord,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: somachordMarker });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'Toroids',
-          json: toroids,
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              return markerAlias(latlng, { icon: toroidMarkerFromName(feature.properties.name) });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-        {
-          name: 'Special Caves',
-          json: fishCave.concat(toroidCave).concat(toroidFishCave),
-          opts: {
-            pointToLayer: function(feature, latlng) {
-              console.log('f', feature.properties.name)
-              return markerAlias(latlng, { icon: caveMarkerFromName(feature.properties.name) });
-            },
-            onEachFeature: onEachFeature,
-          },
-        },
-      ],
-    };
-  },
+  data: dataFn,
   methods: {
     track() {
       this.$ga.page('/vallis/map');
     },
   },
   mounted: function() {
-    
+    this.map = this.$refs.vmap.mapObject;
+    // Get our toggle values from local storage
+    let toggles = localStorage.vallisMapToggles ? JSON.parse(localStorage.vallisMapToggles) : defaultToggleValues();
+    // Now add each of our geos to a new layer
+    var data = dataFn();
+    var layerGroups = {};
+    data.geo.forEach((g) => {
+      var lg = L.layerGroup();
+      L.geoJSON(g.json, g.opts).addTo(lg);
+      layerGroups[g.name] = lg;
+      // and if that layer's toggle vlaue is true, add it to the map immediately
+      if (toggles[g.name + '-toggle-value']) {
+        lg.addTo(this.map);
+      }
+    });
+    // Add all of the layer groups to the map
+    L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
+    // Now wire up an event when the user toggles one of the layers to update localstorage
+    this.map.on('overlayadd overlayremove', (e) => {
+      toggles[e.name + '-toggle-value'] = e.type === 'overlayadd';
+      localStorage.vallisMapToggles = JSON.stringify(toggles);
+    });
   },
 };
 </script>

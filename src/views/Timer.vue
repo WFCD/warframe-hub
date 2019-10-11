@@ -15,6 +15,7 @@
         <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
         <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
+        <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
@@ -32,6 +33,7 @@ import NewsPanel from '@/components/panels/NewsPanel.vue';
 import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
+import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
 import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
@@ -51,6 +53,7 @@ export default {
     timer: TimePanel,
     reset: ResetPanel,
     sortie: SortiePanel,
+    arbitration: ArbitrationPanel,
     acolytes: AcolytesPanel,
     fissures: FissuresPanel,
     bounty: BountyPanel,

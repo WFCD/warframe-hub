@@ -91,7 +91,7 @@
     "displayName": "Invasions",
     "key": "invasions",
     "component": "InvasionsPanel",
-    "expand":false,
+    "expand": false,
     "props": {
       "invasions": "@worldstate.invasions"
     }
@@ -110,6 +110,15 @@
     "component": "SortiePanel",
     "props": {
       "sortie": "@worldstate.sortie"
+    }
+  },
+  "arbitration": {
+    "display": true,
+    "displayName": "Arbitration",
+    "key": "arbitration",
+    "component": "ArbitrationPanel",
+    "props": {
+      "arbitration": "@worldstate.arbitration"
     }
   },
   "fissures": {

@@ -20,6 +20,20 @@
       "expired": true,
       "eta": "1h 1m 1s"
     },
+    "arbitration": {
+      "activation": "2000-01-01T01:00:00.000Z",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "solnode": "Loading...",
+      "node": "Loading...",
+      "name": "Loading...",
+      "tile": "Loading...",
+      "planet": "Loading...",
+      "enemy": "Loading...",
+      "type": "Loading...",
+      "node_type": "Loading...",
+      "archwing": false,
+      "sharkwing": false
+    },
     "syndicateMissions": [],
     "fissures": [],
     "globalUpgrades": [],
@@ -103,6 +117,20 @@
       "faction": "Loading...",
       "expired": true,
       "eta": "1h 1m 1s"
+    },
+    "arbitration": {
+      "activation": "2000-01-01T01:00:00.000Z",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "solnode": "Loading...",
+      "node": "Loading...",
+      "name": "Loading...",
+      "tile": "Loading...",
+      "planet": "Loading...",
+      "enemy": "Loading...",
+      "type": "Loading...",
+      "node_type": "Loading...",
+      "archwing": false,
+      "sharkwing": false
     },
     "syndicateMissions": [],
     "fissures": [],
@@ -188,6 +216,20 @@
       "expired": true,
       "eta": "1h 1m 1s"
     },
+    "arbitration": {
+      "activation": "2000-01-01T01:00:00.000Z",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "solnode": "Loading...",
+      "node": "Loading...",
+      "name": "Loading...",
+      "tile": "Loading...",
+      "planet": "Loading...",
+      "enemy": "Loading...",
+      "type": "Loading...",
+      "node_type": "Loading...",
+      "archwing": false,
+      "sharkwing": false
+    },
     "syndicateMissions": [],
     "fissures": [],
     "globalUpgrades": [],
@@ -271,6 +313,20 @@
       "faction": "Loading...",
       "expired": true,
       "eta": "1h 1m 1s"
+    },
+    "arbitration": {
+      "activation": "2000-01-01T01:00:00.000Z",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "solnode": "Loading...",
+      "node": "Loading...",
+      "name": "Loading...",
+      "tile": "Loading...",
+      "planet": "Loading...",
+      "enemy": "Loading...",
+      "type": "Loading...",
+      "node_type": "Loading...",
+      "archwing": false,
+      "sharkwing": false
     },
     "syndicateMissions": [],
     "fissures": [],

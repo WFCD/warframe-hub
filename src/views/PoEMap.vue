@@ -80,7 +80,7 @@ function onEachOddity(feature, layer) {
   layer.bindPopup(popup.$mount().$el, { minWidth: 320 });
 }
 
-function dataFn() {
+function data() {
   return {
     zoom: 0,
     center: L.latLng(472, 535),
@@ -183,10 +183,34 @@ function dataFn() {
 
 function defaultToggleValues() {
   let defaults = {};
-  dataFn().geo.forEach((g) => {
+  data().geo.forEach((g) => {
     defaults[g.name + '-toggle-value'] = true;
   });
   return defaults;
+}
+
+function mounted() {
+  this.map = this.$refs.pmap.mapObject;
+  // Get our toggle values from local storage
+  let toggles = this.$store.getters.poeMapToggles || defaultToggleValues();
+  // Now add each of our geos to a new layer
+  var layerGroups = {};
+  data().geo.forEach((g) => {
+    var lg = L.layerGroup();
+    L.geoJSON(g.json, g.opts).addTo(lg);
+    layerGroups[g.name] = lg;
+    // and if that layer's toggle vlaue is true, add it to the map immediately
+    if (toggles[g.name + '-toggle-value']) {
+      lg.addTo(this.map);
+    }
+  });
+  // Add all of the layer groups to the map
+  L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
+  // Now wire up an event when the user toggles one of the layers to update localstorage
+  this.map.on('overlayadd overlayremove', (e) => {
+    toggles[e.name + '-toggle-value'] = e.type === 'overlayadd';
+    this.$store.commit('poeMapToggles', [toggles]);
+  });
 }
 
 const markerAlias = L.marker;
@@ -194,35 +218,12 @@ const labelAlias = L.circleMarker;
 
 export default {
   name: 'Poemap',
-  data: dataFn,
+  data: data,
   methods: {
     track() {
       this.$ga.page('/poe/map');
     },
   },
-  mounted: function() {
-    this.map = this.$refs.pmap.mapObject;
-    // Get our toggle values from local storage
-    let toggles = localStorage.poeMapToggles ? JSON.parse(localStorage.poeMapToggles) : defaultToggleValues();
-    // Now add each of our geos to a new layer
-    var data = dataFn();
-    var layerGroups = {};
-    data.geo.forEach((g) => {
-      var lg = L.layerGroup();
-      L.geoJSON(g.json, g.opts).addTo(lg);
-      layerGroups[g.name] = lg;
-      // and if that layer's toggle vlaue is true, add it to the map immediately
-      if (toggles[g.name + '-toggle-value']) {
-        lg.addTo(this.map);
-      }
-    });
-    // Add all of the layer groups to the map
-    L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
-    // Now wire up an event when the user toggles one of the layers to update localstorage
-    this.map.on('overlayadd overlayremove', (e) => {
-      toggles[e.name + '-toggle-value'] = e.type === 'overlayadd';
-      localStorage.poeMapToggles = JSON.stringify(toggles);
-    });
-  },
+  mounted: mounted,
 };
 </script>

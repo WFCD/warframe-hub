@@ -34,6 +34,8 @@ const state = {
     xb1: [],
     switch: [],
   },
+  poeMapToggles: {},
+  vallisMapToggles: {},
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -78,7 +80,14 @@ const mutations = {
   autoProgressNews: (state, [newState]) => {
     state.components.news.autoCycle = newState;
   },
+  poeMapToggles: (state, [toggles]) => {
+    state.poeMapToggles = toggles;
+  },
+  vallisMapToggles: (state, [toggles]) => {
+    state.vallisMapToggles = toggles;
+  },
 };
+
 const actions = {
   async updateWorldstate(context) {
     const { commit, getters } = context;
@@ -153,6 +162,8 @@ const getters = {
   sounds: (state) => state.soundFilters,
   notificationAllowance: (state) => state.notificationsAllowed,
   notifiedIds: (state) => state.notifiedIds[state.platform],
+  poeMapToggles: (state) => state.poeMapToggles,
+  vallisMapToggles: (state) => state.vallisMapToggles,
 };
 
 Vue.use(Vuex);

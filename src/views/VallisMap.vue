@@ -297,7 +297,7 @@ function mounted() {
   this.map.on('overlayadd overlayremove', (e) => {
     toggles[e.name + '-toggle-value'] = e.type === 'overlayadd';
     this.$store.commit('vallisMapToggles', [toggles]);
-    });
+  });
 }
 
 export default {

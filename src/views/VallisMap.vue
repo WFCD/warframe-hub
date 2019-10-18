@@ -145,14 +145,6 @@ function caveMarkerFromName(name) {
   return null;
 }
 
-function defaultToggleValues() {
-  let defaults = {};
-  data().geo.forEach((g) => {
-    defaults[g.name + '-toggle-value'] = true;
-  });
-  return defaults;
-}
-
 const markerAlias = L.marker;
 const labelAlias = L.circleMarker;
 
@@ -279,7 +271,7 @@ function data() {
 function mounted() {
   this.map = this.$refs.vmap.mapObject;
   // Get our toggle values from local storage
-  let toggles = this.$store.getters.vallisMapToggles || defaultToggleValues();
+  let toggles = this.$store.getters.vallisMapToggles;
   // Now add each of our geos to a new layer
   var layerGroups = {};
   data().geo.forEach((g) => {

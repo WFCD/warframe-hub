@@ -34,8 +34,26 @@ const state = {
     xb1: [],
     switch: [],
   },
-  poeMapToggles: {},
-  vallisMapToggles: {},
+  poeMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Grineer Camp-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Cetus Wisp-toggle-value': true,
+    'Vomvalyst Lure-toggle-value': true,
+    'Cave Entrance-toggle-value': true,
+  },
+  vallisMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Fishing Spots-toggle-value': true,
+    'Mining Spots-toggle-value': true,
+    'K-Drive-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Somachord Tone-toggle-value': true,
+    'Toroids-toggle-value': true,
+    'Special Caves-toggle-value': true,
+  },
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {

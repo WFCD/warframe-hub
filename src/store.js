@@ -34,6 +34,26 @@ const state = {
     xb1: [],
     switch: [],
   },
+  poeMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Grineer Camp-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Cetus Wisp-toggle-value': true,
+    'Vomvalyst Lure-toggle-value': true,
+    'Cave Entrance-toggle-value': true,
+  },
+  vallisMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Fishing Spots-toggle-value': true,
+    'Mining Spots-toggle-value': true,
+    'K-Drive-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Somachord Tone-toggle-value': true,
+    'Toroids-toggle-value': true,
+    'Special Caves-toggle-value': true,
+  },
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -78,7 +98,14 @@ const mutations = {
   autoProgressNews: (state, [newState]) => {
     state.components.news.autoCycle = newState;
   },
+  poeMapToggles: (state, [toggles]) => {
+    state.poeMapToggles = toggles;
+  },
+  vallisMapToggles: (state, [toggles]) => {
+    state.vallisMapToggles = toggles;
+  },
 };
+
 const actions = {
   async updateWorldstate(context) {
     const { commit, getters } = context;
@@ -153,6 +180,8 @@ const getters = {
   sounds: (state) => state.soundFilters,
   notificationAllowance: (state) => state.notificationsAllowed,
   notifiedIds: (state) => state.notifiedIds[state.platform],
+  poeMapToggles: (state) => state.poeMapToggles,
+  vallisMapToggles: (state) => state.vallisMapToggles,
 };
 
 Vue.use(Vuex);

@@ -1,0 +1,42 @@
+[
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Calda Toroid"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+         688.49, 642.88
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Sola Toroid"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+         550.59, 1871.63
+         ]
+      }
+   },
+   {
+      "type":"Feature",
+      "properties":{
+         "type":"marker",
+         "name":"Vega Toroid"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+         1455.98, 440.62
+         ]
+      }
+   }
+]
+ 

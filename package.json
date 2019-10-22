@@ -25,7 +25,7 @@
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-plugin-pwa": "^4.0.5",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-service": "^4.0.5",
     "bootstrap-vue": "^2.0.0-rc.28",
     "bootswatch": "^4.3.1",
     "css-loader": "^1.0.1",

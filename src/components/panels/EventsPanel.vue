@@ -2,13 +2,12 @@
   <HubPanelWrap :title="headertext" class="events" :class="{ 'no-content': events.length === 0 }">
     <b-list-group>
       <b-list-group-item
-        v-for="(event, index) in events"
+        v-for="(event, index) in activeEvents"
         :key="event.id"
         :class="{
           'list-group-item-borderless': index !== events.length - 1,
           'list-group-item-borderbottom': index === events.length - 1,
         }"
-        v-if="event.active"
       >
         <h5 class="display-5 text-center">{{ event.description }}</h5>
         <div class="text-center">{{ event.tooltip }}</div>
@@ -75,7 +74,7 @@
           </b-col>
         </b-row>
       </b-list-group-item>
-      <NoDataItem v-if="events.length === 0" :text="headertext" />
+      <NoDataItem v-if="activeEvents.length === 0" :text="headertext" />
     </b-list-group>
   </HubPanelWrap>
 </template>
@@ -96,6 +95,11 @@ export default {
   computed: {
     headertext() {
       return 'Events';
+    },
+    activeEvents() {
+      return this.$props.events.filter((event) => {
+        return event.active;
+      });
     },
   },
   methods: {

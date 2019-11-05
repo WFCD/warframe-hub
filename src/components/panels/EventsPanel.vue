@@ -12,11 +12,21 @@
       >
         <h5 class="display-5 text-center">{{ event.description }}</h5>
         <div class="text-center">{{ event.tooltip }}</div>
+        <TimeBadge
+          v-if="event.activation && event.expiry"
+          :starttime="event.activation"
+          :endtime="event.expiry"
+          :interval="1000"
+          :pullright="false"
+        />
         <br />
         <div class="text-center bottom-pad" v-if="event.victimNode !== undefined">
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>
-        <b-badge class="event-health" :variant="eventHealthVariant(event)">
+        <b-badge v-if="isHealthReversed(event)" class="event-health" :variant="eventHealthVariantOpposite(event)">
+          {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Completed
+        </b-badge>
+        <b-badge v-else class="event-health" :variant="eventHealthVariant(event)">
           {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Remaining
         </b-badge>
         <div class="text-center bottom-pad" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
@@ -64,6 +74,7 @@
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import Collapsible from '@/components/Collapsible';
+import TimeBadge from '@/components/TimeBadge.vue';
 
 import util from '@/utilities';
 
@@ -88,6 +99,24 @@ export default {
       }
       return labelClass;
     },
+    eventHealthVariantOpposite(event) {
+      const health = event.health;
+      let labelClass = 'success';
+      if (health >= 20 && health < 50) {
+        labelClass = 'info';
+      } else if (health >= 50 && health < 80) {
+        labelClass = 'warning';
+      } else if (health >= 80) {
+        labelClass = 'danger';
+      }
+      return labelClass;
+    },
+    isHealthReversed(event) {
+      if (event.description == 'Thermia Fractures') {
+        return true;
+      }
+      return false;
+    },
     makeid: function() {
       return util.makeid();
     },
@@ -96,6 +125,7 @@ export default {
     NoDataItem,
     HubPanelWrap,
     Collapsible,
+    TimeBadge,
   },
 };
 </script>

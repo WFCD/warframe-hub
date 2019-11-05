@@ -1,7 +1,11 @@
 <template>
   <HubPanelWrap :title="headertext" class="arbitration">
     <b-list-group>
-      <b-list-group-item v-if="expired" :style="styleObject" class="list-group-item-borderbottom">
+      <b-list-group-item
+        v-if="Object.keys(arbitration).length != 0 && notExpired"
+        :style="styleObject"
+        class="list-group-item-borderbottom"
+      >
         <span class="pull-left">
           <HubImg
             :src="factionImg"
@@ -15,9 +19,7 @@
         </span>
         <TimeBadge :starttime="arbitration.activation" :endtime="arbitration.expiry" :interval="1000" />
       </b-list-group-item>
-      <b-list-group-item v-else>
-        <NoDataItem :text="headertext" />
-      </b-list-group-item>
+      <NoDataItem v-else :text="headertext" />
     </b-list-group>
   </HubPanelWrap>
 </template>
@@ -39,7 +41,7 @@ export default {
   props: ['arbitration'],
   name: 'ArbitrationPanel',
   computed: {
-    expired() {
+    notExpired() {
       return moment(this.$props.arbitration.expiry).format('x') >= moment().format('x');
     },
     now() {

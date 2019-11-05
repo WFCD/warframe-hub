@@ -20,11 +20,10 @@
         }"
       >
         <div class="indent-1">
-          <span class="pull-left">
+          <span class="pull-left" style="padding-right: 10px">
             <b>{{ mission.missionType }} - {{ mission.node }}</b>
           </span>
-          <br />
-          <span v-b-tooltip.right :title="mission.modifierDescription" class="pull-left">
+          <span v-b-tooltip.top :title="mission.modifierDescription" class="pull-left">
             {{ mission.modifier }}
           </span>
         </div>

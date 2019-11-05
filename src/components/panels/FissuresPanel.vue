@@ -39,10 +39,12 @@ import lith from '@/assets/img/fissures/1.svg';
 import meso from '@/assets/img/fissures/2.svg';
 import neo from '@/assets/img/fissures/3.svg';
 import axi from '@/assets/img/fissures/4.svg';
+import requiem from '@/assets/img/fissures/5.svg';
 fissureIcons.push(lith);
 fissureIcons.push(meso);
 fissureIcons.push(neo);
 fissureIcons.push(axi);
+fissureIcons.push(requiem);
 
 export default {
   name: 'Fissures',

@@ -2,15 +2,15 @@
   @import (css) 'https://bootswatch.com/4/darkly/bootstrap.min.css';
 
   .navbar.navbar-dark.bg-primary {
-    background-color: #1a5072!important;
+    background-color: #1a5072 !important;
   }
 
   .list-group .list-group-item {
-    background-color: #2C2F33;
+    background-color: #2c2f33;
   }
 
   body {
-    background-color: #23272A;
+    background-color: #23272a;
   }
 
   .badge-warning {
@@ -37,7 +37,28 @@
     color: rgb(171, 171, 171);
   }
 
-  .router-link-exact-active.router-link-active, .router-link-active {
+  .router-link-exact-active.router-link-active,
+  .router-link-active {
     color: rgb(0, 188, 140);
+  }
+
+  .night:before {
+    color: rgba(51, 211, 255, 0.8);
+    content: '🌙 ';
+  }
+
+  .cold:before {
+    color: rgba(51, 211, 255, 0.8);
+    content: '\2744 ';
+  }
+
+  .day:before {
+    color: rgba(249, 168, 6, 0.8);
+    content: '☀ ';
+  }
+
+  .warm:before {
+    color: rgba(249, 168, 6, 0.8);
+    content: '☀ ';
   }
 }

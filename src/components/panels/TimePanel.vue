@@ -4,9 +4,6 @@
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <div class="row">
           <div class="col-md-9">
-            <span class="pull-left" style="padding-right: 10px;">
-              <b>Status: </b>
-            </span>
             <span
               class="pull-left"
               v-bind:class="{
@@ -27,24 +24,7 @@
     </b-list-group>
   </HubPanelWrap>
 </template>
-<style scoped>
-.night:before {
-  color: rgba(51, 211, 255, 0.8);
-  content: '🌙 ';
-}
-.cold:before {
-  color: rgba(51, 211, 255, 0.8);
-  content: '\2744 ';
-}
-.day:before {
-  color: rgba(249, 168, 6, 0.8);
-  content: '☀ ';
-}
-.warm:before {
-  color: rgba(249, 168, 6, 0.8);
-  content: '☀ ';
-}
-</style>
+
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
 import moment from 'moment';

@@ -16,12 +16,13 @@
         :key="`sortie-${index}`"
         v-bind:class="{
           'list-group-item-borderless': index !== sortie.variants.length - 1,
+          'pb-0': index !== sortie.variants.length - 1,
           'list-group-item-borderbottom': index === sortie.variants.length - 1,
         }"
       >
         <div class="indent-1">
           <span class="pull-left" style="padding-right: 10px">
-            <b>{{ mission.missionType }} - {{ mission.node }}</b>
+            <b>{{index + 1}}: {{ mission.missionType }} - {{ mission.node }}</b>
           </span>
           <span v-b-tooltip.top :title="mission.modifierDescription" class="pull-left">
             {{ mission.modifier }}

@@ -7,7 +7,7 @@
         :key="fissure.id"
         v-bind:class="{
           'list-group-item-borderless': index !== filteredFissures.length - 1,
-          'no-padding-bottom': index !== filteredFissures.length - 1,
+          'pb-0': index !== filteredFissures.length - 1,
           'list-group-item-borderbottom': index === filteredFissures.length - 1,
         }"
       >
@@ -28,12 +28,6 @@
     </b-list-group>
   </HubPanelWrap>
 </template>
-
-<style scoped>
-.no-padding-bottom {
-  padding-bottom: 0px;
-}
-</style>
 
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';

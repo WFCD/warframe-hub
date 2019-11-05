@@ -14,13 +14,13 @@
           </b-carousel-slide>
         </b-carousel>
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderless">
+      <b-list-group-item class="list-group-item-borderless pb-0">
         <b-list-group>
           <b-list-group-item
             :data-news-item="newsitem.id"
             :key="`${newsitem.id}-li`"
             :class="
-              `d-flex justify-content-between align-items-center list-group-item-borderless ${
+              `d-flex py-0 justify-content-between align-items-center list-group-item-borderless ${
                 cycle && index === activeElemIndex % filteredNews.length ? 'active' : ''
               } ${hover === index ? 'hover' : ''}`
             "

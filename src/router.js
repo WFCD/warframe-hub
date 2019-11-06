@@ -15,11 +15,6 @@ import RivenData from './views/RivenData.vue';
 
 import error404 from './views/404.vue';
 
-import store from './store';
-import themes from '@/assets/json/themes.json';
-
-const theme = () => themes.find((theme) => theme.key === store.getters.theme).className;
-
 Vue.use(Router);
 
 const routes = [
@@ -29,7 +24,6 @@ const routes = [
     component: Timer,
     meta: {
       title: 'Warframe Hub',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -48,7 +42,6 @@ const routes = [
     component: Timer,
     meta: {
       title: 'Warframe Hub',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -67,7 +60,6 @@ const routes = [
     component: PoEMap,
     meta: {
       title: 'Warframe Hub | PoE Map',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -86,7 +78,6 @@ const routes = [
     component: PoEFish,
     meta: {
       title: 'Warframe Hub | PoE Fish',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -105,7 +96,6 @@ const routes = [
     component: HowToFish,
     meta: {
       title: 'Warframe Hub | How to Fish',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -124,7 +114,6 @@ const routes = [
     component: VallisFish,
     meta: {
       title: 'Warframe Hub | Orb Vallis Fish',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -143,7 +132,6 @@ const routes = [
     component: HowToFishVallis,
     meta: {
       title: 'Warframe Hub | OV - How to Fish',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -162,7 +150,6 @@ const routes = [
     component: VallisMap,
     meta: {
       title: 'Warframe Hub | Orb Vallis Map',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -181,7 +168,6 @@ const routes = [
     component: RivenData,
     meta: {
       title: 'Warframe Hub | Riven Data',
-      bodyClass: theme,
       metaTags: [
         {
           name: 'description',
@@ -198,12 +184,10 @@ const routes = [
     path: '/404',
     name: 'Not Found',
     component: error404,
-    meta: { bodyClass: theme },
   },
   {
     path: '*',
     redirect: '/404',
-    meta: { bodyClass: theme },
   },
 ];
 

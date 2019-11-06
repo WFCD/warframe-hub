@@ -33,8 +33,6 @@ export default {
     },
   },
   mounted: function() {
-    // eslint-disable-next-line no-console
-    console.log(this.theme);
     this.theme.split(' ').forEach((t) => document.body.classList.add(t));
   },
 };

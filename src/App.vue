@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="theme.className">
+  <div id="app">
     <notifications group="hub" :max="5" :duration="30000" position="bottom right" />
     <Navbar />
     <Settings />
@@ -23,8 +23,19 @@ export default {
   },
   computed: {
     theme() {
-      return themes.find((theme) => theme.key === this.$store.getters.theme);
+      return themes.find((theme) => theme.key === this.$store.getters.theme).className;
     },
+  },
+  watch: {
+    theme(newTheme, oldTheme) {
+      oldTheme.split(' ').forEach((ot) => document.body.classList.remove(ot));
+      newTheme.split(' ').forEach((nt) => document.body.classList.add(nt));
+    },
+  },
+  mounted: function() {
+    // eslint-disable-next-line no-console
+    console.log(this.theme);
+    this.theme.split(' ').forEach((t) => document.body.classList.add(t));
   },
 };
 </script>

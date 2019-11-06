@@ -6,12 +6,6 @@
     "faclass": "fas fa-moon"
   },
   {
-    "key": "day",
-    "className": "day",
-    "display": "Day",
-    "faclass": "fas fa-sun"
-  },
-  {
     "key": "eidolon",
     "className": "eidolon",
     "display": "Eidolon",

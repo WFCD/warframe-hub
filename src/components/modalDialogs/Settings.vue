@@ -1,5 +1,5 @@
 <template>
-  <b-modal @shown="checkNotifications" id="settings-modal" centered size="md" title="Settings">
+  <b-modal @shown="checkNotifications" id="settings-modal" class="settings-modal" centered size="md" title="Settings">
     <b-tabs card vertical>
       <b-tab title="Platform">
         <b-form-group label="Platform">
@@ -8,7 +8,8 @@
             stacked
             v-model="platform"
             name="platform radios"
-            v-on:change="(val) => savePlatform(val)"
+            v-on:change="savePlatform"
+            class="settings-group"
           >
             <b-form-radio v-for="platform in this.platforms" :key="platform.key" :value="platform.key">
               <i :class="`${platform.icon} fa-lg`" :style="themeIconStyle"></i>
@@ -23,7 +24,7 @@
             name="Components"
             :options="componentStates"
             v-model="activeComponents"
-            v-on:input="(vals) => updateComponentState(vals)"
+            v-on:input="updateComponentState"
             switches
             stacked
             class="settings-group"
@@ -38,7 +39,7 @@
             stacked
             v-model="theme"
             name="theme radios"
-            v-on:change="(val) => updateTheme(val)"
+            v-on:change="updateTheme"
             class="settings-group"
           >
             <b-form-radio v-for="theme in getThemes" :key="theme.key" :value="theme.key">

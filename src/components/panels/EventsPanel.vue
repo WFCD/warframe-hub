@@ -18,7 +18,6 @@
           :interval="1000"
           :pullright="false"
         />
-        <br />
         <div class="text-center bottom-pad" v-if="event.victimNode !== undefined">
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>

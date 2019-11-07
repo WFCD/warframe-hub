@@ -90,12 +90,22 @@ img {
 
 .modal-body {
   max-height: calc(92vh - 300px);
+  height: 100%;
   overflow-y: auto;
 }
 
+.tabs.row {
+  height: 100%;
+}
+
 .modal .tab-content {
+  height: 100%;
   max-height: calc(100vh - 300px);
   overflow-y: scroll;
+}
+
+#settings-modal .modal-content {
+  height: 671px;
 }
 
 .modal .settings-group {
@@ -182,4 +192,9 @@ img {
 /* Progress Circles */
 .prog-circle .circle-percent-text-body {
   margin-top: -82px;
+}
+
+.card-body {
+  padding: 0;
+  margin: 0.75rem 1.25rem
 }

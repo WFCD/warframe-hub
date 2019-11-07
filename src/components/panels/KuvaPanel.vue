@@ -40,6 +40,14 @@ import HubImg from '@/components/HubImg.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
+/**
+ * To any poor soul who decides to work on this in the future.
+ * At the time of writing, Digital Extremes has not exposed any way for us to get Kuva Siphon mission data.
+ * This data is being fetched from semlar's EE.log scraper located at 10o.io/kuvalog.json
+ * And even with that, we cannot tell which mission is a flood mission out of all the active missions.
+ * I hope this will change in the future. If not, 3rd party development is doomed.
+ */
+
 import kuvalogo from '@/assets/img/kuva/kuva.svg';
 //import flood from '@/assets/img/kuva/kuvaflood.svg';
 

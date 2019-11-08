@@ -9,10 +9,6 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
-/* Disabled for development.
-
-PLEASE MAKE SURE I DON'T PUSH THIS TO PROD
-THANKS. Will be included in the PR for review copy console debugging
 
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
@@ -23,7 +19,6 @@ if (process.env.VUE_APP_DSN) {
     integrations: [new Integrations.Vue({ Vue, attachProps: true })],
   });
 }
-*/
 
 /* Bootstrap  */
 import BootstrapVue from 'bootstrap-vue';

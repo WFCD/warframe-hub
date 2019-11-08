@@ -148,9 +148,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.row {
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-}
-</style>

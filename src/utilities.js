@@ -11,6 +11,6 @@ const makeid = () => {
   return text;
 };
 
-module.exports = {
+export default {
   makeid,
 };

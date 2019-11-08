@@ -1,16 +1,16 @@
 <template>
   <div class="invasion-container">
-    <div :id="`${invasion.id}_info`" class="text-center">
+    <div :id="`${invasion.id}_info`" class="text-center pb-1">
       <span
-        ><b>{{ invasion.node }}</b></span
+        ><b>{{ invasion.node }}</b> - {{ invasion.desc }}</span
       >
-      <b-btn :id="`${invasion.id}_tooltip`" class="pull-right" size="sm" variant="secondary">?</b-btn>
-      <b-tooltip :target="`${invasion.id}_tooltip`" placement="top">
+      <b-btn :id="`${invasion.id}_tooltip`" class="pull-right py-0" size="sm" variant="secondary">?</b-btn>
+      <b-tooltip :target="`${invasion.id}_tooltip`" placement="top" class="text-center">
         &nbsp;
         <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000" />
+        <br />
+        {{ eta(invasion) }}
       </b-tooltip>
-      <br />
-      {{ invasion.desc }} {{ eta(invasion) }}
     </div>
     <b-row class="invasion-rewards">
       <b-col>

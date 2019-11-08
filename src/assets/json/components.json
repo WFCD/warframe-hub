@@ -130,6 +130,15 @@
       "fissures": "@worldstate.fissures"
     }
   },
+  "kuvas": {
+    "display": true,
+    "displayName": "Kuva Siphons",
+    "key": "kuvas",
+    "component": "KuvaPanel",
+    "props": {
+      "kuvas": "@worldstate.kuva"
+    }
+  },
   "baro": {
     "display": true,
     "displayName": "Void Trader",

@@ -33,10 +33,22 @@
           v-for="item in alert.mission.reward.items"
           :key="item"
           class="pull-right"
-          >{{ item }}</b-badge
         >
+          {{ item }}
+        </b-badge>
+        <b-badge
+          variant="info"
+          :style="styleObject"
+          v-for="item in alert.mission.reward.countedItems"
+          :key="item"
+          class="pull-right"
+        >
+          {{ item.count }} {{ item.type }}
+        </b-badge>
         <br />
-        <b-badge variant="info" :style="styleObject" class="pull-right">{{ alert.mission.reward.credits }}cr</b-badge>
+        <b-badge v-if="alert.mission.reward.credits" variant="info" :style="styleObject" class="pull-right">
+          {{ alert.mission.reward.credits }}cr
+        </b-badge>
         <div style="margin-top:2px" class="pull-left">
           <b>{{ alert.mission.type }}</b> ({{ alert.mission.faction }}) | <b>Level: </b>
           {{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}

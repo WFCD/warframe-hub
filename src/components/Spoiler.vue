@@ -14,7 +14,7 @@
     >
       <slot></slot>
     </b-collapse>
-    <b-btn variant="primary" v-b-toggle="`spoiler-${this.cid}`" style="margin: 3px 0px;">
+    <b-btn variant="primary" v-b-toggle="`spoiler-${this.cid}`" class="mb-1 py-0">
       {{ headertext }} <i :class="this.initialArrow" ref="arrow"></i>
     </b-btn>
   </div>

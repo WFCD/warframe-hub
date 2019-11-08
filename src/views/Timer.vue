@@ -17,6 +17,7 @@
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
+        <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
@@ -36,6 +37,7 @@ import SortiePanel from '@/components/panels/SortiePanel.vue';
 import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
 import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
+import KuvaPanel from '@/components/panels/KuvaPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
@@ -56,6 +58,7 @@ export default {
     arbitration: ArbitrationPanel,
     acolytes: AcolytesPanel,
     fissures: FissuresPanel,
+    kuvas: KuvaPanel,
     bounty: BountyPanel,
     invasions: InvasionsPanel,
     events: EventsPanel,

@@ -9,6 +9,7 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
+
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 

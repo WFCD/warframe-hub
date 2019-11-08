@@ -8,24 +8,13 @@
     </div>
     <b-list-group>
       <b-list-group-item class="list-group-item-borderbottom" v-if="deals.length">
-        <table class="table" style="table-layout: fixed">
-          <thead>
-            <tr>
-              <th class="text-center col-xs-2">Item</th>
-              <th class="text-center col-xs-2">% Off</th>
-              <th class="text-center col-xs-2">
-                <HubImg :src="platinum" name="Platinum" />
-              </th>
-              <th class="text-center col-xs-2">Stock</th>
-              <th class="text-center col-xs-4"></th>
-            </tr>
-          </thead>
+        <table class="table p-0 m-0" style="table-layout: fixed">
           <tbody>
             <tr v-for="item in deals" :key="`${item.id}-deal`">
               <td>{{ item.item }}</td>
-              <td>{{ item.discount }}%</td>
-              <td>{{ item.salePrice }}</td>
-              <td>{{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}%</td>
+              <td>{{ item.discount }}% Off</td>
+              <td>{{ item.salePrice }} <HubImg :src="platinum" name="Platinum" /></td>
+              <td>{{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}% Left</td>
               <td>
                 <TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" />
               </td>

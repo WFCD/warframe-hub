@@ -24,9 +24,10 @@
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>
           <template slot="button-content"
-            ><i class="fas fa-tools faIcon"></i> Tools</template
+            ><i class="fas fa-tools faIcon"></i> Extras</template
           >
           <DropdownItem :isLocal="true" icon="fas fa-database" target="/riven/data" label="Riven Data (Alpha)" />
+          <DropdownItem :isLocal="true" icon="fas fa-camera" target="/synthesis" label="Synthesis Target" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown left>

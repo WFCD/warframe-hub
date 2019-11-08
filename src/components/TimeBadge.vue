@@ -1,5 +1,5 @@
 <template>
-  <b-badge v-bind:variant="mutableVariant" class="pull-right">
+  <b-badge v-bind:variant="mutableVariant" v-bind:class="{ 'pull-right': pullright }" class="align-middle">
     {{ disp }}
   </b-badge>
 </template>
@@ -8,7 +8,7 @@
 import moment from 'moment';
 
 export default {
-  namme: 'TimeBadge',
+  name: 'TimeBadge',
   props: {
     starttime: {
       type: String,
@@ -33,6 +33,10 @@ export default {
     counter: {
       type: Boolean,
       default: false,
+    },
+    pullright: {
+      type: Boolean,
+      default: true,
     },
   },
   mounted: function() {

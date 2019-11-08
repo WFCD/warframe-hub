@@ -7,6 +7,7 @@
         :key="fissure.id"
         v-bind:class="{
           'list-group-item-borderless': index !== filteredFissures.length - 1,
+          'pb-0': index !== filteredFissures.length - 1,
           'list-group-item-borderbottom': index === filteredFissures.length - 1,
         }"
       >
@@ -15,13 +16,13 @@
             :src="determineImg(fissure)"
             :name="fissure.tier"
             class="li-mission-decorator li-mission-decorator-lg"
-            height="32px"
-            width="32px"
+            height="24px"
+            width="24px"
           />
           <b>{{ fissure.node }}</b> | {{ fissure.missionType }} |
           {{ fissure.tier }}
         </span>
-        <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" />
+        <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" style="padding: 5px;" />
       </b-list-group-item>
       <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" />
     </b-list-group>
@@ -79,6 +80,7 @@ export default {
     return {
       styleObject: {
         display: 'inline',
+        'vertical-align': 'middle',
       },
     };
   },

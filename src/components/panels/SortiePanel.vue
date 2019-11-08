@@ -1,10 +1,10 @@
 <template>
   <HubPanelWrap :title="headertext" class="sortie">
     <b-list-group>
-      <b-list-group-item :style="styleObject" class="list-group-item-borderless no-padding-bot">
+      <b-list-group-item :style="styleObject" class="list-group-item-borderless pb-0">
         <span class="pull-left">
-          <h4>
-            <HubImg :src="factionImg" :name="sortie.faction" :style="missionType" width="22px" height="22px" />
+          <h4 class="my-0">
+            <HubImg :src="factionImg" :name="sortie.faction" :style="missionType" width="20px" height="20px" />
             {{ sortie.boss }}
           </h4>
         </span>
@@ -16,15 +16,15 @@
         :key="`sortie-${index}`"
         v-bind:class="{
           'list-group-item-borderless': index !== sortie.variants.length - 1,
+          'pb-0': index !== sortie.variants.length - 1,
           'list-group-item-borderbottom': index === sortie.variants.length - 1,
         }"
       >
-        <div class="indent-1">
-          <span class="pull-left">
+        <div class="ml-3">
+          <span class="pull-left pr-2">
             <b>{{ mission.missionType }} - {{ mission.node }}</b>
           </span>
-          <br />
-          <span v-b-tooltip.right :title="mission.modifierDescription" class="pull-left">
+          <span v-b-tooltip.top :title="mission.modifierDescription" class="pull-left">
             {{ mission.modifier }}
           </span>
         </div>
@@ -32,15 +32,7 @@
     </b-list-group>
   </HubPanelWrap>
 </template>
-<style scoped>
-.no-padding-bot {
-  padding-bottom: 0px;
-}
 
-.indent-1 {
-  margin-left: 40px;
-}
-</style>
 <script>
 import HubImg from '@/components/HubImg.vue';
 import TimeBadge from '@/components/TimeBadge.vue';

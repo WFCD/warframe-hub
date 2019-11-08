@@ -12,6 +12,7 @@ import VallisMap from './views/VallisMap.vue';
 import HowToFishVallis from './views/HowToFishVallis.vue';
 
 import RivenData from './views/RivenData.vue';
+import Synthesis from './views/Synthesis.vue';
 
 import error404 from './views/404.vue';
 
@@ -176,6 +177,24 @@ const routes = [
         {
           name: 'og:description',
           content: 'Riven trading data provided by Digital Extremes',
+        },
+      ],
+    },
+  },
+  {
+    path: '/synthesis',
+    name: 'Synthesis Targets',
+    component: Synthesis,
+    meta: {
+      title: 'Warframe Hub | Synthesis Targets',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Synthesis Target mission lookup information',
+        },
+        {
+          name: 'og:description',
+          content: 'Synthesis Target mission lookup information',
         },
       ],
     },

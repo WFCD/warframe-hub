@@ -7,6 +7,7 @@
         :key="challenge.id"
         v-bind:class="{
           'list-group-item-borderless': index !== nightwave.activeChallenges.length - 1,
+          'pb-0': index !== nightwave.activeChallenges.length - 1,
           'list-group-item-borderbottom': index === nightwave.activeChallenges.length - 1,
         }"
       >
@@ -15,8 +16,8 @@
             :src="challenge.isDaily ? daily : challenge.isElite ? elite : weekly"
             :name="challenge.isDaily ? 'Daily' : challenge.isElite ? 'Elite Weekly' : 'Weekly'"
             class="li-mission-decorator li-mission-decorator-lg invert"
-            :height="challenge.isDaily ? '20px' : '32px'"
-            width="32px"
+            :height="challenge.isDaily ? '15px' : '24px'"
+            width="24px"
           />
         </span>
         <span v-b-tooltip.right :title="challenge.desc" class="pull-left">

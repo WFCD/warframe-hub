@@ -55,7 +55,7 @@
         </template>
         <template slot="location" slot-scope="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
-            {{ toTitleCase(location.planet) }} ({{ toTitleCase(location.mission) }})
+            {{ location.planet }} ({{ location.mission }})
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
@@ -67,7 +67,7 @@
         </template>
         <template slot="mission" slot-scope="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
-            {{ toTitleCase(location.faction) }} - {{ toTitleCase(location.type) }}
+            {{ location.faction }} - {{ location.type }}
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
@@ -91,10 +91,6 @@
 <script>
 import fetch from 'node-fetch';
 import SynthesisImg from '@/components/SynthesisImg.vue';
-
-import utilities from '@/utilities';
-
-const { toTitleCase } = utilities;
 
 const fields = {
   name: {
@@ -154,7 +150,6 @@ export default {
       this.synthdata = res;
       this.loading = false;
     },
-    toTitleCase: toTitleCase,
   },
 };
 </script>

@@ -20,25 +20,42 @@
         </b-form-group>
       </b-col>
       <b-col md="3" sm="3">
-        <b-button href="https://warframe.fandom.com/wiki/Synthesis" variant="info" class="mb-3 mr-3 float-right">
-          What is Synthesis
+        <b-button
+          href="https://warframe.fandom.com/wiki/Synthesis"
+          target="_blank"
+          variant="info"
+          class="mb-3 mr-3 float-right"
+        >
+          What is Synthesis?
         </b-button>
       </b-col>
     </b-row>
 
     <b-row>
       <b class="mx-auto">
-        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=666483447">
+        <b-link href="https://steamcommunity.com/sharedfiles/filedetails/?id=666483447" target="_blank">
           Synthesis Data provided by Evilflora
-        </a>
+        </b-link>
       </b>
-      <b-table responsive hover :items="synthdata" :fields="fields" class="b-table mx-3" :filter="filter">
+      <b-table
+        responsive
+        hover
+        striped
+        :items="synthdata"
+        :fields="fields"
+        class="b-table synth-table"
+        :filter="filter"
+        primary-key="name"
+      >
         <template slot="name" slot-scope="data">
           {{ data.item.name }}
         </template>
+        <template slot="portrait" slot-scope="data">
+          <SynthesisImg :name="data.item.name" />
+        </template>
         <template slot="location" slot-scope="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
-            {{ location.planet }} ({{ location.mission }})
+            {{ toTitleCase(location.planet) }} ({{ toTitleCase(location.mission) }})
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
@@ -50,7 +67,7 @@
         </template>
         <template slot="mission" slot-scope="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
-            {{ location.faction }} - {{ location.type }}
+            {{ toTitleCase(location.faction) }} - {{ toTitleCase(location.type) }}
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
@@ -73,14 +90,22 @@
 
 <script>
 import fetch from 'node-fetch';
+import SynthesisImg from '@/components/SynthesisImg.vue';
 
-import FishImg from '@/components/FishImg.vue';
+import utilities from '@/utilities';
+
+const { toTitleCase } = utilities;
 
 const fields = {
   name: {
     label: 'Name',
     headerTitle: 'The name of the Synthesis Target',
     sortable: true,
+  },
+  portrait: {
+    label: 'Portrait',
+    headerTitle: 'The portrait of the Synthesis Target',
+    tdClass: 'synth-cell',
   },
   location: {
     label: 'Location',
@@ -107,7 +132,7 @@ const fields = {
 export default {
   name: 'synthesis',
   components: {
-    FishImg,
+    SynthesisImg,
   },
   data() {
     return {
@@ -129,6 +154,7 @@ export default {
       this.synthdata = res;
       this.loading = false;
     },
+    toTitleCase: toTitleCase,
   },
 };
 </script>

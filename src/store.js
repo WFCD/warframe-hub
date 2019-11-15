@@ -109,7 +109,11 @@ const mutations = {
 const actions = {
   async updateWorldstate(context) {
     const { commit, getters } = context;
-    const res = await fetch(`${apiBase}/${getters.platform}`);
+    const res = await fetch(`${apiBase}/${getters.platform}`, {
+      headers: {
+        'Accept-Language': 'en',
+      },
+    });
     const ws = await res.json();
     commit('commitWs', [getters.platform, ws]);
     if (!notifier) {

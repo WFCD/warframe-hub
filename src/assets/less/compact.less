@@ -1,10 +1,20 @@
 .compact {
-  &#app {
+  #app {
     padding: 35px 0 10px 0;
   }
 
   .navbar {
     height: 20px;
+  }
+
+  @media screen and (max-width: 959px) {
+    #app {
+      padding: 75px 0 10px 0;
+    }
+
+    .navbar {
+      height: 70px;
+    }
   }
 
   h3, h4, h5 {
@@ -98,6 +108,11 @@
       font-size: 0;
     }
 
+    .row {
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
     .header-panel::after {
       font-size: 1.1rem;
     }
@@ -122,7 +137,8 @@
     }
 
     .pull-left {
-      display: none;
+      float: none;
+      
     }
 
     .pull-right {

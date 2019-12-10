@@ -1,31 +1,45 @@
 <template>
-  <div>
-    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`" style="margin-bottom: 4px;">
-      {{ headertext }} <i class="fas fa-chevron-down"></i>
+  <span>
+    <b-btn variant="primary" v-b-toggle="`collapsible-${this.cid}`" size="sm" class="pull-right xs">
+      <i class="fas fa-xs fa-chevron-down open"></i>
+      <i class="fas fa-xs fa-chevron-left closed"></i>
     </b-btn>
     <b-collapse :id="`collapsible-${this.cid}`" @hidden="reflow()" @shown="reflow()">
       <b-card>
         <slot></slot>
       </b-card>
     </b-collapse>
-  </div>
+  </span>
 </template>
+<style>
+.collapsed > .open,
+:not(.collapsed) > .closed {
+  display: none;
+}
+
+button + div.collapse {
+  margin-top: 25px;
+}
+
+button.btn.xs,
+button.btn.xs > * {
+  line-height: 0.75em;
+  padding-top: 0.12rem;
+}
+</style>
 <script>
 import util from '@/utilities';
 
 export default {
   name: 'Collapsible',
-  props: ['headertext'],
+  props: ['headertext', 'bClass'],
   data: function() {
     return {
       id: 0,
     };
   },
   methods: {
-    reflow: function() {
-      // eslint-disable-next-line no-console
-      console.error('triggered reflow --- this does nothing, needs to trigger the resize for the grid item');
-    },
+    reflow: function() {},
     makeid: function() {
       return util.makeid();
     },

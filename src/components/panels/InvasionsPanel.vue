@@ -49,7 +49,7 @@ export default {
   props: ['invasions'],
   computed: {
     headertext() {
-      return 'Invasions';
+      return this.$t('invasions.header');
     },
     maxInvasions() {
       return 5;

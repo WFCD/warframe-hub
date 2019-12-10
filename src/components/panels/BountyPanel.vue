@@ -1,20 +1,20 @@
 <template>
   <HubPanelWrap :title="headertext" class="bounties">
     <b-list-group>
-      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderless">
+      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
         <span class="pull-left">Bounties expire in:</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
-      </b-list-group-item>
-      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
         <Collapsible :headertext="`${headertext} Bounties`">
           <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
-            <span slot="rewards" slot-scope="data" v-html="data.value"></span>
+            <span slot="rewards" slot-scope="data">
+              <b-badge v-for="(reward, index) in data.value" :key="`reward-${type}-${index}`">{{ reward }}</b-badge>
+            </span>
             <template slot="HEAD_standing">
               <HubImg
                 :src="standing"
-                name="Standing"
-                width="32px"
-                height="32px"
+                :name="this.$t('bounty.standing')"
+                width="24px"
+                height="24px"
                 class="text-center li-mission-decorator li-mission-decorator-lg"
               />
             </template>
@@ -40,14 +40,14 @@ export default {
   props: ['syndicate', 'type'],
   computed: {
     headertext() {
-      return `${this.type} Bounty Cycle`;
+      return `${this.type} ${this.$t('bounty.header')}`;
     },
     items: function() {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({
         type: job.type,
         standing: job.standingStages.join(', '),
         'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
-        rewards: `${job.rewardPool.map((reward) => `<span>${reward}</span>`).join('<br />')}`,
+        rewards: job.rewardPool || [],
       }));
     },
   },
@@ -56,20 +56,20 @@ export default {
       fields: [
         {
           key: 'type',
-          label: 'Type',
+          label: this.$t('bounty.type'),
         },
         {
           key: 'standing',
-          label: 'Standing',
+          label: this.$t('bounty.standing'),
           thClass: 'text-center',
         },
         {
           key: 'level-range',
-          label: 'Level Range',
+          label: this.$t('bounty.lrange'),
         },
         {
           key: 'rewards',
-          label: 'Rewards',
+          label: this.$t('bounty.rewards'),
         },
       ],
       standing: standing,

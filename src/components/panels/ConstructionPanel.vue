@@ -15,7 +15,7 @@
             title="Fomorian Progress"
             :start-angle="-Math.PI / 2"
           ></VueCircle>
-          <div class="text-center">Fomorian</div>
+          <div class="text-center">{{ this.$t('construction.fomorian') }}</div>
         </div>
         <div class="construction-wrapper text-center">
           <VueCircle
@@ -27,7 +27,7 @@
             title="Razorback Progress"
             :start-angle="-Math.PI / 2"
           ></VueCircle>
-          <div class="text-center">Razorback</div>
+          <div class="text-center">{{ this.$t('construction.razorback') }}</div>
         </div>
         <div class="construction-wrapper text-center">
           <VueCircle
@@ -39,7 +39,7 @@
             title="Unknown Progress"
             :start-angle="-Math.PI / 2"
           ></VueCircle>
-          <div class="text-center">Unknown</div>
+          <div class="text-center">{{ this.$t('construction.unk') }}</div>
         </div>
       </b-list-group-item>
     </b-list-group>
@@ -67,7 +67,7 @@ export default {
   props: ['construction'],
   computed: {
     headertext() {
-      return 'Construction Progress';
+      return this.$t('construction.header');
     },
   },
   methods: {

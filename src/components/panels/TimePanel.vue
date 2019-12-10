@@ -13,7 +13,7 @@
                 cold: time.state == 'cold',
               }"
             >
-              <span style="text-transform: capitalize;">{{ time.state }}</span>
+              <span style="text-transform: capitalize;">{{ this.$t(`time.${time.state.toLowerCase()}`) }}</span>
             </span>
           </div>
           <div class="col-md-3">
@@ -38,7 +38,7 @@ export default {
       return moment().toISOString();
     },
     headertext() {
-      return `${this.$props.location} Cycle Timer`;
+      return `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
     },
   },
   components: {

@@ -1,6 +1,55 @@
 {
+  "acolytes": {
+    "header": "Acolytes",
+    "discovered": "Discovered",
+    "hiding": "Hiding",
+    "na": "Nowhere",
+    "health": "Health Remaining"
+  },
+  "alerts": {
+    "header": "Alerts",
+    "archwing": "Archwing Required for Mission",
+    "nightmare": "Nightmare Mission"
+  },
+  "arbitration": {
+    "header": "Arbitration"
+  },
+  "bounty": {
+    "standing": "Standing",
+    "header": "Bounty Cycle"
+  },
+  "construction": {
+    "fomorian": "Fomorian",
+    "razorback": "Razorback",
+    "unk": "Unknown",
+    "header": "Construction Progress"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Earth"
+  },
+  "invasions": {
+    "header": "Invasions",
+    "eta": "Ends in:"
+  },
   "news": {
     "header": "News",
     "autoprogress": "Auto-progress"
+  },
+  "time": {
+    "day": "day",
+    "night": "night",
+    "warm": "warm",
+    "cold": "cold",
+    "Timer": "Cycle Timer",
+    "startL": "Starts in:",
+    "endL": "Ends in:",
+    "ongoingL": "Ongoing for:",
+    "expiredL": "Expired:"
+  },
+  "reset": {
+    "header": "Daily Reward Timer Reset",
+    "label": "Reward Timer Reset in:"
   }
 }

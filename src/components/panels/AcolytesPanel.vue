@@ -13,14 +13,14 @@
         <span :class="`badge badge-${healthLabel(acolyte)} pull-right`">
           <span :id="`${acolyte.id}-health`">{{ health(acolyte) }}</span
           >%
-          <i v-b-tooltip class="fas fa-heartbeat" title="Health Remaining" style="margin-left: 5px"></i>
+          <i v-b-tooltip class="fas fa-heartbeat" :title="this.$t('acolytes.health')" style="margin-left: 5px"></i>
         </span>
         <span class="pull-left">
           <b>
             <i
               class="far fa-eye faIcon"
               v-b-tooltip
-              :title="`${acolyte.agentType} Discovered`"
+              :title="`${acolyte.agentType} ${this.$t('acolytes.discovered')}`"
               :style="acolyteIcons"
               v-if="acolyte.isDiscovered"
             ></i>
@@ -39,7 +39,9 @@
           <span class="pull-left">
             <b>
               <span :id="`${acolyte.id}-loc`"
-                >{{ acolyte.isDiscovered ? '' : 'Last ' }} @{{ acolyte.lastDiscoveredAt || 'Nowhere' }}</span
+                >{{ acolyte.isDiscovered ? '' : 'Last ' }} @{{
+                  acolyte.lastDiscoveredAt || this.$t('acolytes.na')
+                }}</span
               >
             </b>
             | <b>Level: </b>{{ acolyte.rank }}
@@ -64,13 +66,13 @@ export default {
   props: ['acolytes'],
   computed: {
     headertext() {
-      return 'Acolytes';
+      return this.$t('acolytes.header');
     },
   },
   methods: {
     moment: moment,
     discovery(acolyte) {
-      return acolyte.isDiscovered ? 'Discovered' : 'Hiding';
+      return this.$t(`acolytes.${acolyte.isDiscovered ? 'discovered' : 'hiding'}`);
     },
     health(acolyte) {
       return (acolyte.healthPercent * 100).toFixed(2);

@@ -102,10 +102,10 @@ export default {
           this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
         } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
           this.mutableVariant = 'info';
-          this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
+          this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else if (diff < 0) {
           this.mutableVariant = 'info';
-          this.disp = `Expired: ${this.formatDurationShort(duration)}`;
+          this.disp = `${this.$t('time.expiredL')}: ${this.formatDurationShort(duration)}`;
         } else {
           if (diff < 600000) {
             // 0 min to 10 min
@@ -127,10 +127,10 @@ export default {
 
         if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
           this.mutableVariant = 'transparent';
-          this.disp = `Starts in: ${this.formatDurationShort(durationactivate)}`;
+          this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else {
           this.mutableVariant = 'transparent';
-          this.disp = `Ongoing for: ${this.formatDurationShort(duration)}`;
+          this.disp = `${this.$t('time.ongoingL')} ${this.formatDurationShort(duration)}`;
         }
       }
 

@@ -9,7 +9,6 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
-
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 
@@ -83,12 +82,30 @@ import '@/assets/less/retro.less';
 import '@/assets/less/eidolon.less';
 import '@/assets/less/compact.less';
 
+/* Set up i18n */
+import VueI18n from 'vue-i18n';
+import locales from '@/assets/json/locales.json';
+
+Vue.use(VueI18n);
+
+const messages = {};
+Object.keys(locales).forEach((locale) => {
+  messages[locale] = require(`@/lang/${locale}.json`);
+});
+
+const i18n = new VueI18n({
+  locale: store.getters.locale,
+  fallbackLocale: 'en',
+  messages,
+});
+
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');
 
 new Vue({
   router,
   store,
+  i18n,
   render: (h) => h(App),
 }).$mount('#app');
 

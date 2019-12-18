@@ -2,7 +2,8 @@
   <HubPanelWrap :title="headertext" class="sentientoutpost">
     <b-list-group>
       <b-list-group-item class="list-group-item-borderbottom" v-if="sentientOutposts.active">
-        Sentient Outpost Active at {{ sentientOutposts.mission }}
+        <b>{{ sentientOutposts.mission.node }}</b> - {{ sentientOutposts.mission.faction }} -
+        {{ sentientOutposts.mission.type }}
         <b-btn id="beta_tooltip" class="pull-right py-0" size="sm" variant="primary">!</b-btn>
         <b-tooltip target="beta_tooltip" placement="top" class="text-center">
           This component is in active development because of the recent update.

@@ -389,6 +389,12 @@
       "timeLeft": "1h 1m 1s",
       "shortString": "Loading..."
     },
-    "twitter": []
+    "twitter": [],
+    "sentientOutposts": {
+      "mission": {
+        "mission": "Loading...",
+        "active": false
+      }
+    }
   }
 }

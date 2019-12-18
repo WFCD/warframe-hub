@@ -5,6 +5,10 @@
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
+        <sentientOutposts
+          v-if="componentState.sentientoutposts.display"
+          :sentientOutposts="worldstate.sentientOutposts"
+        />
         <reset v-if="componentState.reset.display" />
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
@@ -46,6 +50,7 @@ import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 import ConstructionPanel from '@/components/panels/ConstructionPanel.vue';
+import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue';
 
 export default {
   name: 'timers',
@@ -67,6 +72,7 @@ export default {
     'void-trader': VoidTraderPanel,
     nightwave: NightwavePanel,
     construction: ConstructionPanel,
+    sentientOutposts: SentientOutpostsPanel,
   },
   data() {
     return {

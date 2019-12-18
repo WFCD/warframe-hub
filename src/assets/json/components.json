@@ -179,5 +179,10 @@
     "display": true,
     "displayName": "Construction",
     "key": "construction"
+  },
+  "sentientoutposts": {
+    "display": true,
+    "displayName": "Sentient Outposts",
+    "key": "sentientoutposts"
   }
 }

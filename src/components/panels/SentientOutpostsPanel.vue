@@ -18,7 +18,7 @@
           Estimated cycle is 30 minutes of active time and 3 hours of inactive time.
         </b-tooltip>
       </b-list-group-item>
-      <NoDataItem v-if="!sentientOutposts.active == null" text="Outposts" />
+      <NoDataItem v-if="!sentientOutposts.active" text="Outposts" />
     </b-list-group>
   </HubPanelWrap>
 </template>

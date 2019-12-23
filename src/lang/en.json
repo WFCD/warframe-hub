@@ -19,7 +19,8 @@
     "header": "Bounty Cycle",
     "type": "Type",
     "lrange": "Level Range",
-    "rewards": "Rewards"
+    "rewards": "Rewards",
+    "bounties": "Bounties"
   },
   "construction": {
     "fomorian": "Fomorian",
@@ -27,14 +28,29 @@
     "unk": "Unknown",
     "header": "Construction Progress"
   },
-  "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr"
+  },
+  "darvo": {
+    "header": "Darvo's Deals",
+    "off": "% Off",
+    "left": "% Left",
+    "leftL": "Left"
+  },
+  "events": {
+    "header": "Events",
+    "standStages": "Standing Stages",
+    "rewards": "Rewards"
   },
   "invasions": {
     "header": "Invasions",
     "eta": "Ends in:"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Earth"
   },
   "news": {
     "header": "News",

@@ -4,7 +4,7 @@
       <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
         <span class="pull-left">Bounties expire in:</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
-        <Collapsible :headertext="`${headertext} Bounties`">
+        <Collapsible :headertext="`${headertext} ${this.$t('bounty.bounties')}`">
           <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
             <span slot="rewards" slot-scope="data">
               <b-badge v-for="(reward, index) in data.value" :key="`reward-${type}-${index}`">{{ reward }}</b-badge>

@@ -6,13 +6,13 @@
         <TimeBadge :starttime="voidTrader.activation" :endtime="voidTrader.expiry" :interval="1000" />
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom" v-if="available()">
-        <Collapsible :headertext="`${voidTrader.character} Inventory`">
+        <Collapsible :headertext="`${voidTrader.character} ${$t('vt.inventory')}`">
           <table class="table">
             <thead>
               <tr>
-                <th class="text-center col-xs-6">Item</th>
-                <th class="text-center col-xs-2">Ducats</th>
-                <th class="text-center col-xs-4">Credits</th>
+                <th class="text-center col-xs-6">{{ $t('vt.item') }}</th>
+                <th class="text-center col-xs-2">{{ $t('currency.dabloons') }}</th>
+                <th class="text-center col-xs-4">{{ $t('currency.cred') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@ export default {
   props: ['voidTrader'],
   computed: {
     headertext() {
-      return 'Void Trader';
+      return this.$t('vt.header');
     },
   },
   data() {
@@ -71,7 +71,7 @@ export default {
       return moment(this.available() ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
     },
     locationLabel() {
-      return `${this.available() ? 'Departs' : 'Arrives at'} ${this.voidTrader.location}:`;
+      return `${this.$t(`time.${this.available() ? 'depart' : 'arrive'}`)} ${this.voidTrader.location}:`;
     },
   },
 };

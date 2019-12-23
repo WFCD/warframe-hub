@@ -14,7 +14,7 @@
         <span class="pull-left">
           <HubImg
             :src="challenge.isDaily ? daily : challenge.isElite ? elite : weekly"
-            :name="challenge.isDaily ? 'Daily' : challenge.isElite ? 'Elite Weekly' : 'Weekly'"
+            :name="type(challenge)"
             class="li-mission-decorator li-mission-decorator-lg invert"
             :height="challenge.isDaily ? '15px' : '24px'"
             width="24px"
@@ -56,7 +56,12 @@ export default {
   props: ['nightwave'],
   computed: {
     headertext() {
-      return 'Nightwave';
+      return this.$t('nightwave.header');
+    },
+  },
+  methods: {
+    type: function(challenge) {
+      return this.$t(`nightwave.${challenge.isDaily ? 'daily' : challenge.isElite ? 'elite' : 'weekly'}`);
     },
   },
   data() {

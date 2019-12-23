@@ -3,7 +3,7 @@
     <span class="dim">
       <HubImg
         :src="loading"
-        name="No Data"
+        :name="$t('nav.nodata')"
         width="40px"
         height="40px"
         style="filter: invert(80%); padding-right:10px;"

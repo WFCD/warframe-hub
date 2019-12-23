@@ -92,6 +92,9 @@ body .list-group .list-group-item-borderless .list-group {
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';
 
+const cdnUrl = 'https://cdn.warframestat.us';
+const cdnOpts = ['o_webp', 'rs_404x110'];
+
 export default {
   props: ['news'],
   name: 'NewsPanel',
@@ -125,7 +128,7 @@ export default {
       this.increment();
     },
     getImgSrc: (url) => {
-      return 'https://cdn.warframestat.us/o_webp,rs_404x110/' + url;
+      return `${cdnUrl}/${cdnOpts.join(',')}/${url}`;
     },
     title: function(newsitem) {
       return {

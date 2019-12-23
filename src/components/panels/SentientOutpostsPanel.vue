@@ -6,20 +6,20 @@
         {{ sentientOutposts.mission.type }}
         <b-btn id="beta_tooltip" class="pull-right py-0" size="sm" variant="primary">!</b-btn>
         <b-tooltip target="beta_tooltip" placement="top" class="text-center">
-          This component is in active development because of the recent update.
+          {{ $t('sentientoutpost.tooltip1') }}
           <br />
-          Estimated cycle is 30 minutes of active time and 3 hours of inactive time.
+          {{ $t('sentientoutpost.tooltip2') }}
         </b-tooltip>
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderlessbottom p-0" v-if="!sentientOutposts.active">
         <b-btn id="beta_tooltip" class="pull-right py-0" size="sm" variant="primary">!</b-btn>
         <b-tooltip target="beta_tooltip" placement="top" class="text-center">
-          This component is in active development because of the recent update.
+          {{ $t('sentientoutpost.tooltip1') }}
           <br />
-          Estimated cycle is 30 minutes of active time and 3 hours of inactive time.
+          {{ $t('sentientoutpost.tooltip2') }}
         </b-tooltip>
       </b-list-group-item>
-      <NoDataItem v-if="!sentientOutposts.active" text="Outposts" />
+      <NoDataItem v-if="!sentientOutposts.active" :text="$t('sentientoutpost.outpostsL')" />
     </b-list-group>
   </HubPanelWrap>
 </template>
@@ -34,7 +34,7 @@ export default {
   props: ['sentientOutposts'],
   computed: {
     headertext() {
-      return 'Sentient Outposts (Beta)';
+      return this.$t('sentientoutpost.header');
     },
   },
   components: {

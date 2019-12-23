@@ -3,7 +3,7 @@
     <div class="compact-text" v-if="deals.length === 1">
       <b>{{ deals[0].item }}</b>
       {{ deals[0].salePrice }} <HubImg :src="platinum" :name="plat" /> ({{ deals[0].discount }}{{ off }})
-      {{ deals[0].total - deals[0].sold }}/{{ deals[0].total }} {{ leftL }}
+      {{ deals[0].total - deals[0].sold }}/{{ deals[0].total }} {{ $t('darvo.leftL') }}
       <TimeBadge :starttime="now()" :endtime="deals[0].expiry" :interval="10000" />
     </div>
     <b-list-group>
@@ -12,9 +12,9 @@
           <tbody>
             <tr v-for="item in deals" :key="`${item.id}-deal`">
               <td>{{ item.item }}</td>
-              <td>{{ item.discount }}{{ off }}</td>
-              <td>{{ item.salePrice }} <HubImg :src="platinum" :name="plat" /></td>
-              <td>{{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}{{ left }}</td>
+              <td>{{ item.discount }}{{ $t('darvo.off') }}</td>
+              <td>{{ item.salePrice }} <HubImg :src="platinum" :name="$t('currency.plat')" /></td>
+              <td>{{ (((item.total - item.sold) / item.total) * 100).toFixed(2) }}{{ $t('darvo.left') }}</td>
               <td>
                 <TimeBadge :starttime="now()" :endtime="item.expiry" :interval="10000" />
               </td>
@@ -48,18 +48,6 @@ export default {
   computed: {
     headertext() {
       return this.$t('darvo.header');
-    },
-    plat() {
-      return this.$t('currency.plat');
-    },
-    off() {
-      return this.$t('darvo.off');
-    },
-    left() {
-      return this.$t('darvo.left');
-    },
-    leftL() {
-      return this.$t('darvo.leftL');
     },
   },
   data() {

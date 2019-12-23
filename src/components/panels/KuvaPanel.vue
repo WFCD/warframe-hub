@@ -14,7 +14,7 @@
         <span class="pull-left">
           <HubImg
             :src="kuvalogo"
-            name="Kuva Siphon"
+            :name="$t('kuva.siphon')"
             class="li-mission-decorator li-mission-decorator-lg"
             height="15px"
             width="15px"
@@ -56,7 +56,7 @@ export default {
   props: ['kuvas'],
   computed: {
     headertext() {
-      return 'Kuva Siphons';
+      return this.$t('kuva.header');
     },
     kuvalogo() {
       return kuvalogo;

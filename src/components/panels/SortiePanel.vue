@@ -34,9 +34,10 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 import HubImg from '@/components/HubImg.vue';
 import TimeBadge from '@/components/TimeBadge.vue';
-import moment from 'moment';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 import corpus from '@/assets/img/factions/corpus.svg';
@@ -56,7 +57,7 @@ export default {
       return moment().toISOString();
     },
     headertext() {
-      return 'Sortie';
+      return this.$t('sortie.header');
     },
     factionImg() {
       var fImg = {

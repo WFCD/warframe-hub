@@ -22,7 +22,7 @@
     "@sentry/browser": "^5.7.1",
     "@sentry/integrations": "^5.7.1",
     "@types/node-fetch": "^2.5.3",
-    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-babel": "^4.1.2",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-plugin-pwa": "^4.0.5",
     "@vue/cli-service": "^4.0.5",

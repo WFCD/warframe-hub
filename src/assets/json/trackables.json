@@ -192,6 +192,11 @@
       "value": "operations",
       "text": "Operations"
     },
+    "outposts": {
+      "state": false,
+      "value": "outposts",
+      "text": "Sentient Outposts"
+    },
     "fissures.t1.excavation": {
       "state": false,
       "value": "fissures.t1.excavation",

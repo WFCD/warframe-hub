@@ -159,6 +159,14 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
       };
+    case 'outposts':
+      return {
+        head: `Sentient Outpost - ${data.mission.node}`,
+        body: {
+          body: '',
+          icon: wfcdLogoUrl,
+        },
+      };
     default:
       return defaultNotificationBody;
   }
@@ -315,6 +323,11 @@ class Notifier {
         if (this.isNotifiable(challenge.id, 'nightwave')) {
           toNotify.push(makeNotification('nightwave', challenge));
         }
+      }
+    }
+    if (ws.sentientOutposts.id && ws.sentientOutposts.active) {
+      if (this.isNotifiable(ws.sentientOutposts.id, 'outposts')) {
+        toNotify.push(makeNotification('outposts', ws.sentientOutposts));
       }
     }
     return toNotify;

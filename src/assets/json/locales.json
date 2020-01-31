@@ -1,0 +1,42 @@
+{
+  "en": {
+    "display": "English",
+    "key": "en"
+  },
+  "de": {
+    "display": "German",
+    "key": "de"
+  },
+  "es": {
+    "display": "Spanish",
+    "key": "es"
+  },
+  "fr": {
+    "display": "French",
+    "key": "fr"
+  },
+  "it": {
+    "display": "Italian",
+    "key": "it"
+  },
+  "ko": {
+    "display": "Korean",
+    "key": "ko"
+  },
+  "pl": {
+    "display": "Polish",
+    "key": "pl"
+  },
+  "pt": {
+    "display": "Portuguese",
+    "key": "pt"
+  },
+  "ru": {
+    "display": "Russian",
+    "key": "ru"
+  },
+  "zh": {
+    "display": "Chinese (Simplified)",
+    "key": "zh"
+  }
+}

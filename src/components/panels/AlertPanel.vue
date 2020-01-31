@@ -14,13 +14,13 @@
         <span class="pull-left">
           <HubImg
             :src="archwing"
-            name="Archwing Required for Mission"
+            :name="this.$t('alerts.archwing')"
             class="li-mission-decorator"
             v-if="alert.mission.archwingRequired"
           />
           <HubImg
             :src="nightmare"
-            name="Nightmare Mission"
+            :name="this.$t('alerts.nightmare')"
             class="li-mission-decorator"
             v-if="alert.mission.nightmare"
           />
@@ -73,7 +73,7 @@ export default {
   props: ['alerts'],
   computed: {
     headertext() {
-      return 'Alerts';
+      return this.$t('alerts.header');
     },
   },
   data() {

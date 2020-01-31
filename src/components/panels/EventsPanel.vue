@@ -36,7 +36,7 @@
           <b-badge v-for="item in reward.countedItems" :key="`${item}-${makeid()}`" variant="success">
             {{ item }}
           </b-badge>
-          <b-badge v-if="reward.credits" variant="info">{{ reward.credits }}cr</b-badge>
+          <b-badge v-if="reward.credits" variant="info">{{ reward.credits }}{{ this.$t('currency.credAbbr') }}</b-badge>
         </div>
         <div class="text-center d-inline" v-for="step in event.interimSteps" :key="`rsi-${step.length}-${makeid()}`">
           <b-badge v-for="item in step.reward.items" :key="`rsi-${item}-${makeid()}`" variant="success">
@@ -93,7 +93,7 @@ export default {
   props: ['events'],
   computed: {
     headertext() {
-      return 'Events';
+      return this.$t('events.header');
     },
     activeEvents() {
       return this.$props.events.filter((event) => {

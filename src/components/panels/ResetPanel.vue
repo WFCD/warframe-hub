@@ -3,7 +3,7 @@
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <span class="pull-left">
-          <b>Reward Timer Reset in:</b>
+          <b>{{ this.$t('reset.label') }}</b>
         </span>
         <TimeBadge :starttime="this.now" :endtime="this.nextDay" :interval="1000" />
       </b-list-group-item>
@@ -21,7 +21,7 @@ export default {
   name: 'ResetPanel',
   computed: {
     headertext() {
-      return 'Daily Reward Timer Reset';
+      return this.$t('reset.header');
     },
   },
   data() {

@@ -76,10 +76,11 @@ export default {
   },
   methods: {
     eta: function(invasion) {
-      return `(Ends in: ${invasion.eta
+      const eta = invasion.eta
         .replace('-Infinityd', '??')
         .replace('Infinityd', '??')
-        .replace(/\s\d\d?s/gi, '')})*`;
+        .replace(/\s\d\d?s/gi, '');
+      return `(${this.$t('invasions.eta')} ${eta})*`;
     },
     getLabelColor: function(faction) {
       switch (faction) {

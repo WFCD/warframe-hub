@@ -7,7 +7,7 @@
             <tr>
               <th class="text-center col-xs-2">Item</th>
               <th class="text-center col-xs-2">
-                <HubImg :src="platinum" name="Platinum" />
+                <HubImg :src="platinum" :name="$t('currency.plat')" />
               </th>
               <th class="text-center col-xs-4"></th>
             </tr>
@@ -48,7 +48,7 @@ export default {
   props: ['sales'],
   computed: {
     headertext() {
-      return 'Sales and Featured Deals';
+      return this.$t('sales.header');
     },
   },
   data() {

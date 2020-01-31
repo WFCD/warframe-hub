@@ -38,7 +38,7 @@
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom">
         <b-form-checkbox id="news-cycle-checkbox" class="float-right" name="news-cycle-checkbox" switch v-model="check">
-          Auto-progress
+          {{ this.$t('news.autoprogress') }}
         </b-form-checkbox>
       </b-list-group-item>
     </b-list-group>
@@ -92,16 +92,19 @@ body .list-group .list-group-item-borderless .list-group {
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';
 
+const cdnUrl = 'https://cdn.warframestat.us';
+const cdnOpts = ['o_webp', 'rs_404x110'];
+
 export default {
   props: ['news'],
   name: 'NewsPanel',
   components: { HubPanelWrap },
   computed: {
     headertext() {
-      return 'News';
+      return this.$t('news.header');
     },
     filteredNews() {
-      return this.news.filter((item) => item.translations['en']).reverse();
+      return this.news.filter((item) => item.translations[this.locale]).reverse();
     },
     check: {
       get() {
@@ -125,12 +128,14 @@ export default {
       this.increment();
     },
     getImgSrc: (url) => {
-      return 'https://cdn.warframestat.us/o_webp,rs_404x110/' + url;
+      return `${cdnUrl}/${cdnOpts.join(',')}/${url}`;
     },
-    title: (newsitem) => ({
-      time: newsitem.eta.split(' ')[0],
-      label: newsitem.translations['en'],
-    }),
+    title: function(newsitem) {
+      return {
+        time: newsitem.eta.split(' ')[0],
+        label: newsitem.translations[this.locale],
+      };
+    },
   },
   data() {
     return {
@@ -141,6 +146,7 @@ export default {
       interval: {},
       cycle: this.$store.getters.componentState.news.autoCycle,
       hover: null,
+      locale: this.$store.getters.locale,
     };
   },
   mounted() {

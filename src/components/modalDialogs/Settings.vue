@@ -2,20 +2,10 @@
   <b-modal @shown="checkNotifications" id="settings-modal" class="settings-modal" centered size="md" title="Settings">
     <b-tabs card vertical>
       <b-tab title="Platform">
-        <b-form-group label="Platform">
-          <b-form-radio-group
-            id="platform-radios"
-            stacked
-            v-model="platform"
-            name="platform radios"
-            v-on:change="savePlatform"
-            class="settings-group"
-          >
-            <b-form-radio v-for="platform in this.platforms" :key="platform.key" :value="platform.key">
-              <i :class="`${platform.icon} fa-lg`" :style="themeIconStyle"></i>
-            </b-form-radio>
-          </b-form-radio-group>
-        </b-form-group>
+        <Platforms />
+      </b-tab>
+      <b-tab title="Language">
+        <Languages />
       </b-tab>
       <b-tab title="Components">
         <b-form-group label="Components">
@@ -44,7 +34,7 @@
           >
             <b-form-radio v-for="theme in getThemes" :key="theme.key" :value="theme.key">
               <i :class="theme.faclass" :style="themeIconStyle"></i>
-              <span :style="platformLabelStyle">{{ theme.display }}</span>
+              <span :style="themeLabelStyle">{{ theme.display }}</span>
             </b-form-radio>
           </b-form-radio-group>
         </b-form-group>
@@ -66,7 +56,9 @@
 import NotifFilters from '@/components/modalDialogs/NotificationFilters.vue';
 import FissureFilters from '@/components/modalDialogs/FissureFilters.vue';
 import SoundFilters from '@/components/modalDialogs/SoundFilters.vue';
-import platforms from '@/assets/json/platforms.json';
+import Platforms from '@/components/modalDialogs/Platforms.vue';
+import Languages from '@/components/modalDialogs/Languages.vue';
+
 import themes from '@/assets/json/themes.json';
 export default {
   name: 'SettingsModal',
@@ -74,28 +66,24 @@ export default {
     NotifFilters,
     FissureFilters,
     SoundFilters,
+    Platforms,
+    Languages,
   },
   data() {
     return {
-      platform: this.$store.getters.platform,
       theme: this.$store.getters.theme,
       themeIconStyle: {
         color: 'white',
         'margin-top': '3px',
         'padding-right': '10px',
       },
-      platformLabelStyle: {
+      themeLabelStyle: {
         'flex-grow': 1,
       },
-      platforms: platforms,
       themes: themes,
     };
   },
   methods: {
-    savePlatform(platform) {
-      this.$store.commit('commitPlatform', platform);
-      this.$store.dispatch('updateWorldstate');
-    },
     updateComponentState(enabledComponents) {
       Object.keys(this.$store.getters.componentState).forEach((component) => {
         this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);

@@ -52,7 +52,7 @@ export default {
   props: ['fissures'],
   computed: {
     headertext() {
-      return 'Fissures';
+      return this.$t('fissures.header');
     },
     filteredFissures: function() {
       const pState = [];

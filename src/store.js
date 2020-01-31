@@ -11,7 +11,7 @@ import trackables from '@/assets/json/trackables.json';
 import fissurePlanets from '@/assets/json/planets.json';
 import initialWorldstate from '@/assets/json/initialWorldstate.json';
 
-const apiBase = 'https://api.warframestat.us';
+const apiBase = 'https://api.warframestat.us' || process.env.VUE_APP_API_BASE;
 let notifier;
 
 const state = {
@@ -54,10 +54,14 @@ const state = {
     'Toroids-toggle-value': true,
     'Special Caves-toggle-value': true,
   },
+  locale: 'en',
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
     state.worldstates[platform] = worldstate;
+  },
+  commitLocale: (state, locale) => {
+    state.locale = locale;
   },
   commitPlatform: (state, platform) => {
     state.platform = platform;
@@ -111,7 +115,7 @@ const actions = {
     const { commit, getters } = context;
     const res = await fetch(`${apiBase}/${getters.platform}`, {
       headers: {
-        'Accept-Language': 'en',
+        'Accept-Language': getters.locale,
       },
     });
     const ws = await res.json();
@@ -177,8 +181,9 @@ const getters = {
     );
     return filtered[0];
   },
-  platform: (state) => state.platform,
-  theme: (state) => state.theme,
+  locale: (state) => state.locale || 'en',
+  platform: (state) => state.platform || 'pc',
+  theme: (state) => state.theme || 'night',
   componentState: (state) => state.components,
   trackableState: (state) => state.trackables,
   fissurePlanetStates: (state) => state.fissurePlanets,

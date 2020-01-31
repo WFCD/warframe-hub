@@ -48,7 +48,7 @@ export default {
       return moment().toISOString();
     },
     headertext() {
-      return 'Arbitration';
+      return this.$t('arbitration.header');
     },
     factionImg() {
       var fImg = {

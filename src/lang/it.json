@@ -16,7 +16,31 @@
   },
   "bounty": {
     "standing": "Standing",
-    "header": "Bounty Cycle"
+    "header": "Bounty Cycle",
+    "type": "Type",
+    "lrange": "Level Range",
+    "rewards": "Rewards",
+    "bounties": "Bounties"
+  },
+  "nav": {
+    "info": "Information",
+    "discord": "Discord",
+    "settings": "Settings",
+    "drops": "Drops",
+    "genesis": "Genesis",
+    "docs": "API Docs",
+    "old": "Old Hub",
+    "status": "Status",
+    "riven": "Riven Data (Alpha)",
+    "synth": "Synthesis Targets",
+    "map": "Map",
+    "fish": "Fishing Data",
+    "howto": "How to Fish",
+    "owearth": "Plains",
+    "owvenus": "Orb Vallis",
+    "ow": "Open World",
+    "timers": "Timers",
+    "nodata": "No Data"
   },
   "construction": {
     "fomorian": "Fomorian",
@@ -24,18 +48,70 @@
     "unk": "Unknown",
     "header": "Construction Progress"
   },
-  "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr",
+    "dabloons": "Ducats",
+    "cred": "Credits"
+  },
+  "darvo": {
+    "header": "Darvo's Deals",
+    "off": "% Off",
+    "left": "% Left",
+    "leftL": "Left"
+  },
+  "events": {
+    "header": "Events",
+    "standStages": "Standing Stages",
+    "rewards": "Rewards"
+  },
+  "fissures": {
+    "header": "Fissures"
   },
   "invasions": {
     "header": "Invasions",
     "eta": "Ends in:"
   },
+  "kuva": {
+    "header": "Kuva Siphons",
+    "siphon": "Kuva Siphon"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Earth"
+  },
   "news": {
     "header": "News",
     "autoprogress": "Auto-progress"
+  },
+  "nightwave": {
+    "header": "Nightwave",
+    "weekly": "Weekly",
+    "elite": "Elite Weekly",
+    "daily": "Daily"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
+      "nightheader": "Cetus - Hunting Time!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reward Timer Reset",
+    "label": "Reward Timer Reset in:"
+  },
+  "sales": {
+    "header": "Sales and Featured Deals"
+  },
+  "sentientoutpost": {
+    "tooltip1": "This component is in active development because of the recent update.",
+    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
+    "header": "Sentient Outposts (Beta)",
+    "outpostsL": "Outposts"
+  },
+  "sortie": {
+    "header": "Sortie"
   },
   "time": {
     "day": "day",
@@ -46,10 +122,13 @@
     "startL": "Starts in:",
     "endL": "Ends in:",
     "ongoingL": "Ongoing for:",
-    "expiredL": "Expired:"
+    "expiredL": "Expired:",
+    "depart": "Departs",
+    "arrive": "Arrives at"
   },
-  "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+  "vt": {
+    "header": "Void Trader",
+    "inventory": "Inventory",
+    "item": "Item"
   }
 }

@@ -1,31 +1,31 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "어콜라이트",
+    "discovered": "발견됨",
+    "hiding": "숨어있음",
+    "na": "알 수 없음",
+    "health": "남은 체력"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "header": "얼럿",
+    "archwing": "미션에 아크윙 필요",
+    "nightmare": "나이트메어 미션"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "중재"
   },
   "bounty": {
     "standing": "Standing",
     "header": "Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
+    "lrange": "레벨 범위",
+    "rewards": "보상",
     "bounties": "Bounties"
   },
   "nav": {
-    "info": "Information",
+    "info": "정보",
     "discord": "Discord",
-    "settings": "Settings",
+    "settings": "설정",
     "drops": "Drops",
     "genesis": "Genesis",
     "docs": "API Docs",

@@ -51,25 +51,25 @@
   "currency": {
     "plat": "플래티넘",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "두캇",
+    "cred": "크레딧"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
+    "header": "다르보의 딜",
+    "off": "% 할인",
+    "left": "% 남음",
     "leftL": "Left"
   },
   "events": {
-    "header": "Events",
+    "header": "이벤트",
     "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "rewards": "보상"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "유물"
   },
   "invasions": {
-    "header": "Invasions",
+    "header": "침공",
     "eta": "Ends in:"
   },
   "kuva": {

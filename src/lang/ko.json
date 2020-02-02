@@ -16,7 +16,7 @@
   },
   "bounty": {
     "standing": "Standing",
-    "header": "Bounty Cycle",
+    "header": "현상금 주기",
     "type": "Type",
     "lrange": "레벨 범위",
     "rewards": "보상",
@@ -36,7 +36,7 @@
     "map": "지도",
     "fish": "낚시 데이터",
     "howto": "낚시하는 방법",
-    "owearth": "Plains",
+    "owearth": "평원",
     "owvenus": "오브 협곡",
     "ow": "오픈 월드",
     "timers": "타이머",

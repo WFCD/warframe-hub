@@ -15,24 +15,24 @@
     "header": "중재"
   },
   "bounty": {
-    "standing": "Standing",
+    "standing": "평판",
     "header": "현상금 주기",
-    "type": "Type",
+    "type": "유형",
     "lrange": "레벨 범위",
     "rewards": "보상",
-    "bounties": "Bounties"
+    "bounties": "현상금"
   },
   "nav": {
     "info": "정보",
     "discord": "Discord",
     "settings": "설정",
-    "drops": "Drops",
+    "drops": "드랍",
     "genesis": "Genesis",
     "docs": "API 문서",
     "old": "구 Hub",
     "status": "상태",
     "riven": "리벤 데이터 (Alpha)",
-    "synth": "Synthesis Targets",
+    "synth": "신디시스 타겟",
     "map": "지도",
     "fish": "낚시 데이터",
     "howto": "낚시하는 방법",
@@ -50,7 +50,7 @@
   },
   "currency": {
     "plat": "플래티넘",
-    "credAbbr": "cr",
+    "credAbbr": "크레딧",
     "dabloons": "두캇",
     "cred": "크레딧"
   },
@@ -58,11 +58,11 @@
     "header": "다르보의 딜",
     "off": "% 할인",
     "left": "% 남음",
-    "leftL": "Left"
+    "leftL": "남음"
   },
   "events": {
     "header": "이벤트",
-    "standStages": "Standing Stages",
+    "standStages": "평판 단계",
     "rewards": "보상"
   },
   "fissures": {
@@ -70,64 +70,64 @@
   },
   "invasions": {
     "header": "침공",
-    "eta": "Ends in:"
+    "eta": "종료까지:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "쿠바 사이펀",
+    "siphon": "쿠바 사이펀"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "시터스",
+    "vallis": "협곡",
+    "earth": "지구"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "뉴스",
+    "autoprogress": "자동"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "나이트웨이브",
+    "weekly": "주간",
+    "elite": "주간 엘리트",
+    "daily": "일간ㅋ"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "시터스 - 새 아침이 밝았습니다! 사냥 시간 종료!",
+      "nightheader": "시터스 - 사냥 시간입니다!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "일간 보상 타이머 리셋",
+    "label": "보상 타이머 리셋까지:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "판매 및 추천 딜"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Sentient Outposts (Beta)",
-    "outpostsL": "Outposts"
+    "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
+    "tooltip2": "예상 주기는 활동 중에는 30분이며 활동하지 않는다면 3시간입니다.",
+    "header": "센티언트 전초 기지 (Beta)",
+    "outpostsL": "전초 기지"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "출격"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired:",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "일",
+    "night": "저녁",
+    "warm": "따듯함",
+    "cold": "추움",
+    "Timer": "주기 타이머",
+    "startL": "시작 시간:",
+    "endL": "종료 시간:",
+    "ongoingL": "진행:",
+    "expiredL": "만료:",
+    "depart": "출발",
+    "arrive": "도착까지"
   },
   "vt": {
-    "header": "Void Trader",
+    "header": "보이드 상인",
     "inventory": "Inventory",
     "item": "Item"
   }

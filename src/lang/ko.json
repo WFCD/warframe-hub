@@ -107,8 +107,8 @@
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
     "tooltip2": "예상 주기는 활동 중에는 30분이며 활동하지 않는다면 3시간입니다.",
-    "header": "센티언트 전초 기지 (Beta)",
-    "outpostsL": "전초 기지"
+    "header": "센티언트 전초기지 (Beta)",
+    "outpostsL": "전초기지"
   },
   "sortie": {
     "header": "출격"
@@ -128,7 +128,7 @@
   },
   "vt": {
     "header": "보이드 상인",
-    "inventory": "Inventory",
-    "item": "Item"
+    "inventory": "인벤토리",
+    "item": "아이템"
   }
 }

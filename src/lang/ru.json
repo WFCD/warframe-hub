@@ -39,6 +39,8 @@
     "owearth": "Plains",
     "owvenus": "Orb Vallis",
     "ow": "Open World",
+    "projects": "Projects",
+    "extras": "Extras",
     "timers": "Timers",
     "nodata": "No Data"
   },
@@ -125,6 +127,10 @@
     "expiredL": "Expired:",
     "depart": "Departs",
     "arrive": "Arrives at"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Solaris United"
   },
   "vt": {
     "header": "Void Trader",

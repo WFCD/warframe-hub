@@ -16,11 +16,11 @@
   },
   "bounty": {
     "standing": "평판",
-    "header": "현상금 주기",
+    "header": "의뢰 주기",
     "type": "유형",
     "lrange": "레벨 범위",
     "rewards": "보상",
-    "bounties": "현상금"
+    "bounties": "의뢰"
   },
   "nav": {
     "info": "정보",
@@ -57,7 +57,7 @@
     "cred": "크레딧"
   },
   "darvo": {
-    "header": "다르보의 딜",
+    "header": "다르보의 제안",
     "off": "% 할인",
     "left": "% 남음",
     "leftL": "남음"

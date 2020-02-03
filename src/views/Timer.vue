@@ -22,8 +22,8 @@
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" />
-        <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="Ostron" />
-        <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="Solaris United" />
+        <bounty v-if="componentState.bounties.display" :syndicate="ostron" :type="$t('timer.ostron')" />
+        <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" :type="$t('timer.solaris')" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
       </b-row>

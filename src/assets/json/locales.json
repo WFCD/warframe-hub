@@ -4,39 +4,39 @@
     "key": "en"
   },
   "de": {
-    "display": "German",
+    "display": "Deutsch",
     "key": "de"
   },
   "es": {
-    "display": "Spanish",
+    "display": "Español",
     "key": "es"
   },
   "fr": {
-    "display": "French",
+    "display": "Français",
     "key": "fr"
   },
   "it": {
-    "display": "Italian",
+    "display": "Italiano",
     "key": "it"
   },
   "ko": {
-    "display": "Korean",
+    "display": "한국어",
     "key": "ko"
   },
   "pl": {
-    "display": "Polish",
+    "display": "Polski",
     "key": "pl"
   },
   "pt": {
-    "display": "Portuguese",
+    "display": "Português",
     "key": "pt"
   },
   "ru": {
-    "display": "Russian",
+    "display": "Pусский",
     "key": "ru"
   },
   "zh": {
-    "display": "Chinese (Simplified)",
+    "display": "简体中文",
     "key": "zh"
   }
 }

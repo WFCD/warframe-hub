@@ -39,8 +39,8 @@
     "owearth": "평원",
     "owvenus": "오브 협곡",
     "ow": "오픈 월드",
-    "projects": "Projects",
-    "extras": "Extras",
+    "projects": "프로젝트",
+    "extras": "기타",
     "timers": "타이머",
     "nodata": "데이터 없음"
   },
@@ -129,8 +129,8 @@
     "arrive": "도착까지"
   },
   "timer": {
-    "ostron": "Ostron",
-    "solaris": "Solaris United"
+    "ostron": "오스트론",
+    "solaris": "솔라리스 연합"
   },
   "vt": {
     "header": "보이드 상인",

@@ -1,140 +1,144 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "어콜라이트",
+    "discovered": "발견됨",
+    "hiding": "숨어있음",
+    "na": "알 수 없음",
+    "health": "남은 체력"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "header": "얼럿",
+    "archwing": "미션에 아크윙 필요",
+    "nightmare": "나이트메어 미션"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "중재"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties"
+    "standing": "평판",
+    "header": "의뢰 주기",
+    "type": "유형",
+    "lrange": "레벨 범위",
+    "rewards": "보상",
+    "bounties": "의뢰"
   },
   "nav": {
-    "info": "Information",
+    "info": "정보",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "설정",
+    "drops": "드랍",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
-    "owvenus": "Orb Vallis",
-    "ow": "Open World",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data"
+    "docs": "API 문서",
+    "old": "구 Hub",
+    "status": "상태",
+    "riven": "리벤 데이터 (Alpha)",
+    "synth": "신디시스 타겟",
+    "map": "지도",
+    "fish": "낚시 데이터",
+    "howto": "낚시하는 방법",
+    "owearth": "평원",
+    "owvenus": "오브 협곡",
+    "ow": "오픈 월드",
+    "projects": "프로젝트",
+    "extras": "기타",
+    "timers": "타이머",
+    "nodata": "데이터 없음"
   },
   "construction": {
-    "fomorian": "Fomorian",
-    "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "fomorian": "포모리안",
+    "razorback": "레이저백",
+    "unk": "알 수 없음",
+    "header": "건설 진행도"
   },
   "currency": {
-    "plat": "Platinum",
-    "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "plat": "플래티넘",
+    "credAbbr": "크레딧",
+    "dabloons": "두캇",
+    "cred": "크레딧"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "다르보의 제안",
+    "off": "% 할인",
+    "left": "% 남음",
+    "leftL": "남음"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "header": "이벤트",
+    "standStages": "평판 단계",
+    "rewards": "보상"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "유물"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "침공",
+    "eta": "종료까지:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "쿠바 사이펀",
+    "siphon": "쿠바 사이펀"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "시터스",
+    "vallis": "협곡",
+    "earth": "지구"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "뉴스",
+    "autoprogress": "자동"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "나이트웨이브",
+    "weekly": "주간",
+    "elite": "주간 엘리트",
+    "daily": "일간ㅋ"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "시터스 - 새 아침이 밝았습니다! 사냥 시간 종료!",
+      "nightheader": "시터스 - 사냥 시간입니다!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "일간 보상 타이머 리셋",
+    "label": "보상 타이머 리셋까지:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "판매 및 추천 딜"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Sentient Outposts (Beta)",
-    "outpostsL": "Outposts"
+    "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
+    "tooltip2": "예상 주기는 활동 중에는 30분이며 활동하지 않는다면 3시간입니다.",
+    "header": "센티언트 전초기지 (Beta)",
+    "outpostsL": "전초기지"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "출격"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired:",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "일",
+    "night": "저녁",
+    "warm": "따듯함",
+    "cold": "추움",
+    "Timer": "주기 타이머",
+    "startL": "시작 시간:",
+    "endL": "종료 시간:",
+    "ongoingL": "진행:",
+    "expiredL": "만료:",
+    "depart": "출발",
+    "arrive": "도착까지"
+  },
+  "timer": {
+    "ostron": "오스트론",
+    "solaris": "솔라리스 연합"
   },
   "timer": {
     "ostron": "Ostron",
     "solaris": "Solaris United"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "보이드 상인",
+    "inventory": "인벤토리",
+    "item": "아이템"
   }
 }

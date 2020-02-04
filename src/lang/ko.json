@@ -68,7 +68,7 @@
     "rewards": "보상"
   },
   "fissures": {
-    "header": "유물"
+    "header": "균열"
   },
   "invasions": {
     "header": "침공",
@@ -84,14 +84,14 @@
     "earth": "지구"
   },
   "news": {
-    "header": "뉴스",
+    "header": "새 소식",
     "autoprogress": "자동"
   },
   "nightwave": {
     "header": "나이트웨이브",
     "weekly": "주간",
     "elite": "주간 엘리트",
-    "daily": "일간ㅋ"
+    "daily": "일간"
   },
   "notifications": {
     "cetus": {
@@ -108,7 +108,7 @@
   },
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
-    "tooltip2": "예상 주기는 활동 중에는 30분이며 활동하지 않는다면 3시간입니다.",
+    "tooltip2": "예상 주기는 30분의 활성화 시간과 3시간의 비활성 시간입니다.",
     "header": "센티언트 전초기지 (Beta)",
     "outpostsL": "전초기지"
   },
@@ -116,8 +116,8 @@
     "header": "출격"
   },
   "time": {
-    "day": "일",
-    "night": "저녁",
+    "day": "낮",
+    "night": "밤",
     "warm": "따듯함",
     "cold": "추움",
     "Timer": "주기 타이머",
@@ -131,10 +131,6 @@
   "timer": {
     "ostron": "오스트론",
     "solaris": "솔라리스 연합"
-  },
-  "timer": {
-    "ostron": "Ostron",
-    "solaris": "Solaris United"
   },
   "vt": {
     "header": "보이드 상인",

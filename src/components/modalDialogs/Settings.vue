@@ -30,7 +30,7 @@
             v-model="theme"
             name="theme radios"
             v-on:change="updateTheme"
-            class="settings-group"
+            class="settings-group themeTabWrapper"
           >
             <b-form-radio v-for="theme in getThemes" :key="theme.key" :value="theme.key">
               <i :class="theme.faclass" :style="themeIconStyle"></i>

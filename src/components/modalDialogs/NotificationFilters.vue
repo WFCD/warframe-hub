@@ -1,6 +1,6 @@
 <template>
   <div id="notificationsTabBody">
-    Check the checkbock for entries you want notifications for:
+    Check the checkbox for entries you want notifications for:
     <div class="tab-wrap">
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group

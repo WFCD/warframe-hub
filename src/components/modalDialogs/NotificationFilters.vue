@@ -11,7 +11,7 @@
           v-on:input="(vals) => updateRewardStates(vals)"
           switches
           stacked
-          class="settings-group"
+          class="settings-group fissureSettingGroup notificationGroup"
         >
         </b-form-checkbox-group>
       </b-form-group>
@@ -27,7 +27,7 @@
           v-on:input="(vals) => updateEventStates(vals)"
           switches
           stacked
-          class="settings-group"
+          class="settings-group fissureSettingGroup notificationGroup"
         >
         </b-form-checkbox-group>
       </b-form-group>

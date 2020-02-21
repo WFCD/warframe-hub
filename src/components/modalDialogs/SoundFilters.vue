@@ -2,7 +2,7 @@
   <div id="soundsTabBody">
     Checking the checkbox next to an option will allow a sound to be played for those new items.
 
-    <div class="tab-wrap">
+    <div class="tab-wrap fit-height">
       <b-form-group label="Sound Filters">
         <b-form-checkbox-group
           id="sound-checks"

@@ -11,7 +11,7 @@
           v-on:input="(vals) => updateFissureStates(vals)"
           switches
           stacked
-          class="settings-group"
+          class="settings-group fissureSettingGroup"
         >
         </b-form-checkbox-group>
       </b-form-group>

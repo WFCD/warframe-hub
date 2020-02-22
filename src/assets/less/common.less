@@ -125,8 +125,8 @@ div.modal-body {
 }
 
 
-div.custom-control {
-  position: relative;
+.settings-group > div {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     min-height: 1.40625rem;
@@ -135,18 +135,21 @@ div.custom-control {
     width: 23%;
     height: fit-content;
     padding-left: 1.5rem;
+    text-align: left;
+
 }
 
-#components-checks .custom-control {
+.settings-group > div > input[type="checkbox"]~label,
+.settings-group > div > input[type="radio"]~label {
+  cursor: pointer;
+}
+
+#components-checks .settings-group > div  {
     text-align: left;
     width: 30%;
     min-width: 23%;
 }
 
-
-.custom-radio > input, .custom-radio > label {
-  cursor: pointer;
-}
 
 
 .tab-wrap {
@@ -157,14 +160,11 @@ div.custom-control {
   padding-left: 2%;
 }
 
-.notification-group > div.custom-control {
+.notification-group > .settings-group > div {
   width: 46%;
   max-width: 178px;
 }
 
-.custom-control-label {
-  text-align: left;
-}
 
 .navbar.fixed-bottom {
   height: 30px;
@@ -241,7 +241,7 @@ div.card-body {
   margin: 0.75rem 1.25rem;
 }
 
-.themeTabWrapper > .custom-control {
+.themeTabWrapper > .settings-group > div {
   width: 35%;
   max-width: 170px;
 }
@@ -254,12 +254,12 @@ div.card-body {
 }
 
 
-#sound-checks > .custom-control,  {
+#sound-checks.settings-group > div   {
     width: 61%;
     padding-left: 2.5rem;
 }
 
- #fissureTabBody > .custom-c
+
 
 div.fit-height {
   height: 100%;

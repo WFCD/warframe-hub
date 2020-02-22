@@ -1,7 +1,7 @@
 <template>
   <div id="notificationsTabBody">
     Check the checkbox for entries you want notifications for:
-    <div class="tab-wrap">
+    <div class="tab-wrap pt-3">
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group
           id="reward-checks"

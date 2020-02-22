@@ -1,7 +1,7 @@
 <template>
   <div id="fissureTabBody">
     Checking the checkbox next to a planet below will disable it from being shown in the fissures list.
-    <div class="tab-wrap fit-height ">
+    <div class="tab-wrap fit-height pt-3">
       <b-form-group label="Fissure Filters">
         <b-form-checkbox-group
           id="fissure-checks"

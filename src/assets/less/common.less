@@ -136,7 +136,27 @@ div.modal-body {
     height: fit-content;
     padding-left: 1.5rem;
     text-align: left;
+}
 
+@media (max-width: 768px) {
+  .settings-group > div, #sound-checks.settings-group > div {
+    width: 100%;
+    padding-left: 2.5rem;
+  }
+
+  #platform-radios > div {
+    width: 45%;
+    margin-top: 5%;
+  }
+
+  ul.card-header {
+    padding: 0.75rem 0.55rem;
+  }
+
+
+  a.nav-link {
+        padding: 0.4rem .4rem;
+  }
 }
 
 .settings-group > div > input[type="checkbox"]~label,
@@ -254,9 +274,11 @@ div.card-body {
 }
 
 
-#sound-checks.settings-group > div   {
+@media(min-width: 769px) {
+  #sound-checks.settings-group > div   {
     width: 61%;
     padding-left: 2.5rem;
+}
 }
 
 

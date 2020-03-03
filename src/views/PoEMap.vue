@@ -15,7 +15,7 @@ import Vue from 'vue';
 import L from 'leaflet';
 
 /* map stuff */
-import plains from '@/assets/img/plains.png';
+import plains from '@/assets/img/plains.webp';
 import labels from '@/assets/json/geo/plains/labels.json';
 import fish from '@/assets/json/geo/plains/fishing.json';
 import grineer from '@/assets/json/geo/plains/grineer.json';
@@ -23,11 +23,11 @@ import lorefish from '@/assets/json/geo/plains/lorefish.json';
 import wisp from '@/assets/json/geo/plains/wisp.json';
 import lure from '@/assets/json/geo/plains/lure.json';
 import cave from '@/assets/json/geo/plains/cave.json';
-import grineerIcon from '@/assets/img/map_icons/grineer.png';
-import oddityIcon from '@/assets/img/map_icons/lorefish.png';
-import wispIcon from '@/assets/img/map_icons/wisp.png';
-import lureIcon from '@/assets/img/map_icons/lure.png';
-import caveIcon from '@/assets/img/map_icons/normal-cave.png';
+import grineerIcon from '@/assets/img/map_icons/grineer.webp';
+import oddityIcon from '@/assets/img/map_icons/lorefish.webp';
+import wispIcon from '@/assets/img/map_icons/wisp.webp';
+import lureIcon from '@/assets/img/map_icons/lure.webp';
+import caveIcon from '@/assets/img/map_icons/normal-cave.webp';
 import MapPopup from '@/components/MapPopup.vue';
 import OddityPopup from '@/components/OddityPopup.vue';
 

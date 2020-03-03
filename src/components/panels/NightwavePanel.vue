@@ -46,9 +46,9 @@ import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg';
 
-import daily from '@/assets/img/nightwave/daily.png';
-import weekly from '@/assets/img/nightwave/weekly.png';
-import elite from '@/assets/img/nightwave/elite.png';
+import daily from '@/assets/img/nightwave/daily.webp';
+import weekly from '@/assets/img/nightwave/weekly.webp';
+import elite from '@/assets/img/nightwave/elite.webp';
 import standing from '@/assets/img/general/standing.svg';
 
 export default {

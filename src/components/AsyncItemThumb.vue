@@ -2,7 +2,7 @@
   <span>
     <div v-if="!img">{{ this.alt }}</div>
     <div v-else>
-      <img :src="img" :alt="this.alt" :id="this.id" class="async-thumb" height="20px" />
+      <img :src="img" :alt="this.alt" :id="this.id" class="async-thumb" :width="`${this.width}px`" />
       <b-tooltip :target="this.id" triggers="hover" placement="bottom">
         {{ this.alt }}
       </b-tooltip>
@@ -22,7 +22,16 @@ import utilities from '@/utilities.js';
 
 export default {
   name: 'item-thumb',
-  props: ['alt'],
+  props: {
+    alt: {
+      type: String,
+      default: '',
+    },
+    width: {
+      type: Number,
+      default: 20,
+    },
+  },
   data() {
     return {
       id: utilities.makeid(),
@@ -44,7 +53,8 @@ export default {
       if (!data || !data[0].imageName) {
         return;
       } else {
-        this.img = `https://cdn.warframestat.us/img/${data[0].imageName}`;
+        this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${this.width *
+          3}/https://cdn.warframestat.us/img/${data[0].imageName}`;
       }
     },
   },

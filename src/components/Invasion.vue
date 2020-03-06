@@ -4,7 +4,7 @@
       <span
         ><b>{{ invasion.node }}</b> - {{ invasion.desc }}</span
       >
-      <i :id="`${invasion.id}_tooltip`" class="fas fa-xs fa-info-circle ml-2" />
+      <i :id="`${invasion.id}_tooltip`" class="fas fa-sm fa-info-circle ml-2" />
       <b-tooltip :target="`${invasion.id}_tooltip`" placement="right" class="text-center">
         <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000" />
         <div class="eta">

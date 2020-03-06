@@ -4,7 +4,8 @@
     <div v-else>
       <img :src="img" :alt="this.alt" :id="this.id" class="async-thumb" :width="`${this.width}px`" />
       <b-tooltip :target="this.id" triggers="hover" placement="bottom">
-        {{ this.alt }}
+        <img :src="img" :alt="this.alt" :id="this.id" class="async-thumb" :width="`${this.width * 5}px`" />
+        <div>{{ this.alt }}</div>
       </b-tooltip>
     </div>
   </span>
@@ -54,7 +55,7 @@ export default {
         return;
       } else {
         this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${this.width *
-          3}/https://cdn.warframestat.us/img/${data[0].imageName}`;
+          8}/https://cdn.warframestat.us/img/${data[0].imageName}`;
       }
     },
   },

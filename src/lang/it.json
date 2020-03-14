@@ -67,6 +67,9 @@
     "standStages": "Standing Stages",
     "rewards": "Rewards"
   },
+  "factions": {
+    "sentient": "Sentient"
+  },
   "fissures": {
     "header": "Fissures"
   },
@@ -109,8 +112,10 @@
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Sentient Outposts (Beta)",
-    "outpostsL": "Outposts"
+    "header": "Anomalies (Beta)",
+    "outpostsL": "Outposts",
+    "none": "No Current Anomalies",
+    "warn": "Don't forget your Paracesis!"
   },
   "sortie": {
     "header": "Sortie"
@@ -124,7 +129,7 @@
     "startL": "Starts in:",
     "endL": "Ends in:",
     "ongoingL": "Ongoing for:",
-    "expiredL": "Expired:",
+    "expiredL": "Expired",
     "depart": "Departs",
     "arrive": "Arrives at"
   },

@@ -1,7 +1,7 @@
 <template>
   <div id="notificationsTabBody">
-    Check the checkbock for entries you want notifications for:
-    <div class="tab-wrap">
+    Check the checkbox for entries you want notifications for:
+    <div class="tab-wrap pt-3">
       <b-form-group label="Reward Filters">
         <b-form-checkbox-group
           id="reward-checks"
@@ -11,7 +11,7 @@
           v-on:input="(vals) => updateRewardStates(vals)"
           switches
           stacked
-          class="settings-group"
+          class="settings-group fissure-setting-group notification-group"
         >
         </b-form-checkbox-group>
       </b-form-group>
@@ -27,7 +27,7 @@
           v-on:input="(vals) => updateEventStates(vals)"
           switches
           stacked
-          class="settings-group"
+          class="settings-group fissure-setting-group notification-group"
         >
         </b-form-checkbox-group>
       </b-form-group>

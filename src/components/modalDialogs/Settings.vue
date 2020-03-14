@@ -1,5 +1,5 @@
 <template>
-  <b-modal @shown="checkNotifications" id="settings-modal" class="settings-modal" centered size="md" title="Settings">
+  <b-modal @shown="checkNotifications" id="settings-modal" class="settings-modal" centered size="xl" title="Settings">
     <b-tabs card vertical>
       <b-tab title="Platform">
         <Platforms />
@@ -30,7 +30,7 @@
             v-model="theme"
             name="theme radios"
             v-on:change="updateTheme"
-            class="settings-group"
+            class="settings-group themeTabWrapper"
           >
             <b-form-radio v-for="theme in getThemes" :key="theme.key" :value="theme.key">
               <i :class="theme.faclass" :style="themeIconStyle"></i>

@@ -13,7 +13,7 @@
         <span :class="`badge badge-${healthLabel(acolyte)} pull-right`">
           <span :id="`${acolyte.id}-health`">{{ health(acolyte) }}</span
           >%
-          <i v-b-tooltip class="fas fa-heartbeat" :title="this.$t('acolytes.health')" style="margin-left: 5px"></i>
+          <i v-b-tooltip class="fas fa-heartbeat" :title="healthStr" style="margin-left: 5px"></i>
         </span>
         <span class="pull-left">
           <b>
@@ -39,9 +39,7 @@
           <span class="pull-left">
             <b>
               <span :id="`${acolyte.id}-loc`"
-                >{{ acolyte.isDiscovered ? '' : 'Last ' }} @{{
-                  acolyte.lastDiscoveredAt || this.$t('acolytes.na')
-                }}</span
+                >{{ acolyte.isDiscovered ? '' : 'Last ' }} @{{ acolyte.lastDiscoveredAt || none }}</span
               >
             </b>
             | <b>Level: </b>{{ acolyte.rank }}
@@ -67,6 +65,12 @@ export default {
   computed: {
     headertext() {
       return this.$t('acolytes.header');
+    },
+    none() {
+      return this.$t('acolytes.na');
+    },
+    healthStr() {
+      return this.$t('acolytes.health');
     },
   },
   methods: {

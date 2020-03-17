@@ -67,6 +67,9 @@
     "standStages": "평판 단계",
     "rewards": "보상"
   },
+  "factions": {
+    "sentient": "센티언트"
+  },
   "fissures": {
     "header": "균열"
   },
@@ -109,8 +112,10 @@
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
     "tooltip2": "예상 주기는 30분의 활성화 시간과 3시간의 비활성화 시간입니다.",
-    "header": "센티언트 전초기지 (Beta)",
-    "outpostsL": "전초기지"
+    "header": "이상 현상 (베타)",
+    "outpostsL": "전초기지",
+    "none": "현재 이상 현상 없음",
+    "warn": "파라세시스를 잊지 마세요!"
   },
   "sortie": {
     "header": "출격"
@@ -124,7 +129,7 @@
     "startL": "시작 시간:",
     "endL": "종료 시간:",
     "ongoingL": "진행:",
-    "expiredL": "만료:",
+    "expiredL": "만료",
     "depart": "출발",
     "arrive": "도착까지"
   },

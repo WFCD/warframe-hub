@@ -61,7 +61,6 @@ export default {
           pState.push(p);
         }
       });
-      // eslint-disable-next-line security/detect-non-literal-regexp
       const planets = new RegExp(`(${pState.join('|')})`, 'i');
       return this.fissures
         .filter((fissure) => {

@@ -153,7 +153,10 @@ function data() {
     zoom: -1,
     center: L.latLng(942, 1060),
     url: vallis,
-    bounds: [[0, 0], [2150, 2153]],
+    bounds: [
+      [0, 0],
+      [2150, 2153],
+    ],
     mapOptions: {
       zoomSnap: 0.5,
       minZoom: -10,

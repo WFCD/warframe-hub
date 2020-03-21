@@ -1,6 +1,5 @@
 'use strict';
 
-/* globals document */
 import Vue from 'vue';
 import drum from '@/assets/audio/drum.mp3';
 import eidolon from '@/assets/audio/eidolon.mp3';

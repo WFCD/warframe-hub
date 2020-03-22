@@ -21,45 +21,44 @@ module.exports = {
               test: /\.css$/,
               use: [
                 {
-                  loader: 'style-loader'
+                  loader: 'style-loader',
                 },
                 {
                   loader: 'css-loader',
                   options: {
-                    modules: true
-                  }
-                }
-              ]
+                    modules: true,
+                  },
+                },
+              ],
             },
             {
               test: /\.less$/,
               use: [
                 {
-                  loader: 'style-loader'
+                  loader: 'style-loader',
                 },
                 {
                   loader: 'css-loader',
                   options: {
-                    modules: true
-                  }
+                    modules: true,
+                  },
                 },
                 {
                   loader: 'less-loader',
                   options: {
                     lessOptions: {
                       strictMath: true,
-                      noIeCompat: true
-                    }
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      }
+                      noIeCompat: true,
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
     },
     requireModuleExtension: true,
-    modules: true
   },
 
   lintOnSave: true,

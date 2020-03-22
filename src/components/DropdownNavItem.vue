@@ -1,12 +1,25 @@
 <template>
   <span>
-    <b-dd-item v-if="isLocal" :to="target" exact v-b-tooltip.bottom :title="(!labelIfMobile && !$isMobile()) ? label : ''">
+    <b-dd-item
+      v-if="isLocal"
+      :to="target"
+      exact
+      v-b-tooltip.bottom
+      :title="!labelIfMobile && !$isMobile() ? label : ''"
+    >
       <i :class="`${icon} faIcon`"></i>
-      {{ labelIfMobile ? ( $isMobile() ? label : '') : label }}
+      {{ labelIfMobile ? ($isMobile() ? label : '') : label }}
     </b-dd-item>
-    <b-dd-item :href="target" rel="noopener" target="_blank"  v-b-tooltip.bottom :title="(labelIfMobile && !isMobile) ? label : ''" v-else>
+    <b-dd-item
+      :href="target"
+      rel="noopener"
+      target="_blank"
+      v-b-tooltip.bottom
+      :title="labelIfMobile && !isMobile ? label : ''"
+      v-else
+    >
       <i :class="`${icon} faIcon`"></i>
-      {{ labelIfMobile ? ( $isMobile() ? label : '') : label }}
+      {{ labelIfMobile ? ($isMobile() ? label : '') : label }}
     </b-dd-item>
   </span>
 </template>
@@ -25,29 +38,29 @@
 export default {
   name: 'DropdownItem',
   props: {
-    'isLocal': {
+    isLocal: {
       type: Boolean,
       default: false,
     },
-    'target': {
+    target: {
       type: String,
       default: '#',
     },
-    'label': {
+    label: {
       type: String,
       default: '',
     },
-    'icon': {
+    icon: {
       type: String,
-      default: 'fas fa-external-link-alt'
+      default: 'fas fa-external-link-alt',
     },
-    'labelIfMobile': {
+    labelIfMobile: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
-    return { };
+    return {};
   },
 };
 </script>

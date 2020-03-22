@@ -37,7 +37,12 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <DropdownItem icon="fab fa-discord" target="https://discord.gg/jGZxH9f" :labelIfMobile="true" :label="$t('nav.discord')" />
+        <DropdownItem
+          icon="fab fa-discord"
+          target="https://discord.gg/jGZxH9f"
+          :labelIfMobile="true"
+          :label="$t('nav.discord')"
+        />
         <DropdownItem icon="fas fa-info" v-b-modal.about-modal :labelIfMobile="true" :label="$t('nav.info')" />
         <DropdownItem icon="fas fa-cog" v-b-modal.settings-modal :labelIfMobile="true" :label="$t('nav.settings')" />
       </b-navbar-nav>

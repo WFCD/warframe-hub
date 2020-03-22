@@ -23,8 +23,9 @@
         :fields="fields"
         class="fish-info b-table mx-3"
         primary-key="name"
+        sticky-header="60vh"
       >
-        <template slot="small" slot-scope="data">
+        <template v-slot:cell(small)="data">
           {{ data.item.small.resources.scrap }}
           <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.small.standing }}
@@ -37,7 +38,7 @@
             invert="true"
           />
         </template>
-        <template slot="medium" slot-scope="data">
+        <template v-slot:cell(medium)="data">
           {{ data.item.medium.resources.scrap }}
           <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.medium.standing }}
@@ -50,7 +51,7 @@
             invert="true"
           />
         </template>
-        <template slot="large" slot-scope="data">
+        <template v-slot:cell(large)="data">
           {{ data.item.large.resources.scrap }}
           <FishImg type="common" item="scrap" title="Scrap" width="20" />
           / {{ data.item.large.standing }}
@@ -63,7 +64,7 @@
             invert="true"
           />
         </template>
-        <template slot="time.string" slot-scope="data">
+        <template v-slot:cell(time.string)="data">
           <span v-bind:id="data.item.name + '-time'">
             <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:skyblue" />
             <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
@@ -72,7 +73,7 @@
           </span>
           <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
-        <template slot="rarity" slot-scope="data">
+        <template v-slot:cell(rarity)="data">
           <FishImg
             type="common"
             :item="data.item.rarity.slice(2).toLowerCase()"
@@ -81,17 +82,17 @@
             width="20"
           />
         </template>
-        <template slot="hotspot" slot-scope="data">
+        <template v-slot:cell(hotspot)="data">
           <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
           <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
         </template>
-        <template slot="more_info" slot-scope="data">
+        <template v-slot:cell(more_info)="data">
           <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
             <i v-if="data.detailsShowing" class="fas fa-times-circle"></i>
             <i v-else class="fas fa-info-circle"></i>
           </b-button>
         </template>
-        <template slot="row-details" slot-scope="data">
+        <template v-slot:row-details="data">
           <b-card>
             <b-row>
               <b-col v-if="data.item.thumb">
@@ -125,56 +126,59 @@
 import fish from '@/assets/json/vallisfish.json';
 import FishImg from '@/components/FishImg.vue';
 
-const fields = {
-  name: {
+const fields = [
+  {
     key: 'name',
     label: 'Name',
     headerTitle: 'The name of the fish',
     sortable: true,
   },
-  unique: {
+  {
     key: 'unique.name',
     label: 'Unique',
     headerTitle: 'Unique item when dismantling - you will receive one regardless of model',
     sortable: true,
   },
-  small: {
+  {
+    key: 'small',
     label: 'Basic',
     headerTitle: 'Common model - you will get scrap if dismantled or standing if donated',
   },
-  medium: {
+  {
+    key: 'medium',
     label: 'Adorned',
     headerTitle: 'Uncommon model - you will get scrap if dismantled or standing if donated',
   },
-  large: {
+  {
+    key: 'large',
     label: 'Magnificent',
     headerTitle: 'Rare model - you will get scrap if dismantled or standing if donated',
   },
-  location: {
+  {
     key: 'location',
     label: 'Location',
     headerTitle: 'Location of where to find the servofish',
     sortable: true,
   },
-  time: {
+  {
     key: 'time.string',
     label: 'Temperature',
     headerTitle: 'Temperature of when you can find the servofish - arrow denotes preference',
     sortable: true,
   },
-  rarity: {
+  {
     key: 'rarity',
     label: 'Rarity',
     headerTitle: 'How likely the fish will spawn',
     sortable: true,
   },
-  bait: {
+  {
     key: 'bait.name',
     label: 'Bait',
     headerTitle: 'What bait will make this servofish more likely to spawn',
     sortable: true,
   },
-  hotspot: {
+  {
     key: 'hotspot',
     label: 'Hotspot Required',
     headerTitle: 'Whether a hotspot is required for this fish to spawn',
@@ -183,17 +187,18 @@ const fields = {
       return value ? 'Yes' : 'No';
     },
   },
-  max_point: {
+  {
     key: 'maximumPoint',
     label: 'Max Points',
     headerTitle: 'The maximum points possible for this fish',
     sortable: true,
   },
-  more_info: {
+  {
+    key: 'more_info',
     label: 'Info',
     headerTitle: 'Display pictures for fish, unique, and bait type',
   },
-};
+];
 
 export default {
   name: 'vallisfish',

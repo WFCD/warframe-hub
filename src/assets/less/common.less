@@ -10,30 +10,29 @@
   padding-bottom: 40px;
 }
 
-body a:hover {
-  text-decoration: none;
+body {
+  a:hover {
+    text-decoration: none;
+  }
+
+  .list-group .list-group-item-borderless {
+    border: none !important;
+  }
+
+  .list-group .list-group-item-borderbottom {
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid #1a5072 !important;
+  }
+
+  .list-group h3 {
+    color: white;
+  }
 }
 
-body .list-group .list-group-item-borderless {
-  border: none !important;
-}
-
-body .list-group .list-group-item-borderbottom {
-  border-style: solid;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #1a5072 !important;
-}
-
-body .list-group h3 {
-  color: white;
-}
-
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   clear: both;
 }
 
@@ -140,10 +139,10 @@ div.modal-body {
 
 @media (max-width: 768px) {
 
-#settings-modal .modal-content {
-  height: 81vh;
-  max-height: 81vh;
-}
+  #settings-modal .modal-content {
+    height: 81vh;
+    max-height: 81vh;
+  }
 
   .settings-group > div, #sound-checks.settings-group > div {
     width: 100%;
@@ -175,8 +174,6 @@ div.modal-body {
     width: 30%;
     min-width: 23%;
 }
-
-
 
 .tab-wrap {
   overflow-y: auto;
@@ -284,10 +281,12 @@ div.card-body {
   #sound-checks.settings-group > div   {
     width: 61%;
     padding-left: 2.5rem;
-}
+  }
 }
 
-
+button.close {
+  background-color: transparent;
+}
 
 div.fit-height {
   height: 100%;

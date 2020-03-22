@@ -37,21 +37,9 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item
-          right
-          href="https://discord.gg/jGZxH9f"
-          target="_blank"
-          v-b-tooltip.bottom
-          :title="$t('nav.discord')"
-        >
-          <i class="fab fa-discord faIcon" />
-        </b-nav-item>
-        <b-nav-item right v-b-modal.about-modal v-b-tooltip.bottom :title="$t('nav.info')">
-          <i class="fas fa-info faIcon" />
-        </b-nav-item>
-        <b-nav-item right v-b-modal.settings-modal v-b-tooltip.bottom :title="$t('nav.settings')">
-          <i class="fas fa-cog faIcon" />
-        </b-nav-item>
+        <DropdownItem icon="fab fa-discord" target="https://discord.gg/jGZxH9f" :labelIfMobile="true" :label="$t('nav.discord')" />
+        <DropdownItem icon="fas fa-info" v-b-modal.about-modal :labelIfMobile="true" :label="$t('nav.info')" />
+        <DropdownItem icon="fas fa-cog" v-b-modal.settings-modal :labelIfMobile="true" :label="$t('nav.settings')" />
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

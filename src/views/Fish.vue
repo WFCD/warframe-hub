@@ -20,7 +20,7 @@
         :fields="fields"
         class="fish-info b-table mx-3"
         primary-key="name"
-        sticky-header="65vh"
+        sticky-header="70vh"
       >
         <template v-slot:cell(small)="data">
           {{ data.item.small.resources.meat }}

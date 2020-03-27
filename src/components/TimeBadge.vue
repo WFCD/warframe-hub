@@ -69,7 +69,12 @@ export default {
       let timeLeft = diff;
       const stringArray = [];
 
-      [[86400000, 'd'], [3600000, 'h'], [60000, 'm'], [1000, 's']].forEach(([unit, suffix]) => {
+      [
+        [86400000, 'd'],
+        [3600000, 'h'],
+        [60000, 'm'],
+        [1000, 's'],
+      ].forEach(([unit, suffix]) => {
         const time = Math.floor(timeLeft / unit);
         const first = stringArray.length === 0;
         if (!first || time > 0) {

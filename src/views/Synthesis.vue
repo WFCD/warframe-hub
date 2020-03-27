@@ -47,37 +47,37 @@
         :filter="filter"
         primary-key="name"
       >
-        <template slot="name" slot-scope="data">
+        <template v-slot:cell(name)="data">
           {{ data.item.name }}
         </template>
-        <template slot="portrait" slot-scope="data">
+        <template v-slot:cell(portrait)="data">
           <SynthesisImg :name="data.item.name" />
         </template>
-        <template slot="location" slot-scope="data">
+        <template v-slot:cell(location)="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
             {{ location.planet }} ({{ location.mission }})
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
-        <template slot="level" slot-scope="data">
+        <template v-slot:cell(level)="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
             {{ location.level }}
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
-        <template slot="mission" slot-scope="data">
+        <template v-slot:cell(mission)="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
             {{ location.faction }} - {{ location.type }}
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
-        <template slot="spawn_rate" slot-scope="data">
+        <template v-slot:cell(spawn_rate)="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
             {{ location.spawn_rate }}
             <br v-if="key + 1 != data.item.locations.length" />
           </span>
         </template>
-        <template slot="verify" slot-scope="data">
+        <template v-slot:cell(verify)="data">
           <span v-for="(location, key) in data.item.locations" :key="key">
             {{ location.last_verified }}
             <br v-if="key + 1 != data.item.locations.length" />
@@ -92,38 +92,45 @@
 import fetch from 'node-fetch';
 import SynthesisImg from '@/components/SynthesisImg.vue';
 
-const fields = {
-  name: {
+const fields = [
+  {
+    key: 'name',
     label: 'Name',
     headerTitle: 'The name of the Synthesis Target',
     sortable: true,
   },
-  portrait: {
+  {
+    key: 'portrait',
     label: 'Portrait',
     headerTitle: 'The portrait of the Synthesis Target',
     tdClass: 'synth-cell',
   },
-  location: {
+  {
+    key: 'location',
     label: 'Location',
     headerTitle: 'The location where you can find this Synthesis Target',
   },
-  level: {
+  {
+    key: 'level',
     label: 'Level',
     headerTitle: 'The level of the location where you can find this Synthesis Target',
   },
-  mission: {
+  {
+    key: 'mission',
     label: 'Mission',
     headerTitle: 'The type of mission for the location where you can find this Synthesis Target',
   },
-  spawn_rate: {
+  {
+    key: 'spawn_rate',
     label: 'Spawn Rate',
     headerTitle: 'Chance of the Synthesis Target spawning at this location',
   },
-  verify: {
+  {
+    key: 'verify',
     label: 'Verify',
     headerTitle: 'Last verification date',
   },
-};
+];
 
 export default {
   name: 'synthesis',

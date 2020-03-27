@@ -19,6 +19,9 @@ if (process.env.VUE_APP_DSN) {
   });
 }
 
+import VueMobileDetection from 'vue-mobile-detection';
+Vue.use(VueMobileDetection);
+
 /* Bootstrap  */
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);

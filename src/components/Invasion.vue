@@ -1,9 +1,9 @@
 <template>
   <div class="invasion-container">
     <div :id="`${invasion.id}_info`" class="text-center pb-1">
-      <span
-        ><b>{{ invasion.node }}</b> - {{ invasion.desc }}</span
-      >
+      <span>
+        <b>{{ invasion.node }}</b> - {{ invasion.desc }}
+      </span>
       <i :id="`${invasion.id}_tooltip`" class="fas fa-sm fa-info-circle ml-2" />
       <b-tooltip :target="`${invasion.id}_tooltip`" placement="right" class="text-center">
         <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000" />
@@ -21,16 +21,18 @@
             :key="item"
             :variant="getLabelColor(invasion.attackingFaction)"
             class="ml-n3"
-            ><item-thumb :alt="item"
-          /></b-badge>
+          >
+            <item-thumb :alt="item" />
+          </b-badge>
           <b-badge
             tag="div"
             v-for="item in invasion.attackerReward.countedItems"
             :key="item.type"
             :variant="getLabelColor(invasion.attackingFaction)"
             class="ml-n3"
-            ><item-thumb :alt="countedItem(item)"
-          /></b-badge>
+          >
+            <item-thumb :alt="countedItem(item)" />
+          </b-badge>
         </div>
         <div class="pull-right">
           <b-badge
@@ -38,15 +40,17 @@
             :key="item"
             :variant="getLabelColor(invasion.defendingFaction)"
             class="mr-n3"
-            ><item-thumb :alt="item"
-          /></b-badge>
+          >
+            <item-thumb :alt="item" />
+          </b-badge>
           <b-badge
             v-for="item in invasion.defenderReward.countedItems"
             :key="item.type"
             :variant="getLabelColor(invasion.defendingFaction)"
             class="mr-n3"
-            ><item-thumb :alt="countedItem(item)"
-          /></b-badge>
+          >
+            <item-thumb :alt="countedItem(item)" />
+          </b-badge>
         </div>
       </b-col>
     </b-row>
@@ -56,12 +60,12 @@
           :variant="getLabelColor(invasion.attackingFaction)"
           :value="invasion.completion"
           :id="`${this.id}-attacker-progress`"
-        ></b-progress-bar>
+        />
         <b-progress-bar
           :variant="getLabelColor(invasion.defendingFaction)"
           :value="100 - invasion.completion"
           :id="`${this.id}-defender-progress`"
-        ></b-progress-bar>
+        />
         <b-tooltip :target="`${this.id}-attacker-progress`" placement="bottom" class="text-center">
           <HubImg :src="atkFactionImg" class="hubimg" name="Attacking Faction" width="20px" height="20px" />
           <div class="pl-2">{{ invasion.attackingFaction }}</div>

@@ -9,29 +9,48 @@ module.exports = {
     },
   },
 
-  publicPath: '/',
-  outputDir: undefined,
-  assetsDir: undefined,
   runtimeCompiler: true,
-  productionSourceMap: undefined,
-  parallel: undefined,
-  configureWebpack: {
-    plugins: [],
-  },
+
   css: {
     sourceMap: true,
     loaderOptions: {
       less: {
         modules: {
           rules: [
-            { test: /\.css$/, use: [{ loader: 'css-loader' }] },
+            {
+              test: /\.css$/,
+              use: [
+                {
+                  loader: 'style-loader',
+                },
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                  },
+                },
+              ],
+            },
             {
               test: /\.less$/,
               use: [
-                { loader: 'style-loader' },
-                { loader: 'css-loader' },
+                {
+                  loader: 'style-loader',
+                },
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                  },
+                },
                 {
                   loader: 'less-loader',
+                  options: {
+                    lessOptions: {
+                      strictMath: true,
+                      noIeCompat: true,
+                    },
+                  },
                 },
               ],
             },
@@ -39,5 +58,8 @@ module.exports = {
         },
       },
     },
+    requireModuleExtension: true,
   },
+
+  lintOnSave: true,
 };

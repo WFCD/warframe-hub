@@ -54,10 +54,10 @@
                         </b-card-body>
                       </b-card>
                     </b-card-group>
-                    <b-card-text>
+                    <!-- <b-card-text>
                       Raw Data <span>{{ item2 }}</span> <br />Platform:
                       {{ platforms[platform].display }}
-                    </b-card-text>
+                    </b-card-text> -->
                   </b-card-body>
                 </b-collapse>
               </b-card>

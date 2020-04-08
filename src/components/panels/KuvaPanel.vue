@@ -4,7 +4,7 @@
       <b-list-group-item
         :style="styleObject"
         v-for="(kuva, index) in kuvas"
-        :key="kuva.solnode + kuva.activation"
+        :key="kuva.node + kuva.activation"
         v-bind:class="{
           'list-group-item-borderless': index !== kuvas.length - 1,
           'pb-0': index !== kuvas.length - 1,

@@ -28,23 +28,27 @@
           {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Remaining
         </b-badge>
 
-        <div v-if="event.rewards" class="text-center">Event Rewards:</div>
-        <div class="text-center d-inline" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
-          <b-badge v-for="item in reward.items" :key="`${item}-${makeid()}`" variant="success">
-            {{ item }}
-          </b-badge>
-          <b-badge v-for="item in reward.countedItems" :key="`${item}-${makeid()}`" variant="success">
-            {{ item }}
-          </b-badge>
-          <b-badge v-if="reward.credits" variant="info">{{ reward.credits }}{{ this.$t('currency.credAbbr') }}</b-badge>
-        </div>
-        <div class="text-center d-inline" v-for="step in event.interimSteps" :key="`rsi-${step.length}-${makeid()}`">
-          <b-badge v-for="item in step.reward.items" :key="`rsi-${item}-${makeid()}`" variant="success">
-            {{ item }}
-          </b-badge>
-          <b-badge v-for="item in step.reward.countedItems" :key="`rsi-${item}-${makeid()}`" variant="success">
-            {{ item }}
-          </b-badge>
+        <div class="text-center bottom-pad">
+          <div v-if="event.rewards">Event Rewards:</div>
+          <div class="text-center d-inline" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
+            <b-badge v-for="item in reward.items" :key="`${item}-${makeid()}`" variant="success">
+              {{ item }}
+            </b-badge>
+            <b-badge v-for="item in reward.countedItems" :key="`${item}-${makeid()}`" variant="success">
+              {{ item }}
+            </b-badge>
+            <b-badge v-if="reward.credits" variant="info">
+              {{ reward.credits }}{{ this.$t('currency.credAbbr') }}
+            </b-badge>
+          </div>
+          <div class="text-center d-inline" v-for="step in event.interimSteps" :key="`rsi-${step.length}-${makeid()}`">
+            <b-badge v-for="item in step.reward.items" :key="`rsi-${item}-${makeid()}`" variant="success">
+              {{ item }}
+            </b-badge>
+            <b-badge v-for="item in step.reward.countedItems" :key="`rsi-${item}-${makeid()}`" variant="success">
+              {{ item }}
+            </b-badge>
+          </div>
         </div>
 
         <b-row v-if="event.jobs">
@@ -72,6 +76,37 @@
             </div>
           </b-col>
         </b-row>
+
+        <div class="text-center bottom-pad">
+          <div class="text-center" v-if="event.completionBonuses.length">Completion Bonuses:</div>
+          <b-badge v-for="bonus in event.completionBonuses" :key="`rsi-${bonus}`" variant="secondary">
+            {{ bonus }}
+          </b-badge>
+        </div>
+
+        <div
+          class="text-center bottom-pad"
+          v-if="event.altActivation !== '1970-01-01T00:00:00.000Z' && event.altExpiry !== '1970-01-01T00:00:00.000Z'"
+        >
+          <div>Current cycle:</div>
+          <TimeBadge :starttime="event.altActivation" :endtime="event.altExpiry" :interval="1000" :pullright="false" />
+        </div>
+
+        <div
+          class="text-center bottom-pad"
+          v-if="
+            event.nextAlt.activation !== '1970-01-01T00:00:00.000Z' &&
+              event.nextAlt.expiry !== '1970-01-01T00:00:00.000Z'
+          "
+        >
+          <div>Next cycle:</div>
+          <TimeBadge
+            :starttime="event.nextAlt.activation"
+            :endtime="event.nextAlt.expiry"
+            :interval="1000"
+            :pullright="false"
+          />
+        </div>
       </b-list-group-item>
       <NoDataItem v-if="activeEvents.length === 0" :text="headertext" />
     </b-list-group>

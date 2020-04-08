@@ -2,8 +2,8 @@
   <HubPanelWrap :title="headertext" class="darvo">
     <div class="compact-text" v-if="deals.length === 1">
       <b>{{ deals[0].item }}</b>
-      {{ deals[0].salePrice }} <HubImg :src="platinum" :name="plat" /> ({{ deals[0].discount }}{{ off }})
-      {{ deals[0].total - deals[0].sold }}/{{ deals[0].total }} {{ $t('darvo.leftL') }}
+      {{ deals[0].salePrice }} <HubImg :src="platinum" :name="$t('currency.plat')" /> ({{ deals[0].discount
+      }}{{ $t('darvo.off') }}) {{ deals[0].total - deals[0].sold }}/ {{ deals[0].total }} {{ $t('darvo.leftL') }}
       <TimeBadge :starttime="now()" :endtime="deals[0].expiry" :interval="10000" />
     </div>
     <b-list-group>

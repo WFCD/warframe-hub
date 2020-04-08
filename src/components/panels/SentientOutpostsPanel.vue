@@ -16,8 +16,8 @@
       <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!sentientOutposts.active">
         <span class="pull-left">
           <i class="far fa-eye-slash faIcon" v-b-tooltip :title="this.$t('sentientoutpost.none')"></i>
-          <b>Prediction</b></span
-        >
+          <b>Prediction</b>
+        </span>
         <TimeBadge :starttime="predNext.activation" :endtime="predNext.expiry" :interval="1000" />
       </b-list-group-item>
     </b-list-group>
@@ -27,8 +27,9 @@
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import NoDataItem from '@/components/NoDataItem.vue';
 import HubImg from '@/components/HubImg.vue';
+
+import moment from 'moment';
 
 import sentient from '@/assets/img/factions/sentient.svg';
 
@@ -46,13 +47,13 @@ export default {
       const predEnd = new Date(this.$props.sentientOutposts.previous.expiry).getTime();
       if (defStart < predStart) {
         return {
-          activation: new Date(defStart),
-          expiry: new Date(defEnd),
+          activation: moment(defStart).toISOString(),
+          expiry: moment(defEnd).toISOString(),
         };
       } else {
         return {
-          activation: new Date(predStart),
-          expiry: new Date(predEnd),
+          activation: moment(predStart).toISOString(),
+          expiry: moment(predEnd).toISOString(),
         };
       }
     },
@@ -63,13 +64,13 @@ export default {
       const predEnd = new Date(this.$props.sentientOutposts.previous.expiry).getTime();
       if (defStart > predStart) {
         return {
-          activation: new Date(defStart),
-          expiry: new Date(defEnd),
+          activation: moment(defStart).toISOString(),
+          expiry: moment(defEnd).toISOString(),
         };
       } else {
         return {
-          activation: new Date(predStart),
-          expiry: new Date(predEnd),
+          activation: moment(predStart).toISOString(),
+          expiry: moment(predEnd).toISOString(),
         };
       }
     },
@@ -89,7 +90,6 @@ export default {
   components: {
     HubPanelWrap,
     TimeBadge,
-    NoDataItem,
     HubImg,
   },
   methods: {

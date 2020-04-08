@@ -85,7 +85,10 @@ function data() {
     zoom: 0,
     center: L.latLng(472, 535),
     url: plains,
-    bounds: [[0, 0], [994, 1012]],
+    bounds: [
+      [0, 0],
+      [994, 1012],
+    ],
     currentZoom: 11.5,
     currentCenter: L.latLng(472, 535),
     mapOptions: {

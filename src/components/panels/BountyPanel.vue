@@ -4,22 +4,48 @@
       <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
         <span class="pull-left">Bounties expire in:</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
-        <Collapsible :headertext="`${headertext} ${this.$t('bounty.bounties')}`">
-          <b-table responsive :fields="this.fields" :items="this.items" class="b-table bounty-table">
-            <span slot="rewards" slot-scope="data">
-              <b-badge v-for="(reward, index) in data.value" :key="`reward-${type}-${index}`">{{ reward }}</b-badge>
+        <b-table
+          selectable
+          :fields="this.fields"
+          :items="this.items"
+          class="b-table bounty-table"
+          @row-clicked="toggleDetails"
+        >
+          <template v-slot:cell(type)="data">
+            <div>
+              <div @click="data.toggleDetails" size="sm" class="ml-2 pull-left">
+                <i v-if="data.detailsShowing" class="fas fa-chevron-down"></i>
+                <i v-else class="fas fa-chevron-right"></i>
+              </div>
+              <div class="text-center">{{ data.value }}</div>
+            </div>
+          </template>
+          <template v-slot:head(standing)="data">
+            <HubImg
+              :src="standing"
+              :name="data.label"
+              width="24px"
+              height="24px"
+              class="text-center li-mission-decorator li-mission-decorator-lg"
+            />
+          </template>
+          <template v-slot:cell(standing)="row">
+            {{ row.item.standing }}
+          </template>
+          <template v-slot:cell(moreinfo)="row">
+            <div @click="row.toggleDetails" size="sm" class="mr-2">
+              <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
+              <i v-else class="fas fa-chevron-right"></i>
+            </div>
+          </template>
+          <template v-slot:row-details="row">
+            <span>
+              <b-badge v-for="(reward, index) in row.item.rewards" :key="`reward-${type}-${index}`">{{
+                reward
+              }}</b-badge>
             </span>
-            <template slot="HEAD_standing">
-              <HubImg
-                :src="standing"
-                :name="this.$t('bounty.standing')"
-                width="24px"
-                height="24px"
-                class="text-center li-mission-decorator li-mission-decorator-lg"
-              />
-            </template>
-          </b-table>
-        </Collapsible>
+          </template>
+        </b-table>
       </b-list-group-item>
       <NoDataItem v-else :text="headertext" />
     </b-list-group>
@@ -31,9 +57,10 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubImg from '@/components/HubImg.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import Collapsible from '@/components/Collapsible';
 
 import standing from '@/assets/img/general/standing.svg';
+
+import utilities from '@/utilities.js';
 
 export default {
   name: 'BountyPanel',
@@ -45,7 +72,7 @@ export default {
     items: function() {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({
         type: job.type,
-        standing: job.standingStages.join(', '),
+        standing: job.standingStages.reduce((a, b) => a + b) || 0,
         'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
         rewards: job.rewardPool || [],
       }));
@@ -67,16 +94,17 @@ export default {
           key: 'level-range',
           label: this.$t('bounty.lrange'),
         },
-        {
-          key: 'rewards',
-          label: this.$t('bounty.rewards'),
-        },
       ],
       standing: standing,
+      id: utilities.makeid(),
     };
   },
+  methods: {
+    toggleDetails(row) {
+      row._showDetails = !row._showDetails;
+    },
+  },
   components: {
-    Collapsible,
     TimeBadge,
     NoDataItem,
     HubImg,

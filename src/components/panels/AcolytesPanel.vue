@@ -23,14 +23,14 @@
               :title="`${acolyte.agentType} ${this.$t('acolytes.discovered')}`"
               :style="acolyteIcons"
               v-if="acolyte.isDiscovered"
-            ></i>
+            />
             <i
               class="far fa-eye-slash faIcon"
               v-b-tooltip
               :title="`${acolyte.agentType} ${discovery(acolyte)}`"
               :style="acolyteIcons"
               v-else
-            ></i>
+            />
             {{ acolyte.agentType }}
           </b>
         </span>
@@ -38,9 +38,9 @@
         <div style="margin-top:2px">
           <span class="pull-left">
             <b>
-              <span :id="`${acolyte.id}-loc`"
-                >{{ acolyte.isDiscovered ? '' : 'Last ' }} @{{ acolyte.lastDiscoveredAt || none }}</span
-              >
+              <span :id="`${acolyte.id}-loc`">
+                {{ acolyte.isDiscovered ? '' : 'Last ' }} @{{ acolyte.lastDiscoveredAt || none }}
+              </span>
             </b>
             | <b>Level: </b>{{ acolyte.rank }}
           </span>

@@ -4,16 +4,12 @@
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-nav-item
-          ><router-link to="/" exact
-            ><i class="fas fa-clock faIcon"></i> {{ $t('nav.timers') }}</router-link
-          ></b-nav-item
-        >
+        <b-nav-item>
+          <router-link to="/" exact> <i class="fas fa-clock faIcon" /> {{ $t('nav.timers') }} </router-link>
+        </b-nav-item>
 
         <b-nav-item-dropdown left>
-          <template slot="button-content"
-            ><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template
-          >
+          <template slot="button-content"><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template>
           <b-dd-header><i class="fas fa-mountain faIcon"></i> {{ $t('nav.owearth') }}</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" :label="$t('nav.map')" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/poe/fish" :label="$t('nav.fish')" />
@@ -25,17 +21,13 @@
           <DropdownItem :isLocal="true" icon="fas fa-info" target="/vallis/fish/howto" :label="$t('nav.howto')" />
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>
-          <template slot="button-content"
-            ><i class="fas fa-tools faIcon"></i> {{ $t('nav.extras') }}</template
-          >
+          <template slot="button-content"><i class="fas fa-tools faIcon"></i> {{ $t('nav.extras') }}</template>
           <DropdownItem :isLocal="true" icon="fas fa-database" target="/riven/data" :label="$t('nav.riven')" />
           <DropdownItem :isLocal="true" icon="fas fa-camera" target="/synthesis" :label="$t('nav.synth')" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown left>
-          <template slot="button-content"
-            ><i class="fas fa-terminal faIcon"></i> {{ $t('nav.projects') }}</template
-          >
+          <template slot="button-content"><i class="fas fa-terminal faIcon"></i> {{ $t('nav.projects') }}</template>
           <DropdownItem icon="fas fa-download" target="https://drops.warframestat.us" :label="$t('nav.drops')" />
           <DropdownItem icon="fas fa-robot" target="https://genesis.warframestat.us" :label="$t('nav.genesis')" />
           <DropdownItem icon="fas fa-terminal" target="https://docs.warframestat.us" :label="$t('nav.docs')" />
@@ -45,20 +37,14 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item
-          right
-          href="https://discord.gg/jGZxH9f"
-          target="_blank"
-          v-b-tooltip.bottom
-          :title="$t('nav.discord')"
-          ><i class="fab fa-discord faIcon"></i
-        ></b-nav-item>
-        <b-nav-item right v-b-modal.about-modal v-b-tooltip.bottom :title="$t('nav.info')"
-          ><i class="fas fa-info faIcon"></i
-        ></b-nav-item>
-        <b-nav-item right v-b-modal.settings-modal v-b-tooltip.bottom :title="$t('nav.settings')"
-          ><i class="fas fa-cog faIcon"></i
-        ></b-nav-item>
+        <DropdownItem
+          icon="fab fa-discord"
+          target="https://discord.gg/jGZxH9f"
+          :labelIfMobile="true"
+          :label="$t('nav.discord')"
+        />
+        <DropdownItem icon="fas fa-info" v-b-modal.about-modal :labelIfMobile="true" :label="$t('nav.info')" />
+        <DropdownItem icon="fas fa-cog" v-b-modal.settings-modal :labelIfMobile="true" :label="$t('nav.settings')" />
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

@@ -37,7 +37,7 @@
     "fish": "Información de pesca",
     "howto": "Cómo pescar",
     "owearth": "Llanuras",
-    "owvenus": "Orb Vallis",
+    "owvenus": "Valles del Orbe",
     "ow": "Mundo abierto",
     "projects": "Proyectos",
     "extras": "Extras",
@@ -65,34 +65,34 @@
   "events": {
     "header": "Eventos",
     "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "rewards": "Recompensas"
   },
   "factions": {
-    "sentient": "Sentient"
+    "sentient": "Consciente"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Fisuras"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Invasiones",
+    "eta": "Termina en:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "Sifones de Kuva",
+    "siphon": "Sifón de Kuva"
   },
   "location": {
     "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "vallis": "Valles",
+    "earth": "La Tierra"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "Noticias",
+    "autoprogress": "Progreso automático"
   },
   "nightwave": {
     "header": "Nightwave",
-    "weekly": "Weekly",
+    "weekly": "Semanal",
     "elite": "Elite Weekly",
     "daily": "Daily"
   },

@@ -91,31 +91,31 @@
     "autoprogress": "Progreso automático"
   },
   "nightwave": {
-    "header": "Nightwave",
+    "header": "Onda Nocturna",
     "weekly": "Semanal",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "elite": "Semanal de élite",
+    "daily": "Diario"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - ¡La hora de cazar terminó!",
+      "nightheader": "Cetus - ¡Hora de cazar!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Contador de la recompensa diaria",
+    "label": "El contador se reinicia en:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "Ventas y ofertas destacadas"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Anomalies (Beta)",
+    "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
+    "tooltip2": "El ciclo estimado es de 30 minutos de tiempo activo y 3 horas de tiempo inactivo.",
+    "header": "Anomalías (beta)",
     "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!"
+    "none": "No hay anomalías actualmente",
+    "warn": "¡No olvides tu Paracesis!"
   },
   "sortie": {
     "header": "Sortie"

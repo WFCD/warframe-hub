@@ -1,48 +1,48 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Acólitos",
+    "discovered": "Descubiertos",
+    "hiding": "Ocultos",
+    "na": "En ningún lugar",
+    "health": "Salud restante"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "header": "Alertas",
+    "archwing": "Archwing requerida para la misión",
+    "nightmare": "Misión pesadilla"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitración"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties"
+    "standing": "Reputación",
+    "header": "Ciclo de contratos",
+    "type": "Tipo",
+    "lrange": "Rango de nivel",
+    "rewards": "Recompensas",
+    "bounties": "Contratos"
   },
   "nav": {
-    "info": "Information",
+    "info": "Información",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "Ajustes",
+    "drops": "Hallazgos",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "docs": "Docs de la API",
+    "old": "Hub antiguo",
+    "status": "Estado",
+    "riven": "Datos de agrietados (Alfa)",
+    "synth": "Objetivos de síntesis",
+    "map": "Mapa",
+    "fish": "Información de pesca",
+    "howto": "Cómo pescar",
+    "owearth": "Llanuras",
     "owvenus": "Orb Vallis",
-    "ow": "Open World",
-    "projects": "Projects",
+    "ow": "Mundo abierto",
+    "projects": "Proyectos",
     "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data"
+    "timers": "Contadores",
+    "nodata": "Sin datos"
   },
   "construction": {
     "fomorian": "Fomorian",

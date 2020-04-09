@@ -64,7 +64,7 @@
   },
   "events": {
     "header": "Eventos",
-    "standStages": "Standing Stages",
+    "standStages": "Etapas de reputación",
     "rewards": "Recompensas"
   },
   "factions": {
@@ -113,7 +113,7 @@
     "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
     "tooltip2": "El ciclo estimado es de 30 minutos de tiempo activo y 3 horas de tiempo inactivo.",
     "header": "Anomalías (beta)",
-    "outpostsL": "Outposts",
+    "outpostsL": "Avanzada",
     "none": "No hay anomalías actualmente",
     "warn": "¡No olvides tu Paracesis!"
   },

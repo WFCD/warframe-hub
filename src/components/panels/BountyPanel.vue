@@ -67,7 +67,7 @@ export default {
   props: ['syndicate', 'type'],
   computed: {
     headertext() {
-      return this.$t('bounty.header', {type: this.$t(`timer.${this.type.toLowerCase().replace(/\s/gi, '-')}`)});
+      return this.$t('bounty.header', { type: this.$t(`timer.${this.type.toLowerCase().replace(/\s/gi, '-')}`) });
     },
     items: function() {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({

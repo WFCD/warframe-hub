@@ -22,10 +22,18 @@
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>
         <b-badge v-if="isHealthReversed(event)" class="event-health" :variant="eventHealthVariantOpposite(event)">
-          {{ $t('event.completed', {perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }) }}
+          {{
+            $t('event.completed', {
+              perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
+            })
+          }}
         </b-badge>
         <b-badge v-else class="event-health" :variant="eventHealthVariant(event)">
-          {{ $t('event.remaining', {perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }) }}
+          {{
+            $t('event.remaining', {
+              perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
+            })
+          }}
         </b-badge>
 
         <div class="text-center bottom-pad">

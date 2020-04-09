@@ -45,25 +45,25 @@
     "nodata": "Sin datos"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomoré",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Desconocido",
+    "header": "Progreso de la construcción"
   },
   "currency": {
     "plat": "Platinum",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Ducados",
+    "cred": "Créditos"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Ofertas de Darvo",
+    "off": "% de descuento",
+    "left": "% restante",
+    "leftL": "Restante"
   },
   "events": {
-    "header": "Events",
+    "header": "Eventos",
     "standStages": "Standing Stages",
     "rewards": "Rewards"
   },

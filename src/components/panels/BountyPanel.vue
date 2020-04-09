@@ -2,7 +2,7 @@
   <HubPanelWrap :title="headertext" class="bounties">
     <b-list-group>
       <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
-        <span class="pull-left">Bounties expire in:</span>
+        <span class="pull-left">{{ $t('bounty.expires') }}</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
         <b-table
           selectable
@@ -67,7 +67,7 @@ export default {
   props: ['syndicate', 'type'],
   computed: {
     headertext() {
-      return `${this.type} ${this.$t('bounty.header')}`;
+      return this.$t('bounty.header', {type: this.$t(`timer.${this.type.toLowerCase().replace(/\s/gi, '-')}`)});
     },
     items: function() {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({

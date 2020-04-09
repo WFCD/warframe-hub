@@ -1,145 +1,145 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Acólitos",
+    "discovered": "Descubiertos",
+    "hiding": "Ocultos",
+    "na": "En ningún lugar",
+    "health": "Salud restante"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "header": "Alertas",
+    "archwing": "Archwing requerida para la misión",
+    "nightmare": "Misión pesadilla"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitración"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties"
+    "standing": "Reputación",
+    "header": "Ciclo de contratos",
+    "type": "Tipo",
+    "lrange": "Rango de nivel",
+    "rewards": "Recompensas",
+    "bounties": "Contratos"
   },
   "nav": {
-    "info": "Information",
+    "info": "Información",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "Ajustes",
+    "drops": "Hallazgos",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
-    "owvenus": "Orb Vallis",
-    "ow": "Open World",
-    "projects": "Projects",
+    "docs": "Docs de la API",
+    "old": "Hub antiguo",
+    "status": "Estado",
+    "riven": "Datos de agrietados (Alfa)",
+    "synth": "Objetivos de síntesis",
+    "map": "Mapa",
+    "fish": "Información de pesca",
+    "howto": "Cómo pescar",
+    "owearth": "Llanuras",
+    "owvenus": "Valles del Orbe",
+    "ow": "Mundo abierto",
+    "projects": "Proyectos",
     "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data"
+    "timers": "Contadores",
+    "nodata": "Sin datos"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomoré",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Desconocido",
+    "header": "Progreso de la construcción"
   },
   "currency": {
     "plat": "Platinum",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Ducados",
+    "cred": "Créditos"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Ofertas de Darvo",
+    "off": "% de descuento",
+    "left": "% restante",
+    "leftL": "Restante"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "header": "Eventos",
+    "standStages": "Etapas de reputación",
+    "rewards": "Recompensas"
   },
   "factions": {
-    "sentient": "Sentient"
+    "sentient": "Consciente"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Fisuras"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Invasiones",
+    "eta": "Termina en:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "Sifones de Kuva",
+    "siphon": "Sifón de Kuva"
   },
   "location": {
     "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "vallis": "Valles",
+    "earth": "La Tierra"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "Noticias",
+    "autoprogress": "Progreso automático"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Onda Nocturna",
+    "weekly": "Semanal",
+    "elite": "Semanal de élite",
+    "daily": "Diario"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - ¡La hora de cazar terminó!",
+      "nightheader": "Cetus - ¡Hora de cazar!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Contador de la recompensa diaria",
+    "label": "El contador se reinicia en:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "Ventas y ofertas destacadas"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!"
+    "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
+    "tooltip2": "El ciclo estimado es de 30 minutos de tiempo activo y 3 horas de tiempo inactivo.",
+    "header": "Anomalías (beta)",
+    "outpostsL": "Avanzada",
+    "none": "No hay anomalías actualmente",
+    "warn": "¡No olvides tu Paracesis!"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Incursión"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "día",
+    "night": "noche",
+    "warm": "cálido",
+    "cold": "frío",
+    "Timer": "- Contador del ciclo",
+    "startL": "Empieza en:",
+    "endL": "Termina en:",
+    "ongoingL": "En curso durante:",
+    "expiredL": "Expirado",
+    "depart": "Se va",
+    "arrive": "Llega en"
   },
   "timer": {
-    "ostron": "Ostron",
-    "solaris": "Solaris United"
+    "ostron": "Ostronita",
+    "solaris": "Solaris Unida"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Comerciante del vacío",
+    "inventory": "Inventario",
+    "item": "Componente"
   }
 }

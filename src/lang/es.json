@@ -118,28 +118,28 @@
     "warn": "¡No olvides tu Paracesis!"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Incursión"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "día",
+    "night": "noche",
+    "warm": "cálido",
+    "cold": "frío",
+    "Timer": "- Contador del ciclo",
+    "startL": "Empieza en:",
+    "endL": "Termina en:",
+    "ongoingL": "En curso durante:",
+    "expiredL": "Expirado",
+    "depart": "Se va",
+    "arrive": "Llega en"
   },
   "timer": {
-    "ostron": "Ostron",
-    "solaris": "Solaris United"
+    "ostron": "Ostronita",
+    "solaris": "Solaris Unida"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Comerciante del vacío",
+    "inventory": "Inventario",
+    "item": "Componente"
   }
 }

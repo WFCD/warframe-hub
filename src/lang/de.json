@@ -1,45 +1,45 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Akolythen",
+    "discovered": "Entdeckt",
+    "hiding": "Versteckt",
+    "na": "Nirgendwo",
+    "health": "Leben verbleibend"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "header": "Alarmierungen",
+    "archwing": "Archwing für Mission benötigt",
+    "nightmare": "Albtraummission"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Schiedsgericht"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties"
+    "standing": "Ansehen",
+    "header": "Aufträge",
+    "type": "Typ",
+    "lrange": "Levelbereich",
+    "rewards": "Belohnungen",
+    "bounties": "Aufträge"
   },
   "nav": {
     "info": "Information",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "Einstellungen",
+    "drops": "Beute",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
+    "docs": "API Dokumente",
+    "old": "Altes Hub",
     "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
-    "owvenus": "Orb Vallis",
+    "riven": "Rivendaten (Alpha)",
+    "synth": "Syntheseziele",
+    "map": "Karte",
+    "fish": "Angeldaten",
+    "howto": "Wie man angelt",
+    "owearth": "Ebenen von Eidolon",
+    "owvenus": "Orbis-Tal",
     "ow": "Open World",
-    "projects": "Projects",
+    "projects": "Projekte",
     "extras": "Extras",
     "timers": "Timers",
     "nodata": "No Data"

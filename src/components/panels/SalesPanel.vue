@@ -13,7 +13,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in sales" :key="`${item.id}-deal`">
+            <tr v-for="item in fSales()" :key="`${item.id}-deal`">
               <td>{{ item.item }}</td>
               <td>{{ item.premiumOverride }}</td>
               <td>
@@ -66,6 +66,9 @@ export default {
     now() {
       return new Date().toString();
     },
+    fSales() {
+      return this.sales.filter(s => s.premiumOverride !== 1);
+    }
   },
 };
 </script>

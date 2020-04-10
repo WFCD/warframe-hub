@@ -28,7 +28,7 @@
     "settings": "Einstellungen",
     "drops": "Beute",
     "genesis": "Genesis",
-    "docs": "API Dokumente",
+    "docs": "API Dokumentation",
     "old": "Altes Hub",
     "status": "Status",
     "riven": "Rivendaten (Alpha)",
@@ -41,41 +41,41 @@
     "ow": "Open World",
     "projects": "Projekte",
     "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data"
+    "timers": "Timer",
+    "nodata": "Keine Daten verfügbar"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomorianer",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Unbekannt",
+    "header": "Baufortschritt"
   },
   "currency": {
     "plat": "Platinum",
-    "credAbbr": "cr",
-    "dabloons": "Ducats",
+    "credAbbr": "Cr",
+    "dabloons": "Dukaten",
     "cred": "Credits"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Darvo's Angebot",
+    "off": "% Rabatt",
+    "left": "% übrig",
+    "leftL": "übrig"
   },
   "events": {
-    "header": "Events",
+    "header": "Ereignisse",
     "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "rewards": "Belohnungen"
   },
   "factions": {
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Risse"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Invasionen",
+    "eta": "Endet in:"
   },
   "kuva": {
     "header": "Kuva Siphons",
@@ -83,63 +83,63 @@
   },
   "location": {
     "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "vallis": "Tal",
+    "earth": "Erde"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "Neuigkeiten",
+    "autoprogress": "Auto-Fortschritt"
   },
   "nightwave": {
     "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "weekly": "Wöchentlich",
+    "elite": "Elite Wöchentlich",
+    "daily": "Täglich"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - Die Sonne geht auf! Die Jagdzeit ist vorbei!",
+      "nightheader": "Cetus - Die Jagdzeit hat begonnen!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Täglicher Reset des Belohnungstimer",
+    "label": "Belohnungstimer wird zurückgesetzt in:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "Verkäufe und Sonderangebote"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time and 3 hours of inactive time.",
-    "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!"
+    "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
+    "tooltip2": "Geschätzter Zyklus beträgt 30 Minuten aktive Zeit und 3 Stunden inaktive Zeit.",
+    "header": "Anomalien (Beta)",
+    "outpostsL": "Außenposten",
+    "none": "Keine aktuellen Anomalien",
+    "warn": "Vergiss nicht deinen Paracesis!"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Einsätze"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "Tag",
+    "night": "Nacht",
+    "warm": "Warm",
+    "cold": "Kalt",
+    "Timer": "Zyklustimer",
+    "startL": "Beginnt in:",
+    "endL": "Endet in:",
+    "ongoingL": "Läuft noch für:",
+    "expiredL": "Abgelaufen",
+    "depart": "Verlässt",
+    "arrive": "Ankunft in"
   },
   "timer": {
     "ostron": "Ostron",
     "solaris": "Solaris United"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
+    "header": "Void Händler",
+    "inventory": "Inventar",
     "item": "Item"
   }
 }

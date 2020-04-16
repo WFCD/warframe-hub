@@ -31,7 +31,7 @@
             :variant="getLabelColor(invasion.attackingFaction)"
             class="ml-n3"
           >
-            <item-thumb :alt="countedItem(item)" />
+            <item-thumb :alt="countedItem(item)" :ikey="item.key" />
           </b-badge>
         </div>
         <div class="pull-right">
@@ -49,7 +49,7 @@
             :variant="getLabelColor(invasion.defendingFaction)"
             class="mr-n3"
           >
-            <item-thumb :alt="countedItem(item)" />
+            <item-thumb :alt="countedItem(item)" :ikey="item.key" />
           </b-badge>
         </div>
       </b-col>

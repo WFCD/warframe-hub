@@ -34,8 +34,8 @@ export default {
     },
     ikey: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {

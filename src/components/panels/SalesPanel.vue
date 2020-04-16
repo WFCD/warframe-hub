@@ -67,8 +67,8 @@ export default {
       return new Date().toString();
     },
     fSales() {
-      return this.sales.filter(s => s.premiumOverride !== 1);
-    }
+      return this.sales.filter((s) => s.premiumOverride !== 1);
+    },
   },
 };
 </script>

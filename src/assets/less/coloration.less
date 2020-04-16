@@ -28,17 +28,10 @@ table, [class*='badge-'] {
 .nav-tabs .nav-link {
   color: @text-color;
 
-  &:hover, &:focus {
-    border-top-color: @text-color;
-    border-left-color: @text-color;
-    border-right-color: @text-color;
-    border-bottom-color: transparent;
+  &.active, &:hover, &:focus {
+    background-color: @bg;
+    border-color: @border-color @border-color transparent;
   }
-}
-
-.nav-tabs .nav-link.active {
-  background-color: @bg;
-  border-color: @border-color @border-color transparent;
 }
 
 .dropdown-header {
@@ -132,7 +125,6 @@ table, [class*='badge-'] {
   &:not(.collapsed), &:hover, &:active {
     background-color: @info-bg-hover;
     border-color: @info-bg-hover;
-    color: filter()
   }
 }
 

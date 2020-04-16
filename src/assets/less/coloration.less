@@ -27,6 +27,13 @@ table, [class*='badge-'] {
 
 .nav-tabs .nav-link {
   color: @text-color;
+
+  &:hover, &:focus {
+    border-top-color: @text-color;
+    border-left-color: @text-color;
+    border-right-color: @text-color;
+    border-bottom-color: transparent;
+  }
 }
 
 .nav-tabs .nav-link.active {
@@ -120,11 +127,12 @@ table, [class*='badge-'] {
 .btn-info {
   background-color: @info-bg;
   border-color: @info-bg;
-  color: @text-color;
+  color: @info-color;
 
-  &:not(.collapsed), &:hover {
+  &:not(.collapsed), &:hover, &:active {
     background-color: @info-bg-hover;
     border-color: @info-bg-hover;
+    color: filter()
   }
 }
 
@@ -151,7 +159,8 @@ table, [class*='badge-'] {
 /******** Modal Dialogs *******/
 .modal-content, .modal-header {
   background-color: @bg-darker;
-  border-color: @border-color;
+  border-color: @modal-border;
+  border-bottom-color: @modal-border;
 }
 
 .card {

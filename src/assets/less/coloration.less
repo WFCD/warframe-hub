@@ -1,0 +1,221 @@
+/* This file is the consumer for all of t he vars defined in the theme documents. Not for standalone use. */
+
+color: @text-color;
+background-color: @bg;
+
+a {
+  color: @link-color;
+}
+
+.btn-link:hover {
+  color: @link-hover-color;
+  text-decoration: underline;
+}
+
+table, [class*='badge-'] {
+  color: @text-color;
+}
+
+/**********  Nav   *********/
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+  color: @text-color;
+}
+
+.navbar.navbar-dark.bg-primary {
+  background-color: @theme-primary !important;
+}
+
+.nav-tabs .nav-link {
+  color: @text-color;
+
+  &.active, &:hover, &:focus {
+    background-color: @bg;
+    border-color: @border-color @border-color transparent;
+  }
+}
+
+.dropdown-header {
+  color: @dh-color;
+}
+
+.dropdown-menu {
+  background-color: @bg;
+  border-color: @border-color;
+  color: @dm-color;
+}
+
+.dropdown-divider {
+  border-color: @border-color;
+}
+
+.dropdown-item {
+  color: @text-color;
+  background-color: transparent;
+}
+
+.dropdown-item > i {
+  color: @dh-color;
+}
+
+.router-link-exact-active.router-link-active,
+.router-link-active {
+  color: @active-page;
+}
+
+.nav-tabs {
+  border-bottom-color: @border-color;
+}
+
+/****** Badges ********/
+.badge-warning {
+  background-color: @warning-bg;
+  color: @badge-color;
+}
+
+.badge-danger {
+  background-color: @danger-bg;
+  color: @badge-color;
+}
+
+.badge-info {
+  background-color: @info-bg;
+  color: @badge-color;
+}
+
+.badge-primary {
+  background-color: @primary-bg;
+  color: @badge-color;
+}
+
+.badge-success {
+  background-color: @success-bg;
+  color: @badge-color;
+}
+
+.badge-secondary {
+  color: @badge-color;
+  background-color: @secondary-bg;
+}
+
+/******* Backgrounds ******/
+.bg-success {
+  background-color: @success-bg !important;
+}
+
+.bg-info {
+  background-color: @info-bg !important;
+}
+
+.bg-danger {
+  background-color: @danger-bg !important
+}
+
+/******** Buttons ********/
+.btn-primary {
+  background-color: @primary-bg;
+  border-color: @primary-bg;
+  color: @badge-color;
+}
+
+.btn-info {
+  background-color: @info-bg;
+  border-color: @info-bg;
+  color: @info-color;
+
+  &:not(.collapsed), &:hover, &:active {
+    background-color: @info-bg-hover;
+    border-color: @info-bg-hover;
+  }
+}
+
+.btn-secondary {
+  color: @badge-color;
+  background-color: @secondary-bg;
+  border-color: @secondary-bg;
+
+  &:hover {
+    background-color: @secondary-bg-hover;
+    border-color: @secondary-bg-border;
+  }
+}
+
+.close {
+  color: @text-color;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: @check-color;
+  background-color: @check-color;
+}
+
+/******** Modal Dialogs *******/
+.modal-content, .modal-header {
+  background-color: @bg-darker;
+  border-color: @modal-border;
+  border-bottom-color: @modal-border;
+}
+
+.card {
+  background-color: @bg-darker;
+}
+
+.card-header {
+  background-color: @border-color;
+}
+
+.modal-footer {
+  border-top-color: @border-color;
+}
+
+/************ Panels ************/
+.list-group .list-group-item {
+  background-color: @panel-bg;
+}
+
+body& .list-group .list-group-item-borderbottom {
+  border-bottom-color: @panel-bt-border!important;
+}
+
+span.night {
+  background-color: transparent;
+}
+
+span.night:before, span.cold:before {
+  background-color: transparent;
+  color: @night-color;
+}
+
+span.day:before, span.warm:before {
+  color: @day-color;
+}
+
+/******* Tables ********/
+.table, .b-table-sticky-header .table {
+  color: @text-color;
+
+  thead th {
+    border-bottom-color: @border-color;
+  }
+
+  th, td {
+    border-top-color: @border-color;
+  }
+
+  &.table-striped tbody tr:nth-of-type(odd) {
+    background-color: @stripe-bg;
+  }
+
+  tbody tr:hover {
+    background-color: @tr-hover;
+    color: @text-color;
+  }
+
+  &.b-table {
+    & > thead > tr > .table-b-table-default,
+    & > tbody > tr > .table-b-table-default,
+    & > tfoot > tr > .table-b-table-default {
+      background-color: @bg;
+      color: @text-color;
+    }
+  }
+}

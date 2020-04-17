@@ -22,14 +22,22 @@
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>
         <b-badge v-if="isHealthReversed(event)" class="event-health" :variant="eventHealthVariantOpposite(event)">
-          {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Completed
+          {{
+            $t('event.completed', {
+              perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
+            })
+          }}
         </b-badge>
         <b-badge v-else class="event-health" :variant="eventHealthVariant(event)">
-          {{ event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2) }}% Remaining
+          {{
+            $t('event.remaining', {
+              perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
+            })
+          }}
         </b-badge>
 
         <div class="text-center bottom-pad">
-          <div v-if="event.rewards">Event Rewards:</div>
+          <div v-if="event.rewards">{{ $t('events.rewards.header') }}</div>
           <div class="text-center d-inline" v-for="reward in event.rewards" :key="`rs-${reward.length}-${makeid()}`">
             <b-badge v-for="item in reward.items" :key="`${item}-${makeid()}`" variant="success">
               {{ item }}
@@ -63,7 +71,7 @@
                 <span>{{ job.type }}</span>
                 <b-badge variant="info">{{ job.enemyLevels[0] }}-{{ job.enemyLevels[1] }}</b-badge>
               </div>
-              <Collapsible headertext="Standing Stages" class="event-job-stages bottom-pad">
+              <Collapsible :headertext="$t('events.standStages')" class="event-job-stages bottom-pad">
                 <div v-for="s in job.standingStages" :key="`standing-${s}-${makeid()}`">
                   {{ s }}
                 </div>
@@ -78,7 +86,7 @@
         </b-row>
 
         <div class="text-center bottom-pad">
-          <div class="text-center" v-if="event.completionBonuses.length">Completion Bonuses:</div>
+          <div class="text-center" v-if="event.completionBonuses.length">{{ $t('events.completionBonuses') }}</div>
           <b-badge v-for="bonus in event.completionBonuses" :key="`rsi-${bonus}`" variant="secondary">
             {{ bonus }}
           </b-badge>
@@ -88,7 +96,7 @@
           class="text-center bottom-pad"
           v-if="event.altActivation !== '1970-01-01T00:00:00.000Z' && event.altExpiry !== '1970-01-01T00:00:00.000Z'"
         >
-          <div>Current cycle:</div>
+          <div>{{ $t('events.currentCycle') }}</div>
           <TimeBadge :starttime="event.altActivation" :endtime="event.altExpiry" :interval="1000" :pullright="false" />
         </div>
 
@@ -99,7 +107,7 @@
               event.nextAlt.expiry !== '1970-01-01T00:00:00.000Z'
           "
         >
-          <div>Next cycle:</div>
+          <div>{{ $t('events.nextCycle') }}</div>
           <TimeBadge
             :starttime="event.nextAlt.activation"
             :endtime="event.nextAlt.expiry"

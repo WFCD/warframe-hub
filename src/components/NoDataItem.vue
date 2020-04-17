@@ -8,7 +8,9 @@
         height="40px"
         style="filter: invert(80%); padding-right:10px;"
       />
-      <div class="no-content-warning align-middle" style="margin-bottom:2px;">No {{ text }} Present</div>
+      <div class="no-content-warning align-middle" style="margin-bottom:2px;">
+        {{ $t('nav.nodatatxt', { text: text }) }}
+      </div>
     </span>
   </b-list-group-item>
 </template>

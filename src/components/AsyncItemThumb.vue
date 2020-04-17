@@ -32,6 +32,10 @@ export default {
       type: Number,
       default: 20,
     },
+    ikey: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -41,7 +45,7 @@ export default {
   },
   methods: {
     fetch: async function() {
-      const stripped = this.alt
+      const stripped = (this.ikey || this.alt)
         .replace(/\d+\s+/i, '')
         .replace('Blueprint', '')
         .replace('Receiver', '')

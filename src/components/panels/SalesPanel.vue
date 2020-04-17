@@ -5,7 +5,7 @@
         <table class="table" style="table-layout: fixed">
           <thead>
             <tr>
-              <th class="text-center col-xs-2">Item</th>
+              <th class="text-center col-xs-2">{{ $t('sales.item') }}</th>
               <th class="text-center col-xs-2">
                 <HubImg :src="platinum" :name="$t('currency.plat')" />
               </th>

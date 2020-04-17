@@ -16,7 +16,7 @@
       <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!sentientOutposts.active">
         <span class="pull-left">
           <i class="far fa-eye-slash faIcon" v-b-tooltip :title="this.$t('sentientoutpost.none')"></i>
-          <b>Prediction</b>
+          <b>{{ $t('sentientoutpost.prediction') }}</b>
         </span>
         <TimeBadge :starttime="predNext.activation" :endtime="predNext.expiry" :interval="1000" />
       </b-list-group-item>

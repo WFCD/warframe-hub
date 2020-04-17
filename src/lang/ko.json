@@ -9,18 +9,20 @@
   "alerts": {
     "header": "얼럿",
     "archwing": "미션에 아크윙 필요",
-    "nightmare": "나이트메어 미션"
+    "nightmare": "나이트메어 미션",
+    "level": "Level:"
   },
   "arbitration": {
     "header": "중재"
   },
   "bounty": {
     "standing": "평판",
-    "header": "의뢰 주기",
+    "header": "{type} Bounty Cycle",
     "type": "유형",
     "lrange": "레벨 범위",
     "rewards": "보상",
-    "bounties": "의뢰"
+    "bounties": "의뢰",
+    "expires": "Bounties expire in:"
   },
   "nav": {
     "info": "정보",
@@ -42,7 +44,8 @@
     "projects": "프로젝트",
     "extras": "기타",
     "timers": "타이머",
-    "nodata": "데이터 없음"
+    "nodata": "데이터 없음",
+    "nodatatxt": "No {text} Present"
   },
   "construction": {
     "fomorian": "포모리안",
@@ -65,7 +68,15 @@
   "events": {
     "header": "이벤트",
     "standStages": "평판 단계",
-    "rewards": "보상"
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
   },
   "factions": {
     "sentient": "센티언트"
@@ -107,7 +118,8 @@
     "label": "보상 타이머 리셋까지:"
   },
   "sales": {
-    "header": "판매 및 추천 딜"
+    "header": "판매 및 추천 딜",
+    "item": "Item"
   },
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
@@ -115,7 +127,8 @@
     "header": "이상 현상 (베타)",
     "outpostsL": "전초기지",
     "none": "현재 이상 현상 없음",
-    "warn": "파라세시스를 잊지 마세요!"
+    "warn": "파라세시스를 잊지 마세요!",
+    "prediction": "Prediction"
   },
   "sortie": {
     "header": "출격"
@@ -135,7 +148,8 @@
   },
   "timer": {
     "ostron": "오스트론",
-    "solaris": "솔라리스 연합"
+    "solaris": "솔라리스 연합",
+    "solaris-united": "Solaris United"
   },
   "vt": {
     "header": "보이드 상인",

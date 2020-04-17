@@ -9,18 +9,20 @@
   "alerts": {
     "header": "Alertas",
     "archwing": "Archwing requerida para la misión",
-    "nightmare": "Misión pesadilla"
+    "nightmare": "Misión pesadilla",
+    "level": "Level:"
   },
   "arbitration": {
     "header": "Arbitración"
   },
   "bounty": {
     "standing": "Reputación",
-    "header": "Ciclo de contratos",
+    "header": "{type} Bounty Cycle",
     "type": "Tipo",
     "lrange": "Rango de nivel",
     "rewards": "Recompensas",
-    "bounties": "Contratos"
+    "bounties": "Contratos",
+    "expires": "Bounties expire in:"
   },
   "nav": {
     "info": "Información",
@@ -42,7 +44,8 @@
     "projects": "Proyectos",
     "extras": "Extras",
     "timers": "Contadores",
-    "nodata": "Sin datos"
+    "nodata": "Sin datos",
+    "nodatatxt": "No {text} Present"
   },
   "construction": {
     "fomorian": "Fomoré",
@@ -65,7 +68,15 @@
   "events": {
     "header": "Eventos",
     "standStages": "Etapas de reputación",
-    "rewards": "Recompensas"
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
   },
   "factions": {
     "sentient": "Consciente"
@@ -107,7 +118,8 @@
     "label": "El contador se reinicia en:"
   },
   "sales": {
-    "header": "Ventas y ofertas destacadas"
+    "header": "Ventas y ofertas destacadas",
+    "item": "Item"
   },
   "sentientoutpost": {
     "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
@@ -115,7 +127,8 @@
     "header": "Anomalías (beta)",
     "outpostsL": "Avanzada",
     "none": "No hay anomalías actualmente",
-    "warn": "¡No olvides tu Paracesis!"
+    "warn": "¡No olvides tu Paracesis!",
+    "prediction": "Prediction"
   },
   "sortie": {
     "header": "Incursión"
@@ -135,7 +148,8 @@
   },
   "timer": {
     "ostron": "Ostronita",
-    "solaris": "Solaris Unida"
+    "solaris": "Solaris Unida",
+    "solaris-united": "Solaris United"
   },
   "vt": {
     "header": "Comerciante del vacío",

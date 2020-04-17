@@ -9,18 +9,20 @@
   "alerts": {
     "header": "Alarmierungen",
     "archwing": "Archwing für Mission benötigt",
-    "nightmare": "Albtraummission"
+    "nightmare": "Albtraummission",
+    "level": "Level:"
   },
   "arbitration": {
     "header": "Schiedsgericht"
   },
   "bounty": {
     "standing": "Ansehen",
-    "header": "Aufträge",
+    "header": "{type} Bounty Cycle",
     "type": "Typ",
     "lrange": "Levelbereich",
     "rewards": "Belohnungen",
-    "bounties": "Aufträge"
+    "bounties": "Aufträge",
+    "expires": "Bounties expire in:"
   },
   "nav": {
     "info": "Information",
@@ -42,7 +44,8 @@
     "projects": "Projekte",
     "extras": "Extras",
     "timers": "Timer",
-    "nodata": "Keine Daten verfügbar"
+    "nodata": "Keine Daten verfügbar",
+    "nodatatxt": "No {text} Present"
   },
   "construction": {
     "fomorian": "Fomorianer",
@@ -65,7 +68,15 @@
   "events": {
     "header": "Ereignisse",
     "standStages": "Ansehensstufen",
-    "rewards": "Belohnungen"
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -107,7 +118,8 @@
     "label": "Belohnungstimer wird zurückgesetzt in:"
   },
   "sales": {
-    "header": "Verkäufe und Sonderangebote"
+    "header": "Verkäufe und Sonderangebote",
+    "item": "Item"
   },
   "sentientoutpost": {
     "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
@@ -115,7 +127,8 @@
     "header": "Anomalien (Beta)",
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",
-    "warn": "Vergiss nicht deinen Paracesis!"
+    "warn": "Vergiss nicht deinen Paracesis!",
+    "prediction": "Prediction"
   },
   "sortie": {
     "header": "Einsätze"
@@ -135,7 +148,8 @@
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United"
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United"
   },
   "vt": {
     "header": "Void Händler",

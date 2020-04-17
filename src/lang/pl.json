@@ -9,18 +9,20 @@
   "alerts": {
     "header": "Alerts",
     "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission"
+    "nightmare": "Nightmare Mission",
+    "level": "Level:"
   },
   "arbitration": {
     "header": "Arbitration"
   },
   "bounty": {
     "standing": "Standing",
-    "header": "Bounty Cycle",
+    "header": "{type} Bounty Cycle",
     "type": "Type",
     "lrange": "Level Range",
     "rewards": "Rewards",
-    "bounties": "Bounties"
+    "bounties": "Bounties",
+    "expires": "Bounties expire in:"
   },
   "nav": {
     "info": "Information",
@@ -42,7 +44,8 @@
     "projects": "Projects",
     "extras": "Extras",
     "timers": "Timers",
-    "nodata": "No Data"
+    "nodata": "No Data",
+    "nodatatxt": "No {text} Present"
   },
   "construction": {
     "fomorian": "Fomorian",
@@ -65,7 +68,15 @@
   "events": {
     "header": "Events",
     "standStages": "Standing Stages",
-    "rewards": "Rewards"
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -107,7 +118,8 @@
     "label": "Reward Timer Reset in:"
   },
   "sales": {
-    "header": "Sales and Featured Deals"
+    "header": "Sales and Featured Deals",
+    "item": "Item"
   },
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
@@ -115,7 +127,8 @@
     "header": "Anomalies (Beta)",
     "outpostsL": "Outposts",
     "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!"
+    "warn": "Don't forget your Paracesis!",
+    "prediction": "Prediction"
   },
   "sortie": {
     "header": "Sortie"
@@ -135,7 +148,8 @@
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United"
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United"
   },
   "vt": {
     "header": "Void Trader",

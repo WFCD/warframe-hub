@@ -23,14 +23,14 @@
         </div>
         <b-badge v-if="isHealthReversed(event)" class="event-health" :variant="eventHealthVariantOpposite(event)">
           {{
-            $t('event.completed', {
+            $t('events.completed', {
               perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
             })
           }}
         </b-badge>
         <b-badge v-else class="event-health" :variant="eventHealthVariant(event)">
           {{
-            $t('event.remaining', {
+            $t('events.remaining', {
               perc: event.health || (100 - (event.currentScore / event.maximumScore) * 100).toFixed(2),
             })
           }}

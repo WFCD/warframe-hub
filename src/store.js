@@ -55,6 +55,7 @@ const state = {
     'Special Caves-toggle-value': true,
   },
   locale: 'en',
+  bountyToggles: {},
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -107,6 +108,9 @@ const mutations = {
   },
   vallisMapToggles: (state, [toggles]) => {
     state.vallisMapToggles = toggles;
+  },
+  toggleBountiesOpen: (state, [bountyType, newState]) => {
+    state.bountyToggles[bountyType] = newState;
   },
 };
 
@@ -192,6 +196,7 @@ const getters = {
   notifiedIds: (state) => state.notifiedIds[state.platform],
   poeMapToggles: (state) => state.poeMapToggles,
   vallisMapToggles: (state) => state.vallisMapToggles,
+  bountyToggles: (state) => state.bountyToggles,
 };
 
 Vue.use(Vuex);

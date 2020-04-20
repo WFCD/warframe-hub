@@ -22,7 +22,8 @@
     "lrange": "Level Range",
     "rewards": "Rewards",
     "bounties": "Bounties",
-    "expires": "Bounties expire in:"
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
   },
   "nav": {
     "info": "Information",

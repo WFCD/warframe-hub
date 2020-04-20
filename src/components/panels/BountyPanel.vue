@@ -1,7 +1,7 @@
 <template>
   <HubPanelWrap :title="headertext" class="bounties">
     <b-list-group>
-      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
+      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderless">
         <span class="pull-left">{{ $t('bounty.expires') }}</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
         <b-table
@@ -10,6 +10,7 @@
           :items="this.items"
           class="b-table bounty-table"
           @row-clicked="toggleDetails"
+          :ref="`${this.typeId}-table`"
         >
           <template v-slot:cell(type)="data">
             <div>
@@ -47,6 +48,17 @@
           </template>
         </b-table>
       </b-list-group-item>
+      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
+        <b-form-checkbox
+          :id="`${this.typeId}-bounty-reward-checkbox`"
+          class="float-right"
+          name="bounty-reward-checkbox"
+          switch
+          v-model="check"
+        >
+          {{ this.$t('bounty.autoExpand') }}
+        </b-form-checkbox>
+      </b-list-group-item>
       <NoDataItem v-else :text="headertext" />
     </b-list-group>
   </HubPanelWrap>
@@ -67,7 +79,7 @@ export default {
   props: ['syndicate', 'type'],
   computed: {
     headertext() {
-      return this.$t('bounty.header', { type: this.$t(`timer.${this.type.toLowerCase().replace(/\s/gi, '-')}`) });
+      return this.$t('bounty.header', { type: this.$t(`timer.${this.typeId}`) });
     },
     items: function() {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({
@@ -75,7 +87,18 @@ export default {
         standing: job.standingStages.reduce((a, b) => a + b) || 0,
         'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
         rewards: job.rewardPool || [],
+        _showDetails: this.check,
       }));
+    },
+    check: {
+      get() {
+        return this.autoExpand;
+      },
+      set() {
+        this.hover = null;
+        this.autoExpand = !this.autoExpand;
+        this.$store.commit('toggleBountiesOpen', [this.typeId, this.autoExpand]);
+      },
     },
   },
   data() {
@@ -97,7 +120,12 @@ export default {
       ],
       standing: standing,
       id: utilities.makeid(),
+      typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
+      autoExpand: false,
     };
+  },
+  beforeMount() {
+    this.autoExpand = this.$store.getters.bountyToggles[this.typeId];
   },
   methods: {
     toggleDetails(row) {

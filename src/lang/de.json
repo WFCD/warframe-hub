@@ -22,7 +22,8 @@
     "lrange": "Levelbereich",
     "rewards": "Belohnungen",
     "bounties": "Aufträge",
-    "expires": "Bounties expire in:"
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
   },
   "nav": {
     "info": "Information",

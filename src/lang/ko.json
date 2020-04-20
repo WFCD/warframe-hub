@@ -22,7 +22,8 @@
     "lrange": "레벨 범위",
     "rewards": "보상",
     "bounties": "의뢰",
-    "expires": "Bounties expire in:"
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
   },
   "nav": {
     "info": "정보",

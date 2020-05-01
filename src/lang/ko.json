@@ -150,7 +150,9 @@
   "timer": {
     "ostron": "오스트론",
     "solaris": "솔라리스 연합",
-    "solaris-united": "Solaris United"
+    "solaris-united": "Solaris United",
+    "hivemind": "Hive Mind",
+    "hive-mind": "Hive Mind"
   },
   "vt": {
     "header": "보이드 상인",

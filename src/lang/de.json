@@ -150,7 +150,9 @@
   "timer": {
     "ostron": "Ostron",
     "solaris": "Solaris United",
-    "solaris-united": "Solaris United"
+    "solaris-united": "Solaris United",
+    "hivemind": "Hive Mind",
+    "hive-mind": "Hive Mind"
   },
   "vt": {
     "header": "Void Händler",

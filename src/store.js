@@ -175,15 +175,15 @@ const getters = {
   worldstate: (state) => state.worldstates[state.platform],
   ostronSyndicate: (state) => {
     const worldstate = state.worldstates[state.platform];
-    const filtered = (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.syndicate === 'Ostrons');
-    return filtered[0];
+    return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('CetusSyndicate'))[0];
   },
   solarisSyndicate: (state) => {
     const worldstate = state.worldstates[state.platform];
-    const filtered = (worldstate.syndicateMissions || []).filter(
-      (syndicate) => syndicate.syndicate === 'Solaris United'
-    );
-    return filtered[0];
+    return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('SolarisSyndicate'))[0];
+  },
+  hivemindSyndicate: (state) => {
+    const worldstate = state.worldstates[state.platform];
+    return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('HivemindSyndicate'))[0];
   },
   locale: (state) => state.locale || 'en',
   platform: (state) => state.platform || 'pc',

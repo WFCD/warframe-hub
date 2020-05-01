@@ -26,6 +26,7 @@
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" :type="$t('timer.solaris')" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
+        <bounty v-if="componentState['hivemind-bounties'].display" :syndicate="hivemind" :type="$t('timer.hivemind')" />
       </b-row>
     </b-container>
   </div>
@@ -93,6 +94,7 @@ export default {
       worldstate: 'worldstate',
       ostron: 'ostronSyndicate',
       solaris: 'solarisSyndicate',
+      hivemind: 'hivemindSyndicate'
     }),
   },
 };

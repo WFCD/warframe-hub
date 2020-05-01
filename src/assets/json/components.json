@@ -67,6 +67,16 @@
       "type": "Solaris United"
     }
   },
+  "hivemind-bounties": {
+    "display": true,
+    "displayName": "Hive Mind Bounties Timer",
+    "key": "hivemind-bounties",
+    "component": "BountyPanel",
+    "props": {
+      "syndicate": "@hivemind",
+      "type": "HiveMind"
+    }
+  },
   "alerts": {
     "display": true,
     "displayName": "Alerts",

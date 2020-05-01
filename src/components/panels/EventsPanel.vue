@@ -18,7 +18,7 @@
           :interval="1000"
           :pullright="false"
         />
-        <div class="text-center bottom-pad" v-if="event.victimNode !== undefined">
+        <div class="text-center bottom-pad" v-if="event.victimNode">
           <b-badge variant="danger">{{ event.victimNode }}</b-badge>
         </div>
         <b-badge v-if="isHealthReversed(event)" class="event-health" :variant="eventHealthVariantOpposite(event)">
@@ -46,7 +46,7 @@
               {{ item }}
             </b-badge>
             <b-badge v-if="reward.credits" variant="info">
-              {{ reward.credits }}{{ this.$t('currency.credAbbr') }}
+              {{ reward.credits }}{{ $t('currency.credAbbr') }}
             </b-badge>
           </div>
           <div class="text-center d-inline" v-for="step in event.interimSteps" :key="`rsi-${step.length}-${makeid()}`">

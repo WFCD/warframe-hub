@@ -94,7 +94,7 @@ export default {
       worldstate: 'worldstate',
       ostron: 'ostronSyndicate',
       solaris: 'solarisSyndicate',
-      hivemind: 'hivemindSyndicate'
+      hivemind: 'hivemindSyndicate',
     }),
   },
 };

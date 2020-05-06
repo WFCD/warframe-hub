@@ -16,14 +16,13 @@
             {{ $t('sentientoutpost.tooltip2') }}
           </b-tooltip>
         </span>
-        <TimeBadge :starttime="this.active" :counter="true" :interval="1000" />
+        <TimeBadge :starttime="sentientOutposts.activation" :endtime="sentientOutposts.expiry" :interval="1000" />
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!sentientOutposts.active">
         <span class="pull-left">
           <i class="far fa-eye-slash faIcon" v-b-tooltip :title="this.$t('sentientoutpost.none')"></i>
           <b>{{ $t('sentientoutpost.none') }}</b>
         </span>
-        <!-- <TimeBadge :starttime="predNext.activation" :endtime="predNext.expiry" :interval="1000" /> -->
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -33,8 +32,6 @@
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
-
-//import moment from 'moment';
 
 import sentient from '@/assets/img/factions/sentient.svg';
 
@@ -50,42 +47,6 @@ export default {
     headertext() {
       return this.$t('sentientoutpost.header');
     },
-    /* 
-    curr() {
-      const defStart = new Date(this.$props.sentientOutposts.activation).getTime();
-      const defEnd = new Date(this.$props.sentientOutposts.expiry).getTime();
-      const predStart = new Date(this.$props.sentientOutposts.previous.activation).getTime();
-      const predEnd = new Date(this.$props.sentientOutposts.previous.expiry).getTime();
-      if (defStart < predStart) {
-        return {
-          activation: moment(defStart).toISOString(),
-          expiry: moment(defEnd).toISOString(),
-        };
-      } else {
-        return {
-          activation: moment(predStart).toISOString(),
-          expiry: moment(predEnd).toISOString(),
-        };
-      }
-    },
-    predNext() {
-      const defStart = new Date(this.$props.sentientOutposts.activation).getTime();
-      const defEnd = new Date(this.$props.sentientOutposts.expiry).getTime();
-      const predStart = new Date(this.$props.sentientOutposts.previous.activation).getTime();
-      const predEnd = new Date(this.$props.sentientOutposts.previous.expiry).getTime();
-      if (defStart > predStart) {
-        return {
-          activation: moment(defStart).toISOString(),
-          expiry: moment(defEnd).toISOString(),
-        };
-      } else {
-        return {
-          activation: moment(predStart).toISOString(),
-          expiry: moment(predEnd).toISOString(),
-        };
-      }
-    },
-    */
   },
   data() {
     return {
@@ -98,7 +59,6 @@ export default {
         height: '25px',
       },
       mission: this.$props.sentientOutposts.mission.node,
-      active: new Date().getTime(),
     };
   },
   components: {

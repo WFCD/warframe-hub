@@ -10,15 +10,20 @@
           <b-tooltip target="para_tooltip" placement="top" class="text-center">
             {{ $t('sentientoutpost.warn') }}
           </b-tooltip>
+          <i id="time_tooltip" class="fa-xs fas fa-question-circle"></i>
+          <b-tooltip target="time_tooltip" placement="top" class="text-center">
+            {{ $t('sentientoutpost.tooltip1') }}
+            {{ $t('sentientoutpost.tooltip2') }}
+          </b-tooltip>
         </span>
-        <TimeBadge :starttime="curr.activation" :endtime="curr.expiry" :interval="1000" />
+        <TimeBadge :starttime="this.active" :counter="true" :interval="1000" />
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!sentientOutposts.active">
         <span class="pull-left">
           <i class="far fa-eye-slash faIcon" v-b-tooltip :title="this.$t('sentientoutpost.none')"></i>
-          <b>{{ $t('sentientoutpost.prediction') }}</b>
+          <b>{{ $t('sentientoutpost.none') }}</b>
         </span>
-        <TimeBadge :starttime="predNext.activation" :endtime="predNext.expiry" :interval="1000" />
+        <!-- <TimeBadge :starttime="predNext.activation" :endtime="predNext.expiry" :interval="1000" /> -->
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -29,17 +34,23 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
 
-import moment from 'moment';
+//import moment from 'moment';
 
 import sentient from '@/assets/img/factions/sentient.svg';
 
 export default {
   name: 'SentientOutpostsPanel',
   props: ['sentientOutposts'],
+  watch: {
+    mission: function() {
+      this.active = new Date().getTime();
+    },
+  },
   computed: {
     headertext() {
       return this.$t('sentientoutpost.header');
     },
+    /* 
     curr() {
       const defStart = new Date(this.$props.sentientOutposts.activation).getTime();
       const defEnd = new Date(this.$props.sentientOutposts.expiry).getTime();
@@ -74,6 +85,7 @@ export default {
         };
       }
     },
+    */
   },
   data() {
     return {
@@ -85,6 +97,8 @@ export default {
         width: '25px',
         height: '25px',
       },
+      mission: this.$props.sentientOutposts.mission.node,
+      active: new Date().getTime(),
     };
   },
   components: {

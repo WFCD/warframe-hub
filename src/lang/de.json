@@ -124,7 +124,7 @@
   },
   "sentientoutpost": {
     "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
-    "tooltip2": "Geschätzter Zyklus beträgt 30 Minuten aktive Zeit und 3 Stunden inaktive Zeit.",
+    "tooltip2": "Geschätzter Zyklus beträgt 30 Minuten aktive Zeit.",
     "header": "Anomalien (Beta)",
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",

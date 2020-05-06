@@ -10,20 +10,20 @@
     "header": "얼럿",
     "archwing": "미션에 아크윙 필요",
     "nightmare": "나이트메어 미션",
-    "level": "Level:"
+    "level": "레벨:"
   },
   "arbitration": {
     "header": "중재"
   },
   "bounty": {
     "standing": "평판",
-    "header": "{type} Bounty Cycle",
+    "header": "{type} 바운티 주기",
     "type": "유형",
     "lrange": "레벨 범위",
     "rewards": "보상",
     "bounties": "의뢰",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "expires": "현상금 만료까지:",
+    "autoExpand": "항상 보상 표시"
   },
   "nav": {
     "info": "정보",
@@ -46,7 +46,7 @@
     "extras": "기타",
     "timers": "타이머",
     "nodata": "데이터 없음",
-    "nodatatxt": "No {text} Present"
+    "nodatatxt": "현재 {text} 없음"
   },
   "construction": {
     "fomorian": "포모리안",
@@ -69,15 +69,15 @@
   "events": {
     "header": "이벤트",
     "standStages": "평판 단계",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "remaining": "{perc}& 남음",
+    "completed": "{perc}% 완료",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "이벤트 보상:",
+      "label": "보상"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "완료 보너스:",
+    "currentCycle": "현재 주기:",
+    "nextCycle": "다음 주기:"
   },
   "factions": {
     "sentient": "센티언트"
@@ -120,7 +120,7 @@
   },
   "sales": {
     "header": "판매 및 추천 딜",
-    "item": "Item"
+    "item": "아이템"
   },
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
@@ -129,7 +129,7 @@
     "outpostsL": "전초기지",
     "none": "현재 이상 현상 없음",
     "warn": "파라세시스를 잊지 마세요!",
-    "prediction": "Prediction"
+    "prediction": "예측"
   },
   "sortie": {
     "header": "출격"
@@ -150,9 +150,9 @@
   "timer": {
     "ostron": "오스트론",
     "solaris": "솔라리스 연합",
-    "solaris-united": "Solaris United",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "solaris-united": "솔라리스 연합",
+    "hivemind": "하이브 마인드",
+    "hive-mind": "하이브 마인드"
   },
   "vt": {
     "header": "보이드 상인",

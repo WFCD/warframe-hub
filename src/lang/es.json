@@ -124,7 +124,7 @@
   },
   "sentientoutpost": {
     "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
-    "tooltip2": "El ciclo estimado es de 30 minutos de tiempo activo y 3 horas de tiempo inactivo.",
+    "tooltip2": "El ciclo estimado es de 30 minutos de tiempo activo",
     "header": "Anomalías (beta)",
     "outpostsL": "Avanzada",
     "none": "No hay anomalías actualmente",

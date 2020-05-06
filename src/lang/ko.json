@@ -124,7 +124,7 @@
   },
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
-    "tooltip2": "예상 주기는 30분의 활성화 시간과 3시간의 비활성화 시간입니다.",
+    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
     "header": "이상 현상 (베타)",
     "outpostsL": "전초기지",
     "none": "현재 이상 현상 없음",

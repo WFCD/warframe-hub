@@ -17,12 +17,12 @@
   },
   "bounty": {
     "standing": "평판",
-    "header": "{type} 바운티 주기",
+    "header": "{type} 의뢰 주기",
     "type": "유형",
     "lrange": "레벨 범위",
     "rewards": "보상",
     "bounties": "의뢰",
-    "expires": "현상금 만료까지:",
+    "expires": "의뢰 만료까지:",
     "autoExpand": "항상 보상 표시"
   },
   "nav": {
@@ -124,7 +124,7 @@
   },
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "tooltip2": "예상 주기는 각각 노드당 30분의 활성화 시간입니다.",
     "header": "이상 현상 (베타)",
     "outpostsL": "전초기지",
     "none": "현재 이상 현상 없음",

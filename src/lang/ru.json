@@ -22,7 +22,7 @@
     "lrange": "Уровни",
     "rewards": "Награды",
     "bounties": "Заказы",
-    "expires": "Заказы истекают:",
+    "expires": "До конца Заказов:",
     "autoExpand": "Всегда показывать награды"
   },
   "nav": {
@@ -91,7 +91,7 @@
   },
   "kuva": {
     "header": "Поглотители Кувы",
-    "siphon": "Kuva Siphon"
+    "siphon": "Кува"
   },
   "location": {
     "cetus": "Цетус",
@@ -123,7 +123,7 @@
     "item": "Item"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
+    "tooltip1": "Находится в стадии разработки из-за недавнего обновления.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
     "header": "Аномалия (бета)",
     "outpostsL": "Аванпост",
@@ -140,8 +140,8 @@
     "warm": "тепло",
     "cold": "холодно",
     "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
+    "startL": "до нач.:",
+    "endL": "до конца:",
     "ongoingL": "Ongoing for:",
     "expiredL": "Завершено",
     "depart": "Отбытие",

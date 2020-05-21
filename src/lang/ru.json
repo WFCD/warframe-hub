@@ -55,25 +55,25 @@
     "header": "Construction Progress"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "Платины",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Дукатов",
+    "cred": "Кредитов"
   },
   "darvo": {
-    "header": "Darvo's Deals",
+    "header": "Предложения Дарво",
     "off": "% Off",
-    "left": "% Left",
+    "left": "% осталось",
     "leftL": "Left"
   },
   "events": {
-    "header": "Events",
+    "header": "События",
     "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "remaining": "Осталось {perc}%",
+    "completed": "Выполнено {perc}%",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Награды за Событие:",
+      "label": "Награды"
     },
     "completionBonuses": "Completion Bonuses:",
     "currentCycle": "Current Cycle:",
@@ -83,34 +83,34 @@
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Разрывы Бездны"
   },
   "invasions": {
-    "header": "Invasions",
+    "header": "Вторжения",
     "eta": "Ends in:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
+    "header": "Поглотители Кувы",
     "siphon": "Kuva Siphon"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "Цетус",
+    "vallis": "Долина Сфер",
+    "earth": "Земля"
   },
   "news": {
-    "header": "News",
-    "autoprogress": "Auto-progress"
+    "header": "Новости",
+    "autoprogress": "Перелистывать новость"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Ночная Волна",
+    "weekly": "Еженедельные",
+    "elite": "Еженедельные Элитные",
+    "daily": "Ежедневные"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
+      "dayheader": "Цетус - Проснись и пой! Время охоты закончилось!",
       "nightheader": "Cetus - Hunting Time!"
     }
   },
@@ -155,8 +155,8 @@
     "hive-mind": "Hive Mind"
   },
   "vt": {
-    "header": "Void Trader",
+    "header": "Торговец из Бездны",
     "inventory": "Inventory",
-    "item": "Item"
+    "item": "Товар"
   }
 }

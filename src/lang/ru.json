@@ -13,22 +13,22 @@
     "level": "Уровень:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Арбитраж"
   },
   "bounty": {
-    "standing": "Standing",
+    "standing": "Репутация",
     "header": "{type} Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "lrange": "Уровни",
+    "rewards": "Награды",
+    "bounties": "Заказы",
+    "expires": "Заказы истекают:",
+    "autoExpand": "Всегда показывать награды"
   },
   "nav": {
-    "info": "Information",
+    "info": "Информация",
     "discord": "Discord",
-    "settings": "Settings",
+    "settings": "Настройки",
     "drops": "Drops",
     "genesis": "Genesis",
     "docs": "API Docs",

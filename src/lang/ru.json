@@ -143,9 +143,9 @@
     "startL": "Starts in:",
     "endL": "Ends in:",
     "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "expiredL": "Завершено",
+    "depart": "Отбытие",
+    "arrive": "Прибытие"
   },
   "timer": {
     "ostron": "Острон",

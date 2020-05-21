@@ -96,7 +96,7 @@
   "location": {
     "cetus": "Цетус",
     "vallis": "Долина Сфер",
-    "earth": "Земля"
+    "earth": "Земное"
   },
   "news": {
     "header": "Новости",
@@ -111,12 +111,12 @@
   "notifications": {
     "cetus": {
       "dayheader": "Цетус - Проснись и пой! Время охоты закончилось!",
-      "nightheader": "Cetus - Hunting Time!"
+      "nightheader": "Цетус - Время охоты!"
     }
   },
   "reset": {
     "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "label": "Награды обновятся через:"
   },
   "sales": {
     "header": "Sales and Featured Deals",
@@ -125,20 +125,20 @@
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
+    "header": "Аномалия (бета)",
+    "outpostsL": "Аванпост",
+    "none": "Нет информации об аномалии",
+    "warn": "Не забудь взять меч Парацесис!",
     "prediction": "Prediction"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Вылазка"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "day": "день",
+    "night": "ночь",
+    "warm": "тепло",
+    "cold": "холодно",
     "Timer": "Cycle Timer",
     "startL": "Starts in:",
     "endL": "Ends in:",
@@ -151,7 +151,7 @@
     "ostron": "Острон",
     "solaris": "Объединение Солярис",
     "solaris-united": "Объединение Солярис",
-    "hivemind": "Hive Mind",
+    "hivemind": "Разум Улья",
     "hive-mind": "Hive Mind"
   },
   "vt": {

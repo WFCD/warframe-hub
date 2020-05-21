@@ -87,7 +87,7 @@
   },
   "invasions": {
     "header": "Вторжения",
-    "eta": "Ends in:"
+    "eta": "до конца:"
   },
   "kuva": {
     "header": "Поглотители Кувы",
@@ -115,21 +115,21 @@
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
+    "header": "До сброса ежедневных деяний",
     "label": "Награды обновятся через:"
   },
   "sales": {
     "header": "Sales and Featured Deals",
-    "item": "Item"
+    "item": "Товар"
   },
   "sentientoutpost": {
     "tooltip1": "Находится в стадии разработки из-за недавнего обновления.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "tooltip2": "Предполагается, что для каждого узла Аномалия активна по 30 минут.",
     "header": "Аномалия (бета)",
     "outpostsL": "Аванпост",
     "none": "Нет информации об аномалии",
     "warn": "Не забудь взять меч Парацесис!",
-    "prediction": "Prediction"
+    "prediction": "Возможно"
   },
   "sortie": {
     "header": "Вылазка"
@@ -139,7 +139,7 @@
     "night": "ночь",
     "warm": "тепло",
     "cold": "холодно",
-    "Timer": "Cycle Timer",
+    "Timer": "(статус)",
     "startL": "до нач.:",
     "endL": "до конца:",
     "ongoingL": "Ongoing for:",

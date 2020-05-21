@@ -108,6 +108,14 @@
     "elite": "Semanal de élite",
     "daily": "Diario"
   },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Semanal",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
+  },
   "notifications": {
     "cetus": {
       "dayheader": "Cetus - ¡La hora de cazar terminó!",

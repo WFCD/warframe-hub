@@ -108,6 +108,14 @@
     "elite": "주간 엘리트",
     "daily": "일간"
   },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "주간",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
+  },
   "notifications": {
     "cetus": {
       "dayheader": "시터스 - 새 아침이 밝았습니다! 사냥 시간 종료!",

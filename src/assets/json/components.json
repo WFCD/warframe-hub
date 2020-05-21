@@ -194,5 +194,14 @@
     "display": true,
     "displayName": "Sentient Outposts",
     "key": "sentientoutposts"
+  },
+  "conclave": {
+    "display": true,
+    "displayName": "Conclave",
+    "key": "conclaveChallenges",
+    "component": "ConclavePanel",
+    "props": {
+      "nightwave": "@worldstate.conclaveChallenges"
+    }
   }
 }

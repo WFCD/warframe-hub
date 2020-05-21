@@ -40,7 +40,7 @@
     "fish": "Fishing Data",
     "howto": "How to Fish",
     "owearth": "Plains",
-    "owvenus": "Orb Vallis",
+    "owvenus": "Долина Сфер",
     "ow": "Open World",
     "projects": "Projects",
     "extras": "Extras",
@@ -96,7 +96,7 @@
   "location": {
     "cetus": "Цетус",
     "vallis": "Долина Сфер",
-    "earth": "Земное"
+    "earth": "Земля"
   },
   "news": {
     "header": "Новости",

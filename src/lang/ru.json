@@ -26,7 +26,7 @@
     "autoExpand": "Всегда показывать награды"
   },
   "nav": {
-    "info": "Информация",
+    "info": "О проекте",
     "discord": "Discord",
     "settings": "Настройки",
     "drops": "Drops",
@@ -56,7 +56,7 @@
   },
   "currency": {
     "plat": "Платины",
-    "credAbbr": "cr",
+    "credAbbr": "кр",
     "dabloons": "Дукатов",
     "cred": "Кредитов"
   },
@@ -64,7 +64,7 @@
     "header": "Предложения Дарво",
     "off": "% Off",
     "left": "% осталось",
-    "leftL": "Left"
+    "leftL": "ост."
   },
   "events": {
     "header": "События",
@@ -80,7 +80,7 @@
     "nextCycle": "Next Cycle:"
   },
   "factions": {
-    "sentient": "Sentient"
+    "sentient": "Владеющие Разумом"
   },
   "fissures": {
     "header": "Разрывы Бездны"
@@ -115,11 +115,11 @@
     }
   },
   "reset": {
-    "header": "До сброса ежедневных деяний",
+    "header": "Сброс ежедневных деяний",
     "label": "Награды обновятся через:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
+    "header": "Распродажи и предложения",
     "item": "Товар"
   },
   "sentientoutpost": {

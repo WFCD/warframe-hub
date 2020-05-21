@@ -1,16 +1,16 @@
 {
   "acolytes": {
     "header": "Послушники",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
+    "discovered": "Обнаружен",
+    "hiding": "Скрывается",
     "na": "Nowhere",
-    "health": "Health Remaining"
+    "health": "Здоровья осталось"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "header": "Тревоги",
+    "archwing": "Необходима Арчвинг для миссии",
+    "nightmare": "Режим Кошмар",
+    "level": "Уровень:"
   },
   "arbitration": {
     "header": "Arbitration"

@@ -17,8 +17,8 @@
   },
   "bounty": {
     "standing": "Репутация",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
+    "header": "Заказы {type}",
+    "type": "Тип",
     "lrange": "Уровни",
     "rewards": "Награды",
     "bounties": "Заказы",
@@ -49,8 +49,8 @@
     "nodatatxt": "No {text} Present"
   },
   "construction": {
-    "fomorian": "Fomorian",
-    "razorback": "Razorback",
+    "fomorian": "Фоморианец",
+    "razorback": "Армада Секачей",
     "unk": "Unknown",
     "header": "Construction Progress"
   },

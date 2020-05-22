@@ -151,9 +151,9 @@
     "warm": "тепло",
     "cold": "холодно",
     "Timer": "(статус)",
-    "startL": "до нач.:",
+    "startL": "до прибытия:",
     "endL": "до конца:",
-    "ongoingL": "Ongoing for:",
+    "ongoingL": "до отбытия:",
     "expiredL": "Завершено",
     "depart": "Отбытие",
     "arrive": "Прибытие"

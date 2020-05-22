@@ -39,11 +39,11 @@ import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg';
 
-import conclaveimg from '@/assets/img/conclave/conclave.png';
-import lunaro from '@/assets/img/conclave/lunaro.png';
-import cephaloncapture from '@/assets/img/conclave/cephaloncapture.png';
-import annihilation from '@/assets/img/conclave/annihilation.png';
-import teamannihilation from '@/assets/img/conclave/teamannihilation.png';
+import conclaveimg from '@/assets/img/conclave/conclave.webp';
+import lunaro from '@/assets/img/conclave/lunaro.webp';
+import cephaloncapture from '@/assets/img/conclave/cephaloncapture.webp';
+import annihilation from '@/assets/img/conclave/annihilation.webp';
+import teamannihilation from '@/assets/img/conclave/teamannihilation.webp';
 
 export default {
   name: 'ConclavePanel',

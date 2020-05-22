@@ -12,13 +12,11 @@ import * as Integrations from '@sentry/integrations';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
-if (!process.env.NODE_ENV) {
-  if (process.env.VUE_APP_DSN) {
-    Sentry.init({
-      dsn: process.env.VUE_APP_DSN,
-      integrations: [new Integrations.Vue({ Vue, attachProps: true })],
-    });
-  }
+if (process.env.NODE_ENV == 'production' && process.env.VUE_APP_DSN) {
+  Sentry.init({
+    dsn: process.env.VUE_APP_DSN,
+    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+  });
 }
 
 import VueMobileDetection from 'vue-mobile-detection';

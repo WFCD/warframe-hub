@@ -9,7 +9,6 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
-/*
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 
@@ -19,7 +18,7 @@ if (process.env.VUE_APP_DSN) {
     integrations: [new Integrations.Vue({ Vue, attachProps: true })],
   });
 }
-*/
+
 import VueMobileDetection from 'vue-mobile-detection';
 Vue.use(VueMobileDetection);
 

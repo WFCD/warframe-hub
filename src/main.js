@@ -6,17 +6,19 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-Vue.config.productionTip = false;
-
-/* Sentry Reporting */
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 
-if (process.env.VUE_APP_DSN) {
-  Sentry.init({
-    dsn: process.env.VUE_APP_DSN,
-    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
-  });
+Vue.config.productionTip = false;
+
+/* Sentry Reporting */
+if (!process.env.NODE_ENV) {
+  if (process.env.VUE_APP_DSN) {
+    Sentry.init({
+      dsn: process.env.VUE_APP_DSN,
+      integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+    });
+  }
 }
 
 import VueMobileDetection from 'vue-mobile-detection';

@@ -138,7 +138,7 @@ export default {
             time: moment(newsitem.startDate).fromNow(),
             label: newsitem.translations[this.locale],
           };
-        } else if (moment().unix() > moment(newsitem.endDate).unix()) {
+        } else if (moment(newsitem.endDate).unix() > moment().unix()) {
           return {
             time: `${this.$t('news.live')}:`,
             label: newsitem.translations[this.locale],

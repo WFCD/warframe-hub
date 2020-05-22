@@ -100,6 +100,9 @@
   },
   "news": {
     "header": "Новости",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
     "autoprogress": "Перелистывать новость"
   },
   "nightwave": {
@@ -107,6 +110,14 @@
     "weekly": "Еженедельные",
     "elite": "Еженедельные Элитные",
     "daily": "Ежедневные"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Weekly",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
   },
   "notifications": {
     "cetus": {

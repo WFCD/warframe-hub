@@ -75,9 +75,9 @@
       "header": "Награды за Событие:",
       "label": "Награды"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "Бонусы за выполнение:",
+    "currentCycle": "Текущий:",
+    "nextCycle": "Следующий:"
   },
   "factions": {
     "sentient": "Владеющие Разумом"
@@ -102,7 +102,7 @@
     "header": "Новости",
     "past": "назад",
     "future": "через",
-    "live": "Live",
+    "live": "Сейчас",
     "autoprogress": "Перелистывать новость"
   },
   "nightwave": {

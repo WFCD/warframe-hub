@@ -18,6 +18,7 @@
         <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
         <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
         <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
+        <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
@@ -52,6 +53,7 @@ import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 import ConstructionPanel from '@/components/panels/ConstructionPanel.vue';
 import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue';
+import ConclavePanel from '@/components/panels/ConclavePanel.vue';
 
 export default {
   name: 'timers',
@@ -74,6 +76,7 @@ export default {
     nightwave: NightwavePanel,
     construction: ConstructionPanel,
     sentientOutposts: SentientOutpostsPanel,
+    conclave: ConclavePanel,
   },
   data() {
     return {

@@ -188,11 +188,26 @@
   "construction": {
     "display": true,
     "displayName": "Construction",
-    "key": "construction"
+    "key": "construction",
+    "props": {
+      "construction": "@worldstate.construction"
+    }
   },
   "sentientoutposts": {
     "display": true,
     "displayName": "Sentient Outposts",
-    "key": "sentientoutposts"
+    "key": "sentientoutposts",
+    "props": {
+      "sentientOutposts": "@worldstate.sentientOutposts"
+    }
+  },
+  "conclave": {
+    "display": false,
+    "displayName": "Conclave",
+    "key": "conclave",
+    "component": "ConclavePanel",
+    "props": {
+      "conclave": "@worldstate.conclaveChallenges"
+    }
   }
 }

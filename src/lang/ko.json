@@ -100,6 +100,9 @@
   },
   "news": {
     "header": "새 소식",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
     "autoprogress": "자동"
   },
   "nightwave": {
@@ -107,6 +110,14 @@
     "weekly": "주간",
     "elite": "주간 엘리트",
     "daily": "일간"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "주간",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
   },
   "notifications": {
     "cetus": {

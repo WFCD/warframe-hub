@@ -212,20 +212,10 @@
       "value": "fissures.t1.mobiledefense",
       "text": "Lith Mobile Defense Fissure"
     },
-    "fissures.t1.assassination": {
-      "state": false,
-      "value": "fissures.t1.assassination",
-      "text": "Lith Assassination Fissure"
-    },
     "fissures.t1.exterminate": {
       "state": false,
       "value": "fissures.t1.exterminate",
       "text": "Lith Extermination Fissure"
-    },
-    "fissures.t1.hive": {
-      "state": false,
-      "value": "fissures.t1.hive",
-      "text": "Lith Hive Fissure"
     },
     "fissures.t1.defense": {
       "state": false,
@@ -236,16 +226,6 @@
       "state": false,
       "value": "fissures.t1.interception",
       "text": "Lith Interception Fissure"
-    },
-    "fissures.t1.rathuum": {
-      "state": false,
-      "value": "fissures.t1.rathuum",
-      "text": "Lith Arena Fissure"
-    },
-    "fissures.t1.conclave": {
-      "state": false,
-      "value": "fissures.t1.conclave",
-      "text": "Lith Conclave Fissure"
     },
     "fissures.t1.rescue": {
       "state": false,
@@ -267,25 +247,10 @@
       "value": "fissures.t1.capture",
       "text": "Lith Capture Fissure"
     },
-    "fissures.t1.darksector": {
+    "fissures.t1.disruption": {
       "state": false,
-      "value": "fissures.t1.darksector",
-      "text": "Lith Dark Sector Fissure"
-    },
-    "fissures.t1.hijack": {
-      "state": false,
-      "value": "fissures.t1.hijack",
-      "text": "Lith Hijack Fissure"
-    },
-    "fissures.t1.assault": {
-      "state": false,
-      "value": "fissures.t1.assault",
-      "text": "Lith Assault Fissure"
-    },
-    "fissures.t1.evacuation": {
-      "state": false,
-      "value": "fissures.t1.evacuation",
-      "text": "Lith Evacuation Fissure"
+      "value": "fissures.t1.disruption",
+      "text": "Lith Disruption Fissure"
     },
     "fissures.t2.excavation": {
       "state": false,
@@ -302,20 +267,10 @@
       "value": "fissures.t2.mobiledefense",
       "text": "Meso Mobile Defense Fissure"
     },
-    "fissures.t2.assassination": {
-      "state": false,
-      "value": "fissures.t2.assassination",
-      "text": "Meso Assassination Fissure"
-    },
     "fissures.t2.exterminate": {
       "state": false,
       "value": "fissures.t2.exterminate",
       "text": "Meso Extermination Fissure"
-    },
-    "fissures.t2.hive": {
-      "state": false,
-      "value": "fissures.t2.hive",
-      "text": "Meso Hive Fissure"
     },
     "fissures.t2.defense": {
       "state": false,
@@ -326,16 +281,6 @@
       "state": false,
       "value": "fissures.t2.interception",
       "text": "Meso Interception Fissure"
-    },
-    "fissures.t2.rathuum": {
-      "state": false,
-      "value": "fissures.t2.rathuum",
-      "text": "Meso Arena Fissure"
-    },
-    "fissures.t2.conclave": {
-      "state": false,
-      "value": "fissures.t2.conclave",
-      "text": "Meso Conclave Fissure"
     },
     "fissures.t2.rescue": {
       "state": false,
@@ -357,25 +302,15 @@
       "value": "fissures.t2.capture",
       "text": "Meso Capture Fissure"
     },
-    "fissures.t2.darksector": {
-      "state": false,
-      "value": "fissures.t2.darksector",
-      "text": "Meso Dark Sector Fissure"
-    },
     "fissures.t2.hijack": {
       "state": false,
       "value": "fissures.t2.hijack",
       "text": "Meso Hijack Fissure"
     },
-    "fissures.t2.assault": {
+    "fissures.t2.disruption": {
       "state": false,
-      "value": "fissures.t2.assault",
-      "text": "Meso Assault Fissure"
-    },
-    "fissures.t2.evacuation": {
-      "state": false,
-      "value": "fissures.t2.evacuation",
-      "text": "Meso Evacuation Fissure"
+      "value": "fissures.t2.disruption",
+      "text": "Meso Disruption Fissure"
     },
     "fissures.t3.excavation": {
       "state": false,
@@ -391,11 +326,6 @@
       "state": false,
       "value": "fissures.t3.mobiledefense",
       "text": "Neo Mobile Defense Fissure"
-    },
-    "fissures.t3.assassination": {
-      "state": false,
-      "value": "fissures.t3.assassination",
-      "text": "Neo Assassination Fissure"
     },
     "fissures.t3.exterminate": {
       "state": false,
@@ -417,16 +347,6 @@
       "value": "fissures.t3.interception",
       "text": "Neo Interception Fissure"
     },
-    "fissures.t3.rathuum": {
-      "state": false,
-      "value": "fissures.t3.rathuum",
-      "text": "Neo Arena Fissure"
-    },
-    "fissures.t3.conclave": {
-      "state": false,
-      "value": "fissures.t3.conclave",
-      "text": "Neo Conclave Fissure"
-    },
     "fissures.t3.rescue": {
       "state": false,
       "value": "fissures.t3.rescue",
@@ -447,25 +367,15 @@
       "value": "fissures.t3.capture",
       "text": "Neo Capture Fissure"
     },
-    "fissures.t3.darksector": {
-      "state": false,
-      "value": "fissures.t3.darksector",
-      "text": "Neo Dark Sector Fissure"
-    },
     "fissures.t3.hijack": {
       "state": false,
       "value": "fissures.t3.hijack",
       "text": "Neo Hijack Fissure"
     },
-    "fissures.t3.assault": {
+    "fissures.t3.disruption": {
       "state": false,
-      "value": "fissures.t3.assault",
-      "text": "Neo Assault Fissure"
-    },
-    "fissures.t3.evacuation": {
-      "state": false,
-      "value": "fissures.t3.evacuation",
-      "text": "Neo Evacuation Fissure"
+      "value": "fissures.t3.disruption",
+      "text": "Neo Disruption Fissure"
     },
     "fissures.t4.excavation": {
       "state": false,
@@ -481,11 +391,6 @@
       "state": false,
       "value": "fissures.t4.mobiledefense",
       "text": "Axi Mobile Defense Fissure"
-    },
-    "fissures.t4.assassination": {
-      "state": false,
-      "value": "fissures.t4.assassination",
-      "text": "Axi Assassination Fissure"
     },
     "fissures.t4.exterminate": {
       "state": false,
@@ -507,16 +412,6 @@
       "value": "fissures.t4.interception",
       "text": "Axi Interception Fissure"
     },
-    "fissures.t4.rathuum": {
-      "state": false,
-      "value": "fissures.t4.rathuum",
-      "text": "Axi Arena Fissure"
-    },
-    "fissures.t4.conclave": {
-      "state": false,
-      "value": "fissures.t4.conclave",
-      "text": "Axi Conclave Fissure"
-    },
     "fissures.t4.rescue": {
       "state": false,
       "value": "fissures.t4.rescue",
@@ -537,25 +432,50 @@
       "value": "fissures.t4.capture",
       "text": "Axi Capture Fissure"
     },
-    "fissures.t4.darksector": {
-      "state": false,
-      "value": "fissures.t4.darksector",
-      "text": "Axi Dark Sector Fissure"
-    },
     "fissures.t4.hijack": {
       "state": false,
       "value": "fissures.t4.hijack",
       "text": "Axi Hijack Fissure"
     },
-    "fissures.t4.assault": {
+    "fissures.t4.disruption": {
       "state": false,
-      "value": "fissures.t4.assault",
-      "text": "Axi Assault Fissure"
+      "value": "fissures.t4.disruption",
+      "text": "Axi Disruption Fissure"
     },
-    "fissures.t4.evacuation": {
+    "fissures.t5.exterminate": {
       "state": false,
-      "value": "fissures.t4.evacuation",
-      "text": "Axi Evacuation Fissure"
+      "value": "fissures.t5.exterminate",
+      "text": "Requiem Exterminate Fissure"
+    },
+    "fissures.t5.rescue": {
+      "state": false,
+      "value": "fissures.t5.rescue",
+      "text": "Requiem Rescue Fissure"
+    },
+    "fissures.t5.defense": {
+      "state": false,
+      "value": "fissures.t5.defense",
+      "text": "Requiem Defense Fissure"
+    },
+    "fissures.t5.spy": {
+      "state": false,
+      "value": "fissures.t5.spy",
+      "text": "Requiem Spy Fissure"
+    },
+    "fissures.t5.mobiledefense": {
+      "state": false,
+      "value": "fissures.t5.mobiledefense",
+      "text": "Requiem Mobile Defense Fissure"
+    },
+    "fissures.t5.disruption": {
+      "state": false,
+      "value": "fissures.t5.disruption",
+      "text": "Requiem Disruption Fissure"
+    },
+    "fissures.t5.survival": {
+      "state": false,
+      "value": "fissures.t5.survival",
+      "text": "Requiem Survival Fissure"
     }
   }
 }

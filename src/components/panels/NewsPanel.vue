@@ -29,7 +29,7 @@
           >
             <span class="news-title">
               <b-link target="_blank" rel="noopener" :href="newsitem.link">
-                <div class="news-time">{{ title(newsitem).time }} ago:</div>
+                <div class="news-time">{{ title(newsitem).time }}</div>
                 <span class="news-label">{{ title(newsitem).label }}</span>
               </b-link>
             </span>
@@ -91,6 +91,7 @@ body .list-group .list-group-item-borderless .list-group {
 </style>
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';
+import moment from 'moment';
 
 const cdnUrl = 'https://cdn.warframestat.us';
 const cdnOpts = ['o_webp', 'rs_404x110'];
@@ -131,10 +132,29 @@ export default {
       return `${cdnUrl}/${cdnOpts.join(',')}/${url}`;
     },
     title: function(newsitem) {
-      return {
-        time: newsitem.eta.split(' ')[0],
-        label: newsitem.translations[this.locale],
-      };
+      if (newsitem.startDate && newsitem.endDate) {
+        if (moment(newsitem.startDate).unix() > moment().unix()) {
+          return {
+            time: moment(newsitem.startDate).fromNow(),
+            label: newsitem.translations[this.locale],
+          };
+        } else if (moment(newsitem.endDate).unix() > moment().unix()) {
+          return {
+            time: `${this.$t('news.live')}:`,
+            label: newsitem.translations[this.locale],
+          };
+        } else {
+          return {
+            time: moment(newsitem.endDate).fromNow(),
+            label: newsitem.translations[this.locale],
+          };
+        }
+      } else {
+        return {
+          time: moment(newsitem.date).fromNow(),
+          label: newsitem.translations[this.locale],
+        };
+      }
     },
   },
   data() {
@@ -151,6 +171,23 @@ export default {
   },
   mounted() {
     this.interval = setInterval(this.increment, 3000);
+    moment.updateLocale('en', {
+      relativeTime: {
+        future: `${this.$t('news.future')} %s:`,
+        past: `%s ${this.$t('news.past')}:`,
+        s: '%ds',
+        m: '1m',
+        mm: '%dm',
+        h: '1h',
+        hh: '%dh',
+        d: '1d',
+        dd: '%dd',
+        M: '1m',
+        MM: '%dm',
+        y: '1y',
+        yy: '%dy',
+      },
+    });
   },
   beforeDestroy() {
     clearInterval(this.interval);

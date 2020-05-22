@@ -58,29 +58,47 @@
         </div>
 
         <b-row v-if="event.jobs">
-          <b-col
-            md="6"
-            v-for="job in event.jobs"
-            :key="`${job.type.replace(/\s/gi, '-').toLowerCase()}-${index}`"
-            class="event-job bottom-pad"
+          <b-table
+            selectable
+            :fields="fields"
+            :items="formatJobItems(event)"
+            class="b-table bounty-table"
+            @row-clicked="toggleDetails"
+            ref="event-table"
           >
-            <div class="text-center">
-              <div class="event-job-title bottom-pad">
-                <span>{{ job.type }}</span>
-                <b-badge variant="info">{{ job.enemyLevels[0] }}-{{ job.enemyLevels[1] }}</b-badge>
+            <template v-slot:cell(type)="data">
+              <div>
+                <div @click="data.toggleDetails" size="sm" class="ml-2 pull-left">
+                  <i v-if="data.detailsShowing" class="fas fa-chevron-down"></i>
+                  <i v-else class="fas fa-chevron-right"></i>
+                </div>
+                <div class="text-center">{{ data.value }}</div>
               </div>
-              <Collapsible :headertext="$t('events.standStages')" class="event-job-stages bottom-pad">
-                <div v-for="s in job.standingStages" :key="`standing-${s}-${makeid()}`">
-                  {{ s }}
-                </div>
-              </Collapsible>
-              <Collapsible headertext="Rewards" class="event-job-rewards">
-                <div v-for="r in job.rewardPool" :key="`rewards-${r}-${makeid()}`">
-                  {{ r }}
-                </div>
-              </Collapsible>
-            </div>
-          </b-col>
+            </template>
+            <template v-slot:head(standing)="data">
+              <HubImg
+                :src="standing"
+                :name="data.label"
+                width="24px"
+                height="24px"
+                class="text-center li-mission-decorator li-mission-decorator-lg"
+              />
+            </template>
+            <template v-slot:cell(standing)="row">
+              {{ row.item.standing }}
+            </template>
+            <template v-slot:cell(moreinfo)="row">
+              <div @click="row.toggleDetails" size="sm" class="mr-2">
+                <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
+                <i v-else class="fas fa-chevron-right"></i>
+              </div>
+            </template>
+            <template v-slot:row-details="row">
+              <span>
+                <b-badge v-for="(reward, index) in row.item.rewards" :key="`reward-${index}`">{{ reward }}</b-badge>
+              </span>
+            </template>
+          </b-table>
         </b-row>
 
         <div class="text-center bottom-pad">
@@ -122,8 +140,10 @@
 <script>
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import Collapsible from '@/components/Collapsible';
 import TimeBadge from '@/components/TimeBadge.vue';
+import HubImg from '@/components/HubImg.vue';
+
+import standing from '@/assets/img/general/standing.svg';
 
 import util from '@/utilities';
 
@@ -132,6 +152,26 @@ const reversedHealthEvents = ['Thermia Fractures'];
 export default {
   name: 'EventsPanel',
   props: ['events'],
+  data() {
+    return {
+      fields: [
+        {
+          key: 'type',
+          label: this.$t('bounty.type'),
+        },
+        {
+          key: 'standing',
+          label: this.$t('bounty.standing'),
+          thClass: 'text-center',
+        },
+        {
+          key: 'level-range',
+          label: this.$t('bounty.lrange'),
+        },
+      ],
+      standing: standing,
+    };
+  },
   computed: {
     headertext() {
       return this.$t('events.header');
@@ -173,15 +213,27 @@ export default {
       }
       return false;
     },
+    formatJobItems(event) {
+      return event.jobs.map((job) => ({
+        type: job.type,
+        standing: job.standingStages.reduce((a, b) => a + b) || 0,
+        'level-range': `${job.enemyLevels[0]}-${job.enemyLevels[1]}`,
+        rewards: job.rewardPool || [],
+        _showDetails: this.check,
+      }));
+    },
     makeid: function() {
       return util.makeid();
+    },
+    toggleDetails(row) {
+      row._showDetails = !row._showDetails;
     },
   },
   components: {
     NoDataItem,
     HubPanelWrap,
-    Collapsible,
     TimeBadge,
+    HubImg,
   },
 };
 </script>

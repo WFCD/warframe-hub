@@ -100,6 +100,9 @@
   },
   "news": {
     "header": "Neuigkeiten",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
     "autoprogress": "Auto-Fortschritt"
   },
   "nightwave": {

@@ -1,6 +1,6 @@
 <template>
   <HubPanelWrap :title="headertext" class="conclave">
-    <b-list-group v-if="conclaveChallenges && conclaveChallenges.length != 0">
+    <b-list-group v-if="conclave && conclave.length != 0">
       <b-list-group-item
         :style="styleObject"
         v-for="(challenge, index) in activeChallenges"
@@ -15,19 +15,19 @@
           <HubImg
             :src="image(challenge)"
             :name="type(challenge)"
-            class="li-mission-decorator li-mission-decorator-lg invert"
+            class="li-mission-decorator li-mission-decorator-lg"
             :height="'24px'"
             width="24px"
           />
         </span>
-        <span v-b-tooltip.right :title="challenge.desc" class="pull-left">
-          {{ challenge.title }}
+        <span v-b-tooltip.right :title="challenge.asString" class="pull-left">
+          {{ challenge.description }}
         </span>
 
         <TimeBadge class="pull-right" :starttime="challenge.activation" :endtime="challenge.expiry" :interval="1000" />
       </b-list-group-item>
     </b-list-group>
-    <b-list-group v-if="!conclaveChallenges || conclaveChallenges.length === 0">
+    <b-list-group v-if="!conclave || conclave.length === 0">
       <NoDataItem :text="headertext" />
     </b-list-group>
   </HubPanelWrap>
@@ -46,14 +46,18 @@ import annihilation from '@/assets/img/conclave/annihilation.png';
 import teamannihilation from '@/assets/img/conclave/teamannihilation.png';
 
 export default {
-  name: 'Conclave',
+  name: 'ConclavePanel',
   props: ['conclave'],
   computed: {
     headertext() {
       return this.$t('conclave.header');
     },
     activeChallenges() {
-      return this.conclaveChallenges.filter((challenge) => !challenge.rootChallenge);
+      return this.conclave
+        .filter((challenge) => !challenge.rootChallenge)
+        .sort((a, b) => {
+          return a.category == 'week' || b.category == 'week' ? 1 : a.mode.localeCompare(b.mode);
+        });
     },
   },
   methods: {

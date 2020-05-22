@@ -188,20 +188,26 @@
   "construction": {
     "display": true,
     "displayName": "Construction",
-    "key": "construction"
+    "key": "construction",
+    "props": {
+      "construction": "@worldstate.construction"
+    }
   },
   "sentientoutposts": {
     "display": true,
     "displayName": "Sentient Outposts",
-    "key": "sentientoutposts"
+    "key": "sentientoutposts",
+    "props": {
+      "sentientOutposts": "@worldstate.sentientOutposts"
+    }
   },
   "conclave": {
-    "display": true,
+    "display": false,
     "displayName": "Conclave",
-    "key": "conclaveChallenges",
+    "key": "conclave",
     "component": "ConclavePanel",
     "props": {
-      "nightwave": "@worldstate.conclaveChallenges"
+      "conclave": "@worldstate.conclaveChallenges"
     }
   }
 }

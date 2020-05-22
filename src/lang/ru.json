@@ -3,7 +3,7 @@
     "header": "Послушники",
     "discovered": "Обнаружен",
     "hiding": "Скрывается",
-    "na": "Nowhere",
+    "na": "Нету",
     "health": "Здоровья осталось"
   },
   "alerts": {
@@ -29,9 +29,9 @@
     "info": "О проекте",
     "discord": "Discord",
     "settings": "Настройки",
-    "drops": "Drops",
+    "drops": "Поиск Дропа",
     "genesis": "Genesis",
-    "docs": "API Docs",
+    "docs": "API Документация",
     "old": "Old Hub",
     "status": "Status",
     "riven": "Riven Data (Alpha)",
@@ -45,14 +45,14 @@
     "projects": "Projects",
     "extras": "Extras",
     "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "nodata": "Нет данных",
+    "nodatatxt": "Нет {text}"
   },
   "construction": {
     "fomorian": "Фоморианец",
     "razorback": "Армада Секачей",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Неизвестный",
+    "header": "Статус Постройки"
   },
   "currency": {
     "plat": "Платины",
@@ -100,8 +100,8 @@
   },
   "news": {
     "header": "Новости",
-    "past": "ago",
-    "future": "in",
+    "past": "назад",
+    "future": "через",
     "live": "Live",
     "autoprogress": "Перелистывать новость"
   },
@@ -112,12 +112,12 @@
     "daily": "Ежедневные"
   },
   "conclave": {
-    "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
-    "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "header": "Конклав",
+    "weekly": "Еженедельно",
+    "teamannihilation": "Командное истребление",
+    "annihilation": "Истребление",
+    "lunaro": "Лунаро",
+    "cephaloncapture": "Захват Цефалона"
   },
   "notifications": {
     "cetus": {
@@ -163,11 +163,11 @@
     "solaris": "Объединение Солярис",
     "solaris-united": "Объединение Солярис",
     "hivemind": "Разум Улья",
-    "hive-mind": "Hive Mind"
+    "hive-mind": "Разум Улья"
   },
   "vt": {
     "header": "Торговец из Бездны",
-    "inventory": "Inventory",
+    "inventory": "Товары",
     "item": "Товар"
   }
 }

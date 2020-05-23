@@ -11,21 +11,11 @@
         :items="this.items"
         :fields="this.fields"
       >
-        <b-table class="vt-table bounty-table" :items="this.items" :fields="this.fields" />
+        <b-table class="thin item-table" :items="this.items" :fields="this.fields" />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
 </template>
-
-<style>
-.vt-table.table.b-table.bounty-table > tbody > tr > td {
-  height: 1.25em;
-}
-
-.vt-table.table.b-table.bounty-table > thead > tr > th {
-  height: 2em;
-}
-</style>
 
 <script>
 import moment from 'moment';

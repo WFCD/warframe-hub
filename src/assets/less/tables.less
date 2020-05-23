@@ -65,8 +65,10 @@
       background-image: none;
     }
 
-    &.bounty-table > tbody > tr > td {
-      border: 0;
+    &.item-table {
+      & > tbody > tr > td { border: 0; }
+      &.thin > tbody > tr > td { height: 1.25em; }
+      &.thin > thead > tr > th { height: 2em; }
     }
 
     & > thead > tr > [aria-sort]:not(.b-table-sort-icon-left),

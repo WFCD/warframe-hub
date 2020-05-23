@@ -62,7 +62,7 @@
             selectable
             :fields="fields"
             :items="formatJobItems(event)"
-            class="b-table bounty-table"
+            class="item-table"
             @row-clicked="toggleDetails"
             ref="event-table"
           >

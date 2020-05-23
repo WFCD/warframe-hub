@@ -1,173 +1,173 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Послушники",
+    "discovered": "Обнаружен",
+    "hiding": "Скрывается",
+    "na": "Нету",
+    "health": "Здоровья осталось"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "header": "Тревоги",
+    "archwing": "Требуется Арчвинг",
+    "nightmare": "Режим Кошмар",
+    "level": "Уровень:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Арбитраж"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "standing": "Репутация",
+    "header": "Заказы {type}",
+    "type": "Тип",
+    "lrange": "Уровни",
+    "rewards": "Награды",
+    "bounties": "Заказы",
+    "expires": "До конца Заказов:",
+    "autoExpand": "Всегда показывать награды"
   },
   "nav": {
-    "info": "Information",
+    "info": "О проекте",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
-    "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
-    "owvenus": "Orb Vallis",
-    "ow": "Open World",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "settings": "Настройки",
+    "drops": "Поиск Дропа",
+    "genesis": "Genesis (Bot)",
+    "docs": "API Документация",
+    "old": "Старая версия",
+    "status": "Состояние",
+    "riven": "Моды Разлома (Альфа)",
+    "synth": "Цели синтеза",
+    "map": "Карта",
+    "fish": "Список рыбы",
+    "howto": "Как ловить",
+    "owearth": "Равнины Эйдолона",
+    "owvenus": "Долина Сфер",
+    "ow": "Открытые локации",
+    "projects": "Проекты",
+    "extras": "Ещё",
+    "timers": "Таймеры",
+    "nodata": "Нет данных",
+    "nodatatxt": "Нет {text}"
   },
   "construction": {
-    "fomorian": "Fomorian",
-    "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "fomorian": "Фоморианец",
+    "razorback": "Армада Секачей",
+    "unk": "Неизвестный",
+    "header": "Статус Постройки"
   },
   "currency": {
-    "plat": "Platinum",
-    "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "plat": "Платины",
+    "credAbbr": "кр",
+    "dabloons": "Дукатов",
+    "cred": "Кредитов"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Предложения Дарво",
+    "off": "% Скидка",
+    "left": "% осталось",
+    "leftL": "ост."
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "header": "События",
+    "standStages": "Репутация за этап",
+    "remaining": "Осталось {perc}%",
+    "completed": "Выполнено {perc}%",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Награды за Событие:",
+      "label": "Награды"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "Бонусы за выполнение:",
+    "currentCycle": "Текущий:",
+    "nextCycle": "Следующий:"
   },
   "factions": {
-    "sentient": "Sentient"
+    "sentient": "Владеющие Разумом"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Разрывы Бездны"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Вторжения",
+    "eta": "до конца:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "Поглотители Кувы",
+    "siphon": "Кува"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "Цетус",
+    "vallis": "Долина Сфер",
+    "earth": "Земля"
   },
   "news": {
-    "header": "News",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "header": "Новости",
+    "past": "назад",
+    "future": "через",
+    "live": "Сейчас",
+    "autoprogress": "Перелистывать новость"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Ночная Волна",
+    "weekly": "Еженедельные",
+    "elite": "Еженедельные Элитные",
+    "daily": "Ежедневные"
   },
   "conclave": {
-    "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
-    "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "header": "Конклав",
+    "weekly": "Еженедельно",
+    "teamannihilation": "Командное истребление",
+    "annihilation": "Истребление",
+    "lunaro": "Лунаро",
+    "cephaloncapture": "Захват Цефалона"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Цетус - Проснись и пой! Время охоты закончилось!",
+      "nightheader": "Цетус - Время охоты!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Сброс ежедневных деяний",
+    "label": "Награды обновятся через:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "Распродажи и предложения",
+    "item": "Товар"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "tooltip1": "Находится в стадии разработки из-за недавнего обновления.",
+    "tooltip2": "Предполагается, что для каждого узла Аномалия активна по 30 минут.",
+    "header": "Аномалия (бета)",
+    "outpostsL": "Аванпост",
+    "none": "Нет информации об аномалии",
+    "warn": "Не забудь взять меч Парацесис!",
+    "prediction": "Возможно"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Вылазка"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "day": "день",
+    "night": "ночь",
+    "warm": "тепло",
+    "cold": "холодно",
+    "Timer": ", цикл",
+    "startL": "до прибытия:",
+    "endL": "до конца:",
+    "ongoingL": "до отбытия:",
+    "expiredL": "Завершено",
+    "depart": "Отбытие",
+    "arrive": "Прибытие"
   },
   "timer": {
-    "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "ostron": "Острон",
+    "solaris": "Объединение Солярис",
+    "solaris-united": "Объединение Солярис",
+    "hivemind": "Разум Улья",
+    "hive-mind": "Разум Улья"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Торговец из Бездны",
+    "inventory": "Товары",
+    "item": "Товар"
   }
 }

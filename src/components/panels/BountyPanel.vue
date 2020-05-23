@@ -8,7 +8,7 @@
           selectable
           :fields="this.fields"
           :items="this.items"
-          class="b-table bounty-table"
+          class="item-table"
           @row-clicked="toggleDetails"
           :ref="`${this.typeId}-table`"
         >

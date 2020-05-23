@@ -5,44 +5,23 @@
         <span class="pull-left">{{ locationLabel() }}</span>
         <TimeBadge :starttime="voidTrader.activation" :endtime="voidTrader.expiry" :interval="1000" />
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom" v-if="available()">
-        <Collapsible :headertext="`${voidTrader.character} ${$t('vt.inventory')}`">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-center col-xs-6">{{ $t('vt.item') }}</th>
-                <th class="text-center col-xs-2">{{ $t('currency.dabloons') }}</th>
-                <th class="text-center col-xs-4">{{ $t('currency.cred') }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in voidTrader.inventory" :key="`${item.item.replace(/\s/g, '').toLowerCase()}-inventory`">
-                <td>{{ item.item }}</td>
-                <td>{{ item.ducats }}</td>
-                <td>{{ item.credits }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </Collapsible>
+      <b-list-group-item
+        class="list-group-item-borderbottom"
+        v-if="available()"
+        :items="this.items"
+        :fields="this.fields"
+      >
+        <b-table class="thin item-table" :items="this.items" :fields="this.fields" />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
 </template>
-
-<style scoped>
-table.table td,
-table.table th,
-table.table > thead > tr {
-  border: 0;
-}
-</style>
 
 <script>
 import moment from 'moment';
 
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import Collapsible from '@/components/Collapsible.vue';
 
 export default {
   name: 'VoidTraderPanel',
@@ -53,12 +32,30 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      items: this.voidTrader.inventory || [],
+      fields: [
+        {
+          key: 'item',
+          label: this.$t('vt.item'),
+          thClass: 'text-center col-xs-6',
+        },
+        {
+          key: 'ducats',
+          label: this.$t('currency.dabloons'),
+          thClass: 'text-center col-xs-2',
+        },
+        {
+          key: 'credits',
+          label: this.$t('currency.cred'),
+          thClass: 'text-center col-xs-4',
+        },
+      ],
+    };
   },
   components: {
     HubPanelWrap,
     TimeBadge,
-    Collapsible,
   },
   methods: {
     now() {

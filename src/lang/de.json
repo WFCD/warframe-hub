@@ -22,7 +22,7 @@
     "lrange": "Levelbereich",
     "rewards": "Belohnungen",
     "bounties": "Aufträge",
-    "expires": "Bounties expire in:",
+    "expires": "Bounties laufen ab in:",
     "autoExpand": "Always expand rewards"
   },
   "nav": {
@@ -69,15 +69,15 @@
   "events": {
     "header": "Ereignisse",
     "standStages": "Ansehensstufen",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "remaining": "{perc}% verbleibend",
+    "completed": "{perc}% abgeschlossen",
     "rewards": {
       "header": "Event Rewards:",
       "label": "Rewards"
     },
     "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "currentCycle": "Aktueller Zyklus:",
+    "nextCycle": "Nächster Zyklus:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -100,7 +100,7 @@
   },
   "news": {
     "header": "Neuigkeiten",
-    "past": "ago",
+    "past": "her",
     "future": "in",
     "live": "Live",
     "autoprogress": "Auto-Fortschritt"
@@ -113,7 +113,7 @@
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Wöchentlich",
+    "weekly": "Weekly",
     "teamannihilation": "Team Annihilation",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
@@ -140,7 +140,7 @@
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",
     "warn": "Vergiss nicht deinen Paracesis!",
-    "prediction": "Prediction"
+    "prediction": "Vorhersage"
   },
   "sortie": {
     "header": "Einsätze"

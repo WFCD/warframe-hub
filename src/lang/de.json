@@ -22,8 +22,8 @@
     "lrange": "Levelbereich",
     "rewards": "Belohnungen",
     "bounties": "Aufträge",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "expires": "Bounties laufen ab in:",
+    "autoExpand": "Belohnungen immer anzeigen"
   },
   "nav": {
     "info": "Information",
@@ -46,7 +46,7 @@
     "extras": "Extras",
     "timers": "Timer",
     "nodata": "Keine Daten verfügbar",
-    "nodatatxt": "No {text} Present"
+    "nodatatxt": "Keine {text} vorhanden"
   },
   "construction": {
     "fomorian": "Fomorianer",
@@ -69,15 +69,15 @@
   "events": {
     "header": "Ereignisse",
     "standStages": "Ansehensstufen",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "remaining": "{perc}% verbleibend",
+    "completed": "{perc}% abgeschlossen",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Eventbelohnungen:",
+      "label": "Belohnungen"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "Abschlussboni:",
+    "currentCycle": "Aktueller Zyklus:",
+    "nextCycle": "Nächster Zyklus:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -100,7 +100,7 @@
   },
   "news": {
     "header": "Neuigkeiten",
-    "past": "ago",
+    "past": "her",
     "future": "in",
     "live": "Live",
     "autoprogress": "Auto-Fortschritt"
@@ -140,7 +140,7 @@
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",
     "warn": "Vergiss nicht deinen Paracesis!",
-    "prediction": "Prediction"
+    "prediction": "Vorhersage"
   },
   "sortie": {
     "header": "Einsätze"
@@ -156,7 +156,7 @@
     "ongoingL": "Läuft noch für:",
     "expiredL": "Abgelaufen",
     "depart": "Verlässt",
-    "arrive": "Ankunft in"
+    "arrive": "Ankunft auf"
   },
   "timer": {
     "ostron": "Ostron",

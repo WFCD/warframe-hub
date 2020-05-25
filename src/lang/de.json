@@ -23,7 +23,7 @@
     "rewards": "Belohnungen",
     "bounties": "Aufträge",
     "expires": "Bounties laufen ab in:",
-    "autoExpand": "Always expand rewards"
+    "autoExpand": "Belohnungen immer anzeigen"
   },
   "nav": {
     "info": "Information",
@@ -46,7 +46,7 @@
     "extras": "Extras",
     "timers": "Timer",
     "nodata": "Keine Daten verfügbar",
-    "nodatatxt": "No {text} Present"
+    "nodatatxt": "Keine {text} vorhanden"
   },
   "construction": {
     "fomorian": "Fomorianer",
@@ -72,10 +72,10 @@
     "remaining": "{perc}% verbleibend",
     "completed": "{perc}% abgeschlossen",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Eventbelohnungen:",
+      "label": "Belohnungen"
     },
-    "completionBonuses": "Completion Bonuses:",
+    "completionBonuses": "Abschlussboni:",
     "currentCycle": "Aktueller Zyklus:",
     "nextCycle": "Nächster Zyklus:"
   },
@@ -113,7 +113,7 @@
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
+    "weekly": "Wöchentlich",
     "teamannihilation": "Team Annihilation",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
@@ -156,7 +156,7 @@
     "ongoingL": "Läuft noch für:",
     "expiredL": "Abgelaufen",
     "depart": "Verlässt",
-    "arrive": "Ankunft in"
+    "arrive": "Ankunft auf"
   },
   "timer": {
     "ostron": "Ostron",

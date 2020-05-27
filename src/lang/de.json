@@ -17,7 +17,7 @@
   },
   "bounty": {
     "standing": "Ansehen",
-    "header": "{type} Bounty Cycle",
+    "header": "{type} Belohnungszyklus",
     "type": "Typ",
     "lrange": "Levelbereich",
     "rewards": "Belohnungen",
@@ -114,10 +114,10 @@
   "conclave": {
     "header": "Conclave",
     "weekly": "Wöchentlich",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
+    "teamannihilation": "Team Vernichtung",
+    "annihilation": "Vernichtung",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "Cephalon Eroberung"
   },
   "notifications": {
     "cetus": {

@@ -100,9 +100,9 @@
   },
   "news": {
     "header": "새 소식",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
+    "past": "전",
+    "future": "-",
+    "live": "라이브",
     "autoprogress": "자동"
   },
   "nightwave": {
@@ -112,12 +112,12 @@
     "daily": "일간"
   },
   "conclave": {
-    "header": "Conclave",
+    "header": "콘클레이브",
     "weekly": "주간",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
-    "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "teamannihilation": "팀 절멸전",
+    "annihilation": "절멸전",
+    "lunaro": "루나로",
+    "cephaloncapture": "세팔론 쟁탈전"
   },
   "notifications": {
     "cetus": {

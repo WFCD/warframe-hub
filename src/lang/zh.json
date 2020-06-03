@@ -10,7 +10,7 @@
     "header": "警报",
     "archwing": "Archwing Required for Mission",
     "nightmare": "噩梦任务",
-    "level": "Level:"
+    "level": "等级："
   },
   "arbitration": {
     "header": "仲裁"
@@ -46,7 +46,7 @@
     "extras": "Extras",
     "timers": "Timers",
     "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "nodatatxt": "现在没有 {text}"
   },
   "construction": {
     "fomorian": "巨人战舰",

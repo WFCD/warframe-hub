@@ -41,7 +41,7 @@
     "howto": "如何钓鱼",
     "owearth": "平原",
     "owvenus": "Orb Vallis",
-    "ow": "Open World",
+    "ow": "开放世界",
     "projects": "Projects",
     "extras": "Extras",
     "timers": "Timers",
@@ -61,7 +61,7 @@
     "cred": "Credits"
   },
   "darvo": {
-    "header": "Darvo's Deals",
+    "header": "Darvo 的每日特惠",
     "off": "% Off",
     "left": "% Left",
     "leftL": "Left"
@@ -90,8 +90,8 @@
     "eta": "结束于:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "赤毒虹吸器",
+    "siphon": "赤毒虹吸器"
   },
   "location": {
     "cetus": "希图斯",

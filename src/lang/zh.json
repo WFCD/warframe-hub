@@ -83,10 +83,10 @@
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "虚空裂缝"
   },
   "invasions": {
-    "header": "Invasions",
+    "header": "入侵",
     "eta": "Ends in:"
   },
   "kuva": {
@@ -94,26 +94,26 @@
     "siphon": "Kuva Siphon"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "希图斯",
+    "vallis": "山谷",
+    "earth": "地球"
   },
   "news": {
-    "header": "News",
+    "header": "新闻",
     "past": "ago",
     "future": "in",
     "live": "Live",
     "autoprogress": "Auto-progress"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "午夜电波",
+    "weekly": "每周",
+    "elite": "每周精英",
+    "daily": "每日"
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
+    "weekly": "每周",
     "teamannihilation": "Team Annihilation",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
@@ -143,7 +143,7 @@
     "prediction": "Prediction"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "突击"
   },
   "time": {
     "day": "day",

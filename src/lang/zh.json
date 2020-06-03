@@ -136,9 +136,9 @@
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies (Beta)",
+    "header": "异常现象(Beta)",
     "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
+    "none": "当前无异常现象",
     "warn": "Don't forget your Paracesis!",
     "prediction": "Prediction"
   },

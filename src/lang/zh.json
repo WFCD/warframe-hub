@@ -1,10 +1,10 @@
 {
   "acolytes": {
-    "header": "Acolytes",
+    "header": "追随者",
     "discovered": "已发现",
     "hiding": "躲藏中",
     "na": "Nowhere",
-    "health": "Health Remaining"
+    "health": "剩余生命值"
   },
   "alerts": {
     "header": "警报",
@@ -19,11 +19,11 @@
     "standing": "Standing",
     "header": "{type} Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
+    "lrange": "等級範圍",
     "rewards": "Rewards",
     "bounties": "Bounties",
     "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "autoExpand": "总是展开奖励"
   },
   "nav": {
     "info": "Information",
@@ -36,10 +36,10 @@
     "status": "Status",
     "riven": "Riven Data (Alpha)",
     "synth": "Synthesis Targets",
-    "map": "Map",
+    "map": "地图",
     "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "howto": "如何钓鱼",
+    "owearth": "平原",
     "owvenus": "Orb Vallis",
     "ow": "Open World",
     "projects": "Projects",
@@ -49,13 +49,13 @@
     "nodatatxt": "No {text} Present"
   },
   "construction": {
-    "fomorian": "Fomorian",
-    "razorback": "Razorback",
-    "unk": "Unknown",
+    "fomorian": "巨人战舰",
+    "razorback": "利刃豺狼",
+    "unk": "未知",
     "header": "Construction Progress"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "白金",
     "credAbbr": "cr",
     "dabloons": "Ducats",
     "cred": "Credits"
@@ -114,10 +114,10 @@
   "conclave": {
     "header": "武形密儀",
     "weekly": "每周",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
+    "teamannihilation": "團隊殲奪",
+    "annihilation": "殲奪",
     "lunaro": "月動球",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "奪取中樞"
   },
   "notifications": {
     "cetus": {

@@ -7,13 +7,13 @@
     "health": "Health Remaining"
   },
   "alerts": {
-    "header": "Alerts",
+    "header": "警报",
     "archwing": "Archwing Required for Mission",
     "nightmare": "Nightmare Mission",
     "level": "Level:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "仲裁"
   },
   "bounty": {
     "standing": "Standing",
@@ -87,7 +87,7 @@
   },
   "invasions": {
     "header": "入侵",
-    "eta": "Ends in:"
+    "eta": "结束于:"
   },
   "kuva": {
     "header": "Kuva Siphons",
@@ -148,8 +148,8 @@
   "time": {
     "day": "day",
     "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "warm": "温暖",
+    "cold": "寒冷",
     "Timer": "Cycle Timer",
     "startL": "Starts in:",
     "endL": "Ends in:",
@@ -160,13 +160,13 @@
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
+    "solaris": "索拉里斯聯盟",
+    "solaris-united": "索拉里斯聯盟",
     "hivemind": "Hive Mind",
     "hive-mind": "Hive Mind"
   },
   "vt": {
-    "header": "Void Trader",
+    "header": "虚空商人",
     "inventory": "Inventory",
     "item": "Item"
   }

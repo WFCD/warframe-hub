@@ -1,15 +1,15 @@
 {
   "acolytes": {
     "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
+    "discovered": "已发现",
+    "hiding": "躲藏中",
     "na": "Nowhere",
     "health": "Health Remaining"
   },
   "alerts": {
     "header": "警报",
     "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
+    "nightmare": "噩梦任务",
     "level": "Level:"
   },
   "arbitration": {
@@ -67,7 +67,7 @@
     "leftL": "Left"
   },
   "events": {
-    "header": "Events",
+    "header": "事件",
     "standStages": "Standing Stages",
     "remaining": "{perc}% Remaining",
     "completed": "{perc}% Completed",
@@ -112,11 +112,11 @@
     "daily": "每日"
   },
   "conclave": {
-    "header": "Conclave",
+    "header": "武形密儀",
     "weekly": "每周",
     "teamannihilation": "Team Annihilation",
     "annihilation": "Annihilation",
-    "lunaro": "Lunaro",
+    "lunaro": "月動球",
     "cephaloncapture": "Capture the Cephalon"
   },
   "notifications": {
@@ -151,8 +151,8 @@
     "warm": "温暖",
     "cold": "寒冷",
     "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
+    "startL": "开始于：",
+    "endL": "结束于:",
     "ongoingL": "Ongoing for:",
     "expiredL": "Expired",
     "depart": "Departs",

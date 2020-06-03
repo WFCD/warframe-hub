@@ -1,29 +1,29 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
+    "header": "追随者",
+    "discovered": "已发现",
+    "hiding": "躲藏中",
     "na": "Nowhere",
-    "health": "Health Remaining"
+    "health": "剩余生命值"
   },
   "alerts": {
-    "header": "Alerts",
+    "header": "警报",
     "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
+    "nightmare": "噩梦任务",
     "level": "Level:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "仲裁"
   },
   "bounty": {
     "standing": "Standing",
     "header": "{type} Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
+    "lrange": "等級範圍",
     "rewards": "Rewards",
     "bounties": "Bounties",
     "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "autoExpand": "总是展开奖励"
   },
   "nav": {
     "info": "Information",
@@ -36,12 +36,12 @@
     "status": "Status",
     "riven": "Riven Data (Alpha)",
     "synth": "Synthesis Targets",
-    "map": "Map",
+    "map": "地图",
     "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "howto": "如何钓鱼",
+    "owearth": "平原",
     "owvenus": "Orb Vallis",
-    "ow": "Open World",
+    "ow": "开放世界",
     "projects": "Projects",
     "extras": "Extras",
     "timers": "Timers",
@@ -49,25 +49,25 @@
     "nodatatxt": "No {text} Present"
   },
   "construction": {
-    "fomorian": "Fomorian",
-    "razorback": "Razorback",
-    "unk": "Unknown",
+    "fomorian": "巨人战舰",
+    "razorback": "利刃豺狼",
+    "unk": "未知",
     "header": "Construction Progress"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "白金",
     "credAbbr": "cr",
     "dabloons": "Ducats",
     "cred": "Credits"
   },
   "darvo": {
-    "header": "Darvo's Deals",
+    "header": "Darvo 的每日特惠",
     "off": "% Off",
     "left": "% Left",
     "leftL": "Left"
   },
   "events": {
-    "header": "Events",
+    "header": "事件",
     "standStages": "Standing Stages",
     "remaining": "{perc}% Remaining",
     "completed": "{perc}% Completed",
@@ -83,41 +83,41 @@
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "虚空裂缝"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "入侵",
+    "eta": "结束于:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "赤毒虹吸器",
+    "siphon": "赤毒虹吸器"
   },
   "location": {
-    "cetus": "Cetus",
-    "vallis": "Vallis",
-    "earth": "Earth"
+    "cetus": "希图斯",
+    "vallis": "山谷",
+    "earth": "地球"
   },
   "news": {
-    "header": "News",
+    "header": "新闻",
     "past": "ago",
     "future": "in",
     "live": "Live",
     "autoprogress": "Auto-progress"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "午夜电波",
+    "weekly": "每周",
+    "elite": "每周精英",
+    "daily": "每日"
   },
   "conclave": {
-    "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
-    "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "header": "武形密儀",
+    "weekly": "每周",
+    "teamannihilation": "團隊殲奪",
+    "annihilation": "殲奪",
+    "lunaro": "月動球",
+    "cephaloncapture": "奪取中樞"
   },
   "notifications": {
     "cetus": {
@@ -143,16 +143,16 @@
     "prediction": "Prediction"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "突击"
   },
   "time": {
     "day": "day",
     "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "warm": "温暖",
+    "cold": "寒冷",
     "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
+    "startL": "开始于：",
+    "endL": "结束于:",
     "ongoingL": "Ongoing for:",
     "expiredL": "Expired",
     "depart": "Departs",
@@ -160,13 +160,13 @@
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
+    "solaris": "索拉里斯聯盟",
+    "solaris-united": "索拉里斯聯盟",
     "hivemind": "Hive Mind",
     "hive-mind": "Hive Mind"
   },
   "vt": {
-    "header": "Void Trader",
+    "header": "虚空商人",
     "inventory": "Inventory",
     "item": "Item"
   }

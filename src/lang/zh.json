@@ -3,81 +3,81 @@
     "header": "追随者",
     "discovered": "已发现",
     "hiding": "躲藏中",
-    "na": "Nowhere",
+    "na": "未出现",
     "health": "剩余生命值"
   },
   "alerts": {
     "header": "警报",
-    "archwing": "Archwing Required for Mission",
+    "archwing": "任务需要Archwing装备",
     "nightmare": "噩梦任务",
-    "level": "Level:"
+    "level": "等级："
   },
   "arbitration": {
     "header": "仲裁"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
+    "standing": "声望",
+    "header": "{type}赏金任务",
+    "type": "任务类型",
     "lrange": "等級範圍",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
+    "rewards": "奖励",
+    "bounties": "赏金任务",
+    "expires": "赏金到期时间:",
     "autoExpand": "总是展开奖励"
   },
   "nav": {
-    "info": "Information",
+    "info": "信息",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "设置",
+    "drops": "任务奖励",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
+    "docs": "API信息",
+    "old": "旧网页",
+    "status": "状态",
+    "riven": "紫卡信息(最初)",
+    "synth": "结合仪式目标",
     "map": "地图",
-    "fish": "Fishing Data",
+    "fish": "钓鱼数据",
     "howto": "如何钓鱼",
     "owearth": "平原",
-    "owvenus": "Orb Vallis",
+    "owvenus": "奥布山谷",
     "ow": "开放世界",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "projects": "其他项目",
+    "extras": "附加功能",
+    "timers": "计时器",
+    "nodata": "暂无数据",
+    "nodatatxt": "现在没有 {text}"
   },
   "construction": {
     "fomorian": "巨人战舰",
     "razorback": "利刃豺狼",
     "unk": "未知",
-    "header": "Construction Progress"
+    "header": "建造状态"
   },
   "currency": {
     "plat": "白金",
-    "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "credAbbr": "现金",
+    "dabloons": "杜卡德金币",
+    "cred": "现金"
   },
   "darvo": {
     "header": "Darvo 的每日特惠",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "off": "% 折扣",
+    "left": "% 剩余",
+    "leftL": "商人以离开"
   },
   "events": {
     "header": "事件",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "standStages": "名声阶段",
+    "remaining": "剩余 {perc}%",
+    "completed": "{perc}% 完成",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "活动奖励",
+      "label": "奖励"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "活动完成奖励:",
+    "currentCycle": "当前周期:",
+    "nextCycle": "下一周期:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -100,10 +100,10 @@
   },
   "news": {
     "header": "新闻",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "past": "前",
+    "future": "将在",
+    "live": "在线",
+    "autoprogress": "自动弹跳"
   },
   "nightwave": {
     "header": "午夜电波",
@@ -121,53 +121,53 @@
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "希图斯 - 早上好! 打猎结束咯!",
+      "nightheader": "希图斯 - 打猎夜灵时间!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "每日登入奖励重置",
+    "label": "奖励重置:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "商店精选与促销",
+    "item": "物品"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "tooltip1": "由于最近的更新，这个组件正在积极开发中。",
+    "tooltip2": "Sentient 异常任务每30分钟就会轮换到一个不同的节点",
+    "header": "异常现象(Beta)",
+    "outpostsL": "Sentient 异常任务",
+    "none": "当前无异常现象",
+    "warn": "不要忘记你的性质之殁!",
+    "prediction": "预测"
   },
   "sortie": {
     "header": "突击"
   },
   "time": {
-    "day": "day",
-    "night": "night",
+    "day": "日",
+    "night": "晚",
     "warm": "温暖",
     "cold": "寒冷",
-    "Timer": "Cycle Timer",
+    "Timer": "计时器",
     "startL": "开始于：",
     "endL": "结束于:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "ongoingL": "以进行:",
+    "expiredL": "已过期",
+    "depart": "将离开",
+    "arrive": "将到达"
   },
   "timer": {
     "ostron": "Ostron",
     "solaris": "索拉里斯聯盟",
     "solaris-united": "索拉里斯聯盟",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "hivemind": "蜂群思维",
+    "hive-mind": "蜂群思维"
   },
   "vt": {
     "header": "虚空商人",
-    "inventory": "Inventory",
-    "item": "Item"
+    "inventory": "库存",
+    "item": "物品"
   }
 }

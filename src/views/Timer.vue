@@ -23,11 +23,11 @@
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" />
-        <bounty v-if="componentState.bounties.display" :syndicate="ostron" :type="$t('timer.ostron')" />
-        <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" :type="$t('timer.solaris')" />
+        <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
+        <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-        <bounty v-if="componentState['hivemind-bounties'].display" :syndicate="hivemind" :type="$t('timer.hivemind')" />
+        <bounty v-if="componentState['hivemind-bounties'].display" :syndicate="hivemind" type="hivemind" />
       </b-row>
     </b-container>
   </div>

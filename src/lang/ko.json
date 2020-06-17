@@ -69,7 +69,7 @@
   "events": {
     "header": "이벤트",
     "standStages": "평판 단계",
-    "remaining": "{perc}& 남음",
+    "remaining": "{perc}% 남음",
     "completed": "{perc}% 완료",
     "rewards": {
       "header": "이벤트 보상:",

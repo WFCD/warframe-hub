@@ -9,18 +9,18 @@
   "alerts": {
     "header": "Alertes",
     "archwing": "Archwing Requise pour la Mission",
-    "nightmare": "Nightmare Mission",
+    "nightmare": "Mission Cauchemar",
     "level": "Niveau:"
   },
   "arbitration": {
     "header": "Arbitrage"
   },
   "bounty": {
-    "standing": "Standing",
+    "standing": "Influence",
     "header": "{type} Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
+    "lrange": "Gamme des Niveaux",
+    "rewards": "Récompenses",
     "bounties": "Bounties",
     "expires": "Bounties expire in:",
     "autoExpand": "Always expand rewards"

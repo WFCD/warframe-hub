@@ -52,32 +52,32 @@
     "fomorian": "Fomorien",
     "razorback": "Razorback",
     "unk": "Inconnu",
-    "header": "Construction Progress"
+    "header": "Statut de la Construction"
   },
   "currency": {
     "plat": "Platinum",
     "credAbbr": "cr",
     "dabloons": "Ducats",
-    "cred": "Credits"
+    "cred": "Crédits"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Affaires de Darvo",
+    "off": "% de réduction",
+    "left": "% restants",
+    "leftL": "Restants"
   },
   "events": {
-    "header": "Events",
+    "header": "Évènements",
     "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "remaining": "{perc}% restants",
+    "completed": "{perc}% Terminé",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Récompenses de l'Événement:",
+      "label": "Récompenses"
     },
     "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "currentCycle": "Cycle actuel :",
+    "nextCycle": "Prochain Cycle:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -87,10 +87,10 @@
   },
   "invasions": {
     "header": "Invasions",
-    "eta": "Ends in:"
+    "eta": "Se termine dans:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
+    "header": "Siphons à Kuva",
     "siphon": "Kuva Siphon"
   },
   "location": {

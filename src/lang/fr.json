@@ -1,19 +1,19 @@
 {
   "acolytes": {
     "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "discovered": "Découvert",
+    "hiding": "Caché",
+    "na": "Nulle part",
+    "health": "Santé Restante"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
+    "header": "Alertes",
+    "archwing": "Archwing Requise pour la Mission",
     "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "level": "Niveau:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitrage"
   },
   "bounty": {
     "standing": "Standing",

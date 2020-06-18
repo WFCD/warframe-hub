@@ -23,7 +23,7 @@
     "rewards": "Récompenses",
     "bounties": "Mises à Prix",
     "expires": "Mise à Prix expire dans:",
-    "autoExpand": "Always expand rewards"
+    "autoExpand": "Toujours étendre les récompenses"
   },
   "nav": {
     "info": "Information",
@@ -68,14 +68,14 @@
   },
   "events": {
     "header": "Évènements",
-    "standStages": "Standing Stages",
+    "standStages": "Étapes Réputation",
     "remaining": "{perc}% restants",
     "completed": "{perc}% Terminé",
     "rewards": {
       "header": "Récompenses de l'Événement:",
       "label": "Récompenses"
     },
-    "completionBonuses": "Completion Bonuses:",
+    "completionBonuses": "Bonus d'Achèvement :",
     "currentCycle": "Cycle actuel :",
     "nextCycle": "Prochain Cycle:"
   },
@@ -91,38 +91,38 @@
   },
   "kuva": {
     "header": "Siphons à Kuva",
-    "siphon": "Kuva Siphon"
+    "siphon": "Siphon à Kuva"
   },
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Earth"
+    "earth": "Terre"
   },
   "news": {
-    "header": "News",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "header": "Actualités",
+    "past": "Il y a",
+    "future": "dans",
+    "live": "En Direct",
+    "autoprogress": "Défilement Automatique"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Onde Nocturne",
+    "weekly": "Hebdomadaire",
+    "elite": "Hebdomadaire d'Élite",
+    "daily": "Quotidien"
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
+    "weekly": "Hebdomadaire",
+    "teamannihilation": "Annihilation en Équipe",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "Capture de Cephalon"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - Le temps de la chasse est révolu!",
+      "nightheader": "Cetus - La chasse est ouverte !"
     }
   },
   "reset": {
@@ -130,44 +130,44 @@
     "label": "Reward Timer Reset in:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "Ventes et Offres en Vedette",
+    "item": "Objet"
   },
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
     "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "outpostsL": "Avant-poste",
+    "none": "Actuellement Aucune Anomalie",
+    "warn": "N'oubliez pas votre Paracesis!",
+    "prediction": "Prédiction"
   },
   "sortie": {
     "header": "Sortie"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "day": "jour",
+    "night": "nuit",
+    "warm": "chaud",
+    "cold": "froid",
     "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
+    "startL": "Commence dans :",
+    "endL": "Se termine dans:",
+    "ongoingL": "En cours pour :",
+    "expiredL": "Expiré",
     "depart": "Departs",
-    "arrive": "Arrives at"
+    "arrive": "Arrivée prévue à"
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
+    "solaris": "Union Solaris",
+    "solaris-united": "Union Solaris",
     "hivemind": "Hive Mind",
     "hive-mind": "Hive Mind"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Marchand du Néant",
+    "inventory": "Inventaire",
+    "item": "Objet"
   }
 }

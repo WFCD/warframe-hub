@@ -1,83 +1,83 @@
 {
   "acolytes": {
     "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "discovered": "Découvert",
+    "hiding": "Caché",
+    "na": "Nulle part",
+    "health": "Santé Restante"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "header": "Alertes",
+    "archwing": "Archwing Requise pour la Mission",
+    "nightmare": "Mission Cauchemar",
+    "level": "Niveau:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitrage"
   },
   "bounty": {
-    "standing": "Standing",
+    "standing": "Influence",
     "header": "{type} Bounty Cycle",
     "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "lrange": "Gamme des Niveaux",
+    "rewards": "Récompenses",
+    "bounties": "Mises à Prix",
+    "expires": "Mise à Prix expire dans:",
+    "autoExpand": "Toujours étendre les récompenses"
   },
   "nav": {
     "info": "Information",
     "discord": "Discord",
-    "settings": "Settings",
+    "settings": "Paramètres",
     "drops": "Drops",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
-    "owvenus": "Orb Vallis",
-    "ow": "Open World",
-    "projects": "Projects",
+    "docs": "Docs API",
+    "old": "Ancien Hub",
+    "status": "Statut",
+    "riven": "Données Riven (Alpha)",
+    "synth": "Cibles de Synthèse",
+    "map": "Carte",
+    "fish": "Données Pêche",
+    "howto": "Comment pêcher",
+    "owearth": "Plaines",
+    "owvenus": "Vallée Orbis",
+    "ow": "Monde Ouvert",
+    "projects": "Projets",
     "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "timers": "Minuteurs",
+    "nodata": "Pas de Données",
+    "nodatatxt": "Pas de {text} présent"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomorien",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Inconnu",
+    "header": "Statut de la Construction"
   },
   "currency": {
     "plat": "Platinum",
     "credAbbr": "cr",
     "dabloons": "Ducats",
-    "cred": "Credits"
+    "cred": "Crédits"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Affaires de Darvo",
+    "off": "% de réduction",
+    "left": "% restants",
+    "leftL": "Restants"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "header": "Évènements",
+    "standStages": "Étapes Réputation",
+    "remaining": "{perc}% restants",
+    "completed": "{perc}% Terminé",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Récompenses de l'Événement:",
+      "label": "Récompenses"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "Bonus d'Achèvement :",
+    "currentCycle": "Cycle actuel :",
+    "nextCycle": "Prochain Cycle:"
   },
   "factions": {
     "sentient": "Sentient"
@@ -87,42 +87,42 @@
   },
   "invasions": {
     "header": "Invasions",
-    "eta": "Ends in:"
+    "eta": "Se termine dans:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "Siphons à Kuva",
+    "siphon": "Siphon à Kuva"
   },
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Earth"
+    "earth": "Terre"
   },
   "news": {
-    "header": "News",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "header": "Actualités",
+    "past": "Il y a",
+    "future": "dans",
+    "live": "En Direct",
+    "autoprogress": "Défilement Automatique"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Onde Nocturne",
+    "weekly": "Hebdomadaire",
+    "elite": "Hebdomadaire d'Élite",
+    "daily": "Quotidien"
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
+    "weekly": "Hebdomadaire",
+    "teamannihilation": "Annihilation en Équipe",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "Capture de Cephalon"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - Le temps de la chasse est révolu!",
+      "nightheader": "Cetus - La chasse est ouverte !"
     }
   },
   "reset": {
@@ -130,44 +130,44 @@
     "label": "Reward Timer Reset in:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "Ventes et Offres en Vedette",
+    "item": "Objet"
   },
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
     "header": "Anomalies (Beta)",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "outpostsL": "Avant-poste",
+    "none": "Actuellement Aucune Anomalie",
+    "warn": "N'oubliez pas votre Paracesis!",
+    "prediction": "Prédiction"
   },
   "sortie": {
     "header": "Sortie"
   },
   "time": {
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "day": "jour",
+    "night": "nuit",
+    "warm": "chaud",
+    "cold": "froid",
     "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
+    "startL": "Commence dans :",
+    "endL": "Se termine dans:",
+    "ongoingL": "En cours pour :",
+    "expiredL": "Expiré",
     "depart": "Departs",
-    "arrive": "Arrives at"
+    "arrive": "Arrivée prévue à"
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
+    "solaris": "Union Solaris",
+    "solaris-united": "Union Solaris",
     "hivemind": "Hive Mind",
     "hive-mind": "Hive Mind"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Marchand du Néant",
+    "inventory": "Inventaire",
+    "item": "Objet"
   }
 }

@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Terre"
+    "earth": "Terre",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "Actualités",
@@ -162,8 +163,7 @@
     "ostron": "Ostron",
     "solaris": "Union Solaris",
     "solaris-united": "Union Solaris",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Marchand du Néant",

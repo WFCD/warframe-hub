@@ -11,6 +11,8 @@
                 night: time.state == 'night',
                 warm: time.state == 'warm',
                 cold: time.state == 'cold',
+                fass: time.state == 'fass',
+                vome: time.state == 'vome',
               }"
             >
               <span style="text-transform: capitalize;">{{ this.$t(`time.${time.state.toLowerCase()}`) }}</span>

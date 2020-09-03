@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Цетус",
     "vallis": "Долина Сфер",
-    "earth": "Земля"
+    "earth": "Земля",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "Новости",
@@ -162,8 +163,7 @@
     "ostron": "Острон",
     "solaris": "Объединение Солярис",
     "solaris-united": "Объединение Солярис",
-    "hivemind": "Разум Улья",
-    "hive-mind": "Разум Улья"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Торговец из Бездны",

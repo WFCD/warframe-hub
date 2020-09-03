@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Earth"
+    "earth": "Earth",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "News",
@@ -162,8 +163,7 @@
     "ostron": "Ostron",
     "solaris": "Solaris United",
     "solaris-united": "Solaris United",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Void Trader",

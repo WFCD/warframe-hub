@@ -96,7 +96,8 @@
   "location": {
     "cetus": "希图斯",
     "vallis": "山谷",
-    "earth": "地球"
+    "earth": "地球",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "新闻",
@@ -162,8 +163,7 @@
     "ostron": "Ostron",
     "solaris": "索拉里斯聯盟",
     "solaris-united": "索拉里斯聯盟",
-    "hivemind": "蜂群思维",
-    "hive-mind": "蜂群思维"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "虚空商人",

@@ -15,7 +15,7 @@
                 vome: time.state == 'vome',
               }"
             >
-              <span style="text-transform: capitalize;">{{
+              <span style="text-transform: capitalize">{{
                 this.$t(`time.${(time.state || time.active).toLowerCase()}`)
               }}</span>
             </span>

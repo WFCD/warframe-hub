@@ -7,12 +7,12 @@
             <span
               class="pull-left"
               v-bind:class="{
-                day: time.state == 'day',
-                night: time.state == 'night',
-                warm: time.state == 'warm',
-                cold: time.state == 'cold',
-                fass: time.active == 'fass',
-                vome: time.state == 'vome',
+                day: time.state === 'day',
+                night: time.state === 'night',
+                warm: time.state === 'warm',
+                cold: time.state === 'cold',
+                fass: time.active === 'fass',
+                vome: time.active === 'vome',
               }"
             >
               <span style="text-transform: capitalize">{{

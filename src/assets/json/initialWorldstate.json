@@ -70,7 +70,7 @@
     "constructionProgress": {
       "id": "12345",
       "fomorianProgress": "0.00",
-      "razorbackProgress": "2000-01-01T01:00:00.000Z",
+      "razorbackProgress": "0.00",
       "unknownProgress": "0.00"
     },
     "vallisCycle": {
@@ -313,7 +313,7 @@
     "weeklyChallenges": [],
     "constructionProgress": {
       "id": "12345",
-      "fomorianProgress": "2000-01-01T01:00:00.000Z",
+      "fomorianProgress": "0.00",
       "razorbackProgress": "0.00",
       "unknownProgress": "0.00"
     },

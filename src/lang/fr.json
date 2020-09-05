@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Terre"
+    "earth": "Terre",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "Actualités",
@@ -150,6 +151,8 @@
     "night": "nuit",
     "warm": "chaud",
     "cold": "froid",
+    "vome": "vome",
+    "fass": "fass",
     "Timer": "Cycle Timer",
     "startL": "Commence dans :",
     "endL": "Se termine dans:",
@@ -162,8 +165,7 @@
     "ostron": "Ostron",
     "solaris": "Union Solaris",
     "solaris-united": "Union Solaris",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Marchand du Néant",

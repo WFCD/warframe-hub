@@ -24,6 +24,11 @@
     "value": "mars",
     "text": "Mars"
   },
+  "deimos": {
+    "state": false,
+    "value": "deimos",
+    "text": "Deimos"
+  },
   "phobos": {
     "state": false,
     "value": "phobos",
@@ -78,11 +83,6 @@
     "state": false,
     "value": "eris",
     "text": "Eris"
-  },
-  "derelict": {
-    "state": false,
-    "value": "derelict",
-    "text": "Orokin Derelict"
   },
   "void": {
     "state": false,

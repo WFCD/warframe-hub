@@ -7,13 +7,17 @@
             <span
               class="pull-left"
               v-bind:class="{
-                day: time.state == 'day',
-                night: time.state == 'night',
-                warm: time.state == 'warm',
-                cold: time.state == 'cold',
+                day: time.state === 'day',
+                night: time.state === 'night',
+                warm: time.state === 'warm',
+                cold: time.state === 'cold',
+                fass: time.active === 'fass',
+                vome: time.active === 'vome',
               }"
             >
-              <span style="text-transform: capitalize;">{{ this.$t(`time.${time.state.toLowerCase()}`) }}</span>
+              <span style="text-transform: capitalize">{{
+                this.$t(`time.${(time.state || time.active).toLowerCase()}`)
+              }}</span>
             </span>
           </div>
           <div class="col-md-3">

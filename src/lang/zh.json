@@ -96,7 +96,8 @@
   "location": {
     "cetus": "希图斯",
     "vallis": "山谷",
-    "earth": "地球"
+    "earth": "地球",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "新闻",
@@ -150,6 +151,8 @@
     "night": "晚",
     "warm": "温暖",
     "cold": "寒冷",
+    "vome": "vome",
+    "fass": "fass",
     "Timer": "计时器",
     "startL": "开始于：",
     "endL": "结束于:",
@@ -162,8 +165,7 @@
     "ostron": "Ostron",
     "solaris": "索拉里斯聯盟",
     "solaris-united": "索拉里斯聯盟",
-    "hivemind": "蜂群思维",
-    "hive-mind": "蜂群思维"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "虚空商人",

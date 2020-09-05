@@ -96,7 +96,8 @@
   "location": {
     "cetus": "시터스",
     "vallis": "협곡",
-    "earth": "지구"
+    "earth": "지구",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "새 소식",
@@ -150,6 +151,8 @@
     "night": "밤",
     "warm": "따듯함",
     "cold": "추움",
+    "vome": "vome",
+    "fass": "fass",
     "Timer": "주기 타이머",
     "startL": "시작 시간:",
     "endL": "종료 시간:",
@@ -162,8 +165,7 @@
     "ostron": "오스트론",
     "solaris": "솔라리스 연합",
     "solaris-united": "솔라리스 연합",
-    "hivemind": "하이브 마인드",
-    "hive-mind": "하이브 마인드"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "보이드 상인",

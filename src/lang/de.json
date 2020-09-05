@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Cetus",
     "vallis": "Tal",
-    "earth": "Erde"
+    "earth": "Erde",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "Neuigkeiten",
@@ -150,6 +151,8 @@
     "night": "Nacht",
     "warm": "Warm",
     "cold": "Kalt",
+    "vome": "vome",
+    "fass": "fass",
     "Timer": "Zyklustimer",
     "startL": "Beginnt in:",
     "endL": "Endet in:",
@@ -162,8 +165,8 @@
     "ostron": "Ostron",
     "solaris": "Solaris United",
     "solaris-united": "Solaris United",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "entrati": "Entrati",
+    "cambion": "Cambion"
   },
   "vt": {
     "header": "Void Händler",

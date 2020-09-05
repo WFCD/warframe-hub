@@ -5,6 +5,7 @@
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
+        <timer v-if="componentState.cambion.display" :time="worldstate.cambionCycle" location="Cambion" />
         <sentientOutposts
           v-if="componentState.sentientoutposts.display"
           :sentientOutposts="worldstate.sentientOutposts"
@@ -25,9 +26,9 @@
         <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
+        <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-        <bounty v-if="componentState['hivemind-bounties'].display" :syndicate="hivemind" type="hivemind" />
       </b-row>
     </b-container>
   </div>
@@ -97,7 +98,7 @@ export default {
       worldstate: 'worldstate',
       ostron: 'ostronSyndicate',
       solaris: 'solarisSyndicate',
-      hivemind: 'hivemindSyndicate',
+      entrati: 'entratiSyndicate',
     }),
   },
 };

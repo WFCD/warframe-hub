@@ -181,9 +181,9 @@ const getters = {
     const worldstate = state.worldstates[state.platform];
     return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('SolarisSyndicate'))[0];
   },
-  hivemindSyndicate: (state) => {
+  entratiSyndicate: (state) => {
     const worldstate = state.worldstates[state.platform];
-    return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('HivemindSyndicate'))[0];
+    return (worldstate.syndicateMissions || []).filter((syndicate) => syndicate.id.includes('EntratiSyndicate'))[0];
   },
   locale: (state) => state.locale || 'en',
   platform: (state) => state.platform || 'pc',

@@ -96,7 +96,8 @@
   "location": {
     "cetus": "Cetus",
     "vallis": "Valles",
-    "earth": "La Tierra"
+    "earth": "La Tierra",
+    "cambion": "Cambion"
   },
   "news": {
     "header": "Noticias",
@@ -150,6 +151,8 @@
     "night": "noche",
     "warm": "cálido",
     "cold": "frío",
+    "vome": "vome",
+    "fass": "fass",
     "Timer": "- Contador del ciclo",
     "startL": "Empieza en:",
     "endL": "Termina en:",
@@ -162,8 +165,7 @@
     "ostron": "Ostronita",
     "solaris": "Solaris Unida",
     "solaris-united": "Solaris United",
-    "hivemind": "Hive Mind",
-    "hive-mind": "Hive Mind"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Comerciante del vacío",

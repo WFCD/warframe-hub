@@ -97,7 +97,7 @@
     "cetus": "Цетус",
     "vallis": "Долина Сфер",
     "earth": "Земля",
-    "cambion": "Cambion"
+    "cambion": "Камбион"
   },
   "news": {
     "header": "Новости",
@@ -151,8 +151,8 @@
     "night": "ночь",
     "warm": "тепло",
     "cold": "холодно",
-    "vome": "vome",
-    "fass": "fass",
+    "vome": "воум",
+    "fass": "фэз",
     "Timer": ", цикл",
     "startL": "до прибытия:",
     "endL": "до конца:",
@@ -165,7 +165,7 @@
     "ostron": "Острон",
     "solaris": "Объединение Солярис",
     "solaris-united": "Объединение Солярис",
-    "entrati": "Entrati"
+    "entrati": "Энтрати"
   },
   "vt": {
     "header": "Торговец из Бездны",

@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+dayjs.extend(duration);
 
 export default {
   name: 'TimeBadge',
@@ -91,16 +93,19 @@ export default {
       const start = new Date(this.starttime).getTime() / 1000;
 
       if (typeof start !== 'undefined' && start !== false) {
-        diffactivate = moment().diff(moment.unix(start)) * -1;
-        durationactivate = moment.duration(diffactivate, 'milliseconds');
+        diffactivate = dayjs().diff(dayjs(start).unix()) * -1;
+        durationactivate = dayjs.duration(diffactivate, 'milliseconds');
       }
 
       if (!this.counter) {
         const end = new Date(this.endtime).getTime() / 1000;
 
         // Get the diff and duration until "end"
-        const diff = moment().diff(moment.unix(end)) * -1;
-        const duration = moment.duration(diff, 'milliseconds');
+        const diff = dayjs().diff(dayjs.unix(end)) * -1;
+        const duration = dayjs.duration({ milliseconds: diff });
+
+        duration.parseFromMilliseconds();
+        durationactivate.parseFromMilliseconds();
 
         // Format based on there being no end time, being after the end, or being before the start
         if (!this.endtime) {
@@ -127,14 +132,16 @@ export default {
           this.disp = this.formatTimer(diff);
         }
       } else {
-        const diff = moment().diff(moment.unix(start));
-        const duration = moment.duration(diff, 'milliseconds');
+        const diff = dayjs().diff(dayjs.unix(start));
+        const duration = dayjs.duration({ milliseconds: diff });
 
+        durationactivate.parseFromMilliseconds();
+        duration.parseFromMilliseconds();
+
+        this.mutableVariant = 'transparent';
         if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
-          this.mutableVariant = 'transparent';
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else {
-          this.mutableVariant = 'transparent';
           this.disp = `${this.$t('time.ongoingL')} ${this.formatDurationShort(duration)}`;
         }
       }

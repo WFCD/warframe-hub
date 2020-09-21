@@ -15,7 +15,7 @@
       rel="noopener"
       target="_blank"
       v-b-tooltip.bottom
-      :title="labelIfMobile && !isMobile ? label : ''"
+      :title="labelIfMobile && !$isMobile() ? label : ''"
       v-else
     >
       <i :class="`${icon} faIcon`"></i>

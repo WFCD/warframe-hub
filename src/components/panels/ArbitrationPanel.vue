@@ -27,7 +27,7 @@
 <script>
 import HubImg from '@/components/HubImg.vue';
 import TimeBadge from '@/components/TimeBadge.vue';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import NoDataItem from '@/components/NoDataItem.vue';
 
@@ -42,10 +42,10 @@ export default {
   name: 'ArbitrationPanel',
   computed: {
     notExpired() {
-      return moment(this.$props.arbitration.expiry).format('x') >= moment().format('x');
+      return dayjs(this.$props.arbitration.expiry).format('x') >= dayjs().format('x');
     },
     now() {
-      return moment().toISOString();
+      return dayjs().toISOString();
     },
     headertext() {
       return this.$t('arbitration.header');

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import HubImg from '@/components/HubImg.vue';
 import TimeBadge from '@/components/TimeBadge.vue';
@@ -51,10 +51,10 @@ export default {
   name: 'SortiePanel',
   computed: {
     sortietimezonetime() {
-      return moment(this.$props.sortie.expiry).format('llll');
+      return dayjs(this.$props.sortie.expiry).format('llll');
     },
     now() {
-      return moment().toISOString();
+      return dayjs().toISOString();
     },
     headertext() {
       return this.$t('sortie.header');

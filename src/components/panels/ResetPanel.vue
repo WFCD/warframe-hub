@@ -12,8 +12,11 @@
 </template>
 
 <script>
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
+
 import TimeBadge from '@/components/TimeBadge.vue';
-import moment from 'moment';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
@@ -26,8 +29,8 @@ export default {
   },
   data() {
     return {
-      now: moment().toISOString(),
-      nextDay: moment()
+      now: dayjs().toISOString(),
+      nextDay: dayjs()
         .utc()
         .endOf('day')
         .add(1, 'seconds')
@@ -42,8 +45,8 @@ export default {
   },
   methods: {
     gettime: function() {
-      this.now = moment().toISOString();
-      this.nextDay = moment()
+      this.now = dayjs().toISOString();
+      this.nextDay = dayjs()
         .utc()
         .endOf('day')
         .add(1, 'seconds')

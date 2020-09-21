@@ -4,16 +4,10 @@
       <b-list-group-item class="list-group-item-borderbottom" v-if="sentientOutposts.active">
         <span class="pull-left">
           <HubImg :src="sentient" :name="this.$t('factions.sentient')" :style="factionImg" width="20px" height="20px" />
-          <b>{{ sentientOutposts.mission.node }}</b> - {{ sentientOutposts.mission.faction }} -
-          {{ sentientOutposts.mission.type }}
+          <b>{{ sentientOutposts.mission.node }}</b> - {{ sentientOutposts.mission.faction }}
           <i id="para_tooltip" class="fa-xs fas fa-exclamation-triangle"></i>
           <b-tooltip target="para_tooltip" placement="top" class="text-center">
             {{ $t('sentientoutpost.warn') }}
-          </b-tooltip>
-          <i id="time_tooltip" class="fa-xs fas fa-question-circle"></i>
-          <b-tooltip target="time_tooltip" placement="top" class="text-center">
-            {{ $t('sentientoutpost.tooltip1') }}
-            {{ $t('sentientoutpost.tooltip2') }}
           </b-tooltip>
         </span>
         <TimeBadge :starttime="sentientOutposts.activation" :endtime="sentientOutposts.expiry" :interval="1000" />
@@ -40,7 +34,7 @@ export default {
   props: ['sentientOutposts'],
   watch: {
     mission: function() {
-      this.active = new Date().getTime();
+      this.active = Date.now();
     },
   },
   computed: {

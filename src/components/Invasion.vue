@@ -8,7 +8,7 @@
       <b-tooltip :target="`${invasion.id}_tooltip`" placement="right" class="text-center">
         <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000" />
         <div class="eta">
-          {{ eta(invasion) }}
+          ({{ eta(invasion) }})*
         </div>
       </b-tooltip>
     </div>
@@ -66,6 +66,9 @@
           :value="100 - invasion.completion"
           :id="`${this.id}-defender-progress`"
         />
+        <small class="justify-content-center d-flex position-absolute w-100 progress-value">
+          {{ invasion.completion.toFixed(2)}}% - {{eta(invasion)}}
+        </small>
         <b-tooltip :target="`${this.id}-attacker-progress`" placement="bottom" class="text-center">
           <HubImg :src="atkFactionImg" class="hubimg" name="Attacking Faction" width="20px" height="20px" />
           <div class="pl-2">{{ invasion.attacker.factionKey }}</div>
@@ -102,6 +105,10 @@
 
 .eta {
   font-size: 75%;
+}
+
+.progress-value {
+  margin-top: 9px;
 }
 </style>
 
@@ -152,7 +159,7 @@ export default {
         .replace('Infinityd', '??')
         .replace(/\s\d\d?s/gi, '')
         .trim();
-      return `(${this.$t('invasions.eta')} ${eta})*`;
+      return `${this.$t('invasions.eta')} ${eta}`;
     },
     getLabelColor: function(faction) {
       switch (faction) {

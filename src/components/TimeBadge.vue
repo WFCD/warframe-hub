@@ -104,6 +104,9 @@ export default {
         const diff = dayjs().diff(dayjs.unix(end)) * -1;
         const duration = dayjs.duration({ milliseconds: diff });
 
+        duration.parseFromMilliseconds();
+        durationactivate.parseFromMilliseconds();
+
         // Format based on there being no end time, being after the end, or being before the start
         if (!this.endtime) {
           this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
@@ -130,13 +133,15 @@ export default {
         }
       } else {
         const diff = dayjs().diff(dayjs.unix(start));
-        const duration = dayjs.duration(diff, 'milliseconds');
+        const duration = dayjs.duration({ milliseconds: diff });
 
+        durationactivate.parseFromMilliseconds();
+        duration.parseFromMilliseconds();
+
+        this.mutableVariant = 'transparent';
         if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
-          this.mutableVariant = 'transparent';
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else {
-          this.mutableVariant = 'transparent';
           this.disp = `${this.$t('time.ongoingL')} ${this.formatDurationShort(duration)}`;
         }
       }

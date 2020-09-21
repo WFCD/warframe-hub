@@ -137,7 +137,7 @@
   "sentientoutpost": {
     "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
     "tooltip2": "Der geschätzte Zyklus beträgt 30 Minuten aktive Zeit für jede Mission.",
-    "header": "Anomalien (Beta)",
+    "header": "Anomalies",
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",
     "warn": "Vergiss nicht deinen Paracesis!",
@@ -147,6 +147,7 @@
     "header": "Einsätze"
   },
   "time": {
+    "loading": "Loading...",
     "day": "Tag",
     "night": "Nacht",
     "warm": "Warm",
@@ -165,8 +166,7 @@
     "ostron": "Ostron",
     "solaris": "Solaris United",
     "solaris-united": "Solaris United",
-    "entrati": "Entrati",
-    "cambion": "Cambion"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Void Händler",

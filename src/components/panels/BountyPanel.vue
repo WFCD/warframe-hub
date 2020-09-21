@@ -65,9 +65,15 @@
 </template>
 
 <style scoped>
-.list-group-item-borderless { padding-bottom: 0; }
-.list-group-item-borderbottom { padding-top: 0; }
-.table { margin-bottom: 0.5em; }
+.list-group-item-borderless {
+  padding-bottom: 0;
+}
+.list-group-item-borderbottom {
+  padding-top: 0;
+}
+.table {
+  margin-bottom: 0.5em;
+}
 </style>
 
 <script>

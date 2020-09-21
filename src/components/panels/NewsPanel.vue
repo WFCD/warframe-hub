@@ -91,7 +91,12 @@ body .list-group .list-group-item-borderless .list-group {
 </style>
 <script>
 import HubPanelWrap from '@/components/HubPanelWrap';
-import moment from 'moment';
+
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import updateLocale from 'dayjs/plugin/updateLocale';
+dayjs.extend(relativeTime)
+dayjs.extend(updateLocale)
 
 const cdnUrl = 'https://cdn.warframestat.us';
 const cdnOpts = ['o_webp', 'rs_404x110'];
@@ -133,25 +138,25 @@ export default {
     },
     title: function(newsitem) {
       if (newsitem.startDate && newsitem.endDate) {
-        if (moment(newsitem.startDate).unix() > moment().unix()) {
+        if (dayjs(newsitem.startDate).unix() > dayjs().unix()) {
           return {
-            time: moment(newsitem.startDate).fromNow(),
+            time: dayjs(newsitem.startDate).fromNow(),
             label: newsitem.translations[this.locale],
           };
-        } else if (moment(newsitem.endDate).unix() > moment().unix()) {
+        } else if (dayjs(newsitem.endDate).unix() > dayjs().unix()) {
           return {
             time: `${this.$t('news.live')}:`,
             label: newsitem.translations[this.locale],
           };
         } else {
           return {
-            time: moment(newsitem.endDate).fromNow(),
+            time: dayjs(newsitem.endDate).fromNow(),
             label: newsitem.translations[this.locale],
           };
         }
       } else {
         return {
-          time: moment(newsitem.date).fromNow(),
+          time: dayjs(newsitem.date).fromNow(),
           label: newsitem.translations[this.locale],
         };
       }
@@ -171,7 +176,7 @@ export default {
   },
   mounted() {
     this.interval = setInterval(this.increment, 3000);
-    moment.updateLocale('en', {
+    dayjs.updateLocale('en', {
       relativeTime: {
         future: `${this.$t('news.future')} %s:`,
         past: `%s ${this.$t('news.past')}:`,

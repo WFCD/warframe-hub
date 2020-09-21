@@ -29,7 +29,7 @@
           ></VueCircle>
           <div class="text-center">{{ $t('construction.razorback') }}</div>
         </div>
-        <div class="construction-wrapper text-center">
+        <!-- <div class="construction-wrapper text-center">
           <VueCircle
             ref="unkProgress"
             :progress="0"
@@ -40,7 +40,7 @@
             :start-angle="-Math.PI / 2"
           ></VueCircle>
           <div class="text-center">{{ $t('construction.unk') }}</div>
-        </div>
+        </div> -->
       </b-list-group-item>
     </b-list-group>
     <b-list-group v-if="!construction || Object.keys(construction).length < 2" class="list-group-item-borderbottom">
@@ -51,7 +51,7 @@
 
 <style>
 .construction-wrapper {
-  width: 33%;
+  width: 50%;
   float: left;
 }
 </style>
@@ -76,12 +76,12 @@ export default {
   mounted() {
     this.$refs.fomoProgress.updateProgress(this.percent(this.construction.fomorianProgress));
     this.$refs.razorProgress.updateProgress(this.percent(this.construction.razorbackProgress));
-    this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
+    // this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
   },
   updated() {
     this.$refs.fomoProgress.updateProgress(this.percent(this.construction.fomorianProgress));
     this.$refs.razorProgress.updateProgress(this.percent(this.construction.razorbackProgress));
-    this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
+    // this.$refs.unkProgress.updateProgress(this.percent(this.construction.unknownProgress));
   },
   data() {
     return {

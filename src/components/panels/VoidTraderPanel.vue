@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
@@ -65,7 +65,7 @@ export default {
       return this.voidTrader.inventory.length > 0;
     },
     hereTime() {
-      return moment(this.available() ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
+      return dayjs(this.available() ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');
     },
     locationLabel() {
       return `${this.$t(`time.${this.available() ? 'depart' : 'arrive'}`)} ${this.voidTrader.location}:`;

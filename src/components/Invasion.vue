@@ -17,18 +17,18 @@
         <div class="pull-left">
           <b-badge
             tag="div"
-            v-for="item in invasion.attackerReward.items"
+            v-for="item in invasion.attacker.reward.items"
             :key="item"
-            :variant="getLabelColor(invasion.attackingFaction)"
+            :variant="getLabelColor(invasion.attacker.factionKey)"
             class="ml-n3"
           >
             <item-thumb :alt="item" />
           </b-badge>
           <b-badge
             tag="div"
-            v-for="item in invasion.attackerReward.countedItems"
+            v-for="item in invasion.attacker.reward.countedItems"
             :key="item.type"
-            :variant="getLabelColor(invasion.attackingFaction)"
+            :variant="getLabelColor(invasion.attacker.factionKey)"
             class="ml-n3"
           >
             <item-thumb :alt="countedItem(item)" :ikey="item.key" />
@@ -36,17 +36,17 @@
         </div>
         <div class="pull-right">
           <b-badge
-            v-for="item in invasion.defenderReward.items"
+            v-for="item in invasion.defender.reward.items"
             :key="item"
-            :variant="getLabelColor(invasion.defendingFaction)"
+            :variant="getLabelColor(invasion.defender.factionKey)"
             class="mr-n3"
           >
             <item-thumb :alt="item" />
           </b-badge>
           <b-badge
-            v-for="item in invasion.defenderReward.countedItems"
+            v-for="item in invasion.defender.reward.countedItems"
             :key="item.type"
-            :variant="getLabelColor(invasion.defendingFaction)"
+            :variant="getLabelColor(invasion.defender.factionKey)"
             class="mr-n3"
           >
             <item-thumb :alt="countedItem(item)" :ikey="item.key" />
@@ -57,22 +57,22 @@
     <b-row class="invasion-progress">
       <b-progress :max="100" class="w-100 h-125">
         <b-progress-bar
-          :variant="getLabelColor(invasion.attackingFaction)"
+          :variant="getLabelColor(invasion.attacker.factionKey)"
           :value="invasion.completion"
           :id="`${this.id}-attacker-progress`"
         />
         <b-progress-bar
-          :variant="getLabelColor(invasion.defendingFaction)"
+          :variant="getLabelColor(invasion.defender.factionKey)"
           :value="100 - invasion.completion"
           :id="`${this.id}-defender-progress`"
         />
         <b-tooltip :target="`${this.id}-attacker-progress`" placement="bottom" class="text-center">
           <HubImg :src="atkFactionImg" class="hubimg" name="Attacking Faction" width="20px" height="20px" />
-          <div class="pl-2">{{ invasion.attackingFaction }}</div>
+          <div class="pl-2">{{ invasion.attacker.factionKey }}</div>
         </b-tooltip>
         <b-tooltip :target="`${this.id}-defender-progress`" placement="bottom" class="text-center">
           <HubImg :src="defFactionImg" class="hubimg" name="Defending Faction" width="20px" height="20px" />
-          <div class="pl-2">{{ invasion.defendingFaction }}</div>
+          <div class="pl-2">{{ invasion.defender.factionKey }}</div>
         </b-tooltip>
       </b-progress>
     </b-row>

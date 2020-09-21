@@ -45,7 +45,7 @@
             | <b>Level: </b>{{ acolyte.rank }}
           </span>
           <b-badge :id="`${acolyte.id}-lastDicoveredTime`" variant="info" class="pull-right timebadage">
-            {{ moment(acolyte.lastDiscoveredTime).fromNow() }}
+            {{ dayjs(acolyte.lastDiscoveredTime).fromNow() }}
           </b-badge>
         </div>
       </b-list-group-item>
@@ -57,7 +57,7 @@
 <script>
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export default {
   name: 'AcolytesPanel',
@@ -74,7 +74,7 @@ export default {
     },
   },
   methods: {
-    moment: moment,
+    dayjs: dayjs,
     discovery(acolyte) {
       return this.$t(`acolytes.${acolyte.isDiscovered ? 'discovered' : 'hiding'}`);
     },

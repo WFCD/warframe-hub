@@ -31,7 +31,7 @@
 
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
@@ -39,7 +39,7 @@ export default {
   name: 'TimePanel',
   computed: {
     now() {
-      return moment().toISOString();
+      return dayjs().toISOString();
     },
     headertext() {
       return `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;

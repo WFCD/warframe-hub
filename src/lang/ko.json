@@ -97,7 +97,7 @@
     "cetus": "시터스",
     "vallis": "협곡",
     "earth": "지구",
-    "cambion": "Cambion"
+    "cambion": "캠비온"
   },
   "news": {
     "header": "새 소식",
@@ -137,7 +137,7 @@
   "sentientoutpost": {
     "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
     "tooltip2": "예상 주기는 각각 노드당 30분의 활성화 시간입니다.",
-    "header": "이상 현상 (베타)",
+    "header": "Anomalies",
     "outpostsL": "전초기지",
     "none": "현재 이상 현상 없음",
     "warn": "파라세시스를 잊지 마세요!",
@@ -147,6 +147,7 @@
     "header": "출격"
   },
   "time": {
+    "loading": "Loading...",
     "day": "낮",
     "night": "밤",
     "warm": "따듯함",
@@ -165,7 +166,7 @@
     "ostron": "오스트론",
     "solaris": "솔라리스 연합",
     "solaris-united": "솔라리스 연합",
-    "entrati": "Entrati"
+    "entrati": "엔트라티"
   },
   "vt": {
     "header": "보이드 상인",

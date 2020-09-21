@@ -137,7 +137,7 @@
   "sentientoutpost": {
     "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalías (beta)",
+    "header": "Anomalies",
     "outpostsL": "Avanzada",
     "none": "No hay anomalías actualmente",
     "warn": "¡No olvides tu Paracesis!",
@@ -147,6 +147,7 @@
     "header": "Incursión"
   },
   "time": {
+    "loading": "Loading...",
     "day": "día",
     "night": "noche",
     "warm": "cálido",

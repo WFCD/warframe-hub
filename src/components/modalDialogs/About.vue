@@ -29,7 +29,12 @@
         </a>
         <br /><br />
         Warframe and the Warframe logo are registered trademarks of Digital Extremes Ltd. Warframe Hub is not affiliated
-        with Digital Extremes Ltd. in any way. <br /><br />
+        with Digital Extremes Ltd. in any way. 
+        <br /><br />
+        Information may be out of date or inaccurate with what DE sends us because this is a community-driven open source 
+        project. We encourage you to report any discrepencies as a 
+        <a href="https://github.com/WFCD/warframe-hub/issues/new/choose" target="_blank" rel="noopener">GitHub Issue</a>.
+        <br /><br />
         You are entitled to a copy of this project AS IS, and you are free to modify it to your heart's desires. You
         must include a copy of this license to all future modification and releases. You can read more about the terms
         of the

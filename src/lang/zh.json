@@ -19,11 +19,11 @@
     "standing": "声望",
     "header": "{type}赏金任务",
     "type": "任务类型",
-    "lrange": "等級範圍",
+    "lrange": "等级范围",
     "rewards": "奖励",
     "bounties": "赏金任务",
-    "expires": "赏金到期时间:",
-    "autoExpand": "总是展开奖励"
+    "expires": "赏金轮换时间：",
+    "autoExpand": "展开赏金奖励"
   },
   "nav": {
     "info": "信息",
@@ -34,7 +34,7 @@
     "docs": "API信息",
     "old": "旧网页",
     "status": "状态",
-    "riven": "紫卡信息(最初)",
+    "riven": "紫卡信息（测试功能）",
     "synth": "结合仪式目标",
     "map": "地图",
     "fish": "钓鱼数据",
@@ -64,11 +64,11 @@
     "header": "Darvo 的每日特惠",
     "off": "% 折扣",
     "left": "% 剩余",
-    "leftL": "商人以离开"
+    "leftL": "虚空商人已离开"
   },
   "events": {
     "header": "事件",
-    "standStages": "名声阶段",
+    "standStages": "阶段声望",
     "remaining": "剩余 {perc}%",
     "completed": "{perc}% 完成",
     "rewards": {
@@ -95,9 +95,9 @@
   },
   "location": {
     "cetus": "希图斯",
-    "vallis": "山谷",
+    "vallis": "奥布山谷",
     "earth": "地球",
-    "cambion": "Cambion"
+    "cambion": "魔胎之境"
   },
   "news": {
     "header": "新闻",
@@ -113,12 +113,12 @@
     "daily": "每日"
   },
   "conclave": {
-    "header": "武形密儀",
+    "header": "武形秘仪",
     "weekly": "每周",
-    "teamannihilation": "團隊殲奪",
-    "annihilation": "殲奪",
-    "lunaro": "月動球",
-    "cephaloncapture": "奪取中樞"
+    "teamannihilation": "团队歼夺",
+    "annihilation": "歼夺",
+    "lunaro": "月动球",
+    "cephaloncapture": "夺取中枢"
   },
   "notifications": {
     "cetus": {
@@ -137,7 +137,7 @@
   "sentientoutpost": {
     "tooltip1": "由于最近的更新，这个组件正在积极开发中。",
     "tooltip2": "Sentient 异常任务每30分钟就会轮换到一个不同的节点",
-    "header": "Anomalies",
+    "header": "Sentient异常",
     "outpostsL": "Sentient 异常任务",
     "none": "当前无异常现象",
     "warn": "不要忘记你的性质之殁!",
@@ -147,13 +147,13 @@
     "header": "突击"
   },
   "time": {
-    "loading": "Loading...",
+    "loading": "加载中...",
     "day": "日",
     "night": "晚",
     "warm": "温暖",
     "cold": "寒冷",
-    "vome": "vome",
-    "fass": "fass",
+    "vome": "VOME",
+    "fass": "FASS",
     "Timer": "计时器",
     "startL": "开始于：",
     "endL": "结束于:",
@@ -166,7 +166,7 @@
     "ostron": "Ostron",
     "solaris": "索拉里斯聯盟",
     "solaris-united": "索拉里斯聯盟",
-    "entrati": "Entrati"
+    "entrati": "英择谛"
   },
   "vt": {
     "header": "虚空商人",

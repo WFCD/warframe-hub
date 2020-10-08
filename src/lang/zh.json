@@ -122,8 +122,8 @@
   },
   "notifications": {
     "cetus": {
-      "dayheader": "希图斯 - 早上好! 打猎结束咯!",
-      "nightheader": "希图斯 - 打猎夜灵时间!"
+      "dayheader": "希图斯 - 白天来临，夜灵狩猎结束！",
+      "nightheader": "希图斯 - 夜灵狩猎时间!"
     }
   },
   "reset": {
@@ -140,7 +140,7 @@
     "header": "Sentient异常",
     "outpostsL": "Sentient 异常任务",
     "none": "当前无异常现象",
-    "warn": "不要忘记你的性质之殁!",
+    "warn": "不要忘记你的心智之殁!",
     "prediction": "预测"
   },
   "sortie": {
@@ -154,18 +154,18 @@
     "cold": "寒冷",
     "vome": "VOME",
     "fass": "FASS",
-    "Timer": "计时器",
+    "Timer": "循环",
     "startL": "开始于：",
     "endL": "结束于:",
-    "ongoingL": "以进行:",
+    "ongoingL": "已进行:",
     "expiredL": "已过期",
     "depart": "将离开",
     "arrive": "将到达"
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "索拉里斯聯盟",
-    "solaris-united": "索拉里斯聯盟",
+    "solaris": "索拉里斯联盟",
+    "solaris-united": "索拉里斯联盟",
     "entrati": "英择谛"
   },
   "vt": {

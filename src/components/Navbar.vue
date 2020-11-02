@@ -19,6 +19,9 @@
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" :label="$t('nav.map')" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" :label="$t('nav.fish')" />
           <DropdownItem :isLocal="true" icon="fas fa-info" target="/vallis/fish/howto" :label="$t('nav.howto')" />
+          <b-dd-divider />
+          <b-dd-header><i class="fas fa-biohazard faIcon"></i> {{ $t('nav.owdeimos') }}</b-dd-header>
+          <DropdownItem :isLocal="true" icon="fas fa-fish" target="/deimos/fish" :label="$t('nav.fish')" />
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>
           <template slot="button-content"><i class="fas fa-tools faIcon"></i> {{ $t('nav.extras') }}</template>

@@ -1,22 +1,24 @@
 <template>
   <span>
-    <b-dd-item
-      v-if="isLocal"
-      :to="target"
-      exact
-      v-b-tooltip.bottom
-      :title="!labelIfMobile && !$isMobile() ? label : ''"
-    >
+    <b-dd-item v-if="isLocal && !labelIfMobile && !$isMobile()" :to="target" exact>
       <i :class="`${icon} faIcon`"></i>
-      {{ labelIfMobile ? ($isMobile() ? label : '') : label }}
+      {{ label }}
+    </b-dd-item>
+    <b-dd-item v-if="isLocal && !labelIfMobile && $isMobile()" :to="target" exact>
+      <i :class="`${icon} faIcon`"></i>
+      {{ label }}
+    </b-dd-item>
+    <b-dd-item v-if="isLocal && labelIfMobile && !$isMobile()" :to="target" exact>
+      <i :class="`${icon} faIcon`"></i>
+      {{ label }}
     </b-dd-item>
     <b-dd-item
+      v-else-if="!isLocal"
       :href="target"
       rel="noopener"
       target="_blank"
       v-b-tooltip.bottom
       :title="labelIfMobile && !$isMobile() ? label : ''"
-      v-else
     >
       <i :class="`${icon} faIcon`"></i>
       {{ labelIfMobile ? ($isMobile() ? label : '') : label }}

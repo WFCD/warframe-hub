@@ -86,11 +86,11 @@
           <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
           <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
         </template>
-        <template v-slot:cell(more_info)="data">
-          <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
-            <i v-if="data.detailsShowing" class="fas fa-times-circle"></i>
-            <i v-else class="fas fa-info-circle"></i>
-          </b-button>
+        <template v-slot:cell(moreinfo)="row">
+          <div @click="row.toggleDetails" size="sm" class="mr-2">
+            <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
+            <i v-else class="fas fa-chevron-right"></i>
+          </div>
         </template>
         <template v-slot:row-details="data">
           <b-card>
@@ -123,10 +123,15 @@
 </template>
 
 <script>
-import fish from '@/assets/json/vallisfish.json';
+import fish from '@/assets/json/fish/vallis.json';
 import FishImg from '@/components/FishImg.vue';
 
 const fields = [
+  {
+    key: 'moreinfo',
+    label: '',
+    headerTitle: 'Display pictures for fish, unique, and bait type',
+  },
   {
     key: 'name',
     label: 'Name',
@@ -192,11 +197,6 @@ const fields = [
     label: 'Max Points',
     headerTitle: 'The maximum points possible for this fish',
     sortable: true,
-  },
-  {
-    key: 'more_info',
-    label: 'Info',
-    headerTitle: 'Display pictures for fish, unique, and bait type',
   },
 ];
 

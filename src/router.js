@@ -3,13 +3,15 @@ import Router from 'vue-router';
 
 import Timer from './views/Timer.vue';
 
-import PoEMap from './views/PoEMap.vue';
-import PoEFish from './views/Fish.vue';
-import HowToFish from './views/HowToFish.vue';
+import PoEMap from './views/OpenWorld/Venus/Map.vue';
+import PoEFish from './views/OpenWorld/Venus/Fish.vue';
+import HowToFish from './views/OpenWorld/Venus/HowToFish.vue';
 
-import VallisFish from './views/VallisFish.vue';
-import VallisMap from './views/VallisMap.vue';
-import HowToFishVallis from './views/HowToFishVallis.vue';
+import VallisFish from './views/OpenWorld/Earth/Fish.vue';
+import VallisMap from './views/OpenWorld/Earth/Map.vue';
+import HowToFishVallis from './views/OpenWorld/Earth/HowToFish.vue';
+
+import CambionFish from './views/OpenWorld/Deimos/Fish.vue';
 
 import RivenData from './views/RivenData.vue';
 import Synthesis from './views/Synthesis.vue';
@@ -114,7 +116,7 @@ const routes = [
     name: 'Vallis Fish',
     component: VallisFish,
     meta: {
-      title: 'Warframe Hub | Orb Vallis Fish',
+      title: 'Warframe Hub | OV - Fish',
       metaTags: [
         {
           name: 'description',
@@ -159,6 +161,24 @@ const routes = [
         {
           name: 'og:description',
           content: 'Overworld map for the Orb Vallis',
+        },
+      ],
+    },
+  },
+  {
+    path: '/deimos/fish',
+    name: 'Cambion Drift Fish',
+    component: CambionFish,
+    meta: {
+      title: 'Warframe Hub | Deimos - Fish',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fish Information and resources for the Cambion Drift',
+        },
+        {
+          name: 'og:description',
+          content: 'Fish Information and resources for the Cambion Drift',
         },
       ],
     },

@@ -1,17 +1,6 @@
 <template>
   <b-container fluid>
     <b-row>
-      <b-col md="12">
-        <router-link to="/poe/map">
-          <b-button variant="info" class="mb-3 float-right">Plains of Eidolon Map</b-button>
-        </router-link>
-        <router-link to="/poe/fish/howto#hotspots">
-          <b-button variant="info" class="mb-3 mr-3 float-right">What is a Hotspot?</b-button>
-        </router-link>
-      </b-col>
-    </b-row>
-
-    <b-row>
       <b-table
         striped
         responsive
@@ -22,42 +11,52 @@
         primary-key="name"
         sticky-header="70vh"
       >
+        <template v-slot:cell(moreinfo)="row">
+          <div @click="row.toggleDetails" size="sm" class="mr-2">
+            <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
+            <i v-else class="fas fa-chevron-right"></i>
+          </div>
+        </template>
         <template v-slot:cell(small)="data">
-          {{ data.item.small.resources.meat }}
-          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
-          {{ data.item.small.resources.scales }}
-          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
-          {{ data.item.small.resources.oil }}
-          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
-          / {{ data.item.small.standing }}
-          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+          {{ data.item.small.resources.tumor }}
+          <FishImg type="common" item="tumor" title="Benign Infested Tumor" width="20" />
+          <span v-if="data.item.small.resources.bladder">
+            {{ data.item.small.resources.bladder }}
+            <FishImg type="common" item="bladder" title="Fermented Bladder" width="20" />
+          </span>
+          <span v-if="data.item.small.resources.gills">
+            {{ data.item.small.resources.gills }}
+            <FishImg type="common" item="gills" title="Tubercular Gill System" width="20" />
+          </span>
         </template>
         <template v-slot:cell(medium)="data">
-          {{ data.item.medium.resources.meat }}
-          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
-          {{ data.item.medium.resources.scales }}
-          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
-          {{ data.item.medium.resources.oil }}
-          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
-          / {{ data.item.medium.standing }}
-          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+          {{ data.item.medium.resources.tumor }}
+          <FishImg type="common" item="tumor" title="Benign Infested Tumor" width="20" />
+          <span v-if="data.item.medium.resources.bladder">
+            {{ data.item.medium.resources.bladder }}
+            <FishImg type="common" item="bladder" title="Fermented Bladder" width="20" />
+          </span>
+          <span v-if="data.item.medium.resources.gills">
+            {{ data.item.medium.resources.gills }}
+            <FishImg type="common" item="gills" title="Tubercular Gill System" width="20" />
+          </span>
         </template>
         <template v-slot:cell(large)="data">
-          {{ data.item.large.resources.meat }}
-          <FishImg type="common" item="meat" title="Fish Meat" width="20" />
-          {{ data.item.large.resources.scales }}
-          <FishImg type="common" item="scale" title="Fish Scales" width="20" />
-          {{ data.item.large.resources.oil }}
-          <FishImg type="common" item="oil" title="Fish Oil" width="20" />
-          / {{ data.item.large.standing }}
-          <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert="true" />
+          {{ data.item.large.resources.tumor }}
+          <FishImg type="common" item="tumor" title="Benign Infested Tumor" width="20" />
+          <span v-if="data.item.large.resources.bladder">
+            {{ data.item.large.resources.bladder }}
+            <FishImg type="common" item="bladder" title="Fermented Bladder" width="20" />
+          </span>
+          <span v-if="data.item.large.resources.gills">
+            {{ data.item.large.resources.gills }}
+            <FishImg type="common" item="gills" title="Tubercular Gill System" width="20" />
+          </span>
         </template>
-        <template v-slot:cell(time.string)="data">
+        <template v-slot:cell(time)="data">
           <span v-bind:id="data.item.name + '-time'">
-            <i v-if="data.item.time.night.appear" class="fas fa-lg fa-moon" style="color:skyblue" />
-            <i v-if="data.item.time.night.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
-            <i v-if="data.item.time.day.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
-            <i v-if="data.item.time.day.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
+            <FishImg v-if="data.item.time.vome.appear" type="time" item="vome" title="Vome" />
+            <FishImg v-if="data.item.time.fass.appear" type="time" item="fass" title="Fass" />
           </span>
           <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
@@ -67,11 +66,11 @@
             :item="data.item.rarity.slice(2).toLowerCase()"
             :name="data.item.rarity.slice(2)"
             :title="data.item.rarity.slice(2)"
-            width="20"
+            width="15"
           />
         </template>
         <template v-slot:cell(baitrequired)="data">
-          <i v-if="data.item.bait.required" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
+          <i v-if="data.item.bait.recommended" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
           <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
         </template>
         <template v-slot:cell(hotspot)="data">
@@ -79,15 +78,14 @@
           <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
         </template>
         <template v-slot:cell(spear)="data">
-          <FishImg v-if="data.item.spear.lanzo" type="common" item="lanzosm" title="Lanzo (T1)" width="30" />
-          <FishImg v-if="data.item.spear.tulok" type="common" item="tuloksm" title="Tulok (T2)" width="30" />
-          <FishImg v-if="data.item.spear.peram" type="common" item="peramsm" title="Peram (T3)" width="30" />
+          <FishImg v-if="data.item.spear.spari" type="common" item="spari" title="Spari (T1)" width="30" />
+          <FishImg v-if="data.item.spear.ebisu" type="common" item="ebisu" title="Ebisu (T2)" width="30" />
         </template>
-        <template v-slot:cell(moreinfo)="data">
-          <b-button v-if="data.item.thumb" size="sm" @click="data.toggleDetails" class="mr-2">
-            <i v-if="data.detailsShowing" class="fas fa-times-circle"></i>
-            <i v-else class="fas fa-info-circle"></i>
-          </b-button>
+        <template v-slot:cell(unique)="data">
+          <span v-for="name in data.item.unique.map(n => n.name)" :key="name">
+            {{name}}
+            <br />
+          </span>
         </template>
         <template v-slot:row-details="data">
           <b-card>
@@ -99,12 +97,12 @@
                 <br />
                 <FishImg type="fish" :item="data.item.thumb" :title="data.item.name" width="200" />
               </b-col>
-              <b-col v-if="data.item.unique.thumb">
-                <b-btn :href="data.item.unique.wiki" target="_blank" size="sm" rel="noopener" variant="link">
-                  {{ data.item.unique.name }}
+              <b-col v-for="unique in data.item.unique" :key="unique.name">
+                <b-btn :href="unique.wiki" target="_blank" size="sm" rel="noopener" variant="link">
+                  {{ unique.name }}
                 </b-btn>
                 <br />
-                <FishImg type="parts" :item="data.item.unique.thumb" :title="data.item.unique.name" width="150" />
+                <FishImg type="parts" :item="unique.thumb" :title="unique.name" width="150" />
               </b-col>
               <b-col v-if="data.item.bait.thumb">
                 <b>{{ data.item.bait.name }}</b>
@@ -120,10 +118,15 @@
 </template>
 
 <script>
-import fish from '@/assets/json/fish.json';
+import fish from '@/assets/json/fish/deimos.json';
 import FishImg from '@/components/FishImg.vue';
 
 const fields = [
+  {
+    key: 'moreinfo',
+    label: '',
+    headerTitle: 'Display pictures for fish, unique, and bait type',
+  },
   {
     key: 'name',
     label: 'Name',
@@ -131,7 +134,7 @@ const fields = [
     sortable: true,
   },
   {
-    key: 'unique.name',
+    key: 'unique',
     label: 'Unique',
     headerTitle: 'Unique item when dismantling - you will receive one regardless of size',
     sortable: true,
@@ -158,7 +161,7 @@ const fields = [
     sortable: true,
   },
   {
-    key: 'time.string',
+    key: 'time',
     label: 'Time',
     headerTitle: 'Time of when you can find the fish - arrow denotes preference',
     sortable: true,
@@ -177,13 +180,13 @@ const fields = [
   },
   {
     key: 'baitrequired',
-    label: 'Bait Required',
+    label: 'Bait Recommended',
     headerTitle: 'Whether bait is required in order for this fish to spawn',
     sortable: true,
   },
   {
     key: 'hotspot',
-    label: 'Hotspot Required',
+    label: 'Hotspot',
     headerTitle: 'Whether a hotspot is required for this fish to spawn',
     sortable: true,
   },
@@ -197,11 +200,6 @@ const fields = [
     label: 'Max Weight',
     headerTitle: 'The maximum weight possible for this fish',
     sortable: true,
-  },
-  {
-    key: 'moreinfo',
-    label: 'Info',
-    headerTitle: 'Display pictures for fish, unique, and bait type',
   },
 ];
 
@@ -218,7 +216,7 @@ export default {
   },
   methods: {
     track() {
-      this.$ga.page('/poe/fish');
+      this.$ga.page('/deimos/fish');
     },
   },
 };

@@ -66,6 +66,15 @@ table, [class*='badge-'] {
   border-bottom-color: @border-color;
 }
 
+a.nav-link > a {
+  color: @text-color;
+}
+
+/* When things support :has, this should work...seemlessly? */
+li.nav-item.b-nav-dropdown:has(.active) {
+  color: @link-color;
+}
+
 /****** Badges ********/
 .badge-warning {
   background-color: @warning-bg;
@@ -111,6 +120,12 @@ table, [class*='badge-'] {
 }
 
 /******** Buttons ********/
+.btn {
+  color: @text-color;
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .btn-primary {
   background-color: @primary-bg;
   border-color: @primary-bg;

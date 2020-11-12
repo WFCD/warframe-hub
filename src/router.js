@@ -3,13 +3,13 @@ import Router from 'vue-router';
 
 import Timer from './views/Timer.vue';
 
-import PoEMap from './views/OpenWorld/Venus/Map.vue';
-import PoEFish from './views/OpenWorld/Venus/Fish.vue';
-import HowToFish from './views/OpenWorld/Venus/HowToFish.vue';
+import PoEMap from './views/OpenWorld/Earth/Map.vue';
+import PoEFish from './views/OpenWorld/Earth/Fish.vue';
+import HowToFish from './views/OpenWorld/Earth/HowToFish.vue';
 
-import VallisFish from './views/OpenWorld/Earth/Fish.vue';
-import VallisMap from './views/OpenWorld/Earth/Map.vue';
-import HowToFishVallis from './views/OpenWorld/Earth/HowToFish.vue';
+import VallisFish from './views/OpenWorld/Venus/Fish.vue';
+import VallisMap from './views/OpenWorld/Venus/Map.vue';
+import HowToFishVallis from './views/OpenWorld/Venus/HowToFish.vue';
 
 import CambionFish from './views/OpenWorld/Deimos/Fish.vue';
 

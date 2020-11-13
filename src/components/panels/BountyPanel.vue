@@ -93,7 +93,7 @@ export default {
     headertext() {
       return this.$t('bounty.header', { type: this.$t(`timer.${this.typeId}`) });
     },
-    items: function() {
+    items: function () {
       return (this.syndicate || { jobs: [] }).jobs.map((job) => ({
         type: job.type,
         standing: job.standingStages.reduce((a, b) => a + b) || 0,

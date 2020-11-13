@@ -25,27 +25,27 @@ import util from '@/utilities';
 export default {
   name: 'Collapsible',
   props: ['headertext', 'init'],
-  data: function() {
+  data: function () {
     return {
       id: 0,
     };
   },
   methods: {
-    toggled: function() {
+    toggled: function () {
       this.$emit('toggle');
     },
-    makeid: function() {
+    makeid: function () {
       return util.makeid();
     },
-    upArrow: function() {
+    upArrow: function () {
       this.$refs.arrow.className = 'fas fa-chevron-up';
     },
-    downArrow: function() {
+    downArrow: function () {
       this.$refs.arrow.className = 'fas fa-chevron-down';
     },
   },
   computed: {
-    cid: function() {
+    cid: function () {
       if (this.id) {
         return this.id;
       } else {
@@ -53,7 +53,7 @@ export default {
       }
       return this.id;
     },
-    initialArrow: function() {
+    initialArrow: function () {
       if (this.init) {
         return 'fas fa-chevron-up';
       }

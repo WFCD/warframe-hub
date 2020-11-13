@@ -44,27 +44,27 @@ export default {
   },
   computed: {
     activeRewards: {
-      get: function() {
+      get: function () {
         const components = Object.keys(this.$store.getters.trackableState.rewardTypes).map(
           (component) => this.$store.getters.trackableState.rewardTypes[component]
         );
 
         return components.filter((component) => component.state).map((component) => component.value);
       },
-      set: function() {},
+      set: function () {},
     },
     rewardStates() {
       return this.$store.getters.trackableState.rewardTypes;
     },
     activeEvents: {
-      get: function() {
+      get: function () {
         const components = Object.keys(this.$store.getters.trackableState.eventTypes).map(
           (component) => this.$store.getters.trackableState.eventTypes[component]
         );
 
         return components.filter((component) => component.state).map((component) => component.value);
       },
-      set: function() {},
+      set: function () {},
     },
     eventStates() {
       return this.$store.getters.trackableState.eventTypes;

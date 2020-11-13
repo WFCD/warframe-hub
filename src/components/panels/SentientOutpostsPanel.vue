@@ -33,7 +33,7 @@ export default {
   name: 'SentientOutpostsPanel',
   props: ['sentientOutposts'],
   watch: {
-    mission: function() {
+    mission: function () {
       this.active = Date.now();
     },
   },

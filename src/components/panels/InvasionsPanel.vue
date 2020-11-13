@@ -15,7 +15,7 @@
       <b-list-group-item
         class="list-group-item-borderbottom"
         v-if="ongoing(invasions).length > maxInvasions"
-        style="padding:0;"
+        style="padding: 0"
       >
         <Spoiler :init="initialStatus" @toggle="updatePanelStatus()">
           <b-list-group>
@@ -67,10 +67,10 @@ export default {
     };
   },
   methods: {
-    ongoing: function(invasions) {
+    ongoing: function (invasions) {
       return invasions.filter((invasion) => !invasion.completed);
     },
-    updatePanelStatus: function() {
+    updatePanelStatus: function () {
       const state = this.$store.getters.componentState['invasions'];
       state.expand = !state.expand;
       this.$store.commit('commitComponent', ['invasions', state]);

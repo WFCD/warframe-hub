@@ -151,7 +151,7 @@ export default {
     },
   },
   methods: {
-    eta: function(invasion) {
+    eta: function (invasion) {
       const eta = invasion.eta
         .replace('-Infinityd', '??')
         .replace('Infinityd', '??')
@@ -159,7 +159,7 @@ export default {
         .trim();
       return `${this.$t('invasions.eta')} ${eta}`;
     },
-    getLabelColor: function(faction) {
+    getLabelColor: function (faction) {
       switch (faction) {
         case 'Corpus':
           return 'info';
@@ -174,13 +174,13 @@ export default {
           return 'default';
       }
     },
-    countedItem: function(item) {
+    countedItem: function (item) {
       if (item.count > 1) {
         return `${item.count} ${item.type}`;
       }
       return item.type;
     },
-    ongoing: function(invasions) {
+    ongoing: function (invasions) {
       var ongoingInvasions = [];
       for (var i = 0; i < invasions.length; i++) {
         if (!invasions[i].completed) {

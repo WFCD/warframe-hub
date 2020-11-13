@@ -49,7 +49,7 @@
         <b-badge v-if="alert.mission.reward.credits" variant="info" :style="styleObject" class="pull-right">
           {{ alert.mission.reward.credits }}cr
         </b-badge>
-        <div style="margin-top:2px" class="pull-left">
+        <div style="margin-top: 2px" class="pull-left">
           <b>{{ alert.mission.type }}</b> ({{ alert.mission.faction }}) | <b>{{ $t('alerts.level') }} </b>
           {{ alert.mission.minEnemyLevel }}-{{ alert.mission.maxEnemyLevel }}
         </div>

@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const jsonFileName = 'initialWorldstate.json';
-const jsonFolder = './src/assets/json';
+const jsonFolder = '../../src/assets/json';
 const apiBaseUrl = 'api.warframestat.us';
 const apiPlatforms = ['pc', 'ps4', 'xb1', 'swi'];
 
@@ -98,7 +98,7 @@ function main() {
       acc[data[0]] = data[1];
       return acc;
     }, {});
-    fs.writeFile(`${jsonFolder}/${jsonFileName}`, JSON.stringify(output, null, 2), function(err) {
+    fs.writeFile(`${jsonFolder}/${jsonFileName}`, JSON.stringify(output, null, 2), function (err) {
       if (err) {
         return console.log(err);
       }

@@ -136,7 +136,7 @@
         <br />
         <p>Resource boosters and Smeeta Kavat's charm affect the fish catches, so it's highly recommended!</p>
         <br />
-        <p style="color:firebrick">
+        <p style="color: firebrick">
           <b>
             Keep in mind that even though larger fishes give more standing, they don't give extra unique drops, so it's
             recommended to get the unique parts from the smaller ones, and save the larger fish for standing. Unless you

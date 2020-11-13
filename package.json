@@ -9,15 +9,15 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node ./server.js",
-    "updateWorldstate": "node ./initialWorldstateUpdater.js"
+    "updateWorldstate": "node ./src/tools/initialWorldstateUpdater.js"
   },
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "5.8.2",
-    "@sentry/browser": "^5.23.0",
-    "@sentry/integrations": "^5.23.0",
+    "@sentry/browser": "^5.27.3",
+    "@sentry/integrations": "^5.27.3",
     "@types/node-fetch": "^2.5.7",
     "@vue/cli-plugin-babel": "^4.5.6",
     "@vue/cli-plugin-eslint": "~4.2.3",
@@ -27,12 +27,12 @@
     "@vue/cli-service": "~4.2.3",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.3",
-    "bootstrap-vue": "^2.17.1",
-    "core-js": "^3.6.5",
+    "bootstrap-vue": "^2.19.0",
+    "core-js": "^3.7.0",
     "css-loader": "^3.6.0",
-    "dayjs": "^1.8.35",
+    "dayjs": "^1.9.6",
     "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^6.1.2",
     "image-webpack-loader": "^6.0.0",
@@ -41,21 +41,21 @@
     "less-loader": "^5.0.0",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.12",
     "vue-analytics": "^5.22.1",
-    "vue-i18n": "^8.21.1",
+    "vue-i18n": "^8.22.1",
     "vue-mobile-detection": "^1.0.0",
     "vue-native-notification": "^1.1.1",
     "vue-notification": "^1.3.20",
     "vue-packery-plugin": "^1.4.8",
-    "vue-router": "^3.4.3",
+    "vue-router": "^3.4.9",
     "vue-template-compiler": "^2.6.12",
     "vue2-circle-progress": "^1.2.3",
     "vue2-leaflet": "^1.2.3",
     "vuex": "^3.5.1",
-    "vuex-persistedstate": "^2.7.1"
+    "vuex-persistedstate": "^3.1.0"
   },
   "postcss": {
     "plugins": {
@@ -66,5 +66,52 @@
     "node": ">=10.13.0",
     "npm": ">=6.4.1"
   },
-  "heroku-run-build-script": true
+  "heroku-run-build-script": true,
+  "prettier": {
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always",
+    "printWidth": 120
+  },
+  "eslintIgnore": ["src/assets/**.*"],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/html-indent": 1,
+      "semi": 1,
+      "arrow-parens": 1,
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "vue/no-use-v-if-with-v-for": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "babel": {
+    "presets": [
+      ["@vue/app", { "useBuiltIns": "entry" }]
+    ]
+  }
 }

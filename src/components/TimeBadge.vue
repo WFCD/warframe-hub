@@ -41,10 +41,10 @@ export default {
       default: true,
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.onBadgeUpdate();
   },
-  data: function() {
+  data: function () {
     return {
       disp: this.text,
       mutableVariant: this.variant,

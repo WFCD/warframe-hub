@@ -3,9 +3,7 @@
     <b-alert v-if="loading" show variant="info">
       <h4 class="alert-heading">Loading Synthesis Data...</h4>
       <hr />
-      <p class="mb-0">
-        If this card stays active for more than a minute, please reload the site or try agin later.
-      </p>
+      <p class="mb-0">If this card stays active for more than a minute, please reload the site or try agin later.</p>
     </b-alert>
     <b-row>
       <b-col md="3" sm="0" />

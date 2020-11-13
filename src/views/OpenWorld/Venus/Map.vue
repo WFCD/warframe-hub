@@ -172,7 +172,7 @@ function data() {
         name: 'Map Label',
         json: labels,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return labelAlias(latlng)
               .setStyle({
                 stroke: false,
@@ -191,7 +191,7 @@ function data() {
         name: 'Fishing',
         json: fish,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng);
           },
           onEachFeature: onEachFeature,
@@ -201,7 +201,7 @@ function data() {
         name: 'Fishing Spots',
         json: fishRecommend,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: fishRecommendMarker });
           },
           onEachFeature: onEachFeature,
@@ -211,7 +211,7 @@ function data() {
         name: 'Mining Spots',
         json: mineRecommend,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: mineRecommendMarker });
           },
           onEachFeature: onEachFeature,
@@ -221,7 +221,7 @@ function data() {
         name: 'K-Drive',
         json: kdrive,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: kdriveMarker });
           },
           onEachFeature: onEachFeature,
@@ -231,7 +231,7 @@ function data() {
         name: 'Oddity',
         json: oddity,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: oddityMarker });
           },
           onEachFeature: onEachOddity,
@@ -241,7 +241,7 @@ function data() {
         name: 'Somachord Tone',
         json: somachord,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: somachordMarker });
           },
           onEachFeature: onEachFeature,
@@ -251,7 +251,7 @@ function data() {
         name: 'Toroids',
         json: toroids,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: toroidMarkerFromName(feature.properties.name) });
           },
           onEachFeature: onEachFeature,
@@ -261,7 +261,7 @@ function data() {
         name: 'Special Caves',
         json: fishCave.concat(toroidCave).concat(toroidFishCave),
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: caveMarkerFromName(feature.properties.name) });
           },
           onEachFeature: onEachFeature,

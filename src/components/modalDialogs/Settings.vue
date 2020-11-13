@@ -98,13 +98,13 @@ export default {
   },
   computed: {
     activeComponents: {
-      get: function() {
+      get: function () {
         const components = Object.keys(this.$store.getters.componentState).map(
           (component) => this.$store.getters.componentState[component]
         );
         return components.filter((component) => component.display).map((component) => component.key);
       },
-      set: function() {},
+      set: function () {},
     },
     componentStates() {
       const cs = this.$store.getters.componentState;

@@ -22,7 +22,7 @@
           <b>{{ fissure.node }}</b> | {{ fissure.missionType }} |
           {{ fissure.tier }}
         </span>
-        <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" style="padding: 5px;" />
+        <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" style="padding: 5px" />
       </b-list-group-item>
       <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" />
     </b-list-group>
@@ -54,7 +54,7 @@ export default {
     headertext() {
       return this.$t('fissures.header');
     },
-    filteredFissures: function() {
+    filteredFissures: function () {
       const pState = [];
       Object.keys(this.$store.getters.fissurePlanetStates).forEach((p) => {
         if (this.$store.getters.fissurePlanetStates[p].state) {
@@ -71,7 +71,7 @@ export default {
     },
   },
   methods: {
-    determineImg: function(fissure) {
+    determineImg: function (fissure) {
       return fissureIcons[fissure.tierNum - 1] || lith;
     },
   },

@@ -54,10 +54,10 @@
         </template>
         <template v-slot:cell(time.string)="data">
           <span v-bind:id="data.item.name + '-time'">
-            <i v-if="data.item.time.night.appear" class="fas fa-lg fa-moon" style="color:skyblue" />
+            <i v-if="data.item.time.night.appear" class="fas fa-lg fa-moon" style="color: skyblue" />
             <i v-if="data.item.time.night.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
             <i v-if="data.item.time.day.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
-            <i v-if="data.item.time.day.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
+            <i v-if="data.item.time.day.appear" class="fas fa-lg fa-sun" style="color: darkorange" />
           </span>
           <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
@@ -71,12 +71,12 @@
           />
         </template>
         <template v-slot:cell(baitrequired)="data">
-          <i v-if="data.item.bait.required" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
-          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+          <i v-if="data.item.bait.required" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
         </template>
         <template v-slot:cell(hotspot)="data">
-          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
-          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
         </template>
         <template v-slot:cell(spear)="data">
           <FishImg v-if="data.item.spear.lanzo" type="common" item="lanzosm" title="Lanzo (T1)" width="30" />

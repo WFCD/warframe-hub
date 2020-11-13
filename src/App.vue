@@ -32,7 +32,7 @@ export default {
       newTheme.split(' ').forEach((nt) => document.body.classList.add(nt));
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.theme.split(' ').forEach((t) => document.body.classList.add(t));
   },
 };

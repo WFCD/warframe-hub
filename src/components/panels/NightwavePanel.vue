@@ -60,7 +60,7 @@ export default {
     },
   },
   methods: {
-    type: function(challenge) {
+    type: function (challenge) {
       return this.$t(`nightwave.${challenge.isDaily ? 'daily' : challenge.isElite ? 'elite' : 'weekly'}`);
     },
   },

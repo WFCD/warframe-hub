@@ -26,7 +26,7 @@
           :starttime="kuva.activation"
           :endtime="kuva.expiry"
           :interval="1000"
-          style="padding: 5px;"
+          style="padding: 5px"
         />
       </b-list-group-item>
       <NoDataItem v-if="kuvas.length === 0" :text="headertext" />

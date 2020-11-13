@@ -1,11 +1,9 @@
 <template>
-  <b-container fluid class="pl-0 pr-0 ">
+  <b-container fluid class="pl-0 pr-0">
     <b-alert v-if="loading" show variant="info">
       <h4 class="alert-heading">Loading Riven Data for {{ platforms[platform].display }}</h4>
       <hr />
-      <p class="mb-0">
-        If this card stays active for more than a minute, please reload the site or try agin later.
-      </p>
+      <p class="mb-0">If this card stays active for more than a minute, please reload the site or try agin later.</p>
     </b-alert>
     <b-tabs v-else content-class="mt-3">
       <b-tab :title="index" v-for="(item, index) in data" :key="index" active>

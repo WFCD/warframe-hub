@@ -45,9 +45,7 @@
         debugging is to clear your cache.
         <br />
         You can find helpful tips how to do this
-        <a name="Refresh Your Cache" href="http://www.refreshyourcache.com/en/home/">
-          here.
-        </a>
+        <a name="Refresh Your Cache" href="http://www.refreshyourcache.com/en/home/"> here. </a>
       </b-tab>
     </b-tabs>
   </b-modal>

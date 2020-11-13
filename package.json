@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node ./server.js",
-    "updateWorldstate": "node ./initialWorldstateUpdater.js"
+    "updateWorldstate": "node ./src/tools/initialWorldstateUpdater.js"
   },
   "dependencies": {
     "express": "^4.17.1"
@@ -66,5 +66,52 @@
     "node": ">=10.13.0",
     "npm": ">=6.4.1"
   },
-  "heroku-run-build-script": true
+  "heroku-run-build-script": true,
+  "prettier": {
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always",
+    "printWidth": 120
+  },
+  "eslintIgnore": ["src/assets/**.*"],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/html-indent": 1,
+      "semi": 1,
+      "arrow-parens": 1,
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "vue/no-use-v-if-with-v-for": "off"
+    }
+  },
+  "browserlist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "babel": {
+    "presets": [
+      ["@vue/app", { "useBuiltIns": "entry" }]
+    ]
+  }
 }

@@ -12,7 +12,7 @@
     </b-row>
 
     <b-row>
-      <b class="mx-auto" style="color:firebrick">
+      <b class="mx-auto" style="color: firebrick">
         All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
       </b>
       <b-table
@@ -66,10 +66,10 @@
         </template>
         <template v-slot:cell(time.string)="data">
           <span v-bind:id="data.item.name + '-time'">
-            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color:skyblue" />
+            <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color: skyblue" />
             <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>
             <i v-if="data.item.time.warm.prefer" class="fas fa-lg fa-arrow-right mx-1"></i>
-            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color:darkorange" />
+            <i v-if="data.item.time.warm.appear" class="fas fa-lg fa-sun" style="color: darkorange" />
           </span>
           <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
@@ -83,8 +83,8 @@
           />
         </template>
         <template v-slot:cell(hotspot)="data">
-          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
-          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
         </template>
         <template v-slot:cell(moreinfo)="row">
           <div @click="row.toggleDetails" size="sm" class="mr-2">

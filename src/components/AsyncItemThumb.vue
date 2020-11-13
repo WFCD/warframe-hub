@@ -44,7 +44,7 @@ export default {
     };
   },
   methods: {
-    fetch: async function() {
+    fetch: async function () {
       const stripped = (this.ikey || this.alt)
         .replace(/\d+\s+/i, '')
         .replace('Blueprint', '')
@@ -58,12 +58,13 @@ export default {
       if (!data || !data[0].imageName) {
         return;
       } else {
-        this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${this.width *
-          8}/https://cdn.warframestat.us/img/${data[0].imageName}`;
+        this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${
+          this.width * 8
+        }/https://cdn.warframestat.us/img/${data[0].imageName}`;
       }
     },
   },
-  created: function() {
+  created: function () {
     this.fetch();
   },
 };

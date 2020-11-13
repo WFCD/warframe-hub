@@ -115,9 +115,7 @@
         <br />
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>
         <br />
-        <p>
-          All the water surface around this island can spawn "Hotspots", which is the next topic I will explain.
-        </p>
+        <p>All the water surface around this island can spawn "Hotspots", which is the next topic I will explain.</p>
         <br />
         <br />
         <br />
@@ -125,9 +123,7 @@
           <b id="hotspots">Hotspots</b>
         </h4>
         <br />
-        <p>
-          Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:
-        </p>
+        <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>
         <br />
         <FishImg type="guide" item="guide3" />
         <br />
@@ -154,11 +150,9 @@
           catching your Murkrays.
         </p>
         <br />
-        <p>
-          Resource boosters and Smeeta Kavat's charm affect the fish catches, so it's highly recommended!
-        </p>
+        <p>Resource boosters and Smeeta Kavat's charm affect the fish catches, so it's highly recommended!</p>
         <br />
-        <p style="color:firebrick">
+        <p style="color: firebrick">
           <b>
             Keep in mind that even though larger fishes give more standing, they don't give extra unique drops, so it's
             recommended to get the drops (fillet) from the smaller ones, and save the larger fish for standing. Unless
@@ -166,9 +160,7 @@
           </b>
         </p>
         <br />
-        <p>
-          As Honorable mention: The Sentient Lake, the only "lake" in PoE (that we're aware of!).
-        </p>
+        <p>As Honorable mention: The Sentient Lake, the only "lake" in PoE (that we're aware of!).</p>
         <br />
         <FishImg type="guide" item="guide5" name="Guide 5" />
         <h6 class="text-center">[Screenshot by --Q--Shin]</h6>

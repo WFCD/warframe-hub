@@ -43,10 +43,10 @@ export default {
   },
   computed: {
     activeSounds: {
-      get: function() {
+      get: function () {
         return JSON.parse(JSON.stringify(this.$store.getters.sounds));
       },
-      set: function() {},
+      set: function () {},
     },
   },
   methods: {

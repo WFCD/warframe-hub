@@ -185,11 +185,11 @@ export default {
       src: '',
     };
   },
-  mounted: function() {
+  mounted: function () {
     this.getImg();
   },
   methods: {
-    getImg: function() {
+    getImg: function () {
       this.imgs[this.typeId][this.itemId].then((img) => {
         this.src = img.default;
       });

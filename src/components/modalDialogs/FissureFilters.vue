@@ -28,14 +28,14 @@ export default {
   },
   computed: {
     activeFissures: {
-      get: function() {
+      get: function () {
         const planets = Object.keys(this.$store.getters.fissurePlanetStates).map(
           (planet) => this.$store.getters.fissurePlanetStates[planet]
         );
 
         return planets.filter((planet) => planet.state).map((planet) => planet.value);
       },
-      set: function() {},
+      set: function () {},
     },
     fissureStates() {
       return this.$store.getters.fissurePlanetStates;

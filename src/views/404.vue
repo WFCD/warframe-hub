@@ -12,15 +12,9 @@
         <h3>How could you?</h3>
 
         <br /><br />
-        <p>
-          Don't worry, one of the developers will clean up the mess. You can carry on though!
-        </p>
-        <p>
-          This interaction will be logged, so we can solve the problem faster.
-        </p>
-        <p>
-          Speaking of which, one of the developers is probably panicking right now just because of this error log.
-        </p>
+        <p>Don't worry, one of the developers will clean up the mess. You can carry on though!</p>
+        <p>This interaction will be logged, so we can solve the problem faster.</p>
+        <p>Speaking of which, one of the developers is probably panicking right now just because of this error log.</p>
         <p>Oh well, poor him.</p>
         <br /><br />
         <a name="Main Page" href="/">Click here to return to a safe place</a>

@@ -72,11 +72,11 @@ export default {
       src: '',
     };
   },
-  mounted: function() {
+  mounted: function () {
     this.getImg();
   },
   methods: {
-    getImg: function() {
+    getImg: function () {
       this.imgs[this.name].then((img) => {
         this.src = img.default;
       });

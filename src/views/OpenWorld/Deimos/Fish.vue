@@ -70,20 +70,20 @@
           />
         </template>
         <template v-slot:cell(baitrequired)="data">
-          <i v-if="data.item.bait.recommended" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
-          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+          <i v-if="data.item.bait.recommended" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
         </template>
         <template v-slot:cell(hotspot)="data">
-          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color:lightgreen" />
-          <i v-else class="fas fa-lg fa-times-circle" style="color:salmon" />
+          <i v-if="data.item.hotspot" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
         </template>
         <template v-slot:cell(spear)="data">
           <FishImg v-if="data.item.spear.spari" type="common" item="spari" title="Spari (T1)" width="30" />
           <FishImg v-if="data.item.spear.ebisu" type="common" item="ebisu" title="Ebisu (T2)" width="30" />
         </template>
         <template v-slot:cell(unique)="data">
-          <span v-for="name in data.item.unique.map(n => n.name)" :key="name">
-            {{name}}
+          <span v-for="name in data.item.unique.map((n) => n.name)" :key="name">
+            {{ name }}
             <br />
           </span>
         </template>

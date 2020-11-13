@@ -19,11 +19,9 @@
           <b-list-group-item
             :data-news-item="newsitem.id"
             :key="`${newsitem.id}-li`"
-            :class="
-              `d-flex py-0 justify-content-between align-items-center list-group-item-borderless ${
-                cycle && index === activeElemIndex % filteredNews.length ? 'active' : ''
-              } ${hover === index ? 'hover' : ''}`
-            "
+            :class="`d-flex py-0 justify-content-between align-items-center list-group-item-borderless ${
+              cycle && index === activeElemIndex % filteredNews.length ? 'active' : ''
+            } ${hover === index ? 'hover' : ''}`"
             v-for="(newsitem, index) in filteredNews"
             @mouseover="hover = index"
           >
@@ -129,14 +127,14 @@ export default {
         this.activeElemIndex++;
       }
     },
-    open: function(url) {
+    open: function (url) {
       window.open(url, '_blank');
       this.increment();
     },
     getImgSrc: (url) => {
       return `${cdnUrl}/${cdnOpts.join(',')}/${url}`;
     },
-    title: function(newsitem) {
+    title: function (newsitem) {
       if (newsitem.startDate && newsitem.endDate) {
         if (dayjs(newsitem.startDate).unix() > dayjs().unix()) {
           return {

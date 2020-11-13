@@ -30,11 +30,7 @@ export default {
   data() {
     return {
       now: dayjs().toISOString(),
-      nextDay: dayjs()
-        .utc()
-        .endOf('day')
-        .add(1, 'seconds')
-        .toISOString(),
+      nextDay: dayjs().utc().endOf('day').add(1, 'seconds').toISOString(),
       styleObject: {
         display: 'inline',
       },
@@ -44,13 +40,9 @@ export default {
     this.gettime();
   },
   methods: {
-    gettime: function() {
+    gettime: function () {
       this.now = dayjs().toISOString();
-      this.nextDay = dayjs()
-        .utc()
-        .endOf('day')
-        .add(1, 'seconds')
-        .toISOString();
+      this.nextDay = dayjs().utc().endOf('day').add(1, 'seconds').toISOString();
     },
   },
   components: {

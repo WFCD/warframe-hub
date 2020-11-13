@@ -35,7 +35,7 @@
           </b>
         </span>
         <br />
-        <div style="margin-top:2px">
+        <div style="margin-top: 2px">
           <span class="pull-left">
             <b>
               <span :id="`${acolyte.id}-loc`">

@@ -105,7 +105,7 @@ function data() {
         name: 'Map Label',
         json: labels,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return labelAlias(latlng)
               .setStyle({
                 stroke: false,
@@ -124,7 +124,7 @@ function data() {
         name: 'Fishing',
         json: fish,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng);
           },
           onEachFeature: onEachFeature,
@@ -134,7 +134,7 @@ function data() {
         name: 'Grineer Camp',
         json: grineer,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: grineerMarker });
           },
           onEachFeature: onEachFeature,
@@ -144,7 +144,7 @@ function data() {
         name: 'Oddity',
         json: lorefish,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: oddityMarker });
           },
           onEachFeature: onEachOddity,
@@ -154,7 +154,7 @@ function data() {
         name: 'Cetus Wisp',
         json: wisp,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: wispMarker });
           },
           onEachFeature: onEachFeature,
@@ -164,7 +164,7 @@ function data() {
         name: 'Vomvalyst Lure',
         json: lure,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: lureMarker });
           },
           onEachFeature: onEachFeature,
@@ -174,7 +174,7 @@ function data() {
         name: 'Cave Entrance',
         json: cave,
         opts: {
-          pointToLayer: function(feature, latlng) {
+          pointToLayer: function (feature, latlng) {
             return markerAlias(latlng, { icon: caveMarker });
           },
           onEachFeature: onEachFeature,

@@ -118,9 +118,9 @@
 
         <div
           class="text-center bottom-pad"
-          v-if="
+          :if="
             event.nextAlt.activation !== '1970-01-01T00:00:00.000Z' &&
-              event.nextAlt.expiry !== '1970-01-01T00:00:00.000Z'
+            event.nextAlt.expiry !== '1970-01-01T00:00:00.000Z'
           "
         >
           <div>{{ $t('events.nextCycle') }}</div>
@@ -222,7 +222,7 @@ export default {
         _showDetails: this.check,
       }));
     },
-    makeid: function() {
+    makeid: function () {
       return util.makeid();
     },
     toggleDetails(row) {

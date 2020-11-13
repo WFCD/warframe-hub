@@ -61,7 +61,7 @@ export default {
     },
   },
   methods: {
-    type: function(challenge) {
+    type: function (challenge) {
       if (challenge.mode == 'Team Annihilation') {
         return this.$t('conclave.teamannihilation');
       } else if (challenge.mode == 'Annihilation') {
@@ -76,7 +76,7 @@ export default {
         return this.$t('conclave.header');
       }
     },
-    image: function(challenge) {
+    image: function (challenge) {
       if (challenge.mode == 'Team Annihilation') {
         return teamannihilation;
       } else if (challenge.mode == 'Annihilation') {

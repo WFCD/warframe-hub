@@ -105,7 +105,7 @@
       "vue/no-use-v-if-with-v-for": "off"
     }
   },
-  "browserlist": [
+  "browserslist": [
     "> 1%",
     "last 2 versions"
   ],

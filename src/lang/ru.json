@@ -41,7 +41,7 @@
     "howto": "Как ловить",
     "owearth": "Равнины Эйдолона",
     "owvenus": "Долина Сфер",
-    "owdeimos": "Cambion Drift",
+    "owdeimos": "Камбионский Дрейф",
     "ow": "Открытые локации",
     "projects": "Проекты",
     "extras": "Ещё",
@@ -148,7 +148,7 @@
     "header": "Вылазка"
   },
   "time": {
-    "loading": "Loading...",
+    "loading": "Загрузка...",
     "day": "день",
     "night": "ночь",
     "warm": "тепло",

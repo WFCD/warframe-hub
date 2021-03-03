@@ -60,6 +60,8 @@ import Platforms from '@/components/modalDialogs/Platforms.vue';
 import Languages from '@/components/modalDialogs/Languages.vue';
 
 import themes from '@/assets/json/themes.json';
+import baseComponents from '@/assets/json/components.json';
+
 export default {
   name: 'SettingsModal',
   components: {
@@ -102,18 +104,28 @@ export default {
         const components = Object.keys(this.$store.getters.componentState).map(
           (component) => this.$store.getters.componentState[component]
         );
-        return components.filter((component) => component.display).map((component) => component.key);
+        return components
+          .filter(
+            (component) =>
+              component.display && (!baseComponents[component.key] || baseComponents[component.key].displayable)
+          )
+          .map((component) => component.key);
       },
       set: function () {},
     },
     componentStates() {
       const cs = this.$store.getters.componentState;
-      return Object.keys(cs).map((component) => {
-        return {
-          text: this.$store.getters.componentState[component].displayName,
-          value: this.$store.getters.componentState[component].key,
-        };
-      });
+      return Object.keys(cs)
+        .map((component) => {
+          if (!baseComponents[component] || !baseComponents[component].displayable) {
+            return false;
+          }
+          return {
+            text: this.$store.getters.componentState[component].displayName,
+            value: this.$store.getters.componentState[component].key,
+          };
+        })
+        .filter((c) => c);
     },
     getComponents() {
       return this.$store.getters.componentState;

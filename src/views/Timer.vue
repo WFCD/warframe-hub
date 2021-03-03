@@ -14,8 +14,11 @@
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
-        <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" />
-        <events v-if="componentState.event.display" :events="worldstate.events" />
+        <!-- <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" /> -->
+        <events
+          v-if="componentState.event.display && worldstate.events && worldstate.events.length"
+          :events="worldstate.events"
+        />
         <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
         <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
         <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
@@ -23,7 +26,7 @@
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
-        <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" />
+        <!-- <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" /> -->
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
         <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
@@ -42,9 +45,9 @@ import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
-import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
+// import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
-import KuvaPanel from '@/components/panels/KuvaPanel.vue';
+// import KuvaPanel from '@/components/panels/KuvaPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
@@ -65,9 +68,9 @@ export default {
     reset: ResetPanel,
     sortie: SortiePanel,
     arbitration: ArbitrationPanel,
-    acolytes: AcolytesPanel,
+    // acolytes: AcolytesPanel,
     fissures: FissuresPanel,
-    kuvas: KuvaPanel,
+    // kuvas: KuvaPanel,
     bounty: BountyPanel,
     invasions: InvasionsPanel,
     events: EventsPanel,

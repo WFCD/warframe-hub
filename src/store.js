@@ -165,7 +165,8 @@ const actions = {
       .concat(ws.conclaveChallenges.map((item) => item.id))
       .concat([ws.cetusCycle.id])
       .concat([ws.voidTrader.id])
-      .concat(ws.persistentEnemies.map((enemy) => enemy.pid))
+      .concat([`arbitration:${new Date(ws.arbitration.expiry).getTime()}`])
+      // .concat(ws.persistentEnemies.map((enemy) => enemy.pid))
       .concat((ws.nightwave || { activeChallenges: [] }).activeChallenges.map((challenge) => challenge.id))
       .concat([ws.sentientOutposts.id]);
     commit('notifiedIds', [newIds]);
@@ -201,7 +202,7 @@ const getters = {
 
 Vue.use(Vuex);
 const shouldPersist = (process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true';
-var tStore;
+let tStore;
 if (shouldPersist) {
   tStore = new Vuex.Store({
     state,

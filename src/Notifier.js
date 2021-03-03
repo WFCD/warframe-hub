@@ -166,12 +166,20 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
       };
+    case 'arbitration':
+      return {
+        head: `Arbitration - ${data.node}`,
+        body: {
+          body: `${data.type}`,
+          icon: wfcdLogoUrl,
+        },
+      };
     default:
       return defaultNotificationBody;
   }
 };
 
-class Notifier {
+export default class Notifier {
   constructor(store) {
     this.store = store;
     this.notifier = Vue.notification;
@@ -329,6 +337,16 @@ class Notifier {
         toNotify.push(makeNotification('outposts', ws.sentientOutposts));
       }
     }
+
+    if (ws.arbitration) {
+      const id = `arbitration:${new Date(ws.arbitration.expiry).getTime()}`;
+      const notifId = `arbitration.${ws.arbitration.enemy.toLowerCase()}.${ws.arbitration.type
+        .toLowerCase()
+        .replace(/\s/gi, '')}`;
+      if (this.isNotifiable(id, notifId)) {
+        toNotify.push(makeNotification('arbitration', ws.arbitration));
+      }
+    }
     return toNotify;
   }
 
@@ -349,5 +367,3 @@ class Notifier {
     return this.store.dispatch('updateNotifiedIds');
   }
 }
-
-export default Notifier;

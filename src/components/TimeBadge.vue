@@ -64,7 +64,7 @@ export default {
       }
       if (timeText.includes('-')) {
         this.$parent.$forceUpdate();
-        timeText = `-${timeText.replace(/\-/g, '')}`;
+        timeText = `-${timeText.replace(/-/g, '')}`;
       }
       return timeText;
     },

@@ -234,6 +234,16 @@
       "sentientOutposts": "@worldstate.sentientOutposts"
     }
   },
+  "steelPath": {
+    "display": true,
+    "displayable": true,
+    "displayName": "Steel Path",
+    "key": "event",
+    "component": "SteelPathPanel",
+    "props": {
+      "events": "@worldstate.steelPath"
+    }
+  },
   "conclave": {
     "display": false,
     "displayable": true,

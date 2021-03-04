@@ -7,7 +7,9 @@
             id="para_tooltip"
             :src="sentient"
             :name="this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn')"
-            :style="factionImg" width="20px" height="20px"
+            :style="factionImg"
+            width="20px"
+            height="20px"
           />
           {{ sentientOutposts.mission.node }}
         </span>

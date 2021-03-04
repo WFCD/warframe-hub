@@ -6,6 +6,12 @@
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
         <timer v-if="componentState.cambion.display" :time="worldstate.cambionCycle" location="Cambion" />
+        <timer
+          v-if="componentState.steelPath.display"
+          :time="worldstate.steelPath"
+          :display="worldstate.steelPath.currentReward"
+          headerPath="steelPath.header"
+        />
         <sentientOutposts
           v-if="componentState.sentientoutposts.display"
           :sentientOutposts="worldstate.sentientOutposts"

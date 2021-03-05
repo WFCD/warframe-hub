@@ -147,6 +147,9 @@
   "sortie": {
     "header": "突击"
   },
+  "steelPath": {
+    "header": "Steel Path"
+  },
   "time": {
     "loading": "加载中...",
     "day": "日",

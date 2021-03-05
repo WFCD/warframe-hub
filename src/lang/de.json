@@ -147,6 +147,9 @@
   "sortie": {
     "header": "Einsätze"
   },
+  "steelPath": {
+    "header": "Steel Path"
+  },
   "time": {
     "loading": "Loading...",
     "day": "Tag",

@@ -147,6 +147,9 @@
   "sortie": {
     "header": "Sortie"
   },
+  "steelPath": {
+    "header": "Steel Path"
+  },
   "time": {
     "loading": "Loading...",
     "day": "jour",

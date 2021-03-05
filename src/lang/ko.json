@@ -147,6 +147,9 @@
   "sortie": {
     "header": "출격"
   },
+  "steelPath": {
+    "header": "Steel Path"
+  },
   "time": {
     "loading": "불러오는 중...",
     "day": "낮",

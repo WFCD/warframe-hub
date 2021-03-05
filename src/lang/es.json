@@ -147,6 +147,9 @@
   "sortie": {
     "header": "Incursión"
   },
+  "steelPath": {
+    "header": "Steel Path"
+  },
   "time": {
     "loading": "Loading...",
     "day": "día",

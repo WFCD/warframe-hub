@@ -3,12 +3,15 @@
     <b-list-group>
       <b-list-group-item class="list-group-item-borderbottom" v-if="sentientOutposts.active">
         <span class="pull-left">
-          <HubImg :src="sentient" :name="this.$t('factions.sentient')" :style="factionImg" width="20px" height="20px" />
-          <b>{{ sentientOutposts.mission.node }}</b> - {{ sentientOutposts.mission.faction }}
-          <i id="para_tooltip" class="fa-xs fas fa-exclamation-triangle"></i>
-          <b-tooltip target="para_tooltip" placement="top" class="text-center">
-            {{ $t('sentientoutpost.warn') }}
-          </b-tooltip>
+          <HubImg
+            id="para_tooltip"
+            :src="sentient"
+            :name="this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn')"
+            :style="factionImg"
+            width="20px"
+            height="20px"
+          />
+          {{ sentientOutposts.mission.node }}
         </span>
         <TimeBadge :starttime="sentientOutposts.activation" :endtime="sentientOutposts.expiry" :interval="1000" />
       </b-list-group-item>

@@ -175,12 +175,12 @@
     "cetus.day": {
       "state": false,
       "value": "cetus.day",
-      "text": "Cetus' Day Start"
+      "text": "Cetus Day Start"
     },
     "cetus.night": {
       "state": false,
       "value": "cetus.night",
-      "text": "Cetus' Night Start"
+      "text": "Cetus Night Start"
     },
     "syndicate.ostrons": {
       "state": false,
@@ -476,6 +476,181 @@
       "state": false,
       "value": "fissures.t5.survival",
       "text": "Requiem Survival Fissure"
+    },
+    "arbitration.grineer.excavation": {
+      "state": false,
+      "value": "arbitration.grineer.excavation",
+      "text": "Grineer Excavation Arbitration"
+    },
+    "arbitration.corpus.excavation": {
+      "state": false,
+      "value": "arbitration.corpus.excavation",
+      "text": "Corpus Excavation Arbitration"
+    },
+    "arbitration.corrupted.excavation": {
+      "state": false,
+      "value": "arbitration.corrupted.excavation",
+      "text": "Corrupted Excavation Arbitration"
+    },
+    "arbitration.orokin.excavation": {
+      "state": false,
+      "value": "arbitration.orokin.excavation",
+      "text": "Orokin Excavation Arbitration"
+    },
+    "arbitration.infested.excavation": {
+      "state": false,
+      "value": "arbitration.infested.excavation",
+      "text": "Infested Excavation Arbitration"
+    },
+    "arbitration.grineer.defense": {
+      "state": false,
+      "value": "arbitration.grineer.defense",
+      "text": "Grineer Defense Arbitration"
+    },
+    "arbitration.corpus.defense": {
+      "state": false,
+      "value": "arbitration.corpus.defense",
+      "text": "Corpus Defense Arbitration"
+    },
+    "arbitration.corrupted.defense": {
+      "state": false,
+      "value": "arbitration.corrupted.defense",
+      "text": "Corrupted Defense Arbitration"
+    },
+    "arbitration.orokin.defense": {
+      "state": false,
+      "value": "arbitration.orokin.defense",
+      "text": "Orokin Defense Arbitration"
+    },
+    "arbitration.infested.defense": {
+      "state": false,
+      "value": "arbitration.infested.defense",
+      "text": "Infested Defense Arbitration"
+    },
+    "arbitration.grineer.disruption": {
+      "state": false,
+      "value": "arbitration.grineer.disruption",
+      "text": "Grineer Disruption Arbitration"
+    },
+    "arbitration.corpus.disruption": {
+      "state": false,
+      "value": "arbitration.corpus.disruption",
+      "text": "Corpus Disruption Arbitration"
+    },
+    "arbitration.corrupted.disruption": {
+      "state": false,
+      "value": "arbitration.corrupted.disruption",
+      "text": "Corrupted Disruption Arbitration"
+    },
+    "arbitration.orokin.disruption": {
+      "state": false,
+      "value": "arbitration.orokin.disruption",
+      "text": "Orokin Disruption Arbitration"
+    },
+    "arbitration.infested.disruption": {
+      "state": false,
+      "value": "arbitration.infested.disruption",
+      "text": "Infested Disruption Arbitration"
+    },
+    "arbitration.grineer.survival": {
+      "state": false,
+      "value": "arbitration.grineer.survival",
+      "text": "Grineer Survival Arbitration"
+    },
+    "arbitration.corpus.survival": {
+      "state": false,
+      "value": "arbitration.corpus.survival",
+      "text": "Corpus Survival Arbitration"
+    },
+    "arbitration.corrupted.survival": {
+      "state": false,
+      "value": "arbitration.corrupted.survival",
+      "text": "Corrupted Survival Arbitration"
+    },
+    "arbitration.orokin.survival": {
+      "state": false,
+      "value": "arbitration.orokin.survival",
+      "text": "Orokin Survival Arbitration"
+    },
+    "arbitration.infested.survival": {
+      "state": false,
+      "value": "arbitration.infested.survival",
+      "text": "Infested Survival Arbitration"
+    },
+    "arbitration.grineer.defection": {
+      "state": false,
+      "value": "arbitration.grineer.defection",
+      "text": "Grineer Defection Arbitration"
+    },
+    "arbitration.corpus.defection": {
+      "state": false,
+      "value": "arbitration.corpus.defection",
+      "text": "Corpus Defection Arbitration"
+    },
+    "arbitration.corrupted.defection": {
+      "state": false,
+      "value": "arbitration.corrupted.defection",
+      "text": "Corrupted Defection Arbitration"
+    },
+    "arbitration.orokin.defection": {
+      "state": false,
+      "value": "arbitration.orokin.defection",
+      "text": "Orokin Defection Arbitration"
+    },
+    "arbitration.infested.defection": {
+      "state": false,
+      "value": "arbitration.infested.defection",
+      "text": "Infested Defection Arbitration"
+    },
+    "arbitration.grineer.infestedsalvage": {
+      "state": false,
+      "value": "arbitration.grineer.infestedsalvage",
+      "text": "Grineer Infested Salvage Arbitration"
+    },
+    "arbitration.corpus.infestedsalvage": {
+      "state": false,
+      "value": "arbitration.corpus.infestedsalvage",
+      "text": "Corpus Infested Salvage Arbitration"
+    },
+    "arbitration.corrupted.infestedsalvage": {
+      "state": false,
+      "value": "arbitration.corrupted.infestedsalvage",
+      "text": "Corrupted Infested Salvage Arbitration"
+    },
+    "arbitration.orokin.infestedsalvage": {
+      "state": false,
+      "value": "arbitration.orokin.infestedsalvage",
+      "text": "Orokin Infested Salvage Arbitration"
+    },
+    "arbitration.infested.infestedsalvage": {
+      "state": false,
+      "value": "arbitration.infested.infestedsalvage",
+      "text": "Infested Infested Salvage Arbitration"
+    },
+    "arbitration.grineer.interception": {
+      "state": false,
+      "value": "arbitration.grineer.interception",
+      "text": "Grineer Interception Arbitration"
+    },
+    "arbitration.corpus.interception": {
+      "state": false,
+      "value": "arbitration.corpus.interception",
+      "text": "Corpus Interception Arbitration"
+    },
+    "arbitration.corrupted.interception": {
+      "state": false,
+      "value": "arbitration.corrupted.interception",
+      "text": "Corrupted Interception Arbitration"
+    },
+    "arbitration.orokin.interception": {
+      "state": false,
+      "value": "arbitration.orokin.interception",
+      "text": "Orokin Interception Arbitration"
+    },
+    "arbitration.infested.interception": {
+      "state": false,
+      "value": "arbitration.infested.interception",
+      "text": "Infested Interception Arbitration"
     }
   }
 }

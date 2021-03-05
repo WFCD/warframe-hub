@@ -108,21 +108,12 @@
           </b-badge>
         </div>
 
-        <div
-          class="text-center bottom-pad"
-          v-if="event.altActivation !== '1970-01-01T00:00:00.000Z' && event.altExpiry !== '1970-01-01T00:00:00.000Z'"
-        >
+        <div class="text-center bottom-pad" v-if="event.altActivation !== epoch && event.altExpiry !== epoch">
           <div>{{ $t('events.currentCycle') }}</div>
           <TimeBadge :starttime="event.altActivation" :endtime="event.altExpiry" :interval="1000" :pullright="false" />
         </div>
 
-        <div
-          class="text-center bottom-pad"
-          :if="
-            event.nextAlt.activation !== '1970-01-01T00:00:00.000Z' &&
-            event.nextAlt.expiry !== '1970-01-01T00:00:00.000Z'
-          "
-        >
+        <div class="text-center bottom-pad" v-if="event.nextAlt.activation !== epoch && event.nextAlt.expiry !== epoch">
           <div>{{ $t('events.nextCycle') }}</div>
           <TimeBadge
             :starttime="event.nextAlt.activation"
@@ -147,6 +138,7 @@ import standing from '@/assets/img/general/standing.svg';
 
 import util from '@/utilities';
 
+const epoch = '1970-01-01T00:00:00.000Z';
 const reversedHealthEvents = ['Thermia Fractures'];
 
 export default {
@@ -170,6 +162,7 @@ export default {
         },
       ],
       standing: standing,
+      epoch: epoch,
     };
   },
   computed: {

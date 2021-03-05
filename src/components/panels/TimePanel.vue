@@ -1,5 +1,5 @@
 <template>
-  <HubPanelWrap :title="headertext" class="time" :class="[location.toLowerCase()]">
+  <HubPanelWrap :title="headertext" class="time" :class="[(location || 'sol').toLowerCase()]">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <div class="row">
@@ -16,12 +16,14 @@
               }"
             >
               <span style="text-transform: capitalize">{{
-                this.$t(`time.${(time.state || time.active).toLowerCase()}`)
+                time.state || time.active
+                  ? this.$t(`time.${(time.state || time.active).toLowerCase()}`)
+                  : display
               }}</span>
             </span>
           </div>
           <div class="col-md-3">
-            <TimeBadge :starttime="now" :endtime="time.expiry" :interval="1000" />
+            <TimeBadge :starttime="time.activation || now" :endtime="time.expiry" :interval="1000" />
           </div>
         </div>
       </b-list-group-item>
@@ -35,14 +37,16 @@ import dayjs from 'dayjs';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
-  props: ['time', 'location'],
+  props: ['time', 'location', 'display', 'headerPath'],
   name: 'TimePanel',
   computed: {
     now() {
       return dayjs().toISOString();
     },
     headertext() {
-      return `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
+      return this.$props.headerPath
+        ?  this.$t(this.$props.headerPath)
+        : `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
     },
   },
   components: {

@@ -1,6 +1,7 @@
 {
   "event": {
     "display": true,
+    "displayable": true,
     "displayName": "Events",
     "key": "event",
     "component": "EventsPanel",
@@ -9,7 +10,8 @@
     }
   },
   "acolytes": {
-    "display": true,
+    "display": false,
+    "displayable": false,
     "displayName": "Acolytes",
     "key": "acolytes",
     "component": "AcolytesPanel",
@@ -19,6 +21,7 @@
   },
   "cetus": {
     "display": true,
+    "displayable": true,
     "displayName": "Cetus Cycle",
     "key": "cetus",
     "component": "TimePanel",
@@ -29,6 +32,7 @@
   },
   "earth": {
     "display": true,
+    "displayable": true,
     "displayName": "Earth Cycle",
     "key": "earth",
     "component": "TimePanel",
@@ -39,6 +43,7 @@
   },
   "vallis": {
     "display": true,
+    "displayable": true,
     "displayName": "Vallis Cycle",
     "key": "vallis",
     "component": "TimePanel",
@@ -49,6 +54,7 @@
   },
   "cambion": {
     "display": true,
+    "displayable": true,
     "displayName": "Cambion Drift Cycle",
     "key": "cambion",
     "component": "TimePanel",
@@ -59,6 +65,7 @@
   },
   "bounties": {
     "display": true,
+    "displayable": true,
     "displayName": "Bounties Timer",
     "key": "bounties",
     "component": "BountyPanel",
@@ -69,6 +76,7 @@
   },
   "solaris-bounties": {
     "display": true,
+    "displayable": true,
     "displayName": "Solaris Bounties Timer",
     "key": "solaris-bounties",
     "component": "BountyPanel",
@@ -79,6 +87,7 @@
   },
   "entrati-bounties": {
     "display": true,
+    "displayable": true,
     "displayName": "Entrati Bounties Timer",
     "key": "entrati-bounties",
     "component": "BountyPanel",
@@ -89,6 +98,7 @@
   },
   "alerts": {
     "display": true,
+    "displayable": true,
     "displayName": "Alerts",
     "key": "alerts",
     "component": "AlertPanel",
@@ -98,6 +108,7 @@
   },
   "news": {
     "display": true,
+    "displayable": true,
     "displayName": "News",
     "key": "news",
     "component": "NewsPanel",
@@ -108,6 +119,7 @@
   },
   "invasions": {
     "display": true,
+    "displayable": true,
     "displayName": "Invasions",
     "key": "invasions",
     "component": "InvasionsPanel",
@@ -118,6 +130,7 @@
   },
   "reset": {
     "display": true,
+    "displayable": true,
     "displayName": "Reset Timer",
     "key": "reset",
     "component": "ResetPanel",
@@ -125,6 +138,7 @@
   },
   "sortie": {
     "display": true,
+    "displayable": true,
     "displayName": "Sortie",
     "key": "sortie",
     "component": "SortiePanel",
@@ -134,6 +148,7 @@
   },
   "arbitration": {
     "display": true,
+    "displayable": true,
     "displayName": "Arbitration",
     "key": "arbitration",
     "component": "ArbitrationPanel",
@@ -143,6 +158,7 @@
   },
   "fissures": {
     "display": true,
+    "displayable": true,
     "displayName": "Fissures",
     "key": "fissures",
     "component": "FissuresPanel",
@@ -151,7 +167,8 @@
     }
   },
   "kuvas": {
-    "display": true,
+    "display": false,
+    "displayable": false,
     "displayName": "Kuva Siphons",
     "key": "kuvas",
     "component": "KuvaPanel",
@@ -161,6 +178,7 @@
   },
   "baro": {
     "display": true,
+    "displayable": true,
     "displayName": "Void Trader",
     "key": "baro",
     "component": "VoidTraderPanel",
@@ -170,6 +188,7 @@
   },
   "darvo": {
     "display": true,
+    "displayable": true,
     "displayName": "Darvo Deals",
     "key": "darvo",
     "component": "DarvoDealsPanel",
@@ -179,6 +198,7 @@
   },
   "deals": {
     "display": false,
+    "displayable": true,
     "displayName": "Sales",
     "key": "deals",
     "component": "SalesPanel",
@@ -188,6 +208,7 @@
   },
   "nightwave": {
     "display": true,
+    "displayable": true,
     "displayName": "Nightwave",
     "key": "nightwave",
     "component": "NightwavePanel",
@@ -197,6 +218,7 @@
   },
   "construction": {
     "display": true,
+    "displayable": true,
     "displayName": "Construction",
     "key": "construction",
     "props": {
@@ -205,14 +227,26 @@
   },
   "sentientoutposts": {
     "display": true,
+    "displayable": true,
     "displayName": "Sentient Outposts",
     "key": "sentientoutposts",
     "props": {
       "sentientOutposts": "@worldstate.sentientOutposts"
     }
   },
+  "steelPath": {
+    "display": true,
+    "displayable": true,
+    "displayName": "Steel Path",
+    "key": "event",
+    "component": "SteelPathPanel",
+    "props": {
+      "events": "@worldstate.steelPath"
+    }
+  },
   "conclave": {
     "display": false,
+    "displayable": true,
     "displayName": "Conclave",
     "key": "conclave",
     "component": "ConclavePanel",

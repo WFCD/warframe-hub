@@ -16,9 +16,7 @@
               }"
             >
               <span style="text-transform: capitalize">{{
-                time.state || time.active
-                  ? this.$t(`time.${(time.state || time.active).toLowerCase()}`)
-                  : display
+                time.state || time.active ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
               }}</span>
             </span>
           </div>
@@ -45,7 +43,7 @@ export default {
     },
     headertext() {
       return this.$props.headerPath
-        ?  this.$t(this.$props.headerPath)
+        ? this.$t(this.$props.headerPath)
         : `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
     },
   },

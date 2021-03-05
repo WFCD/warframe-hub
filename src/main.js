@@ -12,7 +12,7 @@ import * as Integrations from '@sentry/integrations';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
-if (process.env.NODE_ENV == 'production' && process.env.VUE_APP_DSN) {
+if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   Sentry.init({
     dsn: process.env.VUE_APP_DSN,
     integrations: [new Integrations.Vue({ Vue, attachProps: true })],
@@ -48,8 +48,20 @@ import Notifications from 'vue-notification';
 Vue.use(Notifications);
 
 /* Analytics */
-import VueAnalytics from 'vue-analytics';
-Vue.use(VueAnalytics, { id: 'UA-47080716-6', set: [{ field: 'anonymizeIp', value: true }] });
+import VueMatomo from 'vue-matomo';
+if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_ANALYICS_URL) {
+  Vue.use(VueMatomo, {
+    host: process.env.VUE_APP_ANALYICS_URL,
+    siteId: process.env.VUE_APP_ANALYICS_SITE,
+    router: router,
+    enableLinkTracking: true,
+    requireConsent: true,
+    disableCookies: true,
+    enableHeartBeatTimer: true,
+    debug: process.env.NODE_ENV !== 'production',
+    domains: 'hub.warframestat.us',
+  });
+}
 
 /* Leaflet */
 import Vue2Leaflet, { L } from 'vue2-leaflet';

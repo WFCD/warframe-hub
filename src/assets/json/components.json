@@ -238,7 +238,7 @@
     "display": true,
     "displayable": true,
     "displayName": "Steel Path",
-    "key": "event",
+    "key": "steelpath",
     "component": "SteelPathPanel",
     "props": {
       "events": "@worldstate.steelPath"

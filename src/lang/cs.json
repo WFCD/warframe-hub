@@ -64,20 +64,20 @@
   "darvo": {
     "header": "Darvovy Nabídky",
     "off": "% Vypnuto",
-    "left": "% Left",
-    "leftL": "Left"
+    "left": "% Odešel",
+    "leftL": "Odešel"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "header": "Události",
+    "standStages": "Stupně Standingu",
+    "remaining": "{perc}% Zbývá",
+    "completed": "{perc} Dokončeno",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Odměny z Události:",
+      "label": "Odměny"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
+    "completionBonuses": "Bonusy za Dokončení:",
+    "currentCycle": "Současný Cyklus:",
     "nextCycle": "Next Cycle:"
   },
   "factions": {

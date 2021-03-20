@@ -78,71 +78,71 @@
     },
     "completionBonuses": "Bonusy za Dokončení:",
     "currentCycle": "Současný Cyklus:",
-    "nextCycle": "Next Cycle:"
+    "nextCycle": "Následující Cyklus:"
   },
   "factions": {
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Fissury"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Invaze",
+    "eta": "Končí v:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
+    "header": "Kuva Siphony",
     "siphon": "Kuva Siphon"
   },
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Earth",
+    "earth": "Země",
     "cambion": "Cambion"
   },
   "news": {
-    "header": "News",
-    "past": "ago",
-    "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "header": "Novinky",
+    "past": "před",
+    "future": "ve",
+    "live": "Živě",
+    "autoprogress": "Automatický-postup"
   },
   "nightwave": {
     "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "weekly": "Týdenní",
+    "elite": "Elite Týdenní",
+    "daily": "Denní"
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
+    "weekly": "Týdenní",
+    "teamannihilation": "Týmové Annihilation",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "Obsazení Cephalonu"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - Vzestup a Lesk! Čas lovu zkončil!",
+      "nightheader": "Cetus - Čas lovu!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Obnovení denního časovače odměn",
+    "label": "Časovač odměn obnoven v:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "Slevy a Doporučené nabídky",
+    "item": "Předmět"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "tooltip1": "Tato surovina je v aktivním vývoji kvůli poslední aktualizaci.",
+    "tooltip2": "Odhadovaný cyklus je 30 minut aktivního času na každém uzlu.",
+    "header": "Anomálie",
+    "outpostsL": "Základny",
+    "none": "Žádné Aktuální Anomálie",
+    "warn": "Nezapomeňte na své Paracesisy!",
+    "prediction": "Předpověď"
   },
   "sortie": {
     "header": "Sortie"
@@ -162,9 +162,9 @@
     "startL": "Začíná v:",
     "endL": "Končí v:",
     "ongoingL": "Probíhá:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "expiredL": "Expirováno",
+    "depart": "Ocestovat",
+    "arrive": "Objeví za"
   },
   "timer": {
     "ostron": "Ostron",
@@ -173,8 +173,8 @@
     "entrati": "Entrati"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Obchodník Voidu",
+    "inventory": "Inventář",
+    "item": "Předmět"
   }
 }

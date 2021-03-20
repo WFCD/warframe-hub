@@ -1,69 +1,69 @@
 {
   "acolytes": {
     "header": "Acolyti",
-    "discovered": "Objeveni",
-    "hiding": "Skryti",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "discovered": "Objeven",
+    "hiding": "Skrytý",
+    "na": "Nenalezeni",
+    "health": "Zbývacíjí Zdraví"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "header": "Upozornění",
+    "archwing": "Archwing je Vyžadován pro Misi",
+    "nightmare": "Nightmare Mise",
+    "level": "Úroveň:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitrace"
   },
   "bounty": {
     "standing": "Standing",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "header": "{type} Cyklus Bounty",
+    "type": "Typ",
+    "lrange": "Rozsah Úrovně",
+    "rewards": "Odměny",
+    "bounties": "Bounty",
+    "expires": "Bounties vyprší v:",
+    "autoExpand": "Vždy rozbalit odměny"
   },
   "nav": {
-    "info": "Information",
+    "info": "Informace",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
+    "settings": "Nastavení",
+    "drops": "Dropy",
     "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
+    "docs": "API dokumentace",
+    "old": "Starý Hub",
     "status": "Status",
     "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "synth": "Targety Synthesis",
+    "map": "Mapa",
+    "fish": "Údaje o rybaření",
+    "howto": "Jak rybařit",
+    "owearth": "Pláně",
     "owvenus": "Orb Vallis",
     "owdeimos": "Cambion Drift",
-    "ow": "Open World",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "ow": "Otevřený Svět",
+    "projects": "Projekty",
+    "extras": "Doplňky",
+    "timers": "Časovače",
+    "nodata": "Žádna Data",
+    "nodatatxt": "Žádný {text} Přítomen"
   },
   "construction": {
     "fomorian": "Fomorian",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Neznámý",
+    "header": "Průběh Konstrukce"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "Platina",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Dukáty",
+    "cred": "Kredity"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
+    "header": "Darvovy Nabídky",
+    "off": "% Vypnuto",
     "left": "% Left",
     "leftL": "Left"
   },

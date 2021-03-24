@@ -9,7 +9,7 @@
         <timer
           v-if="componentState.steelPath.display"
           :time="worldstate.steelPath"
-          :display="worldstate.steelPath.currentReward"
+          :display="`${worldstate.steelPath.currentReward.name}: ${worldstate.steelPath.currentReward.cost}`"
           headerPath="steelPath.header"
         />
         <sentientOutposts

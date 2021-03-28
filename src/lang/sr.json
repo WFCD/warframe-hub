@@ -1,0 +1,180 @@
+{
+  "acolytes": {
+    "header": "Acolytes",
+    "discovered": "Discovered",
+    "hiding": "Hiding",
+    "na": "Nowhere",
+    "health": "Health Remaining"
+  },
+  "alerts": {
+    "header": "Alerts",
+    "archwing": "Archwing Required for Mission",
+    "nightmare": "Nightmare Mission",
+    "level": "Level:"
+  },
+  "arbitration": {
+    "header": "Arbitration"
+  },
+  "bounty": {
+    "standing": "Standing",
+    "header": "{type} Bounty Cycle",
+    "type": "Type",
+    "lrange": "Level Range",
+    "rewards": "Rewards",
+    "bounties": "Bounties",
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
+  },
+  "nav": {
+    "info": "Information",
+    "discord": "Discord",
+    "settings": "Settings",
+    "drops": "Drops",
+    "genesis": "Genesis",
+    "docs": "API Docs",
+    "old": "Old Hub",
+    "status": "Status",
+    "riven": "Riven Data (Alpha)",
+    "synth": "Synthesis Targets",
+    "map": "Map",
+    "fish": "Fishing Data",
+    "howto": "How to Fish",
+    "owearth": "Plains",
+    "owvenus": "Orb Vallis",
+    "owdeimos": "Cambion Drift",
+    "ow": "Open World",
+    "projects": "Projects",
+    "extras": "Extras",
+    "timers": "Timers",
+    "nodata": "No Data",
+    "nodatatxt": "No {text} Present"
+  },
+  "construction": {
+    "fomorian": "Fomorian",
+    "razorback": "Razorback",
+    "unk": "Unknown",
+    "header": "Construction Progress"
+  },
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr",
+    "dabloons": "Ducats",
+    "cred": "Credits"
+  },
+  "darvo": {
+    "header": "Darvo's Deals",
+    "off": "% Off",
+    "left": "% Left",
+    "leftL": "Left"
+  },
+  "events": {
+    "header": "Events",
+    "standStages": "Standing Stages",
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
+  },
+  "factions": {
+    "sentient": "Sentient"
+  },
+  "fissures": {
+    "header": "Fissures"
+  },
+  "invasions": {
+    "header": "Invasions",
+    "eta": "Ends in:"
+  },
+  "kuva": {
+    "header": "Kuva Siphons",
+    "siphon": "Kuva Siphon"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Earth",
+    "cambion": "Cambion"
+  },
+  "news": {
+    "header": "News",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
+    "autoprogress": "Auto-progress"
+  },
+  "nightwave": {
+    "header": "Nightwave",
+    "weekly": "Weekly",
+    "elite": "Elite Weekly",
+    "daily": "Daily"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Weekly",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
+      "nightheader": "Cetus - Hunting Time!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reward Timer Reset",
+    "label": "Reward Timer Reset in:"
+  },
+  "sales": {
+    "header": "Sales and Featured Deals",
+    "item": "Item"
+  },
+  "sentientoutpost": {
+    "tooltip1": "This component is in active development because of the recent update.",
+    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "header": "Anomalies",
+    "outpostsL": "Outposts",
+    "none": "No Current Anomalies",
+    "warn": "Don't forget your Paracesis!",
+    "prediction": "Prediction"
+  },
+  "sortie": {
+    "header": "Sortie"
+  },
+  "steelPath": {
+    "header": "Steel Path"
+  },
+  "time": {
+    "loading": "Loading...",
+    "day": "day",
+    "night": "night",
+    "warm": "warm",
+    "cold": "cold",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timer",
+    "startL": "Starts in:",
+    "endL": "Ends in:",
+    "ongoingL": "Ongoing for:",
+    "expiredL": "Expired",
+    "depart": "Departs",
+    "arrive": "Arrives at"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Void Trader",
+    "inventory": "Inventory",
+    "item": "Item"
+  }
+}

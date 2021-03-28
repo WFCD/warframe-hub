@@ -1,4 +1,8 @@
 {
+  "cs": {
+    "display": "Čeština",
+    "key": "cs"
+  },
   "en": {
     "display": "English",
     "key": "en"
@@ -30,6 +34,10 @@
   "pt": {
     "display": "Português",
     "key": "pt"
+  },
+  "sr": {
+    "display": "Srpski",
+    "key": "sr"
   },
   "ru": {
     "display": "Pусский",

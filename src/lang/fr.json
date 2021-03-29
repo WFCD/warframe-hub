@@ -17,7 +17,7 @@
   },
   "bounty": {
     "standing": "Influence",
-    "header": "{type} Bounty Cycle",
+    "header": "{type} Cycle de primes",
     "type": "Type",
     "lrange": "Gamme des Niveaux",
     "rewards": "Récompenses",
@@ -29,7 +29,7 @@
     "info": "Information",
     "discord": "Discord",
     "settings": "Paramètres",
-    "drops": "Drops",
+    "drops": "Butins",
     "genesis": "Genesis",
     "docs": "Docs API",
     "old": "Ancien Hub",
@@ -41,7 +41,7 @@
     "howto": "Comment pêcher",
     "owearth": "Plaines",
     "owvenus": "Vallée Orbis",
-    "owdeimos": "Cambion Drift",
+    "owdeimos": "Drift de Cambion",
     "ow": "Monde Ouvert",
     "projects": "Projets",
     "extras": "Extras",
@@ -128,7 +128,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
+    "header": "Réinitialisation de la minuterie de Récompense Quotidienne",
     "label": "Remise à zéro de la minuterie de récompense dans:"
   },
   "sales": {
@@ -148,7 +148,7 @@
     "header": "Sortie"
   },
   "steelPath": {
-    "header": "Steel Path"
+    "header": "Chemin d'acier"
   },
   "time": {
     "loading": "Chargement en cours...",
@@ -158,7 +158,7 @@
     "cold": "froid",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timer",
+    "Timer": "Cycle de minuterie",
     "startL": "Commence dans :",
     "endL": "Se termine dans:",
     "ongoingL": "En cours pour :",

@@ -129,15 +129,15 @@
   },
   "reset": {
     "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "label": "Remise à zéro de la minuterie de récompense dans:"
   },
   "sales": {
     "header": "Ventes et Offres en Vedette",
     "item": "Objet"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "tooltip1": "Ce composant est en cours de développement en raison de la mise à jour récente.",
+    "tooltip2": "Le cycle estimé est de 30 minutes de temps actif sur chaque noeud.",
     "header": "Anomalies",
     "outpostsL": "Avant-poste",
     "none": "Actuellement Aucune Anomalie",
@@ -151,7 +151,7 @@
     "header": "Steel Path"
   },
   "time": {
-    "loading": "Loading...",
+    "loading": "Chargement en cours...",
     "day": "jour",
     "night": "nuit",
     "warm": "chaud",
@@ -163,14 +163,14 @@
     "endL": "Se termine dans:",
     "ongoingL": "En cours pour :",
     "expiredL": "Expiré",
-    "depart": "Departs",
+    "depart": "Départs",
     "arrive": "Arrivée prévue à"
   },
   "timer": {
     "ostron": "Ostron",
     "solaris": "Union Solaris",
     "solaris-united": "Union Solaris",
-    "entrati": "Entrati"
+    "entrati": "Entrez"
   },
   "vt": {
     "header": "Marchand du Néant",

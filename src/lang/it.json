@@ -1,15 +1,15 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Accoliti",
+    "discovered": "Scoperti",
+    "hiding": "Nascosti",
+    "na": "Da nessuna parte",
+    "health": "Salute Rimanente"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
+    "header": "Avvisi",
+    "archwing": "Archwing Necessario per la Missione",
+    "nightmare": "Missione da Incubo",
     "level": "Level:"
   },
   "arbitration": {

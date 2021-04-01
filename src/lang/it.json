@@ -10,70 +10,70 @@
     "header": "Avvisi",
     "archwing": "Archwing Necessario per la Missione",
     "nightmare": "Missione da Incubo",
-    "level": "Level:"
+    "level": "Livello:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitraggio"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "standing": "Classifica",
+    "header": "Ciclo Taglia {type}",
+    "type": "Tipo",
+    "lrange": "Intervallo del Livello",
+    "rewards": "Premi",
+    "bounties": "Taglie",
+    "expires": "Le taglie scadono in:",
+    "autoExpand": "Espandi sempre i premi"
   },
   "nav": {
-    "info": "Information",
+    "info": "Informazioni",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
-    "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "settings": "Impostazioni",
+    "drops": "Loot",
+    "genesis": "Genesi",
+    "docs": "Documenti API",
+    "old": "Vecchio Hub",
+    "status": "Stato",
+    "riven": "Dati di Riven (Alfa)",
+    "synth": "Obiettivi di Sintesi",
+    "map": "Mappa",
+    "fish": "Dati Pesca",
+    "howto": "Come Pescare",
+    "owearth": "Pianure",
     "owvenus": "Orb Vallis",
     "owdeimos": "Cambion Drift",
     "ow": "Open World",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "projects": "Progetti",
+    "extras": "Extra",
+    "timers": "Timer",
+    "nodata": "Nessun Dato",
+    "nodatatxt": "Nessun {text} Presente"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomori",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Sconosciuta",
+    "header": "Progresso di Costruzione"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "Platino",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Ducati",
+    "cred": "Crediti"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Affari di Darvo",
+    "off": "% di sconto",
+    "left": "% Rimanente",
+    "leftL": "Rimanente"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "header": "Eventi",
+    "standStages": "Fasi In Piedi",
+    "remaining": "{perc}% Rimanente",
+    "completed": "{perc}% Completato",
     "rewards": {
-      "header": "Event Rewards:",
+      "header": "Premi Evento:",
       "label": "Rewards"
     },
     "completionBonuses": "Completion Bonuses:",
@@ -138,11 +138,11 @@
   "sentientoutpost": {
     "tooltip1": "This component is in active development because of the recent update.",
     "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "header": "Anomalie",
+    "outpostsL": "Avamposti",
+    "none": "Nessun'Anomalia Corrente",
+    "warn": "Non dimenticare la tua Paracesi!",
+    "prediction": "Predizione"
   },
   "sortie": {
     "header": "Sortie"
@@ -151,20 +151,20 @@
     "header": "Steel Path"
   },
   "time": {
-    "loading": "Loading...",
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "loading": "Caricamento...",
+    "day": "giorno",
+    "night": "notte",
+    "warm": "caldo",
+    "cold": "freddo",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "Timer": "Ciclo del Timer",
+    "startL": "Inizia in:",
+    "endL": "Finisce in:",
+    "ongoingL": "In corso per:",
+    "expiredL": "Scaduto",
+    "depart": "Partenza",
+    "arrive": "Arriva a"
   },
   "timer": {
     "ostron": "Ostron",
@@ -174,7 +174,7 @@
   },
   "vt": {
     "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "inventory": "Inventario",
+    "item": "Oggetto"
   }
 }

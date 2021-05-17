@@ -17,7 +17,7 @@
   },
   "bounty": {
     "standing": "Influence",
-    "header": "{type} Bounty Cycle",
+    "header": "{type} Cycle de primes",
     "type": "Type",
     "lrange": "Gamme des Niveaux",
     "rewards": "Récompenses",
@@ -29,7 +29,7 @@
     "info": "Information",
     "discord": "Discord",
     "settings": "Paramètres",
-    "drops": "Drops",
+    "drops": "Butins",
     "genesis": "Genesis",
     "docs": "Docs API",
     "old": "Ancien Hub",
@@ -41,7 +41,7 @@
     "howto": "Comment pêcher",
     "owearth": "Plaines",
     "owvenus": "Vallée Orbis",
-    "owdeimos": "Cambion Drift",
+    "owdeimos": "Drift de Cambion",
     "ow": "Monde Ouvert",
     "projects": "Projets",
     "extras": "Extras",
@@ -128,16 +128,16 @@
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Réinitialisation de la minuterie de Récompense Quotidienne",
+    "label": "Remise à zéro de la minuterie de récompense dans:"
   },
   "sales": {
     "header": "Ventes et Offres en Vedette",
     "item": "Objet"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "tooltip1": "Ce composant est en cours de développement en raison de la mise à jour récente.",
+    "tooltip2": "Le cycle estimé est de 30 minutes de temps actif sur chaque noeud.",
     "header": "Anomalies",
     "outpostsL": "Avant-poste",
     "none": "Actuellement Aucune Anomalie",
@@ -148,29 +148,29 @@
     "header": "Sortie"
   },
   "steelPath": {
-    "header": "Steel Path"
+    "header": "Chemin d'acier"
   },
   "time": {
-    "loading": "Loading...",
+    "loading": "Chargement en cours...",
     "day": "jour",
     "night": "nuit",
     "warm": "chaud",
     "cold": "froid",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timer",
+    "Timer": "Cycle de minuterie",
     "startL": "Commence dans :",
     "endL": "Se termine dans:",
     "ongoingL": "En cours pour :",
     "expiredL": "Expiré",
-    "depart": "Departs",
+    "depart": "Départs",
     "arrive": "Arrivée prévue à"
   },
   "timer": {
     "ostron": "Ostron",
     "solaris": "Union Solaris",
     "solaris-united": "Union Solaris",
-    "entrati": "Entrati"
+    "entrati": "Entrez"
   },
   "vt": {
     "header": "Marchand du Néant",

@@ -1,180 +1,180 @@
 {
   "acolytes": {
-    "header": "Acolytes",
-    "discovered": "Discovered",
-    "hiding": "Hiding",
-    "na": "Nowhere",
-    "health": "Health Remaining"
+    "header": "Accoliti",
+    "discovered": "Scoperti",
+    "hiding": "Nascosti",
+    "na": "Da nessuna parte",
+    "health": "Salute Rimanente"
   },
   "alerts": {
-    "header": "Alerts",
-    "archwing": "Archwing Required for Mission",
-    "nightmare": "Nightmare Mission",
-    "level": "Level:"
+    "header": "Avvisi",
+    "archwing": "Archwing Necessario per la Missione",
+    "nightmare": "Missione da Incubo",
+    "level": "Livello:"
   },
   "arbitration": {
-    "header": "Arbitration"
+    "header": "Arbitraggio"
   },
   "bounty": {
-    "standing": "Standing",
-    "header": "{type} Bounty Cycle",
-    "type": "Type",
-    "lrange": "Level Range",
-    "rewards": "Rewards",
-    "bounties": "Bounties",
-    "expires": "Bounties expire in:",
-    "autoExpand": "Always expand rewards"
+    "standing": "Classifica",
+    "header": "Ciclo Taglia {type}",
+    "type": "Tipo",
+    "lrange": "Intervallo del Livello",
+    "rewards": "Premi",
+    "bounties": "Taglie",
+    "expires": "Le taglie scadono in:",
+    "autoExpand": "Espandi sempre i premi"
   },
   "nav": {
-    "info": "Information",
+    "info": "Informazioni",
     "discord": "Discord",
-    "settings": "Settings",
-    "drops": "Drops",
-    "genesis": "Genesis",
-    "docs": "API Docs",
-    "old": "Old Hub",
-    "status": "Status",
-    "riven": "Riven Data (Alpha)",
-    "synth": "Synthesis Targets",
-    "map": "Map",
-    "fish": "Fishing Data",
-    "howto": "How to Fish",
-    "owearth": "Plains",
+    "settings": "Impostazioni",
+    "drops": "Loot",
+    "genesis": "Genesi",
+    "docs": "Documenti API",
+    "old": "Vecchio Hub",
+    "status": "Stato",
+    "riven": "Dati di Riven (Alfa)",
+    "synth": "Obiettivi di Sintesi",
+    "map": "Mappa",
+    "fish": "Dati Pesca",
+    "howto": "Come Pescare",
+    "owearth": "Pianure",
     "owvenus": "Orb Vallis",
     "owdeimos": "Cambion Drift",
     "ow": "Open World",
-    "projects": "Projects",
-    "extras": "Extras",
-    "timers": "Timers",
-    "nodata": "No Data",
-    "nodatatxt": "No {text} Present"
+    "projects": "Progetti",
+    "extras": "Extra",
+    "timers": "Timer",
+    "nodata": "Nessun Dato",
+    "nodatatxt": "Nessun {text} Presente"
   },
   "construction": {
-    "fomorian": "Fomorian",
+    "fomorian": "Fomori",
     "razorback": "Razorback",
-    "unk": "Unknown",
-    "header": "Construction Progress"
+    "unk": "Sconosciuta",
+    "header": "Progresso di Costruzione"
   },
   "currency": {
-    "plat": "Platinum",
+    "plat": "Platino",
     "credAbbr": "cr",
-    "dabloons": "Ducats",
-    "cred": "Credits"
+    "dabloons": "Ducati",
+    "cred": "Crediti"
   },
   "darvo": {
-    "header": "Darvo's Deals",
-    "off": "% Off",
-    "left": "% Left",
-    "leftL": "Left"
+    "header": "Affari di Darvo",
+    "off": "% di sconto",
+    "left": "% Rimanente",
+    "leftL": "Rimanente"
   },
   "events": {
-    "header": "Events",
-    "standStages": "Standing Stages",
-    "remaining": "{perc}% Remaining",
-    "completed": "{perc}% Completed",
+    "header": "Eventi",
+    "standStages": "Fasi In Piedi",
+    "remaining": "{perc}% Rimanente",
+    "completed": "{perc}% Completato",
     "rewards": {
-      "header": "Event Rewards:",
-      "label": "Rewards"
+      "header": "Premi Evento:",
+      "label": "Premi"
     },
-    "completionBonuses": "Completion Bonuses:",
-    "currentCycle": "Current Cycle:",
-    "nextCycle": "Next Cycle:"
+    "completionBonuses": "Bonus di Completamento:",
+    "currentCycle": "Ciclo Corrente:",
+    "nextCycle": "Prossimo Ciclo:"
   },
   "factions": {
-    "sentient": "Sentient"
+    "sentient": "Senziente"
   },
   "fissures": {
-    "header": "Fissures"
+    "header": "Fessure"
   },
   "invasions": {
-    "header": "Invasions",
-    "eta": "Ends in:"
+    "header": "Invasioni",
+    "eta": "Finisce in:"
   },
   "kuva": {
-    "header": "Kuva Siphons",
-    "siphon": "Kuva Siphon"
+    "header": "Sifoni di Kuva",
+    "siphon": "Sifone di Kuva"
   },
   "location": {
     "cetus": "Cetus",
     "vallis": "Vallis",
-    "earth": "Earth",
+    "earth": "Terra",
     "cambion": "Cambion"
   },
   "news": {
-    "header": "News",
-    "past": "ago",
+    "header": "Novità",
+    "past": "fa",
     "future": "in",
-    "live": "Live",
-    "autoprogress": "Auto-progress"
+    "live": "Diretta",
+    "autoprogress": "Progresso automatico"
   },
   "nightwave": {
-    "header": "Nightwave",
-    "weekly": "Weekly",
-    "elite": "Elite Weekly",
-    "daily": "Daily"
+    "header": "Ondata Notturna",
+    "weekly": "Settimanale",
+    "elite": "Settimanale Elite",
+    "daily": "Giornaliera"
   },
   "conclave": {
     "header": "Conclave",
-    "weekly": "Weekly",
-    "teamannihilation": "Team Annihilation",
-    "annihilation": "Annihilation",
+    "weekly": "Settimanale",
+    "teamannihilation": "Annientamento di Squadra",
+    "annihilation": "Annientamento",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture the Cephalon"
+    "cephaloncapture": "Cattura il Cefalo"
   },
   "notifications": {
     "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
+      "dayheader": "Cetus - Sorti e Splendi! Il tempo di Caccia è Finito!",
+      "nightheader": "Cetus - Tempo di Caccia!"
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Ripristino Timer Premio Giornaliero",
+    "label": "Ripristino Timer Premio entro:"
   },
   "sales": {
-    "header": "Sales and Featured Deals",
-    "item": "Item"
+    "header": "Vendite e Offerte In Evidenza",
+    "item": "Articolo"
   },
   "sentientoutpost": {
-    "tooltip1": "This component is in active development because of the recent update.",
-    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
-    "header": "Anomalies",
-    "outpostsL": "Outposts",
-    "none": "No Current Anomalies",
-    "warn": "Don't forget your Paracesis!",
-    "prediction": "Prediction"
+    "tooltip1": "Questo componente è in sviluppo attivo per l'aggiornamento recente.",
+    "tooltip2": "Il ciclo stimato è di 30 minuti di tempo attivo su ogni nodo.",
+    "header": "Anomalie",
+    "outpostsL": "Avamposti",
+    "none": "Nessun'Anomalia Corrente",
+    "warn": "Non dimenticare la tua Paracesi!",
+    "prediction": "Predizione"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Sortita"
   },
   "steelPath": {
-    "header": "Steel Path"
+    "header": "Percorso d'Acciaio"
   },
   "time": {
-    "loading": "Loading...",
-    "day": "day",
-    "night": "night",
-    "warm": "warm",
-    "cold": "cold",
+    "loading": "Caricamento...",
+    "day": "giorno",
+    "night": "notte",
+    "warm": "caldo",
+    "cold": "freddo",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timer",
-    "startL": "Starts in:",
-    "endL": "Ends in:",
-    "ongoingL": "Ongoing for:",
-    "expiredL": "Expired",
-    "depart": "Departs",
-    "arrive": "Arrives at"
+    "Timer": "Ciclo del Timer",
+    "startL": "Inizia in:",
+    "endL": "Finisce in:",
+    "ongoingL": "In corso per:",
+    "expiredL": "Scaduto",
+    "depart": "Partenza",
+    "arrive": "Arriva a"
   },
   "timer": {
     "ostron": "Ostron",
-    "solaris": "Solaris United",
-    "solaris-united": "Solaris United",
+    "solaris": "Unione Solaris",
+    "solaris-united": "Unione Solaris",
     "entrati": "Entrati"
   },
   "vt": {
-    "header": "Void Trader",
-    "inventory": "Inventory",
-    "item": "Item"
+    "header": "Commerciante del Vuoto",
+    "inventory": "Inventario",
+    "item": "Oggetto"
   }
 }

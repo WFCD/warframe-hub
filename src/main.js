@@ -49,13 +49,12 @@ Vue.use(Notifications);
 
 /* Analytics */
 import VueMatomo from 'vue-matomo';
-if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_ANALYICS_URL) {
+if (process.env.VUE_APP_ANALYICS_URL) {
   Vue.use(VueMatomo, {
     host: process.env.VUE_APP_ANALYICS_URL,
     siteId: process.env.VUE_APP_ANALYICS_SITE,
     router: router,
     enableLinkTracking: true,
-    requireConsent: true,
     disableCookies: true,
     enableHeartBeatTimer: true,
     debug: process.env.NODE_ENV !== 'production',

@@ -31,7 +31,7 @@
     "settings": "设置",
     "drops": "任务奖励",
     "genesis": "Genesis",
-    "docs": "API信息",
+    "docs": "API 文档",
     "old": "旧网页",
     "status": "状态",
     "riven": "紫卡信息（测试功能）",
@@ -148,12 +148,12 @@
     "header": "突击"
   },
   "steelPath": {
-    "header": "Steel Path"
+    "header": "钢铁之路"
   },
   "time": {
     "loading": "加载中...",
-    "day": "日",
-    "night": "晚",
+    "day": "白天",
+    "night": "夜间",
     "warm": "温暖",
     "cold": "寒冷",
     "vome": "VOME",
@@ -162,7 +162,7 @@
     "startL": "开始于：",
     "endL": "结束于:",
     "ongoingL": "已进行:",
-    "expiredL": "已过期",
+    "expiredL": "已结束",
     "depart": "将离开",
     "arrive": "将到达"
   },

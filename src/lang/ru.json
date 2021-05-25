@@ -84,7 +84,8 @@
     "sentient": "Владеющие Разумом"
   },
   "fissures": {
-    "header": "Разрывы Бездны"
+    "header": "Разрывы Бездны",
+    "voidstorm": "Void Storm"
   },
   "invasions": {
     "header": "Вторжения",

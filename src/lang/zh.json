@@ -84,7 +84,8 @@
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "虚空裂缝"
+    "header": "虚空裂缝",
+    "voidstorm": "Void Storm"
   },
   "invasions": {
     "header": "入侵",

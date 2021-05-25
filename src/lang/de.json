@@ -84,7 +84,8 @@
     "sentient": "Sentient"
   },
   "fissures": {
-    "header": "Risse"
+    "header": "Risse",
+    "voidstorm": "Void Storm"
   },
   "invasions": {
     "header": "Invasionen",

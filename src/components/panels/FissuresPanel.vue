@@ -22,7 +22,18 @@
           <b>{{ fissure.node }}</b> | {{ fissure.missionType }} |
           {{ fissure.tier }}
         </span>
-        <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" style="padding: 5px" />
+
+        <span class="pull-right">
+          <TimeBadge :starttime="fissure.activation" :endtime="fissure.expiry" :interval="1000" style="padding: 5px" />
+          <HubImg
+            v-if="fissure.isStorm"
+            :src="archwing"
+            :name="$t('fissures.voidstorm')"
+            class="li-mission-decorator li-mission-decorator-lg"
+            height="24px"
+            width="24px"
+          />
+        </span>
       </b-list-group-item>
       <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" />
     </b-list-group>
@@ -34,6 +45,7 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
+import archwing from '@/assets/img/archwing.svg';
 
 const fissureIcons = [];
 import lith from '@/assets/img/fissures/1.svg';
@@ -67,7 +79,11 @@ export default {
           const isFiltered = planets.test(fissure.node);
           return (pState.length > 0 ? !isFiltered : true) && !fissure.expired;
         })
-        .sort((a, b) => a.tierNum - b.tierNum);
+        .sort((a, b) => {
+          return (a.isStorm && !b.isStorm)
+            ? 1
+            : ((!a.isStorm && b.isStorm) ? -1 : a.tierNum - b.tierNum);
+        });
     },
   },
   methods: {
@@ -81,6 +97,7 @@ export default {
         display: 'inline',
         'vertical-align': 'middle',
       },
+      archwing,
     };
   },
   components: {

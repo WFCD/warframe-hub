@@ -10,7 +10,14 @@
           :controls="false"
         >
           <b-carousel-slide v-for="newsitem in filteredNews" :key="`${newsitem.id}-img`">
-            <b-img slot="img" class="d-block slide-image" fluid center :src="getImgSrc(newsitem.imageLink)" />
+            <b-img
+              slot="img"
+              :alt="newsitem.message"
+              class="d-block slide-image"
+              fluid
+              center
+              :src="getImgSrc(newsitem.imageLink)"
+            />
           </b-carousel-slide>
         </b-carousel>
       </b-list-group-item>

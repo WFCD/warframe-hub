@@ -11,7 +11,6 @@
         <b-form-group label="Components">
           <b-form-checkbox-group
             id="components-checks"
-            name="Components"
             :options="componentStates"
             v-model="activeComponents"
             v-on:input="updateComponentState"
@@ -87,6 +86,7 @@ export default {
   },
   methods: {
     updateComponentState(enabledComponents) {
+      console.log(enabledComponents);
       Object.keys(this.$store.getters.componentState).forEach((component) => {
         this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
       });
@@ -101,10 +101,8 @@ export default {
   computed: {
     activeComponents: {
       get: function () {
-        const components = Object.keys(this.$store.getters.componentState).map(
-          (component) => this.$store.getters.componentState[component]
-        );
-        return components
+        return Object.keys(this.$store.getters.componentState)
+          .map((component) => this.$store.getters.componentState[component])
           .filter(
             (component) =>
               component.display && (!baseComponents[component.key] || baseComponents[component.key].displayable)

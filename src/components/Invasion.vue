@@ -4,11 +4,6 @@
       <span>
         <b>{{ invasion.node }}</b> - {{ invasion.desc }}
       </span>
-      <i :id="`${invasion.id}_tooltip`" class="fas fa-sm fa-info-circle ml-2" />
-      <b-tooltip :target="`${invasion.id}_tooltip`" placement="right" class="text-center">
-        <TimeBadge :starttime="invasion.activation" :counter="true" :interval="1000" />
-        <div class="eta">({{ eta(invasion) }})*</div>
-      </b-tooltip>
     </div>
     <b-row class="invasion-rewards p-0">
       <b-col>
@@ -58,11 +53,13 @@
           :variant="getLabelColor(invasion.attacker.factionKey)"
           :value="invasion.completion"
           :id="`${this.id}-attacker-progress`"
+          :aria-label="`Current Attacker Progresss: ${invasion.completion}`"
         />
         <b-progress-bar
           :variant="getLabelColor(invasion.defender.factionKey)"
           :value="100 - invasion.completion"
           :id="`${this.id}-defender-progress`"
+          :aria-label="`Current Defender Progresss: ${100 - invasion.completion}`"
         />
         <small class="justify-content-center d-flex position-absolute w-100 progress-value">
           {{ invasion.completion.toFixed(2) }}% - {{ eta(invasion) }}

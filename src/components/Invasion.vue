@@ -108,7 +108,6 @@
 </style>
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 import AsyncItemThumb from '@/components/AsyncItemThumb';
 import utilities from '@/utilities.js';
@@ -188,7 +187,6 @@ export default {
     },
   },
   components: {
-    TimeBadge,
     HubImg,
     'item-thumb': AsyncItemThumb,
   },

@@ -234,14 +234,14 @@
       "sentientOutposts": "@worldstate.sentientOutposts"
     }
   },
-  "steelPath": {
+  "steel-path": {
     "display": true,
     "displayable": true,
     "displayName": "Steel Path",
-    "key": "steelpath",
+    "key": "steel-path",
     "component": "SteelPathPanel",
     "props": {
-      "events": "@worldstate.steelPath"
+      "steelPath": "@worldstate.steelPath"
     }
   },
   "conclave": {

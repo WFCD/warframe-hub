@@ -80,9 +80,7 @@ export default {
           return (pState.length > 0 ? !isFiltered : true) && !fissure.expired;
         })
         .sort((a, b) => {
-          return (a.isStorm && !b.isStorm)
-            ? 1
-            : ((!a.isStorm && b.isStorm) ? -1 : a.tierNum - b.tierNum);
+          return a.isStorm && !b.isStorm ? 1 : !a.isStorm && b.isStorm ? -1 : a.tierNum - b.tierNum;
         });
     },
   },

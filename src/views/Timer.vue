@@ -7,7 +7,7 @@
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
         <timer v-if="componentState.cambion.display" :time="worldstate.cambionCycle" location="Cambion" />
         <timer
-          v-if="componentState.steelPath.display"
+          v-if="componentState['steel-path'].display"
           :time="worldstate.steelPath"
           :display="`${worldstate.steelPath.currentReward.name}: ${worldstate.steelPath.currentReward.cost}`"
           headerPath="steelPath.header"

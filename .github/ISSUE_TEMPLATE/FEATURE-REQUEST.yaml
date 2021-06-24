@@ -1,0 +1,23 @@
+name: Feature Request
+description: File a bug report
+title: "[Feature]: "
+labels: ['on hold', 'Scope: Core', 'Type: Feature Request']
+body:
+  - type: textarea
+    id: what-should-happened
+    attributes:
+      label: What would you like to see happen?
+      description: This is a markdown-friendly area, feel free to upload images
+      placeholder: Tell us what you see!
+      value: "It should make me cake!"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/WFCD/warframe-hub/blob/dev/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

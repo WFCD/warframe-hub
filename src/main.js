@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   Sentry.init({
     Vue: Vue,
     dsn: process.env.VUE_APP_DSN,
-    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+    integrations: [new Integrations.BrowserTracing()],
   });
 }
 

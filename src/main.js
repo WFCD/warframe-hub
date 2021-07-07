@@ -6,14 +6,15 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-import * as Sentry from '@sentry/browser';
-import * as Integrations from '@sentry/integrations';
+import * as Sentry from '@sentry/vue';
+import { Integrations } from '@sentry/tracing';
 
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
 if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   Sentry.init({
+    Vue: Vue,
     dsn: process.env.VUE_APP_DSN,
     integrations: [new Integrations.Vue({ Vue, attachProps: true })],
   });

@@ -110,7 +110,7 @@ export default {
     }),
   },
   watch: {
-    platform: (val) => {
+    platform: function (val) {
       this.loading = true;
       this.url = `${repoBaseUrl}/repos/weeklyRivens${val.toUpperCase()}.json`;
       this.getdata();

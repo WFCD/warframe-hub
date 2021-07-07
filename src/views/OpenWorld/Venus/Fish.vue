@@ -64,7 +64,7 @@
             invert="true"
           />
         </template>
-        <template v-slot:cell(time.string)="data">
+        <template v-slot:cell(time)="data">
           <span v-bind:id="data.item.name + '-time'">
             <i v-if="data.item.time.cold.appear" class="fas fa-lg fa-snowflake" style="color: skyblue" />
             <i v-if="data.item.time.cold.prefer" class="fas fa-lg fa-arrow-left mx-1"></i>

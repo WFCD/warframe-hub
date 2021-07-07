@@ -29,7 +29,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "16kg",
     "small": {
       "resources": {
         "tumor": 3,
@@ -79,7 +79,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "16kg",
     "small": {
       "resources": {
         "tumor": 3,
@@ -129,7 +129,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "16kg",
     "small": {
       "resources": {
         "tumor": 2,
@@ -180,7 +180,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "16kg",
     "small": {
       "resources": {
         "tumor": 2,
@@ -230,7 +230,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "16kg",
     "small": {
       "resources": {
         "tumor": 2,
@@ -241,6 +241,56 @@
       "resources": {
         "tumor": 3,
         "bladder": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Lobotriscid",
+    "thumb": "lobotriscid",
+    "wiki": "https://warframe.fandom.com/wiki/Lobotriscid",
+    "unique": [{
+      "name": "Parasitic Tethermaw",
+      "thumb": "tethermaw",
+      "wiki": "https://warframe.fandom.com/wiki/Parasitic_Tethermaw"
+    }],
+    "location": "Surface",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": false,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 4
       }
     },
     "large": {
@@ -305,6 +355,58 @@
         "tumor": 8,
         "bladder": 6,
         "gills": 2
+      }
+    }
+  },
+  {
+    "name": "Flagellocanth",
+    "thumb": "flagellocanth",
+    "wiki": "https://warframe.fandom.com/wiki/Flagellocanth",
+    "unique": [{
+      "name": "Ocular Stem-Root",
+      "thumb": "stemroot",
+      "wiki": "https://warframe.fandom.com/wiki/Ocular_Stem-Root"
+    }],
+    "location": "Surface",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "hotspot": true,
+    "bait": {
+      "name": "Processed Fass Residue",
+      "thumb": "fass",
+      "recommended":true
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 5,
+        "bladder": 5
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "bladder": 6
       }
     }
   },

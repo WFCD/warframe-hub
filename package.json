@@ -90,7 +90,8 @@
     "extends": [
       "plugin:vue/essential",
       "plugin:prettier/recommended",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:vuejs-accessibility/recommended"
     ],
     "plugins": [
       "vuejs-accessibility"

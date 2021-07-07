@@ -3,7 +3,7 @@
     <br /><br />
     <div class="row">
       <div class="col-md-4">
-        <img class="wfcd-logo" name="WFCD Logo" :src="wfcdLogo" />
+        <img class="wfcd-logo" name="WFCD Logo" :src="wfcdLogo" alt="WFCD Logo" />
       </div>
 
       <div class="col-md-8">

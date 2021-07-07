@@ -88,6 +88,8 @@ export default {
           myxostomata: import('@/assets/img/fish/myxostomata.webp'),
           ostimyr: import('@/assets/img/fish/ostimyr.webp'),
           vitreospina: import('@/assets/img/fish/vitreospina.webp'),
+          flagellocanth: import('@/assets/img/fish/flagellocanth.webp'),
+          lobotriscid: import('@/assets/img/fish/lobotriscid.webp'),
         },
         parts: {
           antenna: import('@/assets/img/fish/part/antenna.webp'),
@@ -125,6 +127,8 @@ export default {
           foremount: import('@/assets/img/fish/part/foremount.webp'),
           filter: import('@/assets/img/fish/part/filter.webp'),
           sporulate: import('@/assets/img/fish/part/sporulate.webp'),
+          stemroot: import('@/assets/img/fish/part/stemroot.webp'),
+          tethermaw: import('@/assets/img/fish/part/tethermaw.webp'),
         },
         common: {
           standing: import('@/assets/img/general/standing.svg'),

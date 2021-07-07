@@ -55,7 +55,7 @@ export default {
         .trim();
       const url = `https://api.warframestat.us/items/search/${stripped.toLowerCase()}`;
       const data = (await fetch(url).then((d) => d.json())).filter((d) => d.name === stripped);
-      if (!data || !data[0].imageName) {
+      if (!data || !data[0]?.imageName || '') {
         return;
       } else {
         this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${

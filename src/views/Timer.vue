@@ -1,6 +1,6 @@
 <template>
   <div class="timers">
-    <div class="grid">
+    <b-container fluid class="grid">
       <vueBinpacker>
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
@@ -37,7 +37,7 @@
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
       </vueBinpacker>
-    </div>
+    </b-container>
   </div>
 </template>
 

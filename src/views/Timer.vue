@@ -1,7 +1,7 @@
 <template>
   <div class="timers">
-    <b-container fluid class="grid">
-      <b-row ref="timerComponentGrid" v-packery="{ itemSelector: '.packery-item', percentPosition: true }">
+    <div class="grid">
+      <vueBinpacker>
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
@@ -20,7 +20,6 @@
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
-        <!-- <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" /> -->
         <events
           v-if="componentState.event.display && worldstate.events && worldstate.events.length"
           :events="worldstate.events"
@@ -32,14 +31,13 @@
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
-        <!-- <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" /> -->
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
         <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-      </b-row>
-    </b-container>
+      </vueBinpacker>
+    </div>
   </div>
 </template>
 

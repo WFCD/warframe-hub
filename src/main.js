@@ -37,9 +37,9 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Packery */
-import VuePackeryPlugin from 'vue-packery-plugin';
-Vue.use(VuePackeryPlugin);
+/* Vue Binpacker (Packery Replacement) */
+import VueBinpackerPlugin from 'vue-binpacker-plugin';
+Vue.use(VueBinpackerPlugin);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';

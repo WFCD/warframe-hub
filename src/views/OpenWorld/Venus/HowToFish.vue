@@ -116,7 +116,7 @@
         <FishImg type="guide" item="vallisguide2" name="Vallis Guide 2" />
         <br />
         <br />
-        <video autoplay loop>
+        <video autoplay muted loop>
           <source src="@/assets/img/fish/guide/vallishotspot.webm" type="video/webm" />
           <source src="@/assets/img/fish/guide/vallishotspot.mp4" type="video/mp4" />
         </video>

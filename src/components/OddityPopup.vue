@@ -6,7 +6,15 @@
     <div>
       Fragment Name: <b>{{ name }}</b>
     </div>
-    <iframe :src="video" width="320" height="180" style="margin-right: 20px" frameborder="0" allowfullscreen></iframe>
+    <iframe
+      :title="name"
+      :src="video"
+      width="320"
+      height="180"
+      style="margin-right: 20px"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
   </div>
 </template>
 

@@ -7,7 +7,7 @@
         <h3>The definitive guide to fishing in Warframe - Orb Vallis Edition</h3>
         <br />
         <h4>Created by MainlandHero, adapted from /u/cranem258 aka PepsiMan</h4>
-        <FishImg type="guide" item="clem" name="Map" class="center-block" />
+        <FishImg type="guide" item="clem" title="Clem... Clem!" class="center-block" />
         <br />
         <br />
         <p>

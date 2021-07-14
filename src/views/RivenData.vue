@@ -74,8 +74,7 @@ import platforms from '@/assets/json/platforms.json';
 import fetch from 'node-fetch';
 import _ from 'lodash';
 
-const repoBaseUrl =
-  process.env.NODE_ENV === 'production' ? 'https://n9e5v4d8.ssl.hwcdn.net' : 'http://n9e5v4d8.ssl.hwcdn.net';
+const repoBaseUrl = 'https://n9e5v4d8.ssl.hwcdn.net';
 
 export default {
   name: 'rivendata',
@@ -131,7 +130,9 @@ export default {
       this.$ga.page('/riven/data');
     },
     async getdata() {
-      const res = JSON.parse((await fetch(this.url).then((res) => res.text())).replace(/NaN/g, 0));
+      const res = JSON.parse(
+        (await fetch(this.url).then((res) => res.text())).replace(/NaN/g, 0).replace(/WARNING:.*\n/, '')
+      );
 
       const rivenData = _.mapValues(_.groupBy(res, 'itemType'), (clist) => clist.map((car) => _.omit(car, 'itemType')));
 

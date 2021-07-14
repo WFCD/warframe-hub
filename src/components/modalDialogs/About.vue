@@ -12,6 +12,7 @@
             class="wfcd-banner img-rounded"
             style="padding: 10px 10px 10px 10px"
             src="https://warframestat.us/wfcd.png"
+            alt="Logo"
           />
         </a>
         <br /><br />

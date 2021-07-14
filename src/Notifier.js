@@ -11,6 +11,18 @@ const defaultNotificationBody = {
   icon: wfcdLogoUrl,
 };
 
+const logger = console;
+
+const safeString = (str) => str || '';
+
+const safeCall = (fn) => {
+  try {
+    fn();
+  } catch (e) {
+    logger.error(e);
+  }
+};
+
 const makeNotification = (type, data) => {
   switch (type) {
     case 'alert':
@@ -230,123 +242,158 @@ export default class Notifier {
   }
 
   generateNotifications(ws) {
+    if (!ws) return [];
+
     const toNotify = [];
     // look for things to be notified
     // run notifications for each
-    for (const alert of ws.alerts) {
-      if (this.isNotifiable(alert.id, 'alert', alert.rewardTypes)) {
-        toNotify.push(makeNotification('alert', alert));
-      }
-    }
-
-    for (const event of ws.events) {
-      if (this.isNotifiable(event.id, 'operation')) {
-        toNotify.push(makeNotification('operation', event));
-      }
-    }
-
-    if (ws.cetusCycle.shortString) {
-      if (ws.cetusCycle.isDay) {
-        if (this.isNotifiable(ws.cetusCycle.id, 'cetus.day')) {
-          toNotify.push(makeNotification('cetus.day', ws.cetusCycle));
-        }
-      } else {
-        if (this.isNotifiable(ws.cetusCycle.id, 'cetus.night')) {
-          toNotify.push(makeNotification('cetus.night', ws.cetusCycle));
+    safeCall(() => {
+      for (const alert of ws.alerts) {
+        if (this.isNotifiable(alert.id, 'alert', alert.rewardTypes)) {
+          toNotify.push(makeNotification('alert', alert));
         }
       }
-    }
+    });
 
-    const cetus = ws.syndicateMissions.filter((synd) => synd.syndicate === 'Ostrons')[0];
-    if (cetus && this.isNotifiable(cetus.id, 'syndicate.ostrons')) {
-      toNotify.push(makeNotification('syndicate.ostrons', cetus));
-    }
-
-    if (ws.voidTrader.active && this.isNotifiable(ws.voidTrader.id, 'baro')) {
-      toNotify.push(makeNotification('baro', ws.voidTrader));
-    }
-
-    for (const currentItem of ws.dailyDeals) {
-      if (this.isNotifiable(currentItem.id, 'darvo')) {
-        toNotify.push(makeNotification('darvo', currentItem));
-      }
-    }
-
-    for (const acolyte of ws.persistentEnemies) {
-      if (this.isNotifiable(acolyte.pid, 'enemies')) {
-        toNotify.push(makeNotification('enemies', acolyte));
-      }
-    }
-
-    if (ws.sortie && this.isNotifiable(ws.sortie.id)) {
-      toNotify.push(makeNotification('sortie', ws.sortie));
-    }
-
-    for (const fissure of ws.fissures) {
-      const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
-      if (this.isNotifiable(fissure.id, notifIdentifier)) {
-        toNotify.push(makeNotification('fissure', fissure));
-      }
-    }
-
-    for (const article of ws.news) {
-      let type;
-      if (article.update) {
-        type = 'update';
-      }
-      if (article.primeaccess) {
-        type = 'primeAccess';
-      }
-      if (article.stream) {
-        type = 'stream';
-      }
-      if (typeof type === 'undefined') {
-        type = 'news';
-      }
-      if (this.isNotifiable(article.id, type)) {
-        toNotify.push(makeNotification('news', article));
-      }
-    }
-
-    for (const invasion of ws.invasions) {
-      if (this.isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
-        toNotify.push(makeNotification('invasions', invasion));
-      }
-    }
-
-    if (ws.vallisCycle.shortString) {
-      if (ws.vallisCycle.isWarm) {
-        if (this.isNotifiable(ws.vallisCycle.id, 'vallis.warm')) {
-          toNotify.push(makeNotification('vallis.warm', ws.vallisCycle));
-        }
-      } else {
-        if (this.isNotifiable(ws.vallisCycle.id, 'vallis.cold')) {
-          toNotify.push(makeNotification('vallis.cold', ws.vallisCycle));
+    safeCall(() => {
+      for (const event of ws.events) {
+        if (this.isNotifiable(event.id, 'operation')) {
+          toNotify.push(makeNotification('operation', event));
         }
       }
-    }
-    if (ws.nightwave && ws.nightwave.activeChallenges.length) {
-      for (const challenge of ws.nightwave.activeChallenges) {
-        if (this.isNotifiable(challenge.id, 'nightwave')) {
-          toNotify.push(makeNotification('nightwave', challenge));
+    });
+
+    safeCall(() => {
+      if (ws.cetusCycle.shortString) {
+        if (ws.cetusCycle.isDay) {
+          if (this.isNotifiable(ws.cetusCycle.id, 'cetus.day')) {
+            toNotify.push(makeNotification('cetus.day', ws.cetusCycle));
+          }
+        } else {
+          if (this.isNotifiable(ws.cetusCycle.id, 'cetus.night')) {
+            toNotify.push(makeNotification('cetus.night', ws.cetusCycle));
+          }
         }
       }
-    }
-    if (ws.sentientOutposts.id && ws.sentientOutposts.active) {
-      if (this.isNotifiable(ws.sentientOutposts.id, 'outposts')) {
-        toNotify.push(makeNotification('outposts', ws.sentientOutposts));
-      }
-    }
+    });
 
-    if (ws.arbitration) {
-      const id = `arbitration:${new Date(ws.arbitration.expiry).getTime()}`;
-      const notifId = `arbitration.${ws.arbitration.enemy.toLowerCase()}.${ws.arbitration.type
-        .toLowerCase()
-        .replace(/\s/gi, '')}`;
-      if (this.isNotifiable(id, notifId)) {
-        toNotify.push(makeNotification('arbitration', ws.arbitration));
+    safeCall(() => {
+      const cetus = ws.syndicateMissions.filter((synd) => synd.syndicate === 'Ostrons')[0];
+      if (cetus && this.isNotifiable(cetus.id, 'syndicate.ostrons')) {
+        toNotify.push(makeNotification('syndicate.ostrons', cetus));
       }
-    }
+    });
+
+    safeCall(() => {
+      if (ws.voidTrader.active && this.isNotifiable(ws.voidTrader.id, 'baro')) {
+        toNotify.push(makeNotification('baro', ws.voidTrader));
+      }
+    });
+
+    safeCall(() => {
+      for (const currentItem of ws.dailyDeals) {
+        if (this.isNotifiable(currentItem.id, 'darvo')) {
+          toNotify.push(makeNotification('darvo', currentItem));
+        }
+      }
+    });
+
+    safeCall(() => {
+      for (const acolyte of ws.persistentEnemies) {
+        if (this.isNotifiable(acolyte.pid, 'enemies')) {
+          toNotify.push(makeNotification('enemies', acolyte));
+        }
+      }
+    });
+
+    safeCall(() => {
+      if (ws.sortie && this.isNotifiable(ws.sortie.id)) {
+        toNotify.push(makeNotification('sortie', ws.sortie));
+      }
+    });
+
+    safeCall(() => {
+      for (const fissure of ws.fissures) {
+        const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
+        if (this.isNotifiable(fissure.id, notifIdentifier)) {
+          toNotify.push(makeNotification('fissure', fissure));
+        }
+      }
+    });
+
+    safeCall(() => {
+      for (const article of ws.news) {
+        let type;
+        if (article.update) {
+          type = 'update';
+        }
+        if (article.primeaccess) {
+          type = 'primeAccess';
+        }
+        if (article.stream) {
+          type = 'stream';
+        }
+        if (typeof type === 'undefined') {
+          type = 'news';
+        }
+        if (this.isNotifiable(article.id, type)) {
+          toNotify.push(makeNotification('news', article));
+        }
+      }
+    });
+
+    safeCall(() => {
+      for (const invasion of ws.invasions) {
+        if (this.isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
+          toNotify.push(makeNotification('invasions', invasion));
+        }
+      }
+    });
+
+    safeCall(() => {
+      if (ws.vallisCycle.shortString) {
+        if (ws.vallisCycle.isWarm) {
+          if (this.isNotifiable(ws.vallisCycle.id, 'vallis.warm')) {
+            toNotify.push(makeNotification('vallis.warm', ws.vallisCycle));
+          }
+        } else {
+          if (this.isNotifiable(ws.vallisCycle.id, 'vallis.cold')) {
+            toNotify.push(makeNotification('vallis.cold', ws.vallisCycle));
+          }
+        }
+      }
+    });
+
+    safeCall(() => {
+      if (ws.nightwave && ws.nightwave.activeChallenges.length) {
+        for (const challenge of ws.nightwave.activeChallenges) {
+          if (this.isNotifiable(challenge.id, 'nightwave')) {
+            toNotify.push(makeNotification('nightwave', challenge));
+          }
+        }
+      }
+    });
+
+    safeCall(() => {
+      if (ws.sentientOutposts.id && ws.sentientOutposts.active) {
+        if (this.isNotifiable(ws.sentientOutposts.id, 'outposts')) {
+          toNotify.push(makeNotification('outposts', ws.sentientOutposts));
+        }
+      }
+    });
+
+    safeCall(() => {
+      if (ws.arbitration) {
+        const id = `arbitration:${new Date(ws.arbitration.expiry).getTime()}`;
+        const notifId = `arbitration.${safeString(ws.arbitration.enemy).toLowerCase()}.${safeString(ws.arbitration.type)
+          .toLowerCase()
+          .replace(/\s/gi, '')}`;
+        if (this.isNotifiable(id, notifId)) {
+          toNotify.push(makeNotification('arbitration', ws.arbitration));
+        }
+      }
+    });
+
     return toNotify;
   }
 

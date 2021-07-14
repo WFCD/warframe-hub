@@ -9,7 +9,7 @@
         <timer
           v-if="componentState['steel-path'].display"
           :time="worldstate.steelPath"
-          :display="`${worldstate.steelPath.currentReward.name}: ${worldstate.steelPath.currentReward.cost}`"
+          :display="steelPath"
           headerPath="steelPath.header"
         />
         <sentientOutposts
@@ -49,9 +49,7 @@ import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
-// import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
-// import KuvaPanel from '@/components/panels/KuvaPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
@@ -72,9 +70,7 @@ export default {
     reset: ResetPanel,
     sortie: SortiePanel,
     arbitration: ArbitrationPanel,
-    // acolytes: AcolytesPanel,
     fissures: FissuresPanel,
-    // kuvas: KuvaPanel,
     bounty: BountyPanel,
     invasions: InvasionsPanel,
     events: EventsPanel,
@@ -107,6 +103,11 @@ export default {
       solaris: 'solarisSyndicate',
       entrati: 'entratiSyndicate',
     }),
+    steelPath: function () {
+      return this.worldstate.steelPath && this.worldstate.steelPath.currentReward
+        ? `${this.worldstate.steelPath.currentReward.name}: ${this.worldstate.steelPath.currentReward.cost}`
+        : 'See Teshin: ???';
+    },
   },
 };
 </script>

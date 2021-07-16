@@ -234,7 +234,7 @@ export default class Notifier {
             audio = new Audio(eidolon);
         }
         if (audio) {
-          audio.volume = 0.2;
+          audio.volume = 0.5;
           audio.play();
         }
       }

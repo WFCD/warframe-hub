@@ -8,6 +8,7 @@ import './registerServiceWorker';
 
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
+import { version } from '../package';
 
 Vue.config.productionTip = false;
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
     Vue: Vue,
     dsn: process.env.VUE_APP_DSN,
     integrations: [new Integrations.BrowserTracing()],
+    release: `warframe-hub@${version}`,
   });
 }
 

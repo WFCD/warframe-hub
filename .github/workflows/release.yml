@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2.5.4
         env:

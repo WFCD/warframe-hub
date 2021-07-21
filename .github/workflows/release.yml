@@ -15,14 +15,14 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          # GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
-          # GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-          # GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
-          # GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
         with:
           extra_plugins: |
             @eclass/semantic-release-sentry-releases
-#            @semantic-release/git
+            @semantic-release/git
       - name: Create Sentry release
         uses: getsentry/action-release@v1
         env:

@@ -7,12 +7,12 @@
             <span
               class="pull-left"
               v-bind:class="{
-                day: time.state === 'day',
-                night: time.state === 'night',
-                warm: time.state === 'warm',
-                cold: time.state === 'cold',
-                fass: time.active === 'fass',
-                vome: time.active === 'vome',
+                day: this.isDay,
+                night: this.isNight,
+                warm: this.isWarm,
+                cold: this.isCold,
+                fass: this.isFass,
+                vome: this.isVome,
               }"
             >
               <span style="text-transform: capitalize">{{
@@ -45,6 +45,24 @@ export default {
       return this.$props.headerPath
         ? this.$t(this.$props.headerPath)
         : `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
+    },
+    isDay() {
+      return this.time && this.time.state === 'day';
+    },
+    isNight() {
+      return this.time && this.time.state === 'night';
+    },
+    isWarm() {
+      return this.time && this.time.state === 'warm';
+    },
+    isCold() {
+      return this.time && this.time.state === 'cold';
+    },
+    isFass() {
+      return this.time && this.time.active === 'fass';
+    },
+    isVome() {
+      return this.time && this.time.active === 'vome';
     },
   },
   components: {

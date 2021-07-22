@@ -329,13 +329,13 @@
     "hotspot": true,
     "bait": {
       "name": "Processed Fass Residue",
-      "thumb": "fass",
+      "thumb": "processedfass",
       "recommended":true
     },
     "spear": {
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 2,
@@ -383,7 +383,7 @@
     "hotspot": true,
     "bait": {
       "name": "Processed Fass Residue",
-      "thumb": "fass",
+      "thumb": "processedfass",
       "recommended":true
     },
     "spear": {
@@ -442,7 +442,7 @@
       "spari": false,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 3,
@@ -500,7 +500,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 3,
@@ -555,7 +555,7 @@
       "spari": true,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 3,
@@ -607,7 +607,7 @@
       "spari": false,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 2,
@@ -637,7 +637,7 @@
       "wiki": "https://warframe.fandom.com/wiki/Cranial Foremount"
     }],
     "location": "Cave",
-    "hostspot": true,
+    "hotspot": true,
     "time": {
       "string": "Any",
       "fass": {
@@ -651,15 +651,15 @@
     },
     "rarity": "1-Common",
     "bait": {
-      "name": "Procesed Vome Residue",
-      "thumb": "vome",
+      "name": "Processed Vome Residue",
+      "thumb": "processedvome",
       "recommended":true
     },
     "spear": {
       "spari": false,
       "ebisu": true
     },
-    "maximumMass": "??kg",
+    "maximumMass": "8pts",
     "small": {
       "resources": {
         "tumor": 2,

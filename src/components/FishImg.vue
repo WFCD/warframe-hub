@@ -167,6 +167,8 @@ export default {
           synathid: import('@/assets/img/fish/bait/synathid-bait.webp'),
           vome: import('@/assets/img/fish/bait/vome.webp'),
           fass: import('@/assets/img/fish/bait/fass.webp'),
+          processedvome: import('@/assets/img/fish/bait/processed-vome.webp'),
+          processedfass: import('@/assets/img/fish/bait/processed-fass.webp'),
         },
         guide: {
           guide1: import('@/assets/img/fish/guide/guide1.webp'),

@@ -17,8 +17,8 @@ body:
       label: Version
       description: What domain for Warframe Hub are you running?
       options:
-        - old-hub (Default)
-        - hub (Edge)
+        - hub (Default)
+        - old-hub (Legacy)
     validations:
       required: true
   - type: dropdown

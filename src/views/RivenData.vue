@@ -52,7 +52,7 @@
       <b-pagination
         class="mx-auto"
         v-model="currentPage"
-        :total-rows="rows"
+        :total-rows="totalRows"
         :per-page="perPage"
         aria-controls="riven-table"
         limit="7"
@@ -72,6 +72,7 @@
         sticky-header="70vh"
         :current-page="currentPage"
         :per-page="perPage"
+        @filtered="onFiltered"
       >
         <template v-slot:cell(compatibility)="data">
           {{ toTitleCase(data.item.compatibility || 'Veiled') }}
@@ -178,6 +179,7 @@ export default {
       selectedTypes: [],
       currentPage: 1,
       perPage: 25,
+      totalRows: 0,
     };
   },
   watch: {
@@ -185,6 +187,7 @@ export default {
       this.loading = true;
       this.data = val;
       this.loading = false;
+      this.totalRows = val.length;
     },
   },
   computed: {
@@ -192,17 +195,13 @@ export default {
       rivens: 'rivens',
       platform: 'platform',
     }),
-    rows() {
-      return this.data.length;
-    },
   },
   methods: {
     filterBy: function (row, filter) {
-      console.log(this.rollstate);
       const rollFilter =
         this.rollstate === 'both' ||
-        (this.rollstate === 'rolled' && !row.unrolled) ||
-        (this.rollstate === 'unrolled' && row.unrolled);
+        (this.rollstate === 'rolled' && row.rerolled) ||
+        (this.rollstate === 'unrolled' && !row.rerolled);
       const noFilter = !filter && row.item && !row.compatibility;
       const compatMatches =
         filter && row.compatibility && row.compatibility.toLowerCase().includes(filter.toLowerCase());
@@ -212,11 +211,16 @@ export default {
     toTitleCase: function (str) {
       return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
     },
+    onFiltered: function (filteredItems) {
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+    }
   },
   mounted() {
     if (this.rivens) {
       this.data = this.rivens;
       this.types = Array.from(new Set(this.rivens.map((r) => r.itemType)));
+      this.totalRows = this.rivens.length;
     } else {
       this.data = [];
       this.loading = true;

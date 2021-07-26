@@ -40,7 +40,7 @@
       <b-pagination
         class="mx-auto"
         v-model="currentPage"
-        :total-rows="rows"
+        :total-rows="totalRows"
         :per-page="perPage"
         aria-controls="synth-table"
         limit="7"
@@ -59,6 +59,7 @@
         sticky-header="70vh"
         :current-page="currentPage"
         :per-page="perPage"
+        @filtered="onFiltered"
       >
         <template v-slot:cell(name)="data">
           {{ data.item.name }}
@@ -158,26 +159,32 @@ export default {
       filter: null,
       currentPage: 1,
       perPage: 7,
+      totalRows: 0,
     };
   },
   computed: {
     ...mapGetters({
       synthData: 'synthData',
     }),
-    rows() {
-      return this.data.length;
-    },
+  },
+  methods: {
+    onFiltered: function (filteredItems) {
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+    }
   },
   watch: {
     synthData: function (val) {
       this.loading = true;
       this.data = val;
       this.loading = false;
+      this.totalRows = this.data.length;
     },
   },
   mounted() {
     if (this.synthData) {
       this.data = this.synthData;
+      this.totalRows = this.data.length;
     } else {
       this.data = [];
       this.loading = true;

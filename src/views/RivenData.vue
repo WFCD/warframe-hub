@@ -214,7 +214,7 @@ export default {
     onFiltered: function (filteredItems) {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
-    }
+    },
   },
   mounted() {
     if (this.rivens) {

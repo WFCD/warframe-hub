@@ -171,7 +171,7 @@ export default {
     onFiltered: function (filteredItems) {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
-    }
+    },
   },
   watch: {
     synthData: function (val) {

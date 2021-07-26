@@ -16,7 +16,6 @@
       :preserve-search="true"
       :hide-selected="true"
       :multiple="true"
-      :reset-after="true"
     />
     <hr />
     <Multiselect
@@ -32,7 +31,6 @@
       :preserve-search="true"
       :hide-selected="true"
       :multiple="true"
-      :reset-after="true"
     />
     <hr />
     <Multiselect
@@ -48,7 +46,6 @@
       :preserve-search="true"
       :hide-selected="true"
       :multiple="true"
-      :reset-after="true"
     />
     <hr />
     <Multiselect
@@ -64,7 +61,6 @@
       :preserve-search="true"
       :hide-selected="true"
       :multiple="true"
-      :reset-after="true"
     />
   </div>
 </template>

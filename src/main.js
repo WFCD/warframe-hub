@@ -6,16 +6,19 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-import * as Sentry from '@sentry/browser';
-import * as Integrations from '@sentry/integrations';
+import * as Sentry from '@sentry/vue';
+import { Integrations } from '@sentry/tracing';
+import { version } from '../package';
 
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
 if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   Sentry.init({
+    Vue: Vue,
     dsn: process.env.VUE_APP_DSN,
-    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+    integrations: [new Integrations.BrowserTracing()],
+    release: `warframe-hub@${version}`,
   });
 }
 
@@ -36,9 +39,9 @@ import '@fortawesome/fontawesome-free/css/regular.min.css';
 import '@fortawesome/fontawesome-free/css/solid.min.css';
 import '@fortawesome/fontawesome-free/css/brands.min.css';
 
-/* Packery */
-import VuePackeryPlugin from 'vue-packery-plugin';
-Vue.use(VuePackeryPlugin);
+/* Vue Binpacker (Packery Replacement) */
+import VueBinpackerPlugin from 'vue-binpacker-plugin';
+Vue.use(VueBinpackerPlugin);
 
 /* Native notifications */
 import VueNativeNotification from 'vue-native-notification';
@@ -115,6 +118,8 @@ const i18n = new VueI18n({
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');
+store.dispatch('updateRivens');
+store.dispatch('updateSynthData');
 
 new Vue({
   router,
@@ -127,3 +132,7 @@ const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(pro
 setInterval(() => {
   store.dispatch('updateWorldstate');
 }, interval);
+setInterval(() => {
+  store.dispatch('updateRivens');
+  store.dispatch('updateSynthData');
+}, 3600000);

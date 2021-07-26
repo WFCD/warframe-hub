@@ -1,7 +1,7 @@
 <template>
   <HubPanelWrap :title="headertext" class="sentientoutpost">
     <b-list-group>
-      <b-list-group-item class="list-group-item-borderbottom" v-if="sentientOutposts.active">
+      <b-list-group-item class="list-group-item-borderbottom" v-if="active">
         <span class="pull-left">
           <HubImg
             id="para_tooltip"
@@ -11,11 +11,11 @@
             width="20px"
             height="20px"
           />
-          {{ sentientOutposts.mission.node }}
+          {{ mission }}
         </span>
-        <TimeBadge :starttime="sentientOutposts.activation" :endtime="sentientOutposts.expiry" :interval="1000" />
+        <TimeBadge :starttime="activation" :endtime="expiry" :interval="1000" />
       </b-list-group-item>
-      <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!sentientOutposts.active">
+      <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!active">
         <span class="pull-left">
           <i class="far fa-eye-slash faIcon" v-b-tooltip :title="this.$t('sentientoutpost.none')"></i>
           <b>{{ $t('sentientoutpost.none') }}</b>
@@ -55,7 +55,14 @@ export default {
         width: '25px',
         height: '25px',
       },
-      mission: this.$props.sentientOutposts.mission.node,
+      mission:
+        (this.$props.sentientOutposts &&
+          this.$props.sentientOutposts.mission &&
+          this.$props.sentientOutposts.mission.node) ||
+        'Fight',
+      activation: (this.$props.sentientOutposts && this.$props.sentientOutposts.activation) || null,
+      expiry: (this.$props.sentientOutposts && this.$props.sentientOutposts.expiry) || null,
+      active: this.$props.sentientOutposts.active,
     };
   },
   components: {

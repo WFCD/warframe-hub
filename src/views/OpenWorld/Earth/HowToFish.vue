@@ -7,7 +7,7 @@
         <h3>The definitive guide to fishing in Warframe</h3>
         <br />
         <h4>By /u/cranem258 aka PepsiMan</h4>
-        <FishImg type="guide" item="clem" name="Map" class="center-block" />
+        <FishImg type="guide" item="clem" title="Clem... Clem!" class="center-block" />
         <br />
         <br />
         <p>
@@ -129,7 +129,7 @@
         <br />
         <h6 class="text-center">[Image by Narration]</h6>
         <br />
-        <video autoplay loop>
+        <video autoplay muted loop>
           <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm" />
           <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4" />
         </video>

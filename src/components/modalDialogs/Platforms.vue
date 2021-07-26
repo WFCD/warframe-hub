@@ -38,6 +38,7 @@ export default {
     savePlatform(platform) {
       this.$store.commit('commitPlatform', platform);
       this.$store.dispatch('updateWorldstate');
+      this.$store.dispatch('updateRivens');
     },
   },
 };

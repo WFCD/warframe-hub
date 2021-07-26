@@ -5,17 +5,17 @@
     "icon": "fab fa-windows"
   },
   "ps4": {
-    "display": "PS4",
+    "display": "Playstation Network",
     "key": "ps4",
     "icon": "fab fa-playstation"
   },
   "xb1": {
-    "display": "XB1",
+    "display": "XBox Live",
     "key": "xb1",
     "icon": "fab fa-xbox"
   },
   "swi": {
-    "display": "Switch",
+    "display": "Nintendo Switch",
     "key": "swi",
     "icon": "fab fa-nintendo-switch"
   }

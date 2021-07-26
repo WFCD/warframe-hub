@@ -1,10 +1,5 @@
 {
   "rewardTypes": {
-    "vauban": {
-      "state": false,
-      "value": "vauban",
-      "text": "Vauban Parts"
-    },
     "vandal": {
       "state": false,
       "value": "vandal",
@@ -25,11 +20,6 @@
       "value": "helmet",
       "text": "Helmet Blueprint"
     },
-    "nitain": {
-      "state": false,
-      "value": "nitain",
-      "text": "Nitain Extract"
-    },
     "mutalist": {
       "state": false,
       "value": "mutalist",
@@ -43,17 +33,17 @@
     "fieldron": {
       "state": false,
       "value": "fieldron",
-      "text": "Fieldron Sample"
+      "text": "Fieldron /Sample"
     },
     "detonite": {
       "state": false,
       "value": "detonite",
-      "text": "Detonite Ampule"
+      "text": "Detonite Ampule or Injector"
     },
     "mutagen": {
       "state": false,
       "value": "mutagen",
-      "text": "Mutagen Samples"
+      "text": "Mutagen Samples or Masses"
     },
     "aura": {
       "state": false,

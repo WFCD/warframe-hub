@@ -1,7 +1,7 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <b-row ref="timerComponentGrid" v-packery="{ itemSelector: '.packery-item', percentPosition: true }">
+      <vueBinpacker>
         <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
         <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
         <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
@@ -9,7 +9,7 @@
         <timer
           v-if="componentState['steel-path'].display"
           :time="worldstate.steelPath"
-          :display="`${worldstate.steelPath.currentReward.name}: ${worldstate.steelPath.currentReward.cost}`"
+          :display="steelPath"
           headerPath="steelPath.header"
         />
         <sentientOutposts
@@ -20,7 +20,6 @@
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
-        <!-- <acolytes v-if="componentState.acolytes.display" :acolytes="worldstate.persistentEnemies" /> -->
         <events
           v-if="componentState.event.display && worldstate.events && worldstate.events.length"
           :events="worldstate.events"
@@ -32,13 +31,12 @@
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
-        <!-- <kuvas v-if="componentState.kuvas.display" :kuvas="worldstate.kuva" /> -->
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
         <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-      </b-row>
+      </vueBinpacker>
     </b-container>
   </div>
 </template>
@@ -51,9 +49,7 @@ import TimePanel from '@/components/panels/TimePanel.vue';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
-// import AcolytesPanel from '@/components/panels/AcolytesPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
-// import KuvaPanel from '@/components/panels/KuvaPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
@@ -74,9 +70,7 @@ export default {
     reset: ResetPanel,
     sortie: SortiePanel,
     arbitration: ArbitrationPanel,
-    // acolytes: AcolytesPanel,
     fissures: FissuresPanel,
-    // kuvas: KuvaPanel,
     bounty: BountyPanel,
     invasions: InvasionsPanel,
     events: EventsPanel,
@@ -109,6 +103,11 @@ export default {
       solaris: 'solarisSyndicate',
       entrati: 'entratiSyndicate',
     }),
+    steelPath: function () {
+      return this.worldstate.steelPath && this.worldstate.steelPath.currentReward
+        ? `${this.worldstate.steelPath.currentReward.name}: ${this.worldstate.steelPath.currentReward.cost}`
+        : 'See Teshin: ???';
+    },
   },
 };
 </script>

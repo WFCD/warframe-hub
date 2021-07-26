@@ -31,6 +31,7 @@
             } ${hover === index ? 'hover' : ''}`"
             v-for="(newsitem, index) in filteredNews"
             @mouseover="hover = index"
+            @focus="hover = index"
           >
             <span class="news-title">
               <b-link target="_blank" rel="noopener" :href="newsitem.link">

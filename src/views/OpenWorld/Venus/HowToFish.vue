@@ -7,7 +7,7 @@
         <h3>The definitive guide to fishing in Warframe - Orb Vallis Edition</h3>
         <br />
         <h4>Created by MainlandHero, adapted from /u/cranem258 aka PepsiMan</h4>
-        <FishImg type="guide" item="clem" name="Map" class="center-block" />
+        <FishImg type="guide" item="clem" title="Clem... Clem!" class="center-block" />
         <br />
         <br />
         <p>
@@ -116,7 +116,7 @@
         <FishImg type="guide" item="vallisguide2" name="Vallis Guide 2" />
         <br />
         <br />
-        <video autoplay loop>
+        <video autoplay muted loop>
           <source src="@/assets/img/fish/guide/vallishotspot.webm" type="video/webm" />
           <source src="@/assets/img/fish/guide/vallishotspot.mp4" type="video/mp4" />
         </video>

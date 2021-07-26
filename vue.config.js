@@ -1,3 +1,6 @@
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const { version } = require('./package.json');
+
 module.exports = {
   pwa: {
     name: 'Warframe Hub',
@@ -8,9 +11,7 @@ module.exports = {
       clientsClaim: true,
     },
   },
-
   runtimeCompiler: true,
-
   css: {
     sourceMap: true,
     loaderOptions: {
@@ -60,6 +61,22 @@ module.exports = {
     },
     requireModuleExtension: true,
   },
-
   lintOnSave: true,
+  configureWebpack: (config) => {
+    config.devtool = 'source-map';
+    if (process.env.SENTRY_AUTH_TOKEN) {
+      if (!config.plugins || !config.plugins.length) {
+        config.plugins = [
+          new SentryWebpackPlugin({
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+            org: process.env.SENTRY_ORG,
+            project: process.env.SENTRY_PROJECT,
+            release: `${process.env.SENTRY_PROJECT}@${version}`,
+            include: './dist',
+            ignore: ['node_modules', 'vue.config.js'],
+          }),
+        ];
+      }
+    }
+  },
 };

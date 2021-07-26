@@ -118,6 +118,8 @@ const i18n = new VueI18n({
 
 // Kick off worldstate refresh
 store.dispatch('updateWorldstate');
+store.dispatch('updateRivens');
+store.dispatch('updateSynthData');
 
 new Vue({
   router,
@@ -130,3 +132,7 @@ const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(pro
 setInterval(() => {
   store.dispatch('updateWorldstate');
 }, interval);
+setInterval(() => {
+  store.dispatch('updateRivens');
+  store.dispatch('updateSynthData');
+}, 3600000);

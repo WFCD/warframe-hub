@@ -56,10 +56,31 @@ const state = {
   },
   locale: 'en',
   bountyToggles: {},
+  rivens: {
+    pc: [],
+    ps4: [],
+    xb1: [],
+    switch: [],
+  },
+  synthData: [],
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
     state.worldstates[platform] = worldstate;
+  },
+  commitRivens: (state, [platform, rivens]) => {
+    if (!state.rivens || Array.isArray(state.rivens)) {
+      state.rivens = {
+        pc: [],
+        ps4: [],
+        xb1: [],
+        switch: [],
+      };
+    }
+    state.rivens[platform] = rivens;
+  },
+  commitSynthData: (state, [synthData]) => {
+    state.synthData = synthData;
   },
   commitLocale: (state, locale) => {
     state.locale = locale;
@@ -171,6 +192,15 @@ const actions = {
       .concat([ws.sentientOutposts.id]);
     commit('notifiedIds', [newIds]);
   },
+  async updateRivens({ commit, getters }) {
+    const res = await fetch(`https://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens${getters.platform.toUpperCase()}.json`);
+    const rivens = JSON.parse((await res.text()).replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
+    commit('commitRivens', [getters.platform, rivens]);
+  },
+  async updateSynthData({ commit }) {
+    const res = await fetch('https://api.warframestat.us/synthTargets').then((res) => res.json());
+    commit('commitSynthData', [res]);
+  },
 };
 const getters = {
   worldstate: (state) => state.worldstates[state.platform],
@@ -198,28 +228,18 @@ const getters = {
   poeMapToggles: (state) => state.poeMapToggles,
   vallisMapToggles: (state) => state.vallisMapToggles,
   bountyToggles: (state) => state.bountyToggles,
+  rivens: (state) => state.rivens[state.platform],
+  synthData: (state) => state.synthData,
 };
 
 Vue.use(Vuex);
 const shouldPersist = (process.env.VUE_APP_PERSIST === undefined ? 'true' : process.env.VUE_APP_PERSIST) === 'true';
-let tStore;
-if (shouldPersist) {
-  tStore = new Vuex.Store({
-    state,
-    mutations,
-    actions,
-    getters,
-    plugins: [createPersistedState()],
-  });
-} else {
-  tStore = new Vuex.Store({
-    state,
-    mutations,
-    actions,
-    getters,
-    plugins: [],
-  });
-}
-const store = tStore;
+const store = new Vuex.Store({
+  state,
+  mutations,
+  actions,
+  getters,
+  plugins: [shouldPersist ? createPersistedState() : null].filter((p) => p),
+});
 
 export default store;

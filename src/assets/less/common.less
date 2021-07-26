@@ -76,7 +76,24 @@ img {
   border-style: solid;
 }
 
+.dropdown-menu {
+  .form-group {
+    padding-left: 10px;
+  }
+}
 
+.custom-control-label {
+  font-size: 12px;
+
+  .custom-switch &::after {
+    top: 2px;
+  }
+
+  &::before, &::after {
+    top: 0;
+  }
+
+}
 
 @media only screen and (min-width: 700px) {
   .navbar.fixed-top {

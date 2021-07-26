@@ -24,7 +24,7 @@
           variant="info"
           class="mb-3 mr-3 float-right"
         >
-          What is Synthesis?
+          What is Synthesis? <i class="fas fa-external-link-alt fa-xs"></i>
         </b-button>
       </b-col>
     </b-row>
@@ -35,15 +35,30 @@
           Synthesis Data provided by Evilflora
         </b-link>
       </b>
+    </b-row>
+    <b-row>
+      <b-pagination
+        class="mx-auto"
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="synth-table"
+        limit="7"
+        :hide-ellipsis="true"
+      ></b-pagination>
       <b-table
         responsive
         hover
         striped
-        :items="synthdata"
+        id="synth-table"
+        :items="data"
         :fields="fields"
         class="b-table synth-table"
         :filter="filter"
         primary-key="name"
+        sticky-header="70vh"
+        :current-page="currentPage"
+        :per-page="perPage"
       >
         <template v-slot:cell(name)="data">
           {{ data.item.name }}
@@ -87,7 +102,7 @@
 </template>
 
 <script>
-import fetch from 'node-fetch';
+import { mapGetters } from 'vuex';
 import SynthesisImg from '@/components/SynthesisImg.vue';
 
 const fields = [
@@ -138,23 +153,36 @@ export default {
   data() {
     return {
       fields: fields,
-      synthdata: [],
+      data: [],
       loading: true,
       filter: null,
+      currentPage: 1,
+      perPage: 7,
     };
   },
-  mounted() {
-    this.getdata();
-  },
-  methods: {
-    track() {
-      this.$ga.page('/synthesis');
+  computed: {
+    ...mapGetters({
+      synthData: 'synthData',
+    }),
+    rows() {
+      return this.data.length;
     },
-    async getdata() {
-      const res = JSON.parse(await fetch('https://api.warframestat.us/synthTargets').then((res) => res.text()));
-      this.synthdata = res;
+  },
+  watch: {
+    synthData: function (val) {
+      this.loading = true;
+      this.data = val;
       this.loading = false;
     },
+  },
+  mounted() {
+    if (this.synthData) {
+      this.data = this.synthData;
+    } else {
+      this.data = [];
+      this.loading = true;
+      this.$store.dispatch('updateSynthData');
+    }
   },
 };
 </script>

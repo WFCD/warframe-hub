@@ -1,149 +1,226 @@
 <template>
-  <b-container fluid class="pl-0 pr-0">
+  <b-container fluid>
     <b-alert v-if="loading" show variant="info">
       <h4 class="alert-heading">Loading Riven Data for {{ platforms[platform].display }}</h4>
       <hr />
       <p class="mb-0">If this card stays active for more than a minute, please reload the site or try agin later.</p>
     </b-alert>
-    <b-tabs v-else content-class="mt-3">
-      <b-tab :title="index" v-for="(item, index) in data" :key="index" active>
-        <b-card-group>
-          <b-col class="pl-0 pr-0 ml-0 mr-0" sm="10">
-            <b-card class="vw-100" :title="index">
-              <b-card no-body class="mb-1" v-for="(item2, index2) in item" :key="index2">
-                <b-card-header header-tag="header" class="p-1" role="tab">
-                  <b-button block href="#" v-b-toggle="`accordion${index}${index2}`" variant="info">
-                    {{ checktitle(index2) }}
-                  </b-button>
-                </b-card-header>
-                <b-collapse :id="'accordion' + index + index2" accordion="my-accordion" role="tabpanel">
-                  <b-card-body>
-                    <b-card-group class="pl-0 pr-0">
-                      <b-card
-                        :title="items.rerolled ? 'Rerolled' : 'Unrolled'"
-                        v-for="(items, iindex) in item2"
-                        :key="iindex"
-                      >
-                        <b-card-body>
-                          <b-list-group>
-                            <b-list-group-item class="d-flex justify-content-between align-items-center">
-                              Average value of trades
-                              <b-badge variant="primary" pill>{{ items.avg.toFixed(2) }}</b-badge>
-                            </b-list-group-item>
-
-                            <b-list-group-item class="d-flex justify-content-between align-items-center">
-                              The average price variation
-                              <b-badge variant="primary" pill>{{ items.stddev.toFixed(2) }}</b-badge>
-                            </b-list-group-item>
-
-                            <b-list-group-item class="d-flex justify-content-between align-items-center">
-                              Lowest price for this riven
-                              <b-badge variant="primary" pill>{{ items.min.toFixed(2) }}</b-badge>
-                            </b-list-group-item>
-                            <b-list-group-item class="d-flex justify-content-between align-items-center">
-                              Highest price for this riven
-                              <b-badge variant="primary" pill>{{ items.max.toFixed(2) }}</b-badge>
-                            </b-list-group-item>
-                            <b-list-group-item class="d-flex justify-content-between align-items-center">
-                              Popularity of this Riven Type
-                              <b-badge variant="primary" pill>{{ items.pop.toFixed(4) }} %</b-badge>
-                            </b-list-group-item>
-                          </b-list-group>
-                        </b-card-body>
-                      </b-card>
-                    </b-card-group>
-                    <!-- <b-card-text>
-                      Raw Data <span>{{ item2 }}</span> <br />Platform:
-                      {{ platforms[platform].display }}
-                    </b-card-text> -->
-                  </b-card-body>
-                </b-collapse>
-              </b-card>
-            </b-card>
-          </b-col>
-        </b-card-group>
-      </b-tab>
-    </b-tabs>
+    <b-row>
+      <b-col md="3" offset-md="0" offset-sm="3" sm="6">
+        <b-dropdown id="typeDropdown" text="Select Riven Types">
+          <b-form-group>
+            <b-form-checkbox-group v-model="selectedTypes" :options="types" name="type-option" />
+          </b-form-group>
+        </b-dropdown>
+      </b-col>
+      <b-col md="6" sm="12">
+        <b-form-group class="mb-0">
+          <b-input-group size="md">
+            <b-form-input v-model="filter" type="search" id="filterInput" placeholder="Type to Search"></b-form-input>
+            <b-input-group-append>
+              <b-button
+                :disabled="!filter"
+                @click="
+                  filter = '';
+                  rollstate = 'both';
+                  selectedTypes = [];
+                "
+              >
+                Clear
+              </b-button>
+            </b-input-group-append>
+          </b-input-group>
+        </b-form-group>
+      </b-col>
+      <b-col md="3" offset-md="0" offset-sm="3" sm="6">
+        <b-form-group label="Filter by rolled:" v-slot="{ ariaDescribedby }">
+          <b-form-radio-group
+            :aria-describedby="ariaDescribedby"
+            v-model="rollstate"
+            :options="rolls"
+            name="roll-option"
+          />
+        </b-form-group>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b class="mx-auto">
+        <b-link href="https://forums.warframe.com/topic/1077490-r" target="_blank"> DE's Riven Data </b-link>
+      </b>
+    </b-row>
+    <b-row>
+      <b-pagination
+        class="mx-auto"
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="riven-table"
+        limit="7"
+        :hide-ellipsis="true"
+      ></b-pagination>
+      <b-table
+        id="riven-table"
+        small
+        responsive
+        hover
+        striped
+        :items="data"
+        :fields="fields"
+        class="b-table synth-table"
+        :filter="filter"
+        :filter-function="filterBy"
+        sticky-header="70vh"
+        :current-page="currentPage"
+        :per-page="perPage"
+      >
+        <template v-slot:cell(compatibility)="data">
+          {{ toTitleCase(data.item.compatibility || 'Veiled') }}
+        </template>
+        <template v-slot:cell(rerolled)="data">
+          <i v-if="data.item.rerolled" class="fas fa-lg fa-check-circle" style="color: lightgreen" />
+          <i v-else class="fas fa-lg fa-times-circle" style="color: salmon" />
+        </template>
+        <template v-slot:cell(avg)="data">
+          {{ String(data.item.avg) }}
+        </template>
+        <template v-slot:cell(stddev)="data">
+          {{ String(data.item.stddev) }}
+        </template>
+        <template v-slot:cell(min)="data">
+          {{ String(data.item.min) }}
+        </template>
+        <template v-slot:cell(median)="data">
+          {{ String(data.item.median) }}
+        </template>
+        <template v-slot:cell(max)="data">
+          {{ String(data.item.max) }}
+        </template>
+        <template v-slot:cell(pop)="data">
+          {{ String(data.item.pop) }}
+        </template>
+      </b-table>
+    </b-row>
   </b-container>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import platforms from '@/assets/json/platforms.json';
 
-import fetch from 'node-fetch';
-import _ from 'lodash';
-
-const repoBaseUrl = 'https://n9e5v4d8.ssl.hwcdn.net';
+const fields = [
+  {
+    key: 'compatibility',
+    label: 'Weapon',
+    headerTitle: 'Compatible Weapon',
+    sortable: true,
+  },
+  {
+    key: 'rerolled',
+    label: 'Rerolled?',
+    headerTitle: 'Whether or not this denotes a riven that has been rerolled',
+  },
+  {
+    key: 'avg',
+    label: 'Average Trade',
+    headerTitle: 'Average cost of the platinum when trading it',
+    sortable: true,
+  },
+  {
+    key: 'stddev',
+    label: 'Standard Deviation',
+    headerTitle: 'Standard Deviation',
+    sortable: true,
+  },
+  {
+    key: 'min',
+    label: 'Min Traded Value',
+    headerTitle: 'Minimum value at which the riven was traded',
+    sortable: true,
+  },
+  {
+    key: 'median',
+    label: 'Median',
+    headerTitle: 'Median Value of traded Riven',
+    sortable: true,
+  },
+  {
+    key: 'max',
+    label: 'Max Traded Value',
+    headerTitle: 'Maximuim value at which the riven was traded',
+    sortable: true,
+  },
+  {
+    key: 'pop',
+    label: 'Population',
+    headerTitle: 'Number of rivens traded for determining stats',
+    sortable: true,
+  },
+];
+const rolls = [
+  { text: 'Rolled', value: 'rolled' },
+  { text: 'Unrolled', value: 'unrolled' },
+  { text: 'Both', value: 'both', default: true },
+];
 
 export default {
   name: 'rivendata',
   data() {
     return {
-      url: '',
+      data: [],
       platforms: platforms,
-      data: {
-        'Riven Mod': {
-          null: [
-            {
-              rerolled: false,
-              avg: 0,
-              stddev: 0,
-              min: 0,
-              max: 0,
-              pop: 0,
-              median: 0,
-            },
-          ],
-        },
-      },
-      loading: true,
+      fields: fields,
+      filter: null,
+      loading: false,
+      rollstate: 'both',
+      rolls: rolls,
+      types: [],
+      selectedTypes: [],
+      currentPage: 1,
+      perPage: 25,
     };
   },
-  computed: {
-    ...mapState({
-      platform: 'platform',
-    }),
-    ...mapGetters({
-      platform: 'platform',
-    }),
-  },
   watch: {
-    platform: function (val) {
+    rivens: function (val) {
       this.loading = true;
-      this.url = `${repoBaseUrl}/repos/weeklyRivens${val.toUpperCase()}.json`;
-      this.getdata();
+      this.data = val;
+      this.loading = false;
+    },
+  },
+  computed: {
+    ...mapGetters({
+      rivens: 'rivens',
+      platform: 'platform',
+    }),
+    rows() {
+      return this.data.length;
+    },
+  },
+  methods: {
+    filterBy: function (row, filter) {
+      console.log(this.rollstate);
+      const rollFilter =
+        this.rollstate === 'both' ||
+        (this.rollstate === 'rolled' && !row.unrolled) ||
+        (this.rollstate === 'unrolled' && row.unrolled);
+      const noFilter = !filter && row.item && !row.compatibility;
+      const compatMatches =
+        filter && row.compatibility && row.compatibility.toLowerCase().includes(filter.toLowerCase());
+      const typeMatches = !this.selectedTypes.length || this.selectedTypes.includes(row.itemType);
+      return rollFilter && (noFilter || (compatMatches && typeMatches));
+    },
+    toTitleCase: function (str) {
+      return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
     },
   },
   mounted() {
-    this.url = `${repoBaseUrl}/repos/weeklyRivens${this.platform.toUpperCase()}.json`;
-    this.getdata();
-  },
-  methods: {
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-    },
-    checktitle(title) {
-      return title === 'null' ? 'No compatibility returned' : this.capitalizeFirstLetter(title);
-    },
-    track() {
-      this.$ga.page('/riven/data');
-    },
-    async getdata() {
-      const res = JSON.parse(
-        (await fetch(this.url).then((res) => res.text())).replace(/NaN/g, 0).replace(/WARNING:.*\n/, '')
-      );
-
-      const rivenData = _.mapValues(_.groupBy(res, 'itemType'), (clist) => clist.map((car) => _.omit(car, 'itemType')));
-
-      Object.keys(rivenData).forEach((key) => {
-        rivenData[key] = _.mapValues(_.groupBy(rivenData[key], 'compatibility'), (clist2) =>
-          clist2.map((car1) => _.omit(car1, 'compatibility'))
-        );
-      });
-      this.data = rivenData;
-      this.loading = false;
-    },
+    if (this.rivens) {
+      this.data = this.rivens;
+      this.types = Array.from(new Set(this.rivens.map((r) => r.itemType)));
+    } else {
+      this.data = [];
+      this.loading = true;
+      this.$store.dispatch('updateRivens');
+    }
   },
 };
 </script>

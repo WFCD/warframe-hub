@@ -163,6 +163,27 @@ li.nav-item.b-nav-dropdown:has(.active) {
   background-color: @check-color;
 }
 
+
+/********  Forms... ish *******/
+.pagination {
+  & .page-item.active .page-link {
+    background-color: @check-color;
+    border-color: @check-color;
+    color: @badge-color;
+  }
+  & .page-item .page-link {
+    background-color: @secondary-bg;
+    border-color: @secondary-bg;
+    color: @badge-color;
+  }
+}
+
+.form-control {
+  border-color: @secondary-bg-border;
+  background-color: @secondary-bg;
+  color: @text-color;
+}
+
 /******** Modal Dialogs *******/
 .modal-content, .modal-header {
   background-color: @bg-darker;

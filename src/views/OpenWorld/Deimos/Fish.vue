@@ -55,10 +55,9 @@
         </template>
         <template v-slot:cell(time)="data">
           <span v-bind:id="data.item.name + '-time'">
-            <FishImg v-if="data.item.time.vome.appear" type="time" item="vome" title="Vome" />
-            <FishImg v-if="data.item.time.fass.appear" type="time" item="fass" title="Fass" />
+            <FishImg v-if="data.item.time.vome.appear" type="time" item="vome" title="Vome" width="20" />
+            <FishImg v-if="data.item.time.fass.appear" type="time" item="fass" title="Fass" width="20" />
           </span>
-          <b-tooltip v-bind:target="data.item.name + '-time'" :title="data.item.time.string" />
         </template>
         <template v-slot:cell(rarity)="data">
           <FishImg
@@ -213,11 +212,6 @@ export default {
       fish: fish,
       fields: fields,
     };
-  },
-  methods: {
-    track() {
-      this.$ga.page('/deimos/fish');
-    },
   },
 };
 </script>

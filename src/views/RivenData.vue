@@ -118,6 +118,7 @@ const fields = [
     key: 'rerolled',
     label: 'Rerolled?',
     headerTitle: 'Whether or not this denotes a riven that has been rerolled',
+    sortable: true,
   },
   {
     key: 'avg',

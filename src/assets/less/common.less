@@ -83,11 +83,16 @@ img {
 }
 
 .custom-control-label {
+  font-size: 12px;
+
+  .custom-switch &::after {
+    top: 2px;
+  }
+
   &::before, &::after {
     top: 0;
   }
 
-  font-size: 12px;
 }
 
 @media only screen and (min-width: 700px) {

@@ -1,5 +1,5 @@
 <template>
-  <b-list-group-item class="list-group-item-borderbottom py-1">
+  <b-list-group-item class="py-1" :class="{ 'list-group-item-borderbottom' : !this.overrideBorder }">
     <span class="dim">
       <HubImg
         :src="loading"
@@ -21,7 +21,7 @@ import HubImg from '@/components/HubImg.vue';
 import loading from '@/assets/img/general/loading.svg';
 export default {
   name: 'NoDataItem',
-  props: ['text'],
+  props: ['text', 'overrideBorder'],
   data() {
     return {
       loading: loading,

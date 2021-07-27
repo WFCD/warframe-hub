@@ -86,7 +86,6 @@ export default {
   },
   methods: {
     updateComponentState(enabledComponents) {
-      console.log(enabledComponents);
       Object.keys(this.$store.getters.componentState).forEach((component) => {
         this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
       });

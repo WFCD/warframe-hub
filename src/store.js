@@ -26,6 +26,7 @@ const state = {
   components: components,
   trackables: trackables,
   fissurePlanets: fissurePlanets,
+  fissureDisplays: 'fissures-storms',
   soundFilters: [],
   notificationsAllowed: 'default',
   notifiedIds: {
@@ -108,6 +109,9 @@ const mutations = {
   commitFissurePlanetState: (state, [key, newState]) => {
     const toSet = state.fissurePlanets[key];
     toSet.state = newState;
+  },
+  commitFissureDisplaysState: (state, [value]) => {
+    state.fissureDisplays = value;
   },
   commitSounds: (state, [sounds]) => {
     state.soundFilters = sounds;
@@ -221,7 +225,8 @@ const getters = {
   theme: (state) => state.theme || 'night',
   componentState: (state) => state.components,
   trackableState: (state) => state.trackables,
-  fissurePlanetStates: (state) => state.fissurePlanets,
+  fissurePlanetStates: (state) => state.fissurePlanets || fissurePlanets,
+  fissureDisplays: (state) => state.fissureDisplays || 'fissures-storms',
   sounds: (state) => state.soundFilters,
   notificationAllowance: (state) => state.notificationsAllowed,
   notifiedIds: (state) => state.notifiedIds[state.platform],

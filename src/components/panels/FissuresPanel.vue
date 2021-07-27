@@ -5,11 +5,8 @@
         :style="styleObject"
         v-for="(fissure, index) in filteredFissures"
         :key="fissure.id"
-        v-bind:class="{
-          'list-group-item-borderless': index !== filteredFissures.length - 1,
-          'pb-0': index !== filteredFissures.length - 1,
-          'list-group-item-borderbottom': index === filteredFissures.length - 1,
-        }"
+        class="list-group-item-borderless"
+        :class="{ 'pb-0': index !== filteredFissures.length - 1 }"
       >
         <span class="pull-left">
           <HubImg
@@ -35,12 +32,30 @@
           />
         </span>
       </b-list-group-item>
-      <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" />
+
+      <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" :overrideBorder="true" />
+      <b-list-group-item class="list-group-item-borderbottom">
+        <b-form-group
+          :label="$t('fissures.choice')"
+          v-slot="{ ariaDescribedby }"
+        >
+          <b-form-radio-group
+            v-model="check"
+            :options="options"
+            :aria-describedby="ariaDescribedby"
+            button-variant="outline-primary"
+            size="sm"
+            name="radio-btn-outline"
+            buttons
+          ></b-form-radio-group>
+        </b-form-group>
+      </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
@@ -63,8 +78,19 @@ export default {
   name: 'Fissures',
   props: ['fissures'],
   computed: {
+    ...mapGetters({
+      fissureDisplays: 'fissureDisplays',
+    }),
     headertext() {
       return this.$t('fissures.header');
+    },
+    check: {
+      get() {
+        return this.fissureDisplays;
+      },
+      set(value) {
+        this.$store.commit('commitFissureDisplaysState', [value]);
+      },
     },
     filteredFissures: function () {
       const pState = [];
@@ -77,7 +103,13 @@ export default {
       return this.fissures
         .filter((fissure) => {
           const isFiltered = planets.test(fissure.node);
-          return (pState.length > 0 ? !isFiltered : true) && !fissure.expired;
+          let include = !fissure.expired;
+          if (fissure.isStorm) {
+            include = include && this.check.includes('storms');
+          } else {
+            include = include && this.check.includes('fissures');
+          }
+          return (pState.length > 0 ? !isFiltered : true) && include;
         })
         .sort((a, b) => {
           return a.isStorm && !b.isStorm ? 1 : !a.isStorm && b.isStorm ? -1 : a.tierNum - b.tierNum;
@@ -96,6 +128,11 @@ export default {
         'vertical-align': 'middle',
       },
       archwing,
+      options: [
+        { text: this.$t('fissures.header'), value: 'fissures' },
+        { text: this.$t('fissures.both'), value: 'fissures-storms'},
+        { text: this.$t('fissures.voidstorm'), value: 'storms' },
+      ],
     };
   },
   components: {

@@ -136,6 +136,17 @@ li.nav-item.b-nav-dropdown:has(.active) {
   color: @badge-color;
 }
 
+.btn-outline-primary {
+  border-color: @primary-bg;
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: @primary-bg;
+    border-color: @primary-bg;
+  }
+}
+
 .btn-info {
   background-color: @info-bg;
   border-color: @info-bg;

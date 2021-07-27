@@ -35,10 +35,7 @@
 
       <NoDataItem v-if="filteredFissures.length === 0" :text="headertext" :overrideBorder="true" />
       <b-list-group-item class="list-group-item-borderbottom">
-        <b-form-group
-          :label="$t('fissures.choice')"
-          v-slot="{ ariaDescribedby }"
-        >
+        <b-form-group :label="$t('fissures.choice')" v-slot="{ ariaDescribedby }">
           <b-form-radio-group
             v-model="check"
             :options="options"
@@ -130,7 +127,7 @@ export default {
       archwing,
       options: [
         { text: this.$t('fissures.header'), value: 'fissures' },
-        { text: this.$t('fissures.both'), value: 'fissures-storms'},
+        { text: this.$t('fissures.both'), value: 'fissures-storms' },
         { text: this.$t('fissures.voidstorm'), value: 'storms' },
       ],
     };

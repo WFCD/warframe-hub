@@ -1,5 +1,5 @@
 <template>
-  <b-list-group-item class="py-1" :class="{ 'list-group-item-borderbottom' : !this.overrideBorder }">
+  <b-list-group-item class="py-1" :class="{ 'list-group-item-borderbottom': !this.overrideBorder }">
     <span class="dim">
       <HubImg
         :src="loading"

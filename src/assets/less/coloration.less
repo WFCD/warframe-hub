@@ -34,8 +34,13 @@ table, [class*='badge-'] {
   }
 }
 
-.navbar-nav .dropdown-item{
+.navbar-nav.ml-auto .dropdown-item {
   color: @text-faded;
+  background-color: transparent;
+
+  & > i {
+    color: @text-faded;
+  }
 }
 
 .dropdown-header {

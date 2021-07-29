@@ -2,28 +2,22 @@
   <HubPanelWrap :title="headertext" class="time" :class="[(location || 'sol').toLowerCase()]">
     <b-list-group>
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
-        <div class="row">
-          <div class="col-md-9">
-            <span
-              class="pull-left"
-              v-bind:class="{
-                day: this.isDay,
-                night: this.isNight,
-                warm: this.isWarm,
-                cold: this.isCold,
-                fass: this.isFass,
-                vome: this.isVome,
-              }"
-            >
-              <span style="text-transform: capitalize">{{
-                time.state || time.active ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
-              }}</span>
-            </span>
-          </div>
-          <div class="col-md-3">
-            <TimeBadge :starttime="time.activation || now" :endtime="time.expiry" :interval="1000" />
-          </div>
-        </div>
+        <span
+          class="pull-left"
+          v-bind:class="{
+            day: this.isDay,
+            night: this.isNight,
+            warm: this.isWarm,
+            cold: this.isCold,
+            fass: this.isFass,
+            vome: this.isVome,
+          }"
+        >
+          <span style="text-transform: capitalize">{{
+            time.state || time.active ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
+          }}</span>
+        </span>
+        <TimeBadge class="pull-right" :starttime="time.activation || now" :endtime="time.expiry" :interval="1000" />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>

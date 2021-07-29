@@ -34,6 +34,15 @@ table, [class*='badge-'] {
   }
 }
 
+.navbar-nav.ml-auto .dropdown-item {
+  color: @text-faded;
+  background-color: transparent;
+
+  & > i {
+    color: @text-faded;
+  }
+}
+
 .dropdown-header {
   color: @dh-color;
 }
@@ -54,7 +63,7 @@ table, [class*='badge-'] {
 }
 
 .dropdown-item > i {
-  color: @dh-color;
+  color: @text-faded;
 }
 
 .router-link-exact-active.router-link-active,
@@ -130,6 +139,17 @@ li.nav-item.b-nav-dropdown:has(.active) {
   background-color: @primary-bg;
   border-color: @primary-bg;
   color: @badge-color;
+}
+
+.btn-outline-primary {
+  border-color: @primary-bg;
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: @primary-bg;
+    border-color: @primary-bg;
+  }
 }
 
 .btn-info {

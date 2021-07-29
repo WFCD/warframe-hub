@@ -85,7 +85,9 @@
   },
   "fissures": {
     "header": "Разрывы Бездны",
-    "voidstorm": "Void Storm"
+    "voidstorm": "Void Storm",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
   },
   "invasions": {
     "header": "Вторжения",

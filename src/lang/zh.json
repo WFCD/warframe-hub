@@ -85,7 +85,9 @@
   },
   "fissures": {
     "header": "虚空裂缝",
-    "voidstorm": "虚空风暴"
+    "voidstorm": "虚空风暴",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
   },
   "invasions": {
     "header": "入侵",

@@ -85,7 +85,9 @@
   },
   "fissures": {
     "header": "Fissures",
-    "voidstorm": "Void Storm"
+    "voidstorm": "Void Storm",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
   },
   "invasions": {
     "header": "Invasions",

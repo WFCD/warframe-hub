@@ -85,7 +85,9 @@
   },
   "fissures": {
     "header": "균열",
-    "voidstorm": "보이드 폭풍"
+    "voidstorm": "보이드 폭풍",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
   },
   "invasions": {
     "header": "침공",

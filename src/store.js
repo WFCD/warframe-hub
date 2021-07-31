@@ -8,9 +8,13 @@ import Notifier from '@/Notifier';
 
 import components from '@/assets/json/components.json';
 import trackables from '@/assets/json/trackables.json';
+import locales from '@/assets/json/locales.json';
 import fissurePlanets from '@/assets/json/planets.json';
 import initialWorldstate from '@/assets/json/initialWorldstate.json';
 
+const locale = Object.keys(locales).includes(navigator.language.substr(0, 2).toLowerCase())
+  ? navigator.language.substr(0, 2).toLowerCase()
+  : 'en';
 const apiBase = 'https://api.warframestat.us' || process.env.VUE_APP_API_BASE;
 let notifier;
 
@@ -55,7 +59,7 @@ const state = {
     'Toroids-toggle-value': true,
     'Special Caves-toggle-value': true,
   },
-  locale: 'en',
+  locale,
   bountyToggles: {},
   rivens: {
     pc: [],

@@ -14,7 +14,7 @@
           }"
         >
           <span style="text-transform: capitalize">{{
-            time.state || time.active ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
+            time && (time.state || time.active) ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
           }}</span>
         </span>
         <TimeBadge class="pull-right" :starttime="time.activation || now" :endtime="time.expiry" :interval="1000" />

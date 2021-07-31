@@ -34,7 +34,7 @@
     "docs": "API 문서",
     "old": "구 Hub",
     "status": "상태",
-    "riven": "Riven Data (Beta)",
+    "riven": "리벤 데이터 (베타)",
     "synth": "신디시스 타겟",
     "map": "지도",
     "fish": "낚시 데이터",
@@ -86,8 +86,8 @@
   "fissures": {
     "header": "균열",
     "voidstorm": "보이드 폭풍",
-    "choice": "Choose which fissures to show",
-    "both": "Both"
+    "choice": "표시할 유물 선택하기",
+    "both": "모두"
   },
   "invasions": {
     "header": "침공",

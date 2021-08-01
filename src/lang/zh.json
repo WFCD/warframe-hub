@@ -34,7 +34,7 @@
     "docs": "API 文档",
     "old": "旧网页",
     "status": "状态",
-    "riven": "Riven Data (Beta)",
+    "riven": "紫卡信息（测试功能）",
     "synth": "结合仪式目标",
     "map": "地图",
     "fish": "钓鱼数据",
@@ -86,8 +86,8 @@
   "fissures": {
     "header": "虚空裂缝",
     "voidstorm": "虚空风暴",
-    "choice": "Choose which fissures to show",
-    "both": "Both"
+    "choice": "选择要显示的区域：",
+    "both": "同时"
   },
   "invasions": {
     "header": "入侵",

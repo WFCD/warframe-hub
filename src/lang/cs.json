@@ -4,11 +4,11 @@
     "discovered": "Objeven",
     "hiding": "Skrytý",
     "na": "Nenalezeni",
-    "health": "Zbývacíjí Zdraví"
+    "health": "Zbývající Zdraví"
   },
   "alerts": {
     "header": "Upozornění",
-    "archwing": "Archwing je Vyžadován pro Misi",
+    "archwing": "Archwing Vyžadován pro Misi",
     "nightmare": "Nightmare Mise",
     "level": "Úroveň:"
   },

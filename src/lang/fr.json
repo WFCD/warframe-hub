@@ -85,9 +85,9 @@
   },
   "fissures": {
     "header": "Fissures",
-    "voidstorm": "Void Storm",
-    "choice": "Choose which fissures to show",
-    "both": "Both"
+    "voidstorm": "Tempête du Néant",
+    "choice": "Choisir les fissures à afficher",
+    "both": "Toutes"
   },
   "invasions": {
     "header": "Invasions",
@@ -108,7 +108,7 @@
     "past": "Il y a",
     "future": "dans",
     "live": "En Direct",
-    "autoprogress": "Défilement Automatique"
+    "autoprogress": "Progression automatique"
   },
   "nightwave": {
     "header": "Onde Nocturne",

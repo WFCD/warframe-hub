@@ -20,7 +20,7 @@
     "@sentry/tracing": "^6.10.0",
     "@sentry/vue": "^6.10.0",
     "@sentry/webpack-plugin": "^1.16.0",
-    "@types/lodash": "^4.14.171",
+    "@types/lodash": "^4.14.172",
     "@types/node-fetch": "^2.5.12",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",

@@ -17,7 +17,7 @@
   },
   "bounty": {
     "standing": "Influence",
-    "header": "{type} Cycle de primes",
+    "header": "Cycle de mises à prix : {type}",
     "type": "Type",
     "lrange": "Gamme des Niveaux",
     "rewards": "Récompenses",
@@ -78,7 +78,7 @@
     },
     "completionBonuses": "Bonus d'Achèvement :",
     "currentCycle": "Cycle actuel :",
-    "nextCycle": "Prochain Cycle:"
+    "nextCycle": "Cycle suivant :"
   },
   "factions": {
     "sentient": "Sentient"
@@ -151,7 +151,7 @@
     "header": "Sortie"
   },
   "steelPath": {
-    "header": "Chemin d'acier"
+    "header": "Route de l'Acier"
   },
   "time": {
     "loading": "Chargement en cours...",
@@ -161,7 +161,7 @@
     "cold": "froid",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle de minuterie",
+    "Timer": "Durée du cycle",
     "startL": "Commence dans :",
     "endL": "Se termine dans:",
     "ongoingL": "En cours pour :",

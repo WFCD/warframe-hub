@@ -53,7 +53,7 @@
     "fomorian": "Fomorien",
     "razorback": "Razorback",
     "unk": "Inconnu",
-    "header": "Statut de la Construction"
+    "header": "Statut de la construction"
   },
   "currency": {
     "plat": "Platinum",
@@ -122,7 +122,7 @@
     "teamannihilation": "Annihilation en Équipe",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture de Cephalon"
+    "cephaloncapture": "Capture de Céphalon"
   },
   "notifications": {
     "cetus": {

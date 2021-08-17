@@ -53,7 +53,7 @@
     "fomorian": "Fomorien",
     "razorback": "Razorback",
     "unk": "Inconnu",
-    "header": "Statut de la Construction"
+    "header": "Statut de la construction"
   },
   "currency": {
     "plat": "Platinum",
@@ -99,9 +99,9 @@
   },
   "location": {
     "cetus": "Cetus",
-    "vallis": "Vallis",
+    "vallis": "Vallée d'Orbis",
     "earth": "Terre",
-    "cambion": "Cambion"
+    "cambion": "Puy de Cambion"
   },
   "news": {
     "header": "Actualités",
@@ -122,7 +122,7 @@
     "teamannihilation": "Annihilation en Équipe",
     "annihilation": "Annihilation",
     "lunaro": "Lunaro",
-    "cephaloncapture": "Capture de Cephalon"
+    "cephaloncapture": "Capture de Céphalon"
   },
   "notifications": {
     "cetus": {
@@ -173,7 +173,7 @@
     "ostron": "Ostron",
     "solaris": "Union Solaris",
     "solaris-united": "Union Solaris",
-    "entrati": "Entrez"
+    "entrati": "Entrati"
   },
   "vt": {
     "header": "Marchand du Néant",

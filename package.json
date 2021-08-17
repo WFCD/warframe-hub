@@ -68,8 +68,8 @@
     }
   },
   "engines": {
-    "node": ">=10.13.0",
-    "npm": ">=6.4.1"
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13"
   },
   "heroku-run-build-script": true,
   "prettier": {

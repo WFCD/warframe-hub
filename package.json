@@ -36,7 +36,7 @@
     "dayjs": "^1.10.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.16.0",
     "eslint-plugin-vuejs-accessibility": "^0.7.1",
     "image-webpack-loader": "^7.0.1",

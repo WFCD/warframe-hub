@@ -14,8 +14,9 @@
 import Vue from 'vue';
 import L from 'leaflet';
 
+import { cdn } from '@/utilities';
+
 /* map stuff */
-import vallis from '@/assets/img/orbvallis.webp';
 import fish from '@/assets/json/geo/vallis/fishing.json';
 import labels from '@/assets/json/geo/vallis/labels.json';
 import fishRecommend from '@/assets/json/geo/vallis/fishing-recommend.json';
@@ -27,17 +28,19 @@ import kdrive from '@/assets/json/geo/vallis/kdrive.json';
 import oddity from '@/assets/json/geo/vallis/memoryfrag.json';
 import somachord from '@/assets/json/geo/vallis/somachord.json';
 import toroids from '@/assets/json/geo/vallis/toroids.json';
-import fishRecommendIcon from '@/assets/img/map_icons/fish-recommend.webp';
-import mineRecommendIcon from '@/assets/img/map_icons/mine-recommend.webp';
-import fishCaveIcon from '@/assets/img/map_icons/fishing-cave.webp';
-import fishToroidCaveIcon from '@/assets/img/map_icons/toroid-fishing-cave.webp';
-import toroidCaveIcon from '@/assets/img/map_icons/toroid-normal-cave.webp';
-import caldaIcon from '@/assets/img/map_icons/calda-toroid.webp';
-import solaIcon from '@/assets/img/map_icons/sola-toroid.webp';
-import vegaIcon from '@/assets/img/map_icons/vega-toroid.webp';
-import kdriveIcon from '@/assets/img/map_icons/kdrive.webp';
-import oddityIcon from '@/assets/img/map_icons/memoryfrag.webp';
-import somachordIcon from '@/assets/img/map_icons/somachord.webp';
+
+const vallis = cdn('webp/maps/orbvallis.webp');
+const fishRecommendIcon = cdn('webp/map_icons/fish-recommend.webp');
+const mineRecommendIcon = cdn('webp/map_icons/mine-recommend.webp');
+const fishCaveIcon = cdn('webp/map_icons/fishing-cave.webp');
+const fishToroidCaveIcon = cdn('webp/map_icons/toroid-fishing-cave.webp');
+const toroidCaveIcon = cdn('webp/map_icons/toroid-normal-cave.webp');
+const caldaIcon = cdn('webp/map_icons/calda-toroid.webp');
+const solaIcon = cdn('webp/map_icons/sola-toroid.webp');
+const vegaIcon = cdn('webp/map_icons/vega-toroid.webp');
+const kdriveIcon = cdn('webp/map_icons/kdrive.webp');
+const oddityIcon = cdn('webp/map_icons/memoryfrag.webp');
+const somachordIcon = cdn('webp/map_icons/somachord.webp');
 
 import MapPopup from '@/components/MapPopup.vue';
 import OddityPopup from '@/components/OddityPopup.vue';

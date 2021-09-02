@@ -19,7 +19,7 @@
 
 <script>
 import fetch from 'node-fetch';
-import utilities from '@/utilities.js';
+import utilities from '@/utilities';
 
 export default {
   name: 'item-thumb',

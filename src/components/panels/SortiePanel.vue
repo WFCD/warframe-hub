@@ -39,20 +39,18 @@ import dayjs from 'dayjs';
 import HubImg from '@/components/HubImg.vue';
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
+import { cdn } from '@/utilities';
 
-import corpus from '@/assets/img/factions/corpus.svg';
-import corrupted from '@/assets/img/factions/corrupted.svg';
-import grineer from '@/assets/img/factions/grineer.svg';
-import infested from '@/assets/img/factions/infested.svg';
-import sentient from '@/assets/img/factions/sentient.svg';
+const corpus = cdn('svg/factions/corpus.svg');
+const corrupted = cdn('svg/factions/corrupted.svg');
+const grineer = cdn('svg/factions/grineer.svg');
+const infested = cdn('svg/factions/infested.svg');
+const sentient = cdn('svg/factions/sentient.svg');
 
 export default {
   props: ['sortie'],
   name: 'SortiePanel',
   computed: {
-    sortietimezonetime() {
-      return dayjs(this.$props.sortie.expiry).format('llll');
-    },
     now() {
       return dayjs().toISOString();
     },

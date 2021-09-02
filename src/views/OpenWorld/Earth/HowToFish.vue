@@ -130,8 +130,8 @@
         <h6 class="text-center">[Image by Narration]</h6>
         <br />
         <video autoplay muted loop>
-          <source src="@/assets/img/fish/guide/hotspot.webm" type="video/webm" />
-          <source src="@/assets/img/fish/guide/hotspot.mp4" type="video/mp4" />
+          <source :src="this.cdn('webp/fish/guide/hotspot.webm')" type="video/webm" />
+          <source :src="this.cdn('webp/fish/guide/hotspot.mp4')" type="video/mp4" />
         </video>
         <br />
         <h6 class="text-center">[Animated GIF by How4Much]</h6>
@@ -185,6 +185,7 @@
 
 <script>
 import FishImg from '@/components/FishImg.vue';
+import { cdn } from '@/utilities';
 
 export default {
   name: 'HowToFish',
@@ -192,9 +193,7 @@ export default {
     FishImg,
   },
   methods: {
-    track() {
-      this.$ga.page('/poe/fish/howto');
-    },
+    cdn,
   },
 };
 </script>

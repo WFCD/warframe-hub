@@ -29,8 +29,9 @@
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
+import { cdn } from '@/utilities';
 
-import sentient from '@/assets/img/factions/sentient.svg';
+const sentient = cdn('svg/factions/sentient.svg');
 
 export default {
   name: 'SentientOutpostsPanel',

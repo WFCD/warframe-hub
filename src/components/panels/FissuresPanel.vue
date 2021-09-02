@@ -57,19 +57,17 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
-import archwing from '@/assets/img/archwing.svg';
+import { cdn } from '@/utilities';
+
+const archwing = cdn('svg/archwing.svg');
 
 const fissureIcons = [];
-import lith from '@/assets/img/fissures/1.svg';
-import meso from '@/assets/img/fissures/2.svg';
-import neo from '@/assets/img/fissures/3.svg';
-import axi from '@/assets/img/fissures/4.svg';
-import requiem from '@/assets/img/fissures/5.svg';
-fissureIcons.push(lith);
-fissureIcons.push(meso);
-fissureIcons.push(neo);
-fissureIcons.push(axi);
-fissureIcons.push(requiem);
+const lith = cdn('svg/fissures/1.svg');
+const meso = cdn('svg/fissures/2.svg');
+const neo = cdn('svg/fissures/3.svg');
+const axi = cdn('svg/fissures/4.svg');
+const requiem = cdn('svg/fissures/5.svg');
+fissureIcons.push(lith, meso, neo, axi, requiem);
 
 export default {
   name: 'Fissures',

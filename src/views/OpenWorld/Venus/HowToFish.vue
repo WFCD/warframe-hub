@@ -117,8 +117,8 @@
         <br />
         <br />
         <video autoplay muted loop>
-          <source src="@/assets/img/fish/guide/vallishotspot.webm" type="video/webm" />
-          <source src="@/assets/img/fish/guide/vallishotspot.mp4" type="video/mp4" />
+          <source :src="this.cdn('webp/fish/guide/vallishotspot.webm')" type="video/webm" />
+          <source :src="this.cdn('webp/fish/guide/vallishotspot.mp4')" type="video/mp4" />
         </video>
         <br />
         <p>
@@ -167,6 +167,7 @@
 
 <script>
 import FishImg from '@/components/FishImg.vue';
+import { cdn } from '@/utilities';
 
 export default {
   name: 'HowToFishVallis',
@@ -174,9 +175,7 @@ export default {
     FishImg,
   },
   methods: {
-    track() {
-      this.$ga.page('/vallis/fish/howto');
-    },
+    cdn,
   },
 };
 </script>

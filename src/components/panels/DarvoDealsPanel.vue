@@ -41,7 +41,9 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import NoDataItem from '@/components/NoDataItem.vue';
 
-import platinum from '@/assets/img/general/plat.webp';
+import { cdn } from '@/utilities';
+
+const platinum = cdn('webp/general/plat.webp');
 export default {
   name: 'DarvoDealsPanel',
   props: ['deals'],

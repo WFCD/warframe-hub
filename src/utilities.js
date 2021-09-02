@@ -1,6 +1,6 @@
 'use strict';
 
-const makeid = () => {
+export const makeid = () => {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -11,6 +11,12 @@ const makeid = () => {
   return text;
 };
 
+export const cdn = (path) => `https://cdn.warframestat.us/genesis/${path}`;
+
+export const optimize = (img) => `https://cdn.warframestat.us/o_webp,progressive_true/${img}`;
+
 export default {
   makeid,
+  optimize,
+  cdn,
 };

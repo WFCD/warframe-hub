@@ -48,8 +48,9 @@ import HubPanelWrap from '@/components/HubPanelWrap';
  * I hope this will change in the future. If not, 3rd party development is doomed.
  */
 
-import kuvalogo from '@/assets/img/kuva/kuva.svg';
-//import flood from '@/assets/img/kuva/kuvaflood.svg';
+import { cdn } from '@/utilities';
+const kuvalogo = cdn('svg/kuva/kuva.svg');
+//import flood from cdn('svg/kuva/kuvaflood.svg');
 
 export default {
   name: 'Kuvas',

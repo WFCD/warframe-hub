@@ -17,8 +17,9 @@
 
 <script>
 import HubImg from '@/components/HubImg.vue';
+import { cdn } from '@/utilities';
 
-import loading from '@/assets/img/general/loading.svg';
+const loading = cdn('svg/loading.svg');
 export default {
   name: 'NoDataItem',
   props: ['text', 'overrideBorder'],

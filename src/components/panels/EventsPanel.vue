@@ -134,9 +134,9 @@ import HubPanelWrap from '@/components/HubPanelWrap';
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 
-import standing from '@/assets/img/general/standing.svg';
+import { makeid, cdn } from '@/utilities';
 
-import util from '@/utilities';
+const standing = cdn('svg/standing.svg');
 
 const epoch = '1970-01-01T00:00:00.000Z';
 const reversedHealthEvents = ['Thermia Fractures'];
@@ -201,10 +201,7 @@ export default {
       return labelClass;
     },
     isHealthReversed(event) {
-      if (reversedHealthEvents.includes(event.description)) {
-        return true;
-      }
-      return false;
+      return reversedHealthEvents.includes(event.description);
     },
     formatJobItems(event) {
       return event.jobs.map((job) => ({
@@ -215,9 +212,7 @@ export default {
         _showDetails: this.check,
       }));
     },
-    makeid: function () {
-      return util.makeid();
-    },
+    makeid,
     toggleDetails(row) {
       row._showDetails = !row._showDetails;
     },

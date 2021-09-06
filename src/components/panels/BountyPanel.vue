@@ -82,9 +82,9 @@ import NoDataItem from '@/components/NoDataItem.vue';
 import HubImg from '@/components/HubImg.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
-import standing from '@/assets/img/general/standing.svg';
+import { cdn, makeid } from '@/utilities.js';
 
-import utilities from '@/utilities.js';
+const standing = cdn('svg/standing.svg');
 
 export default {
   name: 'BountyPanel',
@@ -131,7 +131,7 @@ export default {
         },
       ],
       standing: standing,
-      id: utilities.makeid(),
+      id: makeid(),
       typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
       autoExpand: false,
     };

@@ -3,7 +3,7 @@
     <br /><br />
     <div class="row">
       <div class="col-md-4">
-        <img class="wfcd-logo" name="WFCD Logo" :src="wfcdLogo" alt="WFCD Logo" />
+        <img class="wfcd-logo" name="WFCD Logo" :src="wfcdLogo" alt="WFCD Logo" style="filter: invert(0.7)" />
       </div>
 
       <div class="col-md-8">
@@ -23,23 +23,16 @@
   </div>
 </template>
 
-<style scoped>
-.wfcd-logo,
-img {
-  max-width: 100%;
-  max-height: 100%;
-  fill: turquoise;
-}
-</style>
-
 <script>
-import wfcdLogo from '@/assets/img/logos/wfcd.svg';
+import { cdn } from '@/utilities';
+
+const wfcdLogo = cdn('svg/wfcd.svg');
 
 export default {
   name: '404',
   data() {
     return {
-      wfcdLogo: wfcdLogo,
+      wfcdLogo,
     };
   },
 };

@@ -63,10 +63,11 @@
 import TimeBadge from '@/components/TimeBadge.vue';
 import HubImg from '@/components/HubImg.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
-
-import archwing from '@/assets/img/archwing.svg';
-import nightmare from '@/assets/img/nightmare.svg';
 import HubPanelWrap from '@/components/HubPanelWrap';
+import { cdn } from '@/utilities';
+
+const archwing = cdn('svg/archwing.svg');
+const nightmare = cdn('svg/nightmare.svg');
 
 export default {
   name: 'AlertPanel',

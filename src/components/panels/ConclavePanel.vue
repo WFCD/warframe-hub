@@ -1,6 +1,6 @@
 <template>
   <HubPanelWrap :title="headertext" class="conclave">
-    <b-list-group v-if="conclave && conclave.length != 0">
+    <b-list-group v-if="conclave && conclave.length !== 0">
       <b-list-group-item
         :style="styleObject"
         v-for="(challenge, index) in activeChallenges"
@@ -38,12 +38,13 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg';
+import { cdn } from '@/utilities';
 
-import conclaveimg from '@/assets/img/conclave/conclave.webp';
-import lunaro from '@/assets/img/conclave/lunaro.webp';
-import cephaloncapture from '@/assets/img/conclave/cephaloncapture.webp';
-import annihilation from '@/assets/img/conclave/annihilation.webp';
-import teamannihilation from '@/assets/img/conclave/teamannihilation.webp';
+const conclaveimg = cdn('webp/conclave/conclave.webp');
+const lunaro = cdn('webp/conclave/lunaro.webp');
+const cephaloncapture = cdn('webp/conclave/cephaloncapture.webp');
+const annihilation = cdn('webp/conclave/annihilation.webp');
+const teamannihilation = cdn('webp/conclave/teamannihilation.webp');
 
 export default {
   name: 'ConclavePanel',
@@ -56,34 +57,34 @@ export default {
       return this.conclave
         .filter((challenge) => !challenge.rootChallenge)
         .sort((a, b) => {
-          return a.category == 'week' || b.category == 'week' ? 1 : a.mode.localeCompare(b.mode);
+          return a.category === 'week' || b.category === 'week' ? 1 : a.mode.localeCompare(b.mode);
         });
     },
   },
   methods: {
     type: function (challenge) {
-      if (challenge.mode == 'Team Annihilation') {
+      if (challenge.mode === 'Team Annihilation') {
         return this.$t('conclave.teamannihilation');
-      } else if (challenge.mode == 'Annihilation') {
+      } else if (challenge.mode === 'Annihilation') {
         return this.$t('conclave.annihilation');
-      } else if (challenge.mode == 'Capture the Cephalon') {
+      } else if (challenge.mode === 'Capture the Cephalon') {
         return this.$t('conclave.cephaloncapture');
-      } else if (challenge.mode == 'Lunaro') {
+      } else if (challenge.mode === 'Lunaro') {
         return this.$t('conclave.lunaro');
-      } else if (challenge.category == 'week') {
+      } else if (challenge.category === 'week') {
         return this.$t('conclave.weekly');
       } else {
         return this.$t('conclave.header');
       }
     },
     image: function (challenge) {
-      if (challenge.mode == 'Team Annihilation') {
+      if (challenge.mode === 'Team Annihilation') {
         return teamannihilation;
-      } else if (challenge.mode == 'Annihilation') {
+      } else if (challenge.mode === 'Annihilation') {
         return annihilation;
-      } else if (challenge.mode == 'Capture the Cephalon') {
+      } else if (challenge.mode === 'Capture the Cephalon') {
         return cephaloncapture;
-      } else if (challenge.mode == 'Lunaro') {
+      } else if (challenge.mode === 'Lunaro') {
         return lunaro;
       } else {
         return conclaveimg;

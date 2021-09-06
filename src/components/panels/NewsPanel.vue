@@ -51,20 +51,6 @@
   </HubPanelWrap>
 </template>
 <style scoped>
-.list-group .list-group {
-  margin: 0 -5px -5px -5px;
-}
-
-body .list-group .list-group-item-borderbottom {
-  margin: 0;
-}
-
-body .list-group .list-group-item-borderless .list-group {
-  margin-left: auto;
-  margin-right: auto;
-  display: inline-block;
-}
-
 .list-group-item.active .news-title a,
 .list-group-item.hover .news-title a {
   font-weight: normal;

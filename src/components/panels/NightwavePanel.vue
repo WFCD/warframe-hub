@@ -45,11 +45,12 @@ import TimeBadge from '@/components/TimeBadge.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg';
+import { cdn } from '@/utilities';
 
-import daily from '@/assets/img/nightwave/daily.webp';
-import weekly from '@/assets/img/nightwave/weekly.webp';
-import elite from '@/assets/img/nightwave/elite.webp';
-import standing from '@/assets/img/general/standing.svg';
+const daily = cdn('webp/nightwave/daily.webp');
+const weekly = cdn('webp/nightwave/weekly.webp');
+const elite = cdn('webp/nightwave/elite.webp');
+const standing = cdn('svg/standing.svg');
 
 export default {
   name: 'Nightwave',

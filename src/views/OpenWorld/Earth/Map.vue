@@ -15,7 +15,7 @@ import Vue from 'vue';
 import L from 'leaflet';
 
 /* map stuff */
-import plains from '@/assets/img/plains.webp';
+
 import labels from '@/assets/json/geo/plains/labels.json';
 import fish from '@/assets/json/geo/plains/fishing.json';
 import grineer from '@/assets/json/geo/plains/grineer.json';
@@ -23,13 +23,17 @@ import lorefish from '@/assets/json/geo/plains/lorefish.json';
 import wisp from '@/assets/json/geo/plains/wisp.json';
 import lure from '@/assets/json/geo/plains/lure.json';
 import cave from '@/assets/json/geo/plains/cave.json';
-import grineerIcon from '@/assets/img/map_icons/grineer.webp';
-import oddityIcon from '@/assets/img/map_icons/lorefish.webp';
-import wispIcon from '@/assets/img/map_icons/wisp.webp';
-import lureIcon from '@/assets/img/map_icons/lure.webp';
-import caveIcon from '@/assets/img/map_icons/normal-cave.webp';
+
 import MapPopup from '@/components/MapPopup.vue';
 import OddityPopup from '@/components/OddityPopup.vue';
+import { cdn } from '@/utilities';
+
+const plains = cdn('webp/maps/plains.webp');
+const caveIcon = cdn('webp/map_icons/normal-cave.webp');
+const grineerIcon = cdn('webp/map_icons/grineer.webp');
+const oddityIcon = cdn('webp/map_icons/lorefish.webp');
+const wispIcon = cdn('webp/map_icons/wisp.webp');
+const lureIcon = cdn('webp/map_icons/lure.webp');
 
 const grineerMarker = L.icon({
   iconUrl: grineerIcon,

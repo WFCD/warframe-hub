@@ -110,13 +110,13 @@
 <script>
 import HubImg from '@/components/HubImg.vue';
 import AsyncItemThumb from '@/components/AsyncItemThumb';
-import utilities from '@/utilities.js';
+import { makeid, cdn } from '@/utilities.js';
 
-import corpus from '@/assets/img/factions/corpus.svg';
-import corrupted from '@/assets/img/factions/corrupted.svg';
-import grineer from '@/assets/img/factions/grineer.svg';
-import infested from '@/assets/img/factions/infested.svg';
-import sentient from '@/assets/img/factions/sentient.svg';
+const corpus = cdn('svg/factions/corpus.svg');
+const corrupted = cdn('svg/factions/corrupted.svg');
+const grineer = cdn('svg/factions/grineer.svg');
+const infested = cdn('svg/factions/infested.svg');
+const sentient = cdn('svg/factions/sentient.svg');
 
 export default {
   name: 'Invasion',
@@ -126,7 +126,7 @@ export default {
       styleObject: {
         display: 'inline',
       },
-      id: utilities.makeid(),
+      id: makeid(),
       fImg: {
         corpus: corpus,
         grineer: grineer,

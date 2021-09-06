@@ -39,7 +39,7 @@
 
           <br /><br />If you have any issues with timers loading oddly or information displaying strangely, the first
           and easiest debugging is to clear your cache. <br />You can find helpful tips how to do this
-          <a name="Refresh Your Cache" href="http://www.refreshyourcache.com/en/home/">here.</a>
+          <a name="Refresh Your Cache" href="https://www.refreshyourcache.com/en/home/">here.</a>
         </div>
         <div class="modal-footer">
           <button

@@ -19,6 +19,13 @@
       "acolytes": "@worldstate.persistentEnemies"
     }
   },
+  "aggregated": {
+    "display": true,
+    "displayable": true,
+    "displayName": "Timers",
+    "key": "aggregated",
+    "component": "AggregatedTimePanel"
+  },
   "cetus": {
     "display": true,
     "displayable": true,

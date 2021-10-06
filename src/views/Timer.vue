@@ -2,6 +2,7 @@
   <div class="timers">
     <b-container fluid class="grid">
       <vue-binpacker>
+        <!--
         <timer
           v-if="componentState.earth.display"
           :time="(worldstate && worldstate.earthCycle) || null"
@@ -27,7 +28,8 @@
           :time="worldstate.steelPath"
           :display="steelPath"
           headerPath="steelPath.header"
-        />
+        /> -->
+        <aggregatedtimer v-if="componentState.aggregated.display" :worldstate="worldstate" />
         <sentientOutposts
           v-if="componentState.sentientoutposts.display"
           :sentientOutposts="worldstate.sentientOutposts"
@@ -61,7 +63,8 @@
 import { mapState, mapGetters } from 'vuex';
 import AlertPanel from '@/components/panels/AlertPanel.vue';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
-import TimePanel from '@/components/panels/TimePanel.vue';
+// import TimePanel from '@/components/panels/TimePanel.vue';
+import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel';
 import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
@@ -82,7 +85,8 @@ export default {
   components: {
     alerts: AlertPanel,
     news: NewsPanel,
-    timer: TimePanel,
+    // timer: TimePanel,
+    aggregatedtimer: AggregatedTimePanel,
     reset: ResetPanel,
     sortie: SortiePanel,
     arbitration: ArbitrationPanel,

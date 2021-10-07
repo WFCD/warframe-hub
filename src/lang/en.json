@@ -59,7 +59,8 @@
     "plat": "Platinum",
     "credAbbr": "cr",
     "dabloons": "Ducats",
-    "cred": "Credits"
+    "cred": "Credits",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Darvo's Deals",
@@ -131,8 +132,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reward Timer Reset",
-    "label": "Reward Timer Reset in:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Sales and Featured Deals",

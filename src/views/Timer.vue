@@ -28,13 +28,15 @@
           :time="worldstate.steelPath"
           :display="steelPath"
           headerPath="steelPath.header"
-        /> -->
-        <aggregatedtimer v-if="componentState.aggregated.display" :worldstate="worldstate" />
+        />
+        <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <sentientOutposts
           v-if="componentState.sentientoutposts.display"
           :sentientOutposts="worldstate.sentientOutposts"
         />
         <reset v-if="componentState.reset.display" />
+        -->
+        <aggregatedtimer v-if="componentState.aggregated.display" :worldstate="worldstate" />
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
@@ -47,7 +49,6 @@
         <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
-        <arbitration v-if="componentState.arbitration.display" :arbitration="worldstate.arbitration" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
@@ -63,11 +64,8 @@
 import { mapState, mapGetters } from 'vuex';
 import AlertPanel from '@/components/panels/AlertPanel.vue';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
-// import TimePanel from '@/components/panels/TimePanel.vue';
 import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel';
-import ResetPanel from '@/components/panels/ResetPanel.vue';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
-import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
@@ -77,19 +75,19 @@ import SalesPanel from '@/components/panels/SalesPanel.vue';
 import VoidTraderPanel from '@/components/panels/VoidTraderPanel.vue';
 import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 import ConstructionPanel from '@/components/panels/ConstructionPanel.vue';
-import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue';
 import ConclavePanel from '@/components/panels/ConclavePanel.vue';
+
+// import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue';
+// import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
+// import TimePanel from '@/components/panels/TimePanel.vue';
 
 export default {
   name: 'timers-view',
   components: {
     alerts: AlertPanel,
     news: NewsPanel,
-    // timer: TimePanel,
     aggregatedtimer: AggregatedTimePanel,
-    reset: ResetPanel,
     sortie: SortiePanel,
-    arbitration: ArbitrationPanel,
     fissures: FissuresPanel,
     bounty: BountyPanel,
     invasions: InvasionsPanel,
@@ -99,8 +97,11 @@ export default {
     'void-trader': VoidTraderPanel,
     nightwave: NightwavePanel,
     construction: ConstructionPanel,
-    sentientOutposts: SentientOutpostsPanel,
     conclave: ConclavePanel,
+    // sentientOutposts: SentientOutpostsPanel,
+    // reset: ResetPanel,
+    // arbitration: ArbitrationPanel,
+    // timer: TimePanel,
   },
   data() {
     return {

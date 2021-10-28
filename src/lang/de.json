@@ -34,7 +34,7 @@
     "docs": "API Dokumentation",
     "old": "Altes Hub",
     "status": "Status",
-    "riven": "Riven Data (Beta)",
+    "riven": "Rivendaten (Beta)",
     "synth": "Syntheseziele",
     "map": "Karte",
     "fish": "Angeldaten",
@@ -85,9 +85,9 @@
   },
   "fissures": {
     "header": "Risse",
-    "voidstorm": "Void Storm",
-    "choice": "Choose which fissures to show",
-    "both": "Both"
+    "voidstorm": "Void Sturm",
+    "choice": "Wähle welche Voidrisse angezeigt werden sollen",
+    "both": "Beide"
   },
   "invasions": {
     "header": "Invasionen",
@@ -141,7 +141,7 @@
   "sentientoutpost": {
     "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
     "tooltip2": "Der geschätzte Zyklus beträgt 30 Minuten aktive Zeit für jede Mission.",
-    "header": "Anomalies",
+    "header": "Anomalien",
     "outpostsL": "Außenposten",
     "none": "Keine aktuellen Anomalien",
     "warn": "Vergiss nicht deinen Paracesis!",
@@ -151,10 +151,10 @@
     "header": "Einsätze"
   },
   "steelPath": {
-    "header": "Steel Path"
+    "header": "Stählerner Pfad"
   },
   "time": {
-    "loading": "Loading...",
+    "loading": "Lade...",
     "day": "Tag",
     "night": "Nacht",
     "warm": "Warm",

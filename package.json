@@ -55,7 +55,7 @@
     "vue-multiselect": "^2.1.6",
     "vue-native-notification": "^1.1.1",
     "vue-notification": "^1.3.20",
-    "vue-router": "^3.5.2",
+    "vue-router": "^3.5.3",
     "vue-template-compiler": "^2.6.14",
     "vue2-circle-progress": "^1.2.3",
     "vue2-leaflet": "^1.2.3",

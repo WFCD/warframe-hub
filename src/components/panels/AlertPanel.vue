@@ -14,13 +14,13 @@
         <span class="pull-left">
           <HubImg
             :src="archwing"
-            :name="this.$t('alerts.archwing')"
+            :name="$t('alerts.archwing')"
             class="li-mission-decorator"
             v-if="alert.mission.archwingRequired"
           />
           <HubImg
             :src="nightmare"
-            :name="this.$t('alerts.nightmare')"
+            :name="$t('alerts.nightmare')"
             class="li-mission-decorator"
             v-if="alert.mission.nightmare"
           />
@@ -31,6 +31,7 @@
           variant="info"
           :style="styleObject"
           v-for="item in alert.mission.reward.items"
+          v-if="alert.mission.reward.items.length"
           :key="item"
           class="pull-right"
         >
@@ -40,7 +41,7 @@
           variant="info"
           :style="styleObject"
           v-for="item in alert.mission.reward.countedItems"
-          :key="item"
+          :key="item.key"
           class="pull-right"
         >
           {{ item.count }} {{ item.type }}

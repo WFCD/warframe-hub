@@ -202,7 +202,9 @@ const actions = {
   },
   async updateRivens({ commit, getters }) {
     const res = await fetch(`https://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens${getters.platform.toUpperCase()}.json`);
-    const rivens = JSON.parse((await res.text()).replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
+    const raw = await res.text();
+    if (!(raw && raw.length)) return;
+    const rivens = JSON.parse(raw.replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
     commit('commitRivens', [getters.platform, rivens]);
   },
   async updateSynthData({ commit }) {

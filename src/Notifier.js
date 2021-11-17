@@ -129,12 +129,10 @@ const makeNotification = (type, data) => {
         type: 'news',
       };
     case 'invasions':
-      var rewards = `${data.attackerReward.asString.length ? `${data.attackerReward.asString} vs ` : ''}${
-        data.defenderReward.asString
-      }`;
-
       return {
-        head: rewards,
+        head: `${data.attackerReward.asString.length ? `${data.attackerReward.asString} vs ` : ''}${
+          data.defenderReward.asString
+        }`,
         body: {
           body: `${data.desc} • ${data.node}\n${data.eta
             .replace('-Infinityd', '??')

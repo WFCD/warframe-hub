@@ -63,7 +63,7 @@ import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 export default {
-  name: 'Construction',
+  name: 'construction-panel',
   props: ['construction'],
   computed: {
     headertext() {

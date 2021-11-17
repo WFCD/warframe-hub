@@ -165,7 +165,7 @@ const rolls = [
 ];
 
 export default {
-  name: 'rivendata',
+  name: 'riven-data-view',
   data() {
     return {
       data: [],

@@ -299,7 +299,7 @@ function mounted() {
 }
 
 export default {
-  name: 'Vallismap',
+  name: 'vallis-map-view',
   data: data,
   methods: {
     track() {

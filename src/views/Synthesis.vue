@@ -147,7 +147,7 @@ const fields = [
 ];
 
 export default {
-  name: 'synthesis',
+  name: 'synthesis-view',
   components: {
     SynthesisImg,
   },

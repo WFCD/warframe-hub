@@ -53,7 +53,7 @@ const kuvalogo = cdn('svg/kuva/kuva.svg');
 //import flood from cdn('svg/kuva/kuvaflood.svg');
 
 export default {
-  name: 'Kuvas',
+  name: 'kuva-panel',
   props: ['kuvas'],
   computed: {
     headertext() {

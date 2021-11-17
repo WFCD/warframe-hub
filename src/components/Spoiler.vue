@@ -23,7 +23,7 @@
 import util from '@/utilities';
 
 export default {
-  name: 'Collapsible',
+  name: 'spoiler-component',
   props: ['headertext', 'init'],
   data: function () {
     return {

@@ -216,7 +216,7 @@ const markerAlias = L.marker;
 const labelAlias = L.circleMarker;
 
 export default {
-  name: 'Poemap',
+  name: 'cetus-map-view',
   data: data,
   methods: {
     track() {

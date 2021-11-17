@@ -14,7 +14,7 @@
 import util from '@/utilities';
 
 export default {
-  name: 'Collapsible',
+  name: 'collapsible-panel',
   props: ['headertext'],
   data: function () {
     return {

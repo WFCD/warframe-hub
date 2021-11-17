@@ -62,7 +62,7 @@ import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue
 import ConclavePanel from '@/components/panels/ConclavePanel.vue';
 
 export default {
-  name: 'timers',
+  name: 'timers-view',
   components: {
     alerts: AlertPanel,
     news: NewsPanel,

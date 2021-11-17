@@ -57,7 +57,7 @@
 import DropdownItem from '@/components/DropdownNavItem.vue';
 
 export default {
-  name: 'Navbar',
+  name: 'navbar-component',
   components: {
     DropdownItem,
   },

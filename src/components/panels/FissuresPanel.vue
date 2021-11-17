@@ -70,7 +70,7 @@ const requiem = cdn('svg/fissures/5.svg');
 fissureIcons.push(lith, meso, neo, axi, requiem);
 
 export default {
-  name: 'Fissures',
+  name: 'fissure-panel',
   props: ['fissures'],
   computed: {
     ...mapGetters({

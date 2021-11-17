@@ -201,7 +201,7 @@ const fields = [
 ];
 
 export default {
-  name: 'vallisfish',
+  name: 'vallis-fish-view',
   components: {
     FishImg,
   },

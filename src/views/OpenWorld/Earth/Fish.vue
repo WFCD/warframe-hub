@@ -206,7 +206,7 @@ const fields = [
 ];
 
 export default {
-  name: 'fish',
+  name: 'fish-cetus-view',
   components: {
     FishImg,
   },

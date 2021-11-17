@@ -242,6 +242,16 @@
       "value": "fissures.t1.disruption",
       "text": "Lith Disruption Fissure"
     },
+    "fissures.t1.volatile": {
+      "state": false,
+      "value": "fissures.t1.volatile",
+      "text": "Lith Volatile Storm"
+    },
+    "fissures.t1.skirmish": {
+      "state": false,
+      "value": "fissures.t1.skirmish",
+      "text": "Lith Skirmish Storm"
+    },
     "fissures.t2.excavation": {
       "state": false,
       "value": "fissures.t2.excavation",
@@ -301,6 +311,16 @@
       "state": false,
       "value": "fissures.t2.disruption",
       "text": "Meso Disruption Fissure"
+    },
+    "fissures.t2.volatile": {
+      "state": false,
+      "value": "fissures.t2.volatile",
+      "text": "Meso Volatile Storm"
+    },
+    "fissures.t2.skirmish": {
+      "state": false,
+      "value": "fissures.t2.skirmish",
+      "text": "Meso Skirmish Storm"
     },
     "fissures.t3.excavation": {
       "state": false,
@@ -367,6 +387,16 @@
       "value": "fissures.t3.disruption",
       "text": "Neo Disruption Fissure"
     },
+    "fissures.t3.volatile": {
+      "state": false,
+      "value": "fissures.t3.volatile",
+      "text": "Neo Volatile Storm"
+    },
+    "fissures.t3.skirmish": {
+      "state": false,
+      "value": "fissures.t3.skirmish",
+      "text": "Neo Skirmish Storm"
+    },
     "fissures.t4.excavation": {
       "state": false,
       "value": "fissures.t4.excavation",
@@ -431,6 +461,16 @@
       "state": false,
       "value": "fissures.t4.disruption",
       "text": "Axi Disruption Fissure"
+    },
+    "fissures.t4.volatile": {
+      "state": false,
+      "value": "fissures.t4.volatile",
+      "text": "Axi Volatile Storm"
+    },
+    "fissures.t4.skirmish": {
+      "state": false,
+      "value": "fissures.t4.skirmish",
+      "text": "Axi Skirmish Storm"
     },
     "fissures.t5.exterminate": {
       "state": false,

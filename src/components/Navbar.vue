@@ -11,6 +11,7 @@
         <b-nav-item-dropdown left>
           <template slot="button-content"><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template>
           <DropdownItem :isLocal="true" icon="fas fa-info" target="/ow/fish/howto" :label="$t('nav.howto')" />
+          <b-dd-divider />
           <b-dd-header><i class="fas fa-mountain faIcon"></i> {{ $t('nav.owearth') }}</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" :label="$t('nav.map')" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/poe/fish" :label="$t('nav.fish')" />

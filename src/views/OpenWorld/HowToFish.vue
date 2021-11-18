@@ -1,14 +1,14 @@
 <template>
   <b-container fluid>
     <b-row class="text-center">
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2" offset-sm="1">
         <h2>How do Fish?</h2>
         <br />
         <h3>The definitive guide to fishing in Warframe</h3>
         <br />
         <h4>Contributors</h4>
       </b-col>
-      <b-col md="4" offset="4">
+      <b-col md="4" offset-md="4" offset-sm="2">
         <b-list-group class="center-block">
           <b-list-group-item class="d-flex justify-content-between align-items-center">
             <a href="https://reddit.com/u/cranem258">/u/cranem258 aka PepsiMan</a>
@@ -24,7 +24,7 @@
           </b-list-group-item>
         </b-list-group>
       </b-col>
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2" offset-sm="1">
         <FishImg type="guide" item="clem" title="Clem... Clem!" class="center-block" />
         <br />
         <br />
@@ -64,7 +64,7 @@
         <br />
         <p>Here's the map for reference</p>
       </b-col>
-      <b-col md="4" offset="2">
+      <b-col md="4" offset-md="2" offset-sm="1">
         <router-link to="/poe/map">
           <b-btn variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-btn>
         </router-link>
@@ -74,7 +74,7 @@
           <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
         </router-link>
       </b-col>
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2">
         <p>
           Equip your spear on your gear wheel, and enter the open world, let's go to this spot since it's the easier to
           farm fish in the beginning:
@@ -300,13 +300,13 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2" offset-sm="1">
         <h4>Recommended Equipment</h4>
       </b-col>
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2" offset-sm="1">
         <div>
           <b-card-group columns>
-            <b-card no-body style="width: 300px" header="Ivara">
+            <b-card no-body header="Ivara">
               <b-card-img :src="this.optimize(this.wfcdn('ivara.png'), '300')" alt="Ivara" top />
               <b-card-body>
                 <b-card-text>Ivara's Prowl can help you stay away from enemy awareness.</b-card-text>
@@ -318,7 +318,7 @@
                 </b-button>
               </b-card-body>
             </b-card>
-            <b-card no-body style="width: 300px" header="Banshee">
+            <b-card no-body header="Banshee">
               <b-card-img :src="this.optimize(this.wfcdn('banshee.png'), '300')" alt="Banshee" top />
               <b-card-body>
                 <b-card-text>
@@ -330,7 +330,7 @@
                 </b-button>
               </b-card-body>
             </b-card>
-            <b-card no-body style="width: 300px" header="Limbo">
+            <b-card no-body header="Limbo">
               <b-card-img :src="this.optimize(this.wfcdn('limbo.png'), '300')" alt="Limbo" top />
               <b-card-body>
                 <b-card-text>
@@ -342,7 +342,7 @@
                 </b-button>
               </b-card-body>
             </b-card>
-            <b-card no-body style="width: 300px" header="Luminous Dye">
+            <b-card no-body header="Luminous Dye">
               <b-card-img :src="this.optimize(this.wfcdn('luminous-dye.png'), '200')" alt="Luminous Dye" top />
               <b-card-body>
                 <b-card-text>
@@ -353,7 +353,7 @@
                 </b-button>
               </b-card-body>
             </b-card>
-            <b-card no-body style="width: 300px" header="Oxylus">
+            <b-card no-body header="Oxylus">
               <b-card-img :src="this.optimize(this.wfcdn('oxylus.png'), '300')" alt="Oxylus" top />
               <b-card-body>
                 <b-card-text>
@@ -375,7 +375,7 @@
           </b-card-group>
         </div>
       </b-col>
-      <b-col md="8" offset="2">
+      <b-col md="8" offset-md="2">
         <h4>
           <b>Now go and fish on!</b>
         </h4>

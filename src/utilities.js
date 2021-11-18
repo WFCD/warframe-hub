@@ -13,7 +13,10 @@ export const makeid = () => {
 
 export const cdn = (path) => `https://cdn.warframestat.us/genesis/${path}`;
 
-export const optimize = (img) => `https://cdn.warframestat.us/o_webp,progressive_true/${img}`;
+export const wfcdn = (imgName) => `https://cdn.warframestat.us/img/${imgName}`;
+
+export const optimize = (img, size) =>
+  `https://cdn.warframestat.us/${size ? `rs_${size}_fit,` : ''}o_webp,progressive_true/${img}`;
 
 export default {
   makeid,

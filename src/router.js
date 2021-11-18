@@ -5,11 +5,10 @@ import Timer from './views/Timer.vue';
 
 import PoEMap from './views/OpenWorld/Earth/Map.vue';
 import PoEFish from './views/OpenWorld/Earth/Fish.vue';
-import HowToFish from './views/OpenWorld/Earth/HowToFish.vue';
+import HowToFish from './views/OpenWorld/HowToFish.vue';
 
 import VallisFish from './views/OpenWorld/Venus/Fish.vue';
 import VallisMap from './views/OpenWorld/Venus/Map.vue';
-import HowToFishVallis from './views/OpenWorld/Venus/HowToFish.vue';
 
 import CambionFish from './views/OpenWorld/Deimos/Fish.vue';
 
@@ -94,6 +93,24 @@ const routes = [
     },
   },
   {
+    path: '/ow/fish/howto',
+    name: 'howtofish',
+    component: HowToFish,
+    meta: {
+      title: 'Warframe Hub | How to Fish',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Guide on how to fish',
+        },
+        {
+          name: 'og:description',
+          content: 'Guide on how to fish',
+        },
+      ],
+    },
+  },
+  {
     path: '/poe/fish/howto',
     name: 'howtofish',
     component: HowToFish,
@@ -102,11 +119,29 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Guide on how to fish on the Plains of Eidolon',
+          content: 'Guide on how to fish',
         },
         {
           name: 'og:description',
-          content: 'Guide on how to fish on the Plains of Eidolon',
+          content: 'Guide on how to fish',
+        },
+      ],
+    },
+  },
+  {
+    path: '/vallis/fish/howto',
+    name: 'howtofish',
+    component: HowToFish,
+    meta: {
+      title: 'Warframe Hub | How to Fish',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Guide on how to fish',
+        },
+        {
+          name: 'og:description',
+          content: 'Guide on how to fish',
         },
       ],
     },
@@ -125,24 +160,6 @@ const routes = [
         {
           name: 'og:description',
           content: 'Fish Information and resources for the Orb Vallis',
-        },
-      ],
-    },
-  },
-  {
-    path: '/vallis/fish/howto',
-    name: 'howtofishvallis',
-    component: HowToFishVallis,
-    meta: {
-      title: 'Warframe Hub | OV - How to Fish',
-      metaTags: [
-        {
-          name: 'description',
-          content: 'Guide on how to fish in Orb Vallis',
-        },
-        {
-          name: 'og:description',
-          content: 'Guide on how to fish in Orb Vallis',
         },
       ],
     },

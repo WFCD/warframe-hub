@@ -119,7 +119,7 @@ const infested = cdn('svg/factions/infested.svg');
 const sentient = cdn('svg/factions/sentient.svg');
 
 export default {
-  name: 'Invasion',
+  name: 'invasion-item',
   props: ['invasion'],
   data() {
     return {

@@ -29,7 +29,7 @@ import { cdn } from '@/utilities';
 const wfcdLogo = cdn('svg/wfcd.svg');
 
 export default {
-  name: '404',
+  name: '404-view',
   data() {
     return {
       wfcdLogo,

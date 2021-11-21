@@ -203,7 +203,7 @@ const fields = [
 ];
 
 export default {
-  name: 'fish',
+  name: 'deimos-fish-view',
   components: {
     FishImg,
   },

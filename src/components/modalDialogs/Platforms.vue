@@ -19,7 +19,7 @@
 import platforms from '@/assets/json/platforms.json';
 
 export default {
-  name: 'Platforms',
+  name: 'platforms-dialog',
   data() {
     return {
       platform: this.$store.getters.platform,

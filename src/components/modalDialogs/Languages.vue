@@ -19,7 +19,7 @@
 import locales from '@/assets/json/locales.json';
 
 export default {
-  name: 'Lanuages',
+  name: 'languages-dialog',
   data() {
     return {
       locale: this.$store.getters.locale,

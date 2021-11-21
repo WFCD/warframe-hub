@@ -53,7 +53,7 @@ const elite = cdn('webp/nightwave/elite.webp');
 const standing = cdn('svg/standing.svg');
 
 export default {
-  name: 'Nightwave',
+  name: 'nightwave-panel',
   props: ['nightwave'],
   computed: {
     headertext() {

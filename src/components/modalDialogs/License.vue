@@ -56,3 +56,8 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: 'license-dialog',
+};
+</script>

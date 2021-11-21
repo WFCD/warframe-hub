@@ -10,15 +10,15 @@
 
         <b-nav-item-dropdown left>
           <template slot="button-content"><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template>
+          <DropdownItem :isLocal="true" icon="fas fa-info" target="/ow/fish/howto" :label="$t('nav.howto')" />
+          <b-dd-divider />
           <b-dd-header><i class="fas fa-mountain faIcon"></i> {{ $t('nav.owearth') }}</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/poe/map" :label="$t('nav.map')" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/poe/fish" :label="$t('nav.fish')" />
-          <DropdownItem :isLocal="true" icon="fas fa-info" target="/poe/fish/howto" :label="$t('nav.howto')" />
           <b-dd-divider />
           <b-dd-header><i class="fas fa-icicles faIcon"></i> {{ $t('nav.owvenus') }}</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-map-marker-alt" target="/vallis/map" :label="$t('nav.map')" />
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/vallis/fish" :label="$t('nav.fish')" />
-          <DropdownItem :isLocal="true" icon="fas fa-info" target="/vallis/fish/howto" :label="$t('nav.howto')" />
           <b-dd-divider />
           <b-dd-header><i class="fas fa-biohazard faIcon"></i> {{ $t('nav.owdeimos') }}</b-dd-header>
           <DropdownItem :isLocal="true" icon="fas fa-fish" target="/deimos/fish" :label="$t('nav.fish')" />
@@ -38,7 +38,6 @@
           <DropdownItem icon="fas fa-scroll" target="https://old-hub.warframestat.us" :label="$t('nav.old')" />
         </b-nav-item-dropdown>
       </b-navbar-nav>
-
       <b-navbar-nav class="ml-auto">
         <DropdownItem
           icon="fab fa-discord"
@@ -57,7 +56,7 @@
 import DropdownItem from '@/components/DropdownNavItem.vue';
 
 export default {
-  name: 'Navbar',
+  name: 'navbar-component',
   components: {
     DropdownItem,
   },

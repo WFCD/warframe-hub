@@ -18,6 +18,13 @@ const locale = Object.keys(locales).includes(navigator.language.substr(0, 2).toL
 const apiBase = 'https://api.warframestat.us' || process.env.VUE_APP_API_BASE;
 let notifier;
 
+const get = async (url, opts) => {
+  try {
+    return fetch(url, opts).then((d) => d.json());
+    // eslint-disable-next-line no-empty
+  } catch (ignored) {}
+};
+
 const state = {
   worldstates: {
     pc: initialWorldstate.pc,
@@ -68,6 +75,9 @@ const state = {
     switch: [],
   },
   synthData: [],
+  warframes: [],
+  weaponds: [],
+  mods: [],
 };
 const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -141,17 +151,25 @@ const mutations = {
   toggleBountiesOpen: (state, [bountyType, newState]) => {
     state.bountyToggles[bountyType] = newState;
   },
+  commitFrameData: (state, [warframes]) => {
+    state.warframes = warframes;
+  },
+  commitWeaponData: (state, [weapons]) => {
+    state.weapons = weapons;
+  },
+  commitModData: (state, [mods]) => {
+    state.mods = mods;
+  },
 };
 
 const actions = {
   async updateWorldstate(context) {
     const { commit, getters } = context;
-    const res = await fetch(`${apiBase}/${getters.platform}`, {
+    const ws = await get(`${apiBase}/${getters.platform}`, {
       headers: {
         'Accept-Language': getters.locale,
       },
     });
-    const ws = await res.json();
     commit('commitWs', [getters.platform, ws]);
     if (!notifier) {
       notifier = new Notifier(context);
@@ -208,8 +226,26 @@ const actions = {
     commit('commitRivens', [getters.platform, rivens]);
   },
   async updateSynthData({ commit }) {
-    const res = await fetch('https://api.warframestat.us/synthTargets').then((res) => res.json());
+    const res = await get('https://api.warframestat.us/synthTargets');
     commit('commitSynthData', [res]);
+  },
+  async updateWarframes({ commit }) {
+    const res = await get(
+      'https://api.warframestat.us/warframes?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
+    );
+    commit('commitFrameData', [res]);
+  },
+  async updateWeapons({ commit }) {
+    const res = await get(
+      'https://api.warframestat.us/weapons?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
+    );
+    commit('commitWeaponData', [res]);
+  },
+  async updateMods({ commit }) {
+    const res = await get(
+      'https://api.warframestat.us/mods?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
+    );
+    commit('commitModData', [res]);
   },
 };
 const getters = {
@@ -241,6 +277,9 @@ const getters = {
   bountyToggles: (state) => state.bountyToggles,
   rivens: (state) => state.rivens[state.platform],
   synthData: (state) => state.synthData,
+  warframes: (state) => state.warframes,
+  weapons: (state) => state.weapons,
+  mods: (state) => state.mods,
 };
 
 Vue.use(Vuex);

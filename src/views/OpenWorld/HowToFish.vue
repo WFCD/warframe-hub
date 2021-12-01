@@ -306,72 +306,52 @@
       <b-col md="8" offset-md="2" offset-sm="1">
         <div>
           <b-card-group columns>
-            <b-card no-body header="Ivara">
-              <b-card-img :src="this.optimize(this.wfcdn('ivara.png'), '300')" alt="Ivara" top />
-              <b-card-body>
-                <b-card-text>Ivara's Prowl can help you stay away from enemy awareness.</b-card-text>
-                <b-card-text>
-                  Ivara's Dashwire can let you get a good angle above fish to throw spears at them
-                </b-card-text>
-                <b-button href="https://warframe.fandom.com/wiki/Ivara" target="_blank" variant="primary">
-                  Wiki <i class="fas fa-link" />
-                </b-button>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="Banshee">
-              <b-card-img :src="this.optimize(this.wfcdn('banshee.png'), '300')" alt="Banshee" top />
-              <b-card-body>
-                <b-card-text>
-                  Banshee's Sonarr allows you to see outlines of fish for a short time, but doesn't give weak points or
-                  waypoints.
-                </b-card-text>
-                <b-button href="https://warframe.fandom.com/wiki/Banshee" target="_blank" variant="primary">
-                  Wiki <i class="fas fa-link" />
-                </b-button>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="Limbo">
-              <b-card-img :src="this.optimize(this.wfcdn('limbo.png'), '300')" alt="Limbo" top />
-              <b-card-body>
-                <b-card-text>
-                  Limbo in the rift will see an entity outline, but the spear won't be effective as the fish isn't in
-                  the rift
-                </b-card-text>
-                <b-button href="https://warframe.fandom.com/wiki/Limbo" target="_blank" variant="primary">
-                  Wiki <i class="fas fa-link" />
-                </b-button>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="Luminous Dye">
-              <b-card-img :src="this.optimize(this.wfcdn('luminous-dye.png'), '200')" alt="Luminous Dye" top />
-              <b-card-body>
-                <b-card-text>
-                  Luminous dye shows bright silhouettes of fish in the water, making them easier to catch.
-                </b-card-text>
-                <b-button href="https://warframe.fandom.com/wiki/Luminous_Dye" target="_blank" variant="primary">
-                  Wiki <i class="fas fa-link" />
-                </b-button>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="Oxylus">
-              <b-card-img :src="this.optimize(this.wfcdn('oxylus.png'), '300')" alt="Oxylus" top />
-              <b-card-body>
-                <b-card-text>
-                  Oxylus's Scan Aquatic Lifeforms provides a fish highlight similar to luminous dye, and provides
-                  waypoints on the map
-                </b-card-text>
-                <b-button href="https://warframe.fandom.com/wiki/Oxylus" target="_blank" variant="primary">
-                  Wiki <i class="fas fa-link" />
-                </b-button>
-                <b-button
-                  href="https://warframe.fandom.com/wiki/Scan_Aquatic_Lifeforms"
-                  target="_blank"
-                  variant="primary"
-                >
-                  Mod <i class="fas fa-link" />
-                </b-button>
-              </b-card-body>
-            </b-card>
+            <codex-card
+              :item="{
+                name: 'Ivara',
+                imageName: 'ivara.png',
+              }"
+              link="https://warframe.fandom.com/wiki/Ivara"
+            >
+              <t1>Ivara's Prowl can help you stay away from enemy awareness. </t1>
+              <t2>Ivara's Dashwire can let you get a good angle above fish to throw spears at them</t2>
+            </codex-card>
+            <codex-card
+              :item="{
+                name: 'Banshee',
+                imageName: 'banshee.png',
+                description:
+                  'Banshee\'s Sonarr allows you to see outlines of fish for a short time, but doesn\'t give weak points or waypoints.',
+              }"
+              link="https://warframe.fandom.com/wiki/Banshee"
+            />
+            <codex-card
+              :item="{
+                name: 'Limbo',
+                imageName: 'limbo.png',
+                description:
+                  'Limbo in the rift will see an entity outline, but the spear won\'t be effective as the fish isn\'t in the rift',
+              }"
+              link="https://warframe.fandom.com/wiki/Limbo"
+            />
+            <codex-card
+              :item="{
+                name: 'Luminous Dye',
+                imageName: 'luminous-dye.png',
+                description: 'Luminous dye shows bright silhouettes of fish in the water, making them easier to catch.',
+              }"
+              link="https://warframe.fandom.com/wiki/Luminous_Dye"
+            />
+            <codex-card
+              :item="{
+                name: 'Oxylus',
+                imageName: 'oxylus.png',
+                description:
+                  'Oxylus\'s Scan Aquatic Lifeforms provides a fish highlight similar to luminous dye, and provides waypoints on the map.',
+              }"
+              link="https://warframe.fandom.com/wiki/Oxylus"
+              :link2="{ a: 'https://warframe.fandom.com/wiki/Scan_Aquatic_Lifeforms', title: 'Mod' }"
+            />
           </b-card-group>
         </div>
       </b-col>
@@ -396,10 +376,13 @@
 import FishImg from '@/components/FishImg.vue';
 import { cdn, wfcdn, optimize } from '@/utilities';
 
+import CodexCard from '@/components/CodexCard';
+
 export default {
   name: 'HowToFish',
   components: {
     FishImg,
+    CodexCard,
   },
   methods: {
     cdn,

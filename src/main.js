@@ -22,6 +22,14 @@ if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   });
 }
 
+const ignored = /(failed to fetch|EOF|host name|NotAllowedError)/gi;
+
+Vue.config.errorHandler((err) => {
+  if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
+    if (!ignored.test(err.toString())) Sentry.captureException(err);
+  }
+});
+
 import VueMobileDetection from 'vue-mobile-detection';
 Vue.use(VueMobileDetection);
 
@@ -135,4 +143,7 @@ setInterval(() => {
 setInterval(() => {
   store.dispatch('updateRivens');
   store.dispatch('updateSynthData');
+  store.dispatch('updateWeapons');
+  store.dispatch('updateWarframes');
+  store.dispatch('updateMods');
 }, 3600000);

@@ -17,7 +17,12 @@
             time && (time.state || time.active) ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
           }}</span>
         </span>
-        <TimeBadge class="pull-right" :starttime="time.activation || now" :endtime="time.expiry" :interval="1000" />
+        <TimeBadge
+          class="pull-right"
+          :starttime="(time && time.activation) || now"
+          :endtime="time.expiry"
+          :interval="1000"
+        />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -41,22 +46,22 @@ export default {
         : `${this.$t(`location.${this.$props.location.toLowerCase()}`)} ${this.$t('time.Timer')}`;
     },
     isDay() {
-      return this.time && this.time.state === 'day';
+      return this && this.time && this.time.state === 'day';
     },
     isNight() {
-      return this.time && this.time.state === 'night';
+      return this && this.time && this.time.state === 'night';
     },
     isWarm() {
-      return this.time && this.time.state === 'warm';
+      return this && this.time && this.time.state === 'warm';
     },
     isCold() {
-      return this.time && this.time.state === 'cold';
+      return this && this.time && this.time.state === 'cold';
     },
     isFass() {
-      return this.time && this.time.active === 'fass';
+      return this && this.time && this.time.active === 'fass';
     },
     isVome() {
-      return this.time && this.time.active === 'vome';
+      return this && this.time && this.time.active === 'vome';
     },
   },
   components: {

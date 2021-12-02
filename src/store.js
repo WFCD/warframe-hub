@@ -25,6 +25,14 @@ const get = async (url, opts) => {
   } catch (ignored) {}
 };
 
+const safeCommit = (commit, id, data) => {
+  try {
+    commit(id, [data]);
+  } catch (e) {
+    // throw away error
+  }
+};
+
 const state = {
   worldstates: {
     pc: initialWorldstate.pc,
@@ -227,25 +235,25 @@ const actions = {
   },
   async updateSynthData({ commit }) {
     const res = await get('https://api.warframestat.us/synthTargets');
-    commit('commitSynthData', [res]);
+    safeCommit(commit, 'commitSynthData', res);
   },
   async updateWarframes({ commit }) {
     const res = await get(
       'https://api.warframestat.us/warframes?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
     );
-    commit('commitFrameData', [res]);
+    safeCommit(commit, 'commitFrameData', res);
   },
   async updateWeapons({ commit }) {
     const res = await get(
       'https://api.warframestat.us/weapons?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
     );
-    commit('commitWeaponData', [res]);
+    safeCommit(commit, 'commitWeaponData', res);
   },
   async updateMods({ commit }) {
     const res = await get(
       'https://api.warframestat.us/mods?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable'
     );
-    commit('commitModData', [res]);
+    safeCommit(commit, 'commitModData', res);
   },
 };
 const getters = {

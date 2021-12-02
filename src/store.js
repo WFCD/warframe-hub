@@ -190,6 +190,7 @@ const actions = {
     } else if (getters.notificationAllowance === 'denied') {
       return false;
     } else if (getters.notificationAllowance === 'default') {
+      if (!Vue.notification) return false;
       const result = await Vue.notification.requestPermission();
       if (result === 'granted') {
         Vue.notification.show(

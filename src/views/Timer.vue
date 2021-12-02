@@ -1,11 +1,27 @@
 <template>
   <div class="timers">
     <b-container fluid class="grid">
-      <vueBinpacker>
-        <timer v-if="componentState.earth.display" :time="worldstate.earthCycle" location="Earth" />
-        <timer v-if="componentState.cetus.display" :time="worldstate.cetusCycle" location="Cetus" />
-        <timer v-if="componentState.vallis.display" :time="worldstate.vallisCycle" location="Vallis" />
-        <timer v-if="componentState.cambion.display" :time="worldstate.cambionCycle" location="Cambion" />
+      <vue-binpacker>
+        <timer
+          v-if="componentState.earth.display"
+          :time="(worldstate && worldstate.earthCycle) || null"
+          location="Earth"
+        />
+        <timer
+          v-if="componentState.cetus.display"
+          :time="(worldstate && worldstate.cetusCycle) || null"
+          location="Cetus"
+        />
+        <timer
+          v-if="componentState.vallis.display"
+          :time="(worldstate && worldstate.vallisCycle) || null"
+          location="Vallis"
+        />
+        <timer
+          v-if="componentState.cambion.display"
+          :time="(worldstate && worldstate.cambionCycle) || null"
+          location="Cambion"
+        />
         <timer
           v-if="componentState['steel-path'].display"
           :time="worldstate.steelPath"
@@ -36,7 +52,7 @@
         <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
         <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
         <void-trader v-if="componentState.baro.display" :voidTrader="worldstate.voidTrader" />
-      </vueBinpacker>
+      </vue-binpacker>
     </b-container>
   </div>
 </template>

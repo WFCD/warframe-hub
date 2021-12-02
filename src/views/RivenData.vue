@@ -192,8 +192,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      rivens: 'rivens',
-      platform: 'platform',
+      rivens: 'cache/rivens',
+      platform: 'worldstate/platform',
     }),
   },
   methods: {
@@ -224,7 +224,7 @@ export default {
     } else {
       this.data = [];
       this.loading = true;
-      this.$store.dispatch('updateRivens');
+      this.$store.dispatch('cache/updateRivens');
     }
   },
 };

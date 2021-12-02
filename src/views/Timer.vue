@@ -110,10 +110,9 @@ export default {
   },
   computed: {
     ...mapState({
-      componentState: 'components',
-      gridState: 'grid',
+      componentState: (state) => state.worldstate.components,
     }),
-    ...mapGetters({
+    ...mapGetters('worldstate', {
       worldstate: 'worldstate',
       ostron: 'ostronSyndicate',
       solaris: 'solarisSyndicate',

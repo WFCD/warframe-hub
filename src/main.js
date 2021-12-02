@@ -119,15 +119,15 @@ Object.keys(locales).forEach((locale) => {
 });
 
 const i18n = new VueI18n({
-  locale: store.getters.locale,
+  locale: store.getters['worldstate/locale'],
   fallbackLocale: 'en',
   messages,
 });
 
 // Kick off worldstate refresh
-store.dispatch('updateWorldstate');
-store.dispatch('updateRivens');
-store.dispatch('updateSynthData');
+store.dispatch('worldstate/updateWorldstate');
+store.dispatch('cache/updateRivens');
+store.dispatch('cache/updateSynthData');
 
 new Vue({
   router,
@@ -138,12 +138,12 @@ new Vue({
 
 const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL);
 setInterval(async () => {
-  return store.dispatch('updateWorldstate');
+  return store.dispatch('worldstate/updateWorldstate');
 }, interval);
 setInterval(async () => {
-  await store.dispatch('updateRivens');
-  await store.dispatch('updateSynthData');
-  await store.dispatch('updateWeapons');
-  await store.dispatch('updateWarframes');
-  await store.dispatch('updateMods');
+  await store.dispatch('cache/updateRivens');
+  await store.dispatch('cache/updateSynthData');
+  await store.dispatch('cache/updateWeapons');
+  await store.dispatch('cache/updateWarframes');
+  await store.dispatch('cache/updateMods');
 }, 3600000);

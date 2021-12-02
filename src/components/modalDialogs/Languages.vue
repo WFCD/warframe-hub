@@ -17,12 +17,12 @@
 
 <script>
 import locales from '@/assets/json/locales.json';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'languages-dialog',
   data() {
     return {
-      locale: this.$store.getters.locale,
       platformIconStyle: {
         color: 'white',
         'margin-top': '3px',
@@ -34,11 +34,14 @@ export default {
       locales: locales,
     };
   },
+  computed: {
+    ...mapGetters('worldstate', ['locale']),
+  },
   methods: {
     saveLocale(locale) {
-      this.$store.commit('commitLocale', locale);
+      this.$store.commit('worldstate/commitLocale', locale);
       this.$i18n.locale = locale;
-      this.$store.dispatch('updateWorldstate');
+      this.$store.dispatch('worldstate/updateWorldstate');
     },
   },
 };

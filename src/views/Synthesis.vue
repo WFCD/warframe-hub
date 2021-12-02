@@ -163,9 +163,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      synthData: 'synthData',
-    }),
+    ...mapGetters('cache', ['synthData']),
   },
   methods: {
     onFiltered: function (filteredItems) {
@@ -188,7 +186,7 @@ export default {
     } else {
       this.data = [];
       this.loading = true;
-      this.$store.dispatch('updateSynthData');
+      this.$store.dispatch('cache/updateSynthData');
     }
   },
 };

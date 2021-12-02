@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'SoundOptionsTab',
   data() {
@@ -42,16 +44,17 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('worldstate', ['sounds']),
     activeSounds: {
       get: function () {
-        return JSON.parse(JSON.stringify(this.$store.getters.sounds));
+        return JSON.parse(JSON.stringify(this.sounds));
       },
       set: function () {},
     },
   },
   methods: {
     updateSounds(enabledSounds) {
-      this.$store.commit('commitSounds', [JSON.parse(JSON.stringify(enabledSounds))]);
+      this.$store.commit('worldstate/commitSounds', [JSON.parse(JSON.stringify(enabledSounds))]);
     },
   },
 };

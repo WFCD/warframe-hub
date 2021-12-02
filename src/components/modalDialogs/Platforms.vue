@@ -17,12 +17,12 @@
 
 <script>
 import platforms from '@/assets/json/platforms.json';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'platforms-dialog',
   data() {
     return {
-      platform: this.$store.getters.platform,
       platformIconStyle: {
         color: 'white',
         'margin-top': '3px',
@@ -34,11 +34,14 @@ export default {
       platforms: platforms,
     };
   },
+  computed: {
+    ...mapGetters('worldstate', ['platform']),
+  },
   methods: {
     savePlatform(platform) {
-      this.$store.commit('commitPlatform', platform);
-      this.$store.dispatch('updateWorldstate');
-      this.$store.dispatch('updateRivens');
+      this.$store.commit('worldstate/commitPlatform', platform);
+      this.$store.dispatch('worldstate/updateWorldstate');
+      this.$store.dispatch('cache/updateRivens');
     },
   },
 };

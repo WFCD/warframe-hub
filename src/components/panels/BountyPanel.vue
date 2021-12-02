@@ -83,6 +83,7 @@ import HubImg from '@/components/HubImg.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 
 import { cdn, makeid } from '@/utilities.js';
+import { mapGetters } from 'vuex';
 
 const standing = cdn('svg/standing.svg');
 
@@ -109,9 +110,10 @@ export default {
       set() {
         this.hover = null;
         this.autoExpand = !this.autoExpand;
-        this.$store.commit('toggleBountiesOpen', [this.typeId, this.autoExpand]);
+        this.$store.commit('worldstate/toggleBountiesOpen', [this.typeId, this.autoExpand]);
       },
     },
+    ...mapGetters('worldstate', ['bountyToggles']),
   },
   data() {
     return {
@@ -137,7 +139,7 @@ export default {
     };
   },
   beforeMount() {
-    this.autoExpand = this.$store.getters.bountyToggles[this.typeId];
+    this.autoExpand = this.bountyToggles[this.typeId];
   },
   methods: {
     toggleDetails(row) {

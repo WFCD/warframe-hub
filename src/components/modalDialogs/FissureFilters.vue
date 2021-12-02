@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'FissureFilters',
   components: {},
@@ -27,24 +29,22 @@ export default {
     return {};
   },
   computed: {
+    ...mapGetters('worldstate', {
+      fissureStates: 'fissurePlanetStates',
+    }),
     activeFissures: {
       get: function () {
-        const planets = Object.keys(this.$store.getters.fissurePlanetStates).map(
-          (planet) => this.$store.getters.fissurePlanetStates[planet]
-        );
+        const planets = Object.keys(this.fissureStates).map((planet) => this.fissureStates[planet]);
 
         return planets.filter((planet) => planet.state).map((planet) => planet.value);
       },
       set: function () {},
     },
-    fissureStates() {
-      return this.$store.getters.fissurePlanetStates;
-    },
   },
   methods: {
     updateFissureStates(enabledFissures) {
-      Object.keys(this.$store.getters.fissurePlanetStates).forEach((planet) => {
-        this.$store.commit('commitFissurePlanetState', [planet, enabledFissures.includes(planet)]);
+      Object.keys(this.fissureStates).forEach((planet) => {
+        this.$store.commit('worldstate/commitFissurePlanetState', [planet, enabledFissures.includes(planet)]);
       });
     },
   },

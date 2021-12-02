@@ -143,7 +143,12 @@ const reversedHealthEvents = ['Thermia Fractures'];
 
 export default {
   name: 'EventsPanel',
-  props: ['events'],
+  props: {
+    events: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       fields: [

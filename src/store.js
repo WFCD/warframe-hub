@@ -208,6 +208,7 @@ const actions = {
   },
   async updateNotifiedIds({ commit, getters }) {
     const ws = getters.worldstate;
+    if (!ws) return;
     const newIds = ws.alerts
       .map((alert) => alert.id)
       .concat(ws.invasions.map((invasion) => invasion.id))

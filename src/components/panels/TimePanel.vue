@@ -20,7 +20,7 @@
         <TimeBadge
           class="pull-right"
           :starttime="(time && time.activation) || now"
-          :endtime="time.expiry"
+          :endtime="(time && time.expiry) || now"
           :interval="1000"
         />
       </b-list-group-item>

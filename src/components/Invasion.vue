@@ -8,40 +8,24 @@
     <b-row class="invasion-rewards p-0">
       <b-col>
         <div class="pull-left">
-          <b-badge
-            tag="div"
-            v-for="item in invasion.attacker.reward.items"
-            :key="item"
-            :variant="getLabelColor(invasion.attacker.factionKey)"
-            class="ml-n3"
-          >
+          <b-badge tag="div" v-for="item in atkItems" :key="item" :variant="getLabelColor(atkFaction)" class="ml-n3">
             <item-thumb :alt="item" />
           </b-badge>
           <b-badge
             tag="div"
-            v-for="item in invasion.attacker.reward.countedItems"
+            v-for="item in atkCntItems"
             :key="item.type"
-            :variant="getLabelColor(invasion.attacker.factionKey)"
+            :variant="getLabelColor(atkFaction)"
             class="ml-n3"
           >
             <item-thumb :alt="countedItem(item)" :ikey="item.key" />
           </b-badge>
         </div>
         <div class="pull-right">
-          <b-badge
-            v-for="item in invasion.defender.reward.items"
-            :key="item"
-            :variant="getLabelColor(invasion.defender.factionKey)"
-            class="mr-n3"
-          >
+          <b-badge v-for="item in defItems" :key="item" :variant="getLabelColor(defFaction)" class="mr-n3">
             <item-thumb :alt="item" />
           </b-badge>
-          <b-badge
-            v-for="item in invasion.defender.reward.countedItems"
-            :key="item.type"
-            :variant="getLabelColor(invasion.defender.factionKey)"
-            class="mr-n3"
-          >
+          <b-badge v-for="item in defCntItems" :key="item.type" :variant="getLabelColor(defFaction)" class="mr-n3">
             <item-thumb :alt="countedItem(item)" :ikey="item.key" />
           </b-badge>
         </div>
@@ -98,10 +82,6 @@
   display: inline-block;
 }
 
-.eta {
-  font-size: 75%;
-}
-
 .progress-value {
   margin-top: 9px;
 }
@@ -140,10 +120,52 @@ export default {
   },
   computed: {
     atkFactionImg() {
-      return this.fImg[this.$props.invasion.attackingFaction.toLowerCase()] || corrupted;
+      return this.fImg[this.$props.invasion.attacker.faction.toLowerCase()] || corrupted;
     },
     defFactionImg() {
-      return this.fImg[this.$props.invasion.defendingFaction.toLowerCase()] || corrupted;
+      return this.fImg[this.$props.invasion.defender.faction.toLowerCase()] || corrupted;
+    },
+    atkFaction() {
+      return (this.$props.invasion.attacker && this.$props.invasion.attacker.factionKey) || 'Corrupted';
+    },
+    defFaction() {
+      return (this.$props.invasion.defender && this.$props.invasion.defender.factionKey) || 'Corrupted';
+    },
+    atkItems() {
+      return (
+        (this.$props.invasion &&
+          this.$props.invasion.attacker &&
+          this.$props.invasion.attacker.reward &&
+          this.$props.invasion.attacker.reward.items) ||
+        []
+      );
+    },
+    atkCntItems() {
+      return (
+        (this.$props.invasion &&
+          this.$props.invasion.attacker &&
+          this.$props.invasion.attacker.reward &&
+          this.$props.invasion.attacker.reward.countedItems) ||
+        []
+      );
+    },
+    defCntItems() {
+      return (
+        (this.$props.invasion &&
+          this.$props.invasion.defender &&
+          this.$props.invasion.defender.reward &&
+          this.$props.invasion.defender.reward.countedItems) ||
+        []
+      );
+    },
+    defItems() {
+      return (
+        (this.$props.invasion &&
+          this.$props.invasion.defender &&
+          this.$props.invasion.defender.reward &&
+          this.$props.invasion.defender.reward.items) ||
+        []
+      );
     },
   },
   methods: {

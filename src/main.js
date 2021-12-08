@@ -13,22 +13,22 @@ import { version } from '../package';
 Vue.config.productionTip = false;
 
 /* Sentry Reporting */
+const ignored = /(failed to fetch|EOF|host name|NotAllowedError)/gi;
 if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
   Sentry.init({
     Vue: Vue,
     dsn: process.env.VUE_APP_DSN,
     integrations: [new Integrations.BrowserTracing()],
     release: `warframe-hub@${version}`,
+    beforeSend(event, hint) {
+      const error = hint.originalException;
+      if ((error && error.message && !ignored.test(error.message)) || !error) {
+        return event;
+      }
+    },
+    sampleRate: 0.25,
   });
 }
-
-const ignored = /(failed to fetch|EOF|host name|NotAllowedError)/gi;
-
-Vue.config.errorHandler((err) => {
-  if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_DSN) {
-    if (!ignored.test(err.toString())) Sentry.captureException(err);
-  }
-});
 
 import VueMobileDetection from 'vue-mobile-detection';
 Vue.use(VueMobileDetection);
@@ -137,13 +137,13 @@ new Vue({
 }).$mount('#app');
 
 const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL);
-setInterval(() => {
-  store.dispatch('updateWorldstate');
+setInterval(async () => {
+  return store.dispatch('updateWorldstate');
 }, interval);
-setInterval(() => {
-  store.dispatch('updateRivens');
-  store.dispatch('updateSynthData');
-  store.dispatch('updateWeapons');
-  store.dispatch('updateWarframes');
-  store.dispatch('updateMods');
+setInterval(async () => {
+  await store.dispatch('updateRivens');
+  await store.dispatch('updateSynthData');
+  await store.dispatch('updateWeapons');
+  await store.dispatch('updateWarframes');
+  await store.dispatch('updateMods');
 }, 3600000);

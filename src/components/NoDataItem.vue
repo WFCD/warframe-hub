@@ -9,7 +9,7 @@
         style="filter: invert(80%); padding-right: 10px"
       />
       <div class="no-content-warning align-middle" style="margin-bottom: 2px">
-        {{ $t('nav.nodatatxt', { text: text }) }}
+        {{ $t('nav.nodatatxt', { text }) }}
       </div>
     </span>
   </b-list-group-item>

@@ -12,9 +12,9 @@
         <h5 class="display-5 text-center">{{ event.description }}</h5>
         <div class="text-center">{{ event.tooltip }}</div>
         <TimeBadge
-          v-if="event.activation && event.expiry"
-          :starttime="event.activation"
-          :endtime="event.expiry"
+          v-if="event && event.activation && event.expiry"
+          :starttime="(event && event.activation) || Date.now()"
+          :endtime="(event && event.expiry) || Date.now()"
           :interval="1000"
           :pullright="false"
         />
@@ -116,8 +116,8 @@
         <div class="text-center bottom-pad" v-if="event.nextAlt.activation !== epoch && event.nextAlt.expiry !== epoch">
           <div>{{ $t('events.nextCycle') }}</div>
           <TimeBadge
-            :starttime="event.nextAlt.activation"
-            :endtime="event.nextAlt.expiry"
+            :starttime="(event && event.nextAlt && event.nextAlt.activation) || Date.now()"
+            :endtime="(event && event.nextAlt && event.nextAlt.expiry) || Date.now()"
             :interval="1000"
             :pullright="false"
           />
@@ -143,7 +143,12 @@ const reversedHealthEvents = ['Thermia Fractures'];
 
 export default {
   name: 'EventsPanel',
-  props: ['events'],
+  props: {
+    events: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       fields: [

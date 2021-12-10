@@ -9,6 +9,10 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 dayjs.extend(duration);
 
+const ten_minutes = 600000;
+const thirty_minutes = 1800000;
+const sixty_minutes = 3600000;
+
 export default {
   name: 'TimeBadge',
   props: {
@@ -88,13 +92,15 @@ export default {
       return stringArray.join(' ');
     },
     onBadgeUpdate() {
+      /** @type {number} time until active */
       let diffactivate;
+      /** @type {Duration} total time active */
       let durationactivate;
 
       const start = new Date(this.starttime).getTime() / 1000;
 
-      if (typeof start !== 'undefined' && start !== false) {
-        diffactivate = dayjs().diff(dayjs(start).unix()) * -1;
+      if (start) {
+        diffactivate = dayjs().diff(dayjs.unix(start)) * -1;
         durationactivate = dayjs.duration(diffactivate, 'milliseconds');
       }
 
@@ -103,6 +109,7 @@ export default {
 
         // Get the diff and duration until "end"
         const diff = dayjs().diff(dayjs.unix(end)) * -1;
+        /** @type {Duration} duration from now until the end */
         const duration = dayjs.duration({ milliseconds: diff });
 
         duration.parseFromMilliseconds();
@@ -110,24 +117,30 @@ export default {
 
         // Format based on there being no end time, being after the end, or being before the start
         if (!this.endtime) {
+          // End exists
           this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
-        } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+        } else if (diffactivate && diffactivate > 0) {
+          // currently still active & time remaining
           this.mutableVariant = 'info';
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else if (diff < 0) {
+          this.type = 'after the end';
+          // past the end
           this.mutableVariant = 'info';
           this.disp = `${this.$t('time.expiredL')}: ${this.formatDurationShort(duration)}`;
         } else {
-          if (diff < 600000) {
+          this.type = `the diff works @ ${diff}`;
+          if (diff < ten_minutes) {
             // 0 min to 10 min
             this.mutableVariant = 'danger';
-          } else if (diff < 1800000) {
+          } else if (diff < thirty_minutes) {
             // 10 min to 30 min
             this.mutableVariant = 'warning';
-          } else if (diff > 1800000) {
+          } else if (diff < sixty_minutes) {
             // 30 min to 1 hour
             this.mutableVariant = 'success';
           } else {
+            // all others
             this.mutableVariant = 'info';
           }
           this.disp = this.formatTimer(diff);
@@ -140,7 +153,7 @@ export default {
         duration.parseFromMilliseconds();
 
         this.mutableVariant = 'transparent';
-        if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+        if (diffactivate && diffactivate > 0) {
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else {
           this.disp = `${this.$t('time.ongoingL')} ${this.formatDurationShort(duration)}`;

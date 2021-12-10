@@ -119,7 +119,7 @@ export default {
         if (!this.endtime) {
           // End exists
           this.disp = `${diffactivate > 0 ? '-' : ''}${this.formatTimer(Math.abs(diffactivate))}`;
-        } else if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+        } else if (diffactivate && diffactivate > 0) {
           // currently still active & time remaining
           this.mutableVariant = 'info';
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
@@ -153,7 +153,7 @@ export default {
         duration.parseFromMilliseconds();
 
         this.mutableVariant = 'transparent';
-        if (typeof diffactivate !== 'undefined' && diffactivate > 0) {
+        if (diffactivate && diffactivate > 0) {
           this.disp = `${this.$t('time.startL')} ${this.formatDurationShort(durationactivate)}`;
         } else {
           this.disp = `${this.$t('time.ongoingL')} ${this.formatDurationShort(duration)}`;

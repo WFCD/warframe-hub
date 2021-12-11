@@ -18,7 +18,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "5.8.2",
     "@sentry/tracing": "^6.15.0",
-    "@sentry/vue": "^6.15.0",
+    "@sentry/vue": "^6.16.1",
     "@sentry/webpack-plugin": "^1.18.3",
     "@types/lodash": "^4.14.177",
     "@types/node-fetch": "^2.5.12",

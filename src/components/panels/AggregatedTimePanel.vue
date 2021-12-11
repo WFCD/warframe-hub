@@ -165,11 +165,15 @@
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
 
 import { cdn, wfcdn, optimize } from '@/utilities.js';
 import { mapState } from 'vuex';
+
+dayjs.extend(utc);
 
 const corpus = cdn('svg/factions/corpus.svg');
 const corrupted = cdn('svg/factions/corrupted.svg');
@@ -203,7 +207,7 @@ export default {
       return dayjs().toISOString();
     },
     nextDay() {
-      return dayjs().endOf('day').add(1, 'seconds').toISOString();
+      return dayjs.utc().endOf('day').add(1, 'seconds').toISOString();
     },
     headertext() {
       return `${this.$t('time.Timer')}`;

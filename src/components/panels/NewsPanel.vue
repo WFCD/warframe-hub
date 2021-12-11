@@ -87,6 +87,7 @@ import HubPanelWrap from '@/components/HubPanelWrap';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
+import { mapGetters } from 'vuex';
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
 
@@ -111,8 +112,12 @@ export default {
       set() {
         this.hover = null;
         this.cycle = !this.cycle;
-        this.$store.commit('autoProgressNews', [this.cycle]);
+        this.$store.commit('worldstate/autoProgressNews', [this.cycle]);
       },
+    },
+    ...mapGetters('worldstate', ['componentState', 'locale']),
+    cycle() {
+      return this.componentState.news.autoCycle;
     },
   },
   methods: {
@@ -161,9 +166,7 @@ export default {
       },
       activeElemIndex: 0,
       interval: {},
-      cycle: this.$store.getters.componentState.news.autoCycle,
       hover: null,
-      locale: this.$store.getters.locale,
     };
   },
   mounted() {

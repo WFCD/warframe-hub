@@ -73,9 +73,7 @@ export default {
   name: 'fissure-panel',
   props: ['fissures'],
   computed: {
-    ...mapGetters({
-      fissureDisplays: 'fissureDisplays',
-    }),
+    ...mapGetters('worldstate', ['fissureDisplays', 'fissurePlanetStates']),
     headertext() {
       return this.$t('fissures.header');
     },
@@ -84,13 +82,13 @@ export default {
         return this.fissureDisplays;
       },
       set(value) {
-        this.$store.commit('commitFissureDisplaysState', [value]);
+        this.$store.commit('worldstate/commitFissureDisplaysState', [value]);
       },
     },
     filteredFissures: function () {
       const pState = [];
-      Object.keys(this.$store.getters.fissurePlanetStates).forEach((p) => {
-        if (this.$store.getters.fissurePlanetStates[p].state) {
+      Object.keys(this.fissurePlanetStates).forEach((p) => {
+        if (this.fissurePlanetStates[p].state) {
           pState.push(p);
         }
       });

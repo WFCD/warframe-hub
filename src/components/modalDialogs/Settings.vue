@@ -60,6 +60,7 @@ import Languages from '@/components/modalDialogs/Languages.vue';
 
 import themes from '@/assets/json/themes.json';
 import baseComponents from '@/assets/json/components.json';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'SettingsModal',
@@ -72,7 +73,6 @@ export default {
   },
   data() {
     return {
-      theme: this.$store.getters.theme,
       themeIconStyle: {
         color: 'white',
         'margin-top': '3px',
@@ -86,22 +86,26 @@ export default {
   },
   methods: {
     updateComponentState(enabledComponents) {
-      Object.keys(this.$store.getters.componentState).forEach((component) => {
-        this.$store.commit('commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
+      Object.keys(this.rawCS).forEach((component) => {
+        this.$store.commit('worldstate/commitComponentDisplayMode', [component, enabledComponents.includes(component)]);
       });
     },
     updateTheme(key) {
-      this.$store.commit('setTheme', [key]);
+      this.$store.commit('worldstate/setTheme', [key]);
     },
     async checkNotifications() {
-      return this.$store.dispatch('checkNotifPermissions');
+      return this.$store.dispatch('worldstate/checkNotifPermissions');
     },
   },
   computed: {
+    ...mapGetters('worldstate', {
+      rawCS: 'componentState',
+      theme: 'theme',
+    }),
     activeComponents: {
       get: function () {
-        return Object.keys(this.$store.getters.componentState)
-          .map((component) => this.$store.getters.componentState[component])
+        return Object.keys(this.rawCS)
+          .map((component) => this.rawCS[component])
           .filter(
             (component) =>
               component.display && (!baseComponents[component.key] || baseComponents[component.key].displayable)
@@ -111,21 +115,17 @@ export default {
       set: function () {},
     },
     componentStates() {
-      const cs = this.$store.getters.componentState;
-      return Object.keys(cs)
+      return Object.keys(this.rawCS)
         .map((component) => {
           if (!baseComponents[component] || !baseComponents[component].displayable) {
             return false;
           }
           return {
-            text: this.$store.getters.componentState[component].displayName,
-            value: this.$store.getters.componentState[component].key,
+            text: this.rawCS[component].displayName,
+            value: this.rawCS[component].key,
           };
         })
         .filter((c) => c);
-    },
-    getComponents() {
-      return this.$store.getters.componentState;
     },
     getThemes() {
       return this.themes;

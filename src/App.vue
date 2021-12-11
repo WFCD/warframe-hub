@@ -13,6 +13,7 @@ import Navbar from '@/components/Navbar.vue';
 import Settings from '@/components/modalDialogs/Settings.vue';
 import About from '@/components/modalDialogs/About.vue';
 import themes from '@/assets/json/themes.json';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
@@ -22,8 +23,11 @@ export default {
     About,
   },
   computed: {
+    ...mapGetters('worldstate', {
+      rawTheme: 'theme',
+    }),
     theme() {
-      return themes.find((theme) => theme.key === this.$store.getters.theme).className;
+      return themes.find((theme) => theme.key === this.rawTheme).className;
     },
   },
   watch: {

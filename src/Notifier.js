@@ -396,13 +396,16 @@ export default class Notifier {
   }
 
   async checkNotifications() {
-    const ws = this.store.getters.worldstate;
-    this.trackedRewards = Object.keys(this.store.getters.trackableState.rewardTypes)
-      .map((reward) => this.store.getters.trackableState.rewardTypes[reward])
+    const ws = this.store.rootGetters['worldstate/worldstate'];
+    const trackableState = this.store.rootGetters['worldstate/trackableState'];
+    const rTypes = trackableState.rewardTypes;
+    const eTypes = trackableState.eventTypes;
+    this.trackedRewards = Object.keys(rTypes)
+      .map((reward) => rTypes[reward])
       .filter((reward) => reward.state)
       .map((reward) => reward.value);
-    this.trackedEvents = Object.keys(this.store.getters.trackableState.eventTypes)
-      .map((event) => this.store.getters.trackableState.eventTypes[event])
+    this.trackedEvents = Object.keys(eTypes)
+      .map((event) => eTypes[event])
       .filter((event) => event.state)
       .map((event) => event.value);
 

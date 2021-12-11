@@ -43,11 +43,13 @@ import NoDataItem from '@/components/NoDataItem.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import Spoiler from '@/components/Spoiler';
 import Invasion from '@/components/Invasion';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'InvasionsPanel',
   props: ['invasions'],
   computed: {
+    ...mapGetters('worldstate', ['componentState']),
     headertext() {
       return this.$t('invasions.header');
     },
@@ -55,7 +57,7 @@ export default {
       return 5;
     },
     initialStatus() {
-      const state = this.$store.getters.componentState.invasions;
+      const state = this.componentState.invasions;
       return state.expand;
     },
   },
@@ -71,9 +73,9 @@ export default {
       return invasions.filter((invasion) => !invasion.completed);
     },
     updatePanelStatus: function () {
-      const state = this.$store.getters.componentState['invasions'];
+      const state = this.componentState.invasions;
       state.expand = !state.expand;
-      this.$store.commit('commitComponent', ['invasions', state]);
+      this.$store.commit('worldstate/commitComponent', ['invasions', state]);
     },
   },
   components: {

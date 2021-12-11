@@ -40,11 +40,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
-      warframes: 'warframes',
-      mods: 'mods',
-      weapons: 'weapons',
-    }),
+    ...mapGetters('cache', ['warframes', 'mods', 'weapons']),
   },
   methods: {
     toTitleCase: function (str) {
@@ -61,21 +57,21 @@ export default {
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.mods = [];
-      this.$store.dispatch('updateMods');
+      this.$store.dispatch('cache/updateMods');
     }
     if (this.warframes) {
       this.data.warframes = this.warframes;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.warframes = [];
-      this.$store.dispatch('updateWarframes');
+      this.$store.dispatch('cache/updateWarframes');
     }
     if (this.weapons) {
       this.data.weapons = this.weapons;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.weapons = [];
-      this.$store.dispatch('updateWeapons');
+      this.$store.dispatch('cache/updateWeapons');
     }
   },
 };

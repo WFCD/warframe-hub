@@ -69,6 +69,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'NotificationFilters',
@@ -76,77 +77,76 @@ export default {
     Multiselect,
   },
   computed: {
+    ...mapGetters('worldstate', ['trackableState']),
     activeRewards: {
       get: function () {
-        return Object.keys(this.$store.getters.trackableState.rewardTypes)
-          .map((component) => this.$store.getters.trackableState.rewardTypes[component])
+        return Object.keys(this.trackableState.rewardTypes)
+          .map((component) => this.trackableState.rewardTypes[component])
           .filter((component) => component.state);
       },
       set: function () {},
     },
     rewardStates() {
-      return Object.keys(this.$store.getters.trackableState.rewardTypes).map(
-        (reward) => this.$store.getters.trackableState.rewardTypes[reward]
-      );
+      return Object.keys(this.trackableState.rewardTypes).map((reward) => this.trackableState.rewardTypes[reward]);
     },
     activeEvents: {
       get: function () {
-        return Object.keys(this.$store.getters.trackableState.eventTypes)
+        return Object.keys(this.trackableState.eventTypes)
           .filter((k) => !k.includes('fissures') && !k.includes('arbitration'))
-          .map((component) => this.$store.getters.trackableState.eventTypes[component])
+          .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
       set: function () {},
     },
     activeFissures: {
       get: function () {
-        return Object.keys(this.$store.getters.trackableState.eventTypes)
+        return Object.keys(this.trackableState.eventTypes)
           .filter((k) => k.includes('fissures'))
-          .map((component) => this.$store.getters.trackableState.eventTypes[component])
+          .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
       set: function () {},
     },
     activeArbis: {
       get: function () {
-        return Object.keys(this.$store.getters.trackableState.eventTypes)
+        return Object.keys(this.trackableState.eventTypes)
           .filter((k) => k.includes('arbitration'))
-          .map((component) => this.$store.getters.trackableState.eventTypes[component])
+          .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
       set: function () {},
     },
     eventStates() {
-      return Object.keys(this.$store.getters.trackableState.eventTypes)
+      return Object.keys(this.trackableState.eventTypes)
         .filter((k) => !k.includes('fissures') && !k.includes('arbitration'))
-        .map((k) => this.$store.getters.trackableState.eventTypes[k]);
+        .map((k) => this.trackableState.eventTypes[k]);
     },
     fissureStates() {
-      return Object.keys(this.$store.getters.trackableState.eventTypes)
+      return Object.keys(this.trackableState.eventTypes)
         .filter((k) => k.includes('fissures'))
-        .map((k) => this.$store.getters.trackableState.eventTypes[k]);
+        .map((k) => this.trackableState.eventTypes[k]);
     },
     arbiStates() {
-      return Object.keys(this.$store.getters.trackableState.eventTypes)
+      return Object.keys(this.trackableState.eventTypes)
         .filter((k) => k.includes('arbitration'))
-        .map((k) => this.$store.getters.trackableState.eventTypes[k]);
+        .map((k) => this.trackableState.eventTypes[k]);
     },
   },
   methods: {
     toggleRewardState({ value, state }) {
-      this.$store.commit('commitRewardState', [value, !state]);
+      this.$store.commit('worldstate/commitRewardState', [value, !state]);
     },
     updateRewardStates(enabledRewards) {
-      Object.keys(this.$store.getters.trackableState.rewardTypes).forEach((reward) => {
-        this.$store.commit('commitRewardState', [reward, enabledRewards.includes(reward)]);
+      Object.keys(this.trackableState.rewardTypes).forEach((reward) => {
+        this.$store.commit('worldstate/commitRewardState', [reward, enabledRewards.includes(reward)]);
       });
     },
     toggleEventState({ value, state }) {
-      this.$store.commit('commitEventState', [value, !state]);
+      this.$store.commit('worldstate/commitEventState', [value, !state]);
     },
     updateEventStates(enabledEvents) {
-      Object.keys(this.$store.getters.trackableState.eventTypes).forEach((event) => {
-        this.$store.commit('commitEventState', [event, enabledEvents.includes(event)]);
+      Object.keys(this.trackableState.eventTypes).forEach((event) => {
+        this.$store.commit('worldstate/commitEventState', [event, enabledEvents.includes(event)]);
       });
     },
   },

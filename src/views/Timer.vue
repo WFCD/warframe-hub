@@ -36,7 +36,7 @@
         />
         <reset v-if="componentState.reset.display" />
         -->
-        <aggregatedtimer v-if="componentState.aggregated.display" :worldstate="worldstate" />
+        <aggregatedtimer v-if="displayAggregate" :worldstate="worldstate" />
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
         <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
         <news v-if="componentState.news.display" :news="worldstate.news" />
@@ -77,10 +77,6 @@ import NightwavePanel from '@/components/panels/NightwavePanel.vue';
 import ConstructionPanel from '@/components/panels/ConstructionPanel.vue';
 import ConclavePanel from '@/components/panels/ConclavePanel.vue';
 
-// import SentientOutpostsPanel from '@/components/panels/SentientOutpostsPanel.vue';
-// import ArbitrationPanel from '@/components/panels/ArbitrationPanel.vue';
-// import TimePanel from '@/components/panels/TimePanel.vue';
-
 export default {
   name: 'timers-view',
   components: {
@@ -98,10 +94,6 @@ export default {
     nightwave: NightwavePanel,
     construction: ConstructionPanel,
     conclave: ConclavePanel,
-    // sentientOutposts: SentientOutpostsPanel,
-    // reset: ResetPanel,
-    // arbitration: ArbitrationPanel,
-    // timer: TimePanel,
   },
   data() {
     return {
@@ -123,6 +115,19 @@ export default {
       solaris: 'solarisSyndicate',
       entrati: 'entratiSyndicate',
     }),
+    displayAggregate: function () {
+      return (
+        this.componentState.aggregated.display &&
+        (this.componentState.earth.display ||
+          this.componentState.cetus.display ||
+          this.componentState.vallis.display ||
+          this.componentState.cambion.display ||
+          this.componentState.reset.display ||
+          this.componentState.sentientoutposts.display ||
+          this.componentState['steel-path'].display ||
+          this.componentState.arbitration.display)
+      );
+    },
     steelPath: function () {
       return this.worldstate.steelPath && this.worldstate.steelPath.currentReward
         ? `${this.worldstate.steelPath.currentReward.name}: ${this.worldstate.steelPath.currentReward.cost}`

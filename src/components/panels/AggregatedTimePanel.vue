@@ -5,12 +5,12 @@
         <div class="container">
           <!-- EARTH TIMER -->
           <div class="row justify-content-center">
-            <div class="col-sm-3 my-3">
+            <div class="col-sm-3 my-3" v-if="componentState.earth.display">
               <span :style="textStyle">
                 {{ this.$t(`location.earth`) }}
                 <br />
-                <i v-if="isEarthDay" class="fa fa-sun fa-2x" :style="textStyle"></i>
-                <i v-if="isEarthNight" class="fa fa-moon fa-2x" :style="textStyle"></i>
+                <i v-if="isEarthDay" class="fa fa-sun fa-2x day" :style="textStyle"></i>
+                <i v-if="isEarthNight" class="fa fa-moon fa-2x night" :style="textStyle"></i>
                 <br />
                 {{ this.$t(`time.${earthCycle.state.toLowerCase()}`) }}
               </span>
@@ -23,12 +23,12 @@
               />
             </div>
             <!-- CETUS TIMER -->
-            <div class="col-sm-3 my-3">
+            <div class="col-sm-3 my-3" v-if="componentState.cetus.display">
               <span :style="textStyle">
                 {{ this.$t(`location.cetus`) }}
                 <br />
-                <i v-if="isCetusDay" class="fa fa-sun fa-2x" :style="textStyle"></i>
-                <i v-if="isCetusNight" class="fa fa-moon fa-2x" :style="textStyle"></i>
+                <i v-if="isCetusDay" class="fa fa-sun fa-2x day" :style="textStyle"></i>
+                <i v-if="isCetusNight" class="fa fa-moon fa-2x night" :style="textStyle"></i>
                 <br />
                 {{ this.$t(`time.${cetusCycle.state.toLowerCase()}`) }}
               </span>
@@ -41,12 +41,12 @@
               />
             </div>
             <!-- VALLIS TIMER -->
-            <div class="col-sm-3 my-3">
+            <div class="col-sm-3 my-3" v-if="componentState.vallis.display">
               <span :style="textStyle">
                 {{ this.$t(`location.vallis`) }}
                 <br />
-                <i v-if="isVallisWarm" class="fa fa-fire fa-2x" :style="textStyle"></i>
-                <i v-if="isVallisCold" class="fa fa-snowflake fa-2x" :style="textStyle"></i>
+                <i v-if="isVallisWarm" class="fa fa-fire fa-2x warm" :style="textStyle"></i>
+                <i v-if="isVallisCold" class="fa fa-snowflake fa-2x cold" :style="textStyle"></i>
                 <br />
                 {{ this.$t(`time.${vallisCycle.state.toLowerCase()}`) }}
               </span>
@@ -59,12 +59,12 @@
               />
             </div>
             <!-- CAMBION TIMER -->
-            <div class="col-sm-3 my-3">
+            <div class="col-sm-3 my-3" v-if="componentState.cambion.display">
               <span :style="textStyle">
                 {{ this.$t(`location.cambion`) }}
                 <br />
-                <i v-if="isCambionFass" class="fa fa-sun fa-2x" :style="textStyle"></i>
-                <i v-if="isCambionVome" class="fa fa-moon fa-2x" :style="textStyle"></i>
+                <i v-if="isCambionFass" class="fa fa-sun fa-2x day" :style="textStyle"></i>
+                <i v-if="isCambionVome" class="fa fa-moon fa-2x night" :style="textStyle"></i>
                 <br />
                 {{ this.$t(`time.${cambionCycle.active.toLowerCase()}`) }}
               </span>
@@ -77,7 +77,7 @@
               />
             </div>
             <!-- DAILY TIMER -->
-            <div class="col-sm-3 my-3">
+            <div class="col-sm-3 my-3" v-if="componentState.reset.display">
               <span :style="textStyle">
                 {{ this.$t('reset.header') }}
               </span>
@@ -85,7 +85,10 @@
               <TimeBadge :starttime="this.now" :endtime="this.nextDay" :interval="1000" :pullright="false" />
             </div>
             <!-- ANOMALY -->
-            <div v-if="isSentientOutpostActive" class="col-sm-3 my-3 text-center">
+            <div
+              v-if="isSentientOutpostActive && componentState.sentientoutposts.display"
+              class="col-sm-3 my-3 text-center"
+            >
               <span :style="textStyle">
                 {{ this.$t('sentientoutpost.header') }}
               </span>
@@ -95,18 +98,33 @@
                 :name="this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn')"
                 width="20px"
                 height="20px"
-                :style="invert"
+                class="invert"
               />
               <br />
               <b>{{ this.worldstate.sentientOutposts.mission.node }}</b>
               <br />
               {{ this.worldstate.sentientOutposts.mission.type }}
             </div>
-            <!-- STEEL ESSENSE -->
-            <div class="col-sm-12 my-3">
-              <span :style="textStyle">{{ this.$t('steelPath.header') }} - </span>
-              <b>{{ this.worldstate.steelPath.currentReward.name }}</b>
-              ({{ `${this.worldstate.steelPath.currentReward.cost} ${this.$t('currency.steelEssense')}` }})
+            <!-- STEEL ESSENCE -->
+            <div class="col-sm-3 my-3" v-if="componentState['steel-path'].display">
+              <span :style="textStyle">{{ this.$t('steelPath.header') }}</span>
+              <HubImg
+                :src="this.cdn('svg/sp-logo.svg')"
+                :name="this.$t('steelPath.header')"
+                class="li-mission-decorator li-mission-decorator-lg invert mx-1"
+                height="20px"
+                width="20px"
+              />
+              <br />
+              <span style="font-size: 0.85em">
+                <b>{{ this.worldstate.steelPath.currentReward.name }}</b>
+              </span>
+              <br />
+              {{ this.worldstate.steelPath.currentReward.cost }}
+              <hub-img
+                :src="this.optimize(this.wfcdn('steel-essence.png'), '250x250', 'fill', 'center')"
+                :name="this.$t('currency.steelEssense')"
+              />
               <TimeBadge
                 :starttime="this.worldstate.steelPath.activation"
                 :endtime="this.worldstate.steelPath.expiry"
@@ -115,20 +133,21 @@
               />
             </div>
             <!-- ARBITRATION TIMER -->
-            <div v-if="isArbitrationActive" class="col-sm-12">
+            <div v-if="isArbitrationActive && componentState.arbitration.display" class="col-sm-3 my-3">
               <span :style="textStyle">
                 {{ this.$t('arbitration.header') }}
               </span>
               <HubImg
                 :src="factionImg"
                 :name="this.worldstate.arbitration.enemy"
-                :style="invert"
                 class="li-mission-decorator li-mission-decorator-lg"
                 height="20px"
                 width="20px"
               />
+              <br />
               <b>{{ this.worldstate.arbitration.node }}</b>
-              | {{ this.worldstate.arbitration.type }}
+              <br />
+              {{ this.worldstate.arbitration.type }}
               <TimeBadge
                 :starttime="this.worldstate.arbitration.activation"
                 :endtime="this.worldstate.arbitration.expiry"
@@ -149,7 +168,8 @@ import dayjs from 'dayjs';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
 
-import { cdn } from '@/utilities.js';
+import { cdn, wfcdn, optimize } from '@/utilities.js';
+import { mapState } from 'vuex';
 
 const corpus = cdn('svg/factions/corpus.svg');
 const corrupted = cdn('svg/factions/corrupted.svg');
@@ -157,10 +177,28 @@ const grineer = cdn('svg/factions/grineer.svg');
 const infested = cdn('svg/factions/infested.svg');
 const sentient = cdn('svg/factions/sentient.svg');
 
+const fImg = {
+  corpus,
+  grineer,
+  infested,
+  infestation: infested,
+  corrupted,
+  orokin: corrupted,
+  sentient,
+};
+
 export default {
   props: ['worldstate'],
   name: 'AggregatedTimePanel',
+  methods: {
+    cdn,
+    wfcdn,
+    optimize,
+  },
   computed: {
+    ...mapState({
+      componentState: (state) => state.worldstate.components,
+    }),
     now() {
       return dayjs().toISOString();
     },
@@ -201,22 +239,16 @@ export default {
       return this.worldstate.cambionCycle;
     },
     isCambionFass() {
-      return this.worldstate.cambionCycle.active == 'fass';
+      return this.worldstate.cambionCycle.active === 'fass';
     },
     isCambionVome() {
-      return this.worldstate.cambionCycle.active == 'vome';
+      return this.worldstate.cambionCycle.active === 'vome';
     },
     factionImg() {
-      var fImg = {
-        corpus: corpus,
-        grineer: grineer,
-        infested: infested,
-        infestation: infested,
-        corrupted: corrupted,
-        orokin: corrupted,
-        sentient: sentient,
-      };
-      return fImg[this.worldstate.arbitration.enemy.toLowerCase()] || corrupted;
+      if (this.worldstate && this.worldstate.arbitration && this.worldstate.arbitration.enemy) {
+        return fImg[this.worldstate.arbitration.enemy.toLowerCase()] || corrupted;
+      }
+      return corrupted;
     },
     sentientImg() {
       return sentient;
@@ -235,9 +267,6 @@ export default {
   },
   data() {
     return {
-      invert: {
-        filter: 'invert(100%)',
-      },
       textStyle: {
         'text-transform': 'capitalize',
       },

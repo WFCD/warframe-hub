@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "chokidar": "^3.5.2",
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "5.8.2",

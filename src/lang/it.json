@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "Accoliti",
     "discovered": "Scoperti",
@@ -59,7 +64,8 @@
     "plat": "Platino",
     "credAbbr": "cr",
     "dabloons": "Ducati",
-    "cred": "Crediti"
+    "cred": "Crediti",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Affari di Darvo",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "Ripristino Timer Premio Giornaliero",
-    "label": "Ripristino Timer Premio entro:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Vendite e Offerte In Evidenza",
@@ -161,7 +166,7 @@
     "cold": "freddo",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Ciclo del Timer",
+    "Timer": "Cycle Timers",
     "startL": "Inizia in:",
     "endL": "Finisce in:",
     "ongoingL": "In corso per:",

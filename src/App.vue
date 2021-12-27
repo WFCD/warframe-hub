@@ -5,6 +5,18 @@
     <Settings />
     <About />
     <router-view />
+    <b-toast
+      id="update-time"
+      :visible="updateExists"
+      variant="info"
+      :title="$t('updates.header')"
+      :auto-hide-delay="60000"
+    >
+      {{ $t('updates.body') }}
+      <b-btn class="pull-right mt-n1" size="sm" @click="refreshApp" variant="outline-primary">{{
+        $t('updates.btn')
+      }}</b-btn>
+    </b-toast>
   </div>
 </template>
 
@@ -14,6 +26,7 @@ import Settings from '@/components/modalDialogs/Settings.vue';
 import About from '@/components/modalDialogs/About.vue';
 import themes from '@/assets/json/themes.json';
 import { mapGetters } from 'vuex';
+import update from '@/mixins/update';
 
 export default {
   name: 'app',
@@ -22,6 +35,7 @@ export default {
     Settings,
     About,
   },
+  mixins: [update],
   computed: {
     ...mapGetters('worldstate', {
       rawTheme: 'theme',

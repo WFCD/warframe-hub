@@ -13,7 +13,6 @@
           />
           {{ mission }}
         </span>
-        <TimeBadge :starttime="activation" :endtime="expiry" :interval="1000" />
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom p-2" v-if="!active">
         <span class="pull-left">
@@ -26,7 +25,6 @@
 </template>
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
 import HubPanelWrap from '@/components/HubPanelWrap';
 import HubImg from '@/components/HubImg.vue';
 import { cdn } from '@/utilities';
@@ -61,20 +59,12 @@ export default {
           this.$props.sentientOutposts.mission &&
           this.$props.sentientOutposts.mission.node) ||
         'Fight',
-      activation: (this.$props.sentientOutposts && this.$props.sentientOutposts.activation) || null,
-      expiry: (this.$props.sentientOutposts && this.$props.sentientOutposts.expiry) || null,
       active: this.$props.sentientOutposts.active,
     };
   },
   components: {
     HubPanelWrap,
-    TimeBadge,
     HubImg,
-  },
-  methods: {
-    now() {
-      return new Date().toString();
-    },
   },
 };
 </script>

@@ -1,4 +1,4 @@
-/* This file is the consumer for all of t he vars defined in the theme documents. Not for standalone use. */
+/* This file is the consumer for all of the vars defined in the theme documents. Not for standalone use. */
 
 color: @text-color;
 background-color: @bg;
@@ -204,6 +204,19 @@ li.nav-item.b-nav-dropdown:has(.active) {
   color: @text-color;
 }
 
+/******** Toasts Dialogs *******/
+.b-toast-info .toast {
+  background-color: @bg-darker;
+  border-color: @modal-border;
+  color: @text-color;
+}
+
+.b-toast-info .toast .toast-header {
+  background-color: @primary-bg;
+  border-color: @modal-border;
+  color: @text-color;
+}
+
 /******** Modal Dialogs *******/
 .modal-content, .modal-header {
   background-color: @bg-darker;
@@ -232,16 +245,16 @@ body& .list-group .list-group-item-borderbottom {
   border-bottom-color: @panel-bt-border!important;
 }
 
-span.night {
+span.night, i.night {
   background-color: transparent;
 }
 
-span.night:before, span.cold:before {
+span.night:before, span.cold:before, i.night:before, i.cold:before {
   background-color: transparent;
   color: @night-color;
 }
 
-span.day:before, span.warm:before {
+span.day:before, span.warm:before, i.day:before, i.warm:before {
   color: @day-color;
 }
 

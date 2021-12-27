@@ -17,8 +17,10 @@ export const cdn = (path) => `https://cdn.warframestat.us/genesis/${path}`;
 
 export const wfcdn = (imgName) => `https://cdn.warframestat.us/img/${imgName}`;
 
-export const optimize = (img, size) =>
-  `https://cdn.warframestat.us/${size ? `rs_${size}_fit,` : ''}o_webp,progressive_true/${img}`;
+export const optimize = (img, size, mode, direction) =>
+  `https://cdn.warframestat.us/${
+    size ? `rs_${size}_${mode || 'fit'}_${direction || 'auto'},` : ''
+  }o_webp,progressive_true/${img}`;
 
 export const get = async (url, opts) => {
   try {

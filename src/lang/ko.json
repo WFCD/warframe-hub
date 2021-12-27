@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "어콜라이트",
     "discovered": "발견됨",
@@ -59,7 +64,8 @@
     "plat": "플래티넘",
     "credAbbr": "크레딧",
     "dabloons": "두캇",
-    "cred": "크레딧"
+    "cred": "크레딧",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "다르보의 제안",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "일간 보상 타이머 리셋",
-    "label": "보상 타이머 리셋까지:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "판매 및 추천 딜",
@@ -161,7 +166,7 @@
     "cold": "추움",
     "vome": "봄",
     "fass": "파스",
-    "Timer": "주기 타이머",
+    "Timer": "Cycle Timers",
     "startL": "시작 시간:",
     "endL": "종료 시간:",
     "ongoingL": "진행:",

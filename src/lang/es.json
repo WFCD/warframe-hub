@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "Acólitos",
     "discovered": "Descubiertos",
@@ -59,7 +64,8 @@
     "plat": "Platinum",
     "credAbbr": "cr",
     "dabloons": "Ducados",
-    "cred": "Créditos"
+    "cred": "Créditos",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Ofertas de Darvo",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "Contador de la recompensa diaria",
-    "label": "El contador se reinicia en:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Ventas y ofertas destacadas",
@@ -161,7 +166,7 @@
     "cold": "frío",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "- Contador del ciclo",
+    "Timer": "Cycle Timers",
     "startL": "Empieza en:",
     "endL": "Termina en:",
     "ongoingL": "En curso durante:",

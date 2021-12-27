@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "Послушники",
     "discovered": "Обнаружен",
@@ -59,7 +64,8 @@
     "plat": "Платины",
     "credAbbr": "кр",
     "dabloons": "Дукатов",
-    "cred": "Кредитов"
+    "cred": "Кредитов",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Предложения Дарво",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "Сброс ежедневных деяний",
-    "label": "Награды обновятся через:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Распродажи и предложения",
@@ -161,7 +166,7 @@
     "cold": "холодно",
     "vome": "воум",
     "fass": "фэз",
-    "Timer": "(статус)",
+    "Timer": "Cycle Timers",
     "startL": "до прибытия:",
     "endL": "до конца:",
     "ongoingL": "Длится:",

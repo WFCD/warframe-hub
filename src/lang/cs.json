@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "Acolyti",
     "discovered": "Objeven",
@@ -59,7 +64,8 @@
     "plat": "Platina",
     "credAbbr": "cr",
     "dabloons": "Dukáty",
-    "cred": "Kredity"
+    "cred": "Kredity",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Darvovy Nabídky",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "Obnovení denního časovače odměn",
-    "label": "Časovač odměn obnoven v:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Slevy a Doporučené nabídky",
@@ -161,7 +166,7 @@
     "cold": "zima",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cyklus Časovače",
+    "Timer": "Cycle Timers",
     "startL": "Začíná v:",
     "endL": "Končí v:",
     "ongoingL": "Probíhá:",

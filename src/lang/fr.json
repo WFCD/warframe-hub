@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "Acolytes",
     "discovered": "Découvert",
@@ -59,7 +64,8 @@
     "plat": "Platinum",
     "credAbbr": "cr",
     "dabloons": "Ducats",
-    "cred": "Crédits"
+    "cred": "Crédits",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Affaires de Darvo",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "Réinitialisation de la minuterie de Récompense Quotidienne",
-    "label": "Remise à zéro de la minuterie de récompense dans:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "Ventes et Offres en Vedette",
@@ -161,7 +166,7 @@
     "cold": "froid",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Durée du cycle",
+    "Timer": "Cycle Timers",
     "startL": "Commence dans :",
     "endL": "Se termine dans:",
     "ongoingL": "En cours pour :",

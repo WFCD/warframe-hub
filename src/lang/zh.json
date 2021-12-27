@@ -1,4 +1,9 @@
 {
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
   "acolytes": {
     "header": "追随者",
     "discovered": "已发现",
@@ -59,7 +64,8 @@
     "plat": "白金",
     "credAbbr": "现金",
     "dabloons": "杜卡德金币",
-    "cred": "现金"
+    "cred": "现金",
+    "steelEssense": "Steel Essense"
   },
   "darvo": {
     "header": "Darvo 的每日特惠",
@@ -131,8 +137,7 @@
     }
   },
   "reset": {
-    "header": "每日登入奖励重置",
-    "label": "奖励重置:"
+    "header": "Daily Reset"
   },
   "sales": {
     "header": "商店精选与促销",
@@ -161,7 +166,7 @@
     "cold": "寒冷",
     "vome": "VOME",
     "fass": "FASS",
-    "Timer": "循环",
+    "Timer": "Cycle Timers",
     "startL": "开始于：",
     "endL": "结束于:",
     "ongoingL": "已进行:",

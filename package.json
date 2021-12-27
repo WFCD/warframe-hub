@@ -1,6 +1,6 @@
 {
   "name": "@wfcd/hub",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "description": "Utility page to check current warframe status",
   "author": "Warframe Community Developers",

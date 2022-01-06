@@ -1,6 +1,6 @@
 name: Feature Request
 description: File a bug report
-title: "[Feature]: "
+title: ":rocket: "
 labels: ['on hold', 'Scope: Core', 'Type: Feature Request']
 body:
   - type: textarea

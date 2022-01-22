@@ -12,7 +12,7 @@
     "updateWorldstate": "node ./src/tools/initialWorldstateUpdater.js"
   },
   "dependencies": {
-    "chokidar": "^3.5.2",
+    "chokidar": "^3.5.3",
     "express": "^4.17.2"
   },
   "devDependencies": {

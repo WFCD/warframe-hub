@@ -1,8 +1,8 @@
 {
   "updates": {
-    "header": "Update Available",
-    "body": "Update is ready, refresh!",
-    "btn": "Refresh!"
+    "header": "Доступно обновление",
+    "body": "Обновление готово, обновите!",
+    "btn": "Обновить"
   },
   "acolytes": {
     "header": "Послушники",
@@ -39,7 +39,7 @@
     "docs": "API Документация",
     "old": "Старая версия",
     "status": "Состояние",
-    "riven": "Riven Data (Beta)",
+    "riven": "Данные Модов Разлома (Бета)",
     "synth": "Цели синтеза",
     "map": "Карта",
     "fish": "Список рыбы",

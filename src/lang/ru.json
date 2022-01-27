@@ -65,7 +65,7 @@
     "credAbbr": "кр",
     "dabloons": "Дукатов",
     "cred": "Кредитов",
-    "steelEssense": "Steel Essense"
+    "steelEssense": "Эссенция Стали"
   },
   "darvo": {
     "header": "Предложения Дарво",
@@ -91,9 +91,9 @@
   },
   "fissures": {
     "header": "Разрывы Бездны",
-    "voidstorm": "Void Storm",
-    "choice": "Choose which fissures to show",
-    "both": "Both"
+    "voidstorm": "Бури Бездны",
+    "choice": "Выбирите, какие разрывы показывать",
+    "both": "Все"
   },
   "invasions": {
     "header": "Вторжения",
@@ -137,7 +137,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reset"
+    "header": "Ежедневный сброс"
   },
   "sales": {
     "header": "Распродажи и предложения",
@@ -166,7 +166,7 @@
     "cold": "холодно",
     "vome": "воум",
     "fass": "фэз",
-    "Timer": "Cycle Timers",
+    "Timer": "Часы циклов",
     "startL": "до прибытия:",
     "endL": "до конца:",
     "ongoingL": "Длится:",

@@ -1,3 +1,7 @@
 files:
   - source: /src/lang/en.json
     translation: /src/lang/%two_letters_code%.json
+append_commit_message: false
+commit_message: "fix(%language%): New translations in %original_file_name%"
+pull_request_labels:
+  - l10n

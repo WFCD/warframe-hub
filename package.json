@@ -21,7 +21,7 @@
     "@sentry/vue": "^6.17.9",
     "@sentry/webpack-plugin": "^1.18.5",
     "@types/lodash": "^4.14.178",
-    "@types/node-fetch": "^2.5.12",
+    "@types/node-fetch": "^2.6.1",
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-pwa": "^4.5.15",

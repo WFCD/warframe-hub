@@ -1,8 +1,8 @@
 {
   "updates": {
-    "header": "Update Available",
-    "body": "Update is ready, refresh!",
-    "btn": "Refresh!"
+    "header": "更新可用",
+    "body": "更新已就绪，请刷新",
+    "btn": "刷新"
   },
   "acolytes": {
     "header": "追随者",
@@ -137,7 +137,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reset"
+    "header": "每日重置"
   },
   "sales": {
     "header": "商店精选与促销",
@@ -166,7 +166,7 @@
     "cold": "寒冷",
     "vome": "VOME",
     "fass": "FASS",
-    "Timer": "Cycle Timers",
+    "Timer": "循环",
     "startL": "开始于：",
     "endL": "结束于:",
     "ongoingL": "已进行:",

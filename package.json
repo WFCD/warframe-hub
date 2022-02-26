@@ -19,7 +19,7 @@
     "@fortawesome/fontawesome-free": "5.8.2",
     "@sentry/tracing": "^6.18.0",
     "@sentry/vue": "^6.17.9",
-    "@sentry/webpack-plugin": "^1.18.7",
+    "@sentry/webpack-plugin": "^1.18.8",
     "@types/lodash": "^4.14.178",
     "@types/node-fetch": "^2.6.1",
     "@vue/cli-plugin-babel": "^4.5.15",

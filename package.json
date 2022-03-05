@@ -33,7 +33,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.21.1",
     "css-loader": "^6.7.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.10.8",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

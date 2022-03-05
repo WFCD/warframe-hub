@@ -35,7 +35,7 @@
     "css-loader": "^6.7.0",
     "dayjs": "^1.10.7",
     "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.4.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.5.0",
     "eslint-plugin-vuejs-accessibility": "^1.1.1",

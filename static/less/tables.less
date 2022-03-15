@@ -1,0 +1,87 @@
+.table,
+.b-table-sticky-header .table {
+  font-size: 12px;
+
+  td,
+  th {
+    vertical-align: middle !important;
+  }
+
+  td {
+    padding: 0 !important;
+  }
+
+  th {
+    padding: 0.25rem 0;
+  }
+
+  thead th {
+    border-bottom-style: 2px solid;
+  }
+
+  &.b-table {
+    & > tbody > tr > td {
+      height: 3em;
+    }
+
+    & > tbody > tr > td {
+      height: 2em;
+    }
+
+    & > tfoot > tr > th[aria-sort][aria-sort='ascending']:before,
+    & > thead > tr > th[aria-sort][aria-sort='ascending']:before {
+      opacity: 1;
+      content: '\2193';
+    }
+
+    & > tfoot > tr > th[aria-sort][aria-sort='ascending']:before,
+    & > thead > tr > th[aria-sort][aria-sort='ascending']:before {
+      opacity: 1;
+      content: '\2193';
+    }
+
+    & > tfoot > tr > th[aria-sort][aria-sort='descending']:before,
+    & > thead > tr > th[aria-sort][aria-sort='descending']:before {
+      opacity: 1;
+      content: '\2191';
+    }
+
+    & > tfoot > tr > th[aria-sort]:before,
+    & > thead > tr > th[aria-sort]:before {
+      float: right;
+      margin-left: 0.5em;
+      width: 0.75em;
+      font-size: inherit;
+      line-height: inherit;
+      opacity: 0.4;
+      content: '\2195';
+      speak: none;
+    }
+
+    & > thead > tr > [aria-sort='none'],
+    & > tfoot > tr > [aria-sort='none'],
+    & > thead > tr > [aria-sort='ascending'],
+    & > tfoot > tr > [aria-sort='ascending'],
+    & > thead > tr > [aria-sort='descending'],
+    & > tfoot > tr > [aria-sort='descending'] {
+      background-image: none;
+    }
+
+    &.item-table {
+      & > tbody > tr > td {
+        border: 0;
+      }
+      &.thin > tbody > tr > td {
+        height: 1.25em;
+      }
+      &.thin > thead > tr > th {
+        height: 2em;
+      }
+    }
+
+    & > thead > tr > [aria-sort]:not(.b-table-sort-icon-left),
+    & > tfoot > tr > [aria-sort]:not(.b-table-sort-icon-left) {
+      padding-right: inherit;
+    }
+  }
+}

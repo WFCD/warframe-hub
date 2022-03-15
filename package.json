@@ -2,108 +2,99 @@
   "name": "@wfcd/hub",
   "version": "1.6.6",
   "private": true,
-  "description": "Utility page to check current warframe status",
-  "author": "Warframe Community Developers",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "start": "node ./server.js",
-    "updateWorldstate": "node ./src/tools/initialWorldstateUpdater.js"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint --cache",
+    "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "express": "^4.17.3"
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "5.8.2",
-    "@sentry/tracing": "^6.18.2",
-    "@sentry/vue": "^6.18.2",
-    "@sentry/webpack-plugin": "^1.18.8",
-    "@types/lodash": "^4.14.179",
-    "@types/node-fetch": "^2.6.1",
-    "@vue/cli-plugin-babel": "^5.0.1",
-    "@vue/cli-plugin-eslint": "^5.0.1",
-    "@vue/cli-plugin-pwa": "^4.5.15",
-    "@vue/cli-plugin-router": "^5.0.1",
-    "@vue/cli-plugin-vuex": "^5.0.1",
-    "@vue/cli-service": "^4.5.15",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "babel-eslint": "^10.0.3",
+    "@fortawesome/fontawesome-free": "^5.8.2",
+    "@nuxtjs/device": "^2.1.0",
+    "@nuxtjs/i18n": "^7.2.0",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/sentry": "^5.1.7",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.21.1",
-    "css-loader": "^6.7.1",
-    "dayjs": "^1.10.8",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.5.0",
-    "eslint-plugin-vuejs-accessibility": "^1.1.1",
-    "image-webpack-loader": "^8.1.0",
+    "core-js": "^3.19.3",
+    "dayjs": "^1.11.0",
     "leaflet": "1.3.1",
-    "less": "^4.1.2",
-    "less-loader": "^5.0.0",
-    "lodash": "^4.17.21",
-    "node-fetch": "^2.6.7",
-    "prettier": "^2.5.1",
-    "register-service-worker": "^1.7.2",
+    "nuxt": "^2.15.8",
     "vue": "^2.6.14",
-    "vue-binpacker-plugin": "1.1.0",
+    "vue-binpacker-plugin": "^1.1.0",
+    "vue-ellipse-progress": "^1.3.1",
     "vue-i18n": "^8.27.0",
     "vue-matomo": "^4.1.0",
-    "vue-mobile-detection": "^1.0.0",
     "vue-multiselect": "^2.1.6",
     "vue-native-notification": "^1.1.1",
     "vue-notification": "^1.3.20",
-    "vue-router": "^3.5.3",
+    "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
-    "vue2-circle-progress": "^1.2.3",
     "vue2-leaflet": "^1.2.3",
     "vuex": "^3.6.2",
-    "vuex-persistedstate": "^4.1.0"
+    "vuex-persistedstate": "^4.1.0",
+    "webpack": "^4.46.0"
   },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@nuxt/types": "~2.15.0",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vuejs-accessibility": "^1.1.1",
+    "husky": "^7.0.4",
+    "less": "^4.1.2",
+    "less-loader": "^7.3.0",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.1"
   },
-  "engines": {
-    "node": ">=14.17.0",
-    "npm": ">=6.14.13"
-  },
-  "heroku-run-build-script": true,
   "prettier": {
     "singleQuote": true,
     "quoteProps": "as-needed",
     "trailingComma": "es5",
     "bracketSpacing": true,
     "arrowParens": "always",
-    "printWidth": 120
+    "printWidth": 120,
+    "semi": true
   },
-  "eslintIgnore": [
-    "src/assets/**.*"
-  ],
   "eslintConfig": {
     "root": true,
     "env": {
+      "browser": true,
       "node": true
     },
+    "parserOptions": {
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile": false
+    },
     "extends": [
-      "plugin:vue/essential",
+      "@nuxtjs",
+      "plugin:nuxt/recommended",
       "plugin:prettier/recommended",
-      "eslint:recommended",
       "plugin:vuejs-accessibility/recommended"
     ],
     "plugins": [
       "vuejs-accessibility"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
     "rules": {
-      "vue/html-indent": 1,
-      "semi": 1,
-      "arrow-parens": 1,
+      "vue/no-use-v-if-with-v-for": "off",
+      "semi": [
+        "error",
+        "always"
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
       "quotes": [
         2,
         "single",
@@ -111,22 +102,32 @@
           "avoidEscape": true,
           "allowTemplateLiterals": true
         }
-      ],
-      "vue/no-use-v-if-with-v-for": "off"
+      ]
     }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
-  "babel": {
-    "presets": [
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
       [
-        "@vue/app",
+        "@semantic-release/npm",
         {
-          "useBuiltIns": "entry"
+          "npmPublish": false
         }
-      ]
+      ],
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json"
+          ]
+        }
+      ],
+      "@eclass/semantic-release-sentry-releases"
+    ],
+    "branches": [
+      "dev"
     ]
   }
 }

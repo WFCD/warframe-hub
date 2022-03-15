@@ -1,0 +1,340 @@
+/* This file is the consumer for all of the vars defined in the theme documents. Not for standalone use. */
+
+color: @text-color;
+background-color: @bg;
+
+.__nuxt-error-page {
+  background-color: @bg;
+  color: @text-color;
+
+  .title {
+    background-color: @bg;
+    color: @text-color;
+  }
+
+  svg path {
+    fill: @text-color;
+  }
+}
+
+a {
+  color: @link-color;
+}
+
+.btn-link:hover {
+  color: @link-hover-color;
+  text-decoration: underline;
+}
+
+table,
+[class*='badge-'] {
+  color: @text-color;
+}
+
+/**********  Nav   *********/
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-brand:focus {
+  color: @text-color;
+}
+
+.navbar.navbar-dark.bg-primary {
+  background-color: @theme-primary !important;
+}
+
+.nav-tabs .nav-link {
+  color: @text-color;
+
+  &.active,
+  &:hover,
+  &:focus {
+    background-color: @bg;
+    border-color: @border-color @border-color transparent;
+  }
+}
+
+.navbar-nav.ml-auto .dropdown-item {
+  color: @text-faded;
+  background-color: transparent;
+
+  & > i {
+    color: @text-faded;
+  }
+}
+
+.dropdown-header {
+  color: @dh-color;
+}
+
+.dropdown-menu {
+  background-color: @bg;
+  border-color: @border-color;
+  color: @dm-color;
+}
+
+.dropdown-divider {
+  border-color: @border-color;
+}
+
+.dropdown-item {
+  color: @text-color;
+  background-color: transparent;
+}
+
+.dropdown-item > i {
+  color: @text-faded;
+}
+
+.nuxt-link-exact-active.nuxt-link-active,
+.nuxt-link-active {
+  color: @active-page;
+}
+
+.nav-tabs {
+  border-bottom-color: @border-color;
+}
+
+a.nav-link > a {
+  color: @text-color;
+}
+
+/* When things support :has, this should work...seemlessly? */
+li.nav-item.b-nav-dropdown:has(.active) {
+  color: @active-page;
+}
+
+/****** Badges ********/
+.badge-warning {
+  background-color: @warning-bg;
+  color: @badge-color;
+}
+
+.badge-danger {
+  background-color: @danger-bg;
+  color: @badge-color;
+}
+
+.badge-info {
+  background-color: @info-bg;
+  color: @badge-color;
+}
+
+.badge-primary {
+  background-color: @primary-bg;
+  color: @badge-color;
+}
+
+.badge-success {
+  background-color: @success-bg;
+  color: @badge-color;
+}
+
+.badge-secondary {
+  color: @badge-color;
+  background-color: @secondary-bg;
+}
+
+/******* Backgrounds ******/
+.bg-success {
+  background-color: @success-bg !important;
+}
+
+.bg-info {
+  background-color: @info-bg !important;
+}
+
+.bg-danger {
+  background-color: @danger-bg !important;
+}
+
+/******** Buttons ********/
+.btn {
+  color: @text-color;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-primary {
+  background-color: @primary-bg;
+  border-color: @primary-bg;
+  color: @badge-color;
+}
+
+.btn-outline-primary {
+  border-color: @primary-bg;
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: @primary-bg;
+    border-color: @primary-bg;
+  }
+}
+
+.btn-info {
+  background-color: @info-bg;
+  border-color: @info-bg;
+  color: @info-color;
+
+  &:not(.collapsed),
+  &:hover,
+  &:active {
+    background-color: @info-bg-hover;
+    border-color: @info-bg-hover;
+  }
+}
+
+.btn-secondary {
+  color: @badge-color;
+  background-color: @secondary-bg;
+  border-color: @secondary-bg;
+
+  &:hover {
+    background-color: @secondary-bg-hover;
+    border-color: @secondary-bg-border;
+  }
+}
+
+.close {
+  color: @text-color;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: @check-color;
+  background-color: @check-color;
+}
+
+/********  Forms... ish *******/
+.pagination {
+  & .page-item.active .page-link {
+    background-color: @check-color;
+    border-color: @check-color;
+    color: @badge-color;
+  }
+  & .page-item .page-link {
+    background-color: @secondary-bg;
+    border-color: @secondary-bg;
+    color: @badge-color;
+  }
+}
+
+.form-control {
+  border-color: @secondary-bg-border;
+  background-color: @secondary-bg;
+  color: @text-color;
+}
+
+/******** Toasts Dialogs *******/
+.b-toast-info .toast {
+  background-color: @bg-darker;
+  border-color: @modal-border;
+  color: @text-color;
+}
+
+.b-toast-info .toast .toast-header {
+  background-color: @primary-bg;
+  border-color: @modal-border;
+  color: @text-color;
+}
+
+/******** Modal Dialogs *******/
+.modal-content,
+.modal-header {
+  background-color: @bg-darker;
+  border-color: @modal-border;
+  border-bottom-color: @modal-border;
+}
+
+.card {
+  background-color: @bg-darker;
+}
+
+.card-header {
+  background-color: @border-color;
+}
+
+.modal-footer {
+  border-top-color: @border-color;
+}
+
+/************ Panels ************/
+.list-group .list-group-item {
+  background-color: @panel-bg;
+}
+
+body& .list-group .list-group-item-borderbottom {
+  border-bottom-color: @panel-bt-border!important;
+}
+
+span.night,
+i.night {
+  background-color: transparent;
+}
+
+span.night:before,
+span.cold:before,
+i.night:before,
+i.cold:before {
+  background-color: transparent;
+  color: @night-color;
+}
+
+span.day:before,
+span.warm:before,
+i.day:before,
+i.warm:before {
+  color: @day-color;
+}
+
+/******* Tables ********/
+.table,
+.b-table-sticky-header .table {
+  color: @text-color;
+
+  thead th {
+    border-bottom-color: @border-color;
+  }
+
+  th,
+  td {
+    border-top-color: @border-color;
+  }
+
+  &.table-striped tbody tr:nth-of-type(odd) {
+    background-color: @stripe-bg;
+  }
+
+  tbody tr:hover {
+    background-color: @tr-hover;
+    color: @text-color;
+  }
+
+  &.b-table {
+    & > thead > tr > .table-b-table-default,
+    & > tbody > tr > .table-b-table-default,
+    & > tfoot > tr > .table-b-table-default {
+      background-color: @bg;
+      color: @text-color;
+    }
+  }
+}
+
+/******** Multiselect Overrides ********/
+.multiselect__tags,
+.multiselect__single,
+.multiselect__content-wrapper {
+  border: 1px solid @secondary-bg-border;
+}
+
+.multiselect__content-wrapper,
+.multiselect__tags,
+.multiselect__input,
+.multiselect__single {
+  background: @bg;
+  color: @text-color;
+}
+
+.multiselect__option--highlight,
+.multiselect__option--highlight:after,
+.multiselect__tag {
+  background: @success-bg;
+}

@@ -1,8 +1,8 @@
 {
   "updates": {
-    "header": "Update Available",
-    "body": "Update is ready, refresh!",
-    "btn": "Refresh!"
+    "header": "Aktualisierung verfügbar",
+    "body": "Aktualisierung verfügbar, neustarten!",
+    "btn": "Neustarten!"
   },
   "acolytes": {
     "header": "Akolythen",
@@ -65,7 +65,7 @@
     "credAbbr": "Cr",
     "dabloons": "Dukaten",
     "cred": "Credits",
-    "steelEssense": "Steel Essense"
+    "steelEssense": "Stahl Essenz"
   },
   "darvo": {
     "header": "Darvo's Angebot",
@@ -137,7 +137,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reset"
+    "header": "Täglicher Neustart"
   },
   "sales": {
     "header": "Verkäufe und Sonderangebote",
@@ -166,7 +166,7 @@
     "cold": "Kalt",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timers",
+    "Timer": "Zyklus-Timer",
     "startL": "Beginnt in:",
     "endL": "Endet in:",
     "ongoingL": "Läuft noch für:",

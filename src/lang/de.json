@@ -137,7 +137,7 @@
     }
   },
   "reset": {
-    "header": "Daily Reset"
+    "header": "Täglicher Neustart"
   },
   "sales": {
     "header": "Verkäufe und Sonderangebote",
@@ -166,7 +166,7 @@
     "cold": "Kalt",
     "vome": "vome",
     "fass": "fass",
-    "Timer": "Cycle Timers",
+    "Timer": "Zyklus-Timer",
     "startL": "Beginnt in:",
     "endL": "Endet in:",
     "ongoingL": "Läuft noch für:",

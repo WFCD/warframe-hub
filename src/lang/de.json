@@ -1,8 +1,8 @@
 {
   "updates": {
     "header": "Aktualisierung verfügbar",
-    "body": "Update is ready, refresh!",
-    "btn": "Refresh!"
+    "body": "Aktualisierung verfügbar, neustarten!",
+    "btn": "Neustarten!"
   },
   "acolytes": {
     "header": "Akolythen",
@@ -65,7 +65,7 @@
     "credAbbr": "Cr",
     "dabloons": "Dukaten",
     "cred": "Credits",
-    "steelEssense": "Steel Essense"
+    "steelEssense": "Stahl Essenz"
   },
   "darvo": {
     "header": "Darvo's Angebot",

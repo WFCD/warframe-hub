@@ -1,0 +1,188 @@
+{
+  "updates": {
+    "header": "새 업데이트 사용 가능",
+    "body": "업데이트가 준비되었습니다, 새로고침 해주세요!",
+    "btn": "새로고침!"
+  },
+  "acolytes": {
+    "header": "어콜라이트",
+    "discovered": "발견됨",
+    "hiding": "숨어있음",
+    "na": "알 수 없음",
+    "health": "남은 체력"
+  },
+  "alerts": {
+    "header": "얼럿",
+    "archwing": "미션에 아크윙 필요",
+    "nightmare": "나이트메어 미션",
+    "level": "레벨:"
+  },
+  "arbitration": {
+    "header": "중재"
+  },
+  "bounty": {
+    "standing": "평판",
+    "header": "{type} 의뢰 주기",
+    "type": "유형",
+    "lrange": "레벨 범위",
+    "rewards": "보상",
+    "bounties": "의뢰",
+    "expires": "의뢰 만료까지:",
+    "autoExpand": "항상 보상 표시"
+  },
+  "nav": {
+    "info": "정보",
+    "discord": "Discord",
+    "settings": "설정",
+    "drops": "드랍",
+    "genesis": "Genesis",
+    "docs": "API 문서",
+    "old": "구 Hub",
+    "status": "상태",
+    "riven": "리벤 데이터 (베타)",
+    "synth": "신디시스 타겟",
+    "map": "지도",
+    "fish": "낚시 데이터",
+    "howto": "낚시하는 방법",
+    "owearth": "평원",
+    "owvenus": "오브 협곡",
+    "owdeimos": "캠비온 퇴적지",
+    "ow": "오픈 월드",
+    "projects": "프로젝트",
+    "extras": "기타",
+    "timers": "타이머",
+    "nodata": "데이터 없음",
+    "nodatatxt": "현재 {text} 없음"
+  },
+  "construction": {
+    "fomorian": "포모리안",
+    "razorback": "레이저백",
+    "unk": "알 수 없음",
+    "header": "건설 진행도"
+  },
+  "currency": {
+    "plat": "플래티넘",
+    "credAbbr": "크레딧",
+    "dabloons": "두캇",
+    "cred": "크레딧",
+    "steelEssense": "스틸 에센스"
+  },
+  "darvo": {
+    "header": "다르보의 제안",
+    "off": "% 할인",
+    "left": "% 남음",
+    "leftL": "남음"
+  },
+  "events": {
+    "header": "이벤트",
+    "standStages": "평판 단계",
+    "remaining": "{perc}% 남음",
+    "completed": "{perc}% 완료",
+    "rewards": {
+      "header": "이벤트 보상:",
+      "label": "보상"
+    },
+    "completionBonuses": "완료 보너스:",
+    "currentCycle": "현재 주기:",
+    "nextCycle": "다음 주기:"
+  },
+  "factions": {
+    "sentient": "센티언트"
+  },
+  "fissures": {
+    "header": "균열",
+    "voidstorm": "보이드 폭풍",
+    "choice": "표시할 유물 선택하기",
+    "both": "모두"
+  },
+  "invasions": {
+    "header": "침공",
+    "eta": "종료까지:"
+  },
+  "kuva": {
+    "header": "쿠바 사이펀",
+    "siphon": "쿠바 사이펀"
+  },
+  "location": {
+    "cetus": "시터스",
+    "vallis": "협곡",
+    "earth": "지구",
+    "cambion": "캠비온"
+  },
+  "news": {
+    "header": "새 소식",
+    "past": "전",
+    "future": "-",
+    "live": "라이브",
+    "autoprogress": "자동"
+  },
+  "nightwave": {
+    "header": "나이트웨이브",
+    "weekly": "주간",
+    "elite": "주간 엘리트",
+    "daily": "일간"
+  },
+  "conclave": {
+    "header": "콘클레이브",
+    "weekly": "주간",
+    "teamannihilation": "팀 절멸전",
+    "annihilation": "절멸전",
+    "lunaro": "루나로",
+    "cephaloncapture": "세팔론 쟁탈전"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "시터스 - 새 아침이 밝았습니다! 사냥 시간 종료!",
+      "nightheader": "시터스 - 사냥 시간입니다!"
+    }
+  },
+  "reset": {
+    "header": "일일 초기화"
+  },
+  "sales": {
+    "header": "판매 및 추천 딜",
+    "item": "아이템"
+  },
+  "sentientoutpost": {
+    "tooltip1": "이 부분은 최근 업데이트 때문에 개발 중에 있습니다.",
+    "tooltip2": "예상 주기는 각각 노드당 30분의 활성화 시간입니다.",
+    "header": "이상 현상",
+    "outpostsL": "전초기지",
+    "none": "현재 이상 현상 없음",
+    "warn": "파라세시스를 잊지 마세요!",
+    "prediction": "예측"
+  },
+  "sortie": {
+    "header": "출격"
+  },
+  "steelPath": {
+    "header": "강철의 길"
+  },
+  "time": {
+    "loading": "불러오는 중...",
+    "day": "낮",
+    "night": "밤",
+    "warm": "따듯함",
+    "cold": "추움",
+    "vome": "봄",
+    "fass": "파스",
+    "Timer": "주기 타이머",
+    "startL": "시작 시간:",
+    "endL": "종료 시간:",
+    "ongoingL": "진행:",
+    "expiredL": "만료",
+    "depart": "출발",
+    "arrive": "도착까지"
+  },
+  "timer": {
+    "ostron": "오스트론",
+    "solaris": "솔라리스 연합",
+    "solaris-united": "솔라리스 연합",
+    "entrati": "엔트라티"
+  },
+  "vt": {
+    "header": "보이드 상인",
+    "inventory": "인벤토리",
+    "item": "아이템"
+  }
+}

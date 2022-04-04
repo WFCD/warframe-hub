@@ -19,7 +19,7 @@ export default {
       { hid: 'description', name: 'description', content: 'The Home for Warframe Information' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: 'https://warframestat.us/wfcd_logo_color.png' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -85,8 +85,10 @@ export default {
       skipWaiting: true,
       clientsClaim: true,
     },
+    icon: {
+      source: './static/icon.png',
+    },
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   ssr: false,

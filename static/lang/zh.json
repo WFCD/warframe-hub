@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "加载中...",
+    "loading...": "Loading...",
     "day": "白天",
     "night": "夜间",
     "warm": "温暖",

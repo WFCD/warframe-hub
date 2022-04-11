@@ -1,0 +1,189 @@
+{
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
+  "acolytes": {
+    "header": "Acolyti",
+    "discovered": "Objeven",
+    "hiding": "Skrytý",
+    "na": "Nenalezeni",
+    "health": "Zbývající Zdraví"
+  },
+  "alerts": {
+    "header": "Upozornění",
+    "archwing": "Archwing Vyžadován pro Misi",
+    "nightmare": "Nightmare Mise",
+    "level": "Úroveň:"
+  },
+  "arbitration": {
+    "header": "Arbitrace"
+  },
+  "bounty": {
+    "standing": "Standing",
+    "header": "{type} Cyklus Bounty",
+    "type": "Typ",
+    "lrange": "Rozsah Úrovně",
+    "rewards": "Odměny",
+    "bounties": "Bounty",
+    "expires": "Bounties vyprší v:",
+    "autoExpand": "Vždy rozbalit odměny"
+  },
+  "nav": {
+    "info": "Informace",
+    "discord": "Discord",
+    "settings": "Nastavení",
+    "drops": "Dropy",
+    "genesis": "Genesis",
+    "docs": "API dokumentace",
+    "old": "Starý Hub",
+    "status": "Status",
+    "riven": "Riven Data (Beta)",
+    "synth": "Targety Synthesis",
+    "map": "Mapa",
+    "fish": "Údaje o rybaření",
+    "howto": "Jak rybařit",
+    "owearth": "Pláně",
+    "owvenus": "Orb Vallis",
+    "owdeimos": "Cambion Drift",
+    "ow": "Otevřený Svět",
+    "projects": "Projekty",
+    "extras": "Doplňky",
+    "timers": "Časovače",
+    "nodata": "Žádna Data",
+    "nodatatxt": "Žádný {text} Přítomen"
+  },
+  "construction": {
+    "fomorian": "Fomorian",
+    "razorback": "Razorback",
+    "unk": "Neznámý",
+    "header": "Průběh Konstrukce"
+  },
+  "currency": {
+    "plat": "Platina",
+    "credAbbr": "cr",
+    "dabloons": "Dukáty",
+    "cred": "Kredity",
+    "steelEssense": "Steel Essense"
+  },
+  "darvo": {
+    "header": "Darvovy Nabídky",
+    "off": "% Vypnuto",
+    "left": "% Odešel",
+    "leftL": "Odešel"
+  },
+  "events": {
+    "header": "Události",
+    "standStages": "Stupně Standingu",
+    "remaining": "{perc}% Zbývá",
+    "completed": "{perc} Dokončeno",
+    "rewards": {
+      "header": "Odměny z Události:",
+      "label": "Odměny"
+    },
+    "completionBonuses": "Bonusy za Dokončení:",
+    "currentCycle": "Současný Cyklus:",
+    "nextCycle": "Následující Cyklus:"
+  },
+  "factions": {
+    "sentient": "Sentient"
+  },
+  "fissures": {
+    "header": "Fissury",
+    "voidstorm": "Void Storm",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
+  },
+  "invasions": {
+    "header": "Invaze",
+    "eta": "Končí v:"
+  },
+  "kuva": {
+    "header": "Kuva Siphony",
+    "siphon": "Kuva Siphon"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Země",
+    "cambion": "Cambion"
+  },
+  "news": {
+    "header": "Novinky",
+    "past": "před",
+    "future": "ve",
+    "live": "Živě",
+    "autoprogress": "Automatický-postup"
+  },
+  "nightwave": {
+    "header": "Nightwave",
+    "weekly": "Týdenní",
+    "elite": "Elite Týdenní",
+    "daily": "Denní"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Týdenní",
+    "teamannihilation": "Týmové Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Obsazení Cephalonu"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Vzestup a Lesk! Čas lovu zkončil!",
+      "nightheader": "Cetus - Čas lovu!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reset"
+  },
+  "sales": {
+    "header": "Slevy a Doporučené nabídky",
+    "item": "Předmět"
+  },
+  "sentientoutpost": {
+    "tooltip1": "Tato surovina je v aktivním vývoji kvůli poslední aktualizaci.",
+    "tooltip2": "Odhadovaný cyklus je 30 minut aktivního času na každém uzlu.",
+    "header": "Anomálie",
+    "outpostsL": "Základny",
+    "none": "Žádné Aktuální Anomálie",
+    "warn": "Nezapomeňte na své Paracesisy!",
+    "prediction": "Předpověď"
+  },
+  "sortie": {
+    "header": "Sortie"
+  },
+  "steelPath": {
+    "header": "Steel Path"
+  },
+  "time": {
+    "loading": "Načítám...",
+    "loading...": "Loading...",
+    "day": "den",
+    "night": "noc",
+    "warm": "teplo",
+    "cold": "zima",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timers",
+    "startL": "Začíná v:",
+    "endL": "Končí v:",
+    "ongoingL": "Probíhá:",
+    "expiredL": "Expirováno",
+    "depart": "Ocestovat",
+    "arrive": "Objeví za"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Obchodník Voidu",
+    "inventory": "Inventář",
+    "item": "Předmět"
+  }
+}

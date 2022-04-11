@@ -1,0 +1,710 @@
+[
+  {
+    "name": "Amniophysi",
+    "thumb": "amniophysi",
+    "wiki": "https://warframe.fandom.com/wiki/Amniophysi",
+    "unique": [
+      {
+        "name": "Waxen Sebum Deposit",
+        "thumb": "sebum",
+        "wiki": "https://warframe.fandom.com/wiki/Waxen_Sebum_Deposit"
+      }
+    ],
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Barbisteo",
+    "thumb": "barbisteo",
+    "wiki": "https://warframe.fandom.com/wiki/Barbisteo",
+    "unique": [
+      {
+        "name": "Dendrite Blastoma",
+        "thumb": "dendrite",
+        "wiki": "https://warframe.fandom.com/wiki/Dendrite_Blastoma"
+      }
+    ],
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 4
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Cryptosuctus",
+    "thumb": "cryptosuctus",
+    "wiki": "https://warframe.fandom.com/wiki/Cryptosuctus",
+    "unique": [
+      {
+        "name": "Pustulent Cognitive Nodule",
+        "thumb": "pustulent",
+        "wiki": "https://warframe.fandom.com/wiki/Pustulent_Cognitive_Nodule"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Fass",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "bladder": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 4
+      }
+    }
+  },
+  {
+    "name": "Glutinox",
+    "thumb": "glutinox",
+    "wiki": "https://warframe.fandom.com/wiki/Glutinox",
+    "unique": [
+      {
+        "name": "Sporulate Sac",
+        "thumb": "sporulate",
+        "wiki": "https://warframe.fandom.com/wiki/Sporulate_Sac"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Vome",
+      "fass": {
+        "appear": false,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Fass Residue",
+      "thumb": "fass",
+      "recommended": true
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "bladder": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 4
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Kymaeros",
+    "thumb": "kymaeros",
+    "wiki": "https://warframe.fandom.com/wiki/Kymaeros",
+    "unique": [
+      {
+        "name": "Saturated Muscle Mass",
+        "thumb": "muscle",
+        "wiki": "https://warframe.fandom.com/wiki/Saturated_Muscle_Mass"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "bladder": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Lobotriscid",
+    "thumb": "lobotriscid",
+    "wiki": "https://warframe.fandom.com/wiki/Lobotriscid",
+    "unique": [
+      {
+        "name": "Parasitic Tethermaw",
+        "thumb": "tethermaw",
+        "wiki": "https://warframe.fandom.com/wiki/Parasitic_Tethermaw"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": false,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "None",
+      "recommended": false
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 4
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Aquapulmo",
+    "thumb": "aquapulmo",
+    "wiki": "https://warframe.fandom.com/wiki/Kymaeros",
+    "unique": [
+      {
+        "name": "Biotic Filter",
+        "thumb": "filter",
+        "wiki": "https://warframe.fandom.com/wiki/Biotic_Filter"
+      },
+      {
+        "name": "Pustulent Cognitive Nodule",
+        "thumb": "pustulent",
+        "wiki": "https://warframe.fandom.com/wiki/Pustulent_Cognitive_Nodule"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Vome",
+      "fass": {
+        "appear": false,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "hotspot": true,
+    "bait": {
+      "name": "Processed Fass Residue",
+      "thumb": "processedfass",
+      "recommended": true
+    },
+    "spear": {
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "bladder": 2,
+        "gills": 1
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 4,
+        "gills": 2
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "bladder": 6,
+        "gills": 2
+      }
+    }
+  },
+  {
+    "name": "Flagellocanth",
+    "thumb": "flagellocanth",
+    "wiki": "https://warframe.fandom.com/wiki/Flagellocanth",
+    "unique": [
+      {
+        "name": "Ocular Stem-Root",
+        "thumb": "stemroot",
+        "wiki": "https://warframe.fandom.com/wiki/Ocular_Stem-Root"
+      }
+    ],
+    "location": "Surface",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "hotspot": true,
+    "bait": {
+      "name": "Processed Fass Residue",
+      "thumb": "processedfass",
+      "recommended": true
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "16kg",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 3
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 5,
+        "bladder": 5
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "bladder": 6
+      }
+    }
+  },
+  {
+    "name": "Ostimyr",
+    "thumb": "ostimyr",
+    "wiki": "https://warframe.fandom.com/wiki/Ostimyr",
+    "unique": [
+      {
+        "name": "Saturated Muscle Mass",
+        "thumb": "muscle",
+        "wiki": "https://warframe.fandom.com/wiki/Saturated_Muscle_Mass"
+      }
+    ],
+    "location": "Surface",
+    "hotspot": true,
+    "time": {
+      "string": "Fass",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Fass Residue",
+      "thumb": "fass",
+      "recommended": true
+    },
+    "spear": {
+      "spari": false,
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 2,
+        "gills": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 3,
+        "gills": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 4,
+        "gills": 4
+      }
+    }
+  },
+  {
+    "name": "Vitreospina",
+    "thumb": "vitreospina",
+    "wiki": "https://warframe.fandom.com/wiki/Vitreospina",
+    "unique": [
+      {
+        "name": "Dendrite Blastoma",
+        "thumb": "dendrite",
+        "wiki": "https://warframe.fandom.com/wiki/Dendrite_Blastoma"
+      },
+      {
+        "name": "Spinal Core Section",
+        "thumb": "spinal",
+        "wiki": "https://warframe.fandom.com/wiki/Spinal_Core_Section"
+      }
+    ],
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Fass Residue",
+      "thumb": "fass",
+      "recommended": true
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "bladder": 2,
+        "gills": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "bladder": 3,
+        "gills": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "bladder": 4,
+        "gills": 4
+      }
+    }
+  },
+  {
+    "name": "Chondricord",
+    "thumb": "chondricord",
+    "wiki": "https://warframe.fandom.com/wiki/Chondricord",
+    "unique": [
+      {
+        "name": "Spinal Core Section",
+        "thumb": "spinal",
+        "wiki": "https://warframe.fandom.com/wiki/Spinal_Core_Section"
+      }
+    ],
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "hotspot": true,
+    "bait": {
+      "name": "Vome Residue",
+      "thumb": "vome",
+      "recommended": true
+    },
+    "spear": {
+      "spari": true,
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 3,
+        "gills": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "gills": 3
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 8,
+        "gills": 5
+      }
+    }
+  },
+  {
+    "name": "Duroid",
+    "thumb": "duroid",
+    "wiki": "https://warframe.fandom.com/wiki/Duroid",
+    "unique": [
+      {
+        "name": "Biotic Filter",
+        "thumb": "filter",
+        "wiki": "https://warframe.fandom.com/wiki/Biotic_Filter"
+      }
+    ],
+    "location": "Cave",
+    "hotspot": true,
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Vome Residue",
+      "thumb": "vome",
+      "recommended": true
+    },
+    "spear": {
+      "spari": false,
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "gills": 2
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "gills": 4
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "gills": 6
+      }
+    }
+  },
+  {
+    "name": "Myxostomata",
+    "thumb": "myxostomata",
+    "wiki": "https://warframe.fandom.com/wiki/Myxostomata",
+    "unique": [
+      {
+        "name": "Cranial Foremount",
+        "thumb": "foremount",
+        "wiki": "https://warframe.fandom.com/wiki/Cranial Foremount"
+      }
+    ],
+    "location": "Cave",
+    "hotspot": true,
+    "time": {
+      "string": "Any",
+      "fass": {
+        "appear": true,
+        "prefer": false
+      },
+      "vome": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "bait": {
+      "name": "Processed Vome Residue",
+      "thumb": "processedvome",
+      "recommended": true
+    },
+    "spear": {
+      "spari": false,
+      "ebisu": true
+    },
+    "maximumMass": "8pts",
+    "small": {
+      "resources": {
+        "tumor": 2,
+        "gills": 4
+      }
+    },
+    "medium": {
+      "resources": {
+        "tumor": 4,
+        "gills": 6
+      }
+    },
+    "large": {
+      "resources": {
+        "tumor": 6,
+        "gills": 10
+      }
+    }
+  }
+]

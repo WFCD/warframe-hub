@@ -1,0 +1,189 @@
+{
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
+  "acolytes": {
+    "header": "Accoliti",
+    "discovered": "Scoperti",
+    "hiding": "Nascosti",
+    "na": "Da nessuna parte",
+    "health": "Salute Rimanente"
+  },
+  "alerts": {
+    "header": "Avvisi",
+    "archwing": "Archwing Necessario per la Missione",
+    "nightmare": "Missione da Incubo",
+    "level": "Livello:"
+  },
+  "arbitration": {
+    "header": "Arbitraggio"
+  },
+  "bounty": {
+    "standing": "Classifica",
+    "header": "Ciclo Taglia {type}",
+    "type": "Tipo",
+    "lrange": "Intervallo del Livello",
+    "rewards": "Premi",
+    "bounties": "Taglie",
+    "expires": "Le taglie scadono in:",
+    "autoExpand": "Espandi sempre i premi"
+  },
+  "nav": {
+    "info": "Informazioni",
+    "discord": "Discord",
+    "settings": "Impostazioni",
+    "drops": "Loot",
+    "genesis": "Genesi",
+    "docs": "Documenti API",
+    "old": "Vecchio Hub",
+    "status": "Stato",
+    "riven": "Riven Data (Beta)",
+    "synth": "Obiettivi di Sintesi",
+    "map": "Mappa",
+    "fish": "Dati Pesca",
+    "howto": "Come Pescare",
+    "owearth": "Pianure",
+    "owvenus": "Orb Vallis",
+    "owdeimos": "Cambion Drift",
+    "ow": "Open World",
+    "projects": "Progetti",
+    "extras": "Extra",
+    "timers": "Timer",
+    "nodata": "Nessun Dato",
+    "nodatatxt": "Nessun {text} Presente"
+  },
+  "construction": {
+    "fomorian": "Fomori",
+    "razorback": "Razorback",
+    "unk": "Sconosciuta",
+    "header": "Progresso di Costruzione"
+  },
+  "currency": {
+    "plat": "Platino",
+    "credAbbr": "cr",
+    "dabloons": "Ducati",
+    "cred": "Crediti",
+    "steelEssense": "Steel Essense"
+  },
+  "darvo": {
+    "header": "Affari di Darvo",
+    "off": "% di sconto",
+    "left": "% Rimanente",
+    "leftL": "Rimanente"
+  },
+  "events": {
+    "header": "Eventi",
+    "standStages": "Fasi In Piedi",
+    "remaining": "{perc}% Rimanente",
+    "completed": "{perc}% Completato",
+    "rewards": {
+      "header": "Premi Evento:",
+      "label": "Premi"
+    },
+    "completionBonuses": "Bonus di Completamento:",
+    "currentCycle": "Ciclo Corrente:",
+    "nextCycle": "Prossimo Ciclo:"
+  },
+  "factions": {
+    "sentient": "Senziente"
+  },
+  "fissures": {
+    "header": "Fessure",
+    "voidstorm": "Void Storm",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
+  },
+  "invasions": {
+    "header": "Invasioni",
+    "eta": "Finisce in:"
+  },
+  "kuva": {
+    "header": "Sifoni di Kuva",
+    "siphon": "Sifone di Kuva"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallis",
+    "earth": "Terra",
+    "cambion": "Cambion"
+  },
+  "news": {
+    "header": "Novità",
+    "past": "fa",
+    "future": "in",
+    "live": "Diretta",
+    "autoprogress": "Progresso automatico"
+  },
+  "nightwave": {
+    "header": "Ondata Notturna",
+    "weekly": "Settimanale",
+    "elite": "Settimanale Elite",
+    "daily": "Giornaliera"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Settimanale",
+    "teamannihilation": "Annientamento di Squadra",
+    "annihilation": "Annientamento",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Cattura il Cefalo"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Sorti e Splendi! Il tempo di Caccia è Finito!",
+      "nightheader": "Cetus - Tempo di Caccia!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reset"
+  },
+  "sales": {
+    "header": "Vendite e Offerte In Evidenza",
+    "item": "Articolo"
+  },
+  "sentientoutpost": {
+    "tooltip1": "Questo componente è in sviluppo attivo per l'aggiornamento recente.",
+    "tooltip2": "Il ciclo stimato è di 30 minuti di tempo attivo su ogni nodo.",
+    "header": "Anomalie",
+    "outpostsL": "Avamposti",
+    "none": "Nessun'Anomalia Corrente",
+    "warn": "Non dimenticare la tua Paracesi!",
+    "prediction": "Predizione"
+  },
+  "sortie": {
+    "header": "Sortita"
+  },
+  "steelPath": {
+    "header": "Percorso d'Acciaio"
+  },
+  "time": {
+    "loading": "Caricamento...",
+    "loading...": "Loading...",
+    "day": "giorno",
+    "night": "notte",
+    "warm": "caldo",
+    "cold": "freddo",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timers",
+    "startL": "Inizia in:",
+    "endL": "Finisce in:",
+    "ongoingL": "In corso per:",
+    "expiredL": "Scaduto",
+    "depart": "Partenza",
+    "arrive": "Arriva a"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Unione Solaris",
+    "solaris-united": "Unione Solaris",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Commerciante del Vuoto",
+    "inventory": "Inventario",
+    "item": "Oggetto"
+  }
+}

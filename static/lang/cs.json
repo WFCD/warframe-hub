@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "Načítám...",
+    "loading...": "Loading...",
     "day": "den",
     "night": "noc",
     "warm": "teplo",

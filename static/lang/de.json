@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "Lade...",
+    "loading...": "Loading...",
     "day": "Tag",
     "night": "Nacht",
     "warm": "Warm",

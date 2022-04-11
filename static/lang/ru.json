@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "Загрузка...",
+    "loading...": "Loading...",
     "day": "день",
     "night": "ночь",
     "warm": "тепло",

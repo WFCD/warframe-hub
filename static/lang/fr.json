@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "Chargement en cours...",
+    "loading...": "Loading...",
     "day": "jour",
     "night": "nuit",
     "warm": "chaud",

@@ -1,6 +1,6 @@
 files:
   - source: /static/lang/en.json
-    translation: /src/static/%two_letters_code%.json
+    translation: /static/%two_letters_code%.json
 append_commit_message: false
 commit_message: "fix(%language%): %original_file_name%"
 pull_request_labels:

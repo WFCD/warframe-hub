@@ -1,0 +1,189 @@
+{
+  "updates": {
+    "header": "Mise à jour disponible",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
+  "acolytes": {
+    "header": "Acolytes",
+    "discovered": "Découvert",
+    "hiding": "Caché",
+    "na": "Nulle part",
+    "health": "Santé Restante"
+  },
+  "alerts": {
+    "header": "Alertes",
+    "archwing": "Archwing Requise pour la Mission",
+    "nightmare": "Mission Cauchemar",
+    "level": "Niveau:"
+  },
+  "arbitration": {
+    "header": "Arbitrage"
+  },
+  "bounty": {
+    "standing": "Influence",
+    "header": "Cycle de mises à prix : {type}",
+    "type": "Type",
+    "lrange": "Gamme des Niveaux",
+    "rewards": "Récompenses",
+    "bounties": "Mises à Prix",
+    "expires": "Mise à Prix expire dans:",
+    "autoExpand": "Toujours étendre les récompenses"
+  },
+  "nav": {
+    "info": "Information",
+    "discord": "Discord",
+    "settings": "Paramètres",
+    "drops": "Butins",
+    "genesis": "Genesis",
+    "docs": "Docs API",
+    "old": "Ancien Hub",
+    "status": "Statut",
+    "riven": "Données Riven (Bêta)",
+    "synth": "Cibles de Synthèse",
+    "map": "Carte",
+    "fish": "Données Pêche",
+    "howto": "Comment pêcher",
+    "owearth": "Plaines",
+    "owvenus": "Vallée Orbis",
+    "owdeimos": "Drift de Cambion",
+    "ow": "Monde Ouvert",
+    "projects": "Projets",
+    "extras": "Extras",
+    "timers": "Minuteurs",
+    "nodata": "Pas de Données",
+    "nodatatxt": "Pas de {text} présent"
+  },
+  "construction": {
+    "fomorian": "Fomorien",
+    "razorback": "Razorback",
+    "unk": "Inconnu",
+    "header": "Statut de la construction"
+  },
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr",
+    "dabloons": "Ducats",
+    "cred": "Crédits",
+    "steelEssense": "Steel Essense"
+  },
+  "darvo": {
+    "header": "Affaires de Darvo",
+    "off": "% de réduction",
+    "left": "% restants",
+    "leftL": "Restants"
+  },
+  "events": {
+    "header": "Évènements",
+    "standStages": "Étapes Réputation",
+    "remaining": "{perc}% restants",
+    "completed": "{perc}% Terminé",
+    "rewards": {
+      "header": "Récompenses de l'Événement:",
+      "label": "Récompenses"
+    },
+    "completionBonuses": "Bonus d'Achèvement :",
+    "currentCycle": "Cycle actuel :",
+    "nextCycle": "Cycle suivant :"
+  },
+  "factions": {
+    "sentient": "Sentient"
+  },
+  "fissures": {
+    "header": "Fissures",
+    "voidstorm": "Tempête du Néant",
+    "choice": "Choisir les fissures à afficher",
+    "both": "Toutes"
+  },
+  "invasions": {
+    "header": "Invasions",
+    "eta": "Se termine dans:"
+  },
+  "kuva": {
+    "header": "Siphons à Kuva",
+    "siphon": "Siphon à Kuva"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Vallée d'Orbis",
+    "earth": "Terre",
+    "cambion": "Puy de Cambion"
+  },
+  "news": {
+    "header": "Actualités",
+    "past": "Il y a",
+    "future": "dans",
+    "live": "En Direct",
+    "autoprogress": "Progression automatique"
+  },
+  "nightwave": {
+    "header": "Onde Nocturne",
+    "weekly": "Hebdomadaire",
+    "elite": "Hebdomadaire d'Élite",
+    "daily": "Quotidien"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Hebdomadaire",
+    "teamannihilation": "Annihilation en Équipe",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture de Céphalon"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Le temps de la chasse est révolu!",
+      "nightheader": "Cetus - La chasse est ouverte !"
+    }
+  },
+  "reset": {
+    "header": "Daily Reset"
+  },
+  "sales": {
+    "header": "Ventes et Offres en Vedette",
+    "item": "Objet"
+  },
+  "sentientoutpost": {
+    "tooltip1": "Ce composant est en cours de développement en raison de la mise à jour récente.",
+    "tooltip2": "Le cycle estimé est de 30 minutes de temps actif sur chaque noeud.",
+    "header": "Anomalies",
+    "outpostsL": "Avant-poste",
+    "none": "Actuellement Aucune Anomalie",
+    "warn": "N'oubliez pas votre Paracesis!",
+    "prediction": "Prédiction"
+  },
+  "sortie": {
+    "header": "Sortie"
+  },
+  "steelPath": {
+    "header": "Route de l'Acier"
+  },
+  "time": {
+    "loading": "Chargement en cours...",
+    "loading...": "Loading...",
+    "day": "jour",
+    "night": "nuit",
+    "warm": "chaud",
+    "cold": "froid",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timers",
+    "startL": "Commence dans :",
+    "endL": "Se termine dans:",
+    "ongoingL": "En cours pour :",
+    "expiredL": "Expiré",
+    "depart": "Départs",
+    "arrive": "Arrivée prévue à"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Union Solaris",
+    "solaris-united": "Union Solaris",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Marchand du Néant",
+    "inventory": "Inventaire",
+    "item": "Objet"
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!"
+  },
+  "acolytes": {
+    "header": "Acólitos",
+    "discovered": "Descubiertos",
+    "hiding": "Ocultos",
+    "na": "En ningún lugar",
+    "health": "Salud restante"
+  },
+  "alerts": {
+    "header": "Alertas",
+    "archwing": "Archwing requerida para la misión",
+    "nightmare": "Misión pesadilla",
+    "level": "Level:"
+  },
+  "arbitration": {
+    "header": "Arbitración"
+  },
+  "bounty": {
+    "standing": "Reputación",
+    "header": "{type} Bounty Cycle",
+    "type": "Tipo",
+    "lrange": "Rango de nivel",
+    "rewards": "Recompensas",
+    "bounties": "Contratos",
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
+  },
+  "nav": {
+    "info": "Información",
+    "discord": "Discord",
+    "settings": "Ajustes",
+    "drops": "Hallazgos",
+    "genesis": "Genesis",
+    "docs": "Docs de la API",
+    "old": "Hub antiguo",
+    "status": "Estado",
+    "riven": "Riven Data (Beta)",
+    "synth": "Objetivos de síntesis",
+    "map": "Mapa",
+    "fish": "Información de pesca",
+    "howto": "Cómo pescar",
+    "owearth": "Llanuras",
+    "owvenus": "Valles del Orbe",
+    "owdeimos": "Cambion Drift",
+    "ow": "Mundo abierto",
+    "projects": "Proyectos",
+    "extras": "Extras",
+    "timers": "Contadores",
+    "nodata": "Sin datos",
+    "nodatatxt": "No {text} Present"
+  },
+  "construction": {
+    "fomorian": "Fomoré",
+    "razorback": "Razorback",
+    "unk": "Desconocido",
+    "header": "Progreso de la construcción"
+  },
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr",
+    "dabloons": "Ducados",
+    "cred": "Créditos",
+    "steelEssense": "Steel Essense"
+  },
+  "darvo": {
+    "header": "Ofertas de Darvo",
+    "off": "% de descuento",
+    "left": "% restante",
+    "leftL": "Restante"
+  },
+  "events": {
+    "header": "Eventos",
+    "standStages": "Etapas de reputación",
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
+  },
+  "factions": {
+    "sentient": "Consciente"
+  },
+  "fissures": {
+    "header": "Fisuras",
+    "voidstorm": "Void Storm",
+    "choice": "Choose which fissures to show",
+    "both": "Both"
+  },
+  "invasions": {
+    "header": "Invasiones",
+    "eta": "Termina en:"
+  },
+  "kuva": {
+    "header": "Sifones de Kuva",
+    "siphon": "Sifón de Kuva"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Valles",
+    "earth": "La Tierra",
+    "cambion": "Cambion"
+  },
+  "news": {
+    "header": "Noticias",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
+    "autoprogress": "Progreso automático"
+  },
+  "nightwave": {
+    "header": "Onda Nocturna",
+    "weekly": "Semanal",
+    "elite": "Semanal de élite",
+    "daily": "Diario"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Weekly",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - ¡La hora de cazar terminó!",
+      "nightheader": "Cetus - ¡Hora de cazar!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reset"
+  },
+  "sales": {
+    "header": "Ventas y ofertas destacadas",
+    "item": "Item"
+  },
+  "sentientoutpost": {
+    "tooltip1": "Este componente está desarrollándose por una actualización reciente.",
+    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "header": "Anomalies",
+    "outpostsL": "Avanzada",
+    "none": "No hay anomalías actualmente",
+    "warn": "¡No olvides tu Paracesis!",
+    "prediction": "Prediction"
+  },
+  "sortie": {
+    "header": "Incursión"
+  },
+  "steelPath": {
+    "header": "Steel Path"
+  },
+  "time": {
+    "loading": "Loading...",
+    "loading...": "Loading...",
+    "day": "día",
+    "night": "noche",
+    "warm": "cálido",
+    "cold": "frío",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timers",
+    "startL": "Empieza en:",
+    "endL": "Termina en:",
+    "ongoingL": "En curso durante:",
+    "expiredL": "Expirado",
+    "depart": "Se va",
+    "arrive": "Llega en"
+  },
+  "timer": {
+    "ostron": "Ostronita",
+    "solaris": "Solaris Unida",
+    "solaris-united": "Solaris United",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Comerciante del vacío",
+    "inventory": "Inventario",
+    "item": "Componente"
+  }
+}

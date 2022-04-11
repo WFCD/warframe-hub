@@ -1,0 +1,189 @@
+{
+  "updates": {
+    "header": "Aktualisierung verfügbar",
+    "body": "Aktualisierung verfügbar, neustarten!",
+    "btn": "Neustarten!"
+  },
+  "acolytes": {
+    "header": "Akolythen",
+    "discovered": "Entdeckt",
+    "hiding": "Versteckt",
+    "na": "Nirgendwo",
+    "health": "Leben verbleibend"
+  },
+  "alerts": {
+    "header": "Alarmierungen",
+    "archwing": "Archwing für Mission benötigt",
+    "nightmare": "Albtraummission",
+    "level": "Level:"
+  },
+  "arbitration": {
+    "header": "Schiedsgericht"
+  },
+  "bounty": {
+    "standing": "Ansehen",
+    "header": "{type} Belohnungszyklus",
+    "type": "Typ",
+    "lrange": "Levelbereich",
+    "rewards": "Belohnungen",
+    "bounties": "Aufträge",
+    "expires": "Bounties laufen ab in:",
+    "autoExpand": "Belohnungen immer anzeigen"
+  },
+  "nav": {
+    "info": "Information",
+    "discord": "Discord",
+    "settings": "Einstellungen",
+    "drops": "Beute",
+    "genesis": "Genesis",
+    "docs": "API Dokumentation",
+    "old": "Altes Hub",
+    "status": "Status",
+    "riven": "Rivendaten (Beta)",
+    "synth": "Syntheseziele",
+    "map": "Karte",
+    "fish": "Angeldaten",
+    "howto": "Wie man angelt",
+    "owearth": "Ebenen von Eidolon",
+    "owvenus": "Orbis-Tal",
+    "owdeimos": "Cambion Drift",
+    "ow": "Open World",
+    "projects": "Projekte",
+    "extras": "Extras",
+    "timers": "Timer",
+    "nodata": "Keine Daten verfügbar",
+    "nodatatxt": "Keine {text} vorhanden"
+  },
+  "construction": {
+    "fomorian": "Fomorianer",
+    "razorback": "Razorback",
+    "unk": "Unbekannt",
+    "header": "Baufortschritt"
+  },
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "Cr",
+    "dabloons": "Dukaten",
+    "cred": "Credits",
+    "steelEssense": "Stahl Essenz"
+  },
+  "darvo": {
+    "header": "Darvo's Angebot",
+    "off": "% Rabatt",
+    "left": "% übrig",
+    "leftL": "übrig"
+  },
+  "events": {
+    "header": "Ereignisse",
+    "standStages": "Ansehensstufen",
+    "remaining": "{perc}% verbleibend",
+    "completed": "{perc}% abgeschlossen",
+    "rewards": {
+      "header": "Eventbelohnungen:",
+      "label": "Belohnungen"
+    },
+    "completionBonuses": "Abschlussboni:",
+    "currentCycle": "Aktueller Zyklus:",
+    "nextCycle": "Nächster Zyklus:"
+  },
+  "factions": {
+    "sentient": "Sentient"
+  },
+  "fissures": {
+    "header": "Risse",
+    "voidstorm": "Void Sturm",
+    "choice": "Wähle welche Voidrisse angezeigt werden sollen",
+    "both": "Beide"
+  },
+  "invasions": {
+    "header": "Invasionen",
+    "eta": "Endet in:"
+  },
+  "kuva": {
+    "header": "Kuva Siphons",
+    "siphon": "Kuva Siphon"
+  },
+  "location": {
+    "cetus": "Cetus",
+    "vallis": "Tal",
+    "earth": "Erde",
+    "cambion": "Cambion"
+  },
+  "news": {
+    "header": "Neuigkeiten",
+    "past": "her",
+    "future": "in",
+    "live": "Live",
+    "autoprogress": "Auto-Fortschritt"
+  },
+  "nightwave": {
+    "header": "Nightwave",
+    "weekly": "Wöchentlich",
+    "elite": "Elite Wöchentlich",
+    "daily": "Täglich"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Wöchentlich",
+    "teamannihilation": "Team Vernichtung",
+    "annihilation": "Vernichtung",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Cephalon Eroberung"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Die Sonne geht auf! Die Jagdzeit ist vorbei!",
+      "nightheader": "Cetus - Die Jagdzeit hat begonnen!"
+    }
+  },
+  "reset": {
+    "header": "Täglicher Neustart"
+  },
+  "sales": {
+    "header": "Verkäufe und Sonderangebote",
+    "item": "Item"
+  },
+  "sentientoutpost": {
+    "tooltip1": "Dieser Teil befindet sich aufgrund des aktuellen Updates in der aktiven Entwicklung.",
+    "tooltip2": "Der geschätzte Zyklus beträgt 30 Minuten aktive Zeit für jede Mission.",
+    "header": "Anomalien",
+    "outpostsL": "Außenposten",
+    "none": "Keine aktuellen Anomalien",
+    "warn": "Vergiss nicht deinen Paracesis!",
+    "prediction": "Vorhersage"
+  },
+  "sortie": {
+    "header": "Einsätze"
+  },
+  "steelPath": {
+    "header": "Stählerner Pfad"
+  },
+  "time": {
+    "loading": "Lade...",
+    "loading...": "Loading...",
+    "day": "Tag",
+    "night": "Nacht",
+    "warm": "Warm",
+    "cold": "Kalt",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Zyklus-Timer",
+    "startL": "Beginnt in:",
+    "endL": "Endet in:",
+    "ongoingL": "Läuft noch für:",
+    "expiredL": "Abgelaufen",
+    "depart": "Verlässt",
+    "arrive": "Ankunft auf"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Void Händler",
+    "inventory": "Inventar",
+    "item": "Item"
+  }
+}

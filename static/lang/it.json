@@ -160,6 +160,7 @@
   },
   "time": {
     "loading": "Caricamento...",
+    "loading...": "Loading...",
     "day": "giorno",
     "night": "notte",
     "warm": "caldo",

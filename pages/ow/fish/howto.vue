@@ -11,7 +11,7 @@
       <b-col md="4" offset-md="4" offset-sm="2">
         <b-list-group class="center-block">
           <b-list-group-item class="d-flex justify-content-between align-items-center">
-            <a href="https://reddit.com/u/cranem258">/u/cranem258 aka PepsiMan</a>
+            cranem258 aka PepsiMan
             <b-badge variant="primary" pill>v1</b-badge>
           </b-list-group-item>
           <b-list-group-item class="d-flex justify-content-between align-items-center">

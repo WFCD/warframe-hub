@@ -51,7 +51,7 @@
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vuejs-accessibility": "^1.1.1",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
     "lint-staged": "^12.4.1",

@@ -140,7 +140,7 @@ export const mutations = {
 export const actions = {
   async updateWorldstate(context) {
     const { commit, getters } = context;
-    const ws = await get(`${apiBase}/${getters.platform}`, {
+    const ws = await get(`${apiBase}/${getters.platform}?language=${getters.locale}`, {
       headers: {
         'Accept-Language': getters.locale,
       },

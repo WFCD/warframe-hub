@@ -29,23 +29,23 @@ export const actions = {
     const rivens = JSON.parse(raw.replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
     commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
   },
-  async updateSynthData({ commit }) {
+  async updateSynthData({ commit, rootGetters }) {
     const res = await get(`https://api.warframestat.us/synthTargets&language=${rootGetters['worldstate/platform']}`);
     safeCommit(commit, 'commitSynthData', res);
   },
-  async updateWarframes({ commit }) {
+  async updateWarframes({ commit, rootGetters }) {
     const res = await get(
       `https://api.warframestat.us/warframes?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
     );
     safeCommit(commit, 'commitFrameData', res);
   },
-  async updateWeapons({ commit }) {
+  async updateWeapons({ commit, rootGetters }) {
     const res = await get(
       `https://api.warframestat.us/weapons?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
     );
     safeCommit(commit, 'commitWeaponData', res);
   },
-  async updateMods({ commit }) {
+  async updateMods({ commit, rootGetters }) {
     const res = await get(
       `https://api.warframestat.us/mods?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
     );

@@ -30,7 +30,7 @@ export const actions = {
     commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
   },
   async updateSynthData({ commit, rootGetters }) {
-    const res = await get(`https://api.warframestat.us/synthTargets&language=${rootGetters['worldstate/platform']}`);
+    const res = await get(`https://api.warframestat.us/synthTargets&language=${rootGetters['worldstate/locale']}`);
     safeCommit(commit, 'commitSynthData', res);
   },
   async updateWarframes({ commit, rootGetters }) {

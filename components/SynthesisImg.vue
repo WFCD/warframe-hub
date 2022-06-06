@@ -7,6 +7,8 @@
 import HubImg from '@/components/HubImg';
 import { optimize, cdn } from '@/services/utilities';
 
+const translate = (stub) => (stub ? optimize(cdn(`webp/synthesis/${stub}.webp`)) : null);
+
 const imgs = {
   'Ancient Disruptor': optimize(cdn('webp/synthesis/ancient_disruptor.webp')),
   'Ancient Healer': optimize(cdn('webp/synthesis/ancient_healer.webp')),
@@ -67,11 +69,12 @@ export default {
       type: String,
       default: '100px',
     },
+    image: { type: String, required: true },
   },
   data() {
     return {
       target: this.name,
-      src: imgs[this.name],
+      src: translate(this.image) || imgs[this.name],
     };
   },
 };

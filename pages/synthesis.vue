@@ -65,7 +65,7 @@
           {{ datum.item.name }}
         </template>
         <template #cell(portrait)="datum">
-          <SynthesisImg :name="datum.item.name" />
+          <SynthesisImg :name="datum.item.name" :image="datum.item.imageKey" />
         </template>
         <template #cell(location)="datum">
           <span v-for="(location, key) in datum.item.locations" :key="key">

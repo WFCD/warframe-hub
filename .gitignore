@@ -91,3 +91,4 @@ sw.*
 
 # Service worker
 static/sw.js
+cypress/

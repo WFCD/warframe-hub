@@ -18,6 +18,8 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'The Home for Warframe Information' },
       { name: 'format-detection', content: 'telephone=no' },
+      { property: 'og:description', hid: 'og:description', content: 'The Home for Warframe Information' },
+      { property: 'og:title', hid: 'og:title', content: 'Warframe Hub' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
   },

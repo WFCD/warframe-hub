@@ -1,4 +1,4 @@
-name: Actions
+name: CI
 on:
   pull_request:
     branches:
@@ -22,6 +22,14 @@ jobs:
       run: npm ci
     - name: Run linters
       run: npm run lint
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16 ]
+    steps:
+    - uses: actions/checkout@v2
     - name: Run Cypress
       uses: cypress-io/github-action@v2
       with:

@@ -13,7 +13,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '14'
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2.6.0
         env:

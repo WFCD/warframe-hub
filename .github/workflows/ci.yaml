@@ -28,6 +28,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 16 ]
+        browser: ['chrome', 'firefox']
     steps:
     - uses: actions/checkout@v2
     - name: Run Cypress
@@ -35,7 +36,7 @@ jobs:
       with:
         build: npm run build
         start: npm start
-        browser: chrome
+        browser: ${{ matrix.browser }}
     - uses: actions/upload-artifact@master
       with:
         name: screenshots

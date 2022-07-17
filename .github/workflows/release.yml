@@ -27,8 +27,11 @@ jobs:
             @eclass/semantic-release-sentry-releases
             @semantic-release/git
             @semantic-release/exec
+      - name: Read .release file
+        id: release
+        run: echo "::set-output name=release::$(cat .release)"
       - name: Create Sentry release
-        if: ${{ env.SEMANTIC_RELEASE_COMMENCE == true  }}
+        if: ${{ steps.release.outputs.release == 'yes'  }}
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

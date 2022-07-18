@@ -64,4 +64,4 @@ The distribution of this software is protected under [Apache License 2.0](https:
 
 ## Small Note
 
-Like most projects, Warframe Hub is purely out of passion, love, and dedication to the Warframe Community and open source software in general. This is not our time job, and probably will never be. No donations will be encouraged because once a person starts to receive payments for a passion project, is it still a passion?
+Like most projects, Warframe Hub is purely out of passion, love, and dedication to the Warframe Community and open source software in general. This is not our fulltime job, and probably will never be. No donations will be encouraged because once a person starts to receive payments for a passion project, is it still a passion?

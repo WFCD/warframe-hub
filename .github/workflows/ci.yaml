@@ -1,6 +1,5 @@
-name: Actions
+name: CI
 on:
-  push:
   pull_request:
     branches:
       - dev
@@ -11,15 +10,39 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14]
-
+        node-version: [16]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
     - name: Install Dependencies
       run: npm ci
     - name: Run linters
       run: npm run lint
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16 ]
+        browser: ['chrome', 'firefox']
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Cypress
+      uses: cypress-io/github-action@v4
+      with:
+        build: npm run build
+        start: npm start
+        browser: ${{ matrix.browser }}
+    - uses: actions/upload-artifact@master
+      with:
+        name: screenshots
+        path: cypress/screenshots
+        if: failure()
+    - uses: actions/upload-artifact@master
+      with:
+        name: videos
+        path: cypress/videos

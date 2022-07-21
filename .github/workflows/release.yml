@@ -13,7 +13,24 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
+      - uses: actions/upload-artifact@master
+        with:
+          name: screenshots
+          path: cypress/screenshots
+          if: failure()
+      - uses: actions/upload-artifact@master
+        with:
+          name: videos
+          path: cypress/videos
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2.6.0
         env:

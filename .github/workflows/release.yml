@@ -38,6 +38,8 @@ jobs:
           browser: ${{ matrix.browser }}
   semantic-release:
     runs-on: ubuntu-latest
+    # wait until test & lint complete
+    needs: ['lint', 'test']
     steps:
       - uses: actions/checkout@v2
         with:

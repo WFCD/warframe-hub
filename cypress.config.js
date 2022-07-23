@@ -13,4 +13,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {},
     specPattern: 'components/**/*.spec.js',
   },
+  retries: {
+    runMode: 3,
+    openMode: 0,
+  },
 });

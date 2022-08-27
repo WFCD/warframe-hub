@@ -19,7 +19,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@nuxtjs/device": "^2.1.0",
-    "@nuxtjs/i18n": "^7.2.3",
+    "@nuxtjs/i18n": "^7.3.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/sentry": "^5.1.7",
     "bootstrap-vue": "^2.22.0",

@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col md="12">
-        <nuxt-link to="vallis-map">
+        <nuxt-link to="map">
           <b-button variant="info" class="mb-3 float-right">Orb Vallis Map</b-button>
         </nuxt-link>
         <nuxt-link to="vallis-fish0howto#hotspots">

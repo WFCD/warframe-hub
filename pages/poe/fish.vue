@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col md="12">
-        <nuxt-link to="poe-map">
+        <nuxt-link to="map">
           <b-button variant="info" class="mb-3 float-right">Plains of Eidolon Map</b-button>
         </nuxt-link>
         <nuxt-link to="poe-fish-howto#hotspots">

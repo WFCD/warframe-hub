@@ -4,14 +4,48 @@ on:
     branches:
         - dev
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16 ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run linters
+        run: npm run lint
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16 ]
+        browser: [ 'chrome', 'firefox' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run build
+          start: npm start
+          browser: ${{ matrix.browser }}
   semantic-release:
     runs-on: ubuntu-latest
+    # wait until test & lint complete
+    needs: ['lint', 'test']
     steps:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
           token: ${{ secrets.GH_TOKEN }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: Semantic Release
@@ -27,8 +61,11 @@ jobs:
             @eclass/semantic-release-sentry-releases
             @semantic-release/git
             @semantic-release/exec
+      - name: Read .release file
+        id: release
+        run: echo "::set-output name=release::$(cat .release)"
       - name: Create Sentry release
-        if: ${{ env.SEMANTIC_RELEASE_COMMENCE == true  }}
+        if: ${{ steps.release.outputs.release == 'yes'  }}
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

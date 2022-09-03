@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
     "@cypress/vue": "^2.2.4",
-    "@cypress/webpack-dev-server": "^2.2.0",
+    "@cypress/webpack-dev-server": "^2.3.0",
     "@nuxt/types": "~2.15.0",
     "@nuxtjs/eslint-config": "^9.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",

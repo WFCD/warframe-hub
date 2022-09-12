@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import locales from 'static/json/locales.json';
+import locales from '@/static/json/locales.json';
 
 export default {
   name: 'LanguagesDialog',
@@ -45,7 +45,7 @@ export default {
             class="settings-group"
             change={this.saveLocale}
           >
-            {locales.map((locale) => {
+            {Object.values(locales).map((locale) => {
               return (
                 <b-form-radio key={locale.key} value={locale.key}>
                   {locale.display}

@@ -30,6 +30,14 @@
             height="24px"
             width="24px"
           />
+          <HubImg
+            v-if="fissure.isHard"
+            :src="steelPath"
+            :name="$t('fissures.steelPath')"
+            class="li-mission-decorator li-mission-decorator-lg no-invert"
+            height="24px"
+            width="24px"
+          />
         </span>
       </b-list-group-item>
 
@@ -60,6 +68,7 @@ import HubPanelWrap from '@/components/HubPanelWrap';
 import { cdn } from '@/services/utilities';
 
 const archwing = cdn('svg/archwing.svg');
+const steelPath = cdn('svg/arbitrations.svg');
 
 const fissureIcons = [];
 const lith = cdn('svg/fissures/1.svg');
@@ -71,7 +80,34 @@ fissureIcons.push(lith, meso, neo, axi, requiem);
 
 export default {
   name: 'FissurePanel',
-  props: ['fissures'],
+  components: {
+    TimeBadge,
+    HubImg,
+    NoDataItem,
+    HubPanelWrap,
+  },
+  props: {
+    fissures: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      styleObject: {
+        display: 'inline',
+        'vertical-align': 'middle',
+      },
+      archwing,
+      steelPath,
+      options: [
+        { text: this.$t('fissures.header'), value: 'fissures' },
+        { text: this.$t('fissures.voidstorm'), value: 'storms' },
+        { text: this.$t('fissures.steelPath'), value: 'steelPath' },
+        { text: this.$t('fissures.all'), value: 'fissures-storms-steelPath' },
+      ],
+    };
+  },
   computed: {
     ...mapGetters('worldstate', ['fissureDisplays', 'fissurePlanetStates']),
     headertext() {
@@ -79,6 +115,11 @@ export default {
     },
     check: {
       get() {
+        if (this.fissureDisplays === 'fissures-storms') {
+          // update, in case the site data is outdate
+          this.$store.commit('worldstate/commitFissureDisplaysState', ['fissures-storms-steelPath']);
+          return 'fissures-storms-steelPath';
+        }
         return this.fissureDisplays;
       },
       set(value) {
@@ -99,6 +140,8 @@ export default {
           let include = !fissure.expired;
           if (fissure.isStorm) {
             include = include && this.check.includes('storms');
+          } else if (fissure.isHard) {
+            include = include && this.check.includes('steelPath');
           } else {
             include = include && this.check.includes('fissures');
           }
@@ -113,26 +156,6 @@ export default {
     determineImg(fissure) {
       return fissureIcons[fissure.tierNum - 1] || lith;
     },
-  },
-  data() {
-    return {
-      styleObject: {
-        display: 'inline',
-        'vertical-align': 'middle',
-      },
-      archwing,
-      options: [
-        { text: this.$t('fissures.header'), value: 'fissures' },
-        { text: this.$t('fissures.both'), value: 'fissures-storms' },
-        { text: this.$t('fissures.voidstorm'), value: 'storms' },
-      ],
-    };
-  },
-  components: {
-    TimeBadge,
-    HubImg,
-    NoDataItem,
-    HubPanelWrap,
   },
 };
 </script>

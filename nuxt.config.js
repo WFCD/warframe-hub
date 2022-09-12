@@ -117,4 +117,10 @@ export default {
     failedColor: '#852d23',
     background: '#222',
   },
+
+  babel: {
+    presets(env, [preset, options]) {
+      return [['@nuxt/babel-preset-app', options]];
+    },
+  },
 };

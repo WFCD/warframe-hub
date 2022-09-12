@@ -1,120 +1,49 @@
-<template>
-  <div id="notificationsTabBody">
-    Add the tags for entries you want notifications for.
-    <br />
-    You can search and use "Enter" to select, as well as "Backspace" to remove the last in the list.
-    <Multiselect
-      :value="activeRewards"
-      :options="this.rewardStates"
-      placeholder="Select Rewards"
-      label="text"
-      track-by="text"
-      @select="this.toggleRewardState"
-      @remove="this.toggleRewardState"
-      :close-on-select="false"
-      :clear-on-select="false"
-      :preserve-search="true"
-      :hide-selected="true"
-      :multiple="true"
-    />
-    <hr />
-    <Multiselect
-      :value="activeEvents"
-      :options="this.eventStates"
-      placeholder="Select Events"
-      label="text"
-      track-by="text"
-      @select="this.toggleEventState"
-      @remove="this.toggleEventState"
-      :close-on-select="false"
-      :clear-on-select="false"
-      :preserve-search="true"
-      :hide-selected="true"
-      :multiple="true"
-    />
-    <hr />
-    <Multiselect
-      :value="activeFissures"
-      :options="this.fissureStates"
-      placeholder="Select Fissures"
-      label="text"
-      track-by="text"
-      @select="this.toggleEventState"
-      @remove="this.toggleEventState"
-      :close-on-select="false"
-      :clear-on-select="false"
-      :preserve-search="true"
-      :hide-selected="true"
-      :multiple="true"
-    />
-    <hr />
-    <Multiselect
-      :value="activeArbis"
-      :options="this.arbiStates"
-      placeholder="Select Arbitrations"
-      label="text"
-      track-by="text"
-      @select="this.toggleEventState"
-      @remove="this.toggleEventState"
-      :close-on-select="false"
-      :clear-on-select="false"
-      :preserve-search="true"
-      :hide-selected="true"
-      :multiple="true"
-    />
-  </div>
-</template>
-
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-
-<script>
 import Multiselect from 'vue-multiselect';
 import { mapGetters } from 'vuex';
 
+import '../../../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
+
 export default {
   name: 'NotificationFilters',
-  components: {
-    Multiselect,
-  },
   computed: {
     ...mapGetters('worldstate', ['trackableState']),
     activeRewards: {
-      get: function () {
+      get() {
         return Object.keys(this.trackableState.rewardTypes)
           .map((component) => this.trackableState.rewardTypes[component])
           .filter((component) => component.state);
       },
-      set: function () {},
+      set() {},
     },
     rewardStates() {
       return Object.keys(this.trackableState.rewardTypes).map((reward) => this.trackableState.rewardTypes[reward]);
     },
     activeEvents: {
-      get: function () {
+      get() {
         return Object.keys(this.trackableState.eventTypes)
           .filter((k) => !k.includes('fissures') && !k.includes('arbitration'))
           .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
-      set: function () {},
+      set() {},
     },
     activeFissures: {
-      get: function () {
+      get() {
         return Object.keys(this.trackableState.eventTypes)
           .filter((k) => k.includes('fissures'))
           .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
-      set: function () {},
+      set() {},
     },
     activeArbis: {
-      get: function () {
+      get() {
         return Object.keys(this.trackableState.eventTypes)
           .filter((k) => k.includes('arbitration'))
           .map((component) => this.trackableState.eventTypes[component])
           .filter((component) => component.state);
       },
-      set: function () {},
+      set() {},
     },
     eventStates() {
       return Object.keys(this.trackableState.eventTypes)
@@ -150,5 +79,74 @@ export default {
       });
     },
   },
+  render() {
+    return (
+      <b-tab title="Notifications">
+        <div id="notificationsTabBody">
+          Add the tags for entries you want notifications for.
+          <br />
+          You can search and use "Enter" to select, as well as "Backspace" to remove the last in the list.
+          <Multiselect
+            value={this.activeRewards}
+            options={this.rewardStates}
+            placeholder="Select Rewards"
+            label="text"
+            track-by="text"
+            close-on-select={false}
+            clear-on-select={false}
+            preserve-search={true}
+            hide-selected={true}
+            multiple={true}
+            select={this.toggleRewardState}
+            remove={this.toggleRewardState}
+          />
+          <hr />
+          <Multiselect
+            value={this.activeEvents}
+            options={this.eventStates}
+            placeholder="Select Events"
+            label="text"
+            track-by="text"
+            close-on-select={false}
+            clear-on-select={false}
+            preserve-search={true}
+            hide-selected={true}
+            multiple={true}
+            select={this.toggleEventState}
+            remove={this.toggleEventState}
+          />
+          <hr />
+          <Multiselect
+            value={this.activeFissures}
+            options={this.fissureStates}
+            placeholder="Select Fissures"
+            label="text"
+            track-by="text"
+            close-on-select={false}
+            clear-on-select={false}
+            preserve-search={true}
+            hide-selected={true}
+            multiple={true}
+            select={this.toggleEventState}
+            remove={this.toggleEventState}
+          />
+          <hr />
+          <Multiselect
+            value={this.activeArbis}
+            options={this.arbiStates}
+            placeholder="Select Arbitrations"
+            label="text"
+            track-by="text"
+            close-on-select={false}
+            clear-on-select={false}
+            preserve-search={true}
+            hide-selected={true}
+            multiple={true}
+            select={this.toggleEventState}
+            remove={this.toggleEventState}
+          />
+        </div>
+      </b-tab>
+    );
+  },
 };
-</script>

@@ -1,23 +1,5 @@
-<template>
-  <b-form-group label="Language">
-    <b-form-radio-group
-      id="locale-radios"
-      v-model="lang"
-      stacked
-      name="language radios"
-      class="settings-group"
-      @change="saveLocale"
-    >
-      <b-form-radio v-for="locale in locales" :key="locale.key" :value="locale.key">
-        {{ locale.display }}
-      </b-form-radio>
-    </b-form-radio-group>
-  </b-form-group>
-</template>
-
-<script>
 import { mapGetters } from 'vuex';
-import locales from '@/static/json/locales.json';
+import locales from 'static/json/locales.json';
 
 export default {
   name: 'LanguagesDialog',
@@ -31,7 +13,6 @@ export default {
       platformLabelStyle: {
         'flex-grow': 1,
       },
-      locales,
     };
   },
   computed: {
@@ -52,5 +33,28 @@ export default {
       this.$store.dispatch('worldstate/updateWorldstate');
     },
   },
+  render() {
+    return (
+      <b-tab title={'Language'}>
+        <b-form-group label="Language">
+          <b-form-radio-group
+            id="locale-radios"
+            v-model={this.lang}
+            stacked
+            name="language radios"
+            class="settings-group"
+            change={this.saveLocale}
+          >
+            {locales.map((locale) => {
+              return (
+                <b-form-radio key={locale.key} value={locale.key}>
+                  {locale.display}
+                </b-form-radio>
+              );
+            })}
+          </b-form-radio-group>
+        </b-form-group>
+      </b-tab>
+    );
+  },
 };
-</script>

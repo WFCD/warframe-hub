@@ -12,7 +12,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import Navbar from '@/components/Navbar.vue';
-import Settings from '@/components/modalDialogs/Settings.vue';
+import Settings from '@/components/modalDialogs/Settings.jsx';
 import About from '@/components/modalDialogs/About.vue';
 import themes from '@/static/json/themes.json';
 export default {

@@ -93,7 +93,8 @@
     "header": "虚空裂缝",
     "voidstorm": "虚空风暴",
     "choice": "选择要显示的区域：",
-    "both": "同时"
+    "all": "All",
+    "steelPath": "Steel Path"
   },
   "invasions": {
     "header": "入侵",

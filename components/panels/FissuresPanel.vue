@@ -104,7 +104,7 @@ export default {
         { text: this.$t('fissures.header'), value: 'fissures' },
         { text: this.$t('fissures.voidstorm'), value: 'storms' },
         { text: this.$t('fissures.steelPath'), value: 'steelPath' },
-        { text: this.$t('fissures.both'), value: 'fissures-storms-steelPath' },
+        { text: this.$t('fissures.all'), value: 'fissures-storms-steelPath' },
       ],
     };
   },

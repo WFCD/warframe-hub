@@ -93,7 +93,7 @@
     "header": "Fissures",
     "voidstorm": "Void Storm",
     "choice": "Choose which fissures to show",
-    "both": "All",
+    "all": "All",
     "steelPath": "Steel Path"
   },
   "invasions": {

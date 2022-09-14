@@ -93,7 +93,8 @@
     "header": "Разрывы Бездны",
     "voidstorm": "Буря Бездны",
     "choice": "Выберите, какие разрывы отображать",
-    "both": "Оба"
+    "all": "All",
+    "steelPath": "Steel Path"
   },
   "invasions": {
     "header": "Вторжения",

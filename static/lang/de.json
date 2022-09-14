@@ -93,7 +93,8 @@
     "header": "Risse",
     "voidstorm": "Void Sturm",
     "choice": "Wähle welche Voidrisse angezeigt werden sollen",
-    "both": "Beide"
+    "all": "All",
+    "steelPath": "Steel Path"
   },
   "invasions": {
     "header": "Invasionen",

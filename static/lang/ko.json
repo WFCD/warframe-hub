@@ -93,7 +93,8 @@
     "header": "균열",
     "voidstorm": "보이드 폭풍",
     "choice": "표시할 유물 선택하기",
-    "both": "모두"
+    "all": "모두",
+    "steelPath": "강철의 길"
   },
   "invasions": {
     "header": "침공",

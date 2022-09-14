@@ -34,7 +34,7 @@ import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
-import InvasionsPanel from '@/components/panels/InvasionsPanel.vue';
+import InvasionsPanel from '@/components/panels/InvasionsPanel.jsx';
 import EventsPanel from '@/components/panels/EventsPanel.vue';
 import DarvoDealsPanel from '@/components/panels/DarvoDealsPanel.vue';
 import SalesPanel from '@/components/panels/SalesPanel.vue';

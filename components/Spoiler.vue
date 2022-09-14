@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-collapse
-      :id="`spoiler-${cid}`"
+      :id="`spoiler-${id}`"
       :visible="init"
       @hidden="
         toggled();
@@ -14,31 +14,38 @@
     >
       <slot></slot>
     </b-collapse>
-    <b-btn v-b-toggle="`spoiler-${cid}`" variant="primary" class="mb-1 py-0">
+    <b-btn v-b-toggle="`spoiler-${id}`" variant="primary" class="mb-1 py-0">
       {{ headertext }} <i ref="arrow" :class="initialArrow"></i>
     </b-btn>
   </div>
 </template>
 <script>
-import util from '@/services/utilities';
+import { makeid } from '@/services/utilities';
 
 export default {
   name: 'SpoilerComponent',
-  props: ['headertext', 'init'],
+  props: {
+    headertext: {
+      type: String,
+      default: () => '',
+    },
+    init: {
+      type: Boolean,
+      default: () => false,
+    },
+    toggle: {
+      type: Function,
+      default: () => {
+        return () => {};
+      },
+    },
+  },
   data() {
     return {
-      id: 0,
+      id: makeid(),
     };
   },
   computed: {
-    cid() {
-      if (this.id) {
-        return this.id;
-      } else {
-        this.id = this.makeid(); // eslint-disable-line vue/no-side-effects-in-computed-properties
-      }
-      return this.id;
-    },
     initialArrow() {
       if (this.init) {
         return 'fas fa-chevron-up';
@@ -49,9 +56,6 @@ export default {
   methods: {
     toggled() {
       this.$emit('toggle');
-    },
-    makeid() {
-      return util.makeid();
     },
     upArrow() {
       this.$refs.arrow.className = 'fas fa-chevron-up';

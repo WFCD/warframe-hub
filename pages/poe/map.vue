@@ -214,7 +214,7 @@ export default {
           lg.addTo(this.map);
         }
       });
-      // Add all of the layer groups to the map
+      // Add all the layer groups to the map
       L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
       // Now wire up an event when the user toggles one of the layers to update localstorage
       this.map.on('overlayadd overlayremove', (e) => {

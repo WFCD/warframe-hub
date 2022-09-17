@@ -41,12 +41,10 @@ The website will be available for viewing at http://localhost:3000
 This website runs on Vue.js, and it does come with a development server that refreshes when it detects code changes. Nodemon is no longer needed as vue comes with its own hot reloader. You can launch the development server using:
 
 ```bash
-$ npm run serve
+$ npm run dev
 ```
 
-You can also develop the application through the Vue UI, which you can install through `npm i -g @vue/cli`
-
-The Vue dashboard will be accessible at http://localhost:8000
+We've switched to [nuxt.js](https://github.com/nuxt/nuxt.js) for our framework instead of freeform Vue
 
 ## Bug/Issue Report
 
@@ -54,9 +52,32 @@ Found a bug or an issue? Please submit a bug/issue report under the [issue tab](
 
 ## Testing
 
-Our builds goes through Travis-CI's tester.
+Our builds leverage GitHub actions to test via cypress & linting.
 
-You can see the latest results [here](https://travis-ci.com/WFCD/warframe-hub) or by clicking on the badge at the top of the page.
+You can see the latest results [here](https://github.com/WFCD/warframe-hub/actions/workflows/ci.yaml) or by clicking on the badge at the top of the page.
+
+### Local Tooling
+
+#### Linting
+
+Only updated files are generally linted, and you can lint them with
+```bash
+npm run lint
+```
+or to fix many issues automatically,
+
+```bash
+npm run lint:fix
+```
+
+#### Cypress
+
+We leverage [Cypress](https://github.com/cypress-io) for testing our frontend code. Tests should be run locally, but if you're developing without tooling locally, the tests will run on github actions when you push to a pull request.
+
+Local testing command, must be run with an instance (either `npm start` or `npm run dev`) currently running
+```bash
+npm test
+```
 
 ## License
 

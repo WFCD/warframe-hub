@@ -1,4 +1,4 @@
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import thumb from '@/components/AsyncItemThumb.jsx';
 import { makeid, cdn } from '@/services/utilities.js';
 

@@ -37,9 +37,7 @@ export default {
           {this.headertext} <i class="fas fa-chevron-down"></i>
         </b-btn>
         <b-collapse id={`collapsible-${this.cid}`} hidden={this.reflow} shown={this.reflow}>
-          <b-card>
-            <slot></slot>
-          </b-card>
+          <b-card>{this.$slots.default}</b-card>
         </b-collapse>
       </div>
     );

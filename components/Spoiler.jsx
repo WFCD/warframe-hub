@@ -1,25 +1,3 @@
-<template>
-  <div>
-    <b-collapse
-      :id="`spoiler-${id}`"
-      :visible="init"
-      @hidden="
-        toggled();
-        downArrow();
-      "
-      @shown="
-        toggled();
-        upArrow();
-      "
-    >
-      <slot></slot>
-    </b-collapse>
-    <b-btn v-b-toggle="`spoiler-${id}`" variant="primary" class="mb-1 py-0">
-      {{ headertext }} <i ref="arrow" :class="initialArrow"></i>
-    </b-btn>
-  </div>
-</template>
-<script>
 import { makeid } from '@/services/utilities';
 
 export default {
@@ -64,5 +42,27 @@ export default {
       this.$refs.arrow.className = 'fas fa-chevron-down';
     },
   },
+  render() {
+    return (
+      <div>
+        <b-collapse
+          id={`spoiler-${this.id}`}
+          visible={this.init}
+          onHidden={() => {
+            this.toggled();
+            this.downArrow();
+          }}
+          onShown={() => {
+            this.toggled();
+            this.upArrow();
+          }}
+        >
+          {this.$slots.default}
+        </b-collapse>
+        <b-btn v-b-toggle={`spoiler-${this.id}`} variant="primary" class="mb-1 py-0">
+          {this.headertext} <i ref="arrow" class={this.initialArrow}></i>
+        </b-btn>
+      </div>
+    );
+  },
 };
-</script>

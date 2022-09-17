@@ -124,7 +124,7 @@
 
 <script>
 import fish from '@/static/json/fish/vallis.json';
-import FishImg from '@/components/FishImg.vue';
+import FishImg from '@/components/FishImg.jsx';
 
 const fields = [
   {

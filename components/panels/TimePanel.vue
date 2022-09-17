@@ -4,17 +4,17 @@
       <b-list-group-item :style="styleObject" class="list-group-item-borderbottom">
         <span
           class="pull-left"
-          v-bind:class="{
-            day: this.isDay,
-            night: this.isNight,
-            warm: this.isWarm,
-            cold: this.isCold,
-            fass: this.isFass,
-            vome: this.isVome,
+          :class="{
+            day: isDay,
+            night: isNight,
+            warm: isWarm,
+            cold: isCold,
+            fass: isFass,
+            vome: isVome,
           }"
         >
           <span style="text-transform: capitalize">{{
-            time && (time.state || time.active) ? this.$t(`time.${(time.state || time.active).toLowerCase()}`) : display
+            time && (time.state || time.active) ? $t(`time.${(time.state || time.active).toLowerCase()}`) : display
           }}</span>
         </span>
         <TimeBadge
@@ -29,13 +29,44 @@
 </template>
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
 import dayjs from 'dayjs';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import TimeBadge from '@/components/TimeBadge.vue';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {
-  props: ['time', 'location', 'display', 'headerPath'],
   name: 'TimePanel',
+  components: {
+    TimeBadge,
+    HubPanelWrap,
+  },
+  props: {
+    time: {
+      type: Object,
+      default: () => ({
+        state: undefined,
+        active: undefined,
+      }),
+    },
+    location: {
+      type: String,
+      default: () => 'sol',
+    },
+    display: {
+      type: String,
+      default: () => 'Time',
+    },
+    headerPath: {
+      type: String,
+      default: () => '',
+    },
+  },
+  data() {
+    return {
+      styleObject: {
+        display: 'inline',
+      },
+    };
+  },
   computed: {
     now() {
       return dayjs().toISOString();
@@ -63,17 +94,6 @@ export default {
     isVome() {
       return this && this.time && this.time.active === 'vome';
     },
-  },
-  components: {
-    TimeBadge,
-    HubPanelWrap,
-  },
-  data() {
-    return {
-      styleObject: {
-        display: 'inline',
-      },
-    };
   },
 };
 </script>

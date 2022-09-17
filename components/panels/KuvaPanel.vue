@@ -36,9 +36,9 @@
 
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 /**
  * To any poor soul who decides to work on this in the future.

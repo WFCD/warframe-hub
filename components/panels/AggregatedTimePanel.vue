@@ -168,8 +168,8 @@ import utc from 'dayjs/plugin/utc';
 import { mapState } from 'vuex';
 import TimeBadge from '@/components/TimeBadge.vue';
 
-import HubPanelWrap from '@/components/HubPanelWrap';
-import HubImg from '@/components/HubImg.vue';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+import HubImg from '@/components/HubImg.jsx';
 
 import { cdn, wfcdn, optimize } from '@/services/utilities.js';
 

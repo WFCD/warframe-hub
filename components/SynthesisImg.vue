@@ -4,7 +4,7 @@
 
 <!--  -->
 <script>
-import HubImg from '@/components/HubImg';
+import HubImg from '@/components/HubImg.jsx';
 import { optimize, cdn } from '@/services/utilities';
 
 const translate = (stub) => (stub ? optimize(cdn(`webp/synthesis/${stub}.webp`)) : null);

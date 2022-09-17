@@ -1,7 +1,7 @@
 import { mapGetters } from 'vuex';
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
-import Spoiler from '@/components/Spoiler';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+import Spoiler from '@/components/Spoiler.jsx';
 import InvasionItem from '@/components/InvasionItem/InvasionItem.jsx';
 
 const styles = {

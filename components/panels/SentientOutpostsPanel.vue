@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import HubPanelWrap from '@/components/HubPanelWrap';
-import HubImg from '@/components/HubImg.vue';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+import HubImg from '@/components/HubImg.jsx';
 import { cdn } from '@/services/utilities';
 
 const sentient = cdn('svg/factions/sentient.svg');

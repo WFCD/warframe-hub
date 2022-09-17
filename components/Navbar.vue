@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import DropdownItem from '@/components/DropdownNavItem.vue';
+import DropdownItem from '@/components/DropdownNavItem.jsx';
 
 export default {
   name: 'NavbarComponent',

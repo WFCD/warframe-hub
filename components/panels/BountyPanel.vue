@@ -64,24 +64,12 @@
   </HubPanelWrap>
 </template>
 
-<style scoped>
-.list-group-item-borderless {
-  padding-bottom: 0;
-}
-.list-group-item-borderbottom {
-  padding-top: 0;
-}
-.table {
-  margin-bottom: 0.5em;
-}
-</style>
-
 <script>
 import { mapGetters } from 'vuex';
 import TimeBadge from '@/components/TimeBadge.vue';
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubImg from '@/components/HubImg.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubImg from '@/components/HubImg.jsx';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 import { cdn, makeid } from '@/services/utilities.js';
 
@@ -154,3 +142,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.list-group-item-borderless {
+  padding-bottom: 0;
+}
+.list-group-item-borderbottom {
+  padding-top: 0;
+}
+.table {
+  margin-bottom: 0.5em;
+}
+</style>

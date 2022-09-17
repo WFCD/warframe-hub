@@ -130,9 +130,9 @@
 
 <script>
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 
 import { makeid, cdn } from '@/services/utilities';
 

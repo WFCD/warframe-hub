@@ -28,18 +28,10 @@
   </HubPanelWrap>
 </template>
 
-<style scoped>
-table.table td,
-table.table th,
-table.table > thead > tr {
-  border: 0;
-}
-</style>
-
 <script>
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import NoDataItem from '@/components/NoDataItem.vue';
 import { cdn } from '@/services/utilities';
 
@@ -73,3 +65,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+table.table td,
+table.table th,
+table.table > thead > tr {
+  border: 0;
+}
+</style>

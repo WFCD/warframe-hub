@@ -121,7 +121,7 @@
 
 <script>
 import fish from '@/static/json/fish/poe.json';
-import FishImg from '@/components/FishImg.vue';
+import FishImg from '@/components/FishImg.jsx';
 
 const fields = [
   {

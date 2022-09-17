@@ -43,7 +43,7 @@
 import { VueEllipseProgress } from 'vue-ellipse-progress';
 
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {
   name: 'ConstructionPanel',

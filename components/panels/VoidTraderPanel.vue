@@ -5,13 +5,8 @@
         <span class="pull-left">{{ locationLabel() }}</span>
         <TimeBadge :starttime="voidTrader.activation" :endtime="voidTrader.expiry" :interval="1000" />
       </b-list-group-item>
-      <b-list-group-item
-        class="list-group-item-borderbottom"
-        v-if="available()"
-        :items="this.items"
-        :fields="this.fields"
-      >
-        <b-table class="thin item-table" :items="this.items" :fields="this.fields" />
+      <b-list-group-item v-if="available()" class="list-group-item-borderbottom" :items="items" :fields="fields">
+        <b-table class="thin item-table" :items="items" :fields="fields" />
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
@@ -21,16 +16,15 @@
 import dayjs from 'dayjs';
 
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {
   name: 'VoidTraderPanel',
-  props: ['voidTrader'],
-  computed: {
-    headertext() {
-      return this.$t('vt.header');
-    },
+  components: {
+    HubPanelWrap,
+    TimeBadge,
   },
+  props: ['voidTrader'],
   data() {
     return {
       items: this.voidTrader.inventory || [],
@@ -53,9 +47,10 @@ export default {
       ],
     };
   },
-  components: {
-    HubPanelWrap,
-    TimeBadge,
+  computed: {
+    headertext() {
+      return this.$t('vt.header');
+    },
   },
   methods: {
     now() {

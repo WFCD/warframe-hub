@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import { cdn } from '@/services/utilities';
 
 const loading = cdn('svg/loading.svg');

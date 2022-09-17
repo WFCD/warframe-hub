@@ -2,10 +2,10 @@
   <HubPanelWrap :title="headertext" :class="{ 'no-content': acolytes.length === 0 }">
     <b-list-group>
       <b-list-group-item
-        :style="styleObject"
         v-for="(acolyte, index) in acolytes"
         :key="acolyte.id"
-        v-bind:class="{
+        :style="styleObject"
+        :class="{
           'list-group-item-borderless': index !== acolytes.length - 1,
           'list-group-item-borderbottom': index === acolytes.length - 1,
         }"
@@ -18,18 +18,18 @@
         <span class="pull-left">
           <b>
             <i
-              class="far fa-eye faIcon"
-              v-b-tooltip
-              :title="`${acolyte.agentType} ${this.$t('acolytes.discovered')}`"
-              :style="acolyteIcons"
               v-if="acolyte.isDiscovered"
+              v-b-tooltip
+              class="far fa-eye faIcon"
+              :title="`${acolyte.agentType} ${$t('acolytes.discovered')}`"
+              :style="acolyteIcons"
             />
             <i
-              class="far fa-eye-slash faIcon"
+              v-else
               v-b-tooltip
+              class="far fa-eye-slash faIcon"
               :title="`${acolyte.agentType} ${discovery(acolyte)}`"
               :style="acolyteIcons"
-              v-else
             />
             {{ acolyte.agentType }}
           </b>
@@ -55,13 +55,27 @@
 </template>
 
 <script>
-import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
 import dayjs from 'dayjs';
+import NoDataItem from '@/components/NoDataItem.vue';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {
   name: 'AcolytesPanel',
+  components: {
+    NoDataItem,
+    HubPanelWrap,
+  },
   props: ['acolytes'],
+  data() {
+    return {
+      styleObject: {
+        display: 'inline',
+      },
+      acolyteIcons: {
+        'margin-right': '10px',
+      },
+    };
+  },
   computed: {
     headertext() {
       return this.$t('acolytes.header');
@@ -74,7 +88,7 @@ export default {
     },
   },
   methods: {
-    dayjs: dayjs,
+    dayjs,
     discovery(acolyte) {
       return this.$t(`acolytes.${acolyte.isDiscovered ? 'discovered' : 'hiding'}`);
     },
@@ -93,20 +107,6 @@ export default {
       }
       return labelClass;
     },
-  },
-  data() {
-    return {
-      styleObject: {
-        display: 'inline',
-      },
-      acolyteIcons: {
-        'margin-right': '10px',
-      },
-    };
-  },
-  components: {
-    NoDataItem,
-    HubPanelWrap,
   },
 };
 </script>

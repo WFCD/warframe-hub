@@ -62,9 +62,9 @@
 
 <script>
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import { cdn } from '@/services/utilities';
 
 const archwing = cdn('svg/archwing.svg');

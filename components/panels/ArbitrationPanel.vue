@@ -26,9 +26,9 @@
 
 <script>
 import dayjs from 'dayjs';
-import HubImg from '@/components/HubImg.vue';
+import HubImg from '@/components/HubImg.jsx';
 import TimeBadge from '@/components/TimeBadge.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import NoDataItem from '@/components/NoDataItem.vue';
 
 import { cdn } from '@/services/utilities.js';

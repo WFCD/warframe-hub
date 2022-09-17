@@ -129,9 +129,9 @@
 </template>
 
 <script>
-import NoDataItem from '@/components/NoDataItem.vue';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
-import TimeBadge from '@/components/TimeBadge.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
 import HubImg from '@/components/HubImg.jsx';
 
 import { makeid, cdn } from '@/services/utilities';

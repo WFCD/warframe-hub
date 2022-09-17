@@ -28,9 +28,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import AlertPanel from '@/components/panels/AlertPanel.vue';
+import AlertPanel from '@/components/panels/AlertPanel.jsx';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
-import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel';
+import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel.jsx';
 import SortiePanel from '@/components/panels/SortiePanel.vue';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';

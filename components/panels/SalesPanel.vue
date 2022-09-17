@@ -30,9 +30,9 @@
 
 <script>
 import HubImg from '@/components/HubImg.jsx';
-import TimeBadge from '@/components/TimeBadge.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
-import NoDataItem from '@/components/NoDataItem.vue';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import { cdn } from '@/services/utilities';
 
 const platinum = cdn('webp/general/plat.webp');

@@ -30,7 +30,7 @@
 
 <script>
 import dayjs from 'dayjs';
-import TimeBadge from '@/components/TimeBadge.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {

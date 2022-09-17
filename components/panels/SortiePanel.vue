@@ -37,7 +37,7 @@
 import dayjs from 'dayjs';
 
 import HubImg from '@/components/HubImg.jsx';
-import TimeBadge from '@/components/TimeBadge.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import { cdn } from '@/services/utilities';
 

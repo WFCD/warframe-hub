@@ -102,7 +102,7 @@ export default {
               <b>{this.invasion.node}</b> - {this.invasion.desc}
             </span>
           </div>
-          <b-row class="invasion-rewards p-0">
+          <b-row class={{ 'invasion-rewards': true, 'p-0': true }}>
             <b-col>
               <div class="pull-left">
                 {this.atkItems.map((item) => {

@@ -66,8 +66,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import TimeBadge from '@/components/TimeBadge.vue';
-import NoDataItem from '@/components/NoDataItem.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import HubImg from '@/components/HubImg.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
@@ -77,7 +77,45 @@ const standing = cdn('svg/standing.svg');
 
 export default {
   name: 'BountyPanel',
-  props: ['syndicate', 'type'],
+  components: {
+    TimeBadge,
+    NoDataItem,
+    HubImg,
+    HubPanelWrap,
+  },
+  props: {
+    syndicate: {
+      type: Object,
+      default: () => ({}),
+    },
+    type: {
+      type: String,
+      default: () => 'Syndicate',
+    },
+  },
+  data() {
+    return {
+      fields: [
+        {
+          key: 'type',
+          label: this.$t('bounty.type'),
+        },
+        {
+          key: 'standing',
+          label: this.$t('bounty.standing'),
+          thClass: 'text-center',
+        },
+        {
+          key: 'level-range',
+          label: this.$t('bounty.lrange'),
+        },
+      ],
+      standing,
+      id: makeid(),
+      typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
+      autoExpand: false,
+    };
+  },
   computed: {
     headertext() {
       return this.$t('bounty.header', { type: this.$t(`timer.${this.typeId}`) });
@@ -103,29 +141,6 @@ export default {
     },
     ...mapGetters('worldstate', ['bountyToggles']),
   },
-  data() {
-    return {
-      fields: [
-        {
-          key: 'type',
-          label: this.$t('bounty.type'),
-        },
-        {
-          key: 'standing',
-          label: this.$t('bounty.standing'),
-          thClass: 'text-center',
-        },
-        {
-          key: 'level-range',
-          label: this.$t('bounty.lrange'),
-        },
-      ],
-      standing,
-      id: makeid(),
-      typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
-      autoExpand: false,
-    };
-  },
   beforeMount() {
     this.autoExpand = this.bountyToggles[this.typeId];
   },
@@ -133,12 +148,6 @@ export default {
     toggleDetails(row) {
       row._showDetails = !row._showDetails;
     },
-  },
-  components: {
-    TimeBadge,
-    NoDataItem,
-    HubImg,
-    HubPanelWrap,
   },
 };
 </script>

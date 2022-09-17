@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
-import NoDataItem from '@/components/NoDataItem.vue';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import HubImg from '@/components/HubImg.jsx';
 import { cdn } from '@/services/utilities';

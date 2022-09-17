@@ -42,7 +42,7 @@
 <script>
 import { VueEllipseProgress } from 'vue-ellipse-progress';
 
-import NoDataItem from '@/components/NoDataItem.vue';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 export default {

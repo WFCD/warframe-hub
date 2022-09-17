@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import NoDataItem from '@/components/NoDataItem.vue';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import Spoiler from '@/components/Spoiler.jsx';
 import InvasionItem from '@/components/InvasionItem/InvasionItem.jsx';

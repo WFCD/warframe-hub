@@ -24,8 +24,8 @@ import wisp from '@/static/json/geo/plains/wisp.json';
 import lure from '@/static/json/geo/plains/lure.json';
 import cave from '@/static/json/geo/plains/cave.json';
 
-import MapPopup from '@/components/MapPopup.vue';
-import OddityPopup from '@/components/OddityPopup.vue';
+import MapPopup from '@/components/MapPopup.jsx';
+import OddityPopup from '@/components/OddityPopup.jsx';
 import { cdn } from '@/services/utilities';
 
 const plains = cdn('webp/maps/plains.webp');

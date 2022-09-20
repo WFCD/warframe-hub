@@ -1,18 +1,4 @@
-<template>
-  <HubImg
-    :src="src"
-    :name="title"
-    :title="title"
-    :height="height"
-    :width="width"
-    :class="{ invert: invert === 'true' }"
-    fluid
-    :alt="title"
-  />
-</template>
-
-<script>
-import HubImg from '@/components/HubImg';
+import HubImg from '@/components/HubImg.jsx';
 import { optimize, cdn } from '@/services/utilities';
 
 const imgs = {
@@ -157,9 +143,6 @@ const imgs = {
 
 export default {
   name: 'FishImg',
-  components: {
-    HubImg,
-  },
   props: {
     type: {
       type: String,
@@ -191,5 +174,18 @@ export default {
       src: imgs[this.type][this.item],
     };
   },
+  render() {
+    return (
+      <HubImg
+        src={this.src}
+        name={this.title}
+        title={this.title}
+        height={this.height}
+        width={this.width}
+        class={{ invert: this.invert === 'true' }}
+        fluid
+        alt={this.title}
+      />
+    );
+  },
 };
-</script>

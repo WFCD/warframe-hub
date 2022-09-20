@@ -15,7 +15,7 @@ export default {
         },
         {
           value: 'invasion',
-          text: 'Invasion Tone',
+          text: 'InvasionItem Tone',
         },
       ],
     };

@@ -1,10 +1,3 @@
-<template>
-  <b-badge :variant="mutableVariant" :class="{ 'pull-right': pullright }" class="align-middle">
-    {{ disp }}
-  </b-badge>
-</template>
-
-<script>
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 dayjs.extend(duration);
@@ -47,8 +40,8 @@ export default {
   },
   data() {
     return {
-      disp: this.text,
-      mutableVariant: this.variant,
+      disp: this.$props.text,
+      mutableVariant: this.$props.variant,
     };
   },
   mounted() {
@@ -163,5 +156,11 @@ export default {
       setTimeout(this.onBadgeUpdate, this.interval);
     },
   },
+  render() {
+    return (
+      <b-badge variant={this.mutableVariant} class={{ 'pull-right': this.pullright, 'align-middle': true }}>
+        {this.disp}
+      </b-badge>
+    );
+  },
 };
-</script>

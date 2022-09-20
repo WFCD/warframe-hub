@@ -36,9 +36,9 @@
 <script>
 import dayjs from 'dayjs';
 
-import HubImg from '@/components/HubImg.vue';
-import TimeBadge from '@/components/TimeBadge.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import HubImg from '@/components/HubImg.jsx';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import { cdn } from '@/services/utilities';
 
 const corpus = cdn('svg/factions/corpus.svg');

@@ -24,8 +24,8 @@ import wisp from '@/static/json/geo/plains/wisp.json';
 import lure from '@/static/json/geo/plains/lure.json';
 import cave from '@/static/json/geo/plains/cave.json';
 
-import MapPopup from '@/components/MapPopup.vue';
-import OddityPopup from '@/components/OddityPopup.vue';
+import MapPopup from '@/components/MapPopup.jsx';
+import OddityPopup from '@/components/OddityPopup.jsx';
 import { cdn } from '@/services/utilities';
 
 const plains = cdn('webp/maps/plains.webp');
@@ -214,7 +214,7 @@ export default {
           lg.addTo(this.map);
         }
       });
-      // Add all of the layer groups to the map
+      // Add all the layer groups to the map
       L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
       // Now wire up an event when the user toggles one of the layers to update localstorage
       this.map.on('overlayadd overlayremove', (e) => {

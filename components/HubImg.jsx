@@ -1,10 +1,6 @@
-<template>
-  <span v-b-tooltip.auto :title="name">
-    <img :src="src" :name="name" :height="height" :width="width" :alt="name" />
-  </span>
-</template>
-
-<script>
+const tooltips = {
+  'v-b-tooltip.auto': true,
+};
 export default {
   name: 'HubImg',
   props: {
@@ -25,5 +21,11 @@ export default {
       default: '15px',
     },
   },
+  render() {
+    return (
+      <span {...tooltips} title={this.name}>
+        <img src={this.src} name={this.name} height={this.height} width={this.width} alt={this.name} />
+      </span>
+    );
+  },
 };
-</script>

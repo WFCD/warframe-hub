@@ -64,24 +64,12 @@
   </HubPanelWrap>
 </template>
 
-<style scoped>
-.list-group-item-borderless {
-  padding-bottom: 0;
-}
-.list-group-item-borderbottom {
-  padding-top: 0;
-}
-.table {
-  margin-bottom: 0.5em;
-}
-</style>
-
 <script>
 import { mapGetters } from 'vuex';
-import TimeBadge from '@/components/TimeBadge.vue';
-import NoDataItem from '@/components/NoDataItem.vue';
-import HubImg from '@/components/HubImg.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import NoDataItem from '@/components/NoDataItem.jsx';
+import HubImg from '@/components/HubImg.jsx';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 import { cdn, makeid } from '@/services/utilities.js';
 
@@ -89,7 +77,45 @@ const standing = cdn('svg/standing.svg');
 
 export default {
   name: 'BountyPanel',
-  props: ['syndicate', 'type'],
+  components: {
+    TimeBadge,
+    NoDataItem,
+    HubImg,
+    HubPanelWrap,
+  },
+  props: {
+    syndicate: {
+      type: Object,
+      default: () => ({}),
+    },
+    type: {
+      type: String,
+      default: () => 'Syndicate',
+    },
+  },
+  data() {
+    return {
+      fields: [
+        {
+          key: 'type',
+          label: this.$t('bounty.type'),
+        },
+        {
+          key: 'standing',
+          label: this.$t('bounty.standing'),
+          thClass: 'text-center',
+        },
+        {
+          key: 'level-range',
+          label: this.$t('bounty.lrange'),
+        },
+      ],
+      standing,
+      id: makeid(),
+      typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
+      autoExpand: false,
+    };
+  },
   computed: {
     headertext() {
       return this.$t('bounty.header', { type: this.$t(`timer.${this.typeId}`) });
@@ -115,29 +141,6 @@ export default {
     },
     ...mapGetters('worldstate', ['bountyToggles']),
   },
-  data() {
-    return {
-      fields: [
-        {
-          key: 'type',
-          label: this.$t('bounty.type'),
-        },
-        {
-          key: 'standing',
-          label: this.$t('bounty.standing'),
-          thClass: 'text-center',
-        },
-        {
-          key: 'level-range',
-          label: this.$t('bounty.lrange'),
-        },
-      ],
-      standing,
-      id: makeid(),
-      typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
-      autoExpand: false,
-    };
-  },
   beforeMount() {
     this.autoExpand = this.bountyToggles[this.typeId];
   },
@@ -146,11 +149,17 @@ export default {
       row._showDetails = !row._showDetails;
     },
   },
-  components: {
-    TimeBadge,
-    NoDataItem,
-    HubImg,
-    HubPanelWrap,
-  },
 };
 </script>
+
+<style scoped>
+.list-group-item-borderless {
+  padding-bottom: 0;
+}
+.list-group-item-borderbottom {
+  padding-top: 0;
+}
+.table {
+  margin-bottom: 0.5em;
+}
+</style>

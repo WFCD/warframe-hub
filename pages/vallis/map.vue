@@ -30,8 +30,8 @@ import oddity from '@/static/json/geo/vallis/memoryfrag.json';
 import somachord from '@/static/json/geo/vallis/somachord.json';
 import toroids from '@/static/json/geo/vallis/toroids.json';
 
-import MapPopup from '@/components/MapPopup.vue';
-import OddityPopup from '@/components/OddityPopup.vue';
+import MapPopup from '@/components/MapPopup.jsx';
+import OddityPopup from '@/components/OddityPopup.jsx';
 
 const vallis = cdn('webp/maps/orbvallis.webp');
 const fishRecommendIcon = cdn('webp/map_icons/fish-recommend.webp');

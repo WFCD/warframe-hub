@@ -1,25 +1,9 @@
-<template>
-  <span>
-    <div v-if="!img">{{ alt }}</div>
-    <div v-else>
-      <img :id="id" :src="img" :alt="alt" class="async-thumb" :width="`${width}px`" />
-      <b-tooltip :target="id" triggers="hover" placement="bottom">
-        <img :id="id" :src="img" :alt="alt" class="async-thumb" :width="`${width * 5}px`" />
-        <div>{{ alt }}</div>
-      </b-tooltip>
-    </div>
-  </span>
-</template>
-
-<style scoped>
-.async-thumb {
-  pointer-events: inherit;
-}
-</style>
-
-<script>
 import fetch from 'node-fetch';
-import utilities from '@/services/utilities';
+import { makeid, wfcdn, optimize } from '@/services/utilities';
+
+const asyncThumb = {
+  pointerEvents: 'inherit',
+};
 
 export default {
   name: 'ItemThumb',
@@ -39,7 +23,7 @@ export default {
   },
   data() {
     return {
-      id: utilities.makeid(),
+      id: makeid(),
       img: null,
     };
   },
@@ -61,11 +45,25 @@ export default {
       if (!data || !data[0]?.imageName || '') {
         // empty on purpose?
       } else {
-        this.img = `https://cdn.warframestat.us/o_webp,progressive_true,rs_${
-          this.width * 8
-        }/https://cdn.warframestat.us/img/${data[0].imageName}`;
+        this.img = optimize(wfcdn(data[0].imageName), this.width * 8);
       }
     },
   },
+  render() {
+    return (
+      <span>
+        {this.img ? (
+          <div>
+            <img id={this.id} src={this.img} alt={this.alt} style={asyncThumb} width={`${this.width}px`} />
+            <b-tooltip target={this.id} triggers="hover" placement="bottom">
+              <img id={this.id} src={this.img} alt={this.alt} className="async-thumb" width={`${this.width * 5}px`} />
+              <div>{this.alt}</div>
+            </b-tooltip>
+          </div>
+        ) : (
+          <div>{this.alt}</div>
+        )}
+      </span>
+    );
+  },
 };
-</script>

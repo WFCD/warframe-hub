@@ -1,10 +1,4 @@
-<template>
-  <HubImg :src="src" :name="name" :title="name" :height="height" :width="width" fluid :alt="name" />
-</template>
-
-<!--  -->
-<script>
-import HubImg from '@/components/HubImg';
+import HubImg from '@/components/HubImg.jsx';
 import { optimize, cdn } from '@/services/utilities';
 
 const translate = (stub) => (stub ? optimize(cdn(`webp/synthesis/${stub}.webp`)) : null);
@@ -53,9 +47,6 @@ const imgs = {
 
 export default {
   name: 'SynthesisImg',
-  components: {
-    HubImg,
-  },
   props: {
     name: {
       type: String,
@@ -77,5 +68,17 @@ export default {
       src: translate(this.image) || imgs[this.name],
     };
   },
+  render() {
+    return (
+      <HubImg
+        src={this.$props.src}
+        name={this.$props.name}
+        title={this.$props.name}
+        height={this.$props.height}
+        width={this.$props.width}
+        fluid
+        alt={this.$props.name}
+      />
+    );
+  },
 };
-</script>

@@ -1,8 +1,3 @@
-<template>
-  <div>{{ text }}</div>
-</template>
-
-<script>
 /*
   From  https://github.com/KoRiGaN/Vue2Leaflet/blob/master/examples/src/components/GeoJson2Popup.vue
 */
@@ -18,5 +13,7 @@ export default {
       default: '',
     },
   },
+  render() {
+    return <div>{this.text}</div>;
+  },
 };
-</script>

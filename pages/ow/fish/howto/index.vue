@@ -364,10 +364,10 @@
   </b-container>
 </template>
 <script>
-import FishImg from '@/components/FishImg.vue';
+import FishImg from '@/components/FishImg.jsx';
 import { cdn, wfcdn, optimize } from '@/services/utilities';
 
-import CodexCard from '@/components/CodexCard';
+import CodexCard from '@/components/CodexCard.jsx';
 
 export default {
   name: 'HowToFish',

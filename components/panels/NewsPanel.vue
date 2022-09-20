@@ -24,12 +24,12 @@
       <b-list-group-item class="list-group-item-borderless pb-0">
         <b-list-group>
           <b-list-group-item
-            :data-news-item="newsitem.id"
+            v-for="(newsitem, index) in filteredNews"
             :key="`${newsitem.id}-li`"
+            :data-news-item="newsitem.id"
             :class="`d-flex py-0 justify-content-between align-items-center list-group-item-borderless ${
               cycle && index === activeElemIndex % filteredNews.length ? 'active' : ''
             } ${hover === index ? 'hover' : ''}`"
-            v-for="(newsitem, index) in filteredNews"
             @mouseover="hover = index"
             @focus="hover = index"
           >
@@ -43,51 +43,19 @@
         </b-list-group>
       </b-list-group-item>
       <b-list-group-item class="list-group-item-borderbottom">
-        <b-form-checkbox id="news-cycle-checkbox" class="float-right" name="news-cycle-checkbox" switch v-model="check">
-          {{ this.$t('news.autoprogress') }}
+        <b-form-checkbox id="news-cycle-checkbox" v-model="check" class="float-right" name="news-cycle-checkbox" switch>
+          {{ $t('news.autoprogress') }}
         </b-form-checkbox>
       </b-list-group-item>
     </b-list-group>
   </HubPanelWrap>
 </template>
-<style scoped>
-.list-group-item.active .news-title a,
-.list-group-item.hover .news-title a {
-  font-weight: normal;
-  color: white;
-}
-
-.list-group-item.active + .hover .news-title a {
-  color: grey;
-}
-
-.list-group-item.active .news-title a:hover {
-  font-weight: normal;
-  color: grey;
-}
-
-.list-group .list-group .list-group-item {
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
-.news-title {
-  text-align: left;
-}
-
-.news-time {
-  width: 5em;
-  float: left;
-}
-</style>
 <script>
-import HubPanelWrap from '@/components/HubPanelWrap';
-
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import { mapGetters } from 'vuex';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
 
@@ -95,9 +63,9 @@ const cdnUrl = 'https://cdn.warframestat.us';
 const cdnOpts = ['o_webp', 'rs_404x110'];
 
 export default {
-  props: ['news'],
   name: 'NewsPanel',
   components: { HubPanelWrap },
+  props: ['news'],
   computed: {
     headertext() {
       return this.$t('news.header');
@@ -119,6 +87,38 @@ export default {
     cycle() {
       return this.componentState.news.autoCycle;
     },
+  },
+  mounted() {
+    this.interval = setInterval(this.increment, 3000);
+    dayjs.updateLocale('en', {
+      relativeTime: {
+        future: `${this.$t('news.future')} %s:`,
+        past: `%s ${this.$t('news.past')}:`,
+        s: '%ds',
+        m: '1m',
+        mm: '%dm',
+        h: '1h',
+        hh: '%dh',
+        d: '1d',
+        dd: '%dd',
+        M: '1m',
+        MM: '%dm',
+        y: '1y',
+        yy: '%dy',
+      },
+    });
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
+  beforeUpdate() {
+    clearInterval(this.interval);
+    this.interval = undefined;
+  },
+  updated() {
+    if (!this.interval) {
+      this.interval = setInterval(this.increment, 3000);
+    }
   },
   methods: {
     increment() {
@@ -169,37 +169,36 @@ export default {
       hover: null,
     };
   },
-  mounted() {
-    this.interval = setInterval(this.increment, 3000);
-    dayjs.updateLocale('en', {
-      relativeTime: {
-        future: `${this.$t('news.future')} %s:`,
-        past: `%s ${this.$t('news.past')}:`,
-        s: '%ds',
-        m: '1m',
-        mm: '%dm',
-        h: '1h',
-        hh: '%dh',
-        d: '1d',
-        dd: '%dd',
-        M: '1m',
-        MM: '%dm',
-        y: '1y',
-        yy: '%dy',
-      },
-    });
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
-  },
-  beforeUpdate() {
-    clearInterval(this.interval);
-    this.interval = undefined;
-  },
-  updated() {
-    if (!this.interval) {
-      this.interval = setInterval(this.increment, 3000);
-    }
-  },
 };
 </script>
+<style scoped>
+.list-group-item.active .news-title a,
+.list-group-item.hover .news-title a {
+  font-weight: normal;
+  color: white;
+}
+
+.list-group-item.active + .hover .news-title a {
+  color: grey;
+}
+
+.list-group-item.active .news-title a:hover {
+  font-weight: normal;
+  color: grey;
+}
+
+.list-group .list-group .list-group-item {
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.news-title {
+  text-align: left;
+}
+
+.news-time {
+  width: 5em;
+  float: left;
+}
+</style>

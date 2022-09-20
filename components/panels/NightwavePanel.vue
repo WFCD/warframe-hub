@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import TimeBadge from '@/components/TimeBadge.vue';
-import NoDataItem from '@/components/NoDataItem.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
-import HubImg from '@/components/HubImg';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import NoDataItem from '@/components/NoDataItem.jsx';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+import HubImg from '@/components/HubImg.jsx';
 import { cdn } from '@/services/utilities';
 
 const daily = cdn('webp/nightwave/daily.webp');
@@ -57,7 +57,12 @@ export default {
     HubPanelWrap,
     HubImg,
   },
-  props: ['nightwave'],
+  props: {
+    nightwave: {
+      type: Object,
+      default: () => undefined,
+    },
+  },
   data() {
     return {
       styleObject: {

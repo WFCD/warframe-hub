@@ -28,19 +28,11 @@
   </HubPanelWrap>
 </template>
 
-<style scoped>
-table.table td,
-table.table th,
-table.table > thead > tr {
-  border: 0;
-}
-</style>
-
 <script>
-import HubImg from '@/components/HubImg.vue';
-import TimeBadge from '@/components/TimeBadge.vue';
-import HubPanelWrap from '@/components/HubPanelWrap';
-import NoDataItem from '@/components/NoDataItem.vue';
+import HubImg from '@/components/HubImg.jsx';
+import TimeBadge from '@/components/TimeBadge.jsx';
+import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+import NoDataItem from '@/components/NoDataItem.jsx';
 import { cdn } from '@/services/utilities';
 
 const platinum = cdn('webp/general/plat.webp');
@@ -73,3 +65,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+table.table td,
+table.table th,
+table.table > thead > tr {
+  border: 0;
+}
+</style>

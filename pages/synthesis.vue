@@ -104,7 +104,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import SynthesisImg from '@/components/SynthesisImg.vue';
+import SynthesisImg from '@/components/SynthesisImg.jsx';
 
 const fields = [
   {

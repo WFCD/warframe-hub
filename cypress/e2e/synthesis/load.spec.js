@@ -4,8 +4,8 @@ describe('Synthesis', () => {
     cy.wait(1000);
   });
   it('should load', () => {
-    const searchBox = cy.get('input#filterInput');
-    searchBox.should('exist');
-    searchBox.siblings('.input-group-append').find('.btn').should('have.text', 'Clear');
+    cy.get('input#filterInput').as('search');
+    cy.get('@search').should('exist');
+    cy.get('@search').siblings('.input-group-append').find('.btn').should('have.text', 'Clear');
   });
 });

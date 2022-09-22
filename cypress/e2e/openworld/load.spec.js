@@ -6,8 +6,8 @@ describe('Maps', () => {
     });
     describe(`${ow} map`, () => {
       it('should load', () => {
-        const map = cy.get('div.vue2leaflet-map');
-        map.should('exist');
+        cy.get('div.vue2leaflet-map').as('map');
+        cy.get('@map').should('exist');
         cy.get('div.leaflet-control-zoom').should('exist');
         cy.get('div.leaflet-control-layers').should('exist');
         cy.get('div.leaflet-pane.leaflet-map-pane').should('exist');
@@ -23,20 +23,20 @@ describe('Fish', () => {
     });
     describe(`${ow} fish data`, () => {
       it('should load', () => {
-        const table = cy.get('div.fish-info');
-        table.should('exist');
-        const rowtypes = table.find('[role=rowgroup]');
-        rowtypes.should('have.length', 2);
-        const head = rowtypes.get('thead');
-        head.should('exist');
+        cy.get('div.fish-info').as('fish');
+        cy.get('@fish').should('exist');
+        cy.get('@fish').find('[role=rowgroup]').as('rowtypes');
+        cy.get('@rowtypes').should('have.length', 2);
+        cy.get('@rowtypes').get('thead').as('head');
+        cy.get('@head').should('exist');
 
-        const rows = rowtypes.get('tbody');
-        rows.should('exist');
-        rows.children().should('have.length.gt', 10);
+        cy.get('@rowtypes').get('tbody').as('rows');
+        cy.get('@rows').should('exist');
+        cy.get('@rows').children().should('have.length.gt', 10);
 
-        const first = rows.children().get('tr:nth-of-type(1)');
-        first.should('exist');
-        first.children().should('have.length.gt', 13);
+        cy.get('@rows').children().get('tr:nth-of-type(1)').as('first');
+        cy.get('@first').should('exist');
+        cy.get('@first').children().should('have.length.gt', 13);
       });
     });
   });

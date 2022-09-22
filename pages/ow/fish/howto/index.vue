@@ -65,12 +65,12 @@
         <p>Here's the map for reference</p>
       </b-col>
       <b-col md="4" offset-md="2" offset-sm="1">
-        <nuxt-link to="poe-map">
+        <nuxt-link to="poe/map">
           <b-btn variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-btn>
         </nuxt-link>
       </b-col>
       <b-col md="4">
-        <nuxt-link to="vallis-map">
+        <nuxt-link to="vallis/map">
           <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
         </nuxt-link>
       </b-col>

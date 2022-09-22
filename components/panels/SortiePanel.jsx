@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     headertext() {
-      return this.$props.sortie.missions.length ? this.$t('sortie.hunt.header') : this.$t('sortie.header');
+      return this.$props.sortie?.missions?.length ? this.$t('sortie.hunt.header') : this.$t('sortie.header');
     },
     factionImg() {
       const fImg = {
@@ -58,7 +58,7 @@ export default {
         sentient,
         narmer,
       };
-      return fImg[this.$props.sortie.faction.toLowerCase()] || corrupted;
+      return fImg[this.$props.sortie?.faction?.toLowerCase()] || corrupted;
     },
     missions() {
       return (this.$props.sortie?.variants?.length ? this.$props.sortie.variants : this.$props.sortie.missions) || [];

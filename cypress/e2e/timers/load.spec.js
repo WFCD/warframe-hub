@@ -1,7 +1,7 @@
 describe('Timers', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('http://localhost:3000/');
-    cy.wait(1000);
+    cy.wait(5000);
   });
   describe('Fissures', () => {
     let fissures;
@@ -82,21 +82,22 @@ describe('Timers', () => {
   });
   describe('Nightwave', () => {
     it('should load', () => {
-      const nightwave = cy.get('div.nightwave');
-      nightwave.children().should('have.length', 2);
+      cy.get('div.nightwave').as('nightwave');
+      cy.get('@nightwave').children().should('have.length', 2);
     });
   });
   describe('Sortie', () => {
     it('should load', () => {
-      const sortie = cy.get('div.sortie');
-      sortie.children().should('have.length', 2);
+      cy.get('div.sortie').as('sortie');
+      // 2 for archons, 2 for sortie
+      cy.get('@sortie').children().should('have.length', 4);
     });
   });
   describe('Bounties', () => {
     it('should load', () => {
-      const bounties = cy.get('div.bounties');
-      bounties.should('have.length', 3);
-      bounties.each((bountyPanel) => {
+      cy.get('div.bounties').as('bounties');
+      cy.get('@bounties').should('have.length', 3);
+      cy.get('@bounties').each((bountyPanel) => {
         expect(bountyPanel.children()).to.have.length(2);
       });
     });

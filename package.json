@@ -55,6 +55,7 @@
     "cypress": "^10.8.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vuejs-accessibility": "^1.2.0",

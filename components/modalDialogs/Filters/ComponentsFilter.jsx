@@ -3,13 +3,10 @@ import baseComponents from '@/static/json/components.json';
 
 export default {
   computed: {
-    ...mapGetters('worldstate', {
-      rawCS: 'componentState',
-    }),
+    ...mapGetters('worldstate', ['componentState']),
     activeComponents: {
       get() {
-        return Object.keys(this.rawCS)
-          .map((component) => this.rawCS[component])
+        return Object.values(this.componentState)
           .filter(
             (component) =>
               component.display && (!baseComponents[component.key] || baseComponents[component.key].displayable)
@@ -17,23 +14,25 @@ export default {
           .map((component) => component.key);
       },
       set(enabledComponents) {
-        Object.keys(this.rawCS).forEach((component) => {
-          this.$store.commit('worldstate/commitComponentDisplayMode', [
-            component,
-            enabledComponents.includes(component),
-          ]);
+        Object.keys(this.componentState).forEach((component) => {
+          if (this.componentState[component].display !== enabledComponents.includes(component)) {
+            this.$store.commit('worldstate/commitComponentDisplayMode', [
+              component,
+              enabledComponents.includes(component),
+            ]);
+          }
         });
       },
     },
     componentStates() {
-      return Object.keys(this.rawCS)
+      return Object.keys(this.componentState)
         .map((component) => {
           if (!baseComponents[component] || !baseComponents[component].displayable) {
             return false;
           }
           return {
-            text: this.rawCS[component].displayName,
-            value: this.rawCS[component].key,
+            text: this.componentState[component].displayName,
+            value: this.componentState[component].key,
           };
         })
         .filter((c) => c);

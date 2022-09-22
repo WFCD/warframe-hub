@@ -97,8 +97,8 @@ export default {
             preserve-search={true}
             hide-selected={true}
             multiple={true}
-            select={this.toggleRewardState}
-            remove={this.toggleRewardState}
+            onSelect={this.toggleRewardState}
+            onRemove={this.toggleRewardState}
           />
           <hr />
           <Multiselect
@@ -112,8 +112,8 @@ export default {
             preserve-search={true}
             hide-selected={true}
             multiple={true}
-            select={this.toggleEventState}
-            remove={this.toggleEventState}
+            onSelect={this.toggleEventState}
+            onRemove={this.toggleEventState}
           />
           <hr />
           <Multiselect
@@ -127,8 +127,8 @@ export default {
             preserve-search={true}
             hide-selected={true}
             multiple={true}
-            select={this.toggleEventState}
-            remove={this.toggleEventState}
+            onSelect={this.toggleEventState}
+            onRemove={this.toggleEventState}
           />
           <hr />
           <Multiselect
@@ -142,8 +142,8 @@ export default {
             preserve-search={true}
             hide-selected={true}
             multiple={true}
-            select={this.toggleEventState}
-            remove={this.toggleEventState}
+            onSelect={this.toggleEventState}
+            onRemove={this.toggleEventState}
           />
         </div>
       </b-tab>

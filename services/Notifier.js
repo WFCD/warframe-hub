@@ -107,6 +107,14 @@ const makeNotification = (type, data) => {
           icon: wfcdLogoUrl,
         },
       };
+    case 'archonHunt':
+      return {
+        head: `Archon Hunt: ${data.boss}`,
+        body: {
+          body: `${data.missions.map((mission) => `${mission.type} • ${mission.node}`).join('\n')}\n${data.eta}`,
+          icon: wfcdLogoUrl,
+        },
+      };
     case 'fissure':
       return {
         head: 'New Fissure Detected',
@@ -250,7 +258,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       for (const event of ws.events) {
         if (this.isNotifiable(event.id, 'operation')) {
@@ -258,7 +265,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.cetusCycle.shortString) {
         if (ws.cetusCycle.isDay) {
@@ -270,20 +276,17 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       const cetus = ws.syndicateMissions.filter((synd) => synd.syndicate === 'Ostrons')[0];
       if (cetus && this.isNotifiable(cetus.id, 'syndicate.ostrons')) {
         toNotify.push(makeNotification('syndicate.ostrons', cetus));
       }
     });
-
     safeCall(() => {
       if (ws.voidTrader.active && this.isNotifiable(ws.voidTrader.id, 'baro')) {
         toNotify.push(makeNotification('baro', ws.voidTrader));
       }
     });
-
     safeCall(() => {
       for (const currentItem of ws.dailyDeals) {
         if (this.isNotifiable(currentItem.id, 'darvo')) {
@@ -291,7 +294,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       for (const acolyte of ws.persistentEnemies) {
         if (this.isNotifiable(acolyte.pid, 'enemies')) {
@@ -299,13 +301,16 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.sortie && this.isNotifiable(ws.sortie.id)) {
         toNotify.push(makeNotification('sortie', ws.sortie));
       }
     });
-
+    safeCall(() => {
+      if (ws.archonHunt && this.isNotifiable(ws.archonHunt.id)) {
+        toNotify.push(makeNotification('archonHunt', ws.archonHunt));
+      }
+    });
     safeCall(() => {
       for (const fissure of ws.fissures) {
         const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
@@ -314,7 +319,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       for (const article of ws.news) {
         let type;
@@ -335,7 +339,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       for (const invasion of ws.invasions) {
         if (this.isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
@@ -343,7 +346,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.vallisCycle.shortString) {
         if (ws.vallisCycle.isWarm) {
@@ -355,7 +357,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.nightwave && ws.nightwave.activeChallenges.length) {
         for (const challenge of ws.nightwave.activeChallenges) {
@@ -365,7 +366,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.sentientOutposts.id && ws.sentientOutposts.active) {
         if (this.isNotifiable(ws.sentientOutposts.id, 'outposts')) {
@@ -373,7 +373,6 @@ export default class Notifier {
         }
       }
     });
-
     safeCall(() => {
       if (ws.arbitration) {
         const id = `arbitration:${new Date(ws.arbitration.expiry).getTime()}`;

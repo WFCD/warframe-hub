@@ -154,7 +154,10 @@
     "prediction": "Возможно"
   },
   "sortie": {
-    "header": "Вылазка"
+    "header": "Вылазка",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "Стальной Путь"

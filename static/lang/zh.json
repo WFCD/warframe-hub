@@ -154,7 +154,10 @@
     "prediction": "预测"
   },
   "sortie": {
-    "header": "突击"
+    "header": "突击",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "钢铁之路"

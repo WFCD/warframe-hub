@@ -270,7 +270,7 @@
               an insane amount of standing and resources that you will need for later on. To do so, you need the
               appropriate bait to maximize the chances for those fish to spawn. Rare fishes do spawn in Orb Vallis
               without their respective bait, but definitely not as often compared to when you do use their bait. Again,
-              you can refer to the <nuxt-link to="vallis-fish">Super Fishing Reference Table</nuxt-link> for its
+              you can refer to the <nuxt-link to="vallis/fish">Super Fishing Reference Table</nuxt-link> for its
               specific bait.
             </p>
             <br />

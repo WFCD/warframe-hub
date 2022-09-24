@@ -154,7 +154,10 @@
     "prediction": "Předpověď"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Sortie",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "Steel Path"

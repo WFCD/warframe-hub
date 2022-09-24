@@ -5,7 +5,7 @@
         <nuxt-link to="map">
           <b-button variant="info" class="mb-3 float-right">Orb Vallis Map</b-button>
         </nuxt-link>
-        <nuxt-link to="vallis-fish0howto#hotspots">
+        <nuxt-link to="/ow/fish/howto#hotspots">
           <b-button variant="info" class="mb-3 mr-3 float-right">What is a Hotspot?</b-button>
         </nuxt-link>
       </b-col>

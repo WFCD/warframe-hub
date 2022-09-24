@@ -154,7 +154,10 @@
     "prediction": "Prédiction"
   },
   "sortie": {
-    "header": "Sortie"
+    "header": "Sortie",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "Route de l'Acier"

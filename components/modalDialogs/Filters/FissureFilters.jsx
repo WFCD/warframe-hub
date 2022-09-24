@@ -15,14 +15,13 @@ export default {
 
         return planets.filter((planet) => planet.state).map((planet) => planet.value);
       },
-      set() {},
-    },
-  },
-  methods: {
-    updateFissureStates(enabledFissures) {
-      Object.keys(this.fissureStates).forEach((planet) => {
-        this.$store.commit('worldstate/commitFissurePlanetState', [planet, enabledFissures.includes(planet)]);
-      });
+      set(enabledFissures) {
+        Object.keys(this.fissureStates).forEach((planet) => {
+          if (this.fissureStates[planet] !== enabledFissures.includes(planet)) {
+            this.$store.commit('worldstate/commitFissurePlanetState', [planet, enabledFissures.includes(planet)]);
+          }
+        });
+      },
     },
   },
   render() {
@@ -40,7 +39,6 @@ export default {
                 switches
                 stacked
                 class="settings-group fissure-setting-group"
-                input={(vals) => this.updateFissureStates(vals)}
               ></b-form-checkbox-group>
             </b-form-group>
           </div>

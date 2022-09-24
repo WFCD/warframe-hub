@@ -15,6 +15,7 @@
         <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
         <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
+        <sortie v-if="componentState.archonHunt.display" :sortie="worldstate.archonHunt" />
         <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
@@ -31,7 +32,7 @@ import { mapState, mapGetters } from 'vuex';
 import AlertPanel from '@/components/panels/AlertPanel.jsx';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
 import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel.jsx';
-import SortiePanel from '@/components/panels/SortiePanel.vue';
+import SortiePanel from '@/components/panels/SortiePanel.jsx';
 import FissuresPanel from '@/components/panels/FissuresPanel.vue';
 import BountyPanel from '@/components/panels/BountyPanel.vue';
 import InvasionsPanel from '@/components/panels/InvasionsPanel.jsx';

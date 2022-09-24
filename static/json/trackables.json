@@ -122,6 +122,11 @@
       "value": "sorties",
       "text": "Sorties"
     },
+    "archonHunt": {
+      "state": false,
+      "value": "archonHunt",
+      "text": "Archon Hunt"
+    },
     "baro": {
       "state": false,
       "value": "baro",

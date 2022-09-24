@@ -153,6 +153,16 @@
       "sortie": "@worldstate.sortie"
     }
   },
+  "archonHunt": {
+    "display": true,
+    "displayable": true,
+    "displayName": "Archon Hunt",
+    "key": "archonHunt",
+    "component": "SortiePanel",
+    "props": {
+      "sortie": "@worldstate.archonHunt"
+    }
+  },
   "arbitration": {
     "display": true,
     "displayable": true,

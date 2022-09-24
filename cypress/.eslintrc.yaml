@@ -1,6 +1,14 @@
 globals:
   cy: readonly
-  it: readonly
-  describe: readonly
-  beforeEach: readonly
-  expect: readonly
+env:
+  mocha: true
+  cypress/globals: true
+plugins:
+  - cypress
+rules:
+  cypress/no-assigning-return-values: error
+  cypress/no-unnecessary-waiting: 0
+  cypress/assertion-before-screenshot: warn
+  cypress/no-force: warn
+  cypress/no-async-tests: error
+  cypress/no-pause: error

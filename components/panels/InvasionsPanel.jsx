@@ -32,7 +32,7 @@ export default {
       return this.$t('invasions.header');
     },
     maxInvasions() {
-      return 1;
+      return 5;
     },
     initialStatus() {
       return this.componentState?.invasions?.expand;

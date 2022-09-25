@@ -111,7 +111,7 @@
         </p>
         <p>
           From now on you should refer to the
-          <nuxt-link to="poe-fish">Super Fishing Reference Table </nuxt-link>
+          <nuxt-link to="poe/fish">Super Fishing Reference Table </nuxt-link>
           for whatever other information more specific on what/where/how to catch each fish. It contains EVERYTHING you
           need to know about them.
         </p>
@@ -154,7 +154,7 @@
               hit, and not let it swim away.
             </p>
             <p>
-              In the <nuxt-link to="poe-fish">Super Fishing Reference Table</nuxt-link>, the "Spear" column represents
+              In the <nuxt-link to="poe/fish">Super Fishing Reference Table</nuxt-link>, the "Spear" column represents
               the spear that can capture the fish in 1 hit.
             </p>
           </b-tab>

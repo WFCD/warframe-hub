@@ -154,7 +154,10 @@
     "prediction": "Prediction"
   },
   "sortie": {
-    "header": "Incursión"
+    "header": "Incursión",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "Steel Path"

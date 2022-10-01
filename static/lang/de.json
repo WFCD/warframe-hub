@@ -154,7 +154,10 @@
     "prediction": "Vorhersage"
   },
   "sortie": {
-    "header": "Einsätze"
+    "header": "Einsätze",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "Stählerner Pfad"

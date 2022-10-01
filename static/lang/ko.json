@@ -154,7 +154,10 @@
     "prediction": "예측"
   },
   "sortie": {
-    "header": "출격"
+    "header": "출격",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
   },
   "steelPath": {
     "header": "강철의 길"

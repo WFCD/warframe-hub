@@ -29,7 +29,7 @@ jobs:
         node-version: [ 16 ]
         browser:
           - 'chrome'
-          - 'firefox'
+#          - 'firefox'
     steps:
       - uses: actions/checkout@v3
       - name: Run Cypress

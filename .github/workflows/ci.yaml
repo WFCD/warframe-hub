@@ -28,7 +28,9 @@ jobs:
     strategy:
       matrix:
         node-version: [ 16 ]
-        browser: ['chrome', 'firefox']
+        browser:
+          - 'chrome'
+#          - 'firefox'
     steps:
     - uses: actions/checkout@v3
     - name: Run Cypress

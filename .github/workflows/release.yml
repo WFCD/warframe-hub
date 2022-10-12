@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [ 16 ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -27,9 +27,11 @@ jobs:
     strategy:
       matrix:
         node-version: [ 16 ]
-        browser: [ 'chrome', 'firefox' ]
+        browser:
+          - 'chrome'
+          - 'firefox'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
@@ -41,7 +43,7 @@ jobs:
     # wait until test & lint complete
     needs: ['lint', 'test']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
           token: ${{ secrets.GH_TOKEN }}

@@ -65,12 +65,12 @@
         <p>Here's the map for reference</p>
       </b-col>
       <b-col md="4" offset-md="2" offset-sm="1">
-        <nuxt-link to="poe/map">
+        <nuxt-link to="/poe/map">
           <b-btn variant="info" class="btn-block mb-3">Plains of Eidolon Map</b-btn>
         </nuxt-link>
       </b-col>
       <b-col md="4">
-        <nuxt-link to="vallis/map">
+        <nuxt-link to="/vallis/map">
           <b-btn variant="info" class="btn-block mb-3">Orb Vallis Map</b-btn>
         </nuxt-link>
       </b-col>
@@ -111,7 +111,7 @@
         </p>
         <p>
           From now on you should refer to the
-          <nuxt-link to="poe/fish">Super Fishing Reference Table </nuxt-link>
+          <nuxt-link to="/poe/fish">Super Fishing Reference Table </nuxt-link>
           for whatever other information more specific on what/where/how to catch each fish. It contains EVERYTHING you
           need to know about them.
         </p>
@@ -154,7 +154,7 @@
               hit, and not let it swim away.
             </p>
             <p>
-              In the <nuxt-link to="poe/fish">Super Fishing Reference Table</nuxt-link>, the "Spear" column represents
+              In the <nuxt-link to="/poe/fish">Super Fishing Reference Table</nuxt-link>, the "Spear" column represents
               the spear that can capture the fish in 1 hit.
             </p>
           </b-tab>
@@ -198,7 +198,7 @@
             <p>
               Once you get enough standing and aquired the second fishing spear from The Business, you should consult
               the
-              <nuxt-link to="vallis-map">Orb Vallis Map</nuxt-link> for recommended fishing locations for all types of
+              <nuxt-link to="/vallis/map">Orb Vallis Map</nuxt-link> for recommended fishing locations for all types of
               fish.
             </p>
           </b-tab>
@@ -270,7 +270,7 @@
               an insane amount of standing and resources that you will need for later on. To do so, you need the
               appropriate bait to maximize the chances for those fish to spawn. Rare fishes do spawn in Orb Vallis
               without their respective bait, but definitely not as often compared to when you do use their bait. Again,
-              you can refer to the <nuxt-link to="vallis/fish">Super Fishing Reference Table</nuxt-link> for its
+              you can refer to the <nuxt-link to="/vallis/fish">Super Fishing Reference Table</nuxt-link> for its
               specific bait.
             </p>
             <br />

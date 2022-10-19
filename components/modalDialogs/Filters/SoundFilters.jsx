@@ -15,7 +15,7 @@ export default {
         },
         {
           value: 'invasion',
-          text: 'InvasionItem Tone',
+          text: 'Invasion Tone',
         },
       ],
     };
@@ -26,12 +26,9 @@ export default {
       get() {
         return JSON.parse(JSON.stringify(this.sounds));
       },
-      set() {},
-    },
-  },
-  methods: {
-    updateSounds(enabledSounds) {
-      this.$store.commit('worldstate/commitSounds', [JSON.parse(JSON.stringify(enabledSounds))]);
+      set(enabledSounds) {
+        this.$store.commit('worldstate/commitSounds', [JSON.parse(JSON.stringify(enabledSounds))]);
+      },
     },
   },
   render() {
@@ -49,7 +46,6 @@ export default {
                 switches
                 stacked
                 class="settings-group"
-                change={(vals) => this.updateSounds(vals)}
               ></b-form-checkbox-group>
             </b-form-group>
           </div>

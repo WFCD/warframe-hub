@@ -14,7 +14,7 @@ const styles = {
 };
 
 const Alert = {
-  props: ['alert', 'index'],
+  props: ['alert', 'index', 'last'],
   render() {
     return (
       this.alert.active && (
@@ -22,8 +22,8 @@ const Alert = {
           key={this.alert.id}
           style={styles.inline}
           class={{
-            'list-group-item-borderless': this.index !== this.alerts.length - 1,
-            'list-group-item-borderbottom': this.index === this.alerts.length - 1,
+            'list-group-item-borderless': !this.last,
+            'list-group-item-borderbottom': this.last,
           }}
         >
           <span class="pull-left">
@@ -53,7 +53,7 @@ const Alert = {
           })}
           <br />
           {this.alert.mission.reward.credits && (
-            <b-badge variant="info" style={styles.inline} className="pull-right">
+            <b-badge variant="info" style={styles.inline} class="pull-right">
               {this.alert.mission.reward.credits}cr
             </b-badge>
           )}
@@ -93,7 +93,7 @@ export default {
         <b-list-group>
           {this.alerts
             .map((alert, index) => {
-              return <Alert alert={alert} index={index} />;
+              return <Alert alert={alert} index={index} last={index === this.alerts.length - 1} />;
             })
             .filter((a) => a)}
           {this.alerts.length === 0 && <NoDataItem text={this.headertext} />}

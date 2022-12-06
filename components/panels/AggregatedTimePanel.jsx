@@ -190,7 +190,11 @@ const ResetTimer = {
   render() {
     return (
       <div class="col-sm-3 my-3">
+        <b-tooltip placement="auto" class="text-center" target="daily-reset">
+          {this.$t('reset.tooltip')}
+        </b-tooltip>
         <span style={textStyle}>{this.$t('reset.header')}</span>
+        <i class="fas fa-info-circle fa-sm pl-1" id="daily-reset" style={textStyle} />
         <br />
         <TimeBadge starttime={this.now} endtime={this.nextDay} interval={1000} pullright={false} />
       </div>
@@ -210,7 +214,7 @@ const AnomalyTimer = {
           name={this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn')}
           width="20px"
           height="20px"
-          class="invert"
+          class="invert pl-1"
         />
         <br />
         <b>{this.sentientOutposts.mission.node}</b>

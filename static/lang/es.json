@@ -138,7 +138,8 @@
     }
   },
   "reset": {
-    "header": "Daily Reset"
+    "header": "Daily Reset",
+    "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
   },
   "sales": {
     "header": "Ventas y ofertas destacadas",

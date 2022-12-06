@@ -138,7 +138,8 @@
     }
   },
   "reset": {
-    "header": "일일 초기화"
+    "header": "일일 초기화",
+    "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
   },
   "sales": {
     "header": "판매 및 추천 딜",

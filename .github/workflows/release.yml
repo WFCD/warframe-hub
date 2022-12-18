@@ -7,15 +7,11 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 16 ]
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install Dependencies
         run: npm ci
@@ -26,12 +22,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 16 ]
         browser:
           - 'chrome'
 #          - 'firefox'
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
@@ -49,7 +48,8 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version-file: '.nvmrc'
+          cache: 'npm'
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2.6.0
         env:

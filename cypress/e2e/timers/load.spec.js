@@ -1,7 +1,8 @@
 describe('Timers', () => {
-  before(() => {
+  beforeEach(() => {
+    cy.intercept('https://api.warframestat.us/pc/?language=en').as('wsRequest');
     cy.visit('http://localhost:3000/');
-    cy.wait(5000);
+    cy.wait('@wsRequest');
   });
   describe('Fissures', () => {
     let fissures;

@@ -139,7 +139,7 @@
   },
   "reset": {
     "header": "每日重置",
-    "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
+    "tooltip": "每日重置计时器基于您的电脑时间,\n请确保您电脑的时间无误！"
   },
   "sales": {
     "header": "商店精选与促销",

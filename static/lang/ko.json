@@ -139,7 +139,7 @@
   },
   "reset": {
     "header": "일일 초기화",
-    "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
+    "tooltip": "일일 초기화 타이머는 컴퓨터 시간을 기준으로 합니다.\n시간이 동기화되었는지 확인해보세요!"
   },
   "sales": {
     "header": "판매 및 추천 딜",
@@ -157,7 +157,7 @@
   "sortie": {
     "header": "출격",
     "hunt": {
-      "header": "Archon Hunt"
+      "header": "집정관 사냥"
     }
   },
   "steelPath": {

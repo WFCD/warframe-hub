@@ -21,3 +21,5 @@ updates:
       - dependency-name: vue2-leaflet
       - dependency-name: "@fortawesome/fontawesome-free"
       - dependency-name: less-loader
+      - dependency-name: nuxt
+        versions: ['3.x']

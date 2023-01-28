@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
-    "@babel/runtime-corejs3": "^7.20.7",
+    "@babel/runtime-corejs3": "^7.20.13",
     "@cypress/vue": "^2.2.4",
     "@cypress/webpack-dev-server": "^3.2.2",
     "@nuxt/babel-preset-app": "^2.15.8",

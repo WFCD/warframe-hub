@@ -51,6 +51,7 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Semantic Release
+        id: release
         uses: cycjimmy/semantic-release-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -62,9 +63,6 @@ jobs:
             @eclass/semantic-release-sentry-releases
             @semantic-release/git
             @semantic-release/exec
-      - name: Read .release file
-        id: release
-        run: echo "::set-output name=release::$(cat .release)"
       - name: Create Sentry release
         if: ${{ steps.release.outputs.release == 'yes'  }}
         uses: getsentry/action-release@v1

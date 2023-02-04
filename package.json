@@ -131,8 +131,8 @@
       [
         "@semantic-release/exec",
         {
-          "successCmd": "echo 'release=yes' >> $GITHUB_OUTPUT",
-          "failCmd": "echo 'release=yes' >> $GITHUB_OUTPUT"
+          "successCmd": "echo 'release=yes' >> $GITHUB_OUTPUT; echo $GITHUB_OUTPUT",
+          "failCmd": "echo 'release=no' >> $GITHUB_OUTPUT; echo $GITHUB_OUTPUT"
         }
       ],
       "@semantic-release/release-notes-generator",

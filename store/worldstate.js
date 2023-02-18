@@ -189,10 +189,11 @@ export const actions = {
       .concat(ws.conclaveChallenges.map((item) => item.id))
       .concat([ws.cetusCycle.id])
       .concat([ws.voidTrader.id])
-      .concat([`arbitration:${new Date(ws.arbitration.expiry).getTime()}`])
+      .concat(ws.arbitration && [`arbitration:${new Date(ws.arbitration.expiry).getTime()}`])
       // .concat(ws.persistentEnemies.map((enemy) => enemy.pid))
       .concat((ws.nightwave || { activeChallenges: [] }).activeChallenges.map((challenge) => challenge.id))
-      .concat([ws.sentientOutposts.id]);
+      .concat([ws.sentientOutposts.id])
+      .filter((id) => id);
     commit('notifiedIds', [newIds]);
   },
 };

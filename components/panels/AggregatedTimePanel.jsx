@@ -318,7 +318,9 @@ export default {
       return `${this.$t('time.Timer')}`;
     },
     isArbitrationActive() {
-      return dayjs(this.worldstate.arbitration.expiry).format('x') <= dayjs().format('x');
+      return (
+        !!this.worldstate.arbitration && dayjs(this.worldstate.arbitration.expiry).format('x') <= dayjs().format('x')
+      );
     },
     isSentientOutpostActive() {
       return this.worldstate.sentientOutposts.active;

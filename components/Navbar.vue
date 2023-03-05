@@ -23,6 +23,7 @@
           <DropdownItem :is-local="true" icon="fas fa-fish" target="/vallis/fish" :label="$t('nav.fish')" />
           <b-dd-divider />
           <b-dd-header><i class="fas fa-biohazard faIcon"></i> {{ $t('nav.owdeimos') }}</b-dd-header>
+          <DropdownItem :is-local="true" icon="fas fa-map-marker-alt" target="/deimos/map" :label="$t('nav.map')" />
           <DropdownItem :is-local="true" icon="fas fa-fish" target="/deimos/fish" :label="$t('nav.fish')" />
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>

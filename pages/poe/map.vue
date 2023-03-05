@@ -1,17 +1,8 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-col>
-        <l-map ref="pmap" :zoom="zoom" :center="center" :options="mapOptions" :crs="crs" :style="mapStyle">
-          <l-image-overlay :url="url" :bounds="bounds" />
-        </l-map>
-      </b-col>
-    </b-row>
-  </b-container>
+  <base-map v-bind="properties" ref="pmapwrap" />
 </template>
 
 <script>
-import Vue from 'vue';
 import L from 'leaflet';
 
 /* map stuff */
@@ -24,9 +15,9 @@ import wisp from '@/static/json/geo/plains/wisp.json';
 import lure from '@/static/json/geo/plains/lure.json';
 import cave from '@/static/json/geo/plains/cave.json';
 
-import MapPopup from '@/components/MapPopup.jsx';
-import OddityPopup from '@/components/OddityPopup.jsx';
 import { cdn } from '@/services/utilities';
+import { onEachFeature, onEachOddity, markerAlias, labelAlias } from '@/services/utilities/maps';
+import BaseMap from '@/components/BaseMap';
 
 const plains = cdn('webp/maps/plains.webp');
 const caveIcon = cdn('webp/map_icons/normal-cave.webp');
@@ -55,36 +46,11 @@ const caveMarker = L.icon({
   iconUrl: caveIcon,
   iconSize: [25, 25],
 });
-
-function onEachFeature(feature, layer) {
-  const Popup = Vue.extend(MapPopup);
-  const popup = new Popup({
-    propsData: {
-      type: feature.geometry.type,
-      text: feature.properties.name,
-    },
-  });
-  layer.bindPopup(popup.$mount().$el);
-}
-
-function onEachOddity(feature, layer) {
-  const Popup = Vue.extend(OddityPopup);
-  const popup = new Popup({
-    propsData: {
-      type: feature.geometry.type,
-      set: feature.properties.set,
-      name: feature.properties.name,
-      video: feature.properties.video,
-    },
-  });
-  layer.bindPopup(popup.$mount().$el, { minWidth: 320 });
-}
-
-const markerAlias = L.marker;
-const labelAlias = L.circleMarker;
-
 export default {
   name: 'CetusMapView',
+  components: {
+    'base-map': BaseMap,
+  },
   data() {
     return {
       zoom: 0,
@@ -94,8 +60,6 @@ export default {
         [0, 0],
         [994, 1012],
       ],
-      currentZoom: 11.5,
-      currentCenter: L.latLng(472, 535),
       mapOptions: {
         zoomSnap: 0.5,
         attributionControl: false,
@@ -198,10 +162,25 @@ export default {
         this.$store.commit('worldstate/poeMapToggles', [toggles]);
       },
     },
+    properties: {
+      get() {
+        return {
+          reference: 'pmap',
+          bounds: this.bounds,
+          url: this.url,
+          mapOptions: this.mapOptions,
+          center: this.center,
+        };
+      },
+    },
+    map: {
+      get() {
+        return this.$refs.pmapwrap.$refs.pmap.mapObject;
+      },
+    },
   },
   mounted() {
     this.$nextTick(function () {
-      this.map = this.$refs.pmap.mapObject;
       // Get our toggle values from local storage
       // Now add each of our geos to a new layer
       const layerGroups = {};

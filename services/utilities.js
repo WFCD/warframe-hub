@@ -23,7 +23,6 @@ export const optimize = (img, size, mode, direction) => {
 export const get = async (url, opts) => {
   try {
     return await fetch(url, opts).then((d) => d.json());
-    // eslint-disable-next-line no-empty
   } catch (ignored) {}
 };
 

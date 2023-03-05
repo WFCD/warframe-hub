@@ -1,21 +1,13 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-col>
-        <l-map ref="vmap" :zoom="zoom" :center="center" :options="mapOptions" :crs="crs" :style="mapStyle">
-          <l-image-overlay :url="url" :bounds="bounds" />
-        </l-map>
-      </b-col>
-    </b-row>
-  </b-container>
+  <base-map v-bind="properties" ref="vmapwrap" />
 </template>
 
 <script>
-import Vue from 'vue';
 import L from 'leaflet';
 
 import { mapGetters } from 'vuex';
 import { cdn } from '@/services/utilities';
+import { onEachFeature, onEachOddity, labelAlias, markerAlias } from '~/services/utilities/maps';
 
 /* map stuff */
 import fish from '@/static/json/geo/vallis/fishing.json';
@@ -29,9 +21,7 @@ import kdrive from '@/static/json/geo/vallis/kdrive.json';
 import oddity from '@/static/json/geo/vallis/memoryfrag.json';
 import somachord from '@/static/json/geo/vallis/somachord.json';
 import toroids from '@/static/json/geo/vallis/toroids.json';
-
-import MapPopup from '@/components/MapPopup.jsx';
-import OddityPopup from '@/components/OddityPopup.jsx';
+import BaseMap from '~/components/BaseMap';
 
 const vallis = cdn('webp/maps/orbvallis.webp');
 const fishRecommendIcon = cdn('webp/map_icons/fish-recommend.webp');
@@ -101,30 +91,6 @@ const vegaMarker = L.icon({
   iconSize: [90, 62],
 });
 
-function onEachFeature(feature, layer) {
-  const Popup = Vue.extend(MapPopup);
-  const popup = new Popup({
-    propsData: {
-      type: feature.geometry.type,
-      text: feature.properties.name,
-    },
-  });
-  layer.bindPopup(popup.$mount().$el);
-}
-
-function onEachOddity(feature, layer) {
-  const Popup = Vue.extend(OddityPopup);
-  const popup = new Popup({
-    propsData: {
-      type: feature.geometry.type,
-      set: feature.properties.set,
-      name: feature.properties.name,
-      video: feature.properties.video,
-    },
-  });
-  layer.bindPopup(popup.$mount().$el, { minWidth: 320 });
-}
-
 function toroidMarkerFromName(name) {
   if (name.startsWith('Calda')) {
     return caldaMarker;
@@ -149,11 +115,11 @@ function caveMarkerFromName(name) {
   return null;
 }
 
-const markerAlias = L.marker;
-const labelAlias = L.circleMarker;
-
 export default {
   name: 'VallisMapView',
+  components: {
+    'base-map': BaseMap,
+  },
   data() {
     return {
       zoom: -1,
@@ -286,10 +252,26 @@ export default {
         this.$store.commit('worldstate/vallisMapToggles', [toggles]);
       },
     },
+    properties: {
+      get() {
+        return {
+          reference: 'vmap',
+          bounds: this.bounds,
+          url: this.url,
+          mapOptions: this.mapOptions,
+          center: this.center,
+          zoom: this.zoom,
+        };
+      },
+    },
+    map: {
+      get() {
+        return this.$refs.vmapwrap.$refs.vmap.mapObject;
+      },
+    },
   },
   mounted() {
     this.$nextTick(function () {
-      this.map = this.$refs.vmap.mapObject;
       // Now add each of our geos to a new layer
       const layerGroups = {};
       this.geo.forEach((g) => {

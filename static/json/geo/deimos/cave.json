@@ -1,0 +1,366 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        293.984246,
+        3535.895571
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1684.051231,
+        2557.659657
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1554.047069,
+        2847.728485
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1030.03029,
+        2845.728011
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Isolation Vault Cave: Tier 2"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1108.032788,
+        2385.618835
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1470.044379,
+        1429.39194
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2182.067177,
+        2427.628803
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2004.061477,
+        2385.618835
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1748.05328,
+        2339.607918
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1600.048542,
+        2263.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1576.047773,
+        2081.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1582.047965,
+        1843.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2056.063142,
+        1987.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2368.073132,
+        2237.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2134.06564,
+        1303.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3000.093369,
+        1367.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2580.079921,
+        1119.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Isolation Vault Cave: Tier 1"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2812.087349,
+        1983.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2590.080241,
+        2457.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2798.086901,
+        2727.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3202.099837,
+        1733.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3352.10464,
+        2187.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3176.099004,
+        919.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Isolation Vault Cave: Tier 3"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3942.123531,
+        1529.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4468.140373,
+        1921.868989
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead End Cave"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4292.134738,
+        1331.868989
+      ]
+    }
+  }
+]

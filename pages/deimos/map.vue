@@ -8,11 +8,23 @@ import L from 'leaflet';
 /* map stuff */
 import { mapGetters } from 'vuex';
 
+import labels from 'static/json/geo/deimos/labels.json';
+import teleporter from 'static/json/geo/deimos/teleporter.json';
+import cave from 'static/json/geo/deimos/cave.json';
+import necramech from 'static/json/geo/deimos/necramech.json';
+import bounty from 'static/json/geo/deimos/bounty.json';
+import kdrive from 'static/json/geo/deimos/kdrive.json';
 import { cdn } from '@/services/utilities';
 
-import BaseMap from '~/components/BaseMap';
+import BaseMap from '@/components/BaseMap';
+import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
 
 const drift = cdn('webp/maps/cambion-drift.webp');
+
+const caveMarker = (feature) => {
+  if (feature.properties.name.startsWith('Dead')) return markers.deadCave;
+  else return markers.cave;
+};
 
 export default {
   name: 'DeimosMapView',
@@ -28,25 +40,52 @@ export default {
         [0, 0],
         [3848, 5232],
       ],
-      currentCenter: L.latLng(1904, 2530),
       mapOptions: {
-        zoomSnap: 0.5,
+        zoomSnap: 0.1,
         attributionControl: false,
-        minZoom: -10,
+        minZoom: -2,
+        zoomDelta: 0.25,
       },
       crs: L.CRS.Simple,
       mapStyle: {
         height: 'calc(100vh - 100px)',
         width: '100%',
       },
-      geo: [],
+      geo: [
+        makeMapLabel(labels),
+        {
+          name: 'Teleporter',
+          json: teleporter,
+          opts: markerOpts({ icon: markers.blinkpad }),
+        },
+        {
+          name: 'Cave Entrance',
+          json: cave,
+          opts: markerOpts({ iconGenerator: caveMarker }),
+        },
+        {
+          name: 'Necramech',
+          json: necramech,
+          opts: markerOpts({ icon: markers.necramech }),
+        },
+        {
+          name: 'Mother Bounty',
+          json: bounty,
+          opts: markerOpts({ icon: markers.motherBounty }),
+        },
+        {
+          name: 'K-Drive',
+          json: kdrive,
+          opts: markerOpts({ icon: markers.kdrive }),
+        },
+      ],
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['poeMapToggles']),
+    ...mapGetters('worldstate', ['deimosMapToggles']),
     toggles: {
       get() {
-        return this.poeMapToggles;
+        return this.deimosMapToggles;
       },
       set(toggles) {
         this.$store.commit('worldstate/deimosMapToggles', [toggles]);
@@ -79,7 +118,7 @@ export default {
         const lg = L.layerGroup();
         L.geoJSON(g.json, g.opts).addTo(lg);
         layerGroups[g.name] = lg;
-        // and if that layer's toggle vlaue is true, add it to the map immediately
+        // and if that layer's toggle value is true, add it to the map immediately
         if (this.toggles[g.name + '-toggle-value']) {
           lg.addTo(this.map);
         }
@@ -87,14 +126,7 @@ export default {
       // Add all the layer groups to the map
       L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
       // Now wire up an event when the user toggles one of the layers to update localstorage
-      this.map.on('overlayadd overlayremove', (e) => {
-        const updated = {};
-        Object.keys(this.toggles).forEach((toggle) => {
-          updated[toggle] =
-            this.toggles[toggle] === `${e.name}-toggle-value` ? e.type === 'overlayadd' : this.toggles[toggle];
-        });
-        this.toggles = updated;
-      });
+      this.map.on('overlayadd overlayremove', layerUpdate.bind(this));
     });
   },
 };

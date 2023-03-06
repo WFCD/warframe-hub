@@ -16,36 +16,11 @@ import lure from '@/static/json/geo/plains/lure.json';
 import cave from '@/static/json/geo/plains/cave.json';
 
 import { cdn } from '@/services/utilities';
-import { onEachFeature, onEachOddity, markerAlias, labelAlias } from '@/services/utilities/maps';
+import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
 import BaseMap from '@/components/BaseMap';
 
 const plains = cdn('webp/maps/plains.webp');
-const caveIcon = cdn('webp/map_icons/normal-cave.webp');
-const grineerIcon = cdn('webp/map_icons/grineer.webp');
-const oddityIcon = cdn('webp/map_icons/lorefish.webp');
-const wispIcon = cdn('webp/map_icons/wisp.webp');
-const lureIcon = cdn('webp/map_icons/lure.webp');
 
-const grineerMarker = L.icon({
-  iconUrl: grineerIcon,
-  iconSize: [25, 25],
-});
-const oddityMarker = L.icon({
-  iconUrl: oddityIcon,
-  iconSize: [33, 25],
-});
-const wispMarker = L.icon({
-  iconUrl: wispIcon,
-  iconSize: [50, 33],
-});
-const lureMarker = L.icon({
-  iconUrl: lureIcon,
-  iconSize: [50, 50],
-});
-const caveMarker = L.icon({
-  iconUrl: caveIcon,
-  iconSize: [25, 25],
-});
 export default {
   name: 'CetusMapView',
   components: {
@@ -70,84 +45,36 @@ export default {
         width: '100%',
       },
       geo: [
-        {
-          name: 'Map Label',
-          json: labels,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return labelAlias(latlng)
-                .setStyle({
-                  stroke: false,
-                  fill: false,
-                })
-                .bindTooltip(feature.properties.name, {
-                  permanent: true,
-                  direction: 'center',
-                  className: 'map-label',
-                })
-                .openTooltip();
-            },
-          },
-        },
+        makeMapLabel(labels),
         {
           name: 'Fishing',
           json: fish,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng);
-            },
-            onEachFeature,
-          },
+          opts: markerOpts(),
         },
         {
           name: 'Grineer Camp',
           json: grineer,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng, { icon: grineerMarker });
-            },
-            onEachFeature,
-          },
+          opts: markerOpts({ icon: markers.grineer }),
         },
         {
           name: 'Oddity',
           json: lorefish,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng, { icon: oddityMarker });
-            },
-            onEachFeature: onEachOddity,
-          },
+          opts: markerOpts({ icon: markers.lorefish, oddity: true }),
         },
         {
           name: 'Cetus Wisp',
           json: wisp,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng, { icon: wispMarker });
-            },
-            onEachFeature,
-          },
+          opts: markerOpts({ icon: markers.wisp }),
         },
         {
           name: 'Vomvalyst Lure',
           json: lure,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng, { icon: lureMarker });
-            },
-            onEachFeature,
-          },
+          opts: markerOpts({ icon: markers.lure }),
         },
         {
           name: 'Cave Entrance',
           json: cave,
-          opts: {
-            pointToLayer(feature, latlng) {
-              return markerAlias(latlng, { icon: caveMarker });
-            },
-            onEachFeature,
-          },
+          opts: markerOpts({ icon: markers.cave }),
         },
       ],
     };
@@ -188,7 +115,7 @@ export default {
         const lg = L.layerGroup();
         L.geoJSON(g.json, g.opts).addTo(lg);
         layerGroups[g.name] = lg;
-        // and if that layer's toggle vlaue is true, add it to the map immediately
+        // and if that layer's toggle value is true, add it to the map immediately
         if (this.toggles[g.name + '-toggle-value']) {
           lg.addTo(this.map);
         }
@@ -196,14 +123,7 @@ export default {
       // Add all the layer groups to the map
       L.control.layers(null, layerGroups, { collapsed: false }).addTo(this.map);
       // Now wire up an event when the user toggles one of the layers to update localstorage
-      this.map.on('overlayadd overlayremove', (e) => {
-        const updated = {};
-        Object.keys(this.toggles).forEach((toggle) => {
-          updated[toggle] =
-            this.toggles[toggle] === `${e.name}-toggle-value` ? e.type === 'overlayadd' : this.toggles[toggle];
-        });
-        this.toggles = updated;
-      });
+      this.map.on('overlayadd overlayremove', layerUpdate.bind(this));
     });
   },
 };

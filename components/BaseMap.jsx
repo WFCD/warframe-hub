@@ -5,12 +5,15 @@ export default {
   props: {
     zoom: {
       type: Number,
-      default: 0,
+      default: () => 0,
     },
     center: {
-      type: LatLng,
+      type: Object,
       default: null,
       required: true,
+      validator(thing) {
+        return thing instanceof LatLng;
+      },
     },
     mapOptions: {
       type: Object,
@@ -28,15 +31,19 @@ export default {
       required: true,
     },
     crs: {
-      type: L.CRS,
-      default: () => L.CRS.Simple,
+      type: Object,
+      default() {
+        return L.CRS.Simple;
+      },
     },
     mapStyle: {
       type: Object,
-      default: () => ({
-        height: 'calc(100vh - 100px)',
-        width: '100%',
-      }),
+      default() {
+        return {
+          height: 'calc(100vh - 100px)',
+          width: '100%',
+        };
+      },
     },
     reference: {
       type: String,

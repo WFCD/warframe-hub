@@ -1,0 +1,86 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3938.123403,
+        1381.37675
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3044.094778,
+        1999.523425
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1766.053857,
+        919.2671
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1072.031635,
+        1831.483552
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1780.054305,
+        2805.71472
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Mother Flower"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1208.010657,
+        2385.754592
+      ]
+    }
+  }
+]

@@ -97,7 +97,7 @@ export default {
   ssr: false,
   vue: {
     config: {
-      devtools: process.env.NODE_ENV === 'development',
+      devtools: process.env.NODE_ENV === 'development' ? 'source-map' : false,
     },
   },
 

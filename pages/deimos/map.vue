@@ -1,5 +1,5 @@
 <template>
-  <base-map v-bind="properties" ref="pmapwrap" />
+  <base-map ref="deimosmapwrap" v-bind="properties" />
 </template>
 
 <script>
@@ -7,37 +7,44 @@ import L from 'leaflet';
 
 /* map stuff */
 import { mapGetters } from 'vuex';
-import labels from '@/static/json/geo/plains/labels.json';
-import fish from '@/static/json/geo/plains/fishing.json';
-import grineer from '@/static/json/geo/plains/grineer.json';
-import lorefish from '@/static/json/geo/plains/lorefish.json';
-import wisp from '@/static/json/geo/plains/wisp.json';
-import lure from '@/static/json/geo/plains/lure.json';
-import cave from '@/static/json/geo/plains/cave.json';
 
+import labels from 'static/json/geo/deimos/labels.json';
+import teleporter from 'static/json/geo/deimos/teleporter.json';
+import cave from 'static/json/geo/deimos/cave.json';
+import necramech from 'static/json/geo/deimos/necramech.json';
+import bounty from 'static/json/geo/deimos/bounty.json';
+import kdrive from 'static/json/geo/deimos/kdrive.json';
 import { cdn } from '@/services/utilities';
-import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
-import BaseMap from '@/components/BaseMap';
 
-const plains = cdn('webp/maps/plains.webp');
+import BaseMap from '@/components/BaseMap';
+import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
+
+const drift = cdn('webp/maps/cambion-drift.webp');
+
+const caveMarker = (feature) => {
+  if (feature.properties.name.startsWith('Dead')) return markers.deadCave;
+  else return markers.cave;
+};
 
 export default {
-  name: 'CetusMapView',
+  name: 'DeimosMapView',
   components: {
     'base-map': BaseMap,
   },
   data() {
     return {
-      zoom: 0,
-      center: L.latLng(472, 535),
-      url: plains,
+      zoom: -1.5,
+      center: L.latLng(1904, 2530),
+      url: drift,
       bounds: [
         [0, 0],
-        [994, 1012],
+        [3848, 5232],
       ],
       mapOptions: {
-        zoomSnap: 0.5,
+        zoomSnap: 0.1,
         attributionControl: false,
+        minZoom: -2,
+        zoomDelta: 0.25,
       },
       crs: L.CRS.Simple,
       mapStyle: {
@@ -47,52 +54,48 @@ export default {
       geo: [
         makeMapLabel(labels),
         {
-          name: 'Fishing',
-          json: fish,
-          opts: markerOpts(),
-        },
-        {
-          name: 'Grineer Camp',
-          json: grineer,
-          opts: markerOpts({ icon: markers.grineer }),
-        },
-        {
-          name: 'Oddity',
-          json: lorefish,
-          opts: markerOpts({ icon: markers.lorefish, oddity: true }),
-        },
-        {
-          name: 'Cetus Wisp',
-          json: wisp,
-          opts: markerOpts({ icon: markers.wisp }),
-        },
-        {
-          name: 'Vomvalyst Lure',
-          json: lure,
-          opts: markerOpts({ icon: markers.lure }),
+          name: 'Teleporter',
+          json: teleporter,
+          opts: markerOpts({ icon: markers.blinkpad }),
         },
         {
           name: 'Cave Entrance',
           json: cave,
-          opts: markerOpts({ icon: markers.cave }),
+          opts: markerOpts({ iconGenerator: caveMarker }),
+        },
+        {
+          name: 'Necramech',
+          json: necramech,
+          opts: markerOpts({ icon: markers.necramech }),
+        },
+        {
+          name: 'Mother Bounty',
+          json: bounty,
+          opts: markerOpts({ icon: markers.motherBounty }),
+        },
+        {
+          name: 'K-Drive',
+          json: kdrive,
+          opts: markerOpts({ icon: markers.kdrive }),
         },
       ],
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['poeMapToggles']),
+    ...mapGetters('worldstate', ['deimosMapToggles']),
     toggles: {
       get() {
-        return this.poeMapToggles;
+        return this.deimosMapToggles;
       },
       set(toggles) {
-        this.$store.commit('worldstate/poeMapToggles', [toggles]);
+        this.$store.commit('worldstate/deimosMapToggles', [toggles]);
       },
     },
     properties: {
       get() {
         return {
-          reference: 'pmap',
+          zoom: this.zoom,
+          reference: 'deimosmap',
           bounds: this.bounds,
           url: this.url,
           mapOptions: this.mapOptions,
@@ -102,7 +105,7 @@ export default {
     },
     map: {
       get() {
-        return this.$refs.pmapwrap.$refs.pmap.mapObject;
+        return this.$refs.deimosmapwrap.$refs.deimosmap.mapObject;
       },
     },
   },

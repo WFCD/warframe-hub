@@ -30,53 +30,61 @@ const parsedMigration = () => {
   }
 };
 
+const baseState = {
+  worldstates: {
+    pc: initialWorldstate.pc,
+    ps4: initialWorldstate.ps4,
+    xb1: initialWorldstate.xb1,
+    switch: initialWorldstate.swi,
+  },
+  platform: 'pc',
+  theme: 'night',
+  components,
+  trackables,
+  fissurePlanets,
+  fissureDisplays: 'fissures-storms',
+  soundFilters: [],
+  notificationsAllowed: 'default',
+  notifiedIds: {
+    pc: [],
+    ps4: [],
+    xb1: [],
+    switch: [],
+  },
+  poeMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Grineer Camp-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Cetus Wisp-toggle-value': true,
+    'Vomvalyst Lure-toggle-value': true,
+    'Cave Entrance-toggle-value': true,
+  },
+  vallisMapToggles: {
+    'Map Label-toggle-value': true,
+    'Fishing-toggle-value': true,
+    'Fishing Spots-toggle-value': true,
+    'Mining Spots-toggle-value': true,
+    'K-Drive-toggle-value': true,
+    'Oddity-toggle-value': true,
+    'Somachord Tone-toggle-value': true,
+    'Toroids-toggle-value': true,
+    'Special Caves-toggle-value': true,
+  },
+  deimosMapToggles: {
+    'Map Label-toggle-value': true,
+    'Teleporter-toggle-value': true,
+    'Cave Entrance-toggle-value': true,
+    'Necramech-toggle-value': false,
+    'Mother Bounty-toggle-value': false,
+    'K-Drive-toggle-value': true,
+  },
+  locale,
+  bountyToggles: {},
+};
+
 export const state = () => {
-  return parsedMigration().platform
-    ? parsedMigration()
-    : {
-        worldstates: {
-          pc: initialWorldstate.pc,
-          ps4: initialWorldstate.ps4,
-          xb1: initialWorldstate.xb1,
-          switch: initialWorldstate.swi,
-        },
-        platform: 'pc',
-        theme: 'night',
-        components,
-        trackables,
-        fissurePlanets,
-        fissureDisplays: 'fissures-storms',
-        soundFilters: [],
-        notificationsAllowed: 'default',
-        notifiedIds: {
-          pc: [],
-          ps4: [],
-          xb1: [],
-          switch: [],
-        },
-        poeMapToggles: {
-          'Map Label-toggle-value': true,
-          'Fishing-toggle-value': true,
-          'Grineer Camp-toggle-value': true,
-          'Oddity-toggle-value': true,
-          'Cetus Wisp-toggle-value': true,
-          'Vomvalyst Lure-toggle-value': true,
-          'Cave Entrance-toggle-value': true,
-        },
-        vallisMapToggles: {
-          'Map Label-toggle-value': true,
-          'Fishing-toggle-value': true,
-          'Fishing Spots-toggle-value': true,
-          'Mining Spots-toggle-value': true,
-          'K-Drive-toggle-value': true,
-          'Oddity-toggle-value': true,
-          'Somachord Tone-toggle-value': true,
-          'Toroids-toggle-value': true,
-          'Special Caves-toggle-value': true,
-        },
-        locale,
-        bountyToggles: {},
-      };
+  return parsedMigration().platform ? parsedMigration() : baseState;
 };
 export const mutations = {
   commitWs: (state, [platform, worldstate]) => {
@@ -132,6 +140,9 @@ export const mutations = {
   },
   vallisMapToggles: (state, [toggles]) => {
     state.vallisMapToggles = toggles;
+  },
+  deimosMapToggles: (state, [toggles]) => {
+    state.deimosMapToggles = toggles;
   },
   toggleBountiesOpen: (state, [bountyType, newState]) => {
     state.bountyToggles[bountyType] = newState;
@@ -223,5 +234,6 @@ export const getters = {
   notifiedIds: (state) => state.notifiedIds[state.platform],
   poeMapToggles: (state) => state.poeMapToggles,
   vallisMapToggles: (state) => state.vallisMapToggles,
+  deimosMapToggles: (state) => state.deimosMapToggles || baseState.deimosMapToggles,
   bountyToggles: (state) => state.bountyToggles,
 };

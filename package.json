@@ -70,7 +70,7 @@
     "lint-staged": "^13.2.2",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
-    "webpack-dev-server": "^4.13.3"
+    "webpack-dev-server": "^4.15.0"
   },
   "prettier": {
     "singleQuote": true,

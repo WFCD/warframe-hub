@@ -156,5 +156,8 @@
     "branches": [
       "dev"
     ]
+  },
+  "engines": {
+    "node": "18"
   }
 }

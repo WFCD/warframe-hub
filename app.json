@@ -1,10 +1,11 @@
 {
   "name": "warframe-hub",
-  "description": "Warframe Hub aims to bring the community with up to date information within the game of Warframe.",
+  "description": "Warframe Hub aims to bring the community with up to date worldstate information within the game of Warframe.",
   "keywords": [
     "warframe",
     "status",
-    "hub"
+    "hub",
+    "worldstate"
   ],
   "repository": "https://github.com/WFCD/warframe-hub",
   "website": "https://hub.warframestat.us",

@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
-    "@nuxtjs/device": "^2.2.0",
+    "@nuxtjs/device": "^2.3.0",
     "@nuxtjs/i18n": "^7.3.1",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/sentry": "^6.0.3",

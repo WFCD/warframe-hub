@@ -68,7 +68,7 @@
     "less": "^4.2.0",
     "less-loader": "^7.3.0",
     "lint-staged": "^14.0.1",
-    "postcss": "^8.4.29",
+    "postcss": "^8.4.30",
     "prettier": "^2.8.8",
     "webpack-dev-server": "^4.15.1"
   },

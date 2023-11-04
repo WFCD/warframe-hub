@@ -21,7 +21,7 @@
     "@nuxtjs/device": "^2.3.0",
     "@nuxtjs/i18n": "^7.3.1",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/sentry": "^6.0.3",
+    "@nuxtjs/sentry": "^8.0.1",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.33.2",
     "dayjs": "^1.11.10",

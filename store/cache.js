@@ -22,7 +22,7 @@ export const state = () => ({
 export const actions = {
   async updateRivens({ commit, rootGetters }) {
     const res = await fetch(
-      `https://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
+      `https://www.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
     );
     const raw = await res.text();
     if (!(raw && raw.length)) return;

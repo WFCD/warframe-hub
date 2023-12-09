@@ -10,7 +10,8 @@
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "prepare": "husky install",
-    "test": "cypress run --config-file=cypress.config.js"
+    "test": "cypress run --config-file=cypress.config.js",
+    "test:debug": "cypress open --config-file=cypress.config.js"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint --cache",

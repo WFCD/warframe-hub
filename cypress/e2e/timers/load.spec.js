@@ -1,5 +1,6 @@
 describe('Timers', () => {
   beforeEach(() => {
+    cy.setupIntercepts();
     cy.intercept('https://api.warframestat.us/pc/?language=en').as('wsRequest');
     cy.visit('http://localhost:3000/');
     cy.wait('@wsRequest');
@@ -20,7 +21,6 @@ describe('Timers', () => {
       cy.get('@selectionButtons').eq(3).should('have.text', 'All');
 
       cy.get('div.fissures>.list-group>.list-group-item.list-group-item-borderless.pb-0').then(($el) => {
-        // eslint-disable-next-line no-undef
         fissures = Cypress.dom.wrap($el);
         cy.get('@fissures')
           .find('.list-group .list-group-item')
@@ -34,7 +34,6 @@ describe('Timers', () => {
       cy.get('@selectionButtons').eq(2).click();
 
       cy.get('div.fissures>.list-group>.list-group-item.list-group-item-borderless.pb-0').then(($el) => {
-        // eslint-disable-next-line no-undef
         const steelFissures = Cypress.dom.wrap($el);
         cy.get('@fissures')
           .should('have.length', steelFissures.length + 2)
@@ -48,7 +47,6 @@ describe('Timers', () => {
       cy.get('@selectionButtons').eq(2).click();
 
       cy.get('div.fissures>.list-group>.list-group-item.list-group-item-borderless.pb-0').then(($el) => {
-        // eslint-disable-next-line no-undef
         const stormFissures = Cypress.dom.wrap($el);
         cy.get('@fissures')
           .should('have.length', stormFissures.length + 2)

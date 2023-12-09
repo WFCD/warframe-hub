@@ -1,5 +1,6 @@
 describe('Synthesis', () => {
   beforeEach(() => {
+    cy.setupIntercepts();
     cy.visit(`http://localhost:3000/synthesis`);
     cy.wait(1000);
   });

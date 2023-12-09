@@ -1,6 +1,7 @@
 describe('Maps', () => {
   ['poe', 'vallis'].forEach((ow) => {
     beforeEach(() => {
+      cy.setupIntercepts();
       cy.visit(`http://localhost:3000/${ow}/map`);
       cy.wait(1000);
     });
@@ -18,6 +19,7 @@ describe('Maps', () => {
 describe('Fish', () => {
   ['poe', 'vallis', 'deimos'].forEach((ow) => {
     beforeEach(() => {
+      cy.setupIntercepts();
       cy.visit(`http://localhost:3000/${ow}/fish`);
       cy.wait(1000);
     });

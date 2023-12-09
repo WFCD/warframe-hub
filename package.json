@@ -68,7 +68,7 @@
     "husky": "^8.0.3",
     "less": "^4.2.0",
     "less-loader": "^7.3.0",
-    "lint-staged": "^15.1.0",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.32",
     "prettier": "^2.8.8",
     "webpack-dev-server": "^4.15.1"

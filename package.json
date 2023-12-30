@@ -51,7 +51,7 @@
     "@babel/eslint-parser": "^7.23.3",
     "@babel/runtime-corejs3": "^7.23.6",
     "@cypress/vue": "^2.2.4",
-    "@cypress/webpack-dev-server": "^3.7.1",
+    "@cypress/webpack-dev-server": "^3.7.2",
     "@nuxt/babel-preset-app": "^2.17.2",
     "@nuxt/postcss8": "^1.1.3",
     "@nuxt/types": "^2.17.2",

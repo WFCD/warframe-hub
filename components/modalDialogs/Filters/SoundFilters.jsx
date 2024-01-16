@@ -1,5 +1,7 @@
 import { mapGetters } from 'vuex';
 
+const eidolon = '/audio/eidolon.mp3';
+
 export default {
   name: 'SoundOptionsTab',
   data() {
@@ -32,6 +34,11 @@ export default {
     },
   },
   render() {
+    const testAudio = async () => {
+      const audio = new Audio(eidolon);
+      audio.volume = 1;
+      await audio.play();
+    };
     return (
       <b-tab title="Sound Filters">
         <div id="soundsTabBody">
@@ -48,6 +55,9 @@ export default {
                 class="settings-group"
               ></b-form-checkbox-group>
             </b-form-group>
+            <b-btn variant={'outline-warn'} onClick={testAudio} style={{ borderColor: 'orange' }}>
+              Test Audio
+            </b-btn>
           </div>
         </div>
       </b-tab>

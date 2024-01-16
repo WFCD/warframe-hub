@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-const drum = '/static/audio/drum.mp3';
-const eidolon = '/static/audio/eidolon.mp3';
+const drum = '/audio/drum.mp3';
+const eidolon = '/audio/eidolon.mp3';
 const wfcdLogoUrl = 'https://warframestat.us/wfcd_logo_color.png';
 
 const defaultNotificationBody = {

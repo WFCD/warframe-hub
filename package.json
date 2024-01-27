@@ -48,7 +48,7 @@
     "postcss-preset-env": "^7.x"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.9",
     "@babel/runtime-corejs3": "^7.23.8",
     "@cypress/vue": "^2.2.4",
     "@cypress/webpack-dev-server": "^3.7.3",

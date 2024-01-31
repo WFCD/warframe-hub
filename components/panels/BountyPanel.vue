@@ -33,12 +33,6 @@
           <template #cell(standing)="row">
             {{ row.item.standing }}
           </template>
-          <template #cell(moreinfo)="row">
-            <div size="sm" class="mr-2" @click="row.toggleDetails">
-              <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
-              <i v-else class="fas fa-chevron-right"></i>
-            </div>
-          </template>
           <template #row-details="row">
             <span>
               <b-badge v-for="(reward, index) in row.item.rewards" :key="`reward-${type}-${index}`">{{

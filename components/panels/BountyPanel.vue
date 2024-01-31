@@ -14,7 +14,7 @@
         >
           <template #cell(type)="data">
             <div>
-              <div size="sm" class="ml-2 pull-left" @click="data.toggleDetails">
+              <div size="sm" class="ml-2 pull-left">
                 <i v-if="data.detailsShowing" class="fas fa-chevron-down"></i>
                 <i v-else class="fas fa-chevron-right"></i>
               </div>

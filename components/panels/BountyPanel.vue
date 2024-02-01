@@ -14,7 +14,7 @@
         >
           <template #cell(type)="data">
             <div>
-              <div size="sm" class="ml-2 pull-left" @click="data.toggleDetails">
+              <div size="sm" class="ml-2 pull-left">
                 <i v-if="data.detailsShowing" class="fas fa-chevron-down"></i>
                 <i v-else class="fas fa-chevron-right"></i>
               </div>
@@ -32,12 +32,6 @@
           </template>
           <template #cell(standing)="row">
             {{ row.item.standing }}
-          </template>
-          <template #cell(moreinfo)="row">
-            <div size="sm" class="mr-2" @click="row.toggleDetails">
-              <i v-if="row.detailsShowing" class="fas fa-chevron-down"></i>
-              <i v-else class="fas fa-chevron-right"></i>
-            </div>
           </template>
           <template #row-details="row">
             <span>
@@ -161,5 +155,6 @@ export default {
 }
 .table {
   margin-bottom: 0.5em;
+  user-select: none;
 }
 </style>

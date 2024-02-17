@@ -7,11 +7,12 @@ updates:
       day: "saturday"
       time: "00:00"
     commit-message:
-      prefix: ""
+      prefix: "chore"
       prefix-development: "dev"
       include: "scope"
     labels:
-      - "dependencies"
+      - "Scope: Dependencies"
+      - "Type: Maintenance"
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "-"
@@ -23,3 +24,20 @@ updates:
       - dependency-name: less-loader
       - dependency-name: nuxt
         versions: ['3.x']
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "00:00"
+    commit-message:
+      prefix: "ci"
+      prefix-development: "dev"
+      include: "scope"
+    labels:
+      - "Scope: Dependencies"
+      - "Type: Maintenance"
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "-"
+    rebase-strategy: "auto"

@@ -30,6 +30,7 @@ export default {
     '@fortawesome/fontawesome-free/css/regular.min.css',
     '@fortawesome/fontawesome-free/css/solid.min.css',
     '@fortawesome/fontawesome-free/css/brands.min.css',
+    '@/static/less/Warframe-symbols.less',
     '@/static/less/common.less',
     '@/static/less/tables.less',
     '@/static/less/night.less',

@@ -10,34 +10,27 @@ import { cdn, wfcdn, optimize } from '@/services/utilities.js';
 
 dayjs.extend(utc);
 
-const corpus = cdn('svg/factions/corpus.svg');
-const corrupted = cdn('svg/factions/corrupted.svg');
-const grineer = cdn('svg/factions/grineer.svg');
-const infested = cdn('svg/factions/infested.svg');
-const sentient = cdn('svg/factions/sentient.svg');
 const steelPath = cdn('svg/sp-logo.svg');
 const steelEssence = optimize(wfcdn('steel-essence.png'), '250x250', 'fill', 'center');
-
-const fImg = {
-  corpus,
-  grineer,
-  infested,
-  infestation: infested,
-  corrupted,
-  orokin: corrupted,
-  sentient,
-};
 
 const cycleDefault = {
   activation: '0',
   expiry: '0',
   isWarm: true,
-  active: 'Fass',
+  active: 'Loading...',
   isDay: true,
+  state: 'Loading...',
 };
 
 const textStyle = {
   'text-transform': 'capitalize',
+};
+
+const fontStyle = {
+  ...textStyle,
+  position: 'relative',
+  top: '2.5px',
+  left: '5px',
 };
 
 const EarthTimer = {
@@ -203,18 +196,21 @@ const ResetTimer = {
 };
 const AnomalyTimer = {
   props: ['sentientOutposts'],
-  computed: {},
+  computed: {
+    label() {
+      return this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn');
+    },
+  },
   render() {
     return (
       <div class="col-sm-3 my-3 text-center">
         <span style={textStyle}>{this.$t('sentientoutpost.header')}</span>
-        <HubImg
-          id="para_tooltip"
-          src={sentient}
-          name={this.$t('factions.sentient') + ' | ' + this.$t('sentientoutpost.warn')}
-          width="20px"
-          height="20px"
-          class="invert pl-1"
+        <i
+          class={'icon-factions-sentient fa-lg'}
+          style={{ ...fontStyle }}
+          aria-label={this.label}
+          name={this.label}
+          alt={this.label}
         />
         <br />
         <b>{this.sentientOutposts.mission.node}</b>
@@ -234,8 +230,12 @@ const SteelPathTimer = {
           src={steelPath}
           name={this.$t('steelPath.header')}
           class="li-mission-decorator li-mission-decorator-lg invert mx-1"
-          height="20px"
-          width="20px"
+          height="12.5px"
+          width="12.5px"
+          style={{
+            position: 'relative',
+            top: '-1.5px',
+          }}
         />
         <br />
         <span style="font-size: 0.85em">
@@ -244,6 +244,7 @@ const SteelPathTimer = {
         <br />
         {this.steelPath?.currentReward?.cost}
         <HubImg src={steelEssence} name={this.$t('currency.steelEssense')} />
+        <br />
         <TimeBadge
           starttime={this.steelPath?.activation || '0'}
           endtime={this.steelPath?.expiry || '0'}
@@ -257,24 +258,15 @@ const SteelPathTimer = {
 const ArbitrationTimer = {
   props: ['arbitration'],
   computed: {
-    factionImg() {
-      if (this.arbitration?.enemy) {
-        return fImg[this.arbitration?.enemy?.toLowerCase()] || corrupted;
-      }
-      return corrupted;
+    enemy() {
+      return this.arbitration?.enemy?.toLowerCase() || 'corrupted';
     },
   },
   render() {
     return (
       <div class="col-sm-3 my-3">
         <span style={textStyle}>{this.$t('arbitration.header')}</span>
-        <HubImg
-          src={this.factionImg}
-          name={this.arbitration.enemy}
-          class="li-mission-decorator li-mission-decorator-lg"
-          height="20px"
-          width="20px"
-        />
+        <i class={`icon-factions-${this.enemy}`} style={{ ...fontStyle }} />
         <br />
         <b>{this.arbitration.node}</b>
         <br />
@@ -289,7 +281,38 @@ const ArbitrationTimer = {
     );
   },
 };
-
+const ZarimanTimer = {
+  props: ['zarimanCycle'],
+  computed: {
+    isZarimanCorpus() {
+      return this.zarimanCycle.state === 'corpus';
+    },
+    isZarimanGrineer() {
+      return this.zarimanCycle.state === 'grineer';
+    },
+  },
+  render() {
+    return (
+      <div class="col-sm-3 my-3">
+        <span style={textStyle}>
+          {this.$t(`location.zariman`)}
+          <br />
+          {this.isZarimanCorpus && <i class="fa-2x icon-factions-corpus" style={{ ...fontStyle, left: '0' }}></i>}
+          {this.isZarimanGrineer && <i class="fa-2x icon-factions-grineer" style={{ ...fontStyle, left: '0' }}></i>}
+          <br />
+          {this.$t(`time.${this.zarimanCycle.state.toLowerCase()}`)}
+        </span>
+        <br />
+        <TimeBadge
+          starttime={this.zarimanCycle.activation || this.now}
+          endtime={this.zarimanCycle.expiry}
+          interval={1000}
+          pullright={false}
+        />
+      </div>
+    );
+  },
+};
 export default {
   name: 'AggregatedTimePanel',
   props: {
@@ -299,6 +322,7 @@ export default {
         cetusCycle: cycleDefault,
         earthCycle: cycleDefault,
         cambionCycle: cycleDefault,
+        zarimanCycle: cycleDefault,
         sentientOutposts: {},
         steelPath: {
           activation: 0,
@@ -350,6 +374,7 @@ export default {
                 {this.isArbitrationActive && this.componentState.arbitration.display && (
                   <ArbitrationTimer arbitration={this.worldstate.arbitration} />
                 )}
+                {this.componentState.zariman?.display && <ZarimanTimer zarimanCycle={this.worldstate.zarimanCycle} />}
               </div>
             </div>
           </b-list-group-item>

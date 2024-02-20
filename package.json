@@ -14,7 +14,7 @@
     "test:debug": "cypress open --config-file=cypress.config.js"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint --cache",
+    "*.{js,vue,jsx}": "eslint --cache",
     "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {

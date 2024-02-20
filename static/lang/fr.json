@@ -108,7 +108,8 @@
     "cetus": "Cetus",
     "vallis": "Vallée d'Orbis",
     "earth": "Terre",
-    "cambion": "Puy de Cambion"
+    "cambion": "Puy de Cambion",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "Actualités",
@@ -178,7 +179,9 @@
     "ongoingL": "En cours pour :",
     "expiredL": "Expiré",
     "depart": "Départs",
-    "arrive": "Arrivée prévue à"
+    "arrive": "Arrivée prévue à",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "Ostron",

@@ -199,6 +199,7 @@ export const actions = {
       .concat(ws.flashSales.map((item) => item.id))
       .concat(ws.conclaveChallenges.map((item) => item.id))
       .concat([ws.cetusCycle.id])
+      .concat([ws.zarimanCycle.id])
       .concat([ws.voidTrader.id])
       .concat(ws.arbitration && [`arbitration:${new Date(ws.arbitration.expiry).getTime()}`])
       // .concat(ws.persistentEnemies.map((enemy) => enemy.pid))

@@ -119,7 +119,16 @@
       "active": false,
       "id": "12345"
     },
-    "twitter": []
+    "twitter": [],
+    "zarimanCycle": {
+      "id": "zarimanCycle0000000080000",
+      "expiry": "2000-01-01T01:00:00.000Z",
+      "activation": "2000-01-01T01:00:00.000Z",
+      "state": "Loading...",
+      "timeLeft": "1h 1m 1s",
+      "shortString": "1h 1m 1s",
+      "isCorpus": false
+    }
   },
   "ps4": {
     "timestamp": "2000-01-01T01:00:00.000Z",

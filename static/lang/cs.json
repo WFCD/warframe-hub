@@ -108,7 +108,8 @@
     "cetus": "Cetus",
     "vallis": "Vallis",
     "earth": "Země",
-    "cambion": "Cambion"
+    "cambion": "Cambion",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "Novinky",
@@ -178,7 +179,9 @@
     "ongoingL": "Probíhá:",
     "expiredL": "Expirováno",
     "depart": "Ocestovat",
-    "arrive": "Objeví za"
+    "arrive": "Objeví za",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "Ostron",

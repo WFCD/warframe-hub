@@ -70,6 +70,17 @@
       "location": "Cambion"
     }
   },
+  "zariman": {
+    "display": true,
+    "displayable": true,
+    "displayName": "Zariman Ten Zero Cycle",
+    "key": "zariman",
+    "component": "TimePanel",
+    "props": {
+      "time": "@worldstate.zarimanCycle",
+      "location": "Zariman"
+    }
+  },
   "bounties": {
     "display": true,
     "displayable": true,

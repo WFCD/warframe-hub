@@ -108,7 +108,8 @@
     "cetus": "Cetus",
     "vallis": "Vallis",
     "earth": "Terra",
-    "cambion": "Cambion"
+    "cambion": "Cambion",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "Novità",
@@ -178,7 +179,9 @@
     "ongoingL": "In corso per:",
     "expiredL": "Scaduto",
     "depart": "Partenza",
-    "arrive": "Arriva a"
+    "arrive": "Arriva a",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "Ostron",

@@ -108,7 +108,8 @@
     "cetus": "Цетус",
     "vallis": "Долина Сфер",
     "earth": "Земля",
-    "cambion": "Камбион"
+    "cambion": "Камбион",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "Новости",
@@ -178,7 +179,9 @@
     "ongoingL": "Длится:",
     "expiredL": "Завершено",
     "depart": "Отбытие",
-    "arrive": "Прибудет на"
+    "arrive": "Прибудет на",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "Острон",

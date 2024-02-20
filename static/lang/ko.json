@@ -108,7 +108,8 @@
     "cetus": "시터스",
     "vallis": "협곡",
     "earth": "지구",
-    "cambion": "캠비온"
+    "cambion": "캠비온",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "새 소식",
@@ -178,7 +179,9 @@
     "ongoingL": "진행:",
     "expiredL": "만료",
     "depart": "출발",
-    "arrive": "도착까지"
+    "arrive": "도착까지",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "오스트론",

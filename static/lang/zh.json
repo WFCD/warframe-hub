@@ -108,7 +108,8 @@
     "cetus": "希图斯",
     "vallis": "奥布山谷",
     "earth": "地球",
-    "cambion": "魔胎之境"
+    "cambion": "魔胎之境",
+    "zariman": "Zariman Ten Zero"
   },
   "news": {
     "header": "新闻",
@@ -178,7 +179,9 @@
     "ongoingL": "已进行:",
     "expiredL": "已结束",
     "depart": "将离开",
-    "arrive": "将到达"
+    "arrive": "将到达",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
   },
   "timer": {
     "ostron": "Ostron",

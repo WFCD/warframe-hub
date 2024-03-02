@@ -71,11 +71,11 @@ const archwing = cdn('svg/archwing.svg');
 const steelPath = cdn('svg/arbitrations.svg');
 
 const fissureIcons = [];
-const lith = cdn('svg/fissures/1.svg');
-const meso = cdn('svg/fissures/2.svg');
-const neo = cdn('svg/fissures/3.svg');
-const axi = cdn('svg/fissures/4.svg');
-const requiem = cdn('svg/fissures/5.svg');
+const lith = cdn('svg/fissures/lith.svg');
+const meso = cdn('svg/fissures/meso.svg');
+const neo = cdn('svg/fissures/neo.svg');
+const axi = cdn('svg/fissures/axi.svg');
+const requiem = cdn('svg/fissures/requiem.svg');
 fissureIcons.push(lith, meso, neo, axi, requiem);
 
 export default {

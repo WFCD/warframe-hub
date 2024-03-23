@@ -36,7 +36,11 @@ const fontStyle = {
 const TimerPanel = {
   name: 'TimerPanel',
   render() {
-    return <div class="col-xs-3 col-sm-4 col-lg-6 my-3">{this.$slots.default}</div>;
+    return (
+      <b-col cols={4} sm={3} lg={6} xl={4} class="my-3">
+        {this.$slots.default}
+      </b-col>
+    );
   },
 };
 
@@ -367,8 +371,8 @@ export default {
       <HubPanelWrap title={this.headertext} class="time">
         <b-list-group>
           <b-list-group-item class="list-group-item-borderbottom">
-            <div class="container">
-              <div class="row justify-content-center">
+            <b-container>
+              <b-row class="justify-content-center">
                 {this.componentState.earth.display && <EarthTimer earthCycle={this.worldstate.earthCycle} />}
                 {this.componentState.cetus.display && <CetusTimer cetusCycle={this.worldstate.cetusCycle} />}
                 {this.componentState.vallis.display && <VallisTimer vallisCycle={this.worldstate.vallisCycle} />}
@@ -382,8 +386,8 @@ export default {
                   <ArbitrationTimer arbitration={this.worldstate.arbitration} />
                 )}
                 {this.componentState.zariman?.display && <ZarimanTimer zarimanCycle={this.worldstate.zarimanCycle} />}
-              </div>
-            </div>
+              </b-row>
+            </b-container>
           </b-list-group-item>
         </b-list-group>
       </HubPanelWrap>

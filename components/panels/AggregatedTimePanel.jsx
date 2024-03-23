@@ -33,6 +33,13 @@ const fontStyle = {
   left: '5px',
 };
 
+const TimerPanel = {
+  name: 'TimerPanel',
+  render() {
+    return <div class="col-xs-3 col-sm-4 col-lg-6 my-3">{this.$slots.default}</div>;
+  },
+};
+
 const EarthTimer = {
   props: ['earthCycle'],
   computed: {
@@ -48,7 +55,7 @@ const EarthTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>
           {this.$t(`location.earth`)}
           <br />
@@ -64,7 +71,7 @@ const EarthTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -83,7 +90,7 @@ const CetusTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>
           {this.$t(`location.cetus`)}
           <br />
@@ -99,7 +106,7 @@ const CetusTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -118,7 +125,7 @@ const VallisTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>
           {this.$t(`location.vallis`)}
           <br />
@@ -135,7 +142,7 @@ const VallisTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -151,7 +158,7 @@ const CambionTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>
           {this.$t(`location.cambion`)}
           <br />
@@ -167,7 +174,7 @@ const CambionTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -182,7 +189,7 @@ const ResetTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <b-tooltip placement="auto" class="text-center" target="daily-reset">
           {this.$t('reset.tooltip')}
         </b-tooltip>
@@ -190,7 +197,7 @@ const ResetTimer = {
         <i class="fas fa-info-circle fa-sm pl-1" id="daily-reset" style={textStyle} />
         <br />
         <TimeBadge starttime={this.now} endtime={this.nextDay} interval={1000} pullright={false} />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -203,7 +210,7 @@ const AnomalyTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3 text-center">
+      <TimerPanel class="text-center">
         <span style={textStyle}>{this.$t('sentientoutpost.header')}</span>
         <i
           class={'icon-factions-sentient fa-lg'}
@@ -216,7 +223,7 @@ const AnomalyTimer = {
         <b>{this.sentientOutposts.mission.node}</b>
         <br />
         {this.sentientOutposts.mission.type}
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -224,7 +231,7 @@ const SteelPathTimer = {
   props: ['steelPath'],
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>{this.$t('steelPath.header')}</span>
         <HubImg
           src={steelPath}
@@ -251,7 +258,7 @@ const SteelPathTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -264,7 +271,7 @@ const ArbitrationTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>{this.$t('arbitration.header')}</span>
         <i class={`icon-factions-${this.enemy}`} style={{ ...fontStyle }} />
         <br />
@@ -277,7 +284,7 @@ const ArbitrationTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };
@@ -293,7 +300,7 @@ const ZarimanTimer = {
   },
   render() {
     return (
-      <div class="col-sm-3 my-3">
+      <TimerPanel>
         <span style={textStyle}>
           {this.$t(`location.zariman`)}
           <br />
@@ -309,7 +316,7 @@ const ZarimanTimer = {
           interval={1000}
           pullright={false}
         />
-      </div>
+      </TimerPanel>
     );
   },
 };

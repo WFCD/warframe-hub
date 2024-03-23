@@ -56,16 +56,33 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import { mapGetters } from 'vuex';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
+
+import { optimize, cdn } from '@/services/utilities';
+
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
 
-const cdnUrl = 'https://cdn.warframestat.us';
-const cdnOpts = ['o_webp', 'rs_404x110'];
+const newsImg = (url) => optimize(url, '404x110', 'scale');
 
 export default {
   name: 'NewsPanel',
   components: { HubPanelWrap },
-  props: ['news'],
+  props: {
+    news: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      styleObject: {
+        display: 'inline',
+      },
+      activeElemIndex: 0,
+      interval: {},
+      hover: null,
+    };
+  },
   computed: {
     headertext() {
       return this.$t('news.header');
@@ -79,8 +96,7 @@ export default {
       },
       set() {
         this.hover = null;
-        this.cycle = !this.cycle;
-        this.$store.commit('worldstate/autoProgressNews', [this.cycle]);
+        this.$store.commit('worldstate/autoProgressNews', [!this.cycle]);
       },
     },
     ...mapGetters('worldstate', ['componentState', 'locale']),
@@ -131,7 +147,12 @@ export default {
       this.increment();
     },
     getImgSrc: (url) => {
-      return `${cdnUrl}/${cdnOpts.join(',')}/${url}`;
+      switch (url) {
+        case 'https://i.imgur.com/CNrsc7V.png':
+          return newsImg(cdn('img/news-placeholder.png'));
+        default:
+          return newsImg(url);
+      }
     },
     title: function (newsitem) {
       if (newsitem.startDate && newsitem.endDate) {
@@ -158,16 +179,6 @@ export default {
         };
       }
     },
-  },
-  data() {
-    return {
-      styleObject: {
-        display: 'inline',
-      },
-      activeElemIndex: 0,
-      interval: {},
-      hover: null,
-    };
   },
 };
 </script>

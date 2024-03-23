@@ -9,13 +9,15 @@
     "generate": "nuxt generate",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
-    "prepare": "husky install",
     "test": "cypress run --config-file=cypress.config.js",
     "test:debug": "cypress open --config-file=cypress.config.js"
   },
   "lint-staged": {
-    "*.{js,vue,jsx}": "eslint --cache",
-    "*.**": "prettier --check --ignore-unknown"
+    "*.{js,vue,jsx}": [
+      "eslint --cache --fix",
+      "npx cypress run"
+    ],
+    "*.**": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",

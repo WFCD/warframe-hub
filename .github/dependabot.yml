@@ -7,9 +7,7 @@ updates:
       day: "saturday"
       time: "00:00"
     commit-message:
-      prefix: "chore"
-      prefix-development: "dev"
-      include: "scope"
+      prefix: "ci"
     labels:
       - "Scope: Dependencies"
       - "Type: Maintenance"
@@ -32,8 +30,6 @@ updates:
       time: "00:00"
     commit-message:
       prefix: "ci"
-      prefix-development: "dev"
-      include: "scope"
     labels:
       - "Scope: Dependencies"
       - "Type: Maintenance"

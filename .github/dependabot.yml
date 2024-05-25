@@ -15,6 +15,15 @@ updates:
     pull-request-branch-name:
       separator: "-"
     rebase-strategy: "auto"
+    groups:
+      babel:
+        patterns:
+          - '@babel/*'
+          - lint-staged
+      eslint:
+        patterns:
+          - eslint*
+          - prettier
     ignore:
       - dependency-name: leaflet
       - dependency-name: vue2-leaflet

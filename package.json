@@ -50,8 +50,8 @@
     "postcss-preset-env": "^7.x"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.25.1",
-    "@babel/runtime-corejs3": "^7.25.6",
+    "@babel/eslint-parser": "^7.25.7",
+    "@babel/runtime-corejs3": "^7.25.7",
     "@cypress/vue": "^2.2.4",
     "@cypress/webpack-dev-server": "^3.11.0",
     "@nuxt/babel-preset-app": "^2.18.1",

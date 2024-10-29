@@ -3,6 +3,7 @@ import utc from 'dayjs/plugin/utc';
 import { mapState } from 'vuex';
 import TimeBadge from '@/components/TimeBadge.jsx';
 
+import thumb from '@/components/AsyncItemThumb.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import HubImg from '@/components/HubImg.jsx';
 
@@ -11,7 +12,6 @@ import { cdn, wfcdn, optimize } from '@/services/utilities.js';
 dayjs.extend(utc);
 
 const steelPath = cdn('svg/sp-logo.svg');
-const steelEssence = optimize(wfcdn('steel-essence.png'), '250x250', 'fill', 'center');
 
 const cycleDefault = {
   activation: '0',
@@ -254,7 +254,7 @@ const SteelPathTimer = {
         </span>
         <br />
         {this.steelPath?.currentReward?.cost}
-        <HubImg src={steelEssence} name={this.$t('currency.steelEssense')} />
+        <thumb ikey={'Steel Essence'} alt={this.$t('currency.steelEssense')} />
         <br />
         <TimeBadge
           starttime={this.steelPath?.activation || '0'}

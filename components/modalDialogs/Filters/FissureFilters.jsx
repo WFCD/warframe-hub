@@ -38,7 +38,7 @@ export default {
                 options={this.fissureStates}
                 switches
                 stacked
-                class="settings-group fissure-setting-group"
+                class={'settings-group fissure-setting-group'}
               ></b-form-checkbox-group>
             </b-form-group>
           </div>

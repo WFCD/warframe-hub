@@ -53,7 +53,8 @@ export default {
     fissureStates() {
       return Object.keys(this.trackableState.eventTypes)
         .filter((k) => k.includes('fissures'))
-        .map((k) => this.trackableState.eventTypes[k]);
+        .map((k) => this.trackableState.eventTypes[k])
+        .sort((a, b) => a.value.localeCompare(b.value));
     },
     arbiStates() {
       return Object.keys(this.trackableState.eventTypes)

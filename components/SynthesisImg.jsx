@@ -71,7 +71,7 @@ export default {
   render() {
     return (
       <HubImg
-        src={this.$props.src}
+        src={this.src}
         name={this.$props.name}
         title={this.$props.name}
         height={this.$props.height}

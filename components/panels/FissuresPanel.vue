@@ -148,7 +148,11 @@ export default {
           return (pState.length > 0 ? !isFiltered : true) && include;
         })
         .sort((a, b) => {
-          return a.isStorm && !b.isStorm ? 1 : !a.isStorm && b.isStorm ? -1 : a.tierNum - b.tierNum;
+          if (a.tierNum < b.tierNum) return -1;
+          if (a.tierNum > b.tierNum) return 1;
+          if (a.isStorm && !b.isStorm) return 1;
+          if (!a.isStorm && b.isStorm) return -1;
+          return 0;
         });
     },
   },

@@ -2,12 +2,12 @@
   {
     "name": "Amniophysi",
     "thumb": "amniophysi",
-    "wiki": "https://warframe.fandom.com/wiki/Amniophysi",
+    "wiki": "https://wiki.warframe.com/w/Amniophysi",
     "unique": [
       {
         "name": "Waxen Sebum Deposit",
         "thumb": "sebum",
-        "wiki": "https://warframe.fandom.com/wiki/Waxen_Sebum_Deposit"
+        "wiki": "https://wiki.warframe.com/w/Waxen_Sebum_Deposit"
       }
     ],
     "location": "Cave",
@@ -54,12 +54,12 @@
   {
     "name": "Barbisteo",
     "thumb": "barbisteo",
-    "wiki": "https://warframe.fandom.com/wiki/Barbisteo",
+    "wiki": "https://wiki.warframe.com/w/Barbisteo",
     "unique": [
       {
         "name": "Dendrite Blastoma",
         "thumb": "dendrite",
-        "wiki": "https://warframe.fandom.com/wiki/Dendrite_Blastoma"
+        "wiki": "https://wiki.warframe.com/w/Dendrite_Blastoma"
       }
     ],
     "location": "Cave",
@@ -106,12 +106,12 @@
   {
     "name": "Cryptosuctus",
     "thumb": "cryptosuctus",
-    "wiki": "https://warframe.fandom.com/wiki/Cryptosuctus",
+    "wiki": "https://wiki.warframe.com/w/Cryptosuctus",
     "unique": [
       {
         "name": "Pustulent Cognitive Nodule",
         "thumb": "pustulent",
-        "wiki": "https://warframe.fandom.com/wiki/Pustulent_Cognitive_Nodule"
+        "wiki": "https://wiki.warframe.com/w/Pustulent_Cognitive_Nodule"
       }
     ],
     "location": "Surface",
@@ -158,12 +158,12 @@
   {
     "name": "Glutinox",
     "thumb": "glutinox",
-    "wiki": "https://warframe.fandom.com/wiki/Glutinox",
+    "wiki": "https://wiki.warframe.com/w/Glutinox",
     "unique": [
       {
         "name": "Sporulate Sac",
         "thumb": "sporulate",
-        "wiki": "https://warframe.fandom.com/wiki/Sporulate_Sac"
+        "wiki": "https://wiki.warframe.com/w/Sporulate_Sac"
       }
     ],
     "location": "Surface",
@@ -211,12 +211,12 @@
   {
     "name": "Kymaeros",
     "thumb": "kymaeros",
-    "wiki": "https://warframe.fandom.com/wiki/Kymaeros",
+    "wiki": "https://wiki.warframe.com/w/Kymaeros",
     "unique": [
       {
         "name": "Saturated Muscle Mass",
         "thumb": "muscle",
-        "wiki": "https://warframe.fandom.com/wiki/Saturated_Muscle_Mass"
+        "wiki": "https://wiki.warframe.com/w/Saturated_Muscle_Mass"
       }
     ],
     "location": "Surface",
@@ -263,12 +263,12 @@
   {
     "name": "Lobotriscid",
     "thumb": "lobotriscid",
-    "wiki": "https://warframe.fandom.com/wiki/Lobotriscid",
+    "wiki": "https://wiki.warframe.com/w/Lobotriscid",
     "unique": [
       {
         "name": "Parasitic Tethermaw",
         "thumb": "tethermaw",
-        "wiki": "https://warframe.fandom.com/wiki/Parasitic_Tethermaw"
+        "wiki": "https://wiki.warframe.com/w/Parasitic_Tethermaw"
       }
     ],
     "location": "Surface",
@@ -315,17 +315,17 @@
   {
     "name": "Aquapulmo",
     "thumb": "aquapulmo",
-    "wiki": "https://warframe.fandom.com/wiki/Aquapulmo",
+    "wiki": "https://wiki.warframe.com/w/Aquapulmo",
     "unique": [
       {
         "name": "Biotic Filter",
         "thumb": "filter",
-        "wiki": "https://warframe.fandom.com/wiki/Biotic_Filter"
+        "wiki": "https://wiki.warframe.com/w/Biotic_Filter"
       },
       {
         "name": "Pustulent Cognitive Nodule",
         "thumb": "pustulent",
-        "wiki": "https://warframe.fandom.com/wiki/Pustulent_Cognitive_Nodule"
+        "wiki": "https://wiki.warframe.com/w/Pustulent_Cognitive_Nodule"
       }
     ],
     "location": "Surface",
@@ -376,12 +376,12 @@
   {
     "name": "Flagellocanth",
     "thumb": "flagellocanth",
-    "wiki": "https://warframe.fandom.com/wiki/Flagellocanth",
+    "wiki": "https://wiki.warframe.com/w/Flagellocanth",
     "unique": [
       {
         "name": "Ocular Stem-Root",
         "thumb": "stemroot",
-        "wiki": "https://warframe.fandom.com/wiki/Ocular_Stem-Root"
+        "wiki": "https://wiki.warframe.com/w/Ocular_Stem-Root"
       }
     ],
     "location": "Surface",
@@ -430,12 +430,12 @@
   {
     "name": "Ostimyr",
     "thumb": "ostimyr",
-    "wiki": "https://warframe.fandom.com/wiki/Ostimyr",
+    "wiki": "https://wiki.warframe.com/w/Ostimyr",
     "unique": [
       {
         "name": "Saturated Muscle Mass",
         "thumb": "muscle",
-        "wiki": "https://warframe.fandom.com/wiki/Saturated_Muscle_Mass"
+        "wiki": "https://wiki.warframe.com/w/Saturated_Muscle_Mass"
       }
     ],
     "location": "Surface",
@@ -487,17 +487,17 @@
   {
     "name": "Vitreospina",
     "thumb": "vitreospina",
-    "wiki": "https://warframe.fandom.com/wiki/Vitreospina",
+    "wiki": "https://wiki.warframe.com/w/Vitreospina",
     "unique": [
       {
         "name": "Dendrite Blastoma",
         "thumb": "dendrite",
-        "wiki": "https://warframe.fandom.com/wiki/Dendrite_Blastoma"
+        "wiki": "https://wiki.warframe.com/w/Dendrite_Blastoma"
       },
       {
         "name": "Spinal Core Section",
         "thumb": "spinal",
-        "wiki": "https://warframe.fandom.com/wiki/Spinal_Core_Section"
+        "wiki": "https://wiki.warframe.com/w/Spinal_Core_Section"
       }
     ],
     "location": "Cave",
@@ -548,12 +548,12 @@
   {
     "name": "Chondricord",
     "thumb": "chondricord",
-    "wiki": "https://warframe.fandom.com/wiki/Chondricord",
+    "wiki": "https://wiki.warframe.com/w/Chondricord",
     "unique": [
       {
         "name": "Spinal Core Section",
         "thumb": "spinal",
-        "wiki": "https://warframe.fandom.com/wiki/Spinal_Core_Section"
+        "wiki": "https://wiki.warframe.com/w/Spinal_Core_Section"
       }
     ],
     "location": "Cave",
@@ -602,12 +602,12 @@
   {
     "name": "Duroid",
     "thumb": "duroid",
-    "wiki": "https://warframe.fandom.com/wiki/Duroid",
+    "wiki": "https://wiki.warframe.com/w/Duroid",
     "unique": [
       {
         "name": "Biotic Filter",
         "thumb": "filter",
-        "wiki": "https://warframe.fandom.com/wiki/Biotic_Filter"
+        "wiki": "https://wiki.warframe.com/w/Biotic_Filter"
       }
     ],
     "location": "Cave",
@@ -656,12 +656,12 @@
   {
     "name": "Myxostomata",
     "thumb": "myxostomata",
-    "wiki": "https://warframe.fandom.com/wiki/Myxostomata",
+    "wiki": "https://wiki.warframe.com/w/Myxostomata",
     "unique": [
       {
         "name": "Cranial Foremount",
         "thumb": "foremount",
-        "wiki": "https://warframe.fandom.com/wiki/Cranial Foremount"
+        "wiki": "https://wiki.warframe.com/w/Cranial Foremount"
       }
     ],
     "location": "Cave",

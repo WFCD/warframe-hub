@@ -35,7 +35,8 @@ export default {
             value: this.componentState[component].key,
           };
         })
-        .filter((c) => c);
+        .filter((c) => c)
+        .sort((a, b) => a.text.localeCompare(b.text));
     },
   },
   render() {

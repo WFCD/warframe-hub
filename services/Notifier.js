@@ -313,7 +313,7 @@ export default class Notifier {
     });
     safeCall(() => {
       for (const fissure of ws.fissures) {
-        const notifIdentifier = `fissures.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
+        const notifIdentifier = `fissures${fissure.isHard ? '.sp' : ''}.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
         if (this.isNotifiable(fissure.id, notifIdentifier)) {
           toNotify.push(makeNotification('fissure', fissure));
         }

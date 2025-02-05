@@ -2,7 +2,7 @@
   {
     "name": "Charc Eel",
     "thumb": "charceel",
-    "wiki": "https://warframe.fandom.com/wiki/Charc_Eel",
+    "wiki": "https://wiki.warframe.com/w/Charc_Eel",
     "unique": {
       "name": "Charc Electroplax",
       "thumb": "electroplax",
@@ -59,7 +59,7 @@
   {
     "name": "Mawfish",
     "thumb": "mawfish",
-    "wiki": "https://warframe.fandom.com/wiki/Mawfish",
+    "wiki": "https://wiki.warframe.com/w/Mawfish",
     "unique": {
       "name": "Mawfish Bones",
       "thumb": "bones",
@@ -116,7 +116,7 @@
   {
     "name": "Khut-Khut",
     "thumb": "khutkhut",
-    "wiki": "https://warframe.fandom.com/wiki/Khut-Khut",
+    "wiki": "https://wiki.warframe.com/w/Khut-Khut",
     "unique": {
       "name": "Khut-Khut Venom Sac",
       "thumb": "sac",
@@ -173,7 +173,7 @@
   {
     "name": "Yogwun",
     "thumb": "yogwun",
-    "wiki": "https://warframe.fandom.com/wiki/Yogwun",
+    "wiki": "https://wiki.warframe.com/w/Yogwun",
     "unique": {
       "name": "Yogwun Stomach",
       "thumb": "stomach",
@@ -230,7 +230,7 @@
   {
     "name": "Goopolla",
     "thumb": "goopolla",
-    "wiki": "https://warframe.fandom.com/wiki/Goopolla",
+    "wiki": "https://wiki.warframe.com/w/Goopolla",
     "unique": {
       "name": "Goopolla Spleen",
       "thumb": "spleen",
@@ -287,7 +287,7 @@
   {
     "name": "Karkina",
     "thumb": "karkina",
-    "wiki": "https://warframe.fandom.com/wiki/Karkina",
+    "wiki": "https://wiki.warframe.com/w/Karkina",
     "unique": {
       "name": "Karkina Antenna",
       "thumb": "antenna",
@@ -345,7 +345,7 @@
   {
     "name": "Mortus Lungfish",
     "thumb": "mortus",
-    "wiki": "https://warframe.fandom.com/wiki/Mortus_Lungfish",
+    "wiki": "https://wiki.warframe.com/w/Mortus_Lungfish",
     "unique": {
       "name": "Mortus Horn",
       "thumb": "horn",
@@ -402,7 +402,7 @@
   {
     "name": "Sharrac",
     "thumb": "sharrac",
-    "wiki": "https://warframe.fandom.com/wiki/Sharrac",
+    "wiki": "https://wiki.warframe.com/w/Sharrac",
     "unique": {
       "name": "Sharrac Teeth",
       "thumb": "teeth",
@@ -460,7 +460,7 @@
   {
     "name": "Tralok",
     "thumb": "tralok",
-    "wiki": "https://warframe.fandom.com/wiki/Tralok",
+    "wiki": "https://wiki.warframe.com/w/Tralok",
     "unique": {
       "name": "Tralok Eyes",
       "thumb": "eyes",
@@ -517,7 +517,7 @@
   {
     "name": "Cuthol",
     "thumb": "cuthol",
-    "wiki": "https://warframe.fandom.com/wiki/Cuthol",
+    "wiki": "https://wiki.warframe.com/w/Cuthol",
     "unique": {
       "name": "Cuthol Tendrils",
       "thumb": "tendrils",
@@ -576,7 +576,7 @@
   {
     "name": "Murkray",
     "thumb": "murkray",
-    "wiki": "https://warframe.fandom.com/wiki/Murkray",
+    "wiki": "https://wiki.warframe.com/w/Murkray",
     "unique": {
       "name": "Murkray Liver",
       "thumb": "liver",
@@ -635,7 +635,7 @@
   {
     "name": "Norg",
     "thumb": "norg",
-    "wiki": "https://warframe.fandom.com/wiki/Norg",
+    "wiki": "https://wiki.warframe.com/w/Norg",
     "unique": {
       "name": "Norg Brain",
       "thumb": "brain",
@@ -694,7 +694,7 @@
   {
     "name": "Glappid",
     "thumb": "glappid",
-    "wiki": "https://warframe.fandom.com/wiki/Glappid",
+    "wiki": "https://wiki.warframe.com/w/Glappid",
     "unique": {
       "name": "Seram Beetle Shell",
       "thumb": "shell",
@@ -753,10 +753,10 @@
   {
     "name": "Boot",
     "thumb": "boot",
-    "wiki": "https://warframe.fandom.com/wiki/Boot",
+    "wiki": "https://wiki.warframe.com/w/Boot",
     "unique": {
       "name": "Boot",
-      "wiki": "https://warframe.fandom.com/wiki/Boot"
+      "wiki": "https://wiki.warframe.com/w/Boot"
     },
     "location": "Any",
     "time": {

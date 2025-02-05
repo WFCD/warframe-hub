@@ -2,11 +2,11 @@
   {
     "name": "Echowinder",
     "thumb": "echowinder",
-    "wiki": "https://warframe.fandom.com/wiki/Echowinder",
+    "wiki": "https://wiki.warframe.com/w/Echowinder",
     "unique": {
       "name": "Anoscopic Sensor",
       "thumb": "anoscopicsensor",
-      "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
+      "wiki": "https://wiki.warframe.com/w/Anoscopic_Sensor"
     },
     "location": "Lake",
     "time": {
@@ -48,11 +48,11 @@
   {
     "name": "Sapcaddy",
     "thumb": "sapcaddy",
-    "wiki": "https://warframe.fandom.com/wiki/Sapcaddy",
+    "wiki": "https://wiki.warframe.com/w/Sapcaddy",
     "unique": {
       "name": "Venedo Case",
       "thumb": "venedocase",
-      "wiki": "https://warframe.fandom.com/wiki/Venedo_Case"
+      "wiki": "https://wiki.warframe.com/w/Venedo_Case"
     },
     "location": "Lake",
     "time": {
@@ -94,11 +94,11 @@
   {
     "name": "Kriller",
     "thumb": "kriller",
-    "wiki": "https://warframe.fandom.com/wiki/Kriller",
+    "wiki": "https://wiki.warframe.com/w/Kriller",
     "unique": {
       "name": "Thermal Laser",
       "thumb": "thermallaser",
-      "wiki": "https://warframe.fandom.com/wiki/Thermal_Laser"
+      "wiki": "https://wiki.warframe.com/w/Thermal_Laser"
     },
     "location": "Lake",
     "time": {
@@ -140,11 +140,11 @@
   {
     "name": "Longwinder",
     "thumb": "longwinder",
-    "wiki": "https://warframe.fandom.com/wiki/Longwinder",
+    "wiki": "https://wiki.warframe.com/w/Longwinder",
     "unique": {
       "name": "Lathe Coagulant",
       "thumb": "lathecoagulant",
-      "wiki": "https://warframe.fandom.com/wiki/Lathe_Coagulant"
+      "wiki": "https://wiki.warframe.com/w/Lathe_Coagulant"
     },
     "location": "Lake",
     "hotspot": "true",
@@ -187,11 +187,11 @@
   {
     "name": "Brickie",
     "thumb": "brickie",
-    "wiki": "https://warframe.fandom.com/wiki/Brickie",
+    "wiki": "https://wiki.warframe.com/w/Brickie",
     "unique": {
       "name": "Muon Battery",
       "thumb": "muonbattery",
-      "wiki": "https://warframe.fandom.com/wiki/Muon_Battery"
+      "wiki": "https://wiki.warframe.com/w/Muon_Battery"
     },
     "location": "Pond",
     "time": {
@@ -233,11 +233,11 @@
   {
     "name": "Tink",
     "thumb": "tink",
-    "wiki": "https://warframe.fandom.com/wiki/Tink",
+    "wiki": "https://wiki.warframe.com/w/Tink",
     "unique": {
       "name": "Dissipator Coil",
       "thumb": "dissipatorcoil",
-      "wiki": "https://warframe.fandom.com/wiki/Dissipator_Coil"
+      "wiki": "https://wiki.warframe.com/w/Dissipator_Coil"
     },
     "location": "Pond",
     "time": {
@@ -279,11 +279,11 @@
   {
     "name": "Eye-Eye",
     "thumb": "eyeeye",
-    "wiki": "https://warframe.fandom.com/wiki/Eye-Eye",
+    "wiki": "https://wiki.warframe.com/w/Eye-Eye",
     "unique": {
       "name": "Rotoblade",
       "thumb": "rotoblade",
-      "wiki": "https://warframe.fandom.com/wiki/Rotoblade"
+      "wiki": "https://wiki.warframe.com/w/Rotoblade"
     },
     "location": "Pond",
     "time": {
@@ -325,11 +325,11 @@
   {
     "name": "Recaster",
     "thumb": "recaster",
-    "wiki": "https://warframe.fandom.com/wiki/Recaster",
+    "wiki": "https://wiki.warframe.com/w/Recaster",
     "unique": {
       "name": "Neural Relay",
       "thumb": "neuralrelay",
-      "wiki": "https://warframe.fandom.com/wiki/Neural_Relay"
+      "wiki": "https://wiki.warframe.com/w/Neural_Relay"
     },
     "location": "Pond",
     "time": {
@@ -372,11 +372,11 @@
   {
     "name": "Tromyzon",
     "thumb": "tromyzon",
-    "wiki": "https://warframe.fandom.com/wiki/Tromyzon",
+    "wiki": "https://wiki.warframe.com/w/Tromyzon",
     "unique": {
       "name": "Entroplasma",
       "thumb": "entroplasma",
-      "wiki": "https://warframe.fandom.com/wiki/Entroplasma"
+      "wiki": "https://wiki.warframe.com/w/Entroplasma"
     },
     "location": "Pond",
     "time": {
@@ -419,11 +419,11 @@
   {
     "name": "Scrubber",
     "thumb": "scrubber",
-    "wiki": "https://warframe.fandom.com/wiki/Scrubber",
+    "wiki": "https://wiki.warframe.com/w/Scrubber",
     "unique": {
       "name": "Exa Brain",
       "thumb": "exabrain",
-      "wiki": "https://warframe.fandom.com/wiki/Exa_Brain"
+      "wiki": "https://wiki.warframe.com/w/Exa_Brain"
     },
     "location": "Cave",
     "time": {
@@ -465,11 +465,11 @@
   {
     "name": "Mirewinder",
     "thumb": "mirewinder",
-    "wiki": "https://warframe.fandom.com/wiki/Mirewinder",
+    "wiki": "https://wiki.warframe.com/w/Mirewinder",
     "unique": {
       "name": "Parallel Biode",
       "thumb": "parallelbiode",
-      "wiki": "https://warframe.fandom.com/wiki/Anoscopic_Sensor"
+      "wiki": "https://wiki.warframe.com/w/Anoscopic_Sensor"
     },
     "location": "Cave",
     "time": {
@@ -511,11 +511,11 @@
   {
     "name": "Charamote",
     "thumb": "charamote",
-    "wiki": "https://warframe.fandom.com/wiki/Charamote",
+    "wiki": "https://wiki.warframe.com/w/Charamote",
     "unique": {
       "name": "Sagan Module",
       "thumb": "saganmodule",
-      "wiki": "https://warframe.fandom.com/wiki/Sagan_Module"
+      "wiki": "https://wiki.warframe.com/w/Sagan_Module"
     },
     "location": "Cave",
     "time": {
@@ -558,11 +558,11 @@
   {
     "name": "Synathid",
     "thumb": "synathid",
-    "wiki": "https://warframe.fandom.com/wiki/Synathid",
+    "wiki": "https://wiki.warframe.com/w/Synathid",
     "unique": {
       "name": "Ecosynth Analyzer",
       "thumb": "ecosynthanalyzer",
-      "wiki": "https://warframe.fandom.com/wiki/Ecosynth_Analyzer"
+      "wiki": "https://wiki.warframe.com/w/Ecosynth_Analyzer"
     },
     "location": "Cave",
     "time": {
@@ -605,7 +605,7 @@
   {
     "name": "Crewmen's Boot",
     "thumb": "crewmensboot",
-    "wiki": "https://warframe.fandom.com/wiki/Crewmen%27s_Boot",
+    "wiki": "https://wiki.warframe.com/w/Crewmen%27s_Boot",
     "unique": {
       "name": "Crewmen's Boot"
     },

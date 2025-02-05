@@ -311,7 +311,7 @@
                 name: 'Ivara',
                 imageName: 'ivara.png',
               }"
-              link="https://warframe.fandom.com/wiki/Ivara"
+              link="https://wiki.warframe.com/w/Ivara"
             >
               <t1>Ivara's Prowl can help you stay away from enemy awareness. </t1>
               <t2>Ivara's Dashwire can let you get a good angle above fish to throw spears at them</t2>
@@ -323,7 +323,7 @@
                 description:
                   'Banshee\'s Sonarr allows you to see outlines of fish for a short time, but doesn\'t give weak points or waypoints.',
               }"
-              link="https://warframe.fandom.com/wiki/Banshee"
+              link="https://wiki.warframe.com/w/Banshee"
             />
             <codex-card
               :item="{
@@ -332,7 +332,7 @@
                 description:
                   'Limbo in the rift will see an entity outline, but the spear won\'t be effective as the fish isn\'t in the rift',
               }"
-              link="https://warframe.fandom.com/wiki/Limbo"
+              link="https://wiki.warframe.com/w/Limbo"
             />
             <codex-card
               :item="{
@@ -340,7 +340,7 @@
                 imageName: 'luminous-dye.png',
                 description: 'Luminous dye shows bright silhouettes of fish in the water, making them easier to catch.',
               }"
-              link="https://warframe.fandom.com/wiki/Luminous_Dye"
+              link="https://wiki.warframe.com/w/Luminous_Dye"
             />
             <codex-card
               :item="{
@@ -349,8 +349,8 @@
                 description:
                   'Oxylus\'s Scan Aquatic Lifeforms provides a fish highlight similar to luminous dye, and provides waypoints on the map.',
               }"
-              link="https://warframe.fandom.com/wiki/Oxylus"
-              :link2="{ a: 'https://warframe.fandom.com/wiki/Scan_Aquatic_Lifeforms', title: 'Mod' }"
+              link="https://wiki.warframe.com/w/Oxylus"
+              :link2="{ a: 'https://wiki.warframe.com/w/Scan_Aquatic_Lifeforms', title: 'Mod' }"
             />
           </b-card-group>
         </div>

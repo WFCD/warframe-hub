@@ -19,7 +19,7 @@
       </b-col>
       <b-col md="3" sm="3">
         <b-button
-          href="https://warframe.fandom.com/wiki/Synthesis"
+          href="https://wiki.warframe.com/w/Synthesis"
           target="_blank"
           variant="info"
           class="mb-3 mr-3 float-right"

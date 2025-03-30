@@ -373,7 +373,7 @@ export default {
           <b-list-group-item class="list-group-item-borderbottom">
             <b-container>
               <b-row class="justify-content-center">
-                {this.componentState.earth.display && <EarthTimer earthCycle={this.worldstate.earthCycle} />}
+                {false && <EarthTimer earthCycle={this.worldstate.earthCycle} />}
                 {this.componentState.cetus.display && <CetusTimer cetusCycle={this.worldstate.cetusCycle} />}
                 {this.componentState.vallis.display && <VallisTimer vallisCycle={this.worldstate.vallisCycle} />}
                 {this.componentState.cambion.display && <CambionTimer cambionCycle={this.worldstate.cambionCycle} />}

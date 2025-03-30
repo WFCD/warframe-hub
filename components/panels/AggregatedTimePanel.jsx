@@ -44,41 +44,6 @@ const TimerPanel = {
   },
 };
 
-const EarthTimer = {
-  props: ['earthCycle'],
-  computed: {
-    isEarthDay() {
-      return this.$props.earthCycle.isDay;
-    },
-    isEarthNight() {
-      return !this.$props.earthCycle.isDay;
-    },
-    now() {
-      return dayjs().toISOString();
-    },
-  },
-  render() {
-    return (
-      <TimerPanel>
-        <span style={textStyle}>
-          {this.$t(`location.earth`)}
-          <br />
-          {this.isEarthDay && <i class="fa fa-sun fa-2x day" style={textStyle}></i>}
-          {this.isEarthNight && <i class="fa fa-moon fa-2x night" style={textStyle}></i>}
-          <br />
-          {this.$t(`time.${this.earthCycle.state.toLowerCase()}`)}
-        </span>
-        <br />
-        <TimeBadge
-          starttime={this.earthCycle.activation || this.now}
-          endtime={this.earthCycle.expiry}
-          interval={1000}
-          pullright={false}
-        />
-      </TimerPanel>
-    );
-  },
-};
 const CetusTimer = {
   props: ['cetusCycle'],
   computed: {
@@ -373,7 +338,6 @@ export default {
           <b-list-group-item class="list-group-item-borderbottom">
             <b-container>
               <b-row class="justify-content-center">
-                {false && <EarthTimer earthCycle={this.worldstate.earthCycle} />}
                 {this.componentState.cetus.display && <CetusTimer cetusCycle={this.worldstate.cetusCycle} />}
                 {this.componentState.vallis.display && <VallisTimer vallisCycle={this.worldstate.vallisCycle} />}
                 {this.componentState.cambion.display && <CambionTimer cambionCycle={this.worldstate.cambionCycle} />}

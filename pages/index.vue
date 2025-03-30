@@ -80,8 +80,7 @@ export default {
     displayAggregate() {
       return (
         this.componentState.aggregated.display &&
-        (this.componentState.earth.display ||
-          this.componentState.cetus.display ||
+        (this.componentState.cetus.display ||
           this.componentState.vallis.display ||
           this.componentState.cambion.display ||
           this.componentState.reset.display ||

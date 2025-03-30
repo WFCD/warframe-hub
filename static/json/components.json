@@ -29,23 +29,12 @@
   "cetus": {
     "display": true,
     "displayable": true,
-    "displayName": "Cetus Cycle",
+    "displayName": "Cetus/Earth Cycle",
     "key": "cetus",
     "component": "TimePanel",
     "props": {
       "time": "@worldstate.cetusCycle",
-      "location": "Cetus"
-    }
-  },
-  "earth": {
-    "display": true,
-    "displayable": true,
-    "displayName": "Earth Cycle",
-    "key": "earth",
-    "component": "TimePanel",
-    "props": {
-      "time": "@worldstate.earthCycle",
-      "location": "Earth"
+      "location": "Cetus/Earth"
     }
   },
   "vallis": {

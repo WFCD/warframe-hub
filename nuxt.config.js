@@ -58,7 +58,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
 
     // Moved from `buildModules` in Nuxt 3 migration: https://nuxt.com/docs/migration/configuration#modules
-    '@nuxt/postcss8',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/device',

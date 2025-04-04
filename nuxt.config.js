@@ -9,7 +9,7 @@ Object.keys(locales).forEach(async (locale) => {
   messages[locale] = await import(`./static/lang/${locale}.json`);
 });
 
-export default {
+export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Warframe Hub',
@@ -51,14 +51,6 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxt/postcss8',
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/device',
-  ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
@@ -76,6 +68,12 @@ export default {
         },
       },
     ],
+
+    // Moved from `buildModules` in Nuxt 3 migration: https://nuxt.com/docs/migration/configuration#modules
+    '@nuxt/postcss8',
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/device',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -112,6 +110,10 @@ export default {
     },
   },
 
+  dir: {
+    public: 'static',
+  },
+
   loading: {
     color: '#194c6c',
     failedColor: '#852d23',
@@ -123,4 +125,4 @@ export default {
       return [['@nuxt/babel-preset-app', options]];
     },
   },
-};
+});

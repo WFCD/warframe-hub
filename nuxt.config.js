@@ -53,19 +53,9 @@ export default defineNuxtConfig({
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@vite-pwa/nuxt',
-    // 'bootstrap-vue/nuxt',
+    // 'bootstrap-vue/nuxt', // TODO: This is not compatible with Nuxt 3 and there is no replacement.
     '@sentry/nuxt',
-    [
-      '@nuxtjs/i18n',
-      {
-        locales,
-        defaultLocale: 'en',
-        vueI18n: {
-          fallbackLocale: 'en',
-          messages,
-        },
-      },
-    ],
+    '@nuxtjs/i18n',
 
     // Moved from `buildModules` in Nuxt 3 migration: https://nuxt.com/docs/migration/configuration#modules
     '@nuxt/postcss8',
@@ -73,6 +63,11 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxtjs/device',
   ],
+
+  i18n: {
+    locales: Object.keys(locales),
+    defaultLocale: 'en',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

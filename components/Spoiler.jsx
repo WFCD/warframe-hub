@@ -18,6 +18,7 @@ export default {
       },
     },
   },
+  emits: ['toggle'],
   data() {
     return {
       id: makeid(),

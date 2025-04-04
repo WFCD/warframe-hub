@@ -94,7 +94,9 @@ export default defineNuxtConfig({
       clientsClaim: true,
     },
   },
+
   ssr: false,
+
   vue: {
     config: {
       devtools: process.env.NODE_ENV === 'development' ? 'source-map' : false,
@@ -116,4 +118,6 @@ export default defineNuxtConfig({
       return [['@nuxt/babel-preset-app', options]];
     },
   },
+
+  compatibilityDate: '2025-04-04'
 });

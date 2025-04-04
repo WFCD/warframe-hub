@@ -5,8 +5,8 @@ const ignored = /(failed to fetch|EOF|host name|NotAllowedError)/gi;
 
 // i18n
 const messages = {};
-Object.keys(locales).forEach((locale) => {
-  messages[locale] = require(`./static/lang/${locale}.json`);
+Object.keys(locales).forEach(async (locale) => {
+  messages[locale] = await import(`./static/lang/${locale}.json`);
 });
 
 export default {
@@ -93,8 +93,6 @@ export default {
       source: './static/icon.png',
     },
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
   ssr: false,
   vue: {
     config: {

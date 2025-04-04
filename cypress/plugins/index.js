@@ -1,7 +1,7 @@
-const { startDevServer } = require('@cypress/webpack-dev-server');
-const { getWebpackConfig } = require('nuxt');
+import { startDevServer } from '@cypress/webpack-dev-server';
+import { getWebpackConfig } from 'nuxt';
 
-module.exports = (on, config) => {
+export default (on) => {
   on('dev-server:start', async (options) => {
     const webpackConfig = await getWebpackConfig();
     return startDevServer({

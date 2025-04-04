@@ -1,9 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import locales from './static/json/locales.json';
 
-/* Sentry Reporting */
-const ignored = /(failed to fetch|EOF|host name|NotAllowedError)/gi;
-
 // i18n
 const messages = {};
 Object.keys(locales).forEach(async (locale) => {
@@ -57,7 +54,7 @@ export default defineNuxtConfig({
     // https://go.nuxtjs.dev/pwa
     '@vite-pwa/nuxt',
     // 'bootstrap-vue/nuxt',
-    '@nuxtjs/sentry',
+    '@sentry/nuxt',
     [
       '@nuxtjs/i18n',
       {
@@ -107,18 +104,6 @@ export default defineNuxtConfig({
   vue: {
     config: {
       devtools: process.env.NODE_ENV === 'development' ? 'source-map' : false,
-    },
-  },
-
-  sentry: {
-    dsn: process.env.VUE_APP_DSN,
-    config: {
-      beforeSend: (event, hint) => {
-        const error = hint.originalException;
-        if ((error && error.message && !ignored.test(error.message)) || !error) {
-          return event;
-        }
-      },
     },
   },
 

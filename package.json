@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@nuxtjs/device": "^2.3.0",
     "@nuxtjs/i18n": "^7.3.1",
-    "@nuxtjs/sentry": "^6.0.3",
+    "@sentry/nuxt": "^9.11.0",
     "@vite-pwa/nuxt": "^1.0.0",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.41.0",

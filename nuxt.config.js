@@ -55,8 +55,8 @@ export default defineNuxtConfig({
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    'bootstrap-vue/nuxt',
+    '@vite-pwa/nuxt',
+    // 'bootstrap-vue/nuxt',
     '@nuxtjs/sentry',
     [
       '@nuxtjs/i18n',
@@ -79,17 +79,28 @@ export default defineNuxtConfig({
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    registerType: 'autoUpdate',
     manifest: {
-      lang: 'en',
       name: 'WarframeHub',
-      theme: '#1a5072',
+      short_name: 'WarframeHub',
+      description: 'The Home for Warframe Information',
+      theme_color: '#1a5072',
+      icons: [
+        {
+          src: './static/icon.png', // TODO: Replace with image that has correct dimensions
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: './static/icon.png', // TODO: Replace with image that has correct dimensions
+          sizes: '512x512',
+          type: 'image/png',
+        },
+      ],
     },
     workbox: {
       skipWaiting: true,
       clientsClaim: true,
-    },
-    icon: {
-      source: './static/icon.png',
     },
   },
   ssr: false,

@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from 'nuxt/config';
 import locales from './static/json/locales.json';
 
 /* Sentry Reporting */

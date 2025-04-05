@@ -14,8 +14,12 @@
             font-size="1.75em"
             legend-class="legend"
           >
-            <span slot="legend-value">%</span>
-            <p slot="legend-caption" class="legend-caption">{{ $t('construction.fomorian') }}</p>
+            <template #legend-value>
+              <span>%</span>
+            </template>
+            <template #legend-caption>
+              <p class="legend-caption">{{ $t('construction.fomorian') }}</p>
+            </template>
           </VueEllipseProgress>
         </div>
         <div class="construction-wrapper text-center">
@@ -27,8 +31,10 @@
             font-size="1.75em"
             legend-class="legend"
           >
-            <span slot="legend-value">%</span>
-            <p slot="legend-caption" class="legend-caption">{{ $t('construction.razorback') }}</p>
+            <template #legend-value><span>%</span></template>
+            <template #legend-caption>
+              <p class="legend-caption">{{ $t('construction.razorback') }}</p>
+            </template>
           </VueEllipseProgress>
         </div>
       </b-list-group-item>

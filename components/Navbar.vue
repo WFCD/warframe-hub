@@ -11,7 +11,7 @@
           <nuxt-link to="/"> <i class="fas fa-clock faIcon" /> {{ $t('nav.timers') }} </nuxt-link>
         </b-nav-item>
         <b-nav-item-dropdown left>
-          <template slot="button-content"><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template>
+          <template #button-content><i class="fas fa-globe faIcon"></i> {{ $t('nav.ow') }}</template>
           <DropdownItem :is-local="true" icon="fas fa-info" target="/ow/fish/howto" :label="$t('nav.howto')" />
           <b-dd-divider />
           <b-dd-header><i class="fas fa-mountain faIcon"></i> {{ $t('nav.owearth') }}</b-dd-header>
@@ -27,13 +27,13 @@
           <DropdownItem :is-local="true" icon="fas fa-fish" target="/deimos/fish" :label="$t('nav.fish')" />
         </b-nav-item-dropdown>
         <b-nav-item-dropdown left>
-          <template slot="button-content"><i class="fas fa-tools faIcon"></i> {{ $t('nav.extras') }}</template>
+          <template #button-content><i class="fas fa-tools faIcon"></i> {{ $t('nav.extras') }}</template>
           <DropdownItem :is-local="true" icon="fas fa-database" target="/riven/data" :label="$t('nav.riven')" />
           <DropdownItem :is-local="true" icon="fas fa-camera" target="/synthesis" :label="$t('nav.synth')" />
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown left>
-          <template slot="button-content"><i class="fas fa-terminal faIcon"></i> {{ $t('nav.projects') }}</template>
+          <template #button-content><i class="fas fa-terminal faIcon"></i> {{ $t('nav.projects') }}</template>
           <DropdownItem icon="fas fa-download" target="https://drops.warframestat.us" :label="$t('nav.drops')" />
           <DropdownItem icon="fas fa-robot" target="https://genesis.warframestat.us" :label="$t('nav.genesis')" />
           <DropdownItem icon="fas fa-terminal" target="https://docs.warframestat.us" :label="$t('nav.docs')" />

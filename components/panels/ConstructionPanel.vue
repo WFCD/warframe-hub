@@ -23,7 +23,7 @@
           </VueEllipseProgress>
         </div>
         <div class="construction-wrapper text-center">
-          <VueEllipseProgress
+          <ve-progress
             :progress="razorProgress"
             color="#5BACF7"
             :size="100"
@@ -31,11 +31,11 @@
             font-size="1.75em"
             legend-class="legend"
           >
-            <template #legend-value><span>%</span></template>
+            <template #legend><span>%</span></template>
             <template #legend-caption>
               <p class="legend-caption">{{ $t('construction.razorback') }}</p>
             </template>
-          </VueEllipseProgress>
+          </ve-progress>
         </div>
       </b-list-group-item>
     </b-list-group>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { VueEllipseProgress } from 'vue-ellipse-progress';
+import veProgress from 'vue-ellipse-progress';
 
 import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
@@ -56,7 +56,7 @@ export default {
   components: {
     NoDataItem,
     HubPanelWrap,
-    VueEllipseProgress,
+    veProgress,
   },
   props: {
     construction: {

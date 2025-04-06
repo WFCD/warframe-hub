@@ -1,12 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import locales from './static/json/locales.json';
 
-// i18n
-const messages = {};
-Object.keys(locales).forEach(async (locale) => {
-  messages[locale] = await import(`./static/lang/${locale}.json`);
-});
-
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

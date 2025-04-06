@@ -33,16 +33,16 @@ L.Icon.Default.mergeOptions({
 Vue.use(L);
 */
 
-export default defineNuxtPlugin((app) => {
-  app.component('LMap', LMap);
-  app.component('LImageOverlay', LImageOverlay);
-  app.component('LMarker', LMarker);
-  app.component('LPopup', LPopup);
-  app.component('LPolyline', LPolyline);
-  app.component('LGeoJson', LGeoJson);
-  app.component('LTooltip', LTooltip);
-  app.component('LIcon', LIcon);
-  // app.component('LControlLayers', LControlLayers); // TODO: This doesn't appear to work on @vue-leaflet/vue-leaflet, as opposed to vue2-leaflet. Check if this component is necessary
-  app.component('LLayerGroup', LLayerGroup);
-  app.component('LCircleMarker', LCircleMarker);
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('LMap', LMap);
+  nuxtApp.vueApp.component('LImageOverlay', LImageOverlay);
+  nuxtApp.vueApp.component('LMarker', LMarker);
+  nuxtApp.vueApp.component('LPopup', LPopup);
+  nuxtApp.vueApp.component('LPolyline', LPolyline);
+  nuxtApp.vueApp.component('LGeoJson', LGeoJson);
+  nuxtApp.vueApp.component('LTooltip', LTooltip);
+  nuxtApp.vueApp.component('LIcon', LIcon);
+  // nuxtApp.vueApp.component('LControlLayers', LControlLayers); // TODO: This doesn't appear to work on @vue-leaflet/vue-leaflet, as opposed to vue2-leaflet. Check if this component is necessary
+  nuxtApp.vueApp.component('LLayerGroup', LLayerGroup);
+  nuxtApp.vueApp.component('LCircleMarker', LCircleMarker);
 });

@@ -1,4 +1,6 @@
-export default ({ app }) => {
+import { defineNuxtPlugin } from '#app';
+
+export default defineNuxtPlugin(({ app }) => {
   // Kick off worldstate refresh
   app.store.dispatch('worldstate/updateWorldstate');
   app.store.dispatch('cache/updateRivens');
@@ -15,4 +17,4 @@ export default ({ app }) => {
     await app.store.dispatch('cache/updateWarframes');
     await app.store.dispatch('cache/updateMods');
   }, 3600000);
-};
+});

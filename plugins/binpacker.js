@@ -1,4 +1,7 @@
-import Vue from 'vue';
-/* Vue Binpacker (Packery Replacement) */
 import VueBinpackerPlugin from 'vue-binpacker-plugin';
-Vue.use(VueBinpackerPlugin);
+import { defineNuxtPlugin } from '#app';
+
+/* Vue Binpacker (Packery Replacement) */
+export default defineNuxtPlugin((app) => {
+  app.use(VueBinpackerPlugin);
+});

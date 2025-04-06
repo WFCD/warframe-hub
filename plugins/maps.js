@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 /* Leaflet */
 import {
   LMap,
@@ -14,6 +12,8 @@ import {
   LCircleMarker,
 } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
+
+import { defineNuxtPlugin } from '#app';
 
 /* TODO: It's not clear what was imported with `import { L } from 'vue2-leaflet';`
 
@@ -33,14 +33,16 @@ L.Icon.Default.mergeOptions({
 Vue.use(L);
 */
 
-Vue.component('LMap', LMap);
-Vue.component('LImageOverlay', LImageOverlay);
-Vue.component('LMarker', LMarker);
-Vue.component('LPopup', LPopup);
-Vue.component('LPolyline', LPolyline);
-Vue.component('LGeoJson', LGeoJson);
-Vue.component('LTooltip', LTooltip);
-Vue.component('LIcon', LIcon);
-// Vue.component('LControlLayers', LControlLayers); // TODO: This doesn't appear to work on @vue-leaflet/vue-leaflet, as opposed to vue2-leaflet. Check if this component is necessary
-Vue.component('LLayerGroup', LLayerGroup);
-Vue.component('LCircleMarker', LCircleMarker);
+export default defineNuxtPlugin((app) => {
+  app.component('LMap', LMap);
+  app.component('LImageOverlay', LImageOverlay);
+  app.component('LMarker', LMarker);
+  app.component('LPopup', LPopup);
+  app.component('LPolyline', LPolyline);
+  app.component('LGeoJson', LGeoJson);
+  app.component('LTooltip', LTooltip);
+  app.component('LIcon', LIcon);
+  // app.component('LControlLayers', LControlLayers); // TODO: This doesn't appear to work on @vue-leaflet/vue-leaflet, as opposed to vue2-leaflet. Check if this component is necessary
+  app.component('LLayerGroup', LLayerGroup);
+  app.component('LCircleMarker', LCircleMarker);
+});

@@ -1,10 +1,10 @@
-import Vue from 'vue';
+import VueMatomo from 'vue-matomo';
+import { defineNuxtPlugin } from '#app';
 
 /* Analytics */
-import VueMatomo from 'vue-matomo';
-export default ({ app }) => {
+export default defineNuxtPlugin(({ app }) => {
   if (process.env.VUE_APP_ANALYICS_URL) {
-    Vue.use(VueMatomo, {
+    app.use(VueMatomo, {
       host: process.env.VUE_APP_ANALYICS_URL,
       siteId: process.env.VUE_APP_ANALYICS_SITE,
       router: app.router,
@@ -15,4 +15,4 @@ export default ({ app }) => {
       domains: 'hub.warframestat.us',
     });
   }
-};
+});

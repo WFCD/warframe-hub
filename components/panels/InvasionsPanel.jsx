@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import Spoiler from '@/components/Spoiler.jsx';
@@ -27,7 +27,6 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('worldstate', ['componentState']),
     headertext() {
       return this.$t('invasions.header');
     },
@@ -35,7 +34,7 @@ export default {
       return 5;
     },
     initialStatus() {
-      return this.componentState?.invasions?.expand;
+      return useWorldstateStore().componentState?.invasions?.expand;
     },
     current() {
       return this.ongoing.slice(0, this.maxInvasions);
@@ -50,10 +49,10 @@ export default {
   methods: {
     updatePanelStatus() {
       const newState = {
-        ...this.componentState.invasions,
-        expand: !this.componentState.invasions.expand,
+        ...useWorldstateStore().componentState.invasions,
+        expand: !useWorldstateStore().componentState.invasions.expand,
       };
-      this.$store.commit('worldstate/commitComponent', ['invasions', newState]);
+      useWorldstateStore().commitComponent(['invasions', newState]);
     },
   },
   render() {

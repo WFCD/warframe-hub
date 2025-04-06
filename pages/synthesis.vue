@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { useCacheStore } from '~/store/cache';
 import SynthesisImg from '@/components/SynthesisImg.jsx';
 
 const fields = [
@@ -163,7 +163,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('cache', ['synthData']),
+    synthData() {
+      return useCacheStore().synthData;
+    },
   },
   watch: {
     synthData(val) {
@@ -173,13 +175,13 @@ export default {
     },
   },
   mounted() {
-    if (this.synthData) {
-      this.data = this.synthData;
+    if (useCacheStore().synthData) {
+      this.data = useCacheStore().synthData;
       this.totalRows = this.data.length;
     } else {
       this.data = [];
       this.loading = true;
-      this.$store.dispatch('cache/updateSynthData');
+      useCacheStore().updateSynthData();
     }
   },
   methods: {

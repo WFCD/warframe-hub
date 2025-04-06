@@ -1,12 +1,14 @@
-import { mapGetters } from 'vuex';
 import baseComponents from '@/static/json/components.json';
+import { useWorldstateStore } from '~/store/worldstate';
 
 export default {
   computed: {
-    ...mapGetters('worldstate', ['componentState']),
+    componentState() {
+      return useWorldstateStore().componentState;
+    },
     activeComponents: {
       get() {
-        return Object.values(this.componentState)
+        return Object.values(useWorldstateStore().componentState)
           .filter(
             (component) =>
               component.display && (!baseComponents[component.key] || baseComponents[component.key].displayable)
@@ -14,25 +16,22 @@ export default {
           .map((component) => component.key);
       },
       set(enabledComponents) {
-        Object.keys(this.componentState).forEach((component) => {
-          if (this.componentState[component].display !== enabledComponents.includes(component)) {
-            this.$store.commit('worldstate/commitComponentDisplayMode', [
-              component,
-              enabledComponents.includes(component),
-            ]);
+        Object.keys(useWorldstateStore().componentState).forEach((component) => {
+          if (useWorldstateStore().componentState[component].display !== enabledComponents.includes(component)) {
+            return useWorldstateStore().commitComponentDisplayMode([component, enabledComponents.includes(component)]);
           }
         });
       },
     },
     componentStates() {
-      return Object.keys(this.componentState)
+      return Object.keys(useWorldstateStore().componentState)
         .map((component) => {
           if (!baseComponents[component] || !baseComponents[component].displayable) {
             return false;
           }
           return {
-            text: this.componentState[component].displayName,
-            value: this.componentState[component].key,
+            text: useWorldstateStore().componentState[component].displayName,
+            value: useWorldstateStore().componentState[component].key,
           };
         })
         .filter((c) => c)
@@ -46,7 +45,7 @@ export default {
           <b-form-checkbox-group
             id="components-checks"
             v-model={this.activeComponents}
-            options={this.componentStates}
+            options={useWorldstateStore().componentState}
             switches
             stacked
             class="settings-group"

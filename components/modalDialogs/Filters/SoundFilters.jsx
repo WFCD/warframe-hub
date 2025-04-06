@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 
 const eidolon = '/audio/eidolon.mp3';
 
@@ -23,13 +23,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['sounds']),
     activeSounds: {
       get() {
-        return JSON.parse(JSON.stringify(this.sounds));
+        return JSON.parse(JSON.stringify(useWorldstateStore().sounds));
       },
       set(enabledSounds) {
-        this.$store.commit('worldstate/commitSounds', [JSON.parse(JSON.stringify(enabledSounds))]);
+        useWorldstateStore().commitSounds([JSON.parse(JSON.stringify(enabledSounds))]);
       },
     },
   },

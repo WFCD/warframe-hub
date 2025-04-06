@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <b-alert v-if="loading" show variant="info">
-      <h4 class="alert-heading">Loading Riven Data for {{ platforms[platform].display }}</h4>
+      <h4 class="alert-heading">Loading Riven Data for {{ platforms[useWorldstateStore().platform].display }}</h4>
       <hr />
       <p class="mb-0">If this card stays active for more than a minute, please reload the site or try agin later.</p>
     </b-alert>
@@ -105,7 +105,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
+import { useCacheStore } from '~/store/cache';
 import platforms from '@/static/json/platforms.json';
 
 const fields = [
@@ -180,16 +181,13 @@ export default {
       currentPage: 1,
       perPage: 25,
       totalRows: 0,
+      useWorldstateStore,
     };
   },
   computed: {
-    ...mapGetters({
-      rivensCache: 'cache/rivens',
-      platform: 'worldstate/platform',
-    }),
     rivens: {
       get() {
-        return this.rivensCache?.[this.platform] || [];
+        return useCacheStore().rivens?.[useWorldstateStore().platform] || [];
       },
     },
   },

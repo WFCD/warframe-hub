@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { mapState } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import TimeBadge from '@/components/TimeBadge.jsx';
 
 import thumb from '@/components/AsyncItemThumb.jsx';
@@ -308,9 +308,9 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      componentState: (state) => state.worldstate.components,
-    }),
+    componentState() {
+      return useWorldstateStore().worldstate.components;
+    },
     now() {
       return dayjs().toISOString();
     },

@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import themes from '@/static/json/themes.json';
 
 export default {
@@ -18,15 +18,12 @@ export default {
   computed: {
     theme: {
       get() {
-        return this.rawTheme;
+        return useWorldstateStore().theme;
       },
       set(theme) {
-        this.$store.commit('worldstate/setTheme', [theme]);
+        useWorldstateStore().setTheme([theme]);
       },
     },
-    ...mapGetters('worldstate', {
-      rawTheme: 'theme',
-    }),
   },
   render() {
     return (

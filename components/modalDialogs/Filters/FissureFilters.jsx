@@ -1,24 +1,20 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 
 export default {
   name: 'FissureFilters',
-  data() {
-    return {};
-  },
   computed: {
-    ...mapGetters('worldstate', {
-      fissureStates: 'fissurePlanetStates',
-    }),
     activeFissures: {
       get() {
-        const planets = Object.keys(this.fissureStates).map((planet) => this.fissureStates[planet]);
+        const planets = Object.keys(useWorldstateStore().fissurePlanetStates).map(
+          (planet) => useWorldstateStore().fissurePlanetStates[planet]
+        );
 
         return planets.filter((planet) => planet.state).map((planet) => planet.value);
       },
       set(enabledFissures) {
-        Object.keys(this.fissureStates).forEach((planet) => {
-          if (this.fissureStates[planet] !== enabledFissures.includes(planet)) {
-            this.$store.commit('worldstate/commitFissurePlanetState', [planet, enabledFissures.includes(planet)]);
+        Object.keys(useWorldstateStore().fissurePlanetStates).forEach((planet) => {
+          if (useWorldstateStore().fissurePlanetStates[planet] !== enabledFissures.includes(planet)) {
+            useWorldstateStore().commitFissurePlanetState([planet, enabledFissures.includes(planet)]);
           }
         });
       },
@@ -35,7 +31,7 @@ export default {
                 id="fissure-checks"
                 v-model={this.activeFissures}
                 name="Fissure Filters"
-                options={this.fissureStates}
+                options={useWorldstateStore().fissurePlanetStates}
                 switches
                 stacked
                 class={'settings-group fissure-setting-group'}

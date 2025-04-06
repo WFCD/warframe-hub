@@ -6,7 +6,6 @@
 import L from 'leaflet';
 
 /* map stuff */
-import { mapGetters } from 'vuex';
 
 import labels from 'static/json/geo/deimos/labels.json';
 import teleporter from 'static/json/geo/deimos/teleporter.json';
@@ -18,6 +17,7 @@ import { cdn } from '@/services/utilities';
 
 import BaseMap from '@/components/BaseMap';
 import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
+import { useWorldstateStore } from '~/store/worldstate';
 
 const drift = cdn('webp/maps/cambion-drift.webp');
 
@@ -82,13 +82,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['deimosMapToggles']),
     toggles: {
       get() {
-        return this.deimosMapToggles;
+        return useWorldstateStore().deimosMapToggles;
       },
       set(toggles) {
-        this.$store.commit('worldstate/deimosMapToggles', [toggles]);
+        useWorldstateStore().commitDeimosMapToggles([toggles]);
       },
     },
     properties: {

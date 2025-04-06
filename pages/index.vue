@@ -3,32 +3,61 @@
     <b-container fluid class="grid">
       <vue-binpacker>
         <aggregatedtimer v-if="displayAggregate" :worldstate="worldstate" />
-        <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
-        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
-        <news v-if="componentState.news.display" :news="worldstate.news" />
+        <construction
+          v-if="useWorldstateStore().worldstate.components.construction.display"
+          :construction="worldstate.constructionProgress"
+        />
+        <deals v-if="useWorldstateStore().worldstate.components.darvo.display" :deals="worldstate.dailyDeals" />
+        <news v-if="useWorldstateStore().worldstate.components.news.display" :news="worldstate.news" />
         <events
-          v-if="componentState.event.display && worldstate.events && worldstate.events.length"
+          v-if="
+            useWorldstateStore().worldstate.components.event.display && worldstate.events && worldstate.events.length
+          "
           :events="worldstate.events"
         />
-        <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
-        <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
-        <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
-        <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges" />
-        <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
-        <sortie v-if="componentState.archonHunt.display" :sortie="worldstate.archonHunt" />
-        <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
-        <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
-        <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
-        <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
-        <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
-        <void-trader v-if="componentState.baro.display" :void-trader="worldstate.voidTrader" />
+        <alerts v-if="useWorldstateStore().worldstate.components.alerts.display" :alerts="worldstate.alerts" />
+        <invasions
+          v-if="useWorldstateStore().worldstate.components.invasions.display"
+          :invasions="worldstate.invasions"
+        />
+        <nightwave
+          v-if="useWorldstateStore().worldstate.components.nightwave.display"
+          :nightwave="worldstate.nightwave"
+        />
+        <conclave
+          v-if="useWorldstateStore().worldstate.components.conclave.display"
+          :conclave="worldstate.conclaveChallenges"
+        />
+        <sortie v-if="useWorldstateStore().worldstate.components.sortie.display" :sortie="worldstate.sortie" />
+        <sortie v-if="useWorldstateStore().worldstate.components.archonHunt.display" :sortie="worldstate.archonHunt" />
+        <fissures v-if="useWorldstateStore().worldstate.components.fissures.display" :fissures="worldstate.fissures" />
+        <bounty
+          v-if="useWorldstateStore().worldstate.components.bounties.display"
+          :syndicate="useWorldstateStore().ostron"
+          type="ostron"
+        />
+        <bounty
+          v-if="useWorldstateStore().worldstate.components['solaris-bounties'].display"
+          :syndicate="useWorldstateStore().solaris"
+          type="solaris"
+        />
+        <bounty
+          v-if="useWorldstateStore().worldstate.components['entrati-bounties'].display"
+          :syndicate="useWorldstateStore().entrati"
+          type="entrati"
+        />
+        <sales v-if="useWorldstateStore().worldstate.components.deals.display" :sales="worldstate.flashSales" />
+        <void-trader
+          v-if="useWorldstateStore().worldstate.components.baro.display"
+          :void-trader="worldstate.voidTrader"
+        />
       </vue-binpacker>
     </b-container>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import AlertPanel from '@/components/panels/AlertPanel.jsx';
 import NewsPanel from '@/components/panels/NewsPanel.vue';
 import AggregatedTimePanel from '@/components/panels/AggregatedTimePanel.jsx';
@@ -65,33 +94,25 @@ export default {
   data() {
     return {
       components: {},
+      useWorldstateStore,
     };
   },
   computed: {
-    ...mapState({
-      componentState: (state) => state.worldstate.components,
-    }),
-    ...mapGetters('worldstate', {
-      worldstate: 'worldstate',
-      ostron: 'ostronSyndicate',
-      solaris: 'solarisSyndicate',
-      entrati: 'entratiSyndicate',
-    }),
     displayAggregate() {
       return (
-        this.componentState.aggregated.display &&
-        (this.componentState.cetus.display ||
-          this.componentState.vallis.display ||
-          this.componentState.cambion.display ||
-          this.componentState.reset.display ||
-          this.componentState.sentientoutposts.display ||
-          this.componentState['steel-path'].display ||
-          this.componentState.arbitration.display)
+        useWorldstateStore().worldstate.components.aggregated.display &&
+        (useWorldstateStore().worldstate.components.cetus.display ||
+          useWorldstateStore().worldstate.components.vallis.display ||
+          useWorldstateStore().worldstate.components.cambion.display ||
+          useWorldstateStore().worldstate.components.reset.display ||
+          useWorldstateStore().worldstate.components.sentientoutposts.display ||
+          useWorldstateStore().worldstate.components['steel-path'].display ||
+          useWorldstateStore().worldstate.components.arbitration.display)
       );
     },
     steelPath() {
-      return this.worldstate.steelPath && this.worldstate.steelPath.currentReward
-        ? `${this.worldstate.steelPath.currentReward.name}: ${this.worldstate.steelPath.currentReward.cost}`
+      return useWorldstateStore().worldstate.steelPath && useWorldstateStore().worldstate.steelPath.currentReward
+        ? `${useWorldstateStore().worldstate.steelPath.currentReward.name}: ${useWorldstateStore().worldstate.steelPath.currentReward.cost}`
         : 'See Teshin: ???';
     },
   },

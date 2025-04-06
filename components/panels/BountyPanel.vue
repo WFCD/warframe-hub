@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import TimeBadge from '@/components/TimeBadge.jsx';
 import NoDataItem from '@/components/NoDataItem.jsx';
 import HubImg from '@/components/HubImg.jsx';
@@ -130,13 +130,12 @@ export default {
       set() {
         this.hover = null;
         this.autoExpand = !this.autoExpand;
-        this.$store.commit('worldstate/toggleBountiesOpen', [this.typeId, this.autoExpand]);
+        useWorldstateStore().toggleBountiesOpen([this.typeId, this.autoExpand]);
       },
     },
-    ...mapGetters('worldstate', ['bountyToggles']),
   },
   beforeMount() {
-    this.autoExpand = this.bountyToggles[this.typeId];
+    this.autoExpand = useWorldstateStore().bountyToggles[this.typeId];
   },
   methods: {
     toggleDetails(row) {

@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import locales from '@/static/json/locales.json';
 
 export default {
@@ -16,21 +16,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['locale']),
     lang: {
       set(locale) {
         this.saveLocale(locale);
       },
       get() {
-        return this.locale;
+        return useWorldstateStore().locale;
       },
     },
   },
   methods: {
     saveLocale(locale) {
-      this.$store.commit('worldstate/commitLocale', locale);
+      useWorldstateStore().commitLocale(locale);
       this.$i18n.locale = locale;
-      this.$store.dispatch('worldstate/updateWorldstate');
+      useWorldstateStore().updateWorldstate();
     },
   },
   render() {

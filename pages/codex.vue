@@ -2,7 +2,7 @@
   <div />
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { useCacheStore } from '~/store/cache';
 export default {
   name: 'CodexView',
   data() {
@@ -18,9 +18,6 @@ export default {
       perPage: 25,
       totalRows: 0,
     };
-  },
-  computed: {
-    ...mapGetters('cache', ['warframes', 'mods', 'weapons']),
   },
   watch: {
     warframes(val) {
@@ -43,22 +40,22 @@ export default {
     },
   },
   mounted() {
-    if (this.mods) {
-      this.data.mods = this.mods;
+    if (useCacheStore().mods) {
+      this.data.mods = useCacheStore().mods;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.mods = [];
       this.$store.dispatch('cache/updateMods');
     }
-    if (this.warframes) {
-      this.data.warframes = this.warframes;
+    if (useCacheStore().warframes) {
+      this.data.warframes = useCacheStore().warframes;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.warframes = [];
       this.$store.dispatch('cache/updateWarframes');
     }
-    if (this.weapons) {
-      this.data.weapons = this.weapons;
+    if (useCacheStore().weapons) {
+      this.data.weapons = useCacheStore().weapons;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.weapons = [];

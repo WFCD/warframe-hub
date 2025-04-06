@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import TimeBadge from '@/components/TimeBadge.jsx';
 import HubImg from '@/components/HubImg.jsx';
 import NoDataItem from '@/components/NoDataItem.jsx';
@@ -109,27 +109,26 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['fissureDisplays', 'fissurePlanetStates']),
     headertext() {
       return this.$t('fissures.header');
     },
     check: {
       get() {
-        if (this.fissureDisplays === 'fissures-storms') {
+        if (useWorldstateStore().fissureDisplays === 'fissures-storms') {
           // update, in case the site data is outdate
-          this.$store.commit('worldstate/commitFissureDisplaysState', ['fissures-storms-steelPath']);
+          useWorldstateStore().commitFissureDisplaysState(['fissures-storms-steelPath']);
           return 'fissures-storms-steelPath';
         }
-        return this.fissureDisplays;
+        return useWorldstateStore().fissureDisplays;
       },
       set(value) {
-        this.$store.commit('worldstate/commitFissureDisplaysState', [value]);
+        useWorldstateStore().commitFissureDisplaysState([value]);
       },
     },
     filteredFissures() {
       const pState = [];
-      Object.keys(this.fissurePlanetStates).forEach((p) => {
-        if (this.fissurePlanetStates[p].state) {
+      Object.keys(useWorldstateStore().fissurePlanetStates).forEach((p) => {
+        if (useWorldstateStore().fissurePlanetStates[p].state) {
           pState.push(p);
         }
       });

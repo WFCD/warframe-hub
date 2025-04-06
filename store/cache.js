@@ -1,86 +1,92 @@
+import { defineStore } from '@pinia/nuxt';
+import { useWorldstateStore } from './worldstate';
 import { get } from '@/services/utilities';
-const safeCommit = (commit, id, data) => {
+const safeCommit = (fn) => {
   try {
-    commit(id, [data]);
+    fn();
   } catch (e) {
     // throw away error
   }
 };
 
-export const state = () => ({
-  rivens: {
-    pc: [],
-    ps4: [],
-    xb1: [],
-    switch: [],
+// TODO: Migrate existing persisted vuex data on clients
+
+export const useCacheStore = defineStore('cache', {
+  persist: true,
+  state: () => ({
+    rivens: {
+      pc: [],
+      ps4: [],
+      xb1: [],
+      switch: [],
+    },
+    synthData: [],
+    warframes: [],
+    weaponds: [],
+    mods: [],
+  }),
+  getters: {
+    rivens: (state) => state.rivens,
+    synthData: (state) => state.synthData,
+    warframes: (state) => state.warframes,
+    weapons: (state) => state.weapons,
+    mods: (state) => state.mods,
   },
-  synthData: [],
-  warframes: [],
-  weaponds: [],
-  mods: [],
-});
-export const actions = {
-  async updateRivens({ commit, rootGetters }) {
+  actions: {
+    commitRivens: ([platform, rivens]) => {
+      if (!this.rivens || Array.isArray(this.rivens)) {
+        this.rivens = {
+          pc: [],
+          ps4: [],
+          xb1: [],
+          switch: [],
+        };
+      }
+      this.rivens[platform] = rivens;
+    },
+    commitSynthData: ([synthData]) => {
+      this.synthData = synthData;
+    },
+    commitFrameData: ([warframes]) => {
+      this.warframes = warframes;
+    },
+    commitWeaponData: ([weapons]) => {
+      this.weapons = weapons;
+    },
+    commitModData: ([mods]) => {
+      this.mods = mods;
+    },
+  },
+
+  async updateRivens() {
     const res = await fetch(
-      `https://www.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
+      `https://www.warframe.com/repos/weeklyRivens${useWorldstateStore().platform.toUpperCase()}.json`
     );
     const raw = await res.text();
     if (!(raw && raw.length)) return;
     const rivens = JSON.parse(raw.replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
-    commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
+    this.commitRivens([useWorldstateStore().locale, rivens]);
   },
-  async updateSynthData({ commit, rootGetters }) {
-    const res = await get(`https://api.warframestat.us/synthTargets/?language=${rootGetters['worldstate/locale']}`);
-    safeCommit(commit, 'commitSynthData', res);
+  async updateSynthData() {
+    const res = await get(`https://api.warframestat.us/synthTargets/?language=${useWorldstateStore().locale}`);
+    safeCommit(() => this.commitSynthData(res));
   },
-  async updateWarframes({ commit, rootGetters }) {
+  async updateWarframes() {
     const res = await get(
-      `https://api.warframestat.us/warframes?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
+      `https://api.warframestat.us/warframes?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${useWorldstateStore().locale}`
     );
-    safeCommit(commit, 'commitFrameData', res);
+    safeCommit(() => this.commitFrameData(res));
   },
-  async updateWeapons({ commit, rootGetters }) {
+  async updateWeapons() {
     const res = await get(
-      `https://api.warframestat.us/weapons?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
+      `https://api.warframestat.us/weapons?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${useWorldstateStore().locale}`
     );
-    safeCommit(commit, 'commitWeaponData', res);
+    safeCommit(() => this.commitWeaponData(res));
   },
-  async updateMods({ commit, rootGetters }) {
+  async updateMods() {
     const res = await get(
-      `https://api.warframestat.us/mods?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${rootGetters['worldstate/locale']}`
+      `https://api.warframestat.us/mods?exclude=category,color,conclave,patchlogs,wikiaThumbnail,type,tradable&language=${useWorldstateStore().locale}`
     );
-    safeCommit(commit, 'commitModData', res);
+    safeCommit(() => this.commitModData(res));
   },
-};
-export const mutations = {
-  commitRivens: (state, [platform, rivens]) => {
-    if (!state.rivens || Array.isArray(state.rivens)) {
-      state.rivens = {
-        pc: [],
-        ps4: [],
-        xb1: [],
-        switch: [],
-      };
-    }
-    state.rivens[platform] = rivens;
-  },
-  commitSynthData: (state, [synthData]) => {
-    state.synthData = synthData;
-  },
-  commitFrameData: (state, [warframes]) => {
-    state.warframes = warframes;
-  },
-  commitWeaponData: (state, [weapons]) => {
-    state.weapons = weapons;
-  },
-  commitModData: (state, [mods]) => {
-    state.mods = mods;
-  },
-};
-export const getters = {
-  rivens: (state) => state.rivens,
-  synthData: (state) => state.synthData,
-  warframes: (state) => state.warframes,
-  weapons: (state) => state.weapons,
-  mods: (state) => state.mods,
-};
+});

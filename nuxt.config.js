@@ -56,12 +56,18 @@ export default defineNuxtConfig({
     // 'bootstrap-vue/nuxt', // TODO: This is not compatible with Nuxt 3 and there is no replacement.
     '@sentry/nuxt',
     '@nuxtjs/i18n',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
 
     // Moved from `buildModules` in Nuxt 3 migration: https://nuxt.com/docs/migration/configuration#modules
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/device',
   ],
+
+  piniaPluginPersistedstate: {
+    storage: 'localStorage',
+  },
 
   i18n: {
     locales: Object.keys(locales),
@@ -119,5 +125,5 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: '2025-04-04'
+  compatibilityDate: '2025-04-04',
 });

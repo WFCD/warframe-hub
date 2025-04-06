@@ -6,7 +6,7 @@
 import L from 'leaflet';
 
 /* map stuff */
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import labels from '@/static/json/geo/plains/labels.json';
 import fish from '@/static/json/geo/plains/fishing.json';
 import grineer from '@/static/json/geo/plains/grineer.json';
@@ -80,13 +80,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['poeMapToggles']),
     toggles: {
       get() {
-        return this.poeMapToggles;
+        return useWorldstateStore().poeMapToggles;
       },
       set(toggles) {
-        this.$store.commit('worldstate/poeMapToggles', [toggles]);
+        useWorldstateStore().commitPoeMapToggles([toggles]);
       },
     },
     properties: {

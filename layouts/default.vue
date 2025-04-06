@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import Navbar from '@/components/Navbar.vue';
 import Settings from '@/components/modalDialogs/Settings.jsx';
 import About from '@/components/modalDialogs/AboutModal.jsx';
@@ -22,11 +22,8 @@ export default {
     About,
   },
   computed: {
-    ...mapGetters('worldstate', {
-      rawTheme: 'theme',
-    }),
     theme() {
-      return themes.find((theme) => theme.key === this.rawTheme).className;
+      return themes.find((theme) => theme.key === useWorldstateStore().theme).className;
     },
   },
   watch: {

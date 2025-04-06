@@ -5,7 +5,7 @@
 <script>
 import L from 'leaflet';
 
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import { cdn } from '@/services/utilities';
 import { makeMapLabel, markers, layerUpdate, markerOpts } from '@/services/utilities/maps';
 
@@ -119,13 +119,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', ['vallisMapToggles']),
     toggles: {
       get() {
-        return this.vallisMapToggles;
+        return useWorldstateStore().vallisMapToggles;
       },
       set(toggles) {
-        this.$store.commit('worldstate/vallisMapToggles', [toggles]);
+        useWorldstateStore().commitVallisMapToggles([toggles]);
       },
     },
     properties: {

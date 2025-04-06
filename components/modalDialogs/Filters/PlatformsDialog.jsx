@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import platforms from '@/static/json/platforms.json';
 
 export default {
@@ -16,15 +16,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('worldstate', { readPlatform: 'platform' }),
     platform: {
       set(platform) {
-        this.$store.commit('worldstate/commitPlatform', platform);
-        this.$store.dispatch('worldstate/updateWorldstate');
-        this.$store.dispatch('cache/updateRivens');
+        useWorldstateStore().commitPlatform(platform);
+        useWorldstateStore().updateWorldstate();
+        useWorldstateStore().updateRivens();
       },
       get() {
-        return this.readPlatform;
+        return useWorldstateStore().platform;
       },
     },
   },

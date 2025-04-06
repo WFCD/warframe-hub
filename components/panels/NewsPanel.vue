@@ -55,7 +55,7 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { mapGetters } from 'vuex';
+import { useWorldstateStore } from '~/store/worldstate';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
 import { optimize, cdn } from '@/services/utilities';
@@ -89,7 +89,7 @@ export default {
       return this.$t('news.header');
     },
     filteredNews() {
-      return this.news.filter((item) => item.translations[this.locale]).reverse();
+      return this.news.filter((item) => item.translations[useWorldstateStore().locale]).reverse();
     },
     check: {
       get() {
@@ -97,12 +97,11 @@ export default {
       },
       set() {
         this.hover = null;
-        this.$store.commit('worldstate/autoProgressNews', [!this.cycle]);
+        useWorldstateStore().autoProgressNews([!this.cycle]);
       },
     },
-    ...mapGetters('worldstate', ['componentState', 'locale']),
     cycle() {
-      return this.componentState.news.autoCycle;
+      return useWorldstateStore().componentState.news.autoCycle;
     },
   },
   mounted() {
@@ -160,23 +159,23 @@ export default {
         if (dayjs(newsitem.startDate).unix() > dayjs().unix()) {
           return {
             time: dayjs(newsitem.startDate).fromNow(),
-            label: newsitem.translations[this.locale],
+            label: newsitem.translations[useWorldstateStore().locale],
           };
         } else if (dayjs(newsitem.endDate).unix() > dayjs().unix()) {
           return {
             time: `${this.$t('news.live')}:`,
-            label: newsitem.translations[this.locale],
+            label: newsitem.translations[useWorldstateStore().locale],
           };
         } else {
           return {
             time: dayjs(newsitem.endDate).fromNow(),
-            label: newsitem.translations[this.locale],
+            label: newsitem.translations[useWorldstateStore().locale],
           };
         }
       } else {
         return {
           time: dayjs(newsitem.date).fromNow(),
-          label: newsitem.translations[this.locale],
+          label: newsitem.translations[useWorldstateStore().locale],
         };
       }
     },

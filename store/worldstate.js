@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import { defineStore } from '@pinia/nuxt';
 import trackables from 'static/json/trackables.js';
 import initialWorldstate from '@/static/json/initialWorldstate.json';
 import components from '@/static/json/components.json';
@@ -180,7 +179,7 @@ export const useWorldstateStore = defineStore('worldstate', {
       this.bountyToggles[bountyType] = newState;
     },
 
-    async updateWorldstate(context) {
+    async updateWorldstate() {
       const ws = await get(`${apiBase}/${this.platform}/?language=${this.locale}`, {
         headers: {
           'Accept-Language': this.locale,
@@ -188,7 +187,7 @@ export const useWorldstateStore = defineStore('worldstate', {
       });
       this.commitWs([this.platform, ws]);
       if (!notifier) {
-        notifier = new Notifier(context);
+        notifier = new Notifier();
       }
       notifier.checkNotifications();
     },

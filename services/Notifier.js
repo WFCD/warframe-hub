@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { useWorldstateStore } from '~/store/worldstate';
 
 const drum = '/audio/drum.mp3';
 const eidolon = '/audio/eidolon.mp3';
@@ -196,13 +197,12 @@ const makeNotification = (type, data) => {
 };
 
 export default class Notifier {
-  constructor(store) {
-    this.store = store;
+  constructor() {
     this.notifier = Vue.notification;
   }
 
   isNotifiable(id, event, items) {
-    const currentNotifieds = this.store.getters.notifiedIds;
+    const currentNotifieds = useWorldstateStore().notifiedIds;
     const eventGood = !currentNotifieds.includes(id) && this.trackedEvents.includes(event);
     const includesItems = items && items.length ? this.trackedRewards.some((r) => items.includes(r)) : true;
     return eventGood && includesItems;
@@ -228,7 +228,7 @@ export default class Notifier {
         });
       }
 
-      if (this.store.getters.sounds.includes(notification.type)) {
+      if (useWorldstateStore().sounds.includes(notification.type)) {
         let audio;
         switch (notification.sound) {
           case 'drum':
@@ -389,8 +389,8 @@ export default class Notifier {
   }
 
   async checkNotifications() {
-    const ws = this.store.rootGetters['worldstate/worldstate'];
-    const trackableState = this.store.rootGetters['worldstate/trackableState'];
+    const ws = useWorldstateStore().worldstate;
+    const trackableState = useWorldstateStore().trackableState;
     const rTypes = trackableState.rewardTypes;
     const eTypes = trackableState.eventTypes;
     this.trackedRewards = Object.keys(rTypes)

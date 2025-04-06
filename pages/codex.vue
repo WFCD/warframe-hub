@@ -45,21 +45,21 @@ export default {
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.mods = [];
-      this.$store.dispatch('cache/updateMods');
+      useCacheStore().updateMods();
     }
     if (useCacheStore().warframes) {
       this.data.warframes = useCacheStore().warframes;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.warframes = [];
-      this.$store.dispatch('cache/updateWarframes');
+      useCacheStore().updateWarframes();
     }
     if (useCacheStore().weapons) {
       this.data.weapons = useCacheStore().weapons;
       this.totalRows = this.data.mods.length + this.data.warframes.length + this.data.weapons.length;
     } else {
       this.data.weapons = [];
-      this.$store.dispatch('cache/updateWeapons');
+      useCacheStore().updateWeapons();
     }
   },
   methods: {

@@ -1,4 +1,3 @@
-import { defineStore } from '@pinia/nuxt';
 import { useWorldstateStore } from './worldstate';
 import { get } from '@/services/utilities';
 const safeCommit = (fn) => {

@@ -5,12 +5,13 @@ import PlatformsDialog from '@/components/modalDialogs/Filters/PlatformsDialog.j
 import Languages from '@/components/modalDialogs/Filters/Languages.jsx';
 import ThemeFilter from '@/components/modalDialogs/Filters/ThemeFilter';
 import ComponentsFilter from '@/components/modalDialogs/Filters/ComponentsFilter';
+import { useWorldstateStore } from '~/store/worldstate';
 
 export default {
   name: 'SettingsModal',
   methods: {
     checkNotifications() {
-      return this.$store.dispatch('worldstate/checkNotifPermissions');
+      return useWorldstateStore().checkNotifPermissions();
     },
   },
   render() {

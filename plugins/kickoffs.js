@@ -1,20 +1,22 @@
 import { defineNuxtPlugin } from '#app';
+import { useCacheStore } from '~/store/cache';
+import { useWorldstateStore } from '~/store/worldstate';
 
-export default defineNuxtPlugin(({ app }) => {
+export default defineNuxtPlugin(({ nuxtApp }) => {
   // Kick off worldstate refresh
-  app.store.dispatch('worldstate/updateWorldstate');
-  app.store.dispatch('cache/updateRivens');
-  app.store.dispatch('cache/updateSynthData');
+  useWorldstateStore().updateWorldstate();
+  useCacheStore().updateRivens();
+  useCacheStore().updateSynthData();
 
   const interval = process.env.VUE_APP_INTERVAL === undefined ? 30000 : Number(process.env.VUE_APP_INTERVAL);
   setInterval(async () => {
-    return await app.store.dispatch('worldstate/updateWorldstate');
+    return await useWorldstateStore().updateWorldstate();
   }, interval);
   setInterval(async () => {
-    await app.store.dispatch('cache/updateRivens');
-    await app.store.dispatch('cache/updateSynthData');
-    await app.store.dispatch('cache/updateWeapons');
-    await app.store.dispatch('cache/updateWarframes');
-    await app.store.dispatch('cache/updateMods');
+    await useCacheStore().updateRivens();
+    await useCacheStore().updateSynthData();
+    await useCacheStore().updateWeapons();
+    await useCacheStore().updateWarframes();
+    await useCacheStore().updateMods();
   }, 3600000);
 });

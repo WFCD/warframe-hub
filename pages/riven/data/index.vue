@@ -208,7 +208,7 @@ export default {
       } else {
         this.data = [];
         this.loading = true;
-        this.$store.dispatch('cache/updateRivens');
+        useCacheStore().updateRivens();
       }
     });
   },

@@ -50,8 +50,8 @@
     "postcss-preset-env": "^7.x"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.27.0",
-    "@babel/runtime-corejs3": "^7.27.0",
+    "@babel/eslint-parser": "^7.27.1",
+    "@babel/runtime-corejs3": "^7.27.3",
     "@cypress/vue": "^2.2.4",
     "@cypress/webpack-dev-server": "^4.1.0",
     "@nuxt/babel-preset-app": "^2.18.1",
@@ -70,7 +70,7 @@
     "husky": "^9.1.7",
     "less": "^4.3.0",
     "less-loader": "^7.3.0",
-    "lint-staged": "^15.5.1",
+    "lint-staged": "^16.1.0",
     "postcss": "^8.5.3",
     "prettier": "^3.2.5",
     "webpack-dev-server": "^4.15.2"

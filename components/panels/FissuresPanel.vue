@@ -68,7 +68,7 @@ import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 import { cdn } from '@/services/utilities';
 
 const archwing = cdn('svg/archwing.svg');
-const steelPath = cdn('svg/arbitrations.svg');
+const steelPath = cdn('svg/sp-logo.svg');
 
 const fissureIcons = [];
 const lith = cdn('svg/fissures/1.svg');

@@ -22,12 +22,18 @@ export const state = () => ({
 export const actions = {
   async updateRivens({ commit, rootGetters }) {
     const res = await fetch(
-      `https://www.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
+      `https://www-static.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
     );
-    const raw = await res.text();
-    if (!(raw && raw.length)) return;
-    const rivens = JSON.parse(raw.replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
-    commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
+    try {
+      const raw = await res.text();
+      if (!(raw && raw.length)) return;
+      // eslint-disable-next-line no-eval
+      const rivens = eval(raw);
+      commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
+    } catch (e) {
+      console.error(e);
+      commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+    }
   },
   async updateSynthData({ commit, rootGetters }) {
     const res = await get(`https://api.warframestat.us/synthTargets/?language=${rootGetters['worldstate/locale']}`);

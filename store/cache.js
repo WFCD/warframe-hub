@@ -1,4 +1,6 @@
+import json5 from 'json5';
 import { get } from '@/services/utilities';
+
 const safeCommit = (commit, id, data) => {
   try {
     commit(id, [data]);
@@ -19,15 +21,33 @@ export const state = () => ({
   weaponds: [],
   mods: [],
 });
+
 export const actions = {
   async updateRivens({ commit, rootGetters }) {
-    const res = await fetch(
-      `https://www.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
-    );
-    const raw = await res.text();
-    if (!(raw && raw.length)) return;
-    const rivens = JSON.parse(raw.replace(/NaN/g, 0).replace(/WARNING:.*\n/, ''));
-    commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
+    try {
+      const res = await fetch(
+        `https://www-static.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
+      );
+
+      if (!res.ok) {
+        console.error(`Failed to fetch rivens: ${res.status} ${res.statusText}`);
+        commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+        return;
+      }
+
+      const raw = await res.text();
+
+      if (!(raw && raw.length)) {
+        commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+        return;
+      }
+
+      const rivens = json5.parse(raw);
+      commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
+    } catch (e) {
+      console.error(e);
+      commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+    }
   },
   async updateSynthData({ commit, rootGetters }) {
     const res = await get(`https://api.warframestat.us/synthTargets/?language=${rootGetters['worldstate/locale']}`);

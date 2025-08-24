@@ -68,6 +68,7 @@
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "html-webpack-plugin": "4.5.2",
     "husky": "^9.1.7",
+    "json5": "^2.2.3",
     "less": "^4.4.1",
     "less-loader": "^7.3.0",
     "lint-staged": "^16.1.5",

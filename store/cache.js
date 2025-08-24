@@ -19,16 +19,51 @@ export const state = () => ({
   weaponds: [],
   mods: [],
 });
+
+const parseWeeklyRivens = (raw) => {
+  try {
+    // Try direct JSON parsing first
+    return JSON.parse(raw);
+  } catch (e) {
+    // Handle data with assignment prefixes
+    if (raw.includes('=')) {
+      const cleanedData = raw.replace(/^.*?=\s*/, '').trim();
+      try {
+        return JSON.parse(cleanedData);
+      } catch (err) {
+        // Last resort: Function constructor instead of eval
+        // eslint-disable-next-line no-new-func
+        return Function(`"use strict"; return (${cleanedData})`)();
+      }
+    } else {
+      // If not an assignment but still not valid JSON
+      // eslint-disable-next-line no-new-func
+      return Function(`"use strict"; return (${raw})`)();
+    }
+  }
+};
+
 export const actions = {
   async updateRivens({ commit, rootGetters }) {
-    const res = await fetch(
-      `https://www-static.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
-    );
     try {
+      const res = await fetch(
+        `https://www-static.warframe.com/repos/weeklyRivens${rootGetters['worldstate/platform'].toUpperCase()}.json`
+      );
+
+      if (!res.ok) {
+        console.error(`Failed to fetch rivens: ${res.status} ${res.statusText}`);
+        commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+        return;
+      }
+
       const raw = await res.text();
-      if (!(raw && raw.length)) return;
-      // eslint-disable-next-line no-eval
-      const rivens = eval(raw);
+
+      if (!(raw && raw.length)) {
+        commit('commitRivens', [rootGetters['worldstate/platform'], []]);
+        return;
+      }
+
+      const rivens = parseWeeklyRivens(raw);
       commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
     } catch (e) {
       console.error(e);

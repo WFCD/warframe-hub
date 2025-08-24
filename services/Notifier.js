@@ -1,4 +1,7 @@
 import Vue from 'vue';
+// TODO: Vue 3 no longer provides a global API through the default export.
+// It's also likely necessary to fork `vue-native-notification` and use it in this module.
+
 import { useWorldstateStore } from '~/store/worldstate';
 
 const drum = '/audio/drum.mp3';

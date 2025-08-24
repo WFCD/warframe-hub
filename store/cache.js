@@ -1,4 +1,6 @@
+import json5 from 'json5';
 import { get } from '@/services/utilities';
+
 const safeCommit = (commit, id, data) => {
   try {
     commit(id, [data]);
@@ -20,29 +22,6 @@ export const state = () => ({
   mods: [],
 });
 
-const parseWeeklyRivens = (raw) => {
-  try {
-    // Try direct JSON parsing first
-    return JSON.parse(raw);
-  } catch (e) {
-    // Handle data with assignment prefixes
-    if (raw.includes('=')) {
-      const cleanedData = raw.replace(/^.*?=\s*/, '').trim();
-      try {
-        return JSON.parse(cleanedData);
-      } catch (err) {
-        // Last resort: Function constructor instead of eval
-        // eslint-disable-next-line no-new-func
-        return Function(`"use strict"; return (${cleanedData})`)();
-      }
-    } else {
-      // If not an assignment but still not valid JSON
-      // eslint-disable-next-line no-new-func
-      return Function(`"use strict"; return (${raw})`)();
-    }
-  }
-};
-
 export const actions = {
   async updateRivens({ commit, rootGetters }) {
     try {
@@ -63,7 +42,7 @@ export const actions = {
         return;
       }
 
-      const rivens = parseWeeklyRivens(raw);
+      const rivens = json5.parse(raw);
       commit('commitRivens', [rootGetters['worldstate/platform'], rivens]);
     } catch (e) {
       console.error(e);

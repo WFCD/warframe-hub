@@ -1,5 +1,7 @@
 import { useWorldstateStore } from './worldstate';
 import { get } from '@/services/utilities';
+import { defineStore } from '#imports';
+
 const safeCommit = (fn) => {
   try {
     fn();

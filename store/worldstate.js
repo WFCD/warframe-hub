@@ -6,6 +6,7 @@ import fissurePlanets from '@/static/json/planets.json';
 import Notifier from '@/services/Notifier';
 import locales from '@/static/json/locales.json';
 import { get } from '@/services/utilities';
+import { defineStore } from '#imports';
 
 const locale = Object.keys(locales).includes(navigator.language.substr(0, 2).toLowerCase())
   ? navigator.language.substr(0, 2).toLowerCase()

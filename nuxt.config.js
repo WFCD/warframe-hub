@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     // https://go.nuxtjs.dev/pwa
     '@vite-pwa/nuxt',
     // 'bootstrap-vue/nuxt', // TODO: This is not compatible with Nuxt 3 and there is no replacement.
-    '@sentry/nuxt',
+    '@sentry/nuxt/module',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',

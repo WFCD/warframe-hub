@@ -1,5 +1,3 @@
-import locales from '../static/json/locales.json';
-
 /*
   Vite provides a way to dynamically import files from a directory,
   however it is noted that this does not work when Vite is used for Server-Side Rendering.

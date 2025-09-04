@@ -17,7 +17,7 @@ const Alert = {
   props: ['alert', 'index', 'last'],
   render() {
     return (
-      this.alert.active && (
+      new Date(this.alert.activation).getTime() < Date.now() && (
         <b-list-group-item
           key={this.alert.id}
           style={styles.inline}

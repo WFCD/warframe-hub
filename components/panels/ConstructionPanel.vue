@@ -45,6 +45,14 @@ import { VueEllipseProgress } from 'vue-ellipse-progress';
 import NoDataItem from '@/components/NoDataItem.jsx';
 import HubPanelWrap from '@/components/HubPanelWrap.jsx';
 
+const normalize = (num) => {
+  if (num > 100) {
+    return normalize(num - 100);
+  }
+  if (num < 0) return 0;
+  return num;
+};
+
 export default {
   name: 'ConstructionPanel',
   components: {
@@ -81,7 +89,10 @@ export default {
     },
   },
   methods: {
-    percent: (str) => Number.parseFloat(Number.parseFloat(str || '0.00').toFixed(2)),
+    percent: (str) => {
+      const num = normalize(Number.parseFloat(str || '0.00'));
+      return Number.parseFloat(num.toFixed(2));
+    },
   },
 };
 </script>

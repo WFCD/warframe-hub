@@ -1,7 +1,7 @@
 <template>
   <HubPanelWrap :title="headertext" class="bounties">
     <b-list-group>
-      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderless">
+      <b-list-group-item v-if="active" class="list-group-item-borderless">
         <span class="pull-left">{{ $t('bounty.expires') }}</span>
         <TimeBadge :starttime="syndicate.activation" :endtime="syndicate.expiry" :interval="1000" />
         <b-table
@@ -42,7 +42,7 @@
           </template>
         </b-table>
       </b-list-group-item>
-      <b-list-group-item v-if="syndicate && syndicate.active" class="list-group-item-borderbottom">
+      <b-list-group-item v-if="active" class="list-group-item-borderbottom">
         <b-form-checkbox
           :id="`${typeId}-bounty-reward-checkbox`"
           v-model="check"
@@ -108,6 +108,10 @@ export default {
       id: makeid(),
       typeId: this.type.toLowerCase().replace(/\s/gi, '-'),
       autoExpand: false,
+      active: this.syndicate
+        ? new Date(this.syndicate.activation).getTime() < Date.now() &&
+          new Date(this.syndicate.expiry).getTime() > Date.now()
+        : false,
     };
   },
   computed: {

@@ -1,8 +1,12 @@
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
 import HubImg from '@/components/HubImg.jsx';
 import thumb from '@/components/AsyncItemThumb.jsx';
 import { makeid, cdn } from '@/services/utilities.js';
 
 import './InvasionItem.less';
+
+dayjs.extend(relativeTime);
 
 const corpus = cdn('svg/factions/corpus.svg');
 const corrupted = cdn('svg/factions/corrupted.svg');
@@ -85,11 +89,12 @@ export default {
   },
   methods: {
     eta(invasion) {
-      const eta = invasion.eta
-        .replace('-Infinityd', '??')
-        .replace('Infinityd', '??')
-        .replace(/\s\d\d?s/gi, '')
-        .trim();
+      const completedRuns = invasion.count;
+      const ellapsedMillis = dayjs(invasion.activation).diff(dayjs(), 'millisecond');
+      const remaining = invasion.requiredRuns - completedRuns;
+      const estExpiry = dayjs().add(remaining * (ellapsedMillis / completedRuns), 'millisecond');
+
+      const eta = dayjs(estExpiry).fromNow(true).trim();
       return `${this.$t('invasions.eta')} ${eta}`;
     },
   },
@@ -150,7 +155,7 @@ export default {
                 id={`${this.id}-defender-progress`}
                 variant={getLabelColor(this.invasion.defender.factionKey)}
                 value={100 - this.invasion.completion}
-                aria-label={`Current Defender Progresss: ${100 - this.invasion.completion}`}
+                aria-label={`Current Defender Progress: ${100 - this.invasion.completion}`}
               />
               <small class="justify-content-center d-flex position-absolute w-100 progress-value">
                 {this.invasion.completion.toFixed(2)}% - {this.eta(this.invasion)}
@@ -168,6 +173,7 @@ export default {
         </div>
       );
     } catch (e) {
+      console.error(e);
       console.error('Failed to render InvasionItem');
     }
     return <span />;

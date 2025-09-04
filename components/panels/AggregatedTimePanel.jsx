@@ -119,10 +119,10 @@ const CambionTimer = {
   props: ['cambionCycle'],
   computed: {
     isCambionFass() {
-      return this.cambionCycle.active === 'fass';
+      return this.cambionCycle.state === 'fass';
     },
     isCambionVome() {
-      return this.cambionCycle.active === 'vome';
+      return this.cambionCycle.state === 'vome';
     },
   },
   render() {
@@ -134,7 +134,7 @@ const CambionTimer = {
           {this.isCambionFass && <i class="fa fa-sun fa-2x day" style={textStyle}></i>}
           {this.isCambionVome && <i class="fa fa-moon fa-2x night" style={textStyle}></i>}
           <br />
-          {this.$t(`time.${this.cambionCycle.active.toLowerCase()}`)}
+          {this.$t(`time.${this.cambionCycle.state.toLowerCase()}`)}
         </span>
         <br />
         <TimeBadge

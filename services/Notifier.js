@@ -252,6 +252,7 @@ export default class Notifier {
     // look for things to be notified
     // run notifications for each
     safeCall(() => {
+      if (!ws.alerts) return;
       for (const alert of ws.alerts) {
         if (this.isNotifiable(alert.id, 'alert', alert.rewardTypes)) {
           toNotify.push(makeNotification('alert', alert));
@@ -259,6 +260,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.events) return;
       for (const event of ws.events) {
         if (this.isNotifiable(event.id, 'operation')) {
           toNotify.push(makeNotification('operation', event));
@@ -266,6 +268,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.cetusCycle) return;
       if (ws.cetusCycle.shortString) {
         if (ws.cetusCycle.isDay) {
           if (this.isNotifiable(ws.cetusCycle.id, 'cetus.day')) {
@@ -277,17 +280,20 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.syndicateMissions) return;
       const cetus = ws.syndicateMissions.filter((synd) => synd.syndicate === 'Ostrons')[0];
       if (cetus && this.isNotifiable(cetus.id, 'syndicate.ostrons')) {
         toNotify.push(makeNotification('syndicate.ostrons', cetus));
       }
     });
     safeCall(() => {
+      if (!ws.voidTrader) return;
       if (ws.voidTrader.active && this.isNotifiable(ws.voidTrader.id, 'baro')) {
         toNotify.push(makeNotification('baro', ws.voidTrader));
       }
     });
     safeCall(() => {
+      if (!ws.dailyDeals) return;
       for (const currentItem of ws.dailyDeals) {
         if (this.isNotifiable(currentItem.id, 'darvo')) {
           toNotify.push(makeNotification('darvo', currentItem));
@@ -295,6 +301,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.persistentEnemies) return;
       for (const acolyte of ws.persistentEnemies) {
         if (this.isNotifiable(acolyte.pid, 'enemies')) {
           toNotify.push(makeNotification('enemies', acolyte));
@@ -302,16 +309,19 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.sortie) return;
       if (ws.sortie && this.isNotifiable(ws.sortie.id)) {
         toNotify.push(makeNotification('sortie', ws.sortie));
       }
     });
     safeCall(() => {
+      if (!ws.archonHunt) return;
       if (ws.archonHunt && this.isNotifiable(ws.archonHunt.id)) {
         toNotify.push(makeNotification('archonHunt', ws.archonHunt));
       }
     });
     safeCall(() => {
+      if (!ws.fissures) return;
       for (const fissure of ws.fissures) {
         const notifIdentifier = `fissures${fissure.isHard ? '.sp' : ''}.t${fissure.tierNum}.${fissure.missionType.toLowerCase().replace(/\s/gi, '')}`;
         if (this.isNotifiable(fissure.id, notifIdentifier)) {
@@ -320,6 +330,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.news) return;
       for (const article of ws.news) {
         let type;
         if (article.update) {
@@ -340,6 +351,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.invasions) return;
       for (const invasion of ws.invasions) {
         if (this.isNotifiable(invasion.id, 'invasions', invasion.rewardTypes)) {
           toNotify.push(makeNotification('invasions', invasion));
@@ -347,6 +359,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.vallisCycle) return;
       if (ws.vallisCycle.shortString) {
         if (ws.vallisCycle.isWarm) {
           if (this.isNotifiable(ws.vallisCycle.id, 'vallis.warm')) {
@@ -358,6 +371,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.nightwave || !ws.nightwave.activeChallenges) return;
       if (ws.nightwave && ws.nightwave.activeChallenges.length) {
         for (const challenge of ws.nightwave.activeChallenges) {
           if (this.isNotifiable(challenge.id, 'nightwave')) {
@@ -367,6 +381,7 @@ export default class Notifier {
       }
     });
     safeCall(() => {
+      if (!ws.sentientOutposts) return;
       if (ws.sentientOutposts.id && ws.sentientOutposts.active) {
         if (this.isNotifiable(ws.sentientOutposts.id, 'outposts')) {
           toNotify.push(makeNotification('outposts', ws.sentientOutposts));

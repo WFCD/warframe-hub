@@ -4,24 +4,27 @@
       <vue-binpacker>
         <aggregatedtimer v-if="displayAggregate" :worldstate="worldstate" />
         <construction v-if="componentState.construction.display" :construction="worldstate.constructionProgress" />
-        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals" />
-        <news v-if="componentState.news.display" :news="worldstate.news" />
+        <deals v-if="componentState.darvo.display" :deals="worldstate.dailyDeals ?? []" />
+        <news v-if="componentState.news.display" :news="worldstate.news ?? []" />
         <events
           v-if="componentState.event.display && worldstate.events && worldstate.events.length"
-          :events="worldstate.events"
+          :events="worldstate.events ?? []"
         />
-        <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts" />
-        <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions" />
-        <nightwave v-if="componentState.nightwave.display" :nightwave="worldstate.nightwave" />
-        <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges" />
+        <alerts v-if="componentState.alerts.display" :alerts="worldstate.alerts ?? []" />
+        <invasions v-if="componentState.invasions.display" :invasions="worldstate.invasions ?? []" />
+        <nightwave
+          v-if="componentState.nightwave.display"
+          :nightwave="worldstate.nightwave ?? { activeChallenges: [] }"
+        />
+        <conclave v-if="componentState.conclave.display" :conclave="worldstate.conclaveChallenges ?? []" />
         <sortie v-if="componentState.sortie.display" :sortie="worldstate.sortie" />
         <sortie v-if="componentState.archonHunt.display" :sortie="worldstate.archonHunt" />
-        <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures" />
+        <fissures v-if="componentState.fissures.display" :fissures="worldstate.fissures ?? []" />
         <bounty v-if="componentState.bounties.display" :syndicate="ostron" type="ostron" />
         <bounty v-if="componentState['solaris-bounties'].display" :syndicate="solaris" type="solaris" />
         <bounty v-if="componentState['entrati-bounties'].display" :syndicate="entrati" type="entrati" />
-        <sales v-if="componentState.deals.display" :sales="worldstate.flashSales" />
-        <void-trader v-if="componentState.baro.display" :void-trader="worldstate.voidTrader" />
+        <sales v-if="componentState.deals.display" :sales="worldstate.flashSales ?? []" />
+        <void-trader v-if="componentState.baro.display" :void-trader="worldstate.voidTrader ?? {}" />
       </vue-binpacker>
     </b-container>
   </div>

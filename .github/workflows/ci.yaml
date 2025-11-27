@@ -33,22 +33,16 @@ jobs:
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
-    - name: Bypass Cloudflare for GitHub Action
-      uses: xiaotianxt/bypass-cloudflare-for-github-action@v1.1.1
-      with:
-        cf_zone_id: ${{ secrets.CF_ZONE_ID }}
-        cf_api_token: ${{ secrets.CF_API_TOKEN }}
     - name: Run Cypress
       uses: cypress-io/github-action@v6
       with:
-        build: npm run build
-        start: npm start
+        start: npm run dev
         browser: ${{ matrix.browser }}
     - uses: actions/upload-artifact@master
+      if: failure()
       with:
         name: screenshots
         path: cypress/screenshots
-        if: failure()
     - uses: actions/upload-artifact@master
       with:
         name: videos

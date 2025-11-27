@@ -48,10 +48,10 @@ const CetusTimer = {
   props: ['cetusCycle'],
   computed: {
     isCetusDay() {
-      return this.cetusCycle.isDay;
+      return this.cetusCycle?.isDay ?? false;
     },
     isCetusNight() {
-      return !this.cetusCycle.isDay;
+      return !(this.cetusCycle?.isDay ?? false);
     },
     now() {
       return dayjs().toISOString();
@@ -66,12 +66,12 @@ const CetusTimer = {
           {this.isCetusDay && <i class="fa fa-sun fa-2x day" style={textStyle}></i>}
           {this.isCetusNight && <i class="fa fa-moon fa-2x night" style={textStyle}></i>}
           <br />
-          {this.$t(`time.${this.cetusCycle.state.toLowerCase()}`)}
+          {this.$t(`time.${this.cetusCycle?.state?.toLowerCase() ?? 'loading'}`)}
         </span>
         <br />
         <TimeBadge
-          starttime={this.cetusCycle.activation || this.now}
-          endtime={this.cetusCycle.expiry}
+          starttime={this.cetusCycle?.activation || this.now}
+          endtime={this.cetusCycle?.expiry || this.now}
           interval={1000}
           pullright={false}
         />
@@ -83,10 +83,10 @@ const VallisTimer = {
   props: ['vallisCycle'],
   computed: {
     isVallisWarm() {
-      return this.vallisCycle.isWarm;
+      return this.vallisCycle?.isWarm;
     },
     isVallisCold() {
-      return !this.vallisCycle.isWarm;
+      return !this.vallisCycle?.isWarm;
     },
     now() {
       return dayjs().toISOString();
@@ -102,12 +102,12 @@ const VallisTimer = {
           {this.isVallisCold && <i class="fa fa-snowflake fa-2x cold" style={textStyle}></i>}
 
           <br />
-          {this.$t(`time.${this.vallisCycle.state.toLowerCase()}`)}
+          {this.$t(`time.${this.vallisCycle?.state?.toLowerCase() ?? 'loading'}`)}
         </span>
         <br />
         <TimeBadge
-          starttime={this.vallisCycle.activation || this.now}
-          endtime={this.vallisCycle.expiry}
+          starttime={this.vallisCycle?.activation || this.now}
+          endtime={this.vallisCycle?.expiry || this.now}
           interval={1000}
           pullright={false}
         />
@@ -119,10 +119,10 @@ const CambionTimer = {
   props: ['cambionCycle'],
   computed: {
     isCambionFass() {
-      return this.cambionCycle.state === 'fass';
+      return this.cambionCycle?.state === 'fass';
     },
     isCambionVome() {
-      return this.cambionCycle.state === 'vome';
+      return this.cambionCycle?.state === 'vome';
     },
   },
   render() {
@@ -134,12 +134,12 @@ const CambionTimer = {
           {this.isCambionFass && <i class="fa fa-sun fa-2x day" style={textStyle}></i>}
           {this.isCambionVome && <i class="fa fa-moon fa-2x night" style={textStyle}></i>}
           <br />
-          {this.$t(`time.${this.cambionCycle.state.toLowerCase()}`)}
+          {this.$t(`time.${this.cambionCycle?.state?.toLowerCase() ?? 'loading'}`)}
         </span>
         <br />
         <TimeBadge
-          starttime={this.cambionCycle.activation || this.now}
-          endtime={this.cambionCycle.expiry}
+          starttime={this.cambionCycle?.activation || this.now}
+          endtime={this.cambionCycle?.expiry ?? this.now}
           interval={1000}
           pullright={false}
         />
@@ -178,6 +178,9 @@ const AnomalyTimer = {
     },
   },
   render() {
+    if (!this.sentientOutposts?.mission) {
+      return null;
+    }
     return (
       <TimerPanel class="text-center">
         <span style={textStyle}>{this.$t('sentientoutpost.header')}</span>
@@ -189,9 +192,9 @@ const AnomalyTimer = {
           alt={this.label}
         />
         <br />
-        <b>{this.sentientOutposts.mission.node}</b>
+        <b>{this.sentientOutposts?.mission.node}</b>
         <br />
-        {this.sentientOutposts.mission.type}
+        {this.sentientOutposts?.mission.type}
       </TimerPanel>
     );
   },
@@ -261,10 +264,13 @@ const ZarimanTimer = {
   props: ['zarimanCycle'],
   computed: {
     isZarimanCorpus() {
-      return this.zarimanCycle.state === 'corpus';
+      return this.zarimanCycle?.state === 'corpus';
     },
     isZarimanGrineer() {
-      return this.zarimanCycle.state === 'grineer';
+      return this.zarimanCycle?.state === 'grineer';
+    },
+    now() {
+      return dayjs().toISOString();
     },
   },
   render() {
@@ -276,12 +282,12 @@ const ZarimanTimer = {
           {this.isZarimanCorpus && <i class="fa-2x icon-factions-corpus" style={{ ...fontStyle, left: '0' }}></i>}
           {this.isZarimanGrineer && <i class="fa-2x icon-factions-grineer" style={{ ...fontStyle, left: '0' }}></i>}
           <br />
-          {this.$t(`time.${this.zarimanCycle.state.toLowerCase()}`)}
+          {this.$t(`time.${this.zarimanCycle?.state?.toLowerCase() ?? 'loading'}`)}
         </span>
         <br />
         <TimeBadge
-          starttime={this.zarimanCycle.activation || this.now}
-          endtime={this.zarimanCycle.expiry}
+          starttime={this.zarimanCycle?.activation || this.now}
+          endtime={this.zarimanCycle?.expiry ?? this.now}
           interval={1000}
           pullright={false}
         />
@@ -319,11 +325,11 @@ export default {
     },
     isArbitrationActive() {
       return (
-        !!this.worldstate.arbitration && dayjs(this.worldstate.arbitration.expiry).format('x') <= dayjs().format('x')
+        !!this.worldstate.arbitration && dayjs(this.worldstate?.arbitration?.expiry).format('x') > dayjs().format('x')
       );
     },
     isSentientOutpostActive() {
-      return this.worldstate.sentientOutposts.active;
+      return this.worldstate?.sentientOutposts?.active ?? false;
     },
   },
   methods: {

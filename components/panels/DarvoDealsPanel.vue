@@ -1,6 +1,6 @@
 <template>
   <HubPanelWrap :title="headertext" class="darvo">
-    <div v-if="deals.length === 1" class="compact-text">
+    <div v-if="deals && deals.length === 1" class="compact-text">
       <b>{{ deals[0].item }}</b>
       {{ deals[0].salePrice }} <HubImg :src="platinum" :name="$t('currency.plat')" /> ({{ deals[0].discount
       }}{{ $t('darvo.off') }}) {{ deals[0].total - deals[0].sold }}/ {{ deals[0].total }} {{ $t('darvo.leftL') }}

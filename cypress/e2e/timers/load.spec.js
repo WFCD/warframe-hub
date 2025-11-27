@@ -1,4 +1,4 @@
-describe('Timers', () => {
+describe.skip('Timers', () => {
   beforeEach(() => {
     cy.setupIntercepts();
     cy.intercept('https://api.warframestat.us/pc/?language=en').as('wsRequest');

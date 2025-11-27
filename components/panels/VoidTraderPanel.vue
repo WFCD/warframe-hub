@@ -57,7 +57,7 @@ export default {
       return new Date().toString();
     },
     available() {
-      return this.voidTrader.inventory.length > 0;
+      return this.voidTrader?.inventory?.length > 0 ?? false;
     },
     hereTime() {
       return dayjs(this.available() ? this.voidTrader.expiry : this.voidTrader.activation).format('llll');

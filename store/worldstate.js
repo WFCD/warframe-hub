@@ -186,25 +186,28 @@ export const actions = {
   },
   updateNotifiedIds({ commit, getters }) {
     const ws = getters.worldstate;
-    if (!ws) return;
-    const newIds = ws.alerts
-      .map((alert) => alert.id)
-      .concat(ws.invasions.map((invasion) => invasion.id))
-      .concat(ws.news.map((item) => item.id))
-      .concat(ws.events.map((event) => event.id))
-      .concat([ws.sortie.id])
-      .concat(ws.syndicateMissions.map((item) => item.id))
-      .concat(ws.fissures.map((item) => item.id))
-      .concat(ws.dailyDeals.map((deal) => deal.id))
-      .concat(ws.flashSales.map((item) => item.id))
-      .concat(ws.conclaveChallenges.map((item) => item.id))
-      .concat([ws.cetusCycle.id])
-      .concat([ws.zarimanCycle.id])
-      .concat([ws.voidTrader.id])
-      .concat(ws.arbitration && [`arbitration:${new Date(ws.arbitration.expiry).getTime()}`])
+    if (!ws && Object.keys(ws).length > 5) return;
+    console.error(ws);
+    const newIds = []
+      .concat(ws.alerts?.map((alert) => alert.id) ?? [])
+      .concat(ws.invasions?.map((invasion) => invasion.id) ?? [])
+      .concat(ws.news?.map((item) => item.id) ?? [])
+      .concat(ws.events?.map((event) => event.id) ?? [])
+      .concat(ws.sortie ? [ws.sortie?.id] : [])
+      .concat(ws.syndicateMissions?.map((item) => item.id) ?? [])
+      .concat(ws.fissures?.map((item) => item.id) ?? [])
+      .concat(ws.dailyDeals?.map((deal) => deal.id) ?? [])
+      .concat(ws.flashSales?.map((item) => item.id) ?? [])
+      .concat(ws.conclaveChallenges?.map((item) => item.id) ?? [])
+      .concat(ws.cetusCycle ? [ws.cetusCycle.id] : [])
+      .concat(ws.zarimanCycle ? [ws.zarimanCycle.id] : [])
+      .concat(ws.voidTrader ? [ws.voidTrader.id] : [])
+      .concat(ws.arbitration ? [`arbitration:${new Date(ws.arbitration.expiry).getTime()}`] : [])
       // .concat(ws.persistentEnemies.map((enemy) => enemy.pid))
-      .concat((ws.nightwave || { activeChallenges: [] }).activeChallenges.map((challenge) => challenge.id))
-      .concat([ws.sentientOutposts.id])
+      .concat(
+        ws.nightwave ? (ws.nightwave || { activeChallenges: [] }).activeChallenges.map((challenge) => challenge.id) : []
+      )
+      .concat(ws.sentientOutposts ? [ws.sentientOutposts.id] : [])
       .filter((id) => id);
     commit('notifiedIds', [newIds]);
   },

@@ -282,7 +282,7 @@ const ZarimanTimer = {
           {this.isZarimanCorpus && <i class="fa-2x icon-factions-corpus" style={{ ...fontStyle, left: '0' }}></i>}
           {this.isZarimanGrineer && <i class="fa-2x icon-factions-grineer" style={{ ...fontStyle, left: '0' }}></i>}
           <br />
-          {this.$t(`time.${this.zarimanCycle?.state.toLowerCase() ?? 'loading'}`)}
+          {this.$t(`time.${this.zarimanCycle?.state?.toLowerCase() ?? 'loading'}`)}
         </span>
         <br />
         <TimeBadge

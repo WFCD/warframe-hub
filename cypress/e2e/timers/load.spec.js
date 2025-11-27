@@ -1,3 +1,4 @@
+// TODO: Enable these when the api is available again
 describe.skip('Timers', () => {
   beforeEach(() => {
     cy.setupIntercepts();

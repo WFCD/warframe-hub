@@ -269,6 +269,9 @@ const ZarimanTimer = {
     isZarimanGrineer() {
       return this.zarimanCycle?.state === 'grineer';
     },
+    now() {
+      return dayjs().toISOString();
+    },
   },
   render() {
     return (
@@ -322,7 +325,7 @@ export default {
     },
     isArbitrationActive() {
       return (
-        !!this.worldstate.arbitration && dayjs(this.worldstate?.arbitration?.expiry).format('x') <= dayjs().format('x')
+        !!this.worldstate.arbitration && dayjs(this.worldstate?.arbitration?.expiry).format('x') > dayjs().format('x')
       );
     },
     isSentientOutpostActive() {

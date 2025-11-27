@@ -187,7 +187,6 @@ export const actions = {
   updateNotifiedIds({ commit, getters }) {
     const ws = getters.worldstate;
     if (!ws && Object.keys(ws).length > 5) return;
-    console.error(ws);
     const newIds = []
       .concat(ws.alerts?.map((alert) => alert.id) ?? [])
       .concat(ws.invasions?.map((invasion) => invasion.id) ?? [])

@@ -7,7 +7,7 @@
       <TimeBadge :starttime="now()" :endtime="deals[0].expiry" :interval="10000" />
     </div>
     <b-list-group>
-      <b-list-group-item v-if="deals.length" class="list-group-item-borderbottom">
+      <b-list-group-item v-if="deals && deals.length" class="list-group-item-borderbottom">
         <table class="table p-0 m-0" style="table-layout: fixed">
           <tbody>
             <tr v-for="item in deals" :key="`${item.id}-deal`">

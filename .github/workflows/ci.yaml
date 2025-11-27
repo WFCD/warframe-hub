@@ -36,8 +36,7 @@ jobs:
     - name: Run Cypress
       uses: cypress-io/github-action@v6
       with:
-        build: npm run build
-        start: npm start
+        start: npm run dev
         browser: ${{ matrix.browser }}
     - uses: actions/upload-artifact@master
       if: failure()

@@ -34,7 +34,7 @@ jobs:
         node-version-file: '.nvmrc'
         cache: 'npm'
     - name: Run Cypress
-      uses: cypress-io/github-action@v6
+      uses: cypress-io/github-action@v7
       with:
         start: npm run dev
         browser: ${{ matrix.browser }}

@@ -71,7 +71,7 @@
     "json5": "^2.2.3",
     "less": "^4.6.4",
     "less-loader": "^7.3.0",
-    "lint-staged": "^17.0.3",
+    "lint-staged": "^17.0.4",
     "postcss": "^8.5.14",
     "prettier": "^3.2.5",
     "webpack-dev-server": "^4.15.2"

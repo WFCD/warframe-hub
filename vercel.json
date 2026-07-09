@@ -1,8 +1,8 @@
 {
-  "buildCommand": "npm run build --prefix apps/next",
+  "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": null,
-  "outputDirectory": "apps/next/dist/client",
+  "outputDirectory": "dist/client",
   "cleanUrls": true,
   "headers": [
     {

@@ -1,10 +1,10 @@
-/** ESLint for repo-root Cypress, config files, and shared YAML. */
+/** ESLint for Cypress specs, config files, and shared YAML. */
 const path = require('node:path');
 
 const repoRoot = __dirname;
-const nextModules = path.join(repoRoot, 'apps/next/node_modules');
+const rootModules = path.join(repoRoot, 'node_modules');
 
-const resolveFromNext = (pkg) => require.resolve(pkg, { paths: [nextModules] });
+const resolveFromRoot = (pkg) => require.resolve(pkg, { paths: [rootModules] });
 
 const cypressTsRules = {
   'cypress/no-assigning-return-values': 'error',
@@ -45,7 +45,7 @@ module.exports = {
   overrides: [
     {
       files: ['cypress/**/*.ts', 'cypress.config.ts'],
-      parser: resolveFromNext('@typescript-eslint/parser'),
+      parser: resolveFromRoot('@typescript-eslint/parser'),
       plugins: ['@typescript-eslint', 'cypress'],
       parserOptions: {
         ecmaVersion: 'latest',
@@ -61,7 +61,7 @@ module.exports = {
     },
     {
       files: ['**/*.{yaml,yml}'],
-      parser: resolveFromNext('yaml-eslint-parser'),
+      parser: resolveFromRoot('yaml-eslint-parser'),
       plugins: ['yml'],
       extends: ['plugin:yml/recommended'],
       rules: {

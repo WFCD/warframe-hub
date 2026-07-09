@@ -38,22 +38,17 @@ The website will be available for viewing at http://localhost:8742
 
 ## Development
 
-See **[REPO_LAYOUT.md](REPO_LAYOUT.md)** for what lives where. Short version:
+See **[REPO_LAYOUT.md](REPO_LAYOUT.md)** for what lives where.
 
-| Path | Stack | Dev port |
-|------|-------|----------|
-| `apps/next` | vinext + React + TS | **8742** |
-| `apps/legacy` | Nuxt 2 + Vue (deprecated) | 3000 |
-| `packages/shared` | shared TS utilities | — |
+Stack: **vinext + React + TypeScript** at the repo root (port **8742**).
 
 ```bash
 npm install
 npm run dev          # vinext @ http://localhost:8742
-npm run build        # production build (next)
-npm run dev:legacy   # Nuxt @ http://localhost:3000
+npm run build        # production static export
 ```
 
-Env: `apps/next/.example.env` (`NEXT_PUBLIC_*`), `apps/legacy/.example.env` (`VUE_APP_*`).
+Env: [`.example.env`](.example.env) (`NEXT_PUBLIC_*`).
 
 ## Bug/Issue Report
 

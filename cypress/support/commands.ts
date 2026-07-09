@@ -1,6 +1,6 @@
-import type { WorldstateData } from '@wfcd/shared';
-import fullWorldstate from '../../packages/shared/fixtures/worldstate/full.json';
-import timersFullOverrides from '../../packages/shared/fixtures/worldstate/timers-full.json';
+import type { WorldstateData } from '../../lib/shared';
+import fullWorldstate from '../../lib/fixtures/worldstate/full.json';
+import timersFullOverrides from '../../lib/fixtures/worldstate/timers-full.json';
 
 const HUB_STORAGE_PREFIXES = ['hub.v1.', 'vuex', 'cache'] as const;
 

@@ -1,30 +1,6 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: "/apps/next"
-    schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "00:00"
-    commit-message:
-      prefix: "ci"
-    labels:
-      - "Scope: Dependencies"
-      - "Type: Maintenance"
-    open-pull-requests-limit: 10
-  - package-ecosystem: npm
-    directory: "/apps/legacy"
-    schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "00:00"
-    commit-message:
-      prefix: "ci"
-    labels:
-      - "Scope: Dependencies"
-      - "Type: Maintenance"
-    open-pull-requests-limit: 10
-  - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: "weekly"
@@ -52,11 +28,7 @@ updates:
           - yaml*
     ignore:
       - dependency-name: leaflet
-      - dependency-name: vue2-leaflet
       - dependency-name: "@fortawesome/fontawesome-free"
-      - dependency-name: less-loader
-      - dependency-name: nuxt
-        versions: ['3.x']
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

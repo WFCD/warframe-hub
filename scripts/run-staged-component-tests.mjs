@@ -15,7 +15,7 @@ const resolveSpec = (file) => {
   return existsSync(spec) ? spec : null;
 };
 
-const files = process.argv.slice(2).filter((file) => file.startsWith('apps/next/components/'));
+const files = process.argv.slice(2).filter((file) => file.startsWith('components/'));
 const specs = [...new Set(files.map(resolveSpec).filter(Boolean))];
 
 if (specs.length === 0) {
@@ -26,7 +26,7 @@ const specArg = specs.map((spec) => spec.slice(repoRoot.length + 1)).join(',');
 
 const result = spawnSync(
   'npm',
-  ['run', 'test:component', '--prefix', 'apps/next', '--', '--spec', specArg],
+  ['run', 'test:component', '--', '--spec', specArg],
   { cwd: repoRoot, stdio: 'inherit' }
 );
 

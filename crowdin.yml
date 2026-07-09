@@ -1,6 +1,6 @@
 files:
-  - source: /packages/shared/locales/en.json
-    translation: /packages/shared/locales/%two_letters_code%.json
+  - source: /lib/locales/en.json
+    translation: /lib/locales/%two_letters_code%.json
 append_commit_message: false
 commit_message: 'fix(%language%): %original_file_name%'
 pull_request_labels:

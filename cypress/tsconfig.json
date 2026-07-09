@@ -12,8 +12,9 @@
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
-      "@wfcd/shared": ["../packages/shared/src/index.ts"],
-      "@wfcd/shared/*": ["../packages/shared/src/*"]
+      "@/*": ["../*"],
+      "@/lib/shared": ["../lib/shared/index.ts"],
+      "@/lib/shared/*": ["../lib/shared/*"]
     }
   },
   "include": ["**/*.ts", "../cypress.config.ts"]

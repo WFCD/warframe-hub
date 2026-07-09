@@ -28,6 +28,11 @@ describe('Fish', () => {
         cy.get('.hub-content-table.table-root').should('exist');
         cy.get('.table__body .table__row').should('have.length.gt', 5);
       });
+
+      it('keeps navbar chrome on fish pages', () => {
+        cy.get('.hub-navbar').should('exist');
+        cy.get('.hub-navbar-brand').should('have.attr', 'href', '/');
+      });
     });
   });
 });

@@ -1,0 +1,12 @@
+.hub-stale-data-banner__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.hub-stale-data-banner__btn {
+  flex-shrink: 0;
+}

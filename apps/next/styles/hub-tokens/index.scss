@@ -1,0 +1,17 @@
+/* Hub themes — override CSS variables only. Component CSS reads var(--foreground), etc.
+ * Add a theme: create hub-tokens/<name>.scss and forward it here; set data-hub-theme in ThemeSync. */
+
+@forward 'primitives';
+@forward 'links';
+@forward 'sacrifice-dark';
+@forward 'eidolon';
+@forward 'day';
+@forward 'retro';
+
+:root {
+  --hub-theme-backdrop-display: none;
+  --hub-theme-backdrop-image: none;
+  --hub-theme-backdrop-overlay: transparent;
+  --hub-mission-icon-filter: invert(100%);
+  --hub-glyph-invert-filter: brightness(0) invert(1);
+}

@@ -16,7 +16,15 @@
 
 ### Linting
 
-Use the provided `.eslintrc.json` to lint your files, include any ignores in your pull request documentation with a reason why.
+Use the ESLint configs under `apps/next`, `apps/legacy`, and `packages/shared` to lint your files. Include any ignores in your pull request documentation with a reason why.
+
+### Commit messages
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`
+
+Examples: `feat(synthesis): add table pagination`, `fix: hydrate timer panels`, `ci: bump cypress`
+
+Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `ci`, `chore`. Validated locally by husky (`commit-msg`) and in CI on pull requests.
 
 
 ### Running
@@ -31,7 +39,7 @@ Use the provided `.eslintrc.json` to lint your files, include any ignores in you
 
 5. View logs in `pm2 logs warframe-hub` if you wish to see logs for the process.
 
-6. Check in your browser at http://localhost:3000 (by default) or whatever you changed the port to.
+6. Check in your browser at http://localhost:8742 (vinext app) or whatever you changed the port to in `apps/next/dev.config.cjs`.
 
 ### Resources
 

@@ -1,0 +1,18 @@
+/* Semantic link colors — override per theme in hub-tokens/*.scss */
+:root {
+  --hub-link-color: var(--link, var(--foreground));
+  --hub-link-hover-color: color-mix(in oklch, var(--hub-link-color) 72%, var(--foreground) 28%);
+  --hub-link-active-color: var(--accent, var(--hub-link-hover-color));
+  --hub-link-focus-color: var(--hub-link-hover-color);
+  --hub-link-visited-color: var(--hub-link-color);
+
+  --hub-nav-link-color: var(--hub-nav-muted, var(--muted, var(--hub-text-secondary)));
+  --hub-nav-link-hover-color: var(--foreground);
+  --hub-nav-link-active-color: var(--accent, var(--foreground));
+  --hub-nav-link-focus-color: var(--hub-nav-link-hover-color);
+  --hub-nav-brand-color: var(--foreground);
+
+  --hub-nav-menu-link-color: var(--foreground);
+  --hub-nav-menu-link-hover-color: var(--foreground);
+  --hub-nav-menu-link-hover-background: color-mix(in oklch, var(--default) 65%, transparent);
+}

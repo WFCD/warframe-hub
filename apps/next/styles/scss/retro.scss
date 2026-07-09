@@ -1,0 +1,19 @@
+@use 'coloration';
+
+.retro {
+  $text-color: #39ff14;
+  $bg: #000;
+  $link-color: $text-color;
+  $border-color: $text-color;
+  $day-color: rgba(249, 168, 6, 0.8);
+  $night-color: rgba(51, 211, 255, 0.8);
+
+  @include coloration.hub-theme-coloration(
+    $text-color: $text-color,
+    $bg: $bg,
+    $link-color: $link-color,
+    $night-color: $night-color,
+    $day-color: $day-color,
+    $border-color: $border-color
+  );
+}

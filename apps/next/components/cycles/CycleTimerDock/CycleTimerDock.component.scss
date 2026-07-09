@@ -1,0 +1,19 @@
+/* cycles/CycleTimerDock/CycleTimerDock.component.scss */
+
+.hub-cycle-timers-shell {
+  margin-bottom: 0.75rem;
+}
+
+.hub-cycle-timers-bar {
+  position: sticky;
+  top: var(--hub-cycle-bar-sticky-top);
+  z-index: calc(var(--hub-z-navbar, 40) - 1);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.35rem 0.75rem;
+  box-sizing: border-box;
+  border-radius: var(--hub-navbar-radius);
+  overflow-x: clip;
+}

@@ -1,0 +1,197 @@
+/* panels/shared/HubPanelWrap/HubPanelWrap.component.scss */
+/* Panel surface shell — transparent fill, bordered frame; inner rows flat */
+.hub-panel-surface {
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  background: var(--hub-panel-background, transparent) !important;
+  backdrop-filter: var(--hub-panel-backdrop-filter, none);
+  -webkit-backdrop-filter: var(--hub-panel-backdrop-filter, none);
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--hub-panel-shadow, none) !important;
+  color: var(--foreground);
+}
+
+.hub-panel-surface .card__content,
+.hub-panel-surface .card__description {
+  color: var(--foreground);
+}
+
+.hub-panel-surface .card__description {
+  color: var(--hub-text-secondary);
+}
+
+.hub-panel-surface .hub-panel-list {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.hub-panel-surface .hub-panel-list-item,
+.hub-panel-surface .hub-no-data-item {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--foreground);
+}
+
+.hub-panel-surface .hub-panel-list-item--borderless,
+.hub-panel-surface .hub-panel-list-item--border-bottom,
+.hub-panel-surface .hub-no-data-item--border-bottom {
+  border-bottom: 0 !important;
+}
+
+.hub-panel-header {
+  border-bottom: 0;
+  padding-block: 0.75rem 0.5rem;
+  padding-inline: 1rem;
+}
+
+.hub-panel-title {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-family: 'Exo 2', 'Lato', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hub-heading-color);
+  text-shadow: var(--hub-heading-glow);
+}
+
+.hub-panel-title-with-addon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hub-panel-title-addon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hub-panel-title-icon {
+  margin: 0;
+}
+
+.hub-panel-content {
+  padding-inline: 0.35rem;
+  padding-bottom: 0.35rem;
+  color: var(--foreground);
+}
+
+.invasions .hub-panel-content {
+  padding-inline: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* HeroUI chip layout in panel rows (timers, rewards, standing) */
+.hub-panel-row-side .chip,
+.hub-badge-row .chip {
+  flex-shrink: 0;
+}
+
+.hub-panel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.hub-panel-row + .hub-panel-row {
+  margin-top: 0.2rem;
+}
+
+.hub-panel-row-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.hub-panel-row-side {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.hub-panel-row-subtle {
+  align-items: flex-start;
+  font-size: 0.95em;
+ }
+
+.hub-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hub-empty-state-icon {
+  flex: 0 0 auto;
+}
+
+/* HeroUI chip layout in panel rows (timers, rewards, standing) */
+.hub-panel-row-side .chip,
+.hub-badge-row .chip {
+  flex-shrink: 0;
+}
+
+/* Badge + icon groups (fissures storm/sp icons, nightwave standing, etc.) */
+.hub-badge-row,
+span.float-right:has(> .chip + span),
+span.float-right:has(> .chip + img),
+span.float-right:has(> .chip + .li-mission-decorator) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  float: right;
+  margin-left: 0.5rem;
+}
+
+.hub-badge-row > .chip,
+.hub-badge-row > .float-right,
+span.float-right:has(> .chip + span) > .chip,
+span.float-right:has(> .chip + .li-mission-decorator) > .chip {
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: unset !important;
+}
+
+.hub-badge-row .chip img {
+  height: 12px;
+  width: 12px;
+  max-height: 12px;
+  max-width: 12px;
+}
+
+.hub-badge-row .li-mission-decorator,
+.hub-badge-row .li-mission-decorator-lg {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.nightwave .hub-panel-list-item > .hub-badge-row {
+  float: none;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.hub-table-header-icon {
+  filter: none !important;
+}
+
+.hub-table-header-icon img {
+  filter: var(--hub-mission-icon-filter, invert(1));
+}

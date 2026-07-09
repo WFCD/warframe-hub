@@ -1,0 +1,19 @@
+@use 'coloration';
+
+.day {
+  $text-color: #212529;
+  $bg: #f5f6f8;
+  $link-color: #0a5c8c;
+  $border-color: #dee2e6;
+  $day-color: rgba(249, 168, 6, 0.85);
+  $night-color: rgba(51, 211, 255, 0.85);
+
+  @include coloration.hub-theme-coloration(
+    $text-color: $text-color,
+    $bg: $bg,
+    $link-color: $link-color,
+    $night-color: $night-color,
+    $day-color: $day-color,
+    $border-color: $border-color
+  );
+}

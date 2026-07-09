@@ -1,6 +1,30 @@
 version: 2
 updates:
   - package-ecosystem: npm
+    directory: "/apps/next"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "00:00"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "Scope: Dependencies"
+      - "Type: Maintenance"
+    open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: "/apps/legacy"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "00:00"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "Scope: Dependencies"
+      - "Type: Maintenance"
+    open-pull-requests-limit: 10
+  - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: "weekly"
@@ -23,7 +47,9 @@ updates:
       eslint:
         patterns:
           - eslint*
-          - prettier
+          - '@stylistic/*'
+          - jsonc*
+          - yaml*
     ignore:
       - dependency-name: leaflet
       - dependency-name: vue2-leaflet

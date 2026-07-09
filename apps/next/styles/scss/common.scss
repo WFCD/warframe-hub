@@ -1,0 +1,152 @@
+#app {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.42857143;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 40px;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4 {
+  clear: both;
+}
+
+li a {
+  color: white;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (min-width: 700px) {
+  .hub-navbar {
+    min-height: 60px;
+  }
+}
+
+.faIcon {
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.no-content-warning {
+  display: inline-block;
+  font-size: 2em;
+  color: var(--foreground);
+}
+
+.li-mission-decorator {
+  filter: var(--hub-mission-icon-filter, invert(100%));
+  margin-top: -3px;
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+.li-mission-decorator-lg {
+  height: 32px;
+  width: 32px;
+}
+
+.li-mission-decorator-lg img,
+span.li-mission-decorator-lg img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.no-invert {
+  filter: none !important;
+}
+
+/* Leaflet overrides */
+#app .leaflet-container {
+  background: transparent;
+}
+
+.leaflet-control-layers-selector {
+  float: left;
+  margin-right: 5px;
+}
+
+.h-125 {
+  height: 1rem;
+  font-size: 1rem;
+}
+
+.bottom-pad {
+  margin-bottom: 1em;
+}
+
+.leaflet-tooltip.map-label {
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
+  color: white;
+  font-size: 2em;
+  text-shadow: 0 0 1px #000;
+}
+
+.invert img,
+img.invert {
+  filter: invert(100%);
+}
+
+.sticky-header {
+  top: 0;
+  position: sticky;
+  background: inherit;
+  z-index: 2;
+}
+
+div.fit-height {
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+span.night:before {
+  content: '🌙 ';
+}
+
+span.cold:before {
+  content: '\2744 ';
+}
+
+span.day:before {
+  content: '☀ ';
+}
+
+span.warm:before {
+  content: '☀ ';
+}
+
+// Binpacker styles
+.binpacker-item {
+  // Needed to keep space between items vertically
+  padding-bottom: 10px;
+}
+
+// Keep masonry bleed in sync with hub-layout.scss
+.hub-chrome-shell.hub-timers-grid > div {
+  margin-inline: calc(-1 * var(--hub-navbar-shell-padding-inline, 1rem));
+}
+
+.legend {
+  position: relative;
+  top: 10px;
+  font-weight: bold;
+}

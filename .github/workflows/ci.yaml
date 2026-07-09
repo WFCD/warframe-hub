@@ -5,13 +5,29 @@ on:
       - dev
 
 jobs:
+  commitlint:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      with:
+        fetch-depth: 0
+    - name: Use Node.js
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Validate PR commit messages
+      run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
     - name: Use Node.js
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
@@ -20,7 +36,7 @@ jobs:
     - name: Run linters
       run: npm run lint
   test:
-    name: Test
+    name: E2E
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,22 +44,48 @@ jobs:
           - 'chrome'
 #          - 'firefox'
     steps:
-    - uses: actions/checkout@v6
-    - uses: actions/setup-node@v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+    - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
-    - name: Run Cypress
-      uses: cypress-io/github-action@v7
+    - name: Install Dependencies
+      run: npm ci
+    - name: Run Cypress E2E
+      uses: cypress-io/github-action@fa4a118725a8f001170d49631ea89e5d66fee626 # v7.4.1
       with:
         start: npm run dev
+        wait-on: 'http://localhost:8742'
         browser: ${{ matrix.browser }}
-    - uses: actions/upload-artifact@master
+        command: npm run test:e2e
+    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       if: failure()
       with:
         name: screenshots
         path: cypress/screenshots
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
         name: videos
         path: cypress/videos
+  component:
+    name: Component
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+    - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Run Cypress component tests
+      uses: cypress-io/github-action@fa4a118725a8f001170d49631ea89e5d66fee626 # v7.4.1
+      with:
+        browser: chrome
+        component: true
+        command: npm run test:component
+    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      if: failure()
+      with:
+        name: component-screenshots
+        path: cypress/screenshots

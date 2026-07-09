@@ -1,0 +1,51 @@
+/* Eidolon — Plains backdrop + cyan/teal (legacy main.eidolon.scss palette) */
+html[data-hub-theme='eidolon'] {
+  color-scheme: dark;
+
+  --background: oklch(6% 0.02 215);
+  --foreground: oklch(0.74 0.11 215);
+  --surface: oklch(14% 0.03 215 / 55%);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(16% 0.035 215 / 62%);
+  --surface-tertiary: oklch(18% 0.04 215 / 68%);
+  --overlay: oklch(12% 0.035 215 / 94%);
+  --overlay-foreground: var(--foreground);
+  --muted: oklch(0.68 0.08 215);
+  --border: oklch(34% 0.07 215);
+  --separator: oklch(30% 0.06 215);
+  --default: oklch(22% 0.05 215);
+  --default-foreground: var(--foreground);
+  --accent: oklch(0.7 0.13 195);
+  --accent-foreground: oklch(12% 0.03 215);
+  --link: oklch(0.72 0.11 205);
+  --segment: oklch(24% 0.05 215);
+  --segment-foreground: var(--foreground);
+  --accent-soft-foreground: color-mix(in oklab, var(--accent) 50%, var(--foreground) 50%);
+  --danger-soft-foreground: color-mix(in oklab, var(--danger) 45%, var(--foreground) 55%);
+  --success-soft-foreground: color-mix(in oklab, var(--success) 45%, var(--foreground) 55%);
+  --warning-soft-foreground: color-mix(in oklab, var(--warning) 45%, var(--foreground) 55%);
+
+  --hub-text-secondary: oklch(0.78 0.09 215);
+  --hub-nav-muted: oklch(0.66 0.09 215);
+  --hub-link-hover-color: oklch(0.78 0.12 205);
+  --hub-link-active-color: var(--accent);
+  --hub-nav-link-active-color: var(--accent);
+  --hub-heading-color: oklch(0.8 0.12 220);
+  --hub-heading-glow: 0 0 24px oklch(0.62 0.12 215 / 42%);
+  --hub-dim-opacity: 0.82;
+  --hub-sacrifice-backdrop-display: none;
+  --hub-theme-backdrop-display: block;
+  --hub-theme-backdrop-image: url('/img/themes/eidolon/background.webp');
+  --hub-theme-backdrop-overlay: oklch(8% 0.03 215 / 32%);
+
+  --hub-navbar-radius: 0.35rem;
+  --hub-navbar-shell-top: 0.75rem;
+  --hub-navbar-shell-padding-inline: 1rem;
+  --hub-navbar-backdrop-filter: blur(14px) saturate(1.1);
+  --hub-navbar-shadow: 0 2px 12px oklch(0% 0 0 / 0.55);
+  --hub-navbar-border: oklch(38% 0.08 215);
+  --hub-navbar-background: oklch(12% 0.04 215 / 88%);
+
+  --hub-mission-icon-filter: invert(100%);
+  --hub-glyph-invert-filter: brightness(0) invert(1);
+}

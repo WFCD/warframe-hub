@@ -1,0 +1,156 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1288.007699,
+        3345.98426
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1956.029088,
+        2867.870812
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1506.014679,
+        2183.708473
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1060.000398,
+        2013.668126
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1782.023516,
+        1595.568918
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2172.036004,
+        1939.650563
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2230.037861,
+        743.366706
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3442.076669,
+        2543.793915
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3136.066871,
+        1951.653411
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4042.09588,
+        1751.605943
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Teleporter"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3638.082944,
+        857.393763
+      ]
+    }
+  }
+]

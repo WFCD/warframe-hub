@@ -1,0 +1,22 @@
+/* Global anchor states — tokens from hub-tokens/links */
+
+$hub-app-link: 'a:not(:is(.hub-nav-link, .hub-nav-menu-link, .hub-navbar-brand, .button, .chip))';
+
+#app {
+  #{$hub-app-link} {
+    color: var(--hub-link-color);
+
+    &:hover {
+      color: var(--hub-link-hover-color);
+    }
+
+    &:focus-visible {
+      color: var(--hub-link-focus-color);
+    }
+
+    &[aria-current='page'],
+    &.active {
+      color: var(--hub-link-active-color);
+    }
+  }
+}

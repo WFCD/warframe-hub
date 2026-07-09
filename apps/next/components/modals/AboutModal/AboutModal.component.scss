@@ -1,0 +1,38 @@
+/* modals/AboutModal/AboutModal.component.scss */
+.hub-about-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  line-height: 1.45;
+  color: var(--foreground);
+}
+
+.hub-about-panel :is(a, .link) {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.hub-about-panel :is(a, .link):hover {
+  color: color-mix(in oklch, var(--link) 78%, var(--foreground));
+}
+
+.hub-about-paragraph {
+  margin: 0;
+}
+
+.hub-about-banner-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.hub-about-banner {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  padding: 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--surface) 55%, transparent);
+}

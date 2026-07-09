@@ -1,0 +1,37 @@
+/* ui/HubSwitch/HubSwitch.component.scss */
+/* HeroUI switches — shared hub wrapper */
+.hub-switch.switch {
+  width: fit-content;
+  max-width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hub-switch .switch__content {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  width: auto;
+}
+
+.hub-switch .switch__control {
+  flex-shrink: 0;
+}
+
+.hub-switch .label {
+  font-size: 0.92em;
+  line-height: 1.2;
+  color: var(--hub-text-secondary);
+  cursor: pointer;
+}
+
+.hub-switch[data-selected='true'] .label,
+.hub-switch[data-selected] .label {
+  color: var(--foreground);
+}
+
+.hub-modal .hub-switch + .hub-switch,
+[role='dialog'] .hub-switch + .hub-switch {
+  margin-top: 0.35rem;
+}

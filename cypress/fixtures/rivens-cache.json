@@ -1,0 +1,40 @@
+{
+  "pc": [
+    {
+      "itemType": "Rifle",
+      "compatibility": "soma",
+      "rerolled": true,
+      "avg": 120,
+      "stddev": 40,
+      "min": 50,
+      "max": 250,
+      "pop": 42,
+      "median": 115
+    },
+    {
+      "itemType": "Pistol",
+      "compatibility": "akbolto",
+      "rerolled": false,
+      "avg": 80,
+      "stddev": 20,
+      "min": 40,
+      "max": 140,
+      "pop": 18,
+      "median": 78
+    },
+    {
+      "itemType": "Melee",
+      "compatibility": "galatine",
+      "rerolled": true,
+      "avg": 200,
+      "stddev": 55,
+      "min": 90,
+      "max": 400,
+      "pop": 31,
+      "median": 190
+    }
+  ],
+  "ps4": [],
+  "xb1": [],
+  "switch": []
+}

@@ -1,0 +1,49 @@
+// react-masonry-css — column gutter matches page chrome inset
+$hub-grid-gutter: var(--hub-navbar-shell-padding-inline, 1rem);
+
+.masonry-grid {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  &_column {
+    padding-left: $hub-grid-gutter;
+    background-clip: padding-box;
+    min-width: 0;
+
+    > div {
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+}
+
+.hub-panel-surface.binpacker-item {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hub-chrome-shell.hub-timers-grid {
+  max-width: 100%;
+  overflow-x: clip;
+
+  > div {
+    margin-inline: calc(-1 * var(--hub-navbar-shell-padding-inline, 1rem));
+  }
+}
+
+.header-panel {
+  background-color: transparent;
+  color: inherit;
+  margin: 0;
+}
+
+.leaflet-container {
+  height: 80vh;
+  width: 100%;
+}

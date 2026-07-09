@@ -1,0 +1,128 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        360.011975,
+        3309.878008
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1350.043675,
+        2729.740352
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1458.047133,
+        1741.505862
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1538.049694,
+        1111.356339
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2270.073132,
+        2783.753168
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2706.087093,
+        2103.591779
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2734.087989,
+        1033.337827
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3440.110595,
+        1721.501115
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Necramech"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3874.124492,
+        1369.417573
+      ]
+    }
+  }
+]

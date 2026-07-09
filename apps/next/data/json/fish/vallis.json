@@ -1,0 +1,648 @@
+[
+  {
+    "name": "Echowinder",
+    "thumb": "echowinder",
+    "wiki": "https://wiki.warframe.com/w/Echowinder",
+    "unique": {
+      "name": "Anoscopic Sensor",
+      "thumb": "anoscopicsensor",
+      "wiki": "https://wiki.warframe.com/w/Anoscopic_Sensor"
+    },
+    "location": "Lake",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "maximumPoint": "9.0",
+    "small": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Sapcaddy",
+    "thumb": "sapcaddy",
+    "wiki": "https://wiki.warframe.com/w/Sapcaddy",
+    "unique": {
+      "name": "Venedo Case",
+      "thumb": "venedocase",
+      "wiki": "https://wiki.warframe.com/w/Venedo_Case"
+    },
+    "location": "Lake",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "maximumPoint": "12.0",
+    "small": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Kriller",
+    "thumb": "kriller",
+    "wiki": "https://wiki.warframe.com/w/Kriller",
+    "unique": {
+      "name": "Thermal Laser",
+      "thumb": "thermallaser",
+      "wiki": "https://wiki.warframe.com/w/Thermal_Laser"
+    },
+    "location": "Lake",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Kriller Bait",
+      "thumb": "kriller"
+    },
+    "maximumPoint": "12.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 60
+    },
+    "large": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 100
+    }
+  },
+  {
+    "name": "Longwinder",
+    "thumb": "longwinder",
+    "wiki": "https://wiki.warframe.com/w/Longwinder",
+    "unique": {
+      "name": "Lathe Coagulant",
+      "thumb": "lathecoagulant",
+      "wiki": "https://wiki.warframe.com/w/Lathe_Coagulant"
+    },
+    "location": "Lake",
+    "hotspot": "true",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "bait": {
+      "name": "Longwinder Bait",
+      "thumb": "longwinder"
+    },
+    "maximumPoint": "15.0",
+    "small": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 200
+    },
+    "medium": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 300
+    },
+    "large": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 500
+    }
+  },
+  {
+    "name": "Brickie",
+    "thumb": "brickie",
+    "wiki": "https://wiki.warframe.com/w/Brickie",
+    "unique": {
+      "name": "Muon Battery",
+      "thumb": "muonbattery",
+      "wiki": "https://wiki.warframe.com/w/Muon_Battery"
+    },
+    "location": "Pond",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "maximumPoint": "10.0",
+    "small": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Tink",
+    "thumb": "tink",
+    "wiki": "https://wiki.warframe.com/w/Tink",
+    "unique": {
+      "name": "Dissipator Coil",
+      "thumb": "dissipatorcoil",
+      "wiki": "https://wiki.warframe.com/w/Dissipator_Coil"
+    },
+    "location": "Pond",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "maximumPoint": "9.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Eye-Eye",
+    "thumb": "eyeeye",
+    "wiki": "https://wiki.warframe.com/w/Eye-Eye",
+    "unique": {
+      "name": "Rotoblade",
+      "thumb": "rotoblade",
+      "wiki": "https://wiki.warframe.com/w/Rotoblade"
+    },
+    "location": "Pond",
+    "time": {
+      "string": "Warm",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": false,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Narrow-Spectrum Bait",
+      "thumb": "narrowspectrum"
+    },
+    "maximumPoint": "10.0",
+    "small": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 60
+    },
+    "large": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 100
+    }
+  },
+  {
+    "name": "Recaster",
+    "thumb": "recaster",
+    "wiki": "https://wiki.warframe.com/w/Recaster",
+    "unique": {
+      "name": "Neural Relay",
+      "thumb": "neuralrelay",
+      "wiki": "https://wiki.warframe.com/w/Neural_Relay"
+    },
+    "location": "Pond",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "hotspot": true,
+    "bait": {
+      "name": "Narrow-spectrum Bait",
+      "thumb": "narrowspectrum"
+    },
+    "maximumPoint": "12.0",
+    "small": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 60
+    },
+    "large": {
+      "resources": {
+        "scrap": 7
+      },
+      "standing": 100
+    }
+  },
+  {
+    "name": "Tromyzon",
+    "thumb": "tromyzon",
+    "wiki": "https://wiki.warframe.com/w/Tromyzon",
+    "unique": {
+      "name": "Entroplasma",
+      "thumb": "entroplasma",
+      "wiki": "https://wiki.warframe.com/w/Entroplasma"
+    },
+    "location": "Pond",
+    "time": {
+      "string": "Cold",
+      "warm": {
+        "appear": false,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "hotspot": true,
+    "bait": {
+      "name": "Tromyzon Bait",
+      "thumb": "tromyzon"
+    },
+    "maximumPoint": "8.0",
+    "small": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 200
+    },
+    "medium": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 300
+    },
+    "large": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 500
+    }
+  },
+  {
+    "name": "Scrubber",
+    "thumb": "scrubber",
+    "wiki": "https://wiki.warframe.com/w/Scrubber",
+    "unique": {
+      "name": "Exa Brain",
+      "thumb": "exabrain",
+      "wiki": "https://wiki.warframe.com/w/Exa_Brain"
+    },
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "1-Common",
+    "bait": {
+      "name": "Broad-Spectrum Bait",
+      "thumb": "broadspectrum"
+    },
+    "maximumPoint": "7.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 35
+    },
+    "medium": {
+      "resources": {
+        "scrap": 2
+      },
+      "standing": 45
+    },
+    "large": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 70
+    }
+  },
+  {
+    "name": "Mirewinder",
+    "thumb": "mirewinder",
+    "wiki": "https://wiki.warframe.com/w/Mirewinder",
+    "unique": {
+      "name": "Parallel Biode",
+      "thumb": "parallelbiode",
+      "wiki": "https://wiki.warframe.com/w/Anoscopic_Sensor"
+    },
+    "location": "Cave",
+    "time": {
+      "string": "Any",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "2-Uncommon",
+    "bait": {
+      "name": "Mirewinder Bait",
+      "thumb": "mirewinder"
+    },
+    "maximumPoint": "15.0",
+    "small": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 45
+    },
+    "medium": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 60
+    },
+    "large": {
+      "resources": {
+        "scrap": 6
+      },
+      "standing": 100
+    }
+  },
+  {
+    "name": "Charamote",
+    "thumb": "charamote",
+    "wiki": "https://wiki.warframe.com/w/Charamote",
+    "unique": {
+      "name": "Sagan Module",
+      "thumb": "saganmodule",
+      "wiki": "https://wiki.warframe.com/w/Sagan_Module"
+    },
+    "location": "Cave",
+    "time": {
+      "string": "Warm Preferred",
+      "warm": {
+        "appear": true,
+        "prefer": true
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "3-Rare",
+    "hotspot": true,
+    "bait": {
+      "name": "Charamote Bait",
+      "thumb": "charamote"
+    },
+    "maximumPoint": "8.0",
+    "small": {
+      "resources": {
+        "scrap": 1
+      },
+      "standing": 200
+    },
+    "medium": {
+      "resources": {
+        "scrap": 3
+      },
+      "standing": 300
+    },
+    "large": {
+      "resources": {
+        "scrap": 5
+      },
+      "standing": 500
+    }
+  },
+  {
+    "name": "Synathid",
+    "thumb": "synathid",
+    "wiki": "https://wiki.warframe.com/w/Synathid",
+    "unique": {
+      "name": "Ecosynth Analyzer",
+      "thumb": "ecosynthanalyzer",
+      "wiki": "https://wiki.warframe.com/w/Ecosynth_Analyzer"
+    },
+    "location": "Cave",
+    "time": {
+      "string": "Warm Preferred",
+      "warm": {
+        "appear": true,
+        "prefer": true
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "4-Legendary",
+    "hotspot": true,
+    "bait": {
+      "name": "Synathid Bait",
+      "thumb": "synathid"
+    },
+    "maximumPoint": "9.0",
+    "small": {
+      "resources": {
+        "scrap": 4
+      },
+      "standing": 600
+    },
+    "medium": {
+      "resources": {
+        "scrap": 6
+      },
+      "standing": 800
+    },
+    "large": {
+      "resources": {
+        "scrap": 8
+      },
+      "standing": 1000
+    }
+  },
+  {
+    "name": "Crewmen's Boot",
+    "thumb": "crewmensboot",
+    "wiki": "https://wiki.warframe.com/w/Crewmen%27s_Boot",
+    "unique": {
+      "name": "Crewmen's Boot"
+    },
+    "location": "Any",
+    "time": {
+      "string": "Any",
+      "warm": {
+        "appear": true,
+        "prefer": false
+      },
+      "cold": {
+        "appear": true,
+        "prefer": false
+      }
+    },
+    "rarity": "0-Peculiar",
+    "bait": {
+      "name": "None"
+    },
+    "maximumPoint": "Boot",
+    "small": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
+    },
+    "medium": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
+    },
+    "large": {
+      "resources": {
+        "scrap": 0
+      },
+      "standing": 0
+    }
+  }
+]

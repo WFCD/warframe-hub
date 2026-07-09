@@ -1,0 +1,37 @@
+.baro .hub-baro-table.table-root {
+  width: 100%;
+}
+
+.baro .hub-baro-table .table__scroll-container {
+  width: 100%;
+}
+
+.baro .hub-baro-table .table__content {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.baro .hub-baro-table .table__column,
+.baro .hub-baro-table .table__cell {
+  padding: 0.25rem 0.35rem;
+  vertical-align: middle;
+  border: 0;
+  color: var(--foreground);
+}
+
+.baro .hub-baro-table .table__header .table__column {
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--hub-text-secondary);
+  text-align: center;
+}
+
+.baro .hub-baro-table .table__body .table__row {
+  background: transparent;
+}
+
+.baro .hub-baro-col-ducats,
+.baro .hub-baro-col-credits {
+  text-align: center;
+}

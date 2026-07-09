@@ -1,0 +1,68 @@
+/* panels/worldstate/ConstructionPanel/ConstructionPanel.component.scss */
+
+.hub-construction-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.25rem 1rem;
+}
+
+.construction .construction-wrapper {
+  flex: 1 1 7rem;
+  max-width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.construction-ring {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  margin: 0 auto;
+}
+
+.construction-ring-value {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.75em;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.construction .legend-caption {
+  position: relative;
+  top: 15px;
+  margin: 0;
+}
+
+.compact .construction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .hub-panel-list {
+    display: contents;
+  }
+
+  .hub-panel-list-item {
+    display: contents;
+  }
+
+  .construction-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: none;
+  }
+
+  .construction-wrapper.text-center {
+    padding: 0 0 0 8px;
+    flex: 0;
+    white-space: nowrap;
+    margin: 0;
+  }
+}

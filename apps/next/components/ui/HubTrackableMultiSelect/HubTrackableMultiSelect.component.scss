@@ -1,0 +1,57 @@
+/* ui/HubTrackableMultiSelect/HubTrackableMultiSelect.component.scss */
+.hub-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hub-settings-section-label {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.hub-settings-general {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hub-settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hub-settings-select-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hub-settings-notifications {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hub-settings-notifications-help {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.hub-settings-multiselect-popover {
+  max-height: min(18rem, 50vh);
+  overflow-y: auto;
+}
+
+.hub-settings-multiselect [data-slot='autocomplete-trigger'] {
+  min-height: 2.5rem;
+  align-items: flex-start;
+}
+
+.hub-settings-multiselect [data-slot='tag-group-list'] {
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}

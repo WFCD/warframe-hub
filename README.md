@@ -34,17 +34,26 @@ $ npm run build
 $ npm start
 ```
 
-The website will be available for viewing at http://localhost:3000
+The website will be available for viewing at http://localhost:8742
 
 ## Development
 
-This website runs on Vue.js, and it does come with a development server that refreshes when it detects code changes. Nodemon is no longer needed as vue comes with its own hot reloader. You can launch the development server using:
+See **[REPO_LAYOUT.md](REPO_LAYOUT.md)** for what lives where. Short version:
+
+| Path | Stack | Dev port |
+|------|-------|----------|
+| `apps/next` | vinext + React + TS | **8742** |
+| `apps/legacy` | Nuxt 2 + Vue (deprecated) | 3000 |
+| `packages/shared` | shared TS utilities | — |
 
 ```bash
-$ npm run dev
+npm install
+npm run dev          # vinext @ http://localhost:8742
+npm run build        # production build (next)
+npm run dev:legacy   # Nuxt @ http://localhost:3000
 ```
 
-We've switched to [nuxt.js](https://github.com/nuxt/nuxt.js) for our framework instead of freeform Vue
+Env: `apps/next/.example.env` (`NEXT_PUBLIC_*`), `apps/legacy/.example.env` (`VUE_APP_*`).
 
 ## Bug/Issue Report
 

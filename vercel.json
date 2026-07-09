@@ -1,5 +1,22 @@
 {
+  "buildCommand": "npm run build --prefix apps/next",
+  "installCommand": "npm install",
+  "framework": null,
+  "outputDirectory": "apps/next/dist/client",
+  "cleanUrls": true,
   "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|woff2|webp|png|ico|svg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

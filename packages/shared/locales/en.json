@@ -1,0 +1,308 @@
+{
+  "updates": {
+    "header": "Update Available",
+    "body": "Update is ready, refresh!",
+    "btn": "Refresh!",
+    "dismiss": "Dismiss",
+    "ready": "A new version of Warframe Hub is ready.",
+    "updateNow": "Update now"
+  },
+  "acolytes": {
+    "header": "Acolytes",
+    "discovered": "Discovered",
+    "hiding": "Hiding",
+    "na": "Nowhere",
+    "health": "Health Remaining"
+  },
+  "alerts": {
+    "header": "Alerts",
+    "archwing": "Archwing Required for Mission",
+    "nightmare": "Nightmare Mission",
+    "level": "Level:"
+  },
+  "arbitration": {
+    "header": "Arbitration"
+  },
+  "bounty": {
+    "standing": "Standing",
+    "header": "{type} Bounty Cycle",
+    "type": "Type",
+    "lrange": "Levels",
+    "rewards": "Rewards",
+    "bounties": "Bounties",
+    "expires": "Bounties expire in:",
+    "autoExpand": "Always expand rewards"
+  },
+  "nav": {
+    "info": "Information",
+    "discord": "Discord",
+    "settings": "Settings",
+    "drops": "Drops",
+    "genesis": "Genesis",
+    "docs": "API Docs",
+    "old": "Old Hub",
+    "status": "Status",
+    "riven": "Riven Data",
+    "synth": "Synthesis Targets",
+    "map": "Map",
+    "fish": "Fishing Data",
+    "howto": "How to Fish",
+    "owearth": "Plains",
+    "owvenus": "Orb Vallis",
+    "owdeimos": "Cambion Drift",
+    "ow": "Open World",
+    "projects": "Projects",
+    "extras": "Extras",
+    "timers": "Timers",
+    "nodata": "No Data",
+    "nodatatxt": "No {text} Present",
+    "brand": "Warframe Hub",
+    "toggleNav": "Toggle navigation",
+    "mainAria": "Main",
+    "supportAria": "Support"
+  },
+  "construction": {
+    "fomorian": "Fomorian",
+    "razorback": "Razorback",
+    "unk": "Unknown",
+    "header": "Construction Progress"
+  },
+  "currency": {
+    "plat": "Platinum",
+    "credAbbr": "cr",
+    "dabloons": "Ducats",
+    "cred": "Credits",
+    "steelEssense": "Steel Essense"
+  },
+  "darvo": {
+    "header": "Darvo's Deals",
+    "off": "% Off",
+    "left": "% Left",
+    "leftL": "Left"
+  },
+  "events": {
+    "header": "Events",
+    "standStages": "Standing Stages",
+    "remaining": "{perc}% Remaining",
+    "completed": "{perc}% Completed",
+    "rewards": {
+      "header": "Event Rewards:",
+      "label": "Rewards"
+    },
+    "completionBonuses": "Completion Bonuses:",
+    "currentCycle": "Current Cycle:",
+    "nextCycle": "Next Cycle:"
+  },
+  "factions": {
+    "sentient": "Sentient"
+  },
+  "fissures": {
+    "header": "Fissures",
+    "voidstorm": "Void Storm",
+    "voidStorms": "Void Storms",
+    "choice": "Choose which fissures to show",
+    "all": "All",
+    "steelPath": "Steel Path",
+    "steelPathFissures": "Steel Path Fissures"
+  },
+  "invasions": {
+    "header": "Invasions",
+    "eta": "Ends in:",
+    "showMore": "Show {count} more invasions"
+  },
+  "kuva": {
+    "header": "Kuva Siphons",
+    "siphon": "Kuva Siphon"
+  },
+  "location": {
+    "cetus": "Cetus/Earth",
+    "earth": "Earth",
+    "earthTooltip": "Now: {currentState}\n\nDay: {dayMinutes} min · Night: {nightMinutes} min\nApplies to Earth nodes for flowers, Cetus, and the Plains of Eidolon.",
+    "vallisTooltip": "Now: {currentState}\n\nWarm: 6 min 40 sec · Cold: {coldMinutes} min\nApplies to Orb Vallis (Fortuna) fishing, mining, and wildlife.",
+    "cambionTooltip": "Now: {currentState}\n\nFass: {fassMinutes} min · Vome: {vomeMinutes} min\nApplies to the Cambion Drift on Deimos.",
+    "zarimanTooltip": "Now: {currentState}\n\nCorpus: {factionMinutes} min · Grineer: {factionMinutes} min\nEnemy faction rotation aboard the Zariman Ten Zero.",
+    "vallis": "Vallis",
+    "cambion": "Cambion",
+    "zariman": "Zariman Ten Zero"
+  },
+  "news": {
+    "header": "News",
+    "past": "ago",
+    "future": "in",
+    "live": "Live",
+    "autoprogress": "Auto-progress"
+  },
+  "nightwave": {
+    "header": "Nightwave",
+    "weekly": "Weekly",
+    "elite": "Elite Weekly",
+    "daily": "Daily"
+  },
+  "conclave": {
+    "header": "Conclave",
+    "weekly": "Weekly",
+    "teamannihilation": "Team Annihilation",
+    "annihilation": "Annihilation",
+    "lunaro": "Lunaro",
+    "cephaloncapture": "Capture the Cephalon"
+  },
+  "notifications": {
+    "cetus": {
+      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
+      "nightheader": "Cetus - Hunting Time!"
+    }
+  },
+  "reset": {
+    "header": "Daily Reset",
+    "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
+  },
+  "sales": {
+    "header": "Sales and Featured Deals",
+    "item": "Item",
+    "showCreditOnly": "Show credit-only items",
+    "ends": "Ends"
+  },
+  "sentientoutpost": {
+    "tooltip1": "This component is in active development because of the recent update.",
+    "tooltip2": "Estimated cycle is 30 minutes of active time on each node.",
+    "header": "Anomalies",
+    "outpostsL": "Outposts",
+    "none": "No Current Anomalies",
+    "warn": "Don't forget your Paracesis!",
+    "prediction": "Prediction"
+  },
+  "sortie": {
+    "header": "Sortie",
+    "hunt": {
+      "header": "Archon Hunt"
+    }
+  },
+  "steelPath": {
+    "header": "Steel Path"
+  },
+  "time": {
+    "loading": "Loading...",
+    "loading...": "Loading...",
+    "day": "day",
+    "night": "night",
+    "warm": "warm",
+    "cold": "cold",
+    "vome": "vome",
+    "fass": "fass",
+    "Timer": "Cycle Timers",
+    "startL": "Starts in:",
+    "endL": "Ends in:",
+    "ongoingL": "Ongoing for:",
+    "expiredL": "Expired",
+    "depart": "Departs",
+    "arrive": "Arrives at",
+    "grineer": "Grineer",
+    "corpus": "Corpus"
+  },
+  "timer": {
+    "ostron": "Ostron",
+    "solaris": "Solaris United",
+    "solaris-united": "Solaris United",
+    "entrati": "Entrati"
+  },
+  "vt": {
+    "header": "Void Trader",
+    "inventory": "Inventory",
+    "item": "Item"
+  },
+  "planets": {
+    "mercury": "Mercury",
+    "venus": "Venus",
+    "earth": "Earth",
+    "lua": "Lua",
+    "mars": "Mars",
+    "deimos": "Deimos",
+    "phobos": "Phobos",
+    "ceres": "Ceres",
+    "jupiter": "Jupiter",
+    "europa": "Europa",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "neptune": "Neptune",
+    "pluto": "Pluto",
+    "sedna": "Sedna",
+    "kuva": "Kuva Fortress",
+    "eris": "Eris",
+    "void": "Void"
+  },
+  "settings": {
+    "header": "Settings",
+    "tabs": {
+      "general": "General",
+      "components": "Components",
+      "notifications": "Notifications",
+      "fissures": "Fissures",
+      "sounds": "Sounds",
+      "sectionsAria": "Settings sections"
+    },
+    "platform": "Platform",
+    "language": "Language",
+    "theme": "Theme",
+    "componentsHelp": "Toggle panels on or off. On the timers page, use <strong>Customize layout</strong> to drag panels into order and use the eye icon to preview or hide individual panels.",
+    "fissuresHiddenPlanets": "Hidden planets",
+    "fissuresHiddenPlaceholder": "Select planets to hide",
+    "fissuresHelp": "Tagged planets are hidden from fissure, void storm, and steel path lists. Use Customize layout on the timers page to show or hide whole fissure panels.",
+    "notificationsHelp": "Add tags for entries you want notifications for. Search in each dropdown, then pick multiple options.",
+    "rewards": "Rewards",
+    "events": "Events",
+    "selectRewards": "Select rewards",
+    "selectEvents": "Select events",
+    "selectFissures": "Select fissures",
+    "selectArbitrations": "Select arbitrations",
+    "sounds": {
+      "drum": "Drum",
+      "eidolon": "Eidolon"
+    },
+    "soundsHelp": "Enable sounds for matching notifications. Use play to preview each tone.",
+    "soundsPlayLabel": "Play",
+    "soundsPlay": "Play {{sound}} preview"
+  },
+  "timersLayout": {
+    "customize": "Customize layout",
+    "doneCustomizing": "Done customizing",
+    "editHint": "Drag panels in the grid to reorder. Drop panels into Hidden below to turn them off, or drag them back up to show them again. Use the eye icon for a quick hide/show.",
+    "dragToReorder": "Drag to reorder",
+    "hidePanel": "Hide panel",
+    "showPanel": "Show panel",
+    "hiddenPanels": "Hidden panels",
+    "hiddenEmptyHint": "Drag a panel here to hide it, or use the eye icon on an active panel.",
+    "hiddenRestoreHint": "Drag panels back into the grid above to show them again.",
+    "placeholderHint": "Hidden — drag back into the grid or use the eye icon."
+  },
+  "offline": {
+    "cachedData": "Showing cached data",
+    "lastUpdated": " — last updated {date}"
+  },
+  "staleData": {
+    "message": "API data is over 5 minutes old.",
+    "refresh": "Refresh",
+    "refreshing": "Refreshing…"
+  },
+  "ui": {
+    "search": "Search...",
+    "noMatches": "No matches"
+  },
+  "about": {
+    "header": "About",
+    "tabs": {
+      "community": "Community Devs",
+      "license": "License",
+      "sectionsAria": "About sections"
+    },
+    "wfcdBannerAlt": "Warframe Community Developers",
+    "communityIntro": "This project is part of the Warframe Community Developers.",
+    "communityGithub": "<githubLink>Click here to view GitHub project.</githubLink>",
+    "pullRequests": "Pull requests are welcome, please submit any issues found to the project's <issueLink>issue tracker</issueLink>.",
+    "licenseIntro": "Concepted and Crafted by developers from the <wfcdLink>Warframe Community Developers</wfcdLink>.",
+    "licenseApache": "The Warframe Hub project is committed to open source. This project is licensed and distributed under <apacheLink>Apache License 2.0</apacheLink>.",
+    "trademark": "Warframe and the Warframe logo are registered trademarks of Digital Extremes Ltd. Warframe Hub is not affiliated with Digital Extremes Ltd. in any way.",
+    "accuracy": "Information may be out of date or inaccurate with what DE sends us because this is a community-driven open source project. We encourage you to report any discrepencies as a <issueLink>GitHub Issue</issueLink>.",
+    "modify": "You are entitled to a copy of this project AS IS, and you are free to modify it to your heart's desires. You must include a copy of this license to all future modification and releases. You can read more about the terms of the <licenseLink>license here</licenseLink>.",
+    "cacheHelp": "If you have any issues with timers loading oddly or information displaying strangely, the first and easiest debugging is to clear your cache. You can find helpful tips how to do this <cacheLink>here</cacheLink>."
+  }
+}

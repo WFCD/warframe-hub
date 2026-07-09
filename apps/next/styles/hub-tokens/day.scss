@@ -1,0 +1,67 @@
+/* Day — light glass (compare against dark Sacrifice / Eidolon) */
+html[data-hub-theme='day'] {
+  color-scheme: light;
+
+  --background: oklch(96.5% 0.01 260);
+  --foreground: oklch(0.28 0.02 285);
+  --surface: oklch(100% 0 0 / 72%);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(100% 0 0 / 52%);
+  --surface-tertiary: oklch(98% 0.006 286 / 68%);
+  --overlay: oklch(100% 0 0 / 88%);
+  --overlay-foreground: var(--foreground);
+  --muted: oklch(48% 0.02 286);
+  --border: oklch(88% 0.012 286);
+  --separator: oklch(91% 0.01 286);
+  --default: oklch(94% 0.008 286);
+  --default-foreground: var(--foreground);
+  --accent: oklch(0.58 0.13 85);
+  --accent-foreground: oklch(99% 0 0);
+  --link: oklch(0.48 0.11 250);
+  --segment: oklch(100% 0 0 / 70%);
+  --segment-foreground: var(--foreground);
+  --accent-soft-foreground: color-mix(in oklab, var(--accent) 72%, var(--foreground) 28%);
+  --danger-soft-foreground: color-mix(in oklab, var(--danger) 68%, var(--foreground) 32%);
+  --success-soft-foreground: color-mix(in oklab, var(--success) 68%, var(--foreground) 32%);
+  --warning-soft-foreground: color-mix(in oklab, var(--warning) 72%, var(--foreground) 28%);
+
+  --hub-text-secondary: oklch(46% 0.018 286);
+  --hub-nav-muted: oklch(52% 0.016 286);
+  --hub-link-hover-color: color-mix(in oklch, var(--link) 82%, var(--foreground) 18%);
+  --hub-link-active-color: var(--accent);
+  --hub-nav-link-active-color: var(--accent);
+  --hub-heading-color: oklch(0.46 0.11 85);
+  --hub-heading-glow: none;
+  --hub-dim-opacity: 0.72;
+  --hub-sacrifice-backdrop-display: none;
+  --hub-theme-backdrop-display: block;
+  --hub-theme-backdrop-image:
+    radial-gradient(ellipse 110% 70% at 50% -25%, oklch(92% 0.045 85 / 42%), transparent 58%),
+    radial-gradient(ellipse 85% 55% at 100% 15%, oklch(94% 0.035 250 / 28%), transparent 52%),
+    linear-gradient(180deg, oklch(98.5% 0.008 260), oklch(93.5% 0.014 275));
+  --hub-theme-backdrop-overlay: transparent;
+
+  --hub-navbar-radius: 1rem;
+  --hub-navbar-shell-top: 0.75rem;
+  --hub-navbar-shell-padding-inline: 1rem;
+  --hub-navbar-backdrop-filter: blur(20px) saturate(1.25);
+  --hub-navbar-shadow:
+    0 1px 2px oklch(0% 0 0 / 0.06),
+    0 10px 28px oklch(0% 0 0 / 0.08),
+    inset 0 1px 0 oklch(100% 0 0 / 0.72);
+  --hub-navbar-border: oklch(100% 0 0 / 58%);
+  --hub-navbar-background: oklch(100% 0 0 / 62%);
+
+  --hub-mission-icon-filter: brightness(0) saturate(100%);
+  --hub-glyph-invert-filter: brightness(0) saturate(100%);
+
+  --hub-panel-background: oklch(100% 0 0 / 52%);
+  --hub-panel-backdrop-filter: blur(16px) saturate(1.2);
+  --hub-panel-shadow:
+    0 1px 2px oklch(0% 0 0 / 0.05),
+    0 10px 28px oklch(0% 0 0 / 0.07),
+    inset 0 1px 0 oklch(100% 0 0 / 0.55);
+  --hub-overlay-shadow:
+    0 12px 32px oklch(0% 0 0 / 0.1),
+    inset 0 1px 0 oklch(100% 0 0 / 0.65);
+}

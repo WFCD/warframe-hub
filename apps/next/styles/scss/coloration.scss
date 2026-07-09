@@ -1,0 +1,45 @@
+/* Theme palette mixin — pass palette values from .night / .day / .retro. */
+@mixin hub-theme-coloration(
+  $text-color,
+  $bg,
+  $link-color,
+  $night-color,
+  $day-color,
+  $border-color
+) {
+  color: $text-color;
+  background-color: $bg;
+
+  a:not(:is(.hub-nav-link, .hub-nav-menu-link, .hub-navbar-brand)) {
+    color: var(--hub-link-color, $link-color);
+  }
+
+  .hub-navbar a,
+  .hub-nav-popover a {
+    color: inherit;
+  }
+
+  table {
+    color: $text-color;
+  }
+
+  span.night,
+  i.night {
+    background-color: transparent;
+  }
+
+  span.night:before,
+  span.cold:before,
+  i.night:before,
+  i.cold:before {
+    background-color: transparent;
+    color: $night-color;
+  }
+
+  span.day:before,
+  span.warm:before,
+  i.day:before,
+  i.warm:before {
+    color: $day-color;
+  }
+}

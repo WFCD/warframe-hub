@@ -1,0 +1,163 @@
+/* panels/shared/InvasionItem/InvasionItem.component.scss */
+.hub-invasion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hub-invasion-card {
+  background: color-mix(in oklch, var(--surface) 55%, transparent) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+  color: var(--foreground);
+  gap: 0 !important;
+  padding-block: 0 !important;
+}
+
+.hub-invasion-card-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) minmax(0, 1fr);
+  column-gap: 0.4rem;
+  row-gap: 0.35rem;
+  align-items: center;
+  padding-block: 0.25rem !important;
+  padding-inline: 0.65rem !important;
+  text-align: left;
+}
+
+.hub-invasion-rewards-side {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-self: start;
+  justify-self: start;
+  max-width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.hub-invasion-rewards-side-end {
+  grid-column: 3;
+  justify-content: flex-end;
+  justify-self: end;
+  margin-bottom: 0.2rem;
+}
+
+.hub-invasion-title {
+  grid-column: 2;
+  min-width: 0;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 0.95em;
+}
+
+.hub-invasion-faction-icon {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.hub-invasion-progress-row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.15rem;
+}
+
+.hub-invasion-progress-bar-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+.hub-invasion-progress-bar {
+  width: 100%;
+}
+
+.hub-invasion-reward-chip {
+  max-width: 100%;
+}
+
+.hub-invasion-reward-chip img {
+  display: block;
+}
+
+.hub-invasion-progress-bar .progress-bar__track,
+
+.hub-invasion-dual-track {
+  display: flex;
+  height: calc(var(--spacing) * 3);
+  background: color-mix(in oklch, var(--default) 80%, transparent);
+  overflow: hidden;
+}
+
+.hub-invasion-progress-bar .progress-bar__fill {
+  display: none;
+}
+
+.hub-invasion-segment {
+  height: 100%;
+  min-width: 0;
+  transition: width 0.3s var(--ease-out, ease);
+}
+
+.hub-invasion-segment--corpus {
+  background: oklch(0.62 0.14 250);
+}
+
+.hub-invasion-segment--grineer {
+  background: oklch(0.58 0.2 25);
+}
+
+.hub-invasion-segment--infested {
+  background: oklch(0.62 0.16 145);
+}
+
+.hub-invasion-segment--corrupted {
+  background: oklch(0.72 0.14 75);
+}
+
+.hub-invasion-segment--default {
+  background: var(--muted);
+}
+
+.hub-invasion-meta {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 0.88em;
+  line-height: 1.15;
+  margin-top: 0.05rem;
+  color: var(--hub-text-secondary);
+}
+
+.hub-invasion-more {
+  margin-top: 0.35rem;
+}
+
+.hub-invasion-more-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: unset;
+  border: 1px dashed color-mix(in oklch, var(--border) 85%, var(--hub-sacrifice-gold) 15%);
+  border-radius: 0.65rem;
+  background: transparent !important;
+  color: var(--hub-text-secondary) !important;
+  padding: 0.45rem 0.75rem;
+}
+
+.hub-invasion-more-trigger:hover,
+
+.hub-invasion-more-trigger[data-hovered='true'] {
+  color: var(--foreground) !important;
+  background: color-mix(in oklch, var(--surface) 40%, transparent) !important;
+}
+
+.hub-invasion-more .disclosure__content {
+  padding-top: 0.65rem;
+}

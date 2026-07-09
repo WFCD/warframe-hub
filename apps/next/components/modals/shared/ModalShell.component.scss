@@ -1,0 +1,71 @@
+/* modals/shared/ModalShell.component.scss */
+.hub-modal-header {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  min-height: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hub-modal-title {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  font-family: 'Exo 2', 'Lato', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hub-heading-color);
+  text-shadow: var(--hub-heading-glow);
+}
+
+.hub-modal-tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 !important;
+  overflow-x: auto;
+}
+
+.hub-modal-tabs [role='tablist'] {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  width: auto;
+  max-width: 100%;
+}
+
+.hub-modal-tabs [role='tab'] {
+  width: auto !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap;
+}
+
+.hub-modal-close {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--hub-text-secondary);
+}
+
+.hub-modal-close:hover {
+  color: var(--foreground);
+}
+
+.hub-modal .modal__dialog {
+  border: 1px solid var(--border);
+}
+
+.hub-settings-modal .modal__dialog {
+  width: 50vw;
+  min-width: 50vw;
+  max-width: 600px;
+}
+
+.hub-modal [data-slot='body'] {
+  padding-top: 0.75rem;
+}

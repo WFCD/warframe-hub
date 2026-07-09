@@ -1,0 +1,79 @@
+{
+  "sortie": {
+    "id": "sortie-test",
+    "activation": "2026-07-08T00:00:00.000Z",
+    "expiry": "2099-07-08T00:00:00.000Z",
+    "faction": "Grineer",
+    "boss": "Kela & Rath",
+    "missions": [
+      {
+        "missionType": "Exterminate",
+        "node": "Mercury",
+        "modifier": "Enemy Physical Enhancement",
+        "modifierDescription": "Enemies deal more physical damage"
+      }
+    ]
+  },
+  "fissures": [
+    {
+      "id": "fissure-normal",
+      "node": "Lua (Lua)",
+      "missionType": "Survival",
+      "tier": "Lith",
+      "tierNum": 1,
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z"
+    },
+    {
+      "id": "fissure-storm",
+      "node": "Void (Void)",
+      "missionType": "Exterminate",
+      "tier": "Void",
+      "tierNum": 5,
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z",
+      "isStorm": true
+    },
+    {
+      "id": "fissure-steel",
+      "node": "Steel Path (Steel Path)",
+      "missionType": "Survival",
+      "tier": "Steel",
+      "tierNum": 2,
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z",
+      "isHard": true
+    }
+  ],
+  "syndicateMissions": [
+    {
+      "id": "CetusSyndicate/Hub/Tier0",
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z",
+      "jobs": [
+        {
+          "type": "Capture the Grineer Commander",
+          "standingStages": [1230, 2220],
+          "enemyLevels": [5, 15],
+          "rewardPool": ["Reward A", "Reward B"]
+        }
+      ]
+    }
+  ],
+  "nightwave": {
+    "activeChallenges": [
+      {
+        "id": "nw-test",
+        "title": "Test Challenge",
+        "desc": "Complete a mission",
+        "affiliation": "Nightwave",
+        "active": true,
+        "startDate": "2026-07-08T00:00:00.000Z",
+        "endDate": "2099-07-08T00:00:00.000Z",
+        "isDaily": false,
+        "isElite": false,
+        "expired": false
+      }
+    ]
+  }
+}

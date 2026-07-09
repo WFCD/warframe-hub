@@ -1,0 +1,14 @@
+:root {
+  --hub-chrome-max-width: 80rem;
+  --hub-cycle-bar-gap: 0.65rem;
+  --hub-z-navbar: 40;
+  --hub-z-modal-backdrop: 1050;
+  --hub-cycle-bar-sticky-top: calc(
+    var(--hub-navbar-shell-top, 0.75rem) + var(--hub-navbar-height, 3.75rem) + var(--hub-cycle-bar-gap)
+  );
+}
+
+.dim {
+  opacity: var(--hub-dim-opacity);
+}
+

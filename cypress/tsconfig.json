@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "types": ["cypress", "node"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "@wfcd/shared": ["../packages/shared/src/index.ts"],
+      "@wfcd/shared/*": ["../packages/shared/src/*"]
+    }
+  },
+  "include": ["**/*.ts", "../cypress.config.ts"]
+}

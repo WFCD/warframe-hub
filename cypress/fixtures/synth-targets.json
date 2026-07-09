@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Ancient Disruptor",
+    "imageKey": "ancient_disruptor",
+    "locations": [
+      {
+        "planet": "Earth",
+        "mission": "Tikal",
+        "level": "6-16",
+        "faction": "Infested",
+        "type": "Excavation",
+        "spawn_rate": "100%",
+        "last_verified": "2019-02-24"
+      }
+    ]
+  },
+  {
+    "name": "Ancient Healer",
+    "imageKey": "ancient_healer",
+    "locations": [
+      {
+        "planet": "Void",
+        "mission": "Hepit",
+        "level": "10-15",
+        "faction": "Infested",
+        "type": "Capture",
+        "spawn_rate": "100%",
+        "last_verified": "2018-08-22"
+      }
+    ]
+  },
+  {
+    "name": "Ballista",
+    "imageKey": "ballista",
+    "locations": [
+      {
+        "planet": "Mars",
+        "mission": "Ara",
+        "level": "10-12",
+        "faction": "Grineer",
+        "type": "Capture",
+        "spawn_rate": "100%",
+        "last_verified": "2018-04-16"
+      }
+    ]
+  },
+  {
+    "name": "Brood Mother",
+    "imageKey": "brood_mother",
+    "locations": [
+      {
+        "planet": "Earth",
+        "mission": "Tikal",
+        "level": "6-16",
+        "faction": "Infested",
+        "type": "Excavation",
+        "spawn_rate": "100%",
+        "last_verified": "2019-04-16"
+      }
+    ]
+  },
+  {
+    "name": "Butcher",
+    "imageKey": "butcher",
+    "locations": [
+      {
+        "planet": "Earth",
+        "mission": "Mantle",
+        "level": "2-4",
+        "faction": "Grineer",
+        "type": "Capture",
+        "spawn_rate": "100%",
+        "last_verified": "2019-02-26"
+      }
+    ]
+  },
+  {
+    "name": "Charger",
+    "imageKey": "charger",
+    "locations": [
+      {
+        "planet": "Mercury",
+        "mission": "Terminus",
+        "level": "8-10",
+        "faction": "Crossfire",
+        "type": "Sabotage",
+        "spawn_rate": "100%",
+        "last_verified": "2019-06-27"
+      }
+    ]
+  },
+  {
+    "name": "Commander",
+    "imageKey": "commander",
+    "locations": [
+      {
+        "planet": "Saturn",
+        "mission": "Telesto",
+        "level": "22-24",
+        "faction": "Grineer",
+        "type": "Extermination",
+        "spawn_rate": "100%",
+        "last_verified": "2018-05-08"
+      }
+    ]
+  },
+  {
+    "name": "Crawler",
+    "imageKey": "crawler",
+    "locations": [
+      {
+        "planet": "Mercury",
+        "mission": "Lares",
+        "level": "8-10",
+        "faction": "Infested",
+        "type": "Defense",
+        "spawn_rate": "100%",
+        "last_verified": "2019-01-12"
+      }
+    ]
+  }
+]

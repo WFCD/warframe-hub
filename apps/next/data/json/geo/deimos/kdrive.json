@@ -1,0 +1,114 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Dead Drop - Drops: Feverspine"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        690.014938,
+        3111.893198
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Exocrine Flow - Drops: Nodulite"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1470.042471,
+        2877.837661
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Burst Hematoma"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1470.042471,
+        2435.732757
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Gutter Run"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1352.038305,
+        803.345422
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Pride before a Fall - Drops: Steeba"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2632.083488,
+        2851.83149
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "The Burrow"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        3236.068762,
+        2263.792092
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Muck and Mire - Drops: Gristlebuck"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2710.050195,
+        1271.556653
+      ]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "marker",
+      "name": "Abysmal Skin"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4204.102931,
+        1315.567095
+      ]
+    }
+  }
+]

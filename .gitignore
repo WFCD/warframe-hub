@@ -62,11 +62,24 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
-# next.js build output
-.next
+# vinext / nitro build output (dev + static export)
+.vinext
+.output
+dist
+apps/next/.next/
+apps/next/.vinext/
+apps/next/.output/
+apps/next/dist/
+apps/next/tsconfig.tsbuildinfo
+apps/next/cypress/screenshots/
+apps/next/cypress/videos/
+apps/next/dev-dist/
+apps/next/.vercel
+
 
 # nuxt.js build output
 .nuxt
+apps/legacy/.nuxt
 
 # Nuxt generate
 dist

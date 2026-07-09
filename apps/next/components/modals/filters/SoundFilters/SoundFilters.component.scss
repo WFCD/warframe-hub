@@ -1,0 +1,16 @@
+.hub-settings-sound-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hub-settings-sound-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.hub-settings-sound-preview {
+  flex-shrink: 0;
+}

@@ -1,0 +1,53 @@
+/* Retro terminal — green on black */
+html[data-hub-theme='retro'] {
+  color-scheme: dark;
+
+  --background: #000;
+  --foreground: #39ff14;
+  --surface: #000;
+  --surface-foreground: #39ff14;
+  --surface-secondary: #000;
+  --surface-tertiary: #000;
+  --overlay: rgb(0 0 0 / 92%);
+  --overlay-foreground: #39ff14;
+  --muted: rgb(57 255 20 / 65%);
+  --border: #0f0;
+  --separator: rgb(57 255 20 / 25%);
+  --default: rgb(57 255 20 / 10%);
+  --default-foreground: #39ff14;
+  --accent: #39ff14;
+  --accent-foreground: #000;
+  --link: #39ff14;
+  --segment: rgb(57 255 20 / 10%);
+  --segment-foreground: #39ff14;
+
+  --hub-text-secondary: rgb(57 255 20 / 65%);
+  --hub-nav-muted: rgb(57 255 20 / 65%);
+  --hub-link-hover-color: var(--foreground);
+  --hub-link-active-color: var(--foreground);
+  --hub-nav-link-active-color: var(--foreground);
+  --hub-heading-color: #39ff14;
+  --hub-heading-glow: 0 0 20px rgb(57 255 20 / 35%);
+  --hub-dim-opacity: 1;
+  --hub-sacrifice-backdrop-display: none;
+  --hub-theme-backdrop-display: block;
+  --hub-theme-backdrop-image: none;
+  --hub-theme-backdrop-overlay: transparent;
+
+  --hub-navbar-radius: 0;
+  --hub-navbar-shell-top: 0.5rem;
+  --hub-navbar-shell-padding-inline: 0.5rem;
+  --hub-navbar-backdrop-filter: none;
+  --hub-navbar-shadow: 0 0 12px rgb(57 255 20 / 18%);
+  --hub-navbar-border: var(--border);
+  --hub-navbar-background: var(--overlay);
+
+  --hub-mission-icon-filter: invert(100%);
+  --hub-glyph-invert-filter: brightness(0) invert(1);
+}
+
+html[data-hub-theme='retro'],
+html[data-hub-theme='retro'] body {
+  background-color: #000;
+  color: #39ff14;
+}

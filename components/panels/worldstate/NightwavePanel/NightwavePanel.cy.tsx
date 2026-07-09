@@ -22,7 +22,7 @@ describe('NightwavePanel', () => {
     );
 
     cy.contains('Complete 3 missions').should('exist');
-    cy.get('.hub-panel-row-side .hub-standing-chip').should('contain', '4500');
+    cy.get('.hub-panel-row-side .chip').should('contain', '4500');
     cy.get('.hub-panel-row-side .hub-time-badge').should('exist');
   });
 });

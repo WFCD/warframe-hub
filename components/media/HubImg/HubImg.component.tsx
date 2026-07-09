@@ -27,8 +27,13 @@ const HubImg: FC<HubImgProps> = ({
   const heightPx = Number.parseInt(height, 10);
 
   return (
-    <span title={showTitle ? name : undefined} className={`hub-img ${className ?? ''}`.trim()} style={style}>
+    <span
+      title={showTitle ? name : undefined}
+      className={`hub-img inline-flex items-center justify-center align-middle leading-none ${className ?? ''}`.trim()}
+      style={style}
+    >
       <img
+        className="block"
         src={src}
         width={Number.isFinite(widthPx) ? widthPx : undefined}
         height={Number.isFinite(heightPx) ? heightPx : undefined}

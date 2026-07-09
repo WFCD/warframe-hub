@@ -107,7 +107,7 @@ const FissuresPanel: FC<FissuresPanelProps> = ({ fissures = [], variant = 'fissu
             compact={index !== filteredFissures.length - 1}
           >
             <div className="hub-panel-row">
-              <span className="hub-panel-row-main hub-inline-row">
+              <span className="hub-panel-row-main inline-flex items-center gap-1.5">
                 <Tooltip delay={400}>
                   <Tooltip.Trigger>
                     {isOmniaFissure(fissure) ? (

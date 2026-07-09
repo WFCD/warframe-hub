@@ -211,7 +211,12 @@ const TimeBadge: FC<TimeBadgeProps> = ({
     return () => clearInterval(timerId);
   }, [onBadgeUpdate, tickInterval]);
 
-  const classes = ['hub-time-badge', pullright ? 'float-right' : '', 'align-middle', className]
+  const classes = [
+    'hub-time-badge inline-flex items-center gap-1',
+    pullright ? 'float-right' : '',
+    'align-middle',
+    className,
+  ]
     .filter(Boolean)
     .join(' ');
 
@@ -226,7 +231,7 @@ export { defaultCoarseHoursAbove };
 
 /** Smaller chip layout for dense rows (sales, darvo, cycle bar). */
 export const compactTimeBadgeProps = {
-  className: 'hub-time-badge--compact',
+  className: 'text-[0.62rem] min-h-[1.05rem] px-1.5',
   pullright: false,
 } as const;
 

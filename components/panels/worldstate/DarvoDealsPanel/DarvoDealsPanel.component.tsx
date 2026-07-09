@@ -37,7 +37,7 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
       {deals.length === 1 && (
         <div className="hidden hub-compact:block hub-darvo-single-deal">
           <b>{deals[0].item}</b>{' '}
-          <span className="hub-inline-row">
+          <span className="inline-flex items-center gap-1.5">
             {deals[0].salePrice} <HubImg src={platinum} name={t('currency.plat')} />
           </span>{' '}
           ({deals[0].discount}
@@ -67,7 +67,7 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
                           {t('darvo.off')}
                         </Table.Cell>
                         <Table.Cell>
-                          <span className="hub-inline-row">
+                          <span className="inline-flex items-center gap-1.5">
                             {item.salePrice}
                             <HubImg src={platinum} name={t('currency.plat')} />
                           </span>

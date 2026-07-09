@@ -4,11 +4,11 @@ import { cdn } from '@/lib/shared';
 const wfcdLogo = cdn('svg/wfcd.svg');
 const NotFound: FC = () => {
   return (
-    <div className="hub-not-found">
-      <div className="hub-not-found__logo">
+    <div className="flex flex-wrap gap-8 items-start max-w-[1140px] mx-auto py-12 px-6 text-left">
+      <div className="shrink-0 basis-48">
         <img className="wfcd-logo" src={wfcdLogo} alt="WFCD Logo" style={{ filter: 'invert(0.7)' }} />
       </div>
-      <div className="hub-not-found__content">
+      <div className="flex-1 basis-80 min-w-0">
         <h1>404 ERROR OH NO</h1>
         <h2>You broke the site!</h2>
         <h3>How could you?</h3>

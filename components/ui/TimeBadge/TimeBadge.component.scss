@@ -1,18 +1,5 @@
 /* ui/TimeBadge/TimeBadge.component.scss */
 
-.hub-standing-chip,
-.hub-time-badge.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.hub-time-badge--compact.chip {
-  font-size: 0.62rem;
-  min-height: 1.05rem;
-  padding-inline: 0.35rem;
-}
-
 .hub-cycle-timer-badge.chip {
   margin: 0;
   flex-shrink: 0;

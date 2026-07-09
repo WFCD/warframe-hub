@@ -1,6 +1,7 @@
 @use 'coloration';
 
-.day {
+/* Scope to body — cycle icons also use class "day" (e.g. fa-sun day). */
+body.day {
   $text-color: #212529;
   $bg: #f5f6f8;
   $link-color: #0a5c8c;

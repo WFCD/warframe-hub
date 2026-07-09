@@ -61,16 +61,16 @@ const SortiePanel: FC<SortiePanelProps> = ({ sortie = {} }: SortiePanelProps) =>
         <HubPanelListItem borderless compact>
           <div className="hub-panel-row">
             <span className="hub-panel-row-main">
-              <h4 className="my-0 hub-inline-title">
+              <h3 className="my-0 inline-flex items-center gap-1.5">
                 <HubImg
                   src={factionImg}
                   name={sortie.faction ?? ''}
-                  className="li-mission-decorator li-mission-decorator-lg invert hub-inline-title-icon"
+                  className="li-mission-decorator li-mission-decorator-lg invert shrink-0"
                   width="25px"
                   height="25px"
                 />
                 {sortie.boss}
-              </h4>
+              </h3>
             </span>
             <span className="hub-panel-row-side">
               <TimeBadge starttime={now} endtime={sortie.expiry} interval={1000} pullright={false} />

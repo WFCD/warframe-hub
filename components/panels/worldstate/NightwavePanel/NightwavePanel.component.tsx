@@ -76,7 +76,7 @@ const NightwavePanel: FC<NightwavePanelProps> = ({ nightwave }: NightwavePanelPr
                     color={challenge.isDaily ? 'success' : challenge.isElite ? 'danger' : 'warning'}
                     size="sm"
                     variant="soft"
-                    className="hub-standing-chip"
+                    className="inline-flex items-center gap-1"
                   >
                     <HubImg src={standing} name="Standing Gain" className="invert" height="12px" width="12px" />
                     {challenge.reputation}

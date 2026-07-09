@@ -1,5 +1,4 @@
 'use client';
-import './NoDataItem.component.scss';
 import type { FC } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -17,25 +16,18 @@ const NoDataItem: FC<NoDataItemProps> = ({ text = 'Data', overrideBorder = false
   const { t } = useTranslation();
 
   return (
-    <div
-      className={[
-        'hub-no-data-item',
-        overrideBorder ? '' : 'hub-no-data-item--border-bottom',
-      ]
-        .filter(Boolean)
-        .join(' ')}
-    >
-      <span className="dim hub-empty-state">
+    <div className={overrideBorder ? 'py-1 px-1.5' : 'py-1 px-1.5 border-b-0'}>
+      <span className="dim inline-flex items-center justify-center gap-2">
         <HubImg
           src={loading}
           name={t('nav.nodata')}
           width="40px"
           height="40px"
-          className="hub-empty-state-icon"
+          className="shrink-0"
           style={{ filter: 'invert(80%)' }}
         />
 
-        <div className="no-content-warning align-middle" style={{ marginBottom: '2px' }}>
+        <div className="no-content-warning align-middle mb-0.5">
           {t('nav.nodatatxt', { text })}
         </div>
       </span>

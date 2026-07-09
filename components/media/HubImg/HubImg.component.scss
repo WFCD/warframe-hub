@@ -1,64 +1,14 @@
-/* media/HubImg/HubImg.component.scss */
+/* media/HubImg/HubImg.component.scss — invert filters only; layout via Tailwind */
+
 .chip .hub-img.invert,
 .chip .hub-img.invert img {
   filter: brightness(0) invert(1) !important;
 }
 
-.hub-img {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  line-height: 0;
-}
-
-.hub-img img {
-  display: block;
-}
-
-/* Dark-theme glyphs — black SVGs (faction sigils, standing, etc.) */
 .hub-img.invert {
   filter: var(--hub-glyph-invert-filter, brightness(0) invert(1)) !important;
 }
 
 .hub-img.invert img {
   filter: none !important;
-}
-
-.hub-inline-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.hub-inline-row-center {
-  justify-content: center;
-}
-
-.hub-timer-panel > i,
-.hub-inline-row > i,
-.hub-inline-title > i {
-  line-height: 1;
-}
-
-.hub-timer-panel > i,
-.hub-inline-row > i,
-.hub-inline-title > i {
-  line-height: 1;
-}
-
-.hub-inline-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.hub-inline-title-icon {
-  flex: 0 0 auto;
-}
-
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }

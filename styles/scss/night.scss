@@ -1,6 +1,7 @@
 @use 'coloration';
 
-.night {
+/* Scope to body — cycle icons also use class "night" (e.g. fa-moon night). */
+body.night {
   $text-color: white;
   $bg: #18181b;
   $link-color: #00bc8c;

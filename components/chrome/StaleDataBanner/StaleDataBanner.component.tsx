@@ -1,6 +1,4 @@
 'use client';
-import './StaleDataBanner.component.scss';
-
 import { useCallback, useEffect, useState, type FC } from 'react';
 import { Alert, Button } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
@@ -47,12 +45,12 @@ const StaleDataBanner: FC = () => {
 
   return (
     <Alert status="warning" className="hub-stale-data-banner mb-0 rounded-none border-x-0 border-t-0">
-      <Alert.Content className="hub-stale-data-banner__content">
+      <Alert.Content className="flex flex-wrap items-center justify-center gap-3 text-center">
         <Alert.Description>{t('staleData.message')}</Alert.Description>
         <Button
           size="sm"
           variant="secondary"
-          className="hub-stale-data-banner__btn"
+          className="shrink-0"
           isDisabled={refreshing}
           onPress={() => void onRefresh()}
         >

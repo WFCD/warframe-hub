@@ -24,7 +24,13 @@
   }
 
   span.night,
-  i.night {
+  span.day,
+  span.cold,
+  span.warm,
+  i.night,
+  i.day,
+  i.cold,
+  i.warm {
     background-color: transparent;
   }
 
@@ -40,6 +46,7 @@
   span.warm:before,
   i.day:before,
   i.warm:before {
+    background-color: transparent;
     color: $day-color;
   }
 }

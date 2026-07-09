@@ -13,23 +13,3 @@
 img.invert {
   filter: brightness(0) invert(1) !important;
 }
-
-.hub-not-found {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
-  text-align: left;
-
-  &__logo {
-    flex: 0 0 12rem;
-  }
-
-  &__content {
-    flex: 1 1 20rem;
-    min-width: 0;
-  }
-}

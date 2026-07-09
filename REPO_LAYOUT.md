@@ -73,3 +73,9 @@ Commit messages: [commitlint](https://commitlint.js.org/) ([`commitlint.config.c
 ## Deploy
 
 [`vercel.json`](vercel.json): `npm run build` → `dist/client`. Semantic-release bumps root `package.json` on `dev`.
+
+**PR previews:** Vercel Git preview builds are skipped (`ignoreCommand` → [`scripts/vercel-ignore-build.mjs`](scripts/vercel-ignore-build.mjs)). After commitlint, lint, e2e, and component jobs pass, CI job **Preview** runs `vercel build` + `vercel deploy --prebuilt` and comments the URL on the PR.
+
+GitHub config: secret `VERCEL_TOKEN`; variables `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+
+Production alias gating (Deployment Checks after CI) can be added in the Vercel dashboard once a deploy has run.

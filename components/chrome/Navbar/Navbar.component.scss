@@ -413,6 +413,7 @@ body.day .hub-nav-link[aria-current='page'] .hub-nav-glyph {
   .hub-navbar-shell {
     position: static;
     margin-bottom: var(--hub-page-gap, 1.5rem);
+    --hub-navbar-height: 3.75rem;
   }
 
   .hub-navbar-inner {

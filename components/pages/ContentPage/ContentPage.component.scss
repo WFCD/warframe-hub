@@ -899,6 +899,37 @@
   overflow: hidden;
 }
 
+@media (max-width: 767px) {
+  .hub-content-page--map {
+    padding-bottom: 0;
+  }
+
+  .hub-content-page--map .hub-content-page__shell {
+    height: var(--hub-mobile-map-viewport-body);
+    min-height: var(--hub-mobile-map-viewport-body);
+    max-height: var(--hub-mobile-map-viewport-body);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hub-content-page--map .hub-content-page__header {
+    flex-shrink: 0;
+  }
+
+  .hub-content-page--map .hub-content-page__body {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hub-content-map {
+    flex: 1 1 0;
+    min-height: 0;
+    height: 100%;
+  }
+}
+
 .hub-content-map .leaflet-container {
   height: 100%;
   width: 100%;

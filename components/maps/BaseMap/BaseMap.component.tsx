@@ -1,11 +1,36 @@
 'use client';
 import './BaseMap.component.scss';
 
-import type { CSSProperties, ReactNode, FC } from 'react';
-import { MapContainer, ImageOverlay } from 'react-leaflet';
+import { useEffect, type CSSProperties, type ReactNode, type FC } from 'react';
+import { MapContainer, ImageOverlay, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import ContentPage from '@/components/pages/ContentPage';
+
+const MapResize: FC = () => {
+  const map = useMap();
+
+  useEffect(() => {
+    const invalidate = () => {
+      map.invalidateSize();
+    };
+
+    invalidate();
+    const raf = requestAnimationFrame(invalidate);
+    window.addEventListener('resize', invalidate);
+    const container = map.getContainer();
+    const observer = new ResizeObserver(invalidate);
+    observer.observe(container);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', invalidate);
+      observer.disconnect();
+    };
+  }, [map]);
+
+  return null;
+};
 
 type BaseMapProps = {
   zoom?: number;
@@ -39,6 +64,7 @@ const BaseMap: FC<BaseMapProps> = ({
         style={mapStyle}
         {...mapOptions}
       >
+        <MapResize />
         <ImageOverlay url={url} bounds={bounds} />
         {children}
       </MapContainer>

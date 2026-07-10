@@ -1,9 +1,8 @@
 import type { Platform } from './platform';
+import type { CodexItem } from './codex';
 
 export type CacheState = {
   rivens: Record<Platform, unknown[]>;
   synthData: unknown[];
-  warframes: unknown[];
-  weapons: unknown[];
-  mods: unknown[];
+  items: CodexItem[];
 };

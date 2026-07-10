@@ -3,6 +3,7 @@
 interface HubCacheSeed {
   synth?: unknown;
   rivens?: unknown;
+  items?: unknown;
 }
 
 interface VisitHubOptions {
@@ -28,6 +29,7 @@ declare global {
       seedHub(options?: SeedHubOptions): Chainable<void>;
       visitHub(path?: string, options?: VisitHubOptions): Chainable<void>;
       mountPanel(componentModule: unknown, options?: { props?: Record<string, unknown> }): Chainable<void>;
+      readCodexItemsCount(locale?: string): Chainable<number>;
     }
   }
 }

@@ -11,12 +11,15 @@ const MapResize: FC = () => {
   const map = useMap();
 
   useEffect(() => {
+    let raf = 0;
     const invalidate = () => {
-      map.invalidateSize();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        map.invalidateSize();
+      });
     };
 
     invalidate();
-    const raf = requestAnimationFrame(invalidate);
     window.addEventListener('resize', invalidate);
     const container = map.getContainer();
     const observer = new ResizeObserver(invalidate);

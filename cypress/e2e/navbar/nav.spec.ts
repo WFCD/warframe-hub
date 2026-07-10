@@ -11,6 +11,7 @@ describe('Navbar', () => {
       cy.get('button[aria-label="Open World"]').should('exist');
       cy.get('a[aria-label="Riven Data"]').should('exist');
       cy.get('a[aria-label="Synthesis Targets"]').should('exist');
+      cy.get('a[aria-label="Item Codex"]').should('exist');
       cy.get('button[aria-label="Projects"]').should('exist');
     });
   });
@@ -23,6 +24,10 @@ describe('Navbar', () => {
     cy.get('.hub-navbar-start a[aria-label="Synthesis Targets"]').click();
     cy.location('pathname').should('eq', '/synthesis');
     cy.contains('h1', 'Synthesis Targets').should('be.visible');
+
+    cy.get('.hub-navbar-start a[aria-label="Item Codex"]').click();
+    cy.location('pathname').should('eq', '/codex');
+    cy.contains('h1', 'Item Codex').should('be.visible');
   });
 
   it('opens open-world map from dropdown', () => {
@@ -61,6 +66,7 @@ describe('Navbar mobile', () => {
       cy.get('button[aria-label="Open World"]').should('be.visible');
       cy.get('a[aria-label="Riven Data"]').should('be.visible');
       cy.get('a[aria-label="Synthesis Targets"]').should('be.visible');
+      cy.get('a[aria-label="Item Codex"]').should('be.visible');
       cy.get('button[aria-label="Projects"]').should('be.visible');
     });
   });
@@ -70,6 +76,13 @@ describe('Navbar mobile', () => {
     cy.location('pathname').should('eq', '/riven/data');
     cy.contains('h1', 'Riven Data').should('be.visible');
     cy.get('.hub-bottom-nav a[aria-label="Riven Data"]').should('have.attr', 'aria-current', 'page');
+  });
+
+  it('navigates to codex from bottom nav', () => {
+    cy.get('.hub-bottom-nav a[aria-label="Item Codex"]').click();
+    cy.location('pathname').should('eq', '/codex');
+    cy.contains('h1', 'Item Codex').should('be.visible');
+    cy.get('.hub-bottom-nav a[aria-label="Item Codex"]').should('have.attr', 'aria-current', 'page');
   });
 
   it('opens open-world map from bottom nav dropdown', () => {

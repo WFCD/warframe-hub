@@ -1,6 +1,7 @@
 export * from './Notifier';
 export * from './utilities';
 export * from './types/platform';
+export * from './types/codex';
 export * from './types/worldstate';
 export * from './types/prefs';
 export * from './types/cache';
@@ -8,3 +9,4 @@ export * from './fixtures/builders';
 export * from './worldstate/arbitration';
 export * from './rivens';
 export * from './items';
+export * from './warframeTextIcons';

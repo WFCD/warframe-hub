@@ -9,6 +9,7 @@ const repoRoot = path.dirname(fileURLToPath(import.meta.url));
 const { port: devPort } = require('./dev.config.cjs') as { port: number };
 
 export default defineConfig({
+  allowCypressEnv: false,
   fixturesFolder: path.join(repoRoot, 'cypress/fixtures'),
   screenshotsFolder: path.join(repoRoot, 'cypress/screenshots'),
   videosFolder: path.join(repoRoot, 'cypress/videos'),

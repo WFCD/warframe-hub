@@ -8,6 +8,7 @@ import CacheProvider from './CacheProvider';
 import I18nSync from '../I18nSync';
 import type { ReactNode, FC } from 'react';
 import '../i18n';
+import '../suppressBenignErrors';
 const HubProviders: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   return (
     <PrefsProvider>

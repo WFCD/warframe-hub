@@ -4,6 +4,51 @@ import timersFullOverrides from '../../lib/fixtures/worldstate/timers-full.json'
 import componentsJson from '../../data/json/components.json';
 
 const HUB_STORAGE_PREFIXES = ['hub.v1.', 'vuex', 'cache'] as const;
+const CODEX_DB_NAME = 'hub-v1';
+const CODEX_STORE = 'codex-items';
+const CODEX_DB_VERSION = 2;
+const CODEX_DETAIL_STORE = 'codex-item-details';
+
+const openCodexDb = (win: Window): Promise<IDBDatabase> =>
+  new Promise((resolve, reject) => {
+    const request = win.indexedDB.open(CODEX_DB_NAME, CODEX_DB_VERSION);
+    request.onerror = () => reject(request.error ?? new Error('IndexedDB open failed'));
+    request.onsuccess = () => resolve(request.result);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(CODEX_STORE)) {
+        db.createObjectStore(CODEX_STORE, { keyPath: 'locale' });
+      }
+      if (!db.objectStoreNames.contains(CODEX_DETAIL_STORE)) {
+        db.createObjectStore(CODEX_DETAIL_STORE, { keyPath: 'id' });
+      }
+    };
+  });
+
+const clearCodexItemsDb = (win: Window): Promise<void> =>
+  openCodexDb(win).then(
+    (db) =>
+      new Promise((resolve, reject) => {
+        const tx = db.transaction(CODEX_STORE, 'readwrite');
+        const request = tx.objectStore(CODEX_STORE).clear();
+        request.onerror = () => reject(request.error ?? new Error('IndexedDB clear failed'));
+        tx.oncomplete = () => resolve();
+      }),
+  );
+
+const readCodexItemsCount = (win: Window, locale = 'en'): Promise<number> =>
+  openCodexDb(win).then(
+    (db) =>
+      new Promise((resolve, reject) => {
+        const tx = db.transaction(CODEX_STORE, 'readonly');
+        const request = tx.objectStore(CODEX_STORE).get(locale);
+        request.onsuccess = () => {
+          const record = request.result as { items?: unknown[] } | undefined;
+          resolve(record?.items?.length ?? 0);
+        };
+        request.onerror = () => reject(request.error ?? new Error('IndexedDB read failed'));
+      }),
+  );
 
 type PlatformKey = keyof typeof fullWorldstate;
 type ComponentsMap = Record<string, { display?: boolean; [key: string]: unknown }>;
@@ -40,16 +85,20 @@ Cypress.Commands.add('resetHubStorage', () => {
     Object.keys(win.localStorage)
       .filter((key) => HUB_STORAGE_PREFIXES.some((prefix) => key === prefix || key.startsWith(prefix)))
       .forEach((key) => win.localStorage.removeItem(key));
+    return clearCodexItemsDb(win);
   });
 });
 
-Cypress.Commands.add('seedCache', ({ synth, rivens }: HubCacheSeed = {}) => {
+Cypress.Commands.add('seedCache', ({ synth, rivens, items }: HubCacheSeed = {}) => {
   cy.window().then((win) => {
     if (synth) {
       win.localStorage.setItem('hub.v1.cache.synth', JSON.stringify(synth));
     }
     if (rivens) {
       win.localStorage.setItem('hub.v1.cache.rivens', JSON.stringify(rivens));
+    }
+    if (items) {
+      win.localStorage.setItem('hub.v1.cache.codex.items', JSON.stringify(items));
     }
   });
 });
@@ -99,11 +148,18 @@ Cypress.Commands.add(
         if (cache?.rivens) {
           win.localStorage.setItem('hub.v1.cache.rivens', JSON.stringify(cache.rivens));
         }
+        if (cache?.items) {
+          win.localStorage.setItem('hub.v1.cache.codex.items', JSON.stringify(cache.items));
+        }
         onBeforeLoad?.(win);
       },
     });
   }
 );
+
+Cypress.Commands.add('readCodexItemsCount', (locale = 'en') => {
+  cy.window().then((win) => readCodexItemsCount(win, locale));
+});
 
 Cypress.Commands.add(
   'mountPanel',

@@ -319,6 +319,7 @@ type MainNavItemsProps = {
   isOwActive: boolean;
   isRivenActive: boolean;
   isSynthActive: boolean;
+  isCodexActive: boolean;
   showLabel: boolean;
   useTooltip: boolean;
   onNavigate?: () => void;
@@ -332,6 +333,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
   isOwActive,
   isRivenActive,
   isSynthActive,
+  isCodexActive,
   showLabel,
   useTooltip,
   onNavigate,
@@ -383,6 +385,17 @@ const MainNavItems: FC<MainNavItemsProps> = ({
         icon={<NavGlyph src={cdn('svg/simaris.svg')} />}
         label={t('nav.synth')}
         isActive={isSynthActive}
+        onNavigate={onNavigate}
+        showLabel={showLabel}
+        useTooltip={useTooltip}
+        stacked={stacked}
+      />
+
+      <NavIconLink
+        href="/codex"
+        icon={<NavGlyph src={cdn('svg/menu/Mods.svg')} />}
+        label={t('nav.codex')}
+        isActive={isCodexActive}
         onNavigate={onNavigate}
         showLabel={showLabel}
         useTooltip={useTooltip}
@@ -468,6 +481,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
   );
   const isRivenActive = pathname === '/riven/data' || pathname.startsWith('/riven/');
   const isSynthActive = pathname === '/synthesis' || pathname.startsWith('/synthesis/');
+  const isCodexActive = pathname === '/codex' || pathname.startsWith('/codex/');
 
   const leftShowLabel = !isDesktop || isLarge;
   const leftUseTooltip = isDesktop && !isLarge;
@@ -523,6 +537,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                     isOwActive={isOwActive}
                     isRivenActive={isRivenActive}
                     isSynthActive={isSynthActive}
+                    isCodexActive={isCodexActive}
                     showLabel={leftShowLabel}
                     useTooltip={leftUseTooltip}
                   />
@@ -569,6 +584,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                 isOwActive={isOwActive}
                 isRivenActive={isRivenActive}
                 isSynthActive={isSynthActive}
+                isCodexActive={isCodexActive}
                 showLabel
                 useTooltip={false}
                 placement="top start"

@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Excalibur",
+    "uniqueName": "/Lotus/Powersuits/Excalibur/Excalibur",
+    "type": "Warframe",
+    "category": "Warframes",
+    "tradable": false,
+    "masterable": true,
+    "imageName": "excalibur.png"
+  },
+  {
+    "name": "Braton",
+    "uniqueName": "/Lotus/Weapons/Tenno/Rifle/Braton/Braton",
+    "type": "Primary",
+    "category": "Long Guns",
+    "tradable": true,
+    "masterable": true,
+    "imageName": "braton.png"
+  },
+  {
+    "name": "Vitality",
+    "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarHealthMaxMod",
+    "type": "Warframe Mod",
+    "category": "Mods",
+    "tradable": true,
+    "masterable": false
+  },
+  {
+    "name": "Carrier",
+    "uniqueName": "/Lotus/Types/Sentinels/SentinelPowersuits/Carrier/Carrier",
+    "type": "Sentinel",
+    "category": "Sentinels",
+    "tradable": true,
+    "masterable": true
+  },
+  {
+    "name": "Liset",
+    "uniqueName": "/Lotus/Types/Items/ShipDecos/LisetProp/LisetProp",
+    "type": "Ship Decoration",
+    "category": "Ship Decorations",
+    "tradable": false,
+    "masterable": false
+  },
+  {
+    "name": "Mag",
+    "uniqueName": "/Lotus/Powersuits/Mag/Mag",
+    "type": "Warframe",
+    "category": "Warframes",
+    "tradable": false,
+    "masterable": true
+  },
+  {
+    "name": "Galatine",
+    "uniqueName": "/Lotus/Weapons/Tenno/Melee/Galatine/Galatine",
+    "type": "Melee",
+    "category": "Melee",
+    "tradable": true,
+    "masterable": true
+  },
+  {
+    "name": "Serration",
+    "uniqueName": "/Lotus/Upgrades/Mods/Rifle/WeaponDamageAmountMod",
+    "type": "Rifle Mod",
+    "category": "Mods",
+    "tradable": true,
+    "masterable": false
+  }
+]

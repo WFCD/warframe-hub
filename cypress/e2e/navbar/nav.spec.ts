@@ -46,10 +46,36 @@ describe('Navbar mobile', () => {
     cy.visitHub('/');
   });
 
-  it('toggles collapse menu', () => {
-    cy.get('#hub-nav-collapse').should('not.have.class', 'is-open');
-    cy.get('button[aria-label="Toggle navigation"]').click();
-    cy.get('#hub-nav-collapse').should('have.class', 'is-open');
-    cy.get('.hub-navbar-start a[aria-label="Timers"]').should('be.visible');
+  it('shows brand label and support items in header', () => {
+    cy.get('.hub-navbar-brand').should('be.visible').and('contain', 'Warframe Hub');
+    cy.get('.hub-navbar-end--header').within(() => {
+      cy.get('a[aria-label="Discord"]').should('be.visible');
+      cy.get('button[aria-label="Information"]').should('be.visible');
+      cy.get('button[aria-label="Settings"]').should('be.visible');
+    });
+  });
+
+  it('shows main destinations in bottom nav', () => {
+    cy.get('.hub-bottom-nav').should('be.visible').within(() => {
+      cy.get('a[aria-label="Timers"]').should('be.visible');
+      cy.get('button[aria-label="Open World"]').should('be.visible');
+      cy.get('a[aria-label="Riven Data"]').should('be.visible');
+      cy.get('a[aria-label="Synthesis Targets"]').should('be.visible');
+      cy.get('button[aria-label="Projects"]').should('be.visible');
+    });
+  });
+
+  it('navigates from bottom nav', () => {
+    cy.get('.hub-bottom-nav a[aria-label="Riven Data"]').click();
+    cy.location('pathname').should('eq', '/riven/data');
+    cy.contains('h1', 'Riven Data').should('be.visible');
+    cy.get('.hub-bottom-nav a[aria-label="Riven Data"]').should('have.attr', 'aria-current', 'page');
+  });
+
+  it('opens open-world map from bottom nav dropdown', () => {
+    cy.get('.hub-bottom-nav button[aria-label="Open World"]').click();
+    cy.get('.hub-nav-popover a[href="/poe/map"]').click();
+    cy.location('pathname').should('eq', '/poe/map');
+    cy.get('.leaflet-container', { timeout: 10000 }).should('exist');
   });
 });

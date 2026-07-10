@@ -2,10 +2,26 @@
   --hub-chrome-max-width: 80rem;
   --hub-cycle-bar-gap: 0.65rem;
   --hub-z-navbar: 40;
+  --hub-z-bottom-nav: 40;
+  --hub-bottom-nav-height: 3.75rem;
+  --hub-bottom-nav-float-gap: 0.75rem;
+  --hub-bottom-nav-inset-inline: 0.75rem;
   --hub-z-modal-backdrop: 1050;
   --hub-cycle-bar-sticky-top: calc(
     var(--hub-navbar-shell-top, 0.75rem) + var(--hub-navbar-height, 3.75rem) + var(--hub-cycle-bar-gap)
   );
+}
+
+@media (max-width: 767px) {
+  :root {
+    --hub-cycle-bar-sticky-top: var(--hub-cycle-bar-gap);
+  }
+
+  #app {
+    padding-bottom: calc(
+      var(--hub-bottom-nav-height) + var(--hub-bottom-nav-float-gap) + env(safe-area-inset-bottom, 0px) + 0.5rem
+    );
+  }
 }
 
 .dim {

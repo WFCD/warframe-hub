@@ -5,6 +5,7 @@ import '../shared/ModalShell.component.scss';
 import type { FC, ReactNode } from 'react';
 import { Link, Modal, Tabs, useOverlayState } from '@heroui/react';
 import { Trans, useTranslation } from 'react-i18next';
+import { useHubModalPresentation } from '@/lib/hooks/useHubModalPresentation';
 
 type Props = { show: boolean; onHide: () => void };
 
@@ -14,6 +15,7 @@ const AboutParagraph: FC<{ children: ReactNode }> = ({ children }: { children: R
 
 const AboutModal: FC<Props> = ({ show, onHide }: Props) => {
   const { t } = useTranslation();
+  const { placement, size } = useHubModalPresentation('lg');
   const state = useOverlayState({
     isOpen: show,
     onOpenChange: (isOpen) => {
@@ -24,7 +26,12 @@ const AboutModal: FC<Props> = ({ show, onHide }: Props) => {
   return (
     <Modal state={state}>
       <Modal.Backdrop>
-        <Modal.Container placement="center" size="lg" scroll="inside" className="hub-modal hub-about-modal">
+        <Modal.Container
+          placement={placement}
+          size={size}
+          scroll="inside"
+          className="hub-modal hub-modal--sheet hub-about-modal"
+        >
           <Modal.Dialog>
             <Tabs defaultSelectedKey="community">
               <Modal.Header className="hub-modal-header">

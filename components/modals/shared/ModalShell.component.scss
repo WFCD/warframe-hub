@@ -69,3 +69,111 @@
 .hub-modal [data-slot='body'] {
   padding-top: 0.75rem;
 }
+
+@media (max-width: 767px) {
+  .hub-modal--sheet.modal__container {
+    height: var(--visual-viewport-height, 100dvh);
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    justify-content: flex-end;
+    align-items: stretch;
+  }
+
+  .hub-modal--sheet .modal__dialog {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: calc(100dvh - 0.5rem);
+    max-height: calc(100dvh - 0.5rem);
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 1.25rem 1.25rem 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow:
+      var(--hub-navbar-shadow, 0 8px 32px oklch(0% 0 0 / 0.35)),
+      0 -12px 48px oklch(0% 0 0 / 0.4);
+  }
+
+  .hub-modal--sheet.hub-settings-modal .modal__dialog,
+  .hub-modal--sheet.hub-about-modal .modal__dialog {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hub-modal--sheet .hub-modal-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding: 0.35rem 2.75rem 0.65rem 1rem;
+    position: relative;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hub-modal--sheet .hub-modal-header::before {
+    content: '';
+    display: block;
+    width: 2.25rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--foreground) 22%, transparent);
+    margin: 0.15rem auto 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .hub-modal--sheet .hub-modal-title {
+    width: 100%;
+    padding-right: 0.25rem;
+    text-align: center;
+  }
+
+  .hub-modal--sheet .hub-modal-tabs {
+    flex: 0 0 auto;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .hub-modal--sheet .hub-modal-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hub-modal--sheet .hub-modal-tabs [role='tablist'] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 0.35rem;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .hub-modal--sheet .hub-modal-tabs [role='tab'] {
+    min-height: 2rem;
+    padding-inline: 0.65rem;
+  }
+
+  .hub-modal--sheet .hub-modal-close {
+    position: absolute;
+    top: 1.15rem;
+    right: 0.75rem;
+    margin-left: 0;
+  }
+
+  .hub-modal--sheet [data-slot='body'],
+  .hub-modal--sheet .modal__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    padding: 0.75rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+}

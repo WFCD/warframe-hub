@@ -38,3 +38,23 @@ describe('Settings and About modals', () => {
     cy.contains('.hub-modal-title', 'About').should('not.exist');
   });
 });
+
+describe('Settings and About modals mobile', () => {
+  beforeEach(() => {
+    cy.viewport(390, 844);
+    cy.visitHub('/');
+  });
+
+  it('opens settings as a full-height bottom sheet', () => {
+    cy.get('.hub-navbar-end--header button[aria-label="Settings"]').click();
+    cy.get('.hub-modal--sheet.hub-settings-modal').should('be.visible');
+    cy.get('.hub-modal--sheet .modal__dialog').should(($dialog) => {
+      const height = $dialog.height() ?? 0;
+      expect(height).to.be.greaterThan(700);
+    });
+    cy.contains('[role="tab"]', 'General').should('be.visible');
+    cy.contains('[role="tab"]', 'Notifications').should('be.visible');
+    cy.get('.hub-settings-modal .hub-modal-close').click();
+    cy.contains('.hub-modal-title', 'Settings').should('not.exist');
+  });
+});

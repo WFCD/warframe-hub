@@ -21,24 +21,18 @@ if (!token || !orgId || !projectId || !branch) {
   process.exit(1);
 }
 
-const vercelArgs = (args) => [
-  ...args,
-  '--token',
-  token,
-  '--scope',
-  orgId,
-  '--yes',
-];
+/** Global flags only — do not append --yes (create/ls reject it; rm accepts -y/--yes). */
+const withAuth = (args) => [...args, '--token', token, '--scope', orgId];
 
 const run = (args, { allowFail = false } = {}) => {
-  const result = spawnSync('vercel', vercelArgs(args), {
+  const result = spawnSync('vercel', withAuth(args), {
     encoding: 'utf8',
     env: process.env,
   });
   const stdout = result.stdout ?? '';
   const stderr = result.stderr ?? '';
   if (result.status !== 0 && !allowFail) {
-    console.error(stderr || stdout || `vercel ${args[0]} failed`);
+    console.error(stderr || stdout || `vercel ${args.join(' ')} failed`);
     process.exit(result.status ?? 1);
   }
   return { stdout, stderr, status: result.status ?? 1 };
@@ -81,6 +75,7 @@ try {
   }
   if (!hookUrl) {
     console.error('Deploy hook created but URL not found in CLI output');
+    console.error(createdText);
     process.exit(1);
   }
   if (!hookId && hook) {
@@ -96,7 +91,6 @@ try {
   }
   console.log(`Hook accepted: ${body}`);
 
-  // Best-effort: surface job id for Actions summary
   try {
     const json = JSON.parse(body);
     if (json?.job?.id) {
@@ -109,15 +103,18 @@ try {
   console.log(`branch=${branch}`);
   console.log(`triggered=1`);
 } finally {
+  const remove = (id) => {
+    console.log(`Removing deploy hook ${id}`);
+    run(['deploy-hooks', 'rm', id, '--yes', '--project', projectId], { allowFail: true });
+  };
+
   if (hookId) {
-    console.log(`Removing deploy hook ${hookId}`);
-    run(['deploy-hooks', 'rm', hookId, '--project', projectId], { allowFail: true });
+    remove(hookId);
   } else {
     const leftover = findHook(hookName);
     const id = leftover?.id ?? leftover?.uid;
     if (id) {
-      console.log(`Removing deploy hook ${id} (lookup by name)`);
-      run(['deploy-hooks', 'rm', id, '--project', projectId], { allowFail: true });
+      remove(id);
     } else {
       console.warn(`No hook id to remove for "${hookName}" — check Vercel dashboard if hooks accumulate`);
     }

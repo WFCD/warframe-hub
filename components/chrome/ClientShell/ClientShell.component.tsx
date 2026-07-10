@@ -6,6 +6,8 @@ import { lazy, Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { heroUiThemeForHub } from '@/lib/hubTheme';
 import themes from '@/data/json/themes.json';
+import HubNavbar from '@/components/chrome/Navbar';
+import InAppNotificationHost from '@/components/chrome/InAppNotificationHost';
 import TestDataProvider from '@/lib/test/TestDataProvider';
 import { PageChromeProvider } from '@/lib/providers/PageChromeProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
@@ -16,7 +18,6 @@ import '@/styles/hub.scss';
 
 const SettingsModal = dynamic(() => import('@/components/modals/SettingsModal'), { ssr: false });
 const AboutModal = dynamic(() => import('@/components/modals/AboutModal'), { ssr: false });
-const HubNavbar = dynamic(() => import('@/components/chrome/Navbar'), { ssr: false });
 const PwaUpdatePrompt = lazy(() => import('@/components/chrome/PwaUpdatePrompt'));
 const ThemeSync: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const { state } = usePrefs();
@@ -52,6 +53,7 @@ const ClientShell: FC<{ children: ReactNode }> = ({ children }: { children: Reac
           <div className="hub-sacrifice-backdrop" aria-hidden />
           <div id="app">
             <HubNavbar onOpenSettings={() => setShowSettings(true)} onOpenAbout={() => setShowAbout(true)} />
+            <InAppNotificationHost />
             <SettingsModal show={showSettings} onHide={() => setShowSettings(false)} />
             <AboutModal show={showAbout} onHide={() => setShowAbout(false)} />
             <PwaUpdatePromptGate />

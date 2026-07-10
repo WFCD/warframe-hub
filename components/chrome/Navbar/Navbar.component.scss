@@ -226,6 +226,13 @@
   opacity: 0.72;
 }
 
+.hub-nav-icon .hub-nav-symbol {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: inherit;
+}
+
 .hub-nav-link:hover .hub-nav-glyph,
 .hub-nav-link:focus-visible .hub-nav-glyph,
 .hub-nav-link[aria-current='page'] .hub-nav-glyph {
@@ -507,6 +514,10 @@ body.day .hub-nav-link[aria-current='page'] .hub-nav-glyph {
 .hub-bottom-nav .hub-nav-icon .hub-nav-glyph {
   width: 1.1rem;
   height: 1.1rem;
+}
+
+.hub-bottom-nav .hub-nav-icon .hub-nav-symbol {
+  font-size: 1.1rem;
 }
 
 .hub-bottom-nav-shell .tooltip[data-placement],

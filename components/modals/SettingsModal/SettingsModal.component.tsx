@@ -1,10 +1,14 @@
 'use client';
 import '../shared/ModalShell.component.scss';
 import type { FC } from 'react';
+import { useEffect } from 'react';
 
 import { Modal, Tabs, useOverlayState } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { useHubModalPresentation } from '@/lib/hooks/useHubModalPresentation';
+import { promptNotificationPermission } from '@/lib/notifications/testNotification';
+import { useNotifications } from '@/lib/providers/NotificationsProvider';
+import { usePrefs } from '@/lib/providers/PrefsProvider';
 import GeneralFilter from '@/components/modals/filters/GeneralFilter';
 import NotificationFilters from '@/components/modals/filters/NotificationFilters';
 import FissureFilters from '@/components/modals/filters/FissureFilters';
@@ -13,6 +17,8 @@ import SoundFilters from '@/components/modals/filters/SoundFilters';
 type Props = { show: boolean; onHide: () => void };
 const SettingsModal: FC<Props> = ({ show, onHide }: Props) => {
   const { t } = useTranslation();
+  const { setAllowance } = useNotifications();
+  const { state: prefs } = usePrefs();
   const { placement, size } = useHubModalPresentation('xl');
   const state = useOverlayState({
     isOpen: show,
@@ -20,6 +26,13 @@ const SettingsModal: FC<Props> = ({ show, onHide }: Props) => {
       if (!isOpen) onHide();
     },
   });
+
+  useEffect(() => {
+    if (!show) return;
+    void promptNotificationPermission(prefs.locale).then((permission) => {
+      if (permission !== 'unsupported') setAllowance(permission);
+    });
+  }, [show, setAllowance, prefs.locale]);
 
   return (
     <Modal state={state}>

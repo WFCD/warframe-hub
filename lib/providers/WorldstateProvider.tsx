@@ -116,6 +116,7 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
     if (ws) {
       dispatch({ type: 'SET_WORLDSTATE', payload: [platform, ws] });
       const notifier = new Notifier({
+        getLocale: () => prefs.locale,
         getNotifiedIds: () => getNotifiedIds(platform),
         setNotifiedIds: (ids) => notifDispatch({ type: 'SET_NOTIFIED_IDS', payload: [ids, platform] }),
         getSoundFilters: () => prefs.soundFilters,

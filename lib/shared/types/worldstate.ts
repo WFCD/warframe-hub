@@ -17,9 +17,11 @@ export type WorldstateData = Record<string, unknown> & {
   voidTrader?: unknown;
   constructionProgress?: unknown;
   cetusCycle?: unknown;
+  vallisCycle?: unknown;
   zarimanCycle?: unknown;
   arbitration?: unknown;
   sentientOutposts?: unknown;
+  persistentEnemies?: unknown[];
 };
 
 export type WorldstatesByPlatform = Record<Platform, WorldstateData>;

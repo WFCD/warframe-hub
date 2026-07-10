@@ -13,6 +13,7 @@ import {
   type FC,
 } from 'react';
 import { readStorage, usePersistedState } from './storageUtils';
+import { isNotificationSupported } from '../notifications/testNotification';
 
 const STORAGE_KEY = 'hub.v1.notifications';
 
@@ -56,6 +57,14 @@ const NotificationsProvider: FC<{ children: ReactNode }> = ({ children }: { chil
   useEffect(() => {
     const stored = readStorage<NotificationsState>(STORAGE_KEY);
     if (stored) dispatch({ type: 'HYDRATE', payload: stored });
+  }, []);
+
+  useEffect(() => {
+    if (!isNotificationSupported()) return;
+    const permission = Notification.permission;
+    if (permission !== 'default') {
+      dispatch({ type: 'SET_ALLOWANCE', payload: permission });
+    }
   }, []);
 
   usePersistedState(STORAGE_KEY, state);

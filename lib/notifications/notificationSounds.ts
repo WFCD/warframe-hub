@@ -7,11 +7,14 @@ const NOTIFICATION_SOUND_SRC: Record<NotificationSoundKey, string> = {
   eidolon: '/audio/eidolon.mp3',
 };
 
-export const playNotificationSound = async (key: NotificationSoundKey): Promise<void> => {
+export const playNotificationSound = async (
+  key: NotificationSoundKey,
+  volume = 1,
+): Promise<void> => {
   if (typeof window === 'undefined') return;
 
   const audio = new Audio(NOTIFICATION_SOUND_SRC[key]);
-  audio.volume = 1;
+  audio.volume = volume;
   try {
     await audio.play();
   } catch {

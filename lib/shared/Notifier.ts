@@ -1,14 +1,26 @@
 import type { WorldstateData } from './types/worldstate';
-
-const wfcdLogoUrl = 'https://warframestat.us/wfcd_logo_color.png';
+import { collectNotifiedIds } from '../notifications/collectNotifiedIds';
+import { deliverNotifications } from '../notifications/deliverNotifications';
+import { generateNotifications } from '../notifications/generateNotifications';
+import { createNotificationTranslator } from '../notifications/notificationI18n';
 
 export type NotifierContext = {
+  getLocale: () => string;
   getNotifiedIds: () => string[];
   setNotifiedIds: (ids: string[]) => void;
   getSoundFilters: () => string[];
-  getTrackables: () => { rewardTypes: Record<string, { state: boolean }>; eventTypes: Record<string, { state: boolean }> };
+  getTrackables: () => {
+    rewardTypes: Record<string, { state: boolean; value?: string }>;
+    eventTypes: Record<string, { state: boolean; value?: string }>;
+  };
   getNotificationAllowance: () => NotificationPermission | 'default';
 };
+
+const activeTrackableValues = (entries: Record<string, { state: boolean; value?: string }>): string[] =>
+  Object.values(entries)
+    .filter((entry) => entry.state)
+    .map((entry) => String(entry.value ?? ''))
+    .filter(Boolean);
 
 export class Notifier {
   constructor(private ctx: NotifierContext) {}
@@ -17,28 +29,16 @@ export class Notifier {
     if (typeof window === 'undefined' || !('Notification' in window)) return;
     if (this.ctx.getNotificationAllowance() !== 'granted') return;
 
-    const ids = this.collectIds(ws);
-    const prev = this.ctx.getNotifiedIds();
-    const newAlerts = ids.filter((id) => !prev.includes(id));
-    if (!newAlerts.length) return;
+    const trackables = this.ctx.getTrackables();
+    const t = createNotificationTranslator(this.ctx.getLocale());
+    const toNotify = generateNotifications(ws, {
+      notifiedIds: this.ctx.getNotifiedIds(),
+      trackedRewards: activeTrackableValues(trackables.rewardTypes),
+      trackedEvents: activeTrackableValues(trackables.eventTypes),
+      t,
+    });
 
-    for (const alert of (ws.alerts as Array<{ id: string; mission?: { node?: string } }>) ?? []) {
-      if (newAlerts.includes(alert.id)) {
-        new Notification('Warframe Alert', {
-          body: alert.mission?.node ?? 'New alert',
-          icon: wfcdLogoUrl,
-        });
-      }
-    }
-
-    this.ctx.setNotifiedIds(ids);
-  }
-
-  private collectIds(ws: WorldstateData): string[] {
-    return []
-      .concat((ws.alerts as Array<{ id: string }> | undefined)?.map((a) => a.id) ?? [])
-      .concat((ws.events as Array<{ id: string }> | undefined)?.map((e) => e.id) ?? [])
-      .concat((ws.news as Array<{ id: string }> | undefined)?.map((n) => n.id) ?? [])
-      .filter(Boolean) as string[];
+    await deliverNotifications(toNotify, this.ctx.getSoundFilters());
+    this.ctx.setNotifiedIds(collectNotifiedIds(ws));
   }
 }

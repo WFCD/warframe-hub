@@ -8,6 +8,11 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 import { runtimeCaching } from './lib/pwa/cacheConfig';
 import devConfig from './dev.config.cjs';
+import {
+  REACT_ARIA_NO_EXTERNAL,
+  REACT_ARIA_OPTIMIZE_DEPS,
+  reactAriaIntlSlim,
+} from './lib/vite/reactAriaIntlSlim';
 
 const require = createRequire(import.meta.url);
 const appRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -58,6 +63,7 @@ ${namedExports}
 
 export default defineConfig(() => ({
   plugins: [
+    reactAriaIntlSlim(),
     cjsInteropPlugin('@restart/hooks'),
     cjsInteropPlugin('@restart/ui'),
     vinext({
@@ -103,7 +109,14 @@ export default defineConfig(() => ({
     dedupe: ['react', 'react-dom', 'react-aria', 'react-aria-components'],
     conditions: ['node', 'import', 'module', 'browser', 'default'],
   },
+  optimizeDeps: {
+    include: [...REACT_ARIA_OPTIMIZE_DEPS],
+  },
   ssr: {
+    noExternal: [...REACT_ARIA_NO_EXTERNAL],
+    optimizeDeps: {
+      include: [...REACT_ARIA_OPTIMIZE_DEPS],
+    },
     resolve: {
       conditions: ['node', 'require', 'import'],
     },

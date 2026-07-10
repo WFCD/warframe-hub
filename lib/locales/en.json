@@ -205,12 +205,6 @@
     "lunaro": "Lunaro",
     "cephaloncapture": "Capture the Cephalon"
   },
-  "notifications": {
-    "cetus": {
-      "dayheader": "Cetus - Rise and Shine! Hunting time Over!",
-      "nightheader": "Cetus - Hunting Time!"
-    }
-  },
   "reset": {
     "header": "Daily Reset",
     "tooltip": "Daily Reset timer is based on your computer's clock.\nMake sure it's in sync!"
@@ -307,6 +301,14 @@
     "fissuresHiddenPlaceholder": "Select planets to hide",
     "fissuresHelp": "Tagged planets are hidden from fissure, void storm, and steel path lists. Use Customize layout on the timers page to show or hide whole fissure panels.",
     "notificationsHelp": "Add tags for entries you want notifications for. Search in each dropdown, then pick multiple options.",
+    "testNotification": "Test notification",
+    "testNotificationHelp": "Request browser permission and preview how alerts will appear. Enabled sounds play with the test.",
+    "testNotificationTitle": "Warframe Hub",
+    "testNotificationBody": "You can now receive notifications like this.",
+    "testNotificationSent": "Test notification sent.",
+    "testNotificationDenied": "Notifications are blocked. Enable them in your browser settings for this site.",
+    "testNotificationUnsupported": "This browser does not support notifications.",
+    "permissionThanksTitle": "Thanks!",
     "rewards": "Rewards",
     "events": "Events",
     "selectRewards": "Select rewards",
@@ -344,7 +346,169 @@
   },
   "ui": {
     "search": "Search...",
-    "noMatches": "No matches"
+    "noMatches": "No matches",
+    "selectAll": "Select all",
+    "clearAll": "Clear all"
+  },
+  "notifications": {
+    "defaultTitle": "Warframe Hub",
+    "defaultBody": "You can now receive notifications like this.",
+    "unknown": "Unknown",
+    "enemy": "Enemy",
+    "anItem": "an item",
+    "remaining": "{eta} Remaining",
+    "remainingColon": "Remaining: {eta}",
+    "alert": {
+      "title": "{missionType} - {node}",
+      "fallbackMissionType": "Alert"
+    },
+    "operation": {
+      "fallbackTitle": "Operation"
+    },
+    "cetusDay": {
+      "title": "Cetus - Rise and Shine! Hunting time Over!"
+    },
+    "cetusNight": {
+      "title": "Cetus - Hunting Time!"
+    },
+    "ostronBounties": {
+      "title": "Ostron Bounties"
+    },
+    "baro": {
+      "title": "Baro Ki'Teer",
+      "body": "See Component for more details\nBaro Ki'Teer departs in {endString} from {location}"
+    },
+    "darvo": {
+      "title": "Darvo Deal on {item}!",
+      "body": "{discount}% off • {remaining} remaining\nEnds in {eta}"
+    },
+    "enemies": {
+      "title": "{agentType} discovered!",
+      "body": "{healthPercent}% Health Remaining • Discovered at {lastDiscoveredAt}"
+    },
+    "sortie": {
+      "title": "Sortie: {boss}"
+    },
+    "archonHunt": {
+      "title": "Archon Hunt: {boss}"
+    },
+    "fissure": {
+      "title": "New Fissure Detected",
+      "body": "{tier} {missionType} • {node}"
+    },
+    "invasions": {
+      "titleVs": "{attacker} vs {defender}",
+      "body": "{desc} • {node}\n{eta} Remaining"
+    },
+    "vallisWarm": {
+      "title": "Vallis - Get your Warm Fishing on!"
+    },
+    "vallisCold": {
+      "title": "Vallis - Back to the Cold!"
+    },
+    "nightwave": {
+      "title": "Nightwave - {challengeTitle}",
+      "dailyPrefix": "Daily: ",
+      "weeklyPrefix": "Weekly: ",
+      "elitePrefix": "Weekly Elite: ",
+      "body": "{prefix}{desc}"
+    },
+    "outposts": {
+      "title": "Sentient Outpost - {node}"
+    },
+    "arbitration": {
+      "title": "Arbitration - {node}"
+    }
+  },
+  "trackables": {
+    "fissureLabel": "{tier} {missionType} Fissure",
+    "arbitrationLabel": "{faction} {missionType} Arbitration",
+    "rewards": {
+      "vandal": "Vandal Weapon Part",
+      "wraith": "Wraith Weapon Part",
+      "skin": "Skin Blueprint",
+      "helmet": "Helmet Blueprint",
+      "mutalist": "Mutalist Alad V Nav Coordinate",
+      "weapon": "Weapon Blueprints",
+      "fieldron": "Fieldron /Sample",
+      "detonite": "Detonite Ampule or Injector",
+      "mutagen": "Mutagen Samples or Masses",
+      "aura": "Aura Mods",
+      "neurodes": "Neurodes",
+      "nightmare": "Nightmare Mods",
+      "reactor": "Orokin Reactors",
+      "catalyst": "Orokin Catalyst",
+      "forma": "Forma",
+      "synthula": "Synthula",
+      "exilus": "Exilus Adapater",
+      "riven": "Riven Mods",
+      "traces": "Void Traces"
+    },
+    "events": {
+      "nightwave": "Nightwave",
+      "alerts": "Alerts",
+      "invasions": "Invasions",
+      "news": "News",
+      "sorties": "Sorties",
+      "archonHunt": "Archon Hunt",
+      "baro": "Baro Ki'Teer Arrival",
+      "darvo": "Darvo's Daily Deals",
+      "deals.featured": "Featured Deals",
+      "deals.popular": "Popular Deals",
+      "enemies": "Acolytes",
+      "updates": "Warframe Update News",
+      "primeaccess": "Prime Access News",
+      "streams": "Stream Announcements",
+      "cetus.day": "Cetus Day Start",
+      "cetus.night": "Cetus Night Start",
+      "syndicate.ostrons": "Bounties",
+      "operations": "Operations",
+      "outposts": "Sentient Outposts",
+      "vallis.warm": "Orb Vallis Warm Cycle",
+      "vallis.cold": "Orb Vallis Cold Cycle"
+    },
+    "fissureTiers": {
+      "t1": "Lith",
+      "t2": "Meso",
+      "t3": "Neo",
+      "t4": "Axi",
+      "t5": "Requiem",
+      "t6": "Omnia",
+      "sp.t1": "Steel Path Lith",
+      "sp.t2": "Steel Path Meso",
+      "sp.t3": "Steel Path Neo",
+      "sp.t4": "Steel Path Axi",
+      "sp.t5": "Steel Path Requiem",
+      "sp.t6": "Steel Path Omnia"
+    },
+    "missionTypes": {
+      "alchemy": "Alchemy",
+      "assassination": "Assassination",
+      "capture": "Capture",
+      "conjunctionsurvival": "Conjunction Survival",
+      "defense": "Defense",
+      "disruption": "Disruption",
+      "extermination": "Extermination",
+      "excavation": "Excavation",
+      "hijack": "Hijack",
+      "hive": "Hive",
+      "interception": "Interception",
+      "mobiledefense": "Mobile Defense",
+      "orphix": "Orphix",
+      "rescue": "Rescue",
+      "skirmish": "Skirmish",
+      "survival": "Survival",
+      "voidcascade": "Void Cascade",
+      "voidflood": "Void Flood",
+      "volatile": "Volatile"
+    },
+    "factions": {
+      "grineer": "Grineer",
+      "corpus": "Corpus",
+      "corrupted": "Corrupted",
+      "orokin": "Orokin",
+      "infested": "Infested"
+    }
   },
   "about": {
     "header": "About",

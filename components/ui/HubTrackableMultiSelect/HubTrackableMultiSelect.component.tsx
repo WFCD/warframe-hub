@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 import {
   Autocomplete,
+  Button,
   EmptyState,
   Label,
   ListBox,
@@ -28,6 +29,7 @@ type Props = {
   options: TrackableSelectOption[];
   selectedKeys: string[];
   onSelectionChange: (keys: Key[]) => void;
+  showSelectAll?: boolean;
 };
 
 const normalizeKeys = (keys: Key | Key[] | null): Key[] => {
@@ -41,10 +43,12 @@ const HubTrackableMultiSelect: FC<Props> = ({
   options,
   selectedKeys,
   onSelectionChange,
+  showSelectAll = false,
 }: Props) => {
   const { t } = useTranslation();
   const { contains } = useFilter({ sensitivity: 'base' });
   const optionByKey = useMemo(() => new Map(options.map((option) => [option.key, option])), [options]);
+  const allOptionKeys = useMemo(() => options.map((option) => option.key), [options]);
 
   const onRemoveTags = (keys: Set<Key>) => {
     onSelectionChange(selectedKeys.filter((key) => !keys.has(key)));
@@ -91,6 +95,21 @@ const HubTrackableMultiSelect: FC<Props> = ({
         </Autocomplete.Trigger>
         <Autocomplete.Popover className="hub-settings-multiselect-popover">
           <Autocomplete.Filter filter={contains}>
+            {showSelectAll ? (
+              <div className="hub-settings-multiselect-actions">
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="ghost"
+                  onPress={() => onSelectionChange(allOptionKeys)}
+                >
+                  {t('ui.selectAll')}
+                </Button>
+                <Button type="button" size="sm" variant="ghost" onPress={() => onSelectionChange([])}>
+                  {t('ui.clearAll')}
+                </Button>
+              </div>
+            ) : null}
             {/* Focus filter input when the popover opens for keyboard users. */}
             {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
             <SearchField autoFocus name="search" variant="secondary">

@@ -58,6 +58,11 @@
 
 .hub-modal .modal__dialog {
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: min(85vh, 44rem);
+  overflow: hidden;
 }
 
 .hub-settings-modal .modal__dialog {
@@ -66,7 +71,24 @@
   max-width: 600px;
 }
 
-.hub-modal [data-slot='body'] {
+.hub-modal .modal__dialog > [data-slot='tabs'] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.hub-modal .modal__header,
+.hub-modal [data-slot='modal-header'] {
+  flex-shrink: 0;
+}
+
+.hub-modal [data-slot='body'],
+.hub-modal .modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-top: 0.75rem;
 }
 

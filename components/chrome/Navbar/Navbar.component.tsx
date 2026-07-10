@@ -7,7 +7,13 @@ import { usePathname } from 'next/navigation';
 import { Button, Dropdown, Tooltip } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { usePageChromeContext } from '@/lib/providers/PageChromeProvider';
-import { cdn } from '@/lib/shared/utilities';
+
+/** Warframe-symbols icon class names from genesis-assets/fonts/Warframe-symbols.css */
+export const NAV_SYMBOL = {
+  codex: 'icon-menu-codex',
+  riven: 'icon-menu-RivenMod',
+  synthesis: 'icon-simaris',
+} as const;
 
 type Props = {
   onOpenSettings?: () => void;
@@ -99,12 +105,13 @@ const NavTooltip: FC<NavTooltipProps> = ({ label, children }: NavTooltipProps) =
   </Tooltip>
 );
 
-type NavGlyphProps = {
-  src: string;
+type NavSymbolProps = {
+  symbol: string;
 };
 
-const NavGlyph: FC<NavGlyphProps> = ({ src }: NavGlyphProps) => (
-  <img className="hub-nav-glyph" src={src} alt="" aria-hidden />
+/** Genesis Warframe-symbols font glyph — inherits nav link color (hover/active/themes). */
+const NavSymbol: FC<NavSymbolProps> = ({ symbol }: NavSymbolProps) => (
+  <i className={`${symbol} hub-nav-symbol`} aria-hidden />
 );
 
 type NavIconLinkProps = {
@@ -371,7 +378,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
 
       <NavIconLink
         href="/riven/data"
-        icon={<NavGlyph src={cdn('svg/menu/RivenMod.svg')} />}
+        icon={<NavSymbol symbol={NAV_SYMBOL.riven} />}
         label={t('nav.riven')}
         isActive={isRivenActive}
         onNavigate={onNavigate}
@@ -382,7 +389,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
 
       <NavIconLink
         href="/synthesis"
-        icon={<NavGlyph src={cdn('svg/simaris.svg')} />}
+        icon={<NavSymbol symbol={NAV_SYMBOL.synthesis} />}
         label={t('nav.synth')}
         isActive={isSynthActive}
         onNavigate={onNavigate}
@@ -393,7 +400,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
 
       <NavIconLink
         href="/codex"
-        icon={<NavGlyph src={cdn('svg/menu/Mods.svg')} />}
+        icon={<NavSymbol symbol={NAV_SYMBOL.codex} />}
         label={t('nav.codex')}
         isActive={isCodexActive}
         onNavigate={onNavigate}

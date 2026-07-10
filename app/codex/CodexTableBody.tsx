@@ -2,11 +2,11 @@
 
 import { Fragment, useCallback, useState, type FC } from 'react';
 import type { CodexItem } from '@/lib/shared';
-import { wfcdn } from '@/lib/shared';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
 import { FishBoolIcon, FishExpandButton } from '@/components/pages/ContentPage/FishTableUi';
 import { codexWikiUrl } from './codexWikiUrl';
 import CodexItemDetailPanel from './CodexItemDetailPanel';
+import CodexItemImage from './CodexItemImage';
 
 const COLUMN_COUNT = 7;
 
@@ -45,10 +45,10 @@ const CodexTableBody: FC<CodexTableBodyProps> = ({ rows, currentPage, perPage, l
               <td>
                 <div className="hub-codex-table__name">
                   {item.imageName ? (
-                    <img
+                    <CodexItemImage
+                      imageName={item.imageName}
+                      name={item.name}
                       className="hub-codex-table__thumb"
-                      src={wfcdn(item.imageName)}
-                      alt=""
                       width={32}
                       height={32}
                     />

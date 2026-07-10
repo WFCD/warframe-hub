@@ -158,3 +158,28 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.hub-codex-item-image__trigger {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.hub-codex-item-image__tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 12rem;
+  text-align: center;
+}
+
+.hub-codex-item-image__preview {
+  object-fit: contain;
+  border-radius: 0.25rem;
+  background: color-mix(in oklch, var(--surface) 80%, transparent);
+}
+
+.hub-codex-item-image__label {
+  font-size: 0.75rem;
+  line-height: 1.25;
+}

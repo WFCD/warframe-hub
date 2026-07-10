@@ -3,10 +3,10 @@
 import type { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CodexItemDetail } from '@/lib/shared';
-import { wfcdn } from '@/lib/shared';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
 import WarframeRichText from '@/components/media/WarframeRichText/WarframeRichText';
 import { useCodexItemDetail } from '@/lib/hooks/useCodexItemDetail';
+import CodexItemImage from './CodexItemImage';
 
 const formatDuration = (seconds: number): string => {
   const days = Math.floor(seconds / 86400);
@@ -117,10 +117,10 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
             {detail.abilities.map((ability) => (
               <li key={ability.uniqueName} className="hub-codex-detail__ability">
                 {ability.imageName ? (
-                  <img
+                  <CodexItemImage
+                    imageName={ability.imageName}
+                    name={ability.name}
                     className="hub-codex-detail__ability-icon"
-                    src={wfcdn(ability.imageName)}
-                    alt=""
                     width={32}
                     height={32}
                   />
@@ -155,10 +155,10 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
                   <td>
                     <div className="hub-codex-detail__component">
                       {component.imageName ? (
-                        <img
+                        <CodexItemImage
+                          imageName={component.imageName}
+                          name={component.name}
                           className="hub-codex-detail__component-icon"
-                          src={wfcdn(component.imageName)}
-                          alt=""
                           width={24}
                           height={24}
                         />

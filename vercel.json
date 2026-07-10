@@ -1,10 +1,15 @@
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "ignoreCommand": "node scripts/vercel-ignore-build.mjs",
   "framework": null,
   "outputDirectory": "dist/client",
   "cleanUrls": true,
+  "git": {
+    "deploymentEnabled": {
+      "*": false,
+      "dev": true
+    }
+  },
   "headers": [
     {
       "source": "/_next/static/(.*)",

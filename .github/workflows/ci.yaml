@@ -102,7 +102,6 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       contents: read
-      deployments: write
       pull-requests: write
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -122,32 +121,30 @@ jobs:
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
-    - name: Install Dependencies
-      run: npm ci
     - name: Install Vercel CLI
       run: npm install --global vercel@latest
-    - name: Pull Vercel Environment Information
-      run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-    - name: Build Project Artifacts
-      run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-    - name: Deploy Preview to Vercel
-      id: deploy
+    - name: Trigger preview via Deploy Hook
+      id: hook
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        BRANCH: ${{ github.head_ref }}
+        HOOK_NAME: ci-preview-${{ github.run_id }}-${{ github.run_attempt }}
       run: |
-        url="$(vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}")"
-        echo "url=${url}" >> "$GITHUB_OUTPUT"
+        set -euo pipefail
+        node scripts/ci-vercel-preview-hook.mjs | tee /tmp/vercel-hook.log
         {
-          echo "### Preview deployment"
+          echo "### Preview"
           echo ""
-          echo "${url}"
+          echo "Deploy Hook triggered for branch \`${BRANCH}\`."
+          echo "Vercel will build that ref from Git (no local amend / no push)."
         } >> "$GITHUB_STEP_SUMMARY"
-    - name: Comment preview URL on PR
+    - name: Comment preview status on PR
       uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
       with:
         script: |
-          const url = '${{ steps.deploy.outputs.url }}';
-          if (!url) return;
+          const branch = '${{ github.head_ref }}';
           const marker = '<!-- hub-vercel-preview -->';
-          const body = `${marker}\n### Preview\n\n${url}\n`;
+          const body = `${marker}\n### Preview\n\nDeploy Hook triggered for \`${branch}\` after CI passed.\n\nCheck the [Vercel dashboard](https://vercel.com) for the preview URL once the build finishes.\n`;
           const { data: comments } = await github.rest.issues.listComments({
             owner: context.repo.owner,
             repo: context.repo.repo,

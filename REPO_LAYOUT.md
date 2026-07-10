@@ -74,8 +74,12 @@ Commit messages: [commitlint](https://commitlint.js.org/) ([`commitlint.config.c
 
 [`vercel.json`](vercel.json): `npm run build` → `dist/client`. Semantic-release bumps root `package.json` on `dev`.
 
-**PR previews:** Vercel Git preview builds are skipped (`ignoreCommand` → [`scripts/vercel-ignore-build.mjs`](scripts/vercel-ignore-build.mjs)). After commitlint, lint, e2e, and component jobs pass, CI job **Preview** runs `vercel build` + `vercel deploy --prebuilt` and comments the URL on the PR.
+**PR previews:** Auto Git deploys off for non-`dev` branches (`git.deploymentEnabled` in [`vercel.json`](vercel.json); `dev` still auto-deploys). After commitlint, lint, e2e, and component pass, CI **Preview** creates an ephemeral Deploy Hook for the PR branch, `POST`s it, deletes the hook ([`scripts/ci-vercel-preview-hook.mjs`](scripts/ci-vercel-preview-hook.mjs)). No commit amend / no push.
 
-GitHub config: secret `VERCEL_TOKEN`; variables `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+GitHub config:
+- **Secret** `VERCEL_TOKEN`
+- **Variables** `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+
+Note: Deploy Hooks still use Vercel’s Git build of the branch tip. Hobby/Pro allow only a few hooks per project — script always tries to delete after trigger.
 
 Production alias gating (Deployment Checks after CI) can be added in the Vercel dashboard once a deploy has run.

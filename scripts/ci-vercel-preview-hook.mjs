@@ -1,27 +1,33 @@
 #!/usr/bin/env node
 /**
- * After CI passes: create a Deploy Hook for the PR branch, trigger it, then delete the hook.
- * Avoids git-author amend and keeps auto Git deploys off via vercel.json git.deploymentEnabled.
+ * After CI passes:
+ * 1. Create ephemeral Deploy Hook for PR branch
+ * 2. POST it
+ * 3. Delete hook
+ * 4. Poll Vercel until deployment for this commit SHA is READY
+ * 5. Print preview URL + deployment id for GitHub Actions
  *
- * Env:
- *   VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID (required)
- *   BRANCH — git branch to deploy (required)
- *   HOOK_NAME — unique hook name (default: ci-preview-<timestamp>)
+ * Env (required): VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, BRANCH, COMMIT_SHA
+ * Env (optional): HOOK_NAME, POLL_TIMEOUT_MS (default 600000), POLL_INTERVAL_MS (default 5000)
  */
 import { spawnSync } from 'node:child_process';
+import { appendFileSync } from 'node:fs';
 
 const token = process.env.VERCEL_TOKEN;
 const orgId = process.env.VERCEL_ORG_ID;
 const projectId = process.env.VERCEL_PROJECT_ID;
 const branch = process.env.BRANCH;
+const commitSha = process.env.COMMIT_SHA;
 const hookName = process.env.HOOK_NAME || `ci-preview-${Date.now()}`;
+const pollTimeoutMs = Number(process.env.POLL_TIMEOUT_MS || 600_000);
+const pollIntervalMs = Number(process.env.POLL_INTERVAL_MS || 5_000);
+const githubOutput = process.env.GITHUB_OUTPUT;
 
-if (!token || !orgId || !projectId || !branch) {
-  console.error('Missing VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, and/or BRANCH');
+if (!token || !orgId || !projectId || !branch || !commitSha) {
+  console.error('Missing VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, BRANCH, and/or COMMIT_SHA');
   process.exit(1);
 }
 
-/** Global flags only — do not append --yes (create/ls reject it; rm accepts -y/--yes). */
 const withAuth = (args) => [...args, '--token', token, '--scope', orgId];
 
 const run = (args, { allowFail = false } = {}) => {
@@ -59,6 +65,84 @@ const listHooks = () => {
 
 const findHook = (name) => listHooks().find((h) => h.name === name || h.ref === branch);
 
+const vercelApi = async (path) => {
+  const url = new URL(path, 'https://api.vercel.com');
+  if (!url.searchParams.has('teamId') && orgId) {
+    url.searchParams.set('teamId', orgId);
+  }
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  const text = await res.text();
+  if (!res.ok) {
+    throw new Error(`Vercel API ${res.status} ${url.pathname}: ${text}`);
+  }
+  return text ? JSON.parse(text) : {};
+};
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const matchesCommit = (deployment) => {
+  const meta = deployment.meta ?? {};
+  const sha =
+    meta.githubCommitSha ||
+    meta.gitCommitSha ||
+    deployment.gitSource?.sha ||
+    '';
+  return typeof sha === 'string' && sha.toLowerCase() === commitSha.toLowerCase();
+};
+
+const findDeploymentForSha = async () => {
+  // Prefer sha filter when supported; also list recent and match meta.
+  const qs = new URLSearchParams({
+    projectId,
+    teamId: orgId,
+    limit: '20',
+  });
+  const data = await vercelApi(`/v6/deployments?${qs}`);
+  const deployments = data.deployments ?? [];
+  const match = deployments.find(matchesCommit);
+  return match ?? null;
+};
+
+const waitForReady = async () => {
+  const deadline = Date.now() + pollTimeoutMs;
+  let lastState = 'unknown';
+
+  while (Date.now() < deadline) {
+    const deployment = await findDeploymentForSha();
+    if (deployment) {
+      lastState = deployment.readyState || deployment.state || 'unknown';
+      console.log(`Deployment ${deployment.uid || deployment.id}: ${lastState}`);
+
+      if (lastState === 'READY') {
+        const url = deployment.url ? `https://${deployment.url}` : deployment.inspectorUrl;
+        return {
+          id: deployment.uid || deployment.id,
+          url,
+          inspectorUrl: deployment.inspectorUrl,
+          state: lastState,
+        };
+      }
+
+      if (lastState === 'ERROR' || lastState === 'CANCELED') {
+        throw new Error(`Vercel deployment ended in ${lastState}`);
+      }
+    } else {
+      console.log(`No deployment yet for ${commitSha.slice(0, 7)}…`);
+    }
+
+    await sleep(pollIntervalMs);
+  }
+
+  throw new Error(`Timed out after ${pollTimeoutMs}ms waiting for READY (last=${lastState})`);
+};
+
+const writeOutput = (key, value) => {
+  if (!githubOutput || value == null) return;
+  appendFileSync(githubOutput, `${key}=${value}\n`);
+};
+
 let hookId = null;
 let hookUrl = null;
 
@@ -82,7 +166,7 @@ try {
     hookId = hook.id ?? hook.uid;
   }
 
-  console.log(`Triggering hook for ${branch}`);
+  console.log(`Triggering hook for ${branch} @ ${commitSha}`);
   const res = await fetch(hookUrl, { method: 'POST' });
   const body = await res.text();
   if (!res.ok) {
@@ -90,18 +174,6 @@ try {
     process.exit(1);
   }
   console.log(`Hook accepted: ${body}`);
-
-  try {
-    const json = JSON.parse(body);
-    if (json?.job?.id) {
-      console.log(`job_id=${json.job.id}`);
-    }
-  } catch {
-    /* ignore */
-  }
-
-  console.log(`branch=${branch}`);
-  console.log(`triggered=1`);
 } finally {
   const remove = (id) => {
     console.log(`Removing deploy hook ${id}`);
@@ -113,10 +185,15 @@ try {
   } else {
     const leftover = findHook(hookName);
     const id = leftover?.id ?? leftover?.uid;
-    if (id) {
-      remove(id);
-    } else {
-      console.warn(`No hook id to remove for "${hookName}" — check Vercel dashboard if hooks accumulate`);
-    }
+    if (id) remove(id);
+    else console.warn(`No hook id to remove for "${hookName}"`);
   }
 }
+
+const ready = await waitForReady();
+console.log(`preview_url=${ready.url}`);
+console.log(`deployment_id=${ready.id}`);
+
+writeOutput('preview_url', ready.url);
+writeOutput('deployment_id', ready.id);
+writeOutput('inspector_url', ready.inspectorUrl ?? '');

@@ -74,7 +74,14 @@ Commit messages: [commitlint](https://commitlint.js.org/) ([`commitlint.config.c
 
 [`vercel.json`](vercel.json): `npm run build` → `dist/client`. Semantic-release bumps root `package.json` on `dev`.
 
-**PR previews:** Auto Git deploys off for non-`dev` branches (`git.deploymentEnabled` in [`vercel.json`](vercel.json); `dev` still auto-deploys). After commitlint, lint, e2e, and component pass, CI **Preview** creates an ephemeral Deploy Hook for the PR branch, `POST`s it, deletes the hook ([`scripts/ci-vercel-preview-hook.mjs`](scripts/ci-vercel-preview-hook.mjs)). No commit amend / no push.
+**PR previews:** Auto Git deploys off for non-`dev` branches (`git.deploymentEnabled` in [`vercel.json`](vercel.json); `dev` still auto-deploys). After commitlint, lint, e2e, and component pass, CI **Preview**:
+
+1. Creates ephemeral Deploy Hook for the PR branch, `POST`s it, deletes the hook
+2. Polls Vercel API until that commit’s deployment is `READY`
+3. Sets job `environment: Preview` URL (View Deployment) and posts a `Vercel` commit status
+4. Comments the preview URL on the PR
+
+Script: [`scripts/ci-vercel-preview-hook.mjs`](scripts/ci-vercel-preview-hook.mjs). No commit amend / no push.
 
 GitHub config:
 - **Secret** `VERCEL_TOKEN`

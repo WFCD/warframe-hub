@@ -56,7 +56,7 @@ Found a bug or an issue? Please submit a bug/issue report under the [issue tab](
 
 ## Testing
 
-Our builds leverage GitHub actions to test via cypress & linting. PR preview deploys to Vercel only **after** commitlint, lint, e2e, and component tests pass.
+Our builds leverage GitHub actions to test via cypress & linting. Vercel preview deploys run automatically from the Git integration.
 
 You can see the latest results [here](https://github.com/WFCD/warframe-hub/actions/workflows/ci.yaml) or by clicking on the badge at the top of the page.
 

@@ -10,8 +10,8 @@
 
 In order to run your own version of Warframe Hub, you are required to have the following on your machine:
 
-- [Node > 10.13.0](https://nodejs.org/en/) for running the project
-- [NPM > 6.4.1](https://www.npmjs.com/get-npm) for dependency control, usually installed with Node.js
+- [Node.js 24 LTS (Krypton)](https://nodejs.org/en/) (see `.nvmrc`)
+- npm (ships with Node.js)
 
 ## Dependencies
 

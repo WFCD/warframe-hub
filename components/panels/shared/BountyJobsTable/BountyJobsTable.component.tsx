@@ -33,9 +33,9 @@ const BountyJobsTable: FC<BountyJobsTableProps> = ({
   const { t } = useTranslation();
 
   return (
-    <Table className="hub-bounty-table" variant="primary" aria-label={ariaLabel}>
+    <Table className="hub-bounty-table" variant="primary">
       <Table.ScrollContainer>
-        <Table.Content>
+        <Table.Content aria-label={ariaLabel}>
           <Table.Header>
             <Table.Column isRowHeader>{t('bounty.type')}</Table.Column>
             <Table.Column className="hub-bounty-col-standing">

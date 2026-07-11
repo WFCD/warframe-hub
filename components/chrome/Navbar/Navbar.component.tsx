@@ -176,7 +176,7 @@ type NavDropdownProps = {
   showLabel?: boolean;
   useTooltip?: boolean;
   isActive?: boolean;
-  placement?: 'bottom start' | 'top start';
+  placement?: 'bottom start' | 'top start' | 'bottom end';
   showChevron?: boolean;
   stacked?: boolean;
   children: ReactNode;
@@ -329,8 +329,9 @@ type MainNavItemsProps = {
   isCodexActive: boolean;
   showLabel: boolean;
   useTooltip: boolean;
+  showProjects?: boolean;
   onNavigate?: () => void;
-  placement?: 'bottom start' | 'top start';
+  placement?: 'bottom start' | 'top start' | 'bottom end';
   showChevron?: boolean;
   stacked?: boolean;
 };
@@ -343,6 +344,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
   isCodexActive,
   showLabel,
   useTooltip,
+  showProjects = true,
   onNavigate,
   placement = 'bottom start',
   showChevron = true,
@@ -409,18 +411,54 @@ const MainNavItems: FC<MainNavItemsProps> = ({
         stacked={stacked}
       />
 
-      <NavDropdown
-        icon={<i className="fas fa-terminal" />}
-        label={t('nav.projects')}
-        showLabel={showLabel}
-        useTooltip={useTooltip}
-        placement={placement}
-        showChevron={showChevron}
-        stacked={stacked}
-      >
-        <ProjectsMenu onNavigate={onNavigate} />
-      </NavDropdown>
+      {showProjects ? (
+        <NavDropdown
+          icon={<i className="fas fa-terminal" />}
+          label={t('nav.projects')}
+          showLabel={showLabel}
+          useTooltip={useTooltip}
+          placement={placement}
+          showChevron={showChevron}
+          stacked={stacked}
+        >
+          <ProjectsMenu onNavigate={onNavigate} />
+        </NavDropdown>
+      ) : null}
     </>
+  );
+};
+
+type ProjectsNavDropdownProps = {
+  showLabel?: boolean;
+  useTooltip?: boolean;
+  placement?: 'bottom start' | 'top start' | 'bottom end';
+  showChevron?: boolean;
+  stacked?: boolean;
+  onNavigate?: () => void;
+};
+
+const ProjectsNavDropdown: FC<ProjectsNavDropdownProps> = ({
+  showLabel = true,
+  useTooltip = false,
+  placement = 'bottom start',
+  showChevron = true,
+  stacked = false,
+  onNavigate,
+}: ProjectsNavDropdownProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <NavDropdown
+      icon={<i className="fas fa-terminal" />}
+      label={t('nav.projects')}
+      showLabel={showLabel}
+      useTooltip={useTooltip}
+      placement={placement}
+      showChevron={showChevron}
+      stacked={stacked}
+    >
+      <ProjectsMenu onNavigate={onNavigate} />
+    </NavDropdown>
   );
 };
 
@@ -570,6 +608,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
               </div>
             ) : (
               <nav className="hub-navbar-end hub-navbar-end--header" aria-label={t('nav.supportAria')}>
+                <ProjectsNavDropdown showLabel={false} placement="bottom end" showChevron={false} />
                 <SupportNavItems
                   onOpenAbout={onOpenAbout}
                   onOpenSettings={onOpenSettings}
@@ -594,6 +633,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                 isCodexActive={isCodexActive}
                 showLabel
                 useTooltip={false}
+                showProjects={false}
                 placement="top start"
                 showChevron={false}
                 stacked

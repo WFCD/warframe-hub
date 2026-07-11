@@ -523,6 +523,7 @@ body.day .hub-nav-link[aria-current='page'] .hub-nav-glyph {
 .hub-bottom-nav-shell .tooltip[data-placement],
 .hub-bottom-nav-shell .hub-nav-dropdown-popover {
   z-index: calc(var(--hub-z-bottom-nav, var(--hub-z-navbar, 40)) + 20);
+  pointer-events: auto;
 }
 
 .hub-bottom-nav :is(.dropdown__trigger, .button, .hub-nav-link, a.hub-nav-link) {

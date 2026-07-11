@@ -3,11 +3,12 @@ import './ClientShell.component.scss';
 
 import type { ReactNode, FC } from 'react';
 import { lazy, Suspense, useState } from 'react';
-import dynamic from 'next/dynamic';
 import { heroUiThemeForHub } from '@/lib/hubTheme';
 import themes from '@/data/json/themes.json';
 import HubNavbar from '@/components/chrome/Navbar';
 import InAppNotificationHost from '@/components/chrome/InAppNotificationHost';
+import AboutModal from '@/components/modals/AboutModal';
+import SettingsModal from '@/components/modals/SettingsModal';
 import TestDataProvider from '@/lib/test/TestDataProvider';
 import { PageChromeProvider } from '@/lib/providers/PageChromeProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
@@ -16,8 +17,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/styles/hub-vendor.css';
 import '@/styles/hub.scss';
 
-const SettingsModal = dynamic(() => import('@/components/modals/SettingsModal'), { ssr: false });
-const AboutModal = dynamic(() => import('@/components/modals/AboutModal'), { ssr: false });
 const PwaUpdatePrompt = lazy(() => import('@/components/chrome/PwaUpdatePrompt'));
 const ThemeSync: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const { state } = usePrefs();

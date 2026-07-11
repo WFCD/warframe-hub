@@ -57,9 +57,9 @@ const SalesPanel: FC<SalesPanelProps> = ({ sales = [] }: SalesPanelProps) => {
     <HubPanelWrap title={headertext} className="sales">
       <div className="hub-sales-panel">
         {visibleSales.length > 0 ? (
-          <Table className="hub-sales-table" variant="primary" aria-label={headertext}>
+          <Table className="hub-sales-table" variant="primary">
             <Table.ScrollContainer>
-              <Table.Content>
+              <Table.Content aria-label={headertext}>
                 <Table.Header>
                   <Table.Column isRowHeader>{t('sales.item')}</Table.Column>
                   <Table.Column className="hub-sales-col-plat">

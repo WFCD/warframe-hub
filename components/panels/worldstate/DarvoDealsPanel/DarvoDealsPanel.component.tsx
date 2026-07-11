@@ -48,9 +48,9 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
       <HubPanelList>
         {deals.length > 0 ? (
           <HubPanelListItem borderBottom>
-            <Table className="hub-darvo-table" variant="primary" aria-label={headertext}>
+            <Table className="hub-darvo-table" variant="primary">
               <Table.ScrollContainer>
-                <Table.Content>
+                <Table.Content aria-label={headertext}>
                   <Table.Header className="sr-only">
                     <Table.Column isRowHeader>{t('sales.item')}</Table.Column>
                     <Table.Column>{t('darvo.off')}</Table.Column>

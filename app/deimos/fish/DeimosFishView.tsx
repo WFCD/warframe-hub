@@ -117,9 +117,9 @@ const DeimosFishView: FC = () => {
       actions={<ContentLinkButton href="/deimos/map">Cambion Drift Map</ContentLinkButton>}
     >
       <div className="hub-content-panel hub-content-panel--flush">
-        <Table className="hub-content-table fish-info" variant="primary" aria-label="Cambion Drift Fishing">
+        <Table className="hub-content-table fish-info" variant="primary">
           <Table.ScrollContainer>
-            <Table.Content>
+            <Table.Content aria-label="Cambion Drift Fishing">
               <Table.Header>
                 <Table.Column />
                 <FishSortableColumn id="name" sort={sort} onSort={toggleSort} isRowHeader title="The name of the fish">

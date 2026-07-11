@@ -102,9 +102,9 @@ const VallisFishView: FC = () => {
       }
     >
       <div className="hub-content-panel hub-content-panel--flush">
-        <Table className="hub-content-table fish-info" variant="primary" aria-label="Orb Vallis Servofish">
+        <Table className="hub-content-table fish-info" variant="primary">
           <Table.ScrollContainer>
-            <Table.Content>
+            <Table.Content aria-label="Orb Vallis Servofish">
               <Table.Header>
                 <Table.Column />
                 <FishSortableColumn id="name" sort={sort} onSort={toggleSort} isRowHeader title="The name of the fish">

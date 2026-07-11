@@ -42,9 +42,9 @@ const VoidTraderPanel: FC<VoidTraderPanelProps> = ({ voidTrader = {} as VoidTrad
         </HubPanelListItem>
         {available && (
           <HubPanelListItem borderBottom>
-            <Table className="hub-baro-table" variant="primary" aria-label={headertext}>
+            <Table className="hub-baro-table" variant="primary">
               <Table.ScrollContainer>
-                <Table.Content>
+                <Table.Content aria-label={headertext}>
                   <Table.Header>
                     <Table.Column isRowHeader>{t('vt.item')}</Table.Column>
                     <Table.Column className="hub-baro-col-ducats">{t('currency.dabloons')}</Table.Column>

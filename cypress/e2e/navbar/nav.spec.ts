@@ -51,9 +51,10 @@ describe('Navbar mobile', () => {
     cy.visitHub('/');
   });
 
-  it('shows brand label and support items in header', () => {
+  it('shows brand label, projects, and support items in header', () => {
     cy.get('.hub-navbar-brand').should('be.visible').and('contain', 'Warframe Hub');
     cy.get('.hub-navbar-end--header').within(() => {
+      cy.get('button[aria-label="Projects"]').should('be.visible');
       cy.get('a[aria-label="Discord"]').should('be.visible');
       cy.get('button[aria-label="Information"]').should('be.visible');
       cy.get('button[aria-label="Settings"]').should('be.visible');
@@ -67,7 +68,7 @@ describe('Navbar mobile', () => {
       cy.get('a[aria-label="Riven Data"]').should('be.visible');
       cy.get('a[aria-label="Synthesis Targets"]').should('be.visible');
       cy.get('a[aria-label="Item Codex"]').should('be.visible');
-      cy.get('button[aria-label="Projects"]').should('be.visible');
+      cy.get('button[aria-label="Projects"]').should('not.exist');
     });
   });
 
@@ -87,6 +88,7 @@ describe('Navbar mobile', () => {
 
   it('opens open-world map from bottom nav dropdown', () => {
     cy.get('.hub-bottom-nav button[aria-label="Open World"]').click();
+    cy.get('.hub-nav-popover', { timeout: 10000 }).should('be.visible');
     cy.get('.hub-nav-popover a[href="/poe/map"]').click();
     cy.location('pathname').should('eq', '/poe/map');
     cy.get('.leaflet-container', { timeout: 10000 }).should('exist');

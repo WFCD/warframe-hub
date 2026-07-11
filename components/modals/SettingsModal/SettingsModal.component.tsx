@@ -29,9 +29,12 @@ const SettingsModal: FC<Props> = ({ show, onHide }: Props) => {
 
   useEffect(() => {
     if (!show) return;
-    void promptNotificationPermission(prefs.locale).then((permission) => {
-      if (permission !== 'unsupported') setAllowance(permission);
-    });
+    const timer = window.setTimeout(() => {
+      void promptNotificationPermission(prefs.locale).then((permission) => {
+        if (permission !== 'unsupported') setAllowance(permission);
+      });
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [show, setAllowance, prefs.locale]);
 
   return (

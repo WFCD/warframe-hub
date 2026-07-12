@@ -31,7 +31,7 @@ describe('Navbar', () => {
   });
 
   it('opens open-world map from dropdown', () => {
-    cy.get('.hub-navbar-start button[aria-label="Open World"]').click();
+    cy.get('.hub-navbar-start button[aria-label="Open World"]').realClick();
     cy.get('.hub-nav-popover a[href="/poe/map"]').click();
     cy.location('pathname').should('eq', '/poe/map');
     cy.get('.leaflet-container', { timeout: 10000 }).should('exist');
@@ -87,7 +87,7 @@ describe('Navbar mobile', () => {
   });
 
   it('opens open-world map from bottom nav dropdown', () => {
-    cy.get('.hub-bottom-nav button[aria-label="Open World"]').click();
+    cy.get('.hub-bottom-nav button[aria-label="Open World"]').realClick();
     cy.get('.hub-nav-popover', { timeout: 10000 }).should('be.visible');
     cy.get('.hub-nav-popover a[href="/poe/map"]').click();
     cy.location('pathname').should('eq', '/poe/map');

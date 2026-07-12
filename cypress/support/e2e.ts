@@ -1,3 +1,4 @@
+import 'cypress-real-events/support';
 import './commands';
 
 Cypress.on('uncaught:exception', (err) => {

@@ -1,22 +1,21 @@
 'use client';
 
 import type { FC, ReactNode } from 'react';
-import { Alert } from '@heroui/react';
+
+import HubLoadingIndicator from '@/components/ui/HubLoadingIndicator';
 
 type ContentLoadingAlertProps = {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const ContentLoadingAlert: FC<ContentLoadingAlertProps> = ({ title, children }: ContentLoadingAlertProps) => (
-  <Alert status="accent" className="hub-content-loading">
-    <Alert.Content>
-      <Alert.Description>
-        <strong className="hub-content-loading__title">{title}</strong>
-        <p className="hub-content-loading__body">{children}</p>
-      </Alert.Description>
-    </Alert.Content>
-  </Alert>
+  <div className="hub-content-loading">
+    <div className="hub-page-loading-shell hub-content-loading__shell">
+      <HubLoadingIndicator label={title} className="hub-content-loading__indicator" />
+      {children ? <p className="hub-content-loading__body">{children}</p> : null}
+    </div>
+  </div>
 );
 
 export default ContentLoadingAlert;

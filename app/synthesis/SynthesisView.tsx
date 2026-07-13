@@ -4,8 +4,8 @@ import { useCallback, useEffect, useMemo, useState, type FC } from 'react';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
 import ContentDataTable from '@/components/pages/ContentPage/ContentDataTable';
-import ContentLoadingAlert from '@/components/pages/ContentPage/ContentLoadingAlert';
 import { useCache } from '@/lib/providers/CacheProvider';
+import { useContentPageLoadReporting } from '@/lib/providers/ContentPageLoadProvider';
 import { SynthesisPreviewProvider, useSynthesisPreview } from '@/components/media/SynthesisImg';
 import SynthesisTableBody, { type SynthTarget } from './SynthesisTableBody';
 
@@ -118,7 +118,7 @@ const SynthesisContent: FC<{ data: SynthTarget[] }> = ({ data }) => {
 const SynthesisView: FC = () => {
   const { state, updateSynthData } = useCache();
   const data = state.synthData as SynthTarget[];
-  const loading = !data.length;
+  const loading = useContentPageLoadReporting(data.length > 0);
 
   useEffect(() => {
     if (!data.length) void updateSynthData();
@@ -135,13 +135,7 @@ const SynthesisView: FC = () => {
         </p>
       }
     >
-      {loading ? (
-        <ContentLoadingAlert title="Loading Synthesis Data...">
-          If this card stays active for more than a minute, please reload the site or try agin later.
-        </ContentLoadingAlert>
-      ) : (
-        <SynthesisContent data={data} />
-      )}
+      {!loading ? <SynthesisContent data={data} /> : null}
     </ContentPage>
   );
 };

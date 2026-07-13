@@ -608,13 +608,22 @@
   font-size: 0.8125rem;
 }
 
-.hub-content-loading__title {
-  display: block;
-  margin-bottom: 0.35rem;
-}
-
 .hub-content-loading__body {
   margin: 0;
+  max-width: 28rem;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.hub-content-loading__shell {
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hub-content-loading__indicator {
+  padding-block: 1.25rem 0.5rem;
 }
 
 .hub-content-contributor-list {
@@ -753,6 +762,7 @@
 
 .hub-content-loading {
   margin: 0;
+  width: 100%;
 }
 
 .hub-content-page--article .hub-content-page__body {

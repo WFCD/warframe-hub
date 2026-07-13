@@ -4,11 +4,11 @@ import { useEffect, useMemo, useState, type FC } from 'react';
 import type { Platform, RivenTradeStat } from '@/lib/shared';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentDataTable from '@/components/pages/ContentPage/ContentDataTable';
-import ContentLoadingAlert from '@/components/pages/ContentPage/ContentLoadingAlert';
 import ContentTableToolbarDropdown from '@/components/pages/ContentPage/ContentTableToolbarDropdown';
 import HubSwitch from '@/components/ui/HubSwitch';
 import platforms from '@/data/json/platforms.json';
 import { useCache } from '@/lib/providers/CacheProvider';
+import { useContentPageLoadReporting } from '@/lib/providers/ContentPageLoadProvider';
 import { useWorldstate } from '@/lib/providers/WorldstateProvider';
 import { FishBoolIcon } from '@/components/pages/ContentPage/FishTableUi';
 
@@ -42,7 +42,7 @@ const RivenDataView: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const types = useMemo(() => Array.from(new Set(rivens.map((r) => r.itemType))), [rivens]);
-  const loading = !rivens.length;
+  const loading = useContentPageLoadReporting(rivens.length > 0);
 
   useEffect(() => {
     if (!rivens.length) void updateRivens();
@@ -91,11 +91,7 @@ const RivenDataView: FC = () => {
         </p>
       }
     >
-      {loading ? (
-        <ContentLoadingAlert title={`Loading Riven Data for ${platformDisplay(platform)}`}>
-          If this card stays active for more than a minute, please reload the site or try agin later.
-        </ContentLoadingAlert>
-      ) : (
+      {!loading ? (
         <ContentDataTable
           ariaLabel="Riven Data"
           className="riven-table"
@@ -191,7 +187,7 @@ const RivenDataView: FC = () => {
             ))}
           </tbody>
         </ContentDataTable>
-      )}
+      ) : null}
     </ContentPage>
   );
 };

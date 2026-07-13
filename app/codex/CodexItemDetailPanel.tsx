@@ -2,6 +2,7 @@
 
 import type { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import HubLoadingIndicator from '@/components/ui/HubLoadingIndicator';
 import type { CodexItemDetail } from '@/lib/shared';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
 import WarframeRichText from '@/components/media/WarframeRichText/WarframeRichText';
@@ -224,7 +225,9 @@ const CodexItemDetailPanel: FC<CodexItemDetailPanelProps> = ({
   const { detail, status } = useCodexItemDetail(uniqueName, locale, enabled);
 
   if (status === 'loading' || status === 'idle') {
-    return <p className="hub-codex-detail__status">{t('codex.detail.loading')}</p>;
+    return (
+      <HubLoadingIndicator compact label={t('codex.detail.loading')} className="hub-codex-detail__loading" />
+    );
   }
 
   if (status === 'error' || !detail) {

@@ -150,6 +150,11 @@
   color: var(--hub-text-secondary, var(--muted));
 }
 
+.hub-codex-detail__loading {
+  justify-content: flex-start;
+  padding: 0.35rem 0;
+}
+
 .hub-codex-detail__status--error {
   color: var(--danger);
 }

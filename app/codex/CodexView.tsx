@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next';
 import type { CodexItem } from '@/lib/shared';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentDataTable from '@/components/pages/ContentPage/ContentDataTable';
-import ContentLoadingAlert from '@/components/pages/ContentPage/ContentLoadingAlert';
 import ContentTableToolbarDropdown from '@/components/pages/ContentPage/ContentTableToolbarDropdown';
 import HubSwitch from '@/components/ui/HubSwitch';
 import { useCache } from '@/lib/providers/CacheProvider';
+import { useContentPageLoadReporting } from '@/lib/providers/ContentPageLoadProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import CodexTableBody from './CodexTableBody';
 import { useCodexQueryState } from './useCodexQueryState';
@@ -35,7 +35,7 @@ const CodexView: FC = () => {
   const { state, updateItems } = useCache();
   const { state: prefs } = usePrefs();
   const items = state.items;
-  const loading = !items.length;
+  const loading = useContentPageLoadReporting(items.length > 0);
 
   const {
     filter,
@@ -95,11 +95,7 @@ const CodexView: FC = () => {
         </p>
       }
     >
-      {loading ? (
-        <ContentLoadingAlert title={t('codex.loading')}>
-          {t('codex.loadingHelp')}
-        </ContentLoadingAlert>
-      ) : (
+      {!loading ? (
         <ContentDataTable
           ariaLabel={t('codex.tableAria')}
           className="codex-table"
@@ -170,7 +166,7 @@ const CodexView: FC = () => {
           </thead>
           <CodexTableBody rows={filtered} currentPage={currentPage} perPage={perPage} locale={prefs.locale} />
         </ContentDataTable>
-      )}
+      ) : null}
     </ContentPage>
   );
 };

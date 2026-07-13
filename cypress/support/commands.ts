@@ -194,7 +194,7 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('waitForHubTable', (minRows = 1) => {
-  cy.get('.hub-content-loading', { timeout: 15000 }).should('not.exist');
+  cy.get('.hub-page-loading-shell', { timeout: 15000 }).should('not.exist');
   cy.get('.hub-native-table tbody tr', { timeout: 15000 }).should('have.length.at.least', minRows);
 });
 

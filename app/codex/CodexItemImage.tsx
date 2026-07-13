@@ -3,6 +3,7 @@
 import type { FC } from 'react';
 import { Tooltip } from '@heroui/react';
 import { wfcdn } from '@/lib/shared';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 
 type CodexItemImageProps = {
   imageName: string;
@@ -26,7 +27,7 @@ const CodexItemImage: FC<CodexItemImageProps> = ({
   const previewHeight = height * previewScale;
 
   return (
-    <Tooltip delay={400}>
+    <Tooltip delay={HUB_TOOLTIP_DELAY}>
       <Tooltip.Trigger>
         <span className="hub-codex-item-image__trigger">
           <img className={className} src={src} alt="" width={width} height={height} />

@@ -1,37 +1,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import en from '@/lib/locales/en.json';
-import cs from '@/lib/locales/cs.json';
-import de from '@/lib/locales/de.json';
-import es from '@/lib/locales/es.json';
-import fr from '@/lib/locales/fr.json';
-import it from '@/lib/locales/it.json';
-import ko from '@/lib/locales/ko.json';
-import pl from '@/lib/locales/pl.json';
-import pt from '@/lib/locales/pt.json';
-import ru from '@/lib/locales/ru.json';
-import sr from '@/lib/locales/sr.json';
-import tr from '@/lib/locales/tr.json';
-import zh from '@/lib/locales/zh.json';
-
-const resources = {
-  en: { translation: en },
-  cs: { translation: cs },
-  de: { translation: de },
-  es: { translation: es },
-  fr: { translation: fr },
-  it: { translation: it },
-  ko: { translation: ko },
-  pl: { translation: pl },
-  pt: { translation: pt },
-  ru: { translation: ru },
-  sr: { translation: sr },
-  tr: { translation: tr },
-  zh: { translation: zh },
-};
+import { defaultLocaleResources } from '@/lib/i18n/localeBundles';
 
 void i18n.use(initReactI18next).init({
-  resources,
+  resources: defaultLocaleResources,
+  lng: 'en',
   fallbackLng: 'en',
   showSupportNotice: false,
   interpolation: {

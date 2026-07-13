@@ -6,6 +6,7 @@ import { Tooltip } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { cdn } from '@/lib/shared';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 import TimeBadge from '@/components/ui/TimeBadge';
 import HubImg from '@/components/media/HubImg';
 import NoDataItem from '@/components/ui/NoDataItem';
@@ -108,7 +109,7 @@ const FissuresPanel: FC<FissuresPanelProps> = ({ fissures = [], variant = 'fissu
           >
             <div className="hub-panel-row">
               <span className="hub-panel-row-main inline-flex items-center gap-1.5">
-                <Tooltip delay={400}>
+                <Tooltip delay={HUB_TOOLTIP_DELAY}>
                   <Tooltip.Trigger>
                     {isOmniaFissure(fissure) ? (
                       <OmniaFissureIcon

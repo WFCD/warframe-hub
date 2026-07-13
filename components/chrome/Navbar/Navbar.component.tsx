@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button, Dropdown, Tooltip } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 import { useMinWidth } from '@/lib/hooks/useMinWidth';
 import { usePageChromeContext } from '@/lib/providers/PageChromeProvider';
 import { hubTestClickHandler, hubTestOpenHandler } from '@/lib/test/hubTestInterop';
@@ -86,7 +87,7 @@ type NavTooltipProps = {
 };
 
 const NavTooltip: FC<NavTooltipProps> = ({ label, children }: NavTooltipProps) => (
-  <Tooltip delay={400}>
+  <Tooltip delay={HUB_TOOLTIP_DELAY}>
     <Tooltip.Trigger className="hub-nav-tooltip-trigger">{children}</Tooltip.Trigger>
     <Tooltip.Content placement="bottom">
       <span className="hub-nav-tooltip-text">{label}</span>
@@ -212,7 +213,7 @@ const NavDropdown: FC<NavDropdownProps> = ({
 
   if (useTooltip) {
     return (
-      <Tooltip delay={400} isDisabled={menuOpen}>
+      <Tooltip delay={HUB_TOOLTIP_DELAY} isDisabled={menuOpen}>
         {dropdown}
         <Tooltip.Content placement="bottom">
           <span className="hub-nav-tooltip-text">{label}</span>

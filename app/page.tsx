@@ -1,5 +1,3 @@
-'use client';
+import TimersPage from '@/components/pages/TimersPage';
 
-import createClientPage from '@/lib/createClientPage';
-
-export default createClientPage(() => import('@/components/pages/TimersPage'));
+export default TimersPage;

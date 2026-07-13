@@ -6,50 +6,17 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import { useTranslation } from 'react-i18next';
-import { optimize, cdn } from '@/lib/shared';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import HubPanelWrap from '@/components/panels/shared/HubPanelWrap';
+import { getLocalizedNews, type HubNewsItem } from '@/lib/news/newsContent';
+import { getNewsImageSrc, NEWS_PLACEHOLDER_SRC } from '@/lib/news/newsImage';
 import './NewsPanel.component.scss';
 
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
 
-const newsImg = (url: string) => optimize(url, '404x110', 'scale');
-
-const NEWS_PLACEHOLDER_PATH = 'img/news-placeholder.png';
-const NEWS_PLACEHOLDER_URL = cdn(NEWS_PLACEHOLDER_PATH);
-const NEWS_PLACEHOLDER_SRC = newsImg(NEWS_PLACEHOLDER_URL);
-
-const DEFAULT_NEWS_IMAGE_URLS = new Set([
-  'https://i.imgur.com/CNrsc7V.png',
-  NEWS_PLACEHOLDER_URL,
-  `https://cdn.warframestat.us/genesis/${NEWS_PLACEHOLDER_PATH}`,
-  `https://wfcd.github.io/genesis-assets/${NEWS_PLACEHOLDER_PATH}`,
-]);
-
-const resolveNewsImageUrl = (url?: string | null): string => {
-  const trimmed = url?.trim();
-  if (!trimmed || DEFAULT_NEWS_IMAGE_URLS.has(trimmed)) {
-    return NEWS_PLACEHOLDER_URL;
-  }
-  return trimmed;
-};
-
-const getNewsImageSrc = (url?: string | null): string => newsImg(resolveNewsImageUrl(url));
-
-type NewsItem = {
-  id: string;
-  message?: string;
-  imageLink?: string;
-  link: string;
-  date?: string;
-  startDate?: string;
-  endDate?: string;
-  translations: Record<string, string>;
-};
-
 type NewsPanelProps = {
-  news: NewsItem[];
+  news: HubNewsItem[];
 };
 
 const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
@@ -62,7 +29,7 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
   const [activeElemIndex, setActiveElemIndex] = useState(0);
   const [hover, setHover] = useState<number | null>(null);
 
-  const filteredNews = useMemo(() => news.filter((item) => item.translations[locale]).reverse(), [news, locale]);
+  const filteredNews = useMemo(() => getLocalizedNews(news, locale), [news, locale]);
 
   useEffect(() => {
     dayjs.updateLocale('en', {
@@ -98,7 +65,7 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
     img.src = NEWS_PLACEHOLDER_SRC;
   };
 
-  const newsTitle = (newsitem: NewsItem) => {
+  const newsTitle = (newsitem: HubNewsItem) => {
     const label = newsitem.translations[locale];
     if (newsitem.startDate && newsitem.endDate) {
       if (dayjs(newsitem.startDate).unix() > dayjs().unix()) {
@@ -119,15 +86,23 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
       <div className="hub-news">
         <div className="hub-news-carousel">
           <div className="hub-news-carousel-viewport">
-            {filteredNews.map((newsitem, index) => (
-              <img
-                key={`${newsitem.id}-img`}
-                alt={newsitem.message}
-                className={`hub-news-slide-image${index === carouselIndex ? ' is-active' : ''}`}
-                src={getNewsImageSrc(newsitem.imageLink)}
-                onError={onNewsImageError}
-              />
-            ))}
+            {filteredNews.map((newsitem, index) => {
+              const isActive = index === carouselIndex;
+              return (
+                <img
+                  key={`${newsitem.id}-img`}
+                  alt={newsitem.message}
+                  className={`hub-news-slide-image${isActive ? ' is-active' : ''}`}
+                  src={getNewsImageSrc(newsitem.imageLink)}
+                  width={404}
+                  height={110}
+                  fetchPriority={isActive ? 'high' : 'low'}
+                  loading={isActive ? 'eager' : 'lazy'}
+                  decoding="async"
+                  onError={onNewsImageError}
+                />
+              );
+            })}
           </div>
         </div>
 

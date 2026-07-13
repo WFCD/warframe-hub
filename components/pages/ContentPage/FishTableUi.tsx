@@ -3,6 +3,7 @@
 import type { FC, ReactNode } from 'react';
 import { Table, Tooltip } from '@heroui/react';
 import FishImg from '@/components/media/FishImg';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 import type { FishSortState } from './fishTableSort';
 
 type FishExpandButtonProps = {
@@ -42,7 +43,7 @@ type FishTimeTooltipProps = {
 };
 
 export const FishTimeTooltip: FC<FishTimeTooltipProps> = ({ id, label, children }: FishTimeTooltipProps) => (
-  <Tooltip delay={400}>
+  <Tooltip delay={HUB_TOOLTIP_DELAY}>
     <Tooltip.Trigger>
       <span id={id}>{children}</span>
     </Tooltip.Trigger>

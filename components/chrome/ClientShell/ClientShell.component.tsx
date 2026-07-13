@@ -7,20 +7,20 @@ import { heroUiThemeForHub } from '@/lib/hubTheme';
 import themes from '@/data/json/themes.json';
 import HubNavbar from '@/components/chrome/Navbar';
 import InAppNotificationHost from '@/components/chrome/InAppNotificationHost';
-import AboutModal from '@/components/modals/AboutModal';
-import SettingsModal from '@/components/modals/SettingsModal';
 import TestDataProvider from '@/lib/test/TestDataProvider';
 import { dismissVinextDevOverlay } from '@/lib/test/dismissVinextDevOverlay';
 import { isHubTestMode } from '@/lib/test/dataMode';
 import { PageChromeProvider } from '@/lib/providers/PageChromeProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import { useEffect } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/styles/hub-vendor.css';
 import '@/styles/hub.scss';
 import { registerHubTestActions } from '@/lib/test/hubTestBridge';
 
+const SettingsModal = lazy(() => import('@/components/modals/SettingsModal'));
+const AboutModal = lazy(() => import('@/components/modals/AboutModal'));
 const PwaUpdatePrompt = lazy(() => import('@/components/chrome/PwaUpdatePrompt'));
+
 const ThemeSync: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const { state } = usePrefs();
 
@@ -48,6 +48,10 @@ const ClientShell: FC<{ children: ReactNode }> = ({ children }: { children: Reac
   const [showAbout, setShowAbout] = useState(false);
 
   useEffect(() => {
+    void import('@/lib/defer/loadFontAwesome');
+  }, []);
+
+  useEffect(() => {
     if (!isHubTestMode()) return;
     const clearDevOverlay = () => dismissVinextDevOverlay();
     clearDevOverlay();
@@ -72,8 +76,16 @@ const ClientShell: FC<{ children: ReactNode }> = ({ children }: { children: Reac
           <div id="app">
             <HubNavbar onOpenSettings={() => setShowSettings(true)} onOpenAbout={() => setShowAbout(true)} />
             <InAppNotificationHost />
-            <SettingsModal show={showSettings} onHide={() => setShowSettings(false)} />
-            <AboutModal show={showAbout} onHide={() => setShowAbout(false)} />
+            {showSettings ? (
+              <Suspense fallback={null}>
+                <SettingsModal show={showSettings} onHide={() => setShowSettings(false)} />
+              </Suspense>
+            ) : null}
+            {showAbout ? (
+              <Suspense fallback={null}>
+                <AboutModal show={showAbout} onHide={() => setShowAbout(false)} />
+              </Suspense>
+            ) : null}
             <PwaUpdatePromptGate />
             <Suspense fallback={null}>{children}</Suspense>
           </div>

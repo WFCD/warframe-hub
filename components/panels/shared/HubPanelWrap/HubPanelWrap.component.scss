@@ -2,7 +2,9 @@
 /* Panel surface shell — transparent fill, bordered frame; inner rows flat */
 .hub-panel-surface {
   width: 100%;
+  max-width: 100%;
   min-width: 0;
+  overflow-x: clip;
   text-align: left;
   background: var(--hub-panel-background, transparent) !important;
   backdrop-filter: var(--hub-panel-backdrop-filter, none);

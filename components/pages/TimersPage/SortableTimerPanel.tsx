@@ -5,6 +5,7 @@ import { Tooltip } from '@heroui/react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useTranslation } from 'react-i18next';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 
 type SortableTimerPanelProps = {
   id: string;
@@ -54,7 +55,7 @@ const SortableTimerPanel: FC<SortableTimerPanelProps> = ({
     >
       {editMode ? (
         <>
-          <Tooltip delay={400}>
+          <Tooltip delay={HUB_TOOLTIP_DELAY}>
             <Tooltip.Trigger>
               <button
                 type="button"
@@ -70,7 +71,7 @@ const SortableTimerPanel: FC<SortableTimerPanelProps> = ({
             </Tooltip.Trigger>
             <Tooltip.Content>{visibilityLabel}</Tooltip.Content>
           </Tooltip>
-          <Tooltip delay={400}>
+          <Tooltip delay={HUB_TOOLTIP_DELAY}>
             <Tooltip.Trigger>
               <button
                 type="button"

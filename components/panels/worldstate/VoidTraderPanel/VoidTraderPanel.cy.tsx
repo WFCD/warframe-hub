@@ -17,6 +17,7 @@ describe('VoidTraderPanel', () => {
       />
     );
 
+    cy.get('.baro .hub-baro-inventory-trigger').click();
     cy.get('.baro .hub-baro-table').should('exist');
     cy.contains('Primed Flow').should('exist');
     cy.get('.baro .hub-time-badge').should('exist');

@@ -18,6 +18,8 @@ interface SeedHubOptions {
   platform?: string;
   /** Component keys to force `display: true` in hub.v1.prefs before load. */
   enablePanels?: string[];
+  /** Turn on every timers masonry panel (for e2e that assert optional panels). */
+  enableAllMasonryPanels?: boolean;
 }
 
 declare global {

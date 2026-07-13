@@ -70,7 +70,7 @@
     }
   },
   "bounties": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Bounties Timer",
     "key": "bounties",
@@ -81,7 +81,7 @@
     }
   },
   "solaris-bounties": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Solaris Bounties Timer",
     "key": "solaris-bounties",
@@ -92,7 +92,7 @@
     }
   },
   "entrati-bounties": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Entrati Bounties Timer",
     "key": "entrati-bounties",
@@ -124,7 +124,7 @@
     "autoCycle": true
   },
   "invasions": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Invasions",
     "key": "invasions",
@@ -143,7 +143,7 @@
     "props": {}
   },
   "sortie": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Sortie",
     "key": "sortie",
@@ -153,7 +153,7 @@
     }
   },
   "archonHunt": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Archon Hunt",
     "key": "archonHunt",
@@ -183,7 +183,7 @@
     }
   },
   "voidStorms": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Void Storms",
     "key": "voidStorms",
@@ -194,7 +194,7 @@
     }
   },
   "steelPathFissures": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Steel Path Fissures",
     "key": "steelPathFissures",
@@ -214,17 +214,18 @@
     }
   },
   "baro": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Void Trader",
     "key": "baro",
     "component": "VoidTraderPanel",
+    "expand": false,
     "props": {
       "voidTrader": "@worldstate.voidTrader"
     }
   },
   "darvo": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Darvo Deals",
     "key": "darvo",
@@ -244,7 +245,7 @@
     }
   },
   "nightwave": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Nightwave",
     "key": "nightwave",
@@ -254,7 +255,7 @@
     }
   },
   "construction": {
-    "display": true,
+    "display": false,
     "displayable": true,
     "displayName": "Construction",
     "key": "construction",

@@ -1,4 +1,5 @@
 'use client';
+import './AlertPanel.component.scss';
 import type { FC } from 'react';
 
 import { Chip } from '@heroui/react';
@@ -41,6 +42,9 @@ type AlertPanelProps = {
 
 const AlertItem: FC<{ alert: Alert; last: boolean }> = ({ alert, last }: { alert: Alert; last: boolean }) => {
   const { t } = useTranslation();
+  const { reward } = alert.mission;
+  const hasRewards =
+    reward.items.length > 0 || reward.countedItems.length > 0 || Boolean(reward.credits);
 
   if (new Date(alert.activation).getTime() >= Date.now()) return null;
 
@@ -58,16 +62,6 @@ const AlertItem: FC<{ alert: Alert; last: boolean }> = ({ alert, last }: { alert
         </span>
         <span className="hub-panel-row-side">
           <TimeBadge starttime={alert.activation} endtime={alert.expiry} interval={1000} pullright={false} />
-          {alert.mission.reward.items.map((item) => (
-            <Chip key={item} color="accent" size="sm" variant="soft">
-              {item}
-            </Chip>
-          ))}
-          {alert.mission.reward.countedItems.map((item) => (
-            <Chip key={item.key} color="accent" size="sm" variant="soft">
-              {item.count} {item.type}
-            </Chip>
-          ))}
         </span>
       </div>
       <div className="hub-panel-row hub-panel-row-subtle">
@@ -75,14 +69,26 @@ const AlertItem: FC<{ alert: Alert; last: boolean }> = ({ alert, last }: { alert
           <b>{alert.mission.type}</b> ({alert.mission.faction}) | <b>{t('alerts.level')} </b>
           {alert.mission.minEnemyLevel}-{alert.mission.maxEnemyLevel}
         </div>
-        {alert.mission.reward.credits && (
-          <span className="hub-panel-row-side">
-            <Chip color="accent" size="sm" variant="soft">
-              {alert.mission.reward.credits}cr
-            </Chip>
-          </span>
-        )}
       </div>
+      {hasRewards ? (
+        <div className="hub-alert-rewards">
+          {reward.items.map((item) => (
+            <Chip key={item} color="accent" size="sm" variant="soft">
+              {item}
+            </Chip>
+          ))}
+          {reward.countedItems.map((item) => (
+            <Chip key={item.key} color="accent" size="sm" variant="soft">
+              {item.count} {item.type}
+            </Chip>
+          ))}
+          {reward.credits ? (
+            <Chip color="accent" size="sm" variant="soft">
+              {reward.credits}cr
+            </Chip>
+          ) : null}
+        </div>
+      ) : null}
     </HubPanelListItem>
   );
 };
@@ -92,7 +98,7 @@ const AlertPanel: FC<AlertPanelProps> = ({ alerts = [] }: AlertPanelProps) => {
   const headertext = t('alerts.header');
 
   return (
-    <HubPanelWrap title={headertext} className={alerts.length === 0 ? 'no-content' : undefined}>
+    <HubPanelWrap title={headertext} className={alerts.length === 0 ? 'no-content' : 'alerts'}>
       <HubPanelList>
         {alerts.map((alert, index) => (
           <AlertItem key={alert.id} alert={alert} last={index === alerts.length - 1} />

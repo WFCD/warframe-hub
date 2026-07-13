@@ -261,6 +261,7 @@
   "vt": {
     "header": "Void Trader",
     "inventory": "Inventory",
+    "showInventory": "Show inventory ({count})",
     "item": "Item"
   },
   "planets": {
@@ -322,6 +323,10 @@
     "soundsHelp": "Enable sounds for matching notifications. Use play to preview each tone.",
     "soundsPlayLabel": "Play",
     "soundsPlay": "Play {{sound}} preview"
+  },
+  "timersPage": {
+    "loading": "Loading timers...",
+    "panelLoading": "Loading panel..."
   },
   "timersLayout": {
     "customize": "Customize layout",

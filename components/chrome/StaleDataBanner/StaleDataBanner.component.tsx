@@ -5,37 +5,39 @@ import { useTranslation } from 'react-i18next';
 import { useWorldstate } from '@/lib/providers/WorldstateProvider';
 import { isWorldstateStale } from '@/lib/worldstate/worldstateAge';
 import { getDataMode } from '@/lib/test/dataMode';
+import { useClientMounted } from '@/lib/hooks/useClientMounted';
 
 const StaleDataBanner: FC = () => {
   const { t } = useTranslation();
   const { worldstate, updateWorldstate } = useWorldstate();
+  const clientMounted = useClientMounted();
   const [online, setOnline] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState(0);
 
   useEffect(() => {
+    if (!clientMounted) return;
     setOnline(navigator.onLine);
+    setNow(Date.now());
     const on = () => setOnline(true);
     const off = () => setOnline(false);
+    const id = window.setInterval(() => setNow(Date.now()), 10000);
     window.addEventListener('online', on);
     window.addEventListener('offline', off);
     return () => {
+      window.clearInterval(id);
       window.removeEventListener('online', on);
       window.removeEventListener('offline', off);
     };
-  }, []);
+  }, [clientMounted]);
 
-  useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 30000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const stale = getDataMode() === 'live' && online && isWorldstateStale(worldstate.timestamp, undefined, now);
+  const stale =
+    clientMounted && getDataMode() === 'live' && online && isWorldstateStale(worldstate.timestamp, undefined, now);
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      await updateWorldstate();
+      await updateWorldstate({ force: true });
     } finally {
       setRefreshing(false);
     }

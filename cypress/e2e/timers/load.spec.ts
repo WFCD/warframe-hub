@@ -4,7 +4,7 @@ describe('Timers', () => {
     cy.seedHub({
       fixture: 'timers-full',
       platform: 'pc',
-      // Off by default in components.json — enable via prefs localStorage
+      enableAllMasonryPanels: true,
       enablePanels: ['deals', 'conclave'],
     });
   });

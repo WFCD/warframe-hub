@@ -13,6 +13,7 @@ import {
   REACT_ARIA_OPTIMIZE_DEPS,
   reactAriaIntlSlim,
 } from './lib/vite/reactAriaIntlSlim';
+import { hubChunkGroups } from './lib/vite/hubChunkGroups';
 
 const require = createRequire(import.meta.url);
 const appRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -93,10 +94,12 @@ export default defineConfig(() => ({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,json,wof,woff2}'],
+        globDirectory: fileURLToPath(new URL('./dist/client', import.meta.url)),
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,json,woff,woff2}'],
         runtimeCaching,
       },
     }),
+    hubChunkGroups(),
   ],
   resolve: {
     alias: {

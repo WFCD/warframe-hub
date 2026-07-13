@@ -24,7 +24,27 @@ export const MASONRY_PANEL_KEYS = [
 
 export type MasonryPanelKey = (typeof MASONRY_PANEL_KEYS)[number];
 
-export const DEFAULT_MASONRY_PANEL_ORDER: MasonryPanelKey[] = [...MASONRY_PANEL_KEYS];
+/** Default-on panels first so eager chunk load hits the lightest visible set. */
+export const DEFAULT_MASONRY_PANEL_ORDER: MasonryPanelKey[] = [
+  'news',
+  'event',
+  'alerts',
+  'fissures',
+  'invasions',
+  'sortie',
+  'baro',
+  'darvo',
+  'nightwave',
+  'construction',
+  'archonHunt',
+  'voidStorms',
+  'steelPathFissures',
+  'bounties',
+  'solaris-bounties',
+  'entrati-bounties',
+  'deals',
+  'conclave',
+];
 
 const masonryKeySet = new Set<string>(MASONRY_PANEL_KEYS);
 

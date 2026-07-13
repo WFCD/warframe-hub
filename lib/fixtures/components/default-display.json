@@ -219,6 +219,7 @@
     "displayName": "Void Trader",
     "key": "baro",
     "component": "VoidTraderPanel",
+    "expand": false,
     "props": {
       "voidTrader": "@worldstate.voidTrader"
     }

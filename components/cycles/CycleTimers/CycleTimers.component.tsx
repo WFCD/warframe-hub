@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { cdn, isArbitrationActive, type WorldstateData } from '@/lib/shared';
 import { tCycleState } from '@/lib/i18n';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 import TimeBadge, { parseInstant } from '@/components/ui/TimeBadge';
 import HubImg from '@/components/media/HubImg';
 import AsyncItemThumb from '@/components/media/AsyncItemThumb';
@@ -89,7 +90,7 @@ const CycleTimerPill: FC<CycleTimerPillProps> = ({
     <div className="hub-cycle-timer-pill-wrap">
       <div className={`hub-cycle-timer-pill${detail ? ' hub-cycle-timer-pill--has-detail' : ''}`}>
         {title && title !== label ? (
-          <Tooltip delay={400}>
+          <Tooltip delay={HUB_TOOLTIP_DELAY}>
             <Tooltip.Trigger className="hub-cycle-timer-tooltip-trigger hub-cycle-timer-pill-tooltip-target">
               {body}
             </Tooltip.Trigger>

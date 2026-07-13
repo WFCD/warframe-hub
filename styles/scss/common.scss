@@ -140,11 +140,6 @@ span.warm:before {
   padding-bottom: 10px;
 }
 
-// Keep masonry bleed in sync with hub-layout.scss
-.hub-chrome-shell.hub-timers-grid > div {
-  margin-inline: calc(-1 * var(--hub-navbar-shell-padding-inline, 1rem));
-}
-
 .legend {
   position: relative;
   top: 10px;

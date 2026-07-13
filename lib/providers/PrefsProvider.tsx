@@ -1,15 +1,12 @@
 'use client';
 
-import componentsJson from '@/data/json/components.json';
-import planetsJson from '@/data/json/planets.json';
-import localesJson from '@/data/json/locales.json';
 import { normalizePlatform, type Platform, type PrefsState, type ComponentsMap } from '@/lib/shared';
 import {
   createContext,
   useContext,
   useReducer,
   useMemo,
-  useEffect,
+  useLayoutEffect,
   useCallback,
   useState,
   type ReactNode,
@@ -19,31 +16,14 @@ import {
 import { debouncedWriteStorage, readStorage, usePersistedState } from './storageUtils';
 import { migrateLegacyStorage } from './legacyMigration';
 import { buildTrackables } from '../data/buildTrackables';
-import { DEFAULT_MASONRY_PANEL_ORDER, normalizeComponentOrder } from '../timers/masonryPanels';
+import { normalizeComponentOrder } from '../timers/masonryPanels';
 import { migrateFissurePanels } from '../timers/fissurePanelMigration';
+import { createDefaultPrefsState, PREFS_STORAGE_KEY } from '@/lib/prefs/hydratePrefsState';
 
-const STORAGE_KEY = 'hub.v1.prefs';
-
-const detectLocale = (): string => {
-  if (typeof navigator === 'undefined') return 'en';
-  const lang = navigator.language.substr(0, 2).toLowerCase();
-  return Object.keys(localesJson as Record<string, string>).includes(lang) ? lang : 'en';
-};
-
-const initialState: PrefsState = {
-  platform: 'pc',
-  theme: 'night',
-  locale: detectLocale(),
-  components: componentsJson as ComponentsMap,
-  componentOrder: [...DEFAULT_MASONRY_PANEL_ORDER],
-  trackables: { rewardTypes: {}, eventTypes: {} },
-  fissurePlanets: planetsJson as PrefsState['fissurePlanets'],
-  fissureDisplays: 'fissures-storms',
-  soundFilters: [],
-};
+const initialState = createDefaultPrefsState();
 
 type PrefsAction =
-  | { type: 'HYDRATE'; payload: PrefsState }
+  | { type: 'HYDRATE'; payload: Partial<PrefsState> }
   | { type: 'SET_PLATFORM'; payload: Platform }
   | { type: 'SET_THEME'; payload: string }
   | { type: 'SET_LOCALE'; payload: string }
@@ -129,19 +109,21 @@ const prefsReducer = (state: PrefsState, action: PrefsAction): PrefsState => {
 type PrefsContextValue = {
   state: PrefsState;
   dispatch: Dispatch<PrefsAction>;
+  prefsReady: boolean;
   setPlatform: (p: Platform) => void;
   setTheme: (t: string) => void;
   setLocale: (l: string) => void;
 };
 
 const PrefsContext = createContext<PrefsContextValue | null>(null);
+
 const PrefsProvider: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(prefsReducer, initialState);
   const [prefsReady, setPrefsReady] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     migrateLegacyStorage();
-    const stored = readStorage<PrefsState>(STORAGE_KEY);
+    const stored = readStorage<PrefsState>(PREFS_STORAGE_KEY);
     const trackables = buildTrackables(stored?.trackables);
 
     if (stored) {
@@ -167,22 +149,22 @@ const PrefsProvider: FC<{ children: ReactNode }> = ({ children }: { children: Re
         payload: {
           trackables,
           componentOrder: normalizeComponentOrder(undefined, initialState.components),
-        } as Partial<PrefsState>,
+        },
       });
     }
 
     setPrefsReady(true);
   }, []);
 
-  usePersistedState(STORAGE_KEY, state, prefsReady);
+  usePersistedState(PREFS_STORAGE_KEY, state, prefsReady);
 
   const setPlatform = useCallback((p: Platform) => dispatch({ type: 'SET_PLATFORM', payload: p }), []);
   const setTheme = useCallback((t: string) => dispatch({ type: 'SET_THEME', payload: t }), []);
   const setLocale = useCallback((l: string) => dispatch({ type: 'SET_LOCALE', payload: l }), []);
 
   const value = useMemo(
-    () => ({ state, dispatch, setPlatform, setTheme, setLocale }),
-    [state, setPlatform, setTheme, setLocale]
+    () => ({ state, dispatch, prefsReady, setPlatform, setTheme, setLocale }),
+    [state, prefsReady, setPlatform, setTheme, setLocale],
   );
 
   return <PrefsContext.Provider value={value}>{children}</PrefsContext.Provider>;
@@ -196,5 +178,5 @@ export const usePrefs = (): PrefsContextValue => {
 };
 
 export const seedPrefs = (payload: Partial<PrefsState>): void => {
-  debouncedWriteStorage(STORAGE_KEY, payload);
+  debouncedWriteStorage(PREFS_STORAGE_KEY, payload);
 };

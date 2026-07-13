@@ -3,6 +3,7 @@ import { dismissVinextDevOverlay } from '../../lib/test/dismissVinextDevOverlay'
 import fullWorldstate from '../../lib/fixtures/worldstate/full.json';
 import timersFullOverrides from '../../lib/fixtures/worldstate/timers-full.json';
 import componentsJson from '../../data/json/components.json';
+import { MASONRY_PANEL_KEYS } from '../../lib/timers/masonryPanels';
 
 const HUB_STORAGE_PREFIXES = ['hub.v1.', 'vuex', 'cache'] as const;
 const CODEX_DB_NAME = 'hub-v1';
@@ -67,8 +68,15 @@ const worldstateForFixture = (fixture: string, platform: PlatformKey): Worldstat
   return base;
 };
 
-const prefsWithEnabledPanels = (enablePanels: string[] = []): string => {
+const prefsWithEnabledPanels = (enablePanels: string[] = [], enableAllMasonryPanels = false): string => {
   const components = structuredClone(componentsJson) as ComponentsMap;
+  if (enableAllMasonryPanels) {
+    for (const key of MASONRY_PANEL_KEYS) {
+      if (components[key]) {
+        components[key] = { ...components[key], display: true };
+      }
+    }
+  }
   for (const key of enablePanels) {
     if (components[key]) {
       components[key] = { ...components[key], display: true };
@@ -106,7 +114,12 @@ Cypress.Commands.add('seedCache', ({ synth, rivens, items }: HubCacheSeed = {}) 
 
 Cypress.Commands.add(
   'seedHub',
-  ({ fixture = 'worldstate/full', platform = 'pc', enablePanels = [] }: SeedHubOptions = {}) => {
+  ({
+    fixture = 'worldstate/full',
+    platform = 'pc',
+    enablePanels = [],
+    enableAllMasonryPanels = false,
+  }: SeedHubOptions = {}) => {
     const platformKey = (platform in fullWorldstate ? platform : 'pc') as PlatformKey;
     const worldstate = worldstateForFixture(fixture, platformKey);
 
@@ -124,8 +137,11 @@ Cypress.Commands.add(
           .filter((key) => HUB_STORAGE_PREFIXES.some((prefix) => key === prefix || key.startsWith(prefix)))
           .forEach((key) => win.localStorage.removeItem(key));
         win.localStorage.setItem(`hub.v1.ws.${platform}`, JSON.stringify(worldstate));
-        if (enablePanels.length > 0) {
-          win.localStorage.setItem('hub.v1.prefs', prefsWithEnabledPanels(enablePanels));
+        if (enablePanels.length > 0 || enableAllMasonryPanels) {
+          win.localStorage.setItem(
+            'hub.v1.prefs',
+            prefsWithEnabledPanels(enablePanels, enableAllMasonryPanels),
+          );
         }
       },
     });

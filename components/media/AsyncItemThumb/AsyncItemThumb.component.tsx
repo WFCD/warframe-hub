@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState, type FC } from 'react';
 import { Tooltip } from '@heroui/react';
 import { makeid, wfcdn, optimize } from '@/lib/shared';
+import { fetchItemImageName } from '@/lib/cache/itemSearchCache';
+import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
 
 type AsyncItemThumbProps = {
   alt?: string;
@@ -10,32 +12,35 @@ type AsyncItemThumbProps = {
   ikey?: string;
 };
 
+const normalizeItemQuery = (ikey: string, alt: string): string =>
+  (ikey || alt)
+    .replace(/\d+\s+/i, '')
+    .replace('Blueprint', '')
+    .replace('Receiver', '')
+    .replace('Hilt', '')
+    .replace('Blade', '')
+    .replace('Stock', '')
+    .trim()
+    .toLowerCase();
+
 const AsyncItemThumb: FC<AsyncItemThumbProps> = ({ alt = '', width = 20, ikey = '' }: AsyncItemThumbProps) => {
   const id = useMemo(() => makeid(), []);
   const [img, setImg] = useState<string | null>(null);
+  const query = useMemo(() => normalizeItemQuery(ikey, alt), [alt, ikey]);
 
   useEffect(() => {
-    const stripped = (ikey || alt)
-      .replace(/\d+\s+/i, '')
-      .replace('Blueprint', '')
-      .replace('Receiver', '')
-      .replace('Hilt', '')
-      .replace('Blade', '')
-      .replace('Stock', '')
-      .trim();
+    if (!query) return;
 
-    const url = `https://api.warframestat.us/items/search/${stripped.toLowerCase()}`;
+    let cancelled = false;
+    void fetchItemImageName(query).then((imageName) => {
+      if (cancelled || !imageName) return;
+      setImg(optimize(wfcdn(imageName), String(width * 8)));
+    });
 
-    void fetch(url)
-      .then((d) => d.json())
-      .then((data: { name: string; imageName?: string }[]) => {
-        const match = data.filter((d) => d.name === stripped);
-        if (match[0]?.imageName) {
-          setImg(optimize(wfcdn(match[0].imageName), String(width * 8)));
-        }
-      })
-      .catch(() => {});
-  }, [alt, ikey, width]);
+    return () => {
+      cancelled = true;
+    };
+  }, [query, width]);
 
   if (!img) {
     return <div>{alt}</div>;
@@ -44,7 +49,7 @@ const AsyncItemThumb: FC<AsyncItemThumbProps> = ({ alt = '', width = 20, ikey = 
   const thumb = <img id={id} src={img} alt={alt} style={{ pointerEvents: 'inherit' }} width={`${width}px`} />;
 
   return (
-    <Tooltip delay={400}>
+    <Tooltip delay={HUB_TOOLTIP_DELAY}>
       <Tooltip.Trigger>
         <span className="hub-async-thumb-trigger">{thumb}</span>
       </Tooltip.Trigger>

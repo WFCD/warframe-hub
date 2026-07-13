@@ -2,10 +2,9 @@
 import type { FC } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { cdn } from '@/lib/shared';
 import HubImg from '@/components/media/HubImg';
 
-const loading = cdn('svg/loading.svg');
+const loading = '/img/loading.svg';
 
 type NoDataItemProps = {
   text?: string;
@@ -24,7 +23,6 @@ const NoDataItem: FC<NoDataItemProps> = ({ text = 'Data', overrideBorder = false
           width="40px"
           height="40px"
           className="shrink-0"
-          style={{ filter: 'invert(80%)' }}
         />
 
         <div className="no-content-warning align-middle mb-0.5">

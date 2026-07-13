@@ -35,3 +35,31 @@
 .baro .hub-baro-col-credits {
   text-align: center;
 }
+
+.hub-baro-inventory {
+  width: 100%;
+}
+
+.hub-baro-inventory-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: unset;
+  border: 1px dashed color-mix(in oklch, var(--border) 85%, var(--hub-sacrifice-gold) 15%);
+  border-radius: 0.65rem;
+  background: transparent !important;
+  color: var(--hub-text-secondary) !important;
+  padding: 0.45rem 0.75rem;
+}
+
+.hub-baro-inventory-trigger:hover,
+.hub-baro-inventory-trigger[data-hovered='true'] {
+  color: var(--foreground) !important;
+  background: color-mix(in oklch, var(--surface) 40%, transparent) !important;
+}
+
+.hub-baro-inventory .disclosure__content {
+  padding-top: 0.65rem;
+}

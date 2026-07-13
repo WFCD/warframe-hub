@@ -7,6 +7,7 @@ describe('Timers', () => {
       enableAllMasonryPanels: true,
       enablePanels: ['deals', 'conclave'],
     });
+    cy.get('.hub-timers-loading', { timeout: 15000 }).should('not.exist');
   });
 
   describe('Cycle dock', () => {

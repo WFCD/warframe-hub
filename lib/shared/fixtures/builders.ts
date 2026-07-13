@@ -11,6 +11,9 @@ type FullFixture = {
 
 const full = fullWorldstate as FullFixture;
 
+/** Non-placeholder timestamp so test/fixture worldstate hydrates and panels render. */
+export const FIXTURE_WORLDSTATE_TIMESTAMP = '2026-07-08T12:00:00.000Z';
+
 export const buildWorldstate = (overrides: Partial<WorldstateData> = {}): WorldstateData => ({
   ...(full.pc as WorldstateData),
   ...overrides,
@@ -39,4 +42,7 @@ export const buildNightwaveActiveWorldstate = (): WorldstateData =>
   });
 
 export const buildTimersFullWorldstate = (): WorldstateData =>
-  buildWorldstate(timersFullOverrides as Partial<WorldstateData>);
+  buildWorldstate({
+    ...(timersFullOverrides as Partial<WorldstateData>),
+    timestamp: FIXTURE_WORLDSTATE_TIMESTAMP,
+  });

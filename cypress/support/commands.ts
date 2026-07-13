@@ -4,6 +4,7 @@ import fullWorldstate from '../../lib/fixtures/worldstate/full.json';
 import timersFullOverrides from '../../lib/fixtures/worldstate/timers-full.json';
 import componentsJson from '../../data/json/components.json';
 import { MASONRY_PANEL_KEYS } from '../../lib/timers/masonryPanels';
+import { FIXTURE_WORLDSTATE_TIMESTAMP } from '../../lib/shared/fixtures/builders';
 
 const HUB_STORAGE_PREFIXES = ['hub.v1.', 'vuex', 'cache'] as const;
 const CODEX_DB_NAME = 'hub-v1';
@@ -63,7 +64,11 @@ const withHubTest = (path: string): string => {
 const worldstateForFixture = (fixture: string, platform: PlatformKey): WorldstateData => {
   const base = (fullWorldstate[platform] ?? fullWorldstate.pc) as WorldstateData;
   if (fixture === 'timers-full') {
-    return { ...base, ...timersFullOverrides } as WorldstateData;
+    return {
+      ...base,
+      ...timersFullOverrides,
+      timestamp: FIXTURE_WORLDSTATE_TIMESTAMP,
+    } as WorldstateData;
   }
   return base;
 };

@@ -1,8 +1,10 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, type ReactNode, type FC } from 'react';
+import { createContext, useContext, useLayoutEffect, useState, type ReactNode, type FC } from 'react';
+import { buildTimersFullWorldstate, buildWorldstate, normalizePlatform } from '@/lib/shared';
+import { usePrefs } from '@/lib/providers/PrefsProvider';
+import { useWorldstate, seedWorldstate } from '@/lib/providers/WorldstateProvider';
 import { isTestMode, getDataMode } from './dataMode';
-import { buildTimersFullWorldstate, buildWorldstate } from '@/lib/shared';
 
 type TestPayload = {
   worldstate?: ReturnType<typeof buildWorldstate>;
@@ -24,22 +26,35 @@ declare global {
 }
 const TestDataProvider: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const [mode] = useState(getDataMode);
+  const { state: prefs } = usePrefs();
+  const { dispatch } = useWorldstate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isTestMode()) return;
 
     window.__HUB_SET_TEST_DATA__ = (payload) => {
       if (payload.worldstate && payload.platform) {
-        localStorage.setItem(`hub.v1.ws.${payload.platform}`, JSON.stringify(payload.worldstate));
+        const platform = normalizePlatform(payload.platform);
+        seedWorldstate(platform, payload.worldstate);
+        dispatch({
+          type: 'HYDRATE_PLATFORM',
+          payload: { platform, data: payload.worldstate },
+        });
       }
     };
 
     const params = new URLSearchParams(window.location.search);
     const fixture = params.get('fixture');
     if (fixture === 'timers-full') {
-      localStorage.setItem('hub.v1.ws.pc', JSON.stringify(buildTimersFullWorldstate()));
+      const platform = normalizePlatform(prefs.platform);
+      const worldstate = buildTimersFullWorldstate();
+      seedWorldstate(platform, worldstate);
+      dispatch({
+        type: 'HYDRATE_PLATFORM',
+        payload: { platform, data: worldstate },
+      });
     }
-  }, []);
+  }, [dispatch, prefs.platform]);
 
   const value: TestContextValue = {
     mode,

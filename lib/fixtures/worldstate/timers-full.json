@@ -1,4 +1,104 @@
 {
+  "news": [
+    {
+      "id": "news-test",
+      "message": "Test News",
+      "link": "https://warframe.com",
+      "date": "2026-07-08T00:00:00.000Z",
+      "translations": {
+        "en": "Test News Item"
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert-test",
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z",
+      "mission": {
+        "node": "Mithra (Void)",
+        "type": "Survival",
+        "faction": "Corrupted",
+        "minEnemyLevel": 30,
+        "maxEnemyLevel": 40,
+        "reward": {
+          "items": ["Orokin Cell"],
+          "countedItems": []
+        }
+      }
+    }
+  ],
+  "invasions": [
+    {
+      "id": "invasion-test",
+      "node": "Erpo (Earth)",
+      "desc": "Test Invasion",
+      "activation": "2026-07-08T00:00:00.000Z",
+      "count": 1,
+      "requiredRuns": 3,
+      "completion": 0.25,
+      "completed": false,
+      "attacker": {
+        "faction": "Grineer",
+        "reward": {
+          "items": [],
+          "countedItems": []
+        }
+      },
+      "defender": {
+        "faction": "Corpus",
+        "reward": {
+          "items": ["Fieldron"],
+          "countedItems": []
+        }
+      }
+    }
+  ],
+  "dailyDeals": [
+    {
+      "id": "darvo-test",
+      "item": "Test Item",
+      "salePrice": 35,
+      "discount": 25,
+      "total": 100,
+      "sold": 10,
+      "expiry": "2099-07-08T00:00:00.000Z"
+    }
+  ],
+  "flashSales": [
+    {
+      "id": "sale-test",
+      "item": "Test Sale",
+      "premiumOverride": 30,
+      "expiry": "2099-07-08T00:00:00.000Z"
+    }
+  ],
+  "conclaveChallenges": [
+    {
+      "id": "conclave-test",
+      "description": "Win one match",
+      "activation": "2026-07-08T00:00:00.000Z",
+      "expiry": "2099-07-08T00:00:00.000Z",
+      "mode": "Lunaro"
+    }
+  ],
+  "voidTrader": {
+    "id": "baro-test",
+    "activation": "2026-07-08T00:00:00.000Z",
+    "expiry": "2099-07-08T00:00:00.000Z",
+    "active": true,
+    "character": "Baro Ki'Teer",
+    "location": "Larunda Relay",
+    "inventory": [
+      {
+        "item": "Primed Flow",
+        "ducats": 45,
+        "credits": 110000
+      }
+    ],
+    "psId": "baro-test",
+    "endString": "2d"
+  },
   "sortie": {
     "id": "sortie-test",
     "activation": "2026-07-08T00:00:00.000Z",

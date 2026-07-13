@@ -4,6 +4,7 @@ import { memo, useEffect, useRef, useState, type FC } from 'react';
 import type { TimerPanelRenderContext } from '@/lib/timers/renderTimerPanel';
 import { loadTimerPanelComponent, type TimerPanelComponent } from '@/lib/timers/timerPanelImports';
 import { shouldRenderTimerPanelContent } from '@/lib/timers/isTimerPanelDataReady';
+import { getDataMode } from '@/lib/test/dataMode';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import NewsPanel from '@/components/panels/worldstate/NewsPanel';
 import TimerPanelBody from '@/lib/timers/TimerPanelBody';
@@ -11,6 +12,7 @@ import TimerPanelLoadingShell from './TimerPanelLoadingShell';
 
 const EAGER_PANEL_COUNT = 1;
 const VIEWPORT_ROOT_MARGIN = '120px';
+const eagerLoadAllPanels = () => getDataMode() !== 'live';
 
 type LazyTimerPanelContentProps = TimerPanelRenderContext & {
   eagerIndex?: number;
@@ -41,7 +43,9 @@ const LazyTimerPanelContent: FC<LazyTimerPanelContentProps> = ({
     syndicates,
     fissurePlanets,
   );
+  const loadAllPanels = eagerLoadAllPanels();
   const isEagerNews = panelKey === 'news' && eagerIndex < EAGER_PANEL_COUNT;
+  const shouldEagerLoad = loadAllPanels || isEagerNews || eagerIndex < EAGER_PANEL_COUNT;
 
   useEffect(() => {
     if (!canRender) {
@@ -49,13 +53,13 @@ const LazyTimerPanelContent: FC<LazyTimerPanelContentProps> = ({
       return;
     }
 
-    if (isEagerNews || eagerIndex < EAGER_PANEL_COUNT) {
+    if (shouldEagerLoad) {
       setShouldLoadChunk(true);
     }
-  }, [canRender, eagerIndex, isEagerNews]);
+  }, [canRender, shouldEagerLoad]);
 
   useEffect(() => {
-    if (!canRender || shouldLoadChunk || isEagerNews) return;
+    if (!canRender || shouldLoadChunk || isEagerNews || loadAllPanels) return;
 
     const host = hostRef.current;
     if (!host) return;
@@ -71,7 +75,7 @@ const LazyTimerPanelContent: FC<LazyTimerPanelContentProps> = ({
 
     observer.observe(host);
     return () => observer.disconnect();
-  }, [canRender, shouldLoadChunk, isEagerNews]);
+  }, [canRender, shouldLoadChunk, isEagerNews, loadAllPanels]);
 
   useEffect(() => {
     if (!canRender || !shouldLoadChunk || Panel || chunkError || isEagerNews) return;

@@ -1,4 +1,5 @@
 import type { WorldstateData } from '../../lib/shared';
+import { dismissVinextDevOverlay } from '../../lib/test/dismissVinextDevOverlay';
 import fullWorldstate from '../../lib/fixtures/worldstate/full.json';
 import timersFullOverrides from '../../lib/fixtures/worldstate/timers-full.json';
 import componentsJson from '../../data/json/components.json';
@@ -128,6 +129,7 @@ Cypress.Commands.add(
         }
       },
     });
+    cy.window().then((win) => dismissVinextDevOverlay(win.document));
   }
 );
 
@@ -154,6 +156,8 @@ Cypress.Commands.add(
         onBeforeLoad?.(win);
       },
     });
+    cy.window().then((win) => dismissVinextDevOverlay(win.document));
+    cy.get('#app', { timeout: 15000 }).should('be.visible');
   }
 );
 
@@ -167,3 +171,29 @@ Cypress.Commands.add(
     cy.wrap({ componentModule, props });
   }
 );
+
+Cypress.Commands.add('waitForHubTable', (minRows = 1) => {
+  cy.get('.hub-content-loading', { timeout: 15000 }).should('not.exist');
+  cy.get('.hub-native-table tbody tr', { timeout: 15000 }).should('have.length.at.least', minRows);
+});
+
+Cypress.Commands.add('hubClick', { prevSubject: 'element' }, (subject) => {
+  cy.window().then((win) => dismissVinextDevOverlay(win.document));
+  // Mobile viewport makes Cypress emit touch; realClick dispatches mouse/pointer React Aria expects.
+  cy.wrap(subject).scrollIntoView().should('be.visible').realClick({ pointerType: 'mouse' });
+  return cy.wrap(subject);
+});
+
+Cypress.Commands.add('hubActivate', { prevSubject: 'element' }, (subject) => {
+  cy.window().then((win) => dismissVinextDevOverlay(win.document));
+  cy.wrap(subject).scrollIntoView().should('be.visible').focus().realPress('Enter');
+  return cy.wrap(subject);
+});
+
+Cypress.Commands.add('hubOpenSettings', () => {
+  cy.window().its('__hubTestBridge').should('exist').invoke('openSettings');
+});
+
+Cypress.Commands.add('hubOpenMenu', (key: string) => {
+  cy.window().its('__hubTestBridge').should('exist').invoke('openMenu', key);
+});

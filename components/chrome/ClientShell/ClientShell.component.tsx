@@ -10,12 +10,15 @@ import InAppNotificationHost from '@/components/chrome/InAppNotificationHost';
 import AboutModal from '@/components/modals/AboutModal';
 import SettingsModal from '@/components/modals/SettingsModal';
 import TestDataProvider from '@/lib/test/TestDataProvider';
+import { dismissVinextDevOverlay } from '@/lib/test/dismissVinextDevOverlay';
+import { isHubTestMode } from '@/lib/test/dataMode';
 import { PageChromeProvider } from '@/lib/providers/PageChromeProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import { useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/styles/hub-vendor.css';
 import '@/styles/hub.scss';
+import { registerHubTestActions } from '@/lib/test/hubTestBridge';
 
 const PwaUpdatePrompt = lazy(() => import('@/components/chrome/PwaUpdatePrompt'));
 const ThemeSync: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
@@ -43,6 +46,22 @@ const PwaUpdatePromptGate: FC = () => {
 const ClientShell: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+
+  useEffect(() => {
+    if (!isHubTestMode()) return;
+    const clearDevOverlay = () => dismissVinextDevOverlay();
+    clearDevOverlay();
+    const observer = new MutationObserver(clearDevOverlay);
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    registerHubTestActions({
+      openSettings: () => setShowSettings(true),
+      openAbout: () => setShowAbout(true),
+    });
+  }, []);
 
   return (
     <TestDataProvider>

@@ -7,6 +7,7 @@ import { Modal, Tabs, useOverlayState } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { useHubModalPresentation } from '@/lib/hooks/useHubModalPresentation';
 import { promptNotificationPermission } from '@/lib/notifications/testNotification';
+import { hubTestClickHandler } from '@/lib/test/hubTestInterop';
 import { useNotifications } from '@/lib/providers/NotificationsProvider';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import GeneralFilter from '@/components/modals/filters/GeneralFilter';
@@ -58,7 +59,7 @@ const SettingsModal: FC<Props> = ({ show, onHide }: Props) => {
                     <Tabs.Tab id="sounds">{t('settings.tabs.sounds')}</Tabs.Tab>
                   </Tabs.List>
                 </Tabs.ListContainer>
-                <Modal.CloseTrigger className="hub-modal-close" />
+                <Modal.CloseTrigger className="hub-modal-close" {...hubTestClickHandler(onHide)} />
               </Modal.Header>
               <Modal.Body>
                 <Tabs.Panel id="general">

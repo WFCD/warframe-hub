@@ -30,6 +30,11 @@ declare global {
       visitHub(path?: string, options?: VisitHubOptions): Chainable<void>;
       mountPanel(componentModule: unknown, options?: { props?: Record<string, unknown> }): Chainable<void>;
       readCodexItemsCount(locale?: string): Chainable<number>;
+      waitForHubTable(minRows?: number): Chainable<void>;
+      hubClick(): Chainable<JQuery<HTMLElement>>;
+      hubActivate(): Chainable<JQuery<HTMLElement>>;
+      hubOpenSettings(): Chainable<void>;
+      hubOpenMenu(key: string): Chainable<void>;
     }
   }
 }

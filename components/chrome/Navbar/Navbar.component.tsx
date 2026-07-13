@@ -6,7 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button, Dropdown, Tooltip } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
+import { useMinWidth } from '@/lib/hooks/useMinWidth';
 import { usePageChromeContext } from '@/lib/providers/PageChromeProvider';
+import { hubTestClickHandler, hubTestOpenHandler } from '@/lib/test/hubTestInterop';
+import { registerHubTestMenu } from '@/lib/test/hubTestBridge';
 
 /** Warframe-symbols icon class names from genesis-assets/fonts/Warframe-symbols.css */
 export const NAV_SYMBOL = {
@@ -19,20 +22,6 @@ type Props = {
   onOpenSettings?: () => void;
   onOpenAbout?: () => void;
 };
-
-function useMinWidth(px: number): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia(`(min-width: ${px}px)`);
-    const update = () => setMatches(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, [px]);
-
-  return matches;
-}
 
 type MenuLinkProps = {
   href: string;
@@ -180,6 +169,7 @@ type NavDropdownProps = {
   showChevron?: boolean;
   stacked?: boolean;
   children: ReactNode;
+  hubTestMenuKey?: string;
 };
 
 const NavDropdown: FC<NavDropdownProps> = ({
@@ -192,24 +182,32 @@ const NavDropdown: FC<NavDropdownProps> = ({
   showChevron = true,
   stacked = false,
   children,
+  hubTestMenuKey,
 }: NavDropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (!hubTestMenuKey) return;
+    return registerHubTestMenu(hubTestMenuKey, () => setMenuOpen(true));
+  }, [hubTestMenuKey]);
+
   const dropdown = (
-    <Dropdown isOpen={menuOpen} onOpenChange={setMenuOpen}>
-      <Dropdown.Trigger
-        className={`hub-nav-link hub-nav-dropdown-trigger hub-nav-icon-item${stacked ? ' hub-nav-link--stacked' : ''}`}
-        style={{ boxShadow: 'none', outline: 'none' }}
-        aria-label={label}
-        aria-current={isActive ? 'page' : undefined}
-      >
-        <NavIconItem icon={icon} label={label} showLabel={showLabel} stacked={stacked} />
-        {showLabel && showChevron ? <i className="fas fa-chevron-down hub-nav-chevron" aria-hidden /> : null}
-      </Dropdown.Trigger>
-      <Dropdown.Popover className="hub-nav-dropdown-popover" placement={placement}>
-        <div className="hub-nav-popover">{children}</div>
-      </Dropdown.Popover>
-    </Dropdown>
+    <div className="hub-nav-dropdown-host" {...hubTestOpenHandler(() => setMenuOpen(true))}>
+      <Dropdown isOpen={menuOpen} onOpenChange={setMenuOpen}>
+        <Dropdown.Trigger
+          className={`hub-nav-link hub-nav-dropdown-trigger hub-nav-icon-item${stacked ? ' hub-nav-link--stacked' : ''}`}
+          style={{ boxShadow: 'none', outline: 'none' }}
+          aria-label={label}
+          aria-current={isActive ? 'page' : undefined}
+        >
+          <NavIconItem icon={icon} label={label} showLabel={showLabel} stacked={stacked} />
+          {showLabel && showChevron ? <i className="fas fa-chevron-down hub-nav-chevron" aria-hidden /> : null}
+        </Dropdown.Trigger>
+        <Dropdown.Popover className="hub-nav-dropdown-popover" placement={placement}>
+          <div className="hub-nav-popover">{children}</div>
+        </Dropdown.Popover>
+      </Dropdown>
+    </div>
   );
 
   if (useTooltip) {
@@ -242,9 +240,16 @@ const NavIconButton: FC<NavIconButtonProps> = ({
   useTooltip = false,
 }: NavIconButtonProps) => {
   const button = (
-    <Button variant="light" className="hub-nav-icon-btn hub-nav-icon-item" aria-label={label} onPress={onPress}>
-      <NavIconItem icon={icon} label={label} showLabel={showLabel} />
-    </Button>
+    <span className="hub-nav-icon-btn-host" {...hubTestClickHandler(onPress)}>
+      <Button
+        variant="light"
+        className="hub-nav-icon-btn hub-nav-icon-item"
+        aria-label={label}
+        onPress={onPress}
+      >
+        <NavIconItem icon={icon} label={label} showLabel={showLabel} />
+      </Button>
+    </span>
   );
 
   if (useTooltip) {
@@ -368,6 +373,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
       <NavDropdown
         icon={<i className="fas fa-globe" />}
         label={t('nav.ow')}
+        hubTestMenuKey="open-world"
         showLabel={showLabel}
         useTooltip={useTooltip}
         isActive={isOwActive}

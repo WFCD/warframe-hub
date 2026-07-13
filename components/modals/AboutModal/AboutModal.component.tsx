@@ -6,6 +6,7 @@ import type { FC, ReactNode } from 'react';
 import { Link, Modal, Tabs, useOverlayState } from '@heroui/react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useHubModalPresentation } from '@/lib/hooks/useHubModalPresentation';
+import { hubTestClickHandler } from '@/lib/test/hubTestInterop';
 
 type Props = { show: boolean; onHide: () => void };
 
@@ -42,7 +43,7 @@ const AboutModal: FC<Props> = ({ show, onHide }: Props) => {
                     <Tabs.Tab id="license">{t('about.tabs.license')}</Tabs.Tab>
                   </Tabs.List>
                 </Tabs.ListContainer>
-                <Modal.CloseTrigger className="hub-modal-close" />
+                <Modal.CloseTrigger className="hub-modal-close" {...hubTestClickHandler(onHide)} />
               </Modal.Header>
               <Modal.Body>
                 <Tabs.Panel id="community" className="hub-about-panel">

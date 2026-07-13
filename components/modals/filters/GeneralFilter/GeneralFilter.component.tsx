@@ -1,9 +1,11 @@
 'use client';
 import type { FC } from 'react';
+import { useState } from 'react';
 
 import { Label, ListBox, Select } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
+import { hubTestClickHandler, hubTestOpenHandler } from '@/lib/test/hubTestInterop';
 import type { Platform } from '@/lib/shared';
 import platforms from '@/data/json/platforms.json';
 import locales from '@/data/json/locales.json';
@@ -37,6 +39,9 @@ const platformToJsonKey = (platform: Platform): string => (platform === 'switch'
 const GeneralFilter: FC = () => {
   const { t } = useTranslation();
   const { state, setPlatform, setLocale, setTheme } = usePrefs();
+  const [platformOpen, setPlatformOpen] = useState(false);
+  const [localeOpen, setLocaleOpen] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
 
   return (
     <div className="hub-settings-general">
@@ -45,19 +50,29 @@ const GeneralFilter: FC = () => {
           fullWidth
           className="hub-settings-select"
           value={platformToJsonKey(state.platform)}
+          isOpen={platformOpen}
+          onOpenChange={setPlatformOpen}
           onChange={(key) => {
             if (key) setPlatform(jsonKeyToPlatform(String(key)));
           }}
         >
           <Label className="hub-settings-section-label">{t('settings.platform')}</Label>
-          <Select.Trigger>
+          <Select.Trigger {...hubTestOpenHandler(() => setPlatformOpen(true))}>
             <Select.Value />
             <Select.Indicator />
           </Select.Trigger>
           <Select.Popover>
             <ListBox>
               {platformEntries.map((platform) => (
-                <ListBox.Item key={platform.key} id={platform.key} textValue={platform.display}>
+                <ListBox.Item
+                  key={platform.key}
+                  id={platform.key}
+                  textValue={platform.display}
+                  {...hubTestClickHandler(() => {
+                    setPlatform(jsonKeyToPlatform(platform.key));
+                    setPlatformOpen(false);
+                  })}
+                >
                   <span className="hub-settings-select-option">
                     <i className={`${platform.icon} fa-lg`} aria-hidden />
                     {platform.display}
@@ -75,12 +90,14 @@ const GeneralFilter: FC = () => {
           fullWidth
           className="hub-settings-select"
           value={state.locale}
+          isOpen={localeOpen}
+          onOpenChange={setLocaleOpen}
           onChange={(key) => {
             if (key) setLocale(String(key));
           }}
         >
           <Label className="hub-settings-section-label">{t('settings.language')}</Label>
-          <Select.Trigger>
+          <Select.Trigger {...hubTestOpenHandler(() => setLocaleOpen(true))}>
             <Select.Value />
             <Select.Indicator />
           </Select.Trigger>
@@ -102,12 +119,14 @@ const GeneralFilter: FC = () => {
           fullWidth
           className="hub-settings-select"
           value={state.theme}
+          isOpen={themeOpen}
+          onOpenChange={setThemeOpen}
           onChange={(key) => {
             if (key) setTheme(String(key));
           }}
         >
           <Label className="hub-settings-section-label">{t('settings.theme')}</Label>
-          <Select.Trigger>
+          <Select.Trigger {...hubTestOpenHandler(() => setThemeOpen(true))}>
             <Select.Value />
             <Select.Indicator />
           </Select.Trigger>

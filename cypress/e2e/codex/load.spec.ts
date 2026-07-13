@@ -19,7 +19,7 @@ describe('Codex', () => {
       cy.visitHub('/codex', { cache: { items } });
     });
     cy.contains('h1', 'Item Codex').should('be.visible');
-    cy.get('.hub-native-table tbody tr').should('have.length', 8);
+    cy.waitForHubTable(8);
     cy.get('#codex-filter').type('galatine');
     cy.location('search').should('include', 'q=galatine');
     cy.get('.hub-native-table tbody tr').should('have.length', 1);
@@ -32,6 +32,7 @@ describe('Codex', () => {
     cy.fixture('codex-items').then((items) => {
       cy.visitHub('/codex?q=galatine', { cache: { items } });
     });
+    cy.waitForHubTable(1);
     cy.get('#codex-filter').should('have.value', 'galatine');
     cy.get('.hub-native-table tbody tr').should('have.length', 1);
     cy.contains('Galatine').should('be.visible');
@@ -41,8 +42,9 @@ describe('Codex', () => {
     cy.fixture('codex-items').then((items) => {
       cy.visitHub('/codex', { cache: { items } });
     });
-    cy.contains('button', 'Filter by Type').click();
-    cy.contains('label', 'Warframe Mod').click();
+    cy.waitForHubTable(8);
+    cy.contains('button', 'Filter by Type').hubClick();
+    cy.contains('.hub-content-type-filter .hub-switch', 'Warframe Mod').hubClick();
     cy.get('.hub-native-table tbody tr').should('have.length', 1);
     cy.contains('Vitality').should('be.visible');
   });
@@ -51,16 +53,17 @@ describe('Codex', () => {
     cy.fixture('codex-items').then((items) => {
       cy.visitHub('/codex', { cache: { items } });
     });
+    cy.waitForHubTable(8);
     cy.intercept('GET', 'https://api.warframestat.us/items/%2FLotus%2FPowersuits%2FExcalibur%2FExcalibur*', {
       fixture: 'codex-excalibur-detail.json',
     }).as('excaliburDetail');
 
     cy.get('#codex-filter').type('Excalibur');
-    cy.get('.hub-content-expand-btn').click();
+    cy.get('.hub-content-expand-btn').first().hubClick();
     cy.wait('@excaliburDetail');
     cy.contains('.hub-codex-detail__description', 'warrior spirit').should('be.visible');
     cy.contains('.hub-codex-detail__heading', 'Abilities').should('be.visible');
     cy.contains('.hub-codex-detail__ability', 'Slash Dash').should('be.visible');
-    cy.get('.hub-codex-detail__ability .hub-wf-dt-icon').should('have.attr', 'src').and('include', 'slash.png');
+    cy.get('.hub-codex-detail__ability-icon').should('have.attr', 'src').and('include', 'Power04.png');
   });
 });

@@ -3,6 +3,7 @@ import './HubSwitch.component.scss';
 
 import type { FC, ReactNode } from 'react';
 import { Label, Switch } from '@heroui/react';
+import { hubTestClickHandler } from '@/lib/test/hubTestInterop';
 
 type HubSwitchProps = {
   id?: string;
@@ -30,6 +31,7 @@ const HubSwitch: FC<HubSwitchProps> = ({
     isSelected={checked}
     isDisabled={disabled}
     onChange={onChange}
+    {...hubTestClickHandler(() => onChange?.(!checked))}
   >
     <Switch.Content>
       <Switch.Control>

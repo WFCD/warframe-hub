@@ -2,6 +2,7 @@ describe('Navbar', () => {
   beforeEach(() => {
     cy.viewport(1280, 800);
     cy.visitHub('/');
+    cy.get('.hub-navbar-start').should('be.visible');
   });
 
   it('shows brand and left nav destinations', () => {
@@ -31,7 +32,7 @@ describe('Navbar', () => {
   });
 
   it('opens open-world map from dropdown', () => {
-    cy.get('.hub-navbar-start button[aria-label="Open World"]').realClick();
+    cy.get('.hub-navbar-start button[aria-label="Open World"]').click();
     cy.get('.hub-nav-popover a[href="/poe/map"]').click();
     cy.location('pathname').should('eq', '/poe/map');
     cy.get('.leaflet-container', { timeout: 10000 }).should('exist');
@@ -49,6 +50,8 @@ describe('Navbar mobile', () => {
   beforeEach(() => {
     cy.viewport(390, 844);
     cy.visitHub('/');
+    cy.get('.hub-bottom-nav').should('be.visible');
+    cy.get('.hub-navbar-start').should('not.exist');
   });
 
   it('shows brand label, projects, and support items in header', () => {
@@ -87,9 +90,8 @@ describe('Navbar mobile', () => {
   });
 
   it('opens open-world map from bottom nav dropdown', () => {
-    cy.get('.hub-bottom-nav button[aria-label="Open World"]').realClick();
-    cy.get('.hub-nav-popover', { timeout: 10000 }).should('be.visible');
-    cy.get('.hub-nav-popover a[href="/poe/map"]').click();
+    cy.hubOpenMenu('open-world');
+    cy.get('.hub-nav-popover a[href="/poe/map"]', { timeout: 10000 }).should('be.visible').hubClick();
     cy.location('pathname').should('eq', '/poe/map');
     cy.get('.leaflet-container', { timeout: 10000 }).should('exist');
   });

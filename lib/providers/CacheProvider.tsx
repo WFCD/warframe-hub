@@ -8,6 +8,8 @@ import {
   useReducer,
   useMemo,
   useEffect,
+  useLayoutEffect,
+  useState,
   useCallback,
   type ReactNode,
   type Dispatch,
@@ -111,8 +113,9 @@ const loadCodexItems = async (locale: string): Promise<CodexItem[]> => {
 const CacheProvider: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const { state: prefs } = usePrefs();
   const [state, dispatch] = useReducer(cacheReducer, initialState);
+  const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const rivens = readStorage<CacheState['rivens']>('hub.v1.cache.rivens');
     const synth = readStorage<unknown[]>('hub.v1.cache.synth');
     dispatch({
@@ -122,6 +125,7 @@ const CacheProvider: FC<{ children: ReactNode }> = ({ children }: { children: Re
         ...(synth ? { synthData: synth } : {}),
       },
     });
+    setHydrated(true);
   }, []);
 
   useEffect(() => {
@@ -140,9 +144,10 @@ const CacheProvider: FC<{ children: ReactNode }> = ({ children }: { children: Re
   }, [prefs.locale]);
 
   useEffect(() => {
+    if (!hydrated) return;
     writeStorage('hub.v1.cache.rivens', state.rivens);
     writeStorage('hub.v1.cache.synth', state.synthData);
-  }, [state.rivens, state.synthData]);
+  }, [hydrated, state.rivens, state.synthData]);
 
   const updateRivens = useCallback(async () => {
     if (getDataMode() !== 'live') return;

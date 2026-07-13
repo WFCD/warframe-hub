@@ -1,5 +1,18 @@
 /* chrome/Navbar/Navbar.component.scss */
 
+.hub-nav-icon-btn-host,
+.hub-nav-dropdown-host {
+  display: inline-flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.hub-bottom-nav .hub-nav-icon-btn-host,
+.hub-bottom-nav .hub-nav-dropdown-host {
+  flex: 1 1 0;
+  justify-content: center;
+}
+
 .hub-chrome-shell {
   width: 100%;
   max-width: var(--hub-chrome-max-width, 80rem);

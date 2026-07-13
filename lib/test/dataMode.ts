@@ -9,3 +9,8 @@ export const getDataMode = (): DataMode => {
 };
 
 export const isTestMode = (): boolean => getDataMode() !== 'live';
+
+export const isHubTestMode = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).get('hubTest') === '1';
+};

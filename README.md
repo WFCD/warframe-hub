@@ -10,8 +10,8 @@
 
 In order to run your own version of Warframe Hub, you are required to have the following on your machine:
 
-- [Node > 10.13.0](https://nodejs.org/en/) for running the project
-- [NPM > 6.4.1](https://www.npmjs.com/get-npm) for dependency control, usually installed with Node.js
+- [Node.js 24 LTS (Krypton)](https://nodejs.org/en/) (see `.nvmrc`)
+- npm (ships with Node.js)
 
 ## Dependencies
 
@@ -34,17 +34,21 @@ $ npm run build
 $ npm start
 ```
 
-The website will be available for viewing at http://localhost:3000
+The website will be available for viewing at http://localhost:8742
 
 ## Development
 
-This website runs on Vue.js, and it does come with a development server that refreshes when it detects code changes. Nodemon is no longer needed as vue comes with its own hot reloader. You can launch the development server using:
+See **[REPO_LAYOUT.md](REPO_LAYOUT.md)** for what lives where.
+
+Stack: **vinext + React + TypeScript** at the repo root (port **8742**).
 
 ```bash
-$ npm run dev
+npm install
+npm run dev          # vinext @ http://localhost:8742
+npm run build        # production static export
 ```
 
-We've switched to [nuxt.js](https://github.com/nuxt/nuxt.js) for our framework instead of freeform Vue
+Env: [`.example.env`](.example.env) (`NEXT_PUBLIC_*`).
 
 ## Bug/Issue Report
 
@@ -52,7 +56,7 @@ Found a bug or an issue? Please submit a bug/issue report under the [issue tab](
 
 ## Testing
 
-Our builds leverage GitHub actions to test via cypress & linting.
+Our builds leverage GitHub actions to test via cypress & linting. Vercel preview deploys run automatically from the Git integration.
 
 You can see the latest results [here](https://github.com/WFCD/warframe-hub/actions/workflows/ci.yaml) or by clicking on the badge at the top of the page.
 

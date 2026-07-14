@@ -1,0 +1,11 @@
+# Build / cache output — never format
+.vercel/
+.vinext/
+.next/
+.output/
+dist/
+dev-dist/
+node_modules/
+package-lock.json
+cypress/screenshots/
+cypress/videos/

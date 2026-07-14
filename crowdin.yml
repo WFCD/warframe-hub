@@ -1,7 +1,7 @@
 files:
-  - source: /static/lang/en.json
-    translation: /static/lang/%two_letters_code%.json
+  - source: /lib/locales/en.json
+    translation: /lib/locales/%two_letters_code%.json
 append_commit_message: false
-commit_message: "fix(%language%): %original_file_name%"
+commit_message: 'fix(%language%): %original_file_name%'
 pull_request_labels:
   - l10n

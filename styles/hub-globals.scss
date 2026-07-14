@@ -1,0 +1,15 @@
+[data-slot='modal-backdrop'],
+.modal__backdrop {
+  z-index: var(--hub-z-modal-backdrop, 1050);
+}
+
+.chip {
+  .hub-img.invert,
+  .hub-img.invert img {
+    filter: brightness(0) invert(1) !important;
+  }
+}
+
+img.invert {
+  filter: brightness(0) invert(1) !important;
+}

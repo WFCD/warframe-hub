@@ -23,14 +23,12 @@ updates:
       eslint:
         patterns:
           - eslint*
-          - prettier
+          - '@stylistic/*'
+          - jsonc*
+          - yaml*
     ignore:
       - dependency-name: leaflet
-      - dependency-name: vue2-leaflet
       - dependency-name: "@fortawesome/fontawesome-free"
-      - dependency-name: less-loader
-      - dependency-name: nuxt
-        versions: ['3.x']
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

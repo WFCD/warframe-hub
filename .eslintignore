@@ -1,0 +1,10 @@
+.vercel
+.vinext
+.next
+.output
+dist
+tsconfig.tsbuildinfo
+cypress/screenshots
+cypress/videos
+dev-dist
+node_modules

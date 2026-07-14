@@ -1,0 +1,60 @@
+/* chrome/ClientShell/ClientShell.component.scss */
+/* Ordis wireframe grid — The Sacrifice (night) */
+.hub-theme-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  display: var(--hub-theme-backdrop-display, none);
+  background-color: var(--background);
+  background-image: var(--hub-theme-backdrop-image, none);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hub-theme-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hub-theme-backdrop-overlay, transparent);
+  pointer-events: none;
+}
+
+.hub-sacrifice-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: var(--hub-sacrifice-backdrop-display, none);
+  background-color: var(--background);
+}
+
+.hub-sacrifice-backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hub-sacrifice-gold-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hub-sacrifice-gold-dim) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 88% 68% at 50% 32%, black 12%, transparent 74%);
+}
+
+.hub-sacrifice-backdrop::after {
+  content: '';
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: -8%;
+  height: 58vh;
+  transform-origin: 50% 0%;
+  transform: perspective(760px) rotateX(66deg);
+  background-image:
+    linear-gradient(var(--hub-sacrifice-gold-floor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hub-sacrifice-gold-floor) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: linear-gradient(to top, black 4%, transparent 64%);
+  opacity: 0.9;
+}

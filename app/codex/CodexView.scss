@@ -1,0 +1,190 @@
+.hub-codex-table__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.hub-codex-table__thumb {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  background: color-mix(in oklch, var(--surface) 80%, transparent);
+}
+
+.hub-codex-table__bool {
+  text-align: center;
+}
+
+.codex-table .hub-content-table-toolbar {
+  flex-wrap: wrap;
+}
+
+.hub-codex-table__expand-col {
+  width: 2rem;
+}
+
+.hub-codex-table__expand {
+  width: 2rem;
+  text-align: center;
+}
+
+.hub-codex-table__detail-row td {
+  padding: 0.75rem 1rem 1rem;
+  background: color-mix(in oklch, var(--surface) 92%, var(--accent) 8%);
+  border-top: 0;
+}
+
+.hub-codex-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hub-codex-detail__description,
+.hub-codex-detail__passive {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.hub-codex-detail__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.hub-codex-detail__field {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.hub-codex-detail__label {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.hub-codex-detail__value {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.hub-codex-detail__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hub-codex-detail__heading {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.hub-codex-detail__list,
+.hub-codex-detail__abilities {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.hub-codex-detail__abilities {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.hub-codex-detail__ability {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.hub-codex-detail__ability p {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.hub-codex-detail__ability-icon,
+.hub-codex-detail__component-icon {
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  background: color-mix(in oklch, var(--surface) 80%, transparent);
+}
+
+.hub-codex-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.hub-codex-detail__table th,
+.hub-codex-detail__table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.hub-codex-detail__component {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hub-codex-detail__status {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.hub-codex-detail__loading {
+  justify-content: flex-start;
+  padding: 0.35rem 0;
+}
+
+.hub-codex-detail__status--error {
+  color: var(--danger);
+}
+
+.hub-codex-detail__links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hub-codex-item-image__trigger {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.hub-codex-item-image__tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 12rem;
+  text-align: center;
+}
+
+.hub-codex-item-image__preview {
+  object-fit: contain;
+  border-radius: 0.25rem;
+  background: color-mix(in oklch, var(--surface) 80%, transparent);
+}
+
+.hub-codex-item-image__label {
+  font-size: 0.75rem;
+  line-height: 1.25;
+}

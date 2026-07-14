@@ -1,0 +1,37 @@
+/* panels/worldstate/AlertPanel/AlertPanel.component.scss */
+.alerts {
+  overflow: hidden;
+}
+
+.alerts .hub-panel-row {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.alerts .hub-panel-row-side {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.alerts .hub-panel-list-item {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.alerts .hub-alert-rewards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-start;
+  margin-top: 0.15rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.alerts .hub-alert-rewards .chip {
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 1;
+}

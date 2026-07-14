@@ -1,0 +1,85 @@
+/* ui/HubTrackableMultiSelect/HubTrackableMultiSelect.component.scss */
+.hub-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hub-settings-section-label {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.hub-settings-general {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hub-settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hub-settings-select-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hub-settings-notifications {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hub-settings-notifications-help {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.hub-settings-notifications-test {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.hub-settings-notifications-test-status {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--danger);
+}
+
+.hub-settings-notifications-test-status--sent {
+  color: var(--success);
+}
+
+.hub-settings-multiselect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.35rem 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hub-settings-multiselect-popover {
+  max-height: min(18rem, 50vh);
+  overflow-y: auto;
+}
+
+.hub-settings-multiselect [data-slot='autocomplete-trigger'] {
+  min-height: 2.5rem;
+  max-height: 7.5rem;
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+.hub-settings-multiselect [data-slot='tag-group-list'] {
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}

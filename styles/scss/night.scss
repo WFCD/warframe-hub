@@ -1,0 +1,20 @@
+@use 'coloration';
+
+/* Scope to body — cycle icons also use class "night" (e.g. fa-moon night). */
+body.night {
+  $text-color: white;
+  $bg: #18181b;
+  $link-color: #00bc8c;
+  $border-color: #3f3f46;
+  $day-color: rgba(249, 168, 6, 0.8);
+  $night-color: rgba(51, 211, 255, 0.8);
+
+  @include coloration.hub-theme-coloration(
+    $text-color: $text-color,
+    $bg: $bg,
+    $link-color: $link-color,
+    $night-color: $night-color,
+    $day-color: $day-color,
+    $border-color: $border-color
+  );
+}

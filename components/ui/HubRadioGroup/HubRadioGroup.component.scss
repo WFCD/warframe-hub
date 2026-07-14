@@ -1,0 +1,110 @@
+/* ui/HubRadioGroup/HubRadioGroup.component.scss */
+/* HeroUI radios — settings modal */
+.hub-radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.hub-radio-group--tiles {
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.hub-radio-group--tiles .hub-radio.radio {
+  flex: 1 1 22%;
+  min-width: 7rem;
+  max-width: 100%;
+}
+
+.hub-radio-group--tiles .hub-radio.radio {
+    flex-basis: 45%;
+    min-width: 0;
+  }
+
+.themeTabWrapper > .hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 0 1 35%;
+  width: 35%;
+  max-width: 170px;
+}
+
+#platform-radios.hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 1 1 23%;
+}
+
+/* HeroUI radios — settings modal */
+.hub-radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.hub-radio-group--tiles {
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.hub-radio-group--tiles .hub-radio.radio {
+  flex: 1 1 22%;
+  min-width: 7rem;
+  max-width: 100%;
+}
+
+.hub-radio.radio {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.hub-radio .radio__content {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  width: auto;
+  cursor: pointer;
+}
+
+.hub-radio .radio__control {
+  flex-shrink: 0;
+}
+
+.hub-radio .label {
+  font-size: 0.92em;
+  line-height: 1.2;
+  color: var(--hub-text-secondary);
+  cursor: pointer;
+}
+
+.hub-radio[data-selected='true'] .label,
+.hub-radio[data-selected] .label {
+  color: var(--foreground);
+}
+
+.hub-radio-group--tiles .hub-radio.radio {
+    flex-basis: 45%;
+    min-width: 0;
+  }
+
+.themeTabWrapper > .hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 0 1 35%;
+  width: 35%;
+  max-width: 170px;
+}
+
+#platform-radios.hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 1 1 23%;
+}
+
+.themeTabWrapper > .hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 0 1 35%;
+  width: 35%;
+  max-width: 170px;
+}
+
+#platform-radios.hub-radio-group.settings-group > .hub-radio.radio {
+  flex: 1 1 23%;
+}

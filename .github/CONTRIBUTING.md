@@ -16,22 +16,25 @@
 
 ### Linting
 
-Use the provided `.eslintrc.json` to lint your files, include any ignores in your pull request documentation with a reason why.
+Use the root [`.eslintrc.cjs`](../.eslintrc.cjs) (and [`eslint.cypress.cjs`](../eslint.cypress.cjs) for Cypress). Include any ignores in your pull request documentation with a reason why.
 
+### Commit messages
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`
+
+Examples: `feat(synthesis): add table pagination`, `fix: hydrate timer panels`, `ci: bump cypress`
+
+Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `ci`, `chore`. Validated locally by husky (`commit-msg`) and in CI on pull requests.
 
 ### Running
 
-1. Clone the repo. ```git clone https://github.com/WFCD/warframe-hub.git```
+1. Clone the repo: `git clone https://github.com/WFCD/warframe-hub.git`
 
-2. Install [pm2](http://pm2.keymetrics.io/docs/usage/quick-start/).
+2. `npm install`
 
-3. Add any applicable parameters to `pm2.json`, we just flex on the port (or whatever you called it).
+3. `npm run dev` (port from `dev.config.cjs`, default **8742**)
 
-4. Run `pm2 start pm2.json` to start the server.
-
-5. View logs in `pm2 logs warframe-hub` if you wish to see logs for the process.
-
-6. Check in your browser at http://localhost:3000 (by default) or whatever you changed the port to.
+4. Open http://localhost:8742
 
 ### Resources
 

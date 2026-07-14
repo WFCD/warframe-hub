@@ -1,0 +1,33 @@
+/* panels/worldstate/SortiePanel/SortiePanel.component.scss */
+
+.sortie .hub-sortie-mission {
+  width: 100%;
+}
+
+.sortie .hub-panel-row-subtle .hub-panel-row-main b {
+  font-weight: 600;
+}
+
+.sortie .hub-panel-row-subtle .hub-panel-row-side {
+  font-size: 0.95em;
+  color: var(--hub-text-secondary, var(--muted));
+}
+
+.compact .sortie {
+  .hub-panel-list-item:not(:first-child) {
+    padding: 1px 8px;
+  }
+
+  .hub-panel-row {
+    flex-wrap: wrap;
+    gap: 0.15rem 0.5rem;
+  }
+
+  .hub-sortie-mission {
+    margin-left: 0;
+  }
+
+  .hub-panel-row-subtle .hub-panel-row-side {
+    margin-left: auto;
+  }
+}

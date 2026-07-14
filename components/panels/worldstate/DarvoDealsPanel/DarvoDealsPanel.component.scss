@@ -1,0 +1,37 @@
+.hub-darvo-table .table__header.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.darvo .hub-darvo-table.table-root {
+  width: 100%;
+}
+
+.darvo .hub-darvo-table .table__scroll-container {
+  width: 100%;
+}
+
+.darvo .hub-darvo-table .table__content {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.darvo .hub-darvo-table .table__cell {
+  padding: 0.25rem 0.35rem;
+  vertical-align: middle;
+  border: 0;
+  color: var(--foreground);
+}
+
+.darvo .hub-darvo-table .table__body .table__row {
+  background: transparent;
+}

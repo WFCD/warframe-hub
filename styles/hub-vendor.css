@@ -1,0 +1,3 @@
+@import '@heroui/styles';
+
+@custom-variant hub-compact (.compact &);

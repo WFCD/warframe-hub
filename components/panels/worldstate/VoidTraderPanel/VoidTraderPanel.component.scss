@@ -1,0 +1,65 @@
+.baro .hub-baro-table.table-root {
+  width: 100%;
+}
+
+.baro .hub-baro-table .table__scroll-container {
+  width: 100%;
+}
+
+.baro .hub-baro-table .table__content {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.baro .hub-baro-table .table__column,
+.baro .hub-baro-table .table__cell {
+  padding: 0.25rem 0.35rem;
+  vertical-align: middle;
+  border: 0;
+  color: var(--foreground);
+}
+
+.baro .hub-baro-table .table__header .table__column {
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--hub-text-secondary);
+  text-align: center;
+}
+
+.baro .hub-baro-table .table__body .table__row {
+  background: transparent;
+}
+
+.baro .hub-baro-col-ducats,
+.baro .hub-baro-col-credits {
+  text-align: center;
+}
+
+.hub-baro-inventory {
+  width: 100%;
+}
+
+.hub-baro-inventory-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: unset;
+  border: 1px dashed color-mix(in oklch, var(--border) 85%, var(--hub-sacrifice-gold) 15%);
+  border-radius: 0.65rem;
+  background: transparent !important;
+  color: var(--hub-text-secondary) !important;
+  padding: 0.45rem 0.75rem;
+}
+
+.hub-baro-inventory-trigger:hover,
+.hub-baro-inventory-trigger[data-hovered='true'] {
+  color: var(--foreground) !important;
+  background: color-mix(in oklch, var(--surface) 40%, transparent) !important;
+}
+
+.hub-baro-inventory .disclosure__content {
+  padding-top: 0.65rem;
+}

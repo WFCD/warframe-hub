@@ -1,0 +1,46 @@
+:root {
+  --hub-chrome-max-width: 80rem;
+  --hub-cycle-bar-gap: 0.65rem;
+  --hub-z-navbar: 40;
+  /* Above Leaflet controls (z-index 1000); below modals (1050) */
+  --hub-z-bottom-nav: 1040;
+  --hub-bottom-nav-height: 3.75rem;
+  --hub-bottom-nav-bar-padding-block: 0.6rem;
+  --hub-bottom-nav-float-gap: 0.75rem;
+  --hub-bottom-nav-inset-inline: 0.75rem;
+  --hub-z-modal-backdrop: 1050;
+  --hub-cycle-bar-sticky-top: calc(
+    var(--hub-navbar-shell-top, 0.75rem) + var(--hub-navbar-height, 3.75rem) + var(--hub-cycle-bar-gap)
+  );
+}
+
+@media (max-width: 767px) {
+  :root {
+    --hub-cycle-bar-sticky-top: var(--hub-cycle-bar-gap);
+    --hub-app-padding-top: 1.5rem;
+    --hub-mobile-chrome-top: calc(
+      var(--hub-app-padding-top) + var(--hub-navbar-height, 3.25rem) + var(--hub-page-gap, 1.5rem)
+    );
+    --hub-bottom-nav-occupied: calc(
+      var(--hub-bottom-nav-height) + var(--hub-bottom-nav-bar-padding-block) + var(--hub-bottom-nav-float-gap) +
+        env(safe-area-inset-bottom, 0px)
+    );
+    --hub-mobile-chrome-bottom: var(--hub-bottom-nav-occupied);
+    --hub-mobile-map-chrome-bottom: calc(var(--hub-bottom-nav-occupied) + 0.5rem);
+    --hub-mobile-viewport-body: calc(100dvh - var(--hub-mobile-chrome-top) - var(--hub-mobile-chrome-bottom));
+    --hub-mobile-map-viewport-body: calc(100dvh - var(--hub-mobile-chrome-top) - var(--hub-mobile-map-chrome-bottom));
+  }
+
+  #app {
+    padding-bottom: calc(var(--hub-bottom-nav-occupied) + 0.5rem);
+  }
+
+  #app:has(.hub-content-page--map) {
+    padding-bottom: 0;
+  }
+}
+
+.dim {
+  opacity: var(--hub-dim-opacity);
+}
+

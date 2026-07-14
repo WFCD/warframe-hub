@@ -1,0 +1,63 @@
+/* panels/worldstate/EventsPanel/EventsPanel.component.scss */
+.hub-events-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hub-event-item {
+  padding-block: 0.55rem;
+}
+
+.hub-event-item + .hub-event-item {
+  border-top: 1px solid var(--border);
+}
+
+.hub-event-header {
+  position: relative;
+  padding-right: 5.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.hub-event-title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--foreground);
+}
+
+.hub-event-health {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.hub-event-tooltip,
+
+.hub-event-timer,
+
+.hub-event-section {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.hub-event-section-title {
+  margin-bottom: 0.35rem;
+  color: var(--hub-text-secondary);
+  font-size: 0.92em;
+}
+
+.hub-event-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.hub-event-chip-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}

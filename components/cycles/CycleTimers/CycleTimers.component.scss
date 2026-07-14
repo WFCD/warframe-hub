@@ -1,0 +1,178 @@
+/* cycles/CycleTimers/CycleTimers.component.scss */
+
+.hub-cycle-timers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.hub-cycle-timer-cell {
+  flex: 1 1 0;
+  min-width: 7.25rem;
+  max-width: 100%;
+  display: flex;
+}
+
+.hub-cycle-timer-cell--wide-1-25 {
+  flex: 1.25 1 0;
+  min-width: 9.0625rem;
+}
+
+.hub-cycle-timer-cell--wide-1-5 {
+  flex: 1.5 1 0;
+  min-width: 10.875rem;
+}
+
+.hub-cycle-timer-cell--narrow {
+  flex: 0.85 1 0;
+  min-width: 6.25rem;
+}
+
+.hub-cycle-timer-cell--wide {
+  flex: 1 1 100%;
+}
+
+.hub-cycle-timer-cell-inner {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-cycle-timer-cell-inner > * {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-cycle-timer-pill-wrap {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-cycle-timer-tooltip-trigger {
+  display: flex !important;
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: help;
+}
+
+.hub-cycle-timer-pill-tooltip-target,
+.hub-cycle-timer-pill-body {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hub-cycle-timer-tooltip-text {
+  display: block;
+  max-width: 18rem;
+  white-space: pre-line;
+  text-align: center;
+  line-height: 1.35;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* HeroUI tooltip overlay — above sticky navbar + cycle bar */
+.tooltip[data-placement] {
+  position: fixed;
+  z-index: calc(var(--hub-z-navbar, 40) + 20);
+  opacity: 1;
+  pointer-events: none;
+  max-width: 20rem;
+  white-space: normal;
+  word-break: normal;
+}
+
+.hub-cycle-timer-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.22rem 0.42rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: color-mix(in oklch, var(--surface-secondary) 82%, transparent);
+  color: var(--foreground);
+  font-size: 0.72rem;
+  line-height: 1.15;
+}
+
+.hub-cycle-timer-pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 0.85rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.hub-cycle-timer-pill-icon .hub-cycle-timer-pill-img {
+  display: inline-flex;
+}
+
+.hub-cycle-timer-pill-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hub-cycle-timer-pill--has-detail {
+  justify-content: flex-start;
+}
+
+.hub-cycle-timer-pill--has-detail .hub-cycle-timer-pill-label {
+  flex: 0 0 auto;
+  min-width: auto;
+}
+
+.hub-cycle-timer-pill-detail {
+  flex: 0 1 auto;
+  min-width: auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--hub-text-secondary, var(--foreground));
+}
+
+.hub-cycle-timer-pill-reward {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.hub-cycle-timer-pill .hub-cycle-timer-badge.chip {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.hub-cycle-timer-badge-spacer {
+  flex: 0 0 2.75rem;
+  margin-left: auto;
+}
+
+.hub-cycle-timers .hub-cycle-timer-badge.chip {
+  font-size: 0.62rem;
+  min-height: 1.05rem;
+  padding-inline: 0.35rem;
+}

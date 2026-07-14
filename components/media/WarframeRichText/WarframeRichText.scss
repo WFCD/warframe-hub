@@ -1,0 +1,20 @@
+.hub-wf-rich-text {
+  white-space: pre-wrap;
+}
+
+.hub-wf-dt-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0 0.1em;
+  vertical-align: -0.15em;
+  object-fit: contain;
+}
+
+.hub-wf-var {
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--hub-text-secondary, var(--muted));
+}

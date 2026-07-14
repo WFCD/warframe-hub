@@ -1,0 +1,55 @@
+/* Sacrifice dark — night, night-compact (default + explicit hub themes) */
+:root,
+html[data-hub-theme='night'],
+html[data-hub-theme='night-compact'] {
+  color-scheme: dark;
+
+  /* HeroUI */
+  --background: oklch(12% 0.005 285.823);
+  --foreground: oklch(0.9911 0 0);
+  --surface: oklch(0.2103 0.0059 285.89);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(0.257 0.0037 286.14);
+  --surface-tertiary: oklch(0.2721 0.0024 247.91);
+  --overlay: oklch(0.24 0.006 285.89);
+  --overlay-foreground: var(--foreground);
+  --muted: oklch(84% 0.012 286.067);
+  --border: oklch(28% 0.006 286.033);
+  --separator: oklch(25% 0.006 286.033);
+  --default: oklch(27.4% 0.006 286.033);
+  --default-foreground: var(--foreground);
+  --accent: oklch(0.72 0.12 85);
+  --accent-foreground: oklch(0.16 0.01 285);
+  --link: oklch(0.86 0.11 85);
+  --segment-foreground: var(--foreground);
+  --accent-soft-foreground: color-mix(in oklab, var(--accent) 45%, var(--foreground) 55%);
+  --danger-soft-foreground: color-mix(in oklab, var(--danger) 45%, var(--foreground) 55%);
+  --success-soft-foreground: color-mix(in oklab, var(--success) 45%, var(--foreground) 55%);
+  --warning-soft-foreground: color-mix(in oklab, var(--warning) 45%, var(--foreground) 55%);
+
+  /* Hub semantics */
+  --hub-text-secondary: oklch(88% 0.008 286);
+  --hub-nav-muted: var(--hub-text-secondary);
+  --hub-heading-color: color-mix(in oklch, var(--hub-sacrifice-gold) 88%, white);
+  --hub-heading-glow: 0 0 28px color-mix(in oklch, var(--hub-sacrifice-gold) 32%, transparent);
+  --hub-link-hover-color: color-mix(in oklch, var(--link) 88%, white);
+  --hub-link-active-color: var(--accent);
+  --hub-nav-link-active-color: var(--accent);
+  --hub-dim-opacity: 0.88;
+  --hub-sacrifice-backdrop-display: block;
+
+  /* Navbar chrome */
+  --hub-navbar-radius: 1rem;
+  --hub-navbar-shell-top: 0.75rem;
+  --hub-navbar-shell-padding-inline: 1rem;
+  --hub-navbar-backdrop-filter: blur(18px) saturate(1.15);
+  --hub-navbar-shadow:
+    0 1px 1px oklch(0% 0 0 / 0.28),
+    0 10px 28px oklch(0% 0 0 / 0.34),
+    inset 0 1px 0 oklch(100% 0 0 / 0.05);
+  --hub-navbar-border: color-mix(in oklch, var(--border) 88%, var(--hub-sacrifice-gold) 12%);
+  --hub-navbar-background: color-mix(in oklch, var(--surface) 82%, transparent);
+
+  --hub-mission-icon-filter: invert(100%);
+  --hub-glyph-invert-filter: brightness(0) invert(1);
+}

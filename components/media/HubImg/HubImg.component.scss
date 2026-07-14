@@ -1,0 +1,14 @@
+/* media/HubImg/HubImg.component.scss — invert filters only; layout via Tailwind */
+
+.chip .hub-img.invert,
+.chip .hub-img.invert img {
+  filter: brightness(0) invert(1) !important;
+}
+
+.hub-img.invert {
+  filter: var(--hub-glyph-invert-filter, brightness(0) invert(1)) !important;
+}
+
+.hub-img.invert img {
+  filter: none !important;
+}

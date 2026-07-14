@@ -62,6 +62,46 @@ ${namedExports}
   };
 };
 
+/**
+ * vinext always adds `react-server-dom-webpack/static.edge` to RSC optimizeDeps.include.
+ * @vitejs/plugin-rsc only uses that npm package when it appears in ssr.noExternal;
+ * otherwise it uses its vendored copy. Remap when the npm package is absent so Vite
+ * does not warn / fail resolving a peer we intentionally skip.
+ */
+const RSDW = 'react-server-dom-webpack';
+const RSDW_VENDOR = '@vitejs/plugin-rsc/vendor/react-server-dom';
+const hasReactServerDomWebpack = existsSync(
+  fileURLToPath(new URL(`./node_modules/${RSDW}/package.json`, import.meta.url)),
+);
+
+const remapRsdwEntry = (entry: string): string =>
+  entry === RSDW || entry.startsWith(`${RSDW}/`)
+    ? `${RSDW_VENDOR}${entry.slice(RSDW.length)}`
+    : entry;
+
+const hubRscDomVendor = (): Plugin => ({
+  name: 'hub-rsc-dom-vendor',
+  config() {
+    if (hasReactServerDomWebpack) return;
+    return {
+      resolve: {
+        alias: [
+          {
+            find: /^react-server-dom-webpack(\/.*)?$/,
+            replacement: `${RSDW_VENDOR}$1`,
+          },
+        ],
+      },
+    };
+  },
+  configEnvironment(_name, envConfig) {
+    if (hasReactServerDomWebpack) return;
+    const include = envConfig.optimizeDeps?.include;
+    if (!include?.length) return;
+    envConfig.optimizeDeps!.include = include.map(remapRsdwEntry);
+  },
+});
+
 export default defineConfig(() => ({
   plugins: [
     reactAriaIntlSlim(),
@@ -70,6 +110,8 @@ export default defineConfig(() => ({
     vinext({
       prerender: { routes: '*' },
     }),
+    // After vinext so configEnvironment sees its rsc optimizeDeps.include entries.
+    hubRscDomVendor(),
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',
@@ -110,7 +152,6 @@ export default defineConfig(() => ({
       'react-aria-components': reactAriaComponentsRoot,
     },
     dedupe: ['react', 'react-dom', 'react-aria', 'react-aria-components'],
-    conditions: ['node', 'import', 'module', 'browser', 'default'],
   },
   optimizeDeps: {
     include: [...REACT_ARIA_OPTIMIZE_DEPS],
@@ -119,9 +160,6 @@ export default defineConfig(() => ({
     noExternal: [...REACT_ARIA_NO_EXTERNAL],
     optimizeDeps: {
       include: [...REACT_ARIA_OPTIMIZE_DEPS],
-    },
-    resolve: {
-      conditions: ['node', 'require', 'import'],
     },
   },
   server: {

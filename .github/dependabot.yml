@@ -15,20 +15,12 @@ updates:
     pull-request-branch-name:
       separator: "-"
     rebase-strategy: "auto"
+    cooldown:
+      default-days: 7
     groups:
-      babel:
+      default:
         patterns:
-          - '@babel/*'
-          - lint-staged
-      eslint:
-        patterns:
-          - eslint*
-          - '@stylistic/*'
-          - jsonc*
-          - yaml*
-    ignore:
-      - dependency-name: leaflet
-      - dependency-name: "@fortawesome/fontawesome-free"
+          - '*'
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -44,3 +36,9 @@ updates:
     pull-request-branch-name:
       separator: "-"
     rebase-strategy: "auto"
+    cooldown:
+      default-days: 7
+    groups:
+      default:
+        patterns:
+          - '*'

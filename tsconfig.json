@@ -13,10 +13,22 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
-    },
-    "plugins": [{ "name": "next" }]
+      "@/*": ["./*"],
+      "next/dynamic": ["./node_modules/vinext/dist/shims/dynamic.d.ts"],
+      "next/link": ["./node_modules/vinext/dist/shims/link.d.ts"],
+      "next/navigation": ["./node_modules/vinext/dist/shims/navigation.d.ts"],
+      "next/font/google": ["./node_modules/vinext/dist/shims/font-google.d.ts"],
+      "next/image": ["./node_modules/vinext/dist/shims/image.d.ts"],
+      "next/headers": ["./node_modules/vinext/dist/shims/headers.d.ts"],
+      "next/cache": ["./node_modules/vinext/dist/shims/cache.d.ts"],
+      "next/script": ["./node_modules/vinext/dist/shims/script.d.ts"],
+      "next/head": ["./node_modules/vinext/dist/shims/head.d.ts"],
+      "next/router": ["./node_modules/vinext/dist/shims/router.d.ts"],
+      "next/server": ["./node_modules/vinext/dist/shims/server.d.ts"],
+      "next/document": ["./node_modules/vinext/dist/shims/document.d.ts"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts"],
   "exclude": ["node_modules"]

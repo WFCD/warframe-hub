@@ -34,7 +34,7 @@ type MenuLinkProps = {
 const MenuLink: FC<MenuLinkProps> = ({ href, children, external, onNavigate }: MenuLinkProps) => {
   const pathname = usePathname();
   const className = 'hub-nav-menu-link';
-  const isActive = !external && (pathname === href || (href !== '/' && pathname.startsWith(`${href}/`)));
+  const isActive = !external && (pathname === href || (href !== '/' && pathname?.startsWith(`${href}/`)));
 
   if (external) {
     return (
@@ -243,7 +243,7 @@ const NavIconButton: FC<NavIconButtonProps> = ({
   const button = (
     <span className="hub-nav-icon-btn-host" {...hubTestClickHandler(onPress)}>
       <Button
-        variant="light"
+        variant="ghost"
         className="hub-nav-icon-btn hub-nav-icon-item"
         aria-label={label}
         onPress={onPress}
@@ -529,11 +529,11 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
   const isLarge = useMinWidth(1024);
   const isTimersActive = pathname === '/';
   const isOwActive = ['/ow', '/poe', '/vallis', '/deimos'].some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+    (prefix) => pathname === prefix || pathname?.startsWith(`${prefix}/`),
   );
-  const isRivenActive = pathname === '/riven/data' || pathname.startsWith('/riven/');
-  const isSynthActive = pathname === '/synthesis' || pathname.startsWith('/synthesis/');
-  const isCodexActive = pathname === '/codex' || pathname.startsWith('/codex/');
+  const isRivenActive = pathname === '/riven/data' || (pathname?.startsWith('/riven/') ?? false);
+  const isSynthActive = pathname === '/synthesis' || (pathname?.startsWith('/synthesis/') ?? false);
+  const isCodexActive = pathname === '/codex' || (pathname?.startsWith('/codex/') ?? false);
 
   const leftShowLabel = !isDesktop || isLarge;
   const leftUseTooltip = isDesktop && !isLarge;

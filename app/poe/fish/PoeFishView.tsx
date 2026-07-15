@@ -113,6 +113,7 @@ const ResourceCell: FC<{ size: FishSize }> = ({ size }: { size: FishSize }) => {
 
 const PoeFishView: FC = () => {
   const { t } = useTranslation();
+  const sortAria = (column: string) => t('fish.sortBy', { column });
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const sortAccessors = useMemo(
     () => ({
@@ -165,6 +166,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   isRowHeader
                   title={t('fish.tooltips.name')}
+                  ariaLabel={sortAria(t('fish.columns.name'))}
                 >
                   {t('fish.columns.name')}
                 </FishSortableColumn>
@@ -174,6 +176,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.uniqueSize')}
+                  ariaLabel={sortAria(t('fish.columns.unique'))}
                 >
                   {t('fish.columns.unique')}
                 </FishSortableColumn>
@@ -183,6 +186,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.smallSize')}
+                  ariaLabel={sortAria(t('fish.columns.small'))}
                 >
                   {t('fish.columns.small')}
                 </FishSortableColumn>
@@ -192,6 +196,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.mediumSize')}
+                  ariaLabel={sortAria(t('fish.columns.medium'))}
                 >
                   {t('fish.columns.medium')}
                 </FishSortableColumn>
@@ -201,6 +206,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.largeSize')}
+                  ariaLabel={sortAria(t('fish.columns.large'))}
                 >
                   {t('fish.columns.large')}
                 </FishSortableColumn>
@@ -209,10 +215,11 @@ const PoeFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.locationFish')}
+                  ariaLabel={sortAria(t('fish.columns.location'))}
                 >
                   {t('fish.columns.location')}
                 </FishSortableColumn>
-                <FishSortableColumn id='time' sort={sort} onSort={toggleSort} title={t('fish.tooltips.time')}>
+                <FishSortableColumn id='time' sort={sort} onSort={toggleSort} title={t('fish.tooltips.time')} ariaLabel={sortAria(t('fish.columns.time'))}>
                   {t('fish.columns.time')}
                 </FishSortableColumn>
                 <FishSortableColumn
@@ -221,6 +228,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.rarity')}
+                  ariaLabel={sortAria(t('fish.columns.rarity'))}
                 >
                   {t('fish.columns.rarity')}
                 </FishSortableColumn>
@@ -229,6 +237,7 @@ const PoeFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.baitFish')}
+                  ariaLabel={sortAria(t('fish.columns.bait'))}
                 >
                   {t('fish.columns.bait')}
                 </FishSortableColumn>
@@ -237,6 +246,7 @@ const PoeFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.baitRecommended')}
+                  ariaLabel={sortAria(t('fish.columns.baitRequired'))}
                 >
                   {t('fish.columns.baitRequired')}
                 </FishSortableColumn>
@@ -245,10 +255,11 @@ const PoeFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.hotspot')}
+                  ariaLabel={sortAria(t('fish.columns.hotspotRequired'))}
                 >
                   {t('fish.columns.hotspotRequired')}
                 </FishSortableColumn>
-                <FishSortableColumn id='spear' sort={sort} onSort={toggleSort} title={t('fish.tooltips.spear')}>
+                <FishSortableColumn id='spear' sort={sort} onSort={toggleSort} title={t('fish.tooltips.spear')} ariaLabel={sortAria(t('fish.columns.spear'))}>
                   {t('fish.columns.spear')}
                 </FishSortableColumn>
                 <FishSortableColumn
@@ -257,6 +268,7 @@ const PoeFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.maxWeight')}
+                  ariaLabel={sortAria(t('fish.columns.maxWeight'))}
                 >
                   {t('fish.columns.maxWeight')}
                 </FishSortableColumn>

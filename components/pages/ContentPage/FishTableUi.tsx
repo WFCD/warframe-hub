@@ -77,6 +77,8 @@ type FishSortableColumnProps = {
   sort: FishSortState | null;
   onSort: (column: string) => void;
   children: ReactNode;
+  /** Full localized accessible name for the sort control (no English prefix inside this component). */
+  ariaLabel: string;
   className?: string;
   title?: string;
   isRowHeader?: boolean;
@@ -88,6 +90,7 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
   sort,
   onSort,
   children,
+  ariaLabel,
   className,
   title,
   isRowHeader,
@@ -95,7 +98,6 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
 }: FishSortableColumnProps) => {
   const active = sort?.column === id;
   const direction = active ? sort.direction : null;
-  const label = typeof children === 'string' ? children : id;
 
   return (
     <Table.Column isRowHeader={isRowHeader} title={title} className={className}>
@@ -103,7 +105,7 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
         <button
           type='button'
           className={['hub-fish-sort-btn', active ? 'is-active' : ''].filter(Boolean).join(' ')}
-          aria-label={`Sort by ${label}`}
+          aria-label={ariaLabel}
           aria-pressed={active}
           onClick={() => onSort(id)}
         >

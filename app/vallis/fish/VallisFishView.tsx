@@ -96,6 +96,7 @@ const ResourceCell: FC<{ size: FishSize }> = ({ size }: { size: FishSize }) => {
 
 const VallisFishView: FC = () => {
   const { t } = useTranslation();
+  const sortAria = (column: string) => t('fish.sortBy', { column });
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const sortAccessors = useMemo(
     () => ({
@@ -149,6 +150,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   isRowHeader
                   title={t('fish.tooltips.name')}
+                  ariaLabel={sortAria(t('fish.columns.name'))}
                 >
                   {t('fish.columns.name')}
                 </FishSortableColumn>
@@ -158,6 +160,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.uniqueModel')}
+                  ariaLabel={sortAria(t('fish.columns.unique'))}
                 >
                   {t('fish.columns.unique')}
                 </FishSortableColumn>
@@ -167,6 +170,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.basicModel')}
+                  ariaLabel={sortAria(t('fish.columns.basic'))}
                 >
                   {t('fish.columns.basic')}
                 </FishSortableColumn>
@@ -176,6 +180,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.adornedModel')}
+                  ariaLabel={sortAria(t('fish.columns.adorned'))}
                 >
                   {t('fish.columns.adorned')}
                 </FishSortableColumn>
@@ -185,6 +190,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.magnificentModel')}
+                  ariaLabel={sortAria(t('fish.columns.magnificent'))}
                 >
                   {t('fish.columns.magnificent')}
                 </FishSortableColumn>
@@ -193,6 +199,7 @@ const VallisFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.locationServofish')}
+                  ariaLabel={sortAria(t('fish.columns.location'))}
                 >
                   {t('fish.columns.location')}
                 </FishSortableColumn>
@@ -201,6 +208,7 @@ const VallisFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.temperature')}
+                  ariaLabel={sortAria(t('fish.columns.temperature'))}
                 >
                   {t('fish.columns.temperature')}
                 </FishSortableColumn>
@@ -210,6 +218,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.rarity')}
+                  ariaLabel={sortAria(t('fish.columns.rarity'))}
                 >
                   {t('fish.columns.rarity')}
                 </FishSortableColumn>
@@ -218,6 +227,7 @@ const VallisFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.baitServofish')}
+                  ariaLabel={sortAria(t('fish.columns.bait'))}
                 >
                   {t('fish.columns.bait')}
                 </FishSortableColumn>
@@ -226,6 +236,7 @@ const VallisFishView: FC = () => {
                   sort={sort}
                   onSort={toggleSort}
                   title={t('fish.tooltips.hotspot')}
+                  ariaLabel={sortAria(t('fish.columns.hotspotRequired'))}
                 >
                   {t('fish.columns.hotspotRequired')}
                 </FishSortableColumn>
@@ -235,6 +246,7 @@ const VallisFishView: FC = () => {
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
                   title={t('fish.tooltips.maxPoints')}
+                  ariaLabel={sortAria(t('fish.columns.maxPoints'))}
                 >
                   {t('fish.columns.maxPoints')}
                 </FishSortableColumn>

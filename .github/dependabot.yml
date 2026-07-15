@@ -20,14 +20,7 @@ updates:
     groups:
       default:
         patterns:
-          - '@babel/*'
-          - lint-staged
-      eslint:
-        patterns:
-          - eslint*
-          - '@stylistic/*'
-          - jsonc*
-          - yaml*
+          - '*'
     ignore:
       - dependency-name: leaflet
       - dependency-name: '@fortawesome/fontawesome-free'

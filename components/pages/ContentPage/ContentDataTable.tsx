@@ -48,7 +48,7 @@ const ContentDataTable: FC<ContentDataTableProps> = ({
           onPageChange={pagination.onPageChange}
         />
       ) : null}
-      <div className="hub-content-panel hub-content-panel--flush">
+      <div className='hub-content-panel hub-content-panel--flush'>
         <ContentTableToolbar
           filters={filters}
           actions={actions}
@@ -64,7 +64,7 @@ const ContentDataTable: FC<ContentDataTableProps> = ({
             ) : undefined
           }
         />
-        <div className="hub-content-table-wrap">
+        <div className='hub-content-table-wrap'>
           <table className={tableClass} aria-label={ariaLabel}>
             {children}
           </table>

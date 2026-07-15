@@ -44,11 +44,11 @@ const GeneralFilter: FC = () => {
   const [themeOpen, setThemeOpen] = useState(false);
 
   return (
-    <div className="hub-settings-general">
-      <div className="hub-settings-field">
+    <div className='hub-settings-general'>
+      <div className='hub-settings-field'>
         <Select
           fullWidth
-          className="hub-settings-select"
+          className='hub-settings-select'
           value={platformToJsonKey(state.platform)}
           isOpen={platformOpen}
           onOpenChange={setPlatformOpen}
@@ -56,7 +56,7 @@ const GeneralFilter: FC = () => {
             if (key) setPlatform(jsonKeyToPlatform(String(key)));
           }}
         >
-          <Label className="hub-settings-section-label">{t('settings.platform')}</Label>
+          <Label className='hub-settings-section-label'>{t('settings.platform')}</Label>
           <Select.Trigger {...hubTestOpenHandler(() => setPlatformOpen(true))}>
             <Select.Value />
             <Select.Indicator />
@@ -73,7 +73,7 @@ const GeneralFilter: FC = () => {
                     setPlatformOpen(false);
                   })}
                 >
-                  <span className="hub-settings-select-option">
+                  <span className='hub-settings-select-option'>
                     <i className={`${platform.icon} fa-lg`} aria-hidden />
                     {platform.display}
                   </span>
@@ -85,10 +85,10 @@ const GeneralFilter: FC = () => {
         </Select>
       </div>
 
-      <div className="hub-settings-field">
+      <div className='hub-settings-field'>
         <Select
           fullWidth
-          className="hub-settings-select"
+          className='hub-settings-select'
           value={state.locale}
           isOpen={localeOpen}
           onOpenChange={setLocaleOpen}
@@ -96,7 +96,7 @@ const GeneralFilter: FC = () => {
             if (key) setLocale(String(key));
           }}
         >
-          <Label className="hub-settings-section-label">{t('settings.language')}</Label>
+          <Label className='hub-settings-section-label'>{t('settings.language')}</Label>
           <Select.Trigger {...hubTestOpenHandler(() => setLocaleOpen(true))}>
             <Select.Value />
             <Select.Indicator />
@@ -114,10 +114,10 @@ const GeneralFilter: FC = () => {
         </Select>
       </div>
 
-      <div className="hub-settings-field">
+      <div className='hub-settings-field'>
         <Select
           fullWidth
-          className="hub-settings-select"
+          className='hub-settings-select'
           value={state.theme}
           isOpen={themeOpen}
           onOpenChange={setThemeOpen}
@@ -125,7 +125,7 @@ const GeneralFilter: FC = () => {
             if (key) setTheme(String(key));
           }}
         >
-          <Label className="hub-settings-section-label">{t('settings.theme')}</Label>
+          <Label className='hub-settings-section-label'>{t('settings.theme')}</Label>
           <Select.Trigger {...hubTestOpenHandler(() => setThemeOpen(true))}>
             <Select.Value />
             <Select.Indicator />
@@ -134,7 +134,7 @@ const GeneralFilter: FC = () => {
             <ListBox>
               {themeEntries.map((theme) => (
                 <ListBox.Item key={theme.key} id={theme.key} textValue={theme.display}>
-                  <span className="hub-settings-select-option">
+                  <span className='hub-settings-select-option'>
                     <i className={`${theme.faclass} me-2`} aria-hidden />
                     {theme.display}
                   </span>

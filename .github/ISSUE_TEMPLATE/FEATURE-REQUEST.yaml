@@ -1,6 +1,6 @@
 name: Feature Request
 description: File a bug report
-title: ":rocket: "
+title: ':rocket: '
 labels: ['on hold', 'Scope: Core', 'Type: Feature Request']
 body:
   - type: textarea
@@ -9,7 +9,7 @@ body:
       label: What would you like to see happen?
       description: This is a markdown-friendly area, feel free to upload images
       placeholder: Tell us what you see!
-      value: "It should make me cake!"
+      value: 'It should make me cake!'
     validations:
       required: true
 

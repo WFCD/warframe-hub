@@ -56,7 +56,7 @@ const ConclavePanel: FC<ConclavePanelProps> = ({ conclave = [] }: ConclavePanelP
   };
 
   return (
-    <HubPanelWrap title={headertext} className="conclave">
+    <HubPanelWrap title={headertext} className='conclave'>
       {activeChallenges.length > 0 ? (
         <HubPanelList>
           {activeChallenges.map((challenge, index) => (
@@ -67,18 +67,18 @@ const ConclavePanel: FC<ConclavePanelProps> = ({ conclave = [] }: ConclavePanelP
               borderBottom={index === activeChallenges.length - 1}
               compact={index !== activeChallenges.length - 1}
             >
-              <div className="hub-panel-row">
-                <span title={challenge.asString} className="hub-panel-row-main">
+              <div className='hub-panel-row'>
+                <span title={challenge.asString} className='hub-panel-row-main'>
                   <HubImg
                     src={challengeImage(challenge)}
                     name={challengeType(challenge)}
-                    className="li-mission-decorator li-mission-decorator-lg"
-                    height="24px"
-                    width="24px"
+                    className='li-mission-decorator li-mission-decorator-lg'
+                    height='24px'
+                    width='24px'
                   />
                   {challenge.description}
                 </span>
-                <span className="hub-panel-row-side">
+                <span className='hub-panel-row-side'>
                   <TimeBadge
                     starttime={challenge.activation}
                     endtime={challenge.expiry}

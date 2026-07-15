@@ -5,10 +5,10 @@ import type { TrackableSelectOption } from '@/components/ui/HubTrackableMultiSel
 
 const toOption =
   (locale: string) =>
-  ([key, entry]: [string, TrackableEntry]): TrackableSelectOption => ({
-    key,
-    text: getTrackableLabel(key, entry, locale),
-  });
+    ([key, entry]: [string, TrackableEntry]): TrackableSelectOption => ({
+      key,
+      text: getTrackableLabel(key, entry, locale),
+    });
 
 export const isFissureKey = (key: string): boolean => key.includes('fissures');
 export const isArbitrationKey = (key: string): boolean => key.includes('arbitration');

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
 import ContentDataTable from '@/components/pages/ContentPage/ContentDataTable';
@@ -9,6 +10,7 @@ import { useContentPageLoadReporting } from '@/lib/providers/ContentPageLoadProv
 import { SynthesisPreviewProvider, useSynthesisPreview } from '@/components/media/SynthesisImg';
 import SynthesisTableBody, { type SynthTarget } from './SynthesisTableBody';
 
+const SYNTH_FILTER_ID = 'synth-filter';
 const perPage = 7;
 
 type SynthesisTablePanelProps = {
@@ -26,6 +28,7 @@ const SynthesisTablePanel: FC<SynthesisTablePanelProps> = ({
   filter,
   onFilterChange,
 }: SynthesisTablePanelProps) => {
+  const { t } = useTranslation();
   const preview = useSynthesisPreview();
   const pageCount = Math.max(1, Math.ceil(filtered.length / perPage));
 
@@ -39,38 +42,38 @@ const SynthesisTablePanel: FC<SynthesisTablePanelProps> = ({
 
   return (
     <ContentDataTable
-      ariaLabel="Synthesis Targets"
-      className="synth-table"
+      ariaLabel={t('synthesis.tableAria')}
+      className='synth-table'
       pagination={{ page: currentPage, pageCount, onPageChange: handlePageChange }}
-      search={{ id: 'synth-filter', value: filter, onChange: onFilterChange }}
+      search={{ id: SYNTH_FILTER_ID, value: filter, onChange: onFilterChange }}
       actions={
-        <ContentLinkButton href="https://wiki.warframe.com/w/Synthesis" external size="sm">
-          What is Synthesis? <i className="fas fa-external-link-alt fa-xs" />
+        <ContentLinkButton href='https://wiki.warframe.com/w/Synthesis' external size='sm'>
+          {t('synthesis.whatIs')} <i className='fas fa-external-link-alt fa-xs' />
         </ContentLinkButton>
       }
     >
       <thead>
         <tr>
-          <th scope="col" title="The name of the Synthesis Target">
-            Name
+          <th scope='col' title={t('synthesis.columns.nameTitle')}>
+            {t('synthesis.columns.name')}
           </th>
-          <th scope="col" className="synth-col-portrait" title="The portrait of the Synthesis Target">
-            Portrait
+          <th scope='col' className='synth-col-portrait' title={t('synthesis.columns.portraitTitle')}>
+            {t('synthesis.columns.portrait')}
           </th>
-          <th scope="col" title="The location where you can find this Synthesis Target">
-            Location
+          <th scope='col' title={t('synthesis.columns.locationTitle')}>
+            {t('synthesis.columns.location')}
           </th>
-          <th scope="col" title="The level of the location where you can find this Synthesis Target">
-            Level
+          <th scope='col' title={t('synthesis.columns.levelTitle')}>
+            {t('synthesis.columns.level')}
           </th>
-          <th scope="col" title="The type of mission for the location where you can find this Synthesis Target">
-            Mission
+          <th scope='col' title={t('synthesis.columns.missionTitle')}>
+            {t('synthesis.columns.mission')}
           </th>
-          <th scope="col" title="Chance of the Synthesis Target spawning at this location">
-            Spawn Rate
+          <th scope='col' title={t('synthesis.columns.spawnRateTitle')}>
+            {t('synthesis.columns.spawnRate')}
           </th>
-          <th scope="col" title="Last verification date">
-            Verify
+          <th scope='col' title={t('synthesis.columns.verifyTitle')}>
+            {t('synthesis.columns.verify')}
           </th>
         </tr>
       </thead>
@@ -116,6 +119,7 @@ const SynthesisContent: FC<{ data: SynthTarget[] }> = ({ data }) => {
 };
 
 const SynthesisView: FC = () => {
+  const { t } = useTranslation();
   const { state, updateSynthData } = useCache();
   const data = state.synthData as SynthTarget[];
   const loading = useContentPageLoadReporting(data.length > 0);
@@ -126,11 +130,11 @@ const SynthesisView: FC = () => {
 
   return (
     <ContentPage
-      title="Synthesis Targets"
+      title={t('synthesis.title')}
       notice={
         <p>
-          <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=666483447" target="_blank" rel="noreferrer">
-            Synthesis Data provided by Evilflora
+          <a href='https://steamcommunity.com/sharedfiles/filedetails/?id=666483447' target='_blank' rel='noreferrer'>
+            {t('synthesis.noticeLink')}
           </a>
         </p>
       }

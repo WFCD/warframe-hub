@@ -20,13 +20,13 @@ const TimersHiddenPanelPool: FC<TimersHiddenPanelPoolProps> = ({ children, count
       className={['hub-timers-hidden-pool', isOver ? 'hub-timers-hidden-pool--over' : ''].filter(Boolean).join(' ')}
       aria-label={t('timersLayout.hiddenPanels')}
     >
-      <header className="hub-timers-hidden-pool-header">
-        <h2 className="hub-timers-hidden-pool-title">{t('timersLayout.hiddenPanels')}</h2>
-        <p className="hub-timers-hidden-pool-hint">
+      <header className='hub-timers-hidden-pool-header'>
+        <h2 className='hub-timers-hidden-pool-title'>{t('timersLayout.hiddenPanels')}</h2>
+        <p className='hub-timers-hidden-pool-hint'>
           {count === 0 ? t('timersLayout.hiddenEmptyHint') : t('timersLayout.hiddenRestoreHint')}
         </p>
       </header>
-      <div className="hub-timers-hidden-strip">{children}</div>
+      <div className='hub-timers-hidden-strip'>{children}</div>
     </section>
   );
 };

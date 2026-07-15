@@ -71,9 +71,9 @@ const ClientShell: FC<{ children: ReactNode }> = ({ children }: { children: Reac
     <TestDataProvider>
       <ThemeSync>
         <PageChromeProvider>
-          <div className="hub-theme-backdrop" aria-hidden />
-          <div className="hub-sacrifice-backdrop" aria-hidden />
-          <div id="app">
+          <div className='hub-theme-backdrop' aria-hidden />
+          <div className='hub-sacrifice-backdrop' aria-hidden />
+          <div id='app'>
             <HubNavbar onOpenSettings={() => setShowSettings(true)} onOpenAbout={() => setShowAbout(true)} />
             <InAppNotificationHost />
             {showSettings ? (

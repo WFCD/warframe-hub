@@ -99,22 +99,22 @@ const LazyTimerPanelContent: FC<LazyTimerPanelContentProps> = ({
 
   if (isEagerNews) {
     return (
-      <div ref={hostRef} className="hub-timer-panel-lazy-host">
-        <TimerPanelBody panelKey="news" Panel={NewsPanel as TimerPanelComponent} components={components} {...panelContext} />
+      <div ref={hostRef} className='hub-timer-panel-lazy-host'>
+        <TimerPanelBody panelKey='news' Panel={NewsPanel as TimerPanelComponent} components={components} {...panelContext} />
       </div>
     );
   }
 
   if (!Panel) {
     return (
-      <div ref={hostRef} className="hub-timer-panel-lazy-host">
+      <div ref={hostRef} className='hub-timer-panel-lazy-host'>
         <TimerPanelLoadingShell label={label} />
       </div>
     );
   }
 
   return (
-    <div ref={hostRef} className="hub-timer-panel-lazy-host">
+    <div ref={hostRef} className='hub-timer-panel-lazy-host'>
       <TimerPanelBody panelKey={panelKey} Panel={Panel} components={components} {...panelContext} />
     </div>
   );

@@ -221,7 +221,7 @@ const TimeBadge: FC<TimeBadgeProps> = ({
     .join(' ');
 
   return (
-    <Chip id={id} className={classes} color={timeBadgeChipColor(tone)} size="sm" variant="soft" style={style}>
+    <Chip id={id} className={classes} color={timeBadgeChipColor(tone)} size='sm' variant='soft' style={style}>
       {disp}
     </Chip>
   );

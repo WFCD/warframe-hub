@@ -29,20 +29,20 @@ const CodexItemImage: FC<CodexItemImageProps> = ({
   return (
     <Tooltip delay={HUB_TOOLTIP_DELAY}>
       <Tooltip.Trigger>
-        <span className="hub-codex-item-image__trigger">
-          <img className={className} src={src} alt="" width={width} height={height} />
+        <span className='hub-codex-item-image__trigger'>
+          <img className={className} src={src} alt='' width={width} height={height} />
         </span>
       </Tooltip.Trigger>
-      <Tooltip.Content placement="top">
-        <div className="hub-codex-item-image__tooltip">
+      <Tooltip.Content placement='top'>
+        <div className='hub-codex-item-image__tooltip'>
           <img
-            className="hub-codex-item-image__preview"
+            className='hub-codex-item-image__preview'
             src={src}
-            alt=""
+            alt=''
             width={previewWidth}
             height={previewHeight}
           />
-          <span className="hub-codex-item-image__label">{name}</span>
+          <span className='hub-codex-item-image__label'>{name}</span>
         </div>
       </Tooltip.Content>
     </Tooltip>

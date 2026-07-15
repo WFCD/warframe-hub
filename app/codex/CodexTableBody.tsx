@@ -39,16 +39,16 @@ const CodexTableBody: FC<CodexTableBodyProps> = ({ rows, currentPage, perPage, l
         return (
           <Fragment key={rowKey}>
             <tr>
-              <td className="hub-codex-table__expand">
+              <td className='hub-codex-table__expand'>
                 <FishExpandButton name={item.name} expanded={isExpanded} onToggle={() => toggleDetails(rowKey)} />
               </td>
               <td>
-                <div className="hub-codex-table__name">
+                <div className='hub-codex-table__name'>
                   {item.imageName ? (
                     <CodexItemImage
                       imageName={item.imageName}
                       name={item.name}
-                      className="hub-codex-table__thumb"
+                      className='hub-codex-table__thumb'
                       width={32}
                       height={32}
                     />
@@ -58,20 +58,20 @@ const CodexTableBody: FC<CodexTableBodyProps> = ({ rows, currentPage, perPage, l
               </td>
               <td>{item.type ?? '—'}</td>
               <td>{item.category ?? '—'}</td>
-              <td className="hub-codex-table__bool">
+              <td className='hub-codex-table__bool'>
                 <FishBoolIcon value={Boolean(item.tradable)} />
               </td>
-              <td className="hub-codex-table__bool">
+              <td className='hub-codex-table__bool'>
                 <FishBoolIcon value={Boolean(item.masterable)} />
               </td>
               <td>
-                <ContentLinkButton href={codexWikiUrl(item.name)} external size="sm">
-                  Wiki <i className="fas fa-external-link-alt fa-xs" />
+                <ContentLinkButton href={codexWikiUrl(item.name)} external size='sm'>
+                  Wiki <i className='fas fa-external-link-alt fa-xs' />
                 </ContentLinkButton>
               </td>
             </tr>
             {isExpanded ? (
-              <tr className="hub-codex-table__detail-row">
+              <tr className='hub-codex-table__detail-row'>
                 <td colSpan={COLUMN_COUNT}>
                   <CodexItemDetailPanel uniqueName={item.uniqueName} locale={locale} enabled={isExpanded} />
                 </td>

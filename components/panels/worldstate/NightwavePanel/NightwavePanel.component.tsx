@@ -44,7 +44,7 @@ const NightwavePanel: FC<NightwavePanelProps> = ({ nightwave }: NightwavePanelPr
     t(`nightwave.${challenge.isDaily ? 'daily' : challenge.isElite ? 'elite' : 'weekly'}`);
 
   return (
-    <HubPanelWrap title={headertext} className="nightwave">
+    <HubPanelWrap title={headertext} className='nightwave'>
       {challenges.length > 0 ? (
         <HubPanelList>
           {challenges.map((challenge, index) => (
@@ -54,18 +54,18 @@ const NightwavePanel: FC<NightwavePanelProps> = ({ nightwave }: NightwavePanelPr
               borderBottom={index === challenges.length - 1}
               compact={index !== challenges.length - 1}
             >
-              <div className="hub-panel-row">
-                <span className="hub-panel-row-main" title={challenge.desc}>
+              <div className='hub-panel-row'>
+                <span className='hub-panel-row-main' title={challenge.desc}>
                   <HubImg
                     src={challenge.isDaily ? daily : challenge.isElite ? elite : weekly}
                     name={type(challenge)}
-                    className="li-mission-decorator li-mission-decorator-lg invert"
+                    className='li-mission-decorator li-mission-decorator-lg invert'
                     height={challenge.isDaily ? '15px' : '24px'}
                     width={challenge.isDaily ? '15px' : '24px'}
                   />
                   {challenge.title}
                 </span>
-                <span className="hub-panel-row-side">
+                <span className='hub-panel-row-side'>
                   <TimeBadge
                     starttime={challenge.activation}
                     endtime={challenge.expiry}
@@ -74,11 +74,11 @@ const NightwavePanel: FC<NightwavePanelProps> = ({ nightwave }: NightwavePanelPr
                   />
                   <Chip
                     color={challenge.isDaily ? 'success' : challenge.isElite ? 'danger' : 'warning'}
-                    size="sm"
-                    variant="soft"
-                    className="inline-flex items-center gap-1"
+                    size='sm'
+                    variant='soft'
+                    className='inline-flex items-center gap-1'
                   >
-                    <HubImg src={standing} name="Standing Gain" className="invert" height="12px" width="12px" />
+                    <HubImg src={standing} name='Standing Gain' className='invert' height='12px' width='12px' />
                     {challenge.reputation}
                   </Chip>
                 </span>

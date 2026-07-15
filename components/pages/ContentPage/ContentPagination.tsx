@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type ContentPaginationProps = {
   page: number;
@@ -35,6 +36,7 @@ const ContentPagination: FC<ContentPaginationProps> = ({
   pageCount,
   onPageChange,
 }: ContentPaginationProps) => {
+  const { t } = useTranslation();
   const pages = useMemo(() => visiblePages(page, pageCount), [page, pageCount]);
 
   if (pageCount <= 1) return null;
@@ -43,34 +45,34 @@ const ContentPagination: FC<ContentPaginationProps> = ({
   const atEnd = page >= pageCount;
 
   return (
-    <nav className="hub-content-pagination" aria-label="Pagination">
+    <nav className='hub-content-pagination' aria-label={t('ui.pagination.label')}>
       <button
-        type="button"
-        className="hub-content-pagination-btn"
+        type='button'
+        className='hub-content-pagination-btn'
         disabled={atStart}
-        aria-label="First page"
+        aria-label={t('ui.pagination.first')}
         onClick={() => onPageChange(1)}
       >
-        <i className="fas fa-angle-double-left" aria-hidden />
+        <i className='fas fa-angle-double-left' aria-hidden />
       </button>
       <button
-        type="button"
-        className="hub-content-pagination-btn"
+        type='button'
+        className='hub-content-pagination-btn'
         disabled={atStart}
-        aria-label="Previous page"
+        aria-label={t('ui.pagination.previous')}
         onClick={() => onPageChange(page - 1)}
       >
-        <i className="fas fa-chevron-left" aria-hidden />
+        <i className='fas fa-chevron-left' aria-hidden />
       </button>
 
       {pages.map((pageNumber) => (
         <button
           key={pageNumber}
-          type="button"
+          type='button'
           className={['hub-content-pagination-btn', pageNumber === page ? 'is-active' : '']
             .filter(Boolean)
             .join(' ')}
-          aria-label={`Page ${pageNumber}`}
+          aria-label={t('ui.pagination.page', { page: pageNumber })}
           aria-current={pageNumber === page ? 'page' : undefined}
           onClick={() => onPageChange(pageNumber)}
         >
@@ -79,22 +81,22 @@ const ContentPagination: FC<ContentPaginationProps> = ({
       ))}
 
       <button
-        type="button"
-        className="hub-content-pagination-btn"
+        type='button'
+        className='hub-content-pagination-btn'
         disabled={atEnd}
-        aria-label="Next page"
+        aria-label={t('ui.pagination.next')}
         onClick={() => onPageChange(page + 1)}
       >
-        <i className="fas fa-chevron-right" aria-hidden />
+        <i className='fas fa-chevron-right' aria-hidden />
       </button>
       <button
-        type="button"
-        className="hub-content-pagination-btn"
+        type='button'
+        className='hub-content-pagination-btn'
         disabled={atEnd}
-        aria-label="Last page"
+        aria-label={t('ui.pagination.last')}
         onClick={() => onPageChange(pageCount)}
       >
-        <i className="fas fa-angle-double-right" aria-hidden />
+        <i className='fas fa-angle-double-right' aria-hidden />
       </button>
     </nav>
   );

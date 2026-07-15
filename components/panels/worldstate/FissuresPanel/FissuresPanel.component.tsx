@@ -84,17 +84,17 @@ const FissuresPanel: FC<FissuresPanelProps> = ({ fissures = [], variant = 'fissu
       <HubImg
         src={archwing}
         name={t('fissures.voidstorm')}
-        className="hub-panel-title-icon li-mission-decorator li-mission-decorator-lg"
-        height="24px"
-        width="24px"
+        className='hub-panel-title-icon li-mission-decorator li-mission-decorator-lg'
+        height='24px'
+        width='24px'
       />
     ) : variant === 'steelPathFissures' ? (
       <HubImg
         src={steelPath}
         name={t('fissures.steelPath')}
-        className="hub-panel-title-icon li-mission-decorator li-mission-decorator-lg no-invert"
-        height="24px"
-        width="24px"
+        className='hub-panel-title-icon li-mission-decorator li-mission-decorator-lg no-invert'
+        height='24px'
+        width='24px'
       />
     ) : undefined;
 
@@ -107,23 +107,23 @@ const FissuresPanel: FC<FissuresPanelProps> = ({ fissures = [], variant = 'fissu
             borderless={index !== filteredFissures.length - 1}
             compact={index !== filteredFissures.length - 1}
           >
-            <div className="hub-panel-row">
-              <span className="hub-panel-row-main inline-flex items-center gap-1.5">
+            <div className='hub-panel-row'>
+              <span className='hub-panel-row-main inline-flex items-center gap-1.5'>
                 <Tooltip delay={HUB_TOOLTIP_DELAY}>
                   <Tooltip.Trigger>
                     {isOmniaFissure(fissure) ? (
                       <OmniaFissureIcon
                         label={fissure.tier}
-                        className="li-mission-decorator li-mission-decorator-lg hub-fissure-tier-icon"
+                        className='li-mission-decorator li-mission-decorator-lg hub-fissure-tier-icon'
                       />
                     ) : (
                       <HubImg
                         src={fissureTierIcon(fissure)}
                         name={fissure.tier}
                         showTitle={false}
-                        className="li-mission-decorator li-mission-decorator-lg hub-fissure-tier-icon"
-                        height="24px"
-                        width="24px"
+                        className='li-mission-decorator li-mission-decorator-lg hub-fissure-tier-icon'
+                        height='24px'
+                        width='24px'
                       />
                     )}
                   </Tooltip.Trigger>
@@ -133,7 +133,7 @@ const FissuresPanel: FC<FissuresPanelProps> = ({ fissures = [], variant = 'fissu
                   <b>{fissure.node}</b> | {fissure.missionType}
                 </span>
               </span>
-              <span className="hub-panel-row-side">
+              <span className='hub-panel-row-side'>
                 <TimeBadge
                   starttime={fissure.activation}
                   endtime={fissure.expiry}

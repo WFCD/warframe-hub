@@ -51,10 +51,10 @@ const AsyncItemThumb: FC<AsyncItemThumbProps> = ({ alt = '', width = 20, ikey = 
   return (
     <Tooltip delay={HUB_TOOLTIP_DELAY}>
       <Tooltip.Trigger>
-        <span className="hub-async-thumb-trigger">{thumb}</span>
+        <span className='hub-async-thumb-trigger'>{thumb}</span>
       </Tooltip.Trigger>
       <Tooltip.Content>
-        <img src={img} alt={alt} className="async-thumb" width={`${width * 5}px`} />
+        <img src={img} alt={alt} className='async-thumb' width={`${width * 5}px`} />
         <div>{alt}</div>
       </Tooltip.Content>
     </Tooltip>

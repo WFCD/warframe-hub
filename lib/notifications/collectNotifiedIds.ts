@@ -23,8 +23,8 @@ export const collectNotifiedIds = (ws: WorldstateData): string[] =>
     ...(ws.arbitration ? [arbitrationId(ws.arbitration as { expiry?: string })].filter(Boolean) : []),
     ...(ws.nightwave
       ? ((ws.nightwave.activeChallenges as Array<{ id: string }> | undefined) ?? []).map(
-          (challenge) => challenge.id,
-        )
+        (challenge) => challenge.id,
+      )
       : []),
     ...(ws.sentientOutposts ? [(ws.sentientOutposts as { id: string }).id] : []),
     ...(ws.archonHunt ? [(ws.archonHunt as { id: string }).id] : []),

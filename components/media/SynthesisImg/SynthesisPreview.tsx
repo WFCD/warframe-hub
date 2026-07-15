@@ -62,16 +62,16 @@ export const SynthesisPreviewProvider: FC<SynthesisPreviewProviderProps> = ({
       {children}
       {typeof document !== 'undefined' && preview
         ? createPortal(
-            <div
-              role="tooltip"
-              className="synth-portrait-preview"
-              style={{ top: preview.top, left: preview.left }}
-            >
-              <img src={preview.src} alt={preview.name} className="synth-portrait-tooltip__img" />
-              <div className="synth-portrait-preview__label">{preview.name}</div>
-            </div>,
-            document.body
-          )
+          <div
+            role='tooltip'
+            className='synth-portrait-preview'
+            style={{ top: preview.top, left: preview.left }}
+          >
+            <img src={preview.src} alt={preview.name} className='synth-portrait-tooltip__img' />
+            <div className='synth-portrait-preview__label'>{preview.name}</div>
+          </div>,
+          document.body
+        )
         : null}
     </SynthesisPreviewContext.Provider>
   );

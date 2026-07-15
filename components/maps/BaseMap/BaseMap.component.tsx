@@ -58,12 +58,12 @@ const BaseMap: FC<BaseMapProps> = ({
   children,
 }: BaseMapProps) => {
   return (
-    <ContentPage title={title} variant="map">
+    <ContentPage title={title} variant='map'>
       <MapContainer
         center={center}
         zoom={zoom}
         crs={crs}
-        className="hub-content-map"
+        className='hub-content-map'
         style={mapStyle}
         {...mapOptions}
       >

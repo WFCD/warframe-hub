@@ -3,7 +3,7 @@ import './AlertPanel.component.scss';
 import type { FC } from 'react';
 
 import { Chip } from '@heroui/react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { cdn } from '@/lib/shared';
 import TimeBadge from '@/components/ui/TimeBadge';
 import HubImg from '@/components/media/HubImg';
@@ -50,40 +50,49 @@ const AlertItem: FC<{ alert: Alert; last: boolean }> = ({ alert, last }: { alert
 
   return (
     <HubPanelListItem style={{ display: 'block' }} borderless={!last} borderBottom={last} compact={!last}>
-      <div className="hub-panel-row">
-        <span className="hub-panel-row-main">
+      <div className='hub-panel-row'>
+        <span className='hub-panel-row-main'>
           {alert.mission.archwingRequired && (
-            <HubImg src={archwing} name={t('alerts.archwing')} className="li-mission-decorator" />
+            <HubImg src={archwing} name={t('alerts.archwing')} className='li-mission-decorator' />
           )}
           {alert.mission.nightmare && (
-            <HubImg src={nightmare} name={t('alerts.nightmare')} className="li-mission-decorator" />
+            <HubImg src={nightmare} name={t('alerts.nightmare')} className='li-mission-decorator' />
           )}
           <b>{alert.mission.node}</b>
         </span>
-        <span className="hub-panel-row-side">
+        <span className='hub-panel-row-side'>
           <TimeBadge starttime={alert.activation} endtime={alert.expiry} interval={1000} pullright={false} />
         </span>
       </div>
-      <div className="hub-panel-row hub-panel-row-subtle">
-        <div className="hub-panel-row-main">
-          <b>{alert.mission.type}</b> ({alert.mission.faction}) | <b>{t('alerts.level')} </b>
-          {alert.mission.minEnemyLevel}-{alert.mission.maxEnemyLevel}
+      <div className='hub-panel-row hub-panel-row-subtle'>
+        <div className='hub-panel-row-main'>
+          <Trans
+            i18nKey='alerts.missionSummary'
+            values={{
+              type: alert.mission.type,
+              faction: alert.mission.faction,
+              levelLabel: t('alerts.level'),
+              min: alert.mission.minEnemyLevel,
+              max: alert.mission.maxEnemyLevel,
+            }}
+            components={{ type: <b />, level: <b /> }}
+          />
         </div>
       </div>
       {hasRewards ? (
-        <div className="hub-alert-rewards">
+        <div className='hub-alert-rewards'>
           {reward.items.map((item) => (
-            <Chip key={item} color="accent" size="sm" variant="soft">
+            <Chip key={item} color='accent' size='sm' variant='soft'>
               {item}
             </Chip>
           ))}
           {reward.countedItems.map((item) => (
-            <Chip key={item.key} color="accent" size="sm" variant="soft">
+            <Chip key={item.key} color='accent' size='sm' variant='soft'>
               {item.count} {item.type}
             </Chip>
           ))}
           {reward.credits ? (
-            <Chip color="accent" size="sm" variant="soft">
+            <Chip color='accent' size='sm' variant='soft'>
               {reward.credits}cr
             </Chip>
           ) : null}

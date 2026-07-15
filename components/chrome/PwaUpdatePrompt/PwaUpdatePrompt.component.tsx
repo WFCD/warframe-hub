@@ -37,26 +37,26 @@ const PwaUpdatePrompt: FC = () => {
 
   return (
     <div
-      className="fixed right-4 bottom-4 z-[var(--hub-z-toast,1080)] max-w-[min(24rem,calc(100vw-2rem))]"
-      role="status"
-      aria-live="polite"
+      className='fixed right-4 bottom-4 z-[var(--hub-z-toast,1080)] max-w-[min(24rem,calc(100vw-2rem))]'
+      role='status'
+      aria-live='polite'
     >
-      <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-[var(--hub-panel-shadow,0_0.5rem_1.5rem_rgb(0_0_0_/_0.25))]">
-        <div className="flex items-center justify-between gap-3 px-3.5 pt-2.5 pb-1.5">
+      <div className='rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-[var(--hub-panel-shadow,0_0.5rem_1.5rem_rgb(0_0_0_/_0.25))]'>
+        <div className='flex items-center justify-between gap-3 px-3.5 pt-2.5 pb-1.5'>
           <strong>{t('updates.header')}</strong>
           <button
-            type="button"
-            className="border-0 bg-transparent text-[var(--hub-text-secondary)] text-xl leading-none cursor-pointer"
+            type='button'
+            className='border-0 bg-transparent text-[var(--hub-text-secondary)] text-xl leading-none cursor-pointer'
             onClick={dismiss}
             aria-label={t('updates.dismiss')}
           >
             ×
           </button>
         </div>
-        <div className="px-3.5 pb-3.5">
+        <div className='px-3.5 pb-3.5'>
           {t('updates.ready')}
-          <div className="mt-2.5 pt-2.5 border-t border-[var(--border)]">
-            <Button size="sm" variant="primary" onPress={() => void updateServiceWorker(true)}>
+          <div className='mt-2.5 pt-2.5 border-t border-[var(--border)]'>
+            <Button size='sm' variant='primary' onPress={() => void updateServiceWorker(true)}>
               {t('updates.updateNow')}
             </Button>
           </div>

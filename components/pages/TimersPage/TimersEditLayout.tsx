@@ -118,12 +118,12 @@ const TimersEditLayout: FC<TimersEditLayoutProps> = ({
       onDragEnd={handleDragEnd}
       onDragCancel={onDragEnd}
     >
-      <SortableContext id="timers-active" items={activeKeys} strategy={rectSortingStrategy}>
+      <SortableContext id='timers-active' items={activeKeys} strategy={rectSortingStrategy}>
         <ActivePanelGrid>{activeSlots}</ActivePanelGrid>
       </SortableContext>
 
       <TimersHiddenPanelPool count={hiddenKeys.length}>
-        <SortableContext id="timers-hidden" items={hiddenKeys} strategy={rectSortingStrategy}>
+        <SortableContext id='timers-hidden' items={hiddenKeys} strategy={rectSortingStrategy}>
           {hiddenSlots}
         </SortableContext>
       </TimersHiddenPanelPool>

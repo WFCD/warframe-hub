@@ -75,19 +75,19 @@ const NotificationFilters: FC = () => {
           : null;
 
   return (
-    <div className="hub-settings-notifications">
-      <p className="hub-settings-notifications-help">{t('settings.notificationsHelp')}</p>
-      <div className="hub-settings-notifications-test">
+    <div className='hub-settings-notifications'>
+      <p className='hub-settings-notifications-help'>{t('settings.notificationsHelp')}</p>
+      <div className='hub-settings-notifications-test'>
         <Button
-          type="button"
-          variant="secondary"
-          size="sm"
+          type='button'
+          variant='secondary'
+          size='sm'
           isDisabled={!notificationsSupported}
           onPress={() => void handleTestNotification()}
         >
           {t('settings.testNotification')}
         </Button>
-        <p className="hub-settings-notifications-help">{t('settings.testNotificationHelp')}</p>
+        <p className='hub-settings-notifications-help'>{t('settings.testNotificationHelp')}</p>
         {testStatusMessage ? (
           <p
             className={[
@@ -96,7 +96,7 @@ const NotificationFilters: FC = () => {
             ]
               .filter(Boolean)
               .join(' ')}
-            role="status"
+            role='status'
           >
             {testStatusMessage}
           </p>

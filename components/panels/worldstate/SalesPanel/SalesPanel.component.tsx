@@ -32,7 +32,7 @@ const formatPriceCell = (sale: Sale, t: (key: string) => string): ReactNode => {
   if (hasPlatinumPrice(sale)) return sale.premiumOverride;
   if (typeof sale.regularOverride === 'number' && Number.isFinite(sale.regularOverride) && sale.regularOverride > 0) {
     return (
-      <span className="hub-sales-credit-price">
+      <span className='hub-sales-credit-price'>
         {sale.regularOverride}
         {t('currency.credAbbr')}
       </span>
@@ -54,31 +54,31 @@ const SalesPanel: FC<SalesPanelProps> = ({ sales = [] }: SalesPanelProps) => {
   );
 
   return (
-    <HubPanelWrap title={headertext} className="sales">
-      <div className="hub-sales-panel">
+    <HubPanelWrap title={headertext} className='sales'>
+      <div className='hub-sales-panel'>
         {visibleSales.length > 0 ? (
-          <Table className="hub-sales-table" variant="primary">
+          <Table className='hub-sales-table' variant='primary'>
             <Table.ScrollContainer>
               <Table.Content aria-label={headertext}>
                 <Table.Header>
                   <Table.Column isRowHeader>{t('sales.item')}</Table.Column>
-                  <Table.Column className="hub-sales-col-plat">
+                  <Table.Column className='hub-sales-col-plat'>
                     <HubImg
                       src={platinum}
                       name={t('currency.plat')}
-                      width="24px"
-                      height="24px"
-                      className="li-mission-decorator li-mission-decorator-lg invert hub-table-header-icon"
+                      width='24px'
+                      height='24px'
+                      className='li-mission-decorator li-mission-decorator-lg invert hub-table-header-icon'
                     />
                   </Table.Column>
-                  <Table.Column className="hub-sales-col-expiry hub-sr-only-column">{t('sales.ends')}</Table.Column>
+                  <Table.Column className='hub-sales-col-expiry hub-sr-only-column'>{t('sales.ends')}</Table.Column>
                 </Table.Header>
                 <Table.Body>
                   {visibleSales.map((item) => (
                     <Table.Row key={`${item.id}-sale`}>
                       <Table.Cell>{item.item}</Table.Cell>
-                      <Table.Cell className="hub-sales-col-plat">{formatPriceCell(item, t)}</Table.Cell>
-                      <Table.Cell className="hub-sales-col-expiry">
+                      <Table.Cell className='hub-sales-col-plat'>{formatPriceCell(item, t)}</Table.Cell>
+                      <Table.Cell className='hub-sales-col-expiry'>
                         <TimeBadge
                           starttime={now()}
                           endtime={item.expiry}
@@ -96,9 +96,9 @@ const SalesPanel: FC<SalesPanelProps> = ({ sales = [] }: SalesPanelProps) => {
           <NoDataItem text={headertext} />
         )}
         {creditOnlySales.length > 0 ? (
-          <div className="hub-sales-footer">
+          <div className='hub-sales-footer'>
             <HubSwitch
-              id="sales-show-credit-only"
+              id='sales-show-credit-only'
               label={t('sales.showCreditOnly')}
               checked={includeCreditOnly}
               onChange={setIncludeCreditOnly}

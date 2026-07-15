@@ -72,7 +72,7 @@ const SynthesisImg: FC<SynthesisImgProps> = ({ name, image, size = 32, tooltip =
 
   return (
     <span
-      className="hub-async-thumb-trigger synth-portrait-trigger"
+      className='hub-async-thumb-trigger synth-portrait-trigger'
       onMouseEnter={(event) => openPreview(event.currentTarget)}
       onMouseLeave={() => preview?.close()}
       onFocus={(event) => openPreview(event.currentTarget)}
@@ -83,7 +83,7 @@ const SynthesisImg: FC<SynthesisImgProps> = ({ name, image, size = 32, tooltip =
         name={name}
         width={String(size)}
         height={String(size)}
-        className="synth-portrait"
+        className='synth-portrait'
         style={{ width: size, height: size }}
         showTitle={false}
       />

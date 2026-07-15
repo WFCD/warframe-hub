@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
 import { cdn } from '@/lib/shared';
 import BaseMap from '@/components/maps/BaseMap';
@@ -17,6 +18,7 @@ import { useMaps } from '@/lib/providers/MapsProvider';
 
 const plains = cdn('webp/maps/plains.webp');
 const PoeMapView: FC = () => {
+  const { t } = useTranslation();
   const { state, setPoeMapToggles } = useMaps();
   const toggles = state.poeMapToggles;
 
@@ -36,7 +38,7 @@ const PoeMapView: FC = () => {
 
   return (
     <BaseMap
-      title="Plains of Eidolon"
+      title={t('maps.titles.plainsOfEidolon')}
       zoom={0}
       center={L.latLng(472, 535)}
       url={plains}

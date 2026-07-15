@@ -14,11 +14,11 @@ const SoundFilters: FC = () => {
   const { state, dispatch } = usePrefs();
 
   return (
-    <div className="hub-settings-sounds">
-      <p className="hub-settings-notifications-help">{t('settings.soundsHelp')}</p>
-      <div className="hub-settings-sound-list">
+    <div className='hub-settings-sounds'>
+      <p className='hub-settings-notifications-help'>{t('settings.soundsHelp')}</p>
+      <div className='hub-settings-sound-list'>
         {NOTIFICATION_SOUND_KEYS.map((sound) => (
-          <div key={sound} className="hub-settings-sound-row">
+          <div key={sound} className='hub-settings-sound-row'>
             <HubSwitch
               id={`sound-${sound}`}
               label={t(`settings.sounds.${sound}`)}
@@ -31,14 +31,14 @@ const SoundFilters: FC = () => {
               }}
             />
             <Button
-              type="button"
-              variant="secondary"
-              size="sm"
-              className="hub-settings-sound-preview"
+              type='button'
+              variant='secondary'
+              size='sm'
+              className='hub-settings-sound-preview'
               aria-label={t('settings.soundsPlay', { sound: t(`settings.sounds.${sound}`) })}
               onPress={() => void playNotificationSound(sound)}
             >
-              <i className="fas fa-volume-up" aria-hidden />
+              <i className='fas fa-volume-up' aria-hidden />
               {t('settings.soundsPlayLabel')}
             </Button>
           </div>

@@ -26,13 +26,13 @@ const OfflineBanner: FC = () => {
 
   const lastUpdatedLabel = lastUpdated
     ? t('offline.lastUpdated', {
-        date: new Date(lastUpdated).toLocaleString(i18n.language),
-      })
+      date: new Date(lastUpdated).toLocaleString(i18n.language),
+    })
     : '';
 
   return (
-    <Alert status="warning" className="mb-0 rounded-none border-x-0 border-t-0">
-      <Alert.Content className="text-center">
+    <Alert status='warning' className='mb-0 rounded-none border-x-0 border-t-0'>
+      <Alert.Content className='text-center'>
         <Alert.Description>
           {t('offline.cachedData')}
           {lastUpdatedLabel}

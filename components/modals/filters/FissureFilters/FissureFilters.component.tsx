@@ -26,8 +26,8 @@ const FissureFilters: FC = () => {
   };
 
   return (
-    <div className="hub-settings-fissures">
-      <p className="hub-settings-notifications-help">{t('settings.fissuresHelp')}</p>
+    <div className='hub-settings-fissures'>
+      <p className='hub-settings-notifications-help'>{t('settings.fissuresHelp')}</p>
       <HubTrackableMultiSelect
         label={t('settings.fissuresHiddenPlanets')}
         placeholder={t('settings.fissuresHiddenPlaceholder')}

@@ -17,9 +17,10 @@ hub/
 ├── cypress/                  # E2E specs, support, fixtures
 ├── .github/                  # CI, release, templates
 ├── cypress.config.ts
-├── eslint.cypress.cjs
-├── commitlint.config.cjs
-├── .lintstagedrc.cjs
+├── eslint.config.ts
+├── commitlint.config.ts
+├── lint-staged.config.ts
+├── dev.config.ts
 ├── package.json              # @wfcd/hub 3.x
 ├── vercel.json               # static export → dist/client
 ├── crowdin.yml               # l10n → lib/locales
@@ -33,8 +34,7 @@ hub/
 | `npm run dev` | vinext @ http://localhost:8742 |
 | `npm run build` | production static export |
 | `npm run start` | serve production build on 8742 |
-| `npm run lint` | ESLint (app) |
-| `npm run lint:cypress` | ESLint for cypress/ + config YAML |
+| `npm run lint` | ESLint flat config (`eslint .`) |
 | `npm run lint:fix` | ESLint `--fix` |
 | `npm run test` | Cypress E2E + component |
 | `npm run test:e2e` | E2E only (dev server must be running) |
@@ -51,17 +51,17 @@ Env: [`.example.env`](.example.env) (`NEXT_PUBLIC_*`).
 
 ## Linting and formatting
 
-ESLint 8 + [@stylistic/eslint-plugin](https://eslint.style/) v2 — not Prettier.
+ESLint 10 (flat config) + [@stylistic/eslint-plugin](https://eslint.style/) — stylistic owns formatting (no Prettier).
 
 | Scope | Config |
 |-------|--------|
-| App source | [`.eslintrc.cjs`](.eslintrc.cjs) |
-| `cypress/**`, `cypress.config.ts`, `crowdin.yml`, `.releaserc.yaml` | [`eslint.cypress.cjs`](eslint.cypress.cjs) |
+| App, Cypress, JSON, YAML | [`eslint.config.ts`](eslint.config.ts) |
 
-Pre-commit: [`.husky/pre-commit`](.husky/pre-commit) → [`.lintstagedrc.cjs`](.lintstagedrc.cjs). Changed `components/**/*.{tsx,scss}` also runs related Cypress component tests via [`scripts/run-staged-component-tests.mjs`](scripts/run-staged-component-tests.mjs).
+Pre-commit: [`.husky/pre-commit`](.husky/pre-commit) → [`lint-staged.config.ts`](lint-staged.config.ts). Changed `components/**/*.{tsx,scss}` also runs related Cypress component tests via [`scripts/run-staged-component-tests.mjs`](scripts/run-staged-component-tests.mjs).
 
-Commit messages: [commitlint](https://commitlint.js.org/) ([`commitlint.config.cjs`](commitlint.config.cjs), Conventional Commits) via [`.husky/commit-msg`](.husky/commit-msg), CI PRs, and Release on `dev`.
+Commit messages: [commitlint](https://commitlint.js.org/) ([`commitlint.config.ts`](commitlint.config.ts), Conventional Commits) via [`.husky/commit-msg`](.husky/commit-msg), CI PRs, and Release on `dev`.
 
+Shared port: [`dev.config.ts`](dev.config.ts) (vinext + Cypress + CI).
 ## Testing
 
 | Kind | Spec location | Config |

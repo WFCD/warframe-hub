@@ -46,13 +46,13 @@ const StaleDataBanner: FC = () => {
   if (!stale) return null;
 
   return (
-    <Alert status="warning" className="hub-stale-data-banner mb-0 rounded-none border-x-0 border-t-0">
-      <Alert.Content className="flex flex-wrap items-center justify-center gap-3 text-center">
+    <Alert status='warning' className='hub-stale-data-banner mb-0 rounded-none border-x-0 border-t-0'>
+      <Alert.Content className='flex flex-wrap items-center justify-center gap-3 text-center'>
         <Alert.Description>{t('staleData.message')}</Alert.Description>
         <Button
-          size="sm"
-          variant="secondary"
-          className="shrink-0"
+          size='sm'
+          variant='secondary'
+          className='shrink-0'
           isDisabled={refreshing}
           onPress={() => void onRefresh()}
         >

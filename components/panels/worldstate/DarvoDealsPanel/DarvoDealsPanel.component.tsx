@@ -33,11 +33,11 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
   const now = () => new Date().toString();
 
   return (
-    <HubPanelWrap title={headertext} className="darvo">
+    <HubPanelWrap title={headertext} className='darvo'>
       {deals.length === 1 && (
-        <div className="hidden hub-compact:block hub-darvo-single-deal">
+        <div className='hidden hub-compact:block hub-darvo-single-deal'>
           <b>{deals[0].item}</b>{' '}
-          <span className="inline-flex items-center gap-1.5">
+          <span className='inline-flex items-center gap-1.5'>
             {deals[0].salePrice} <HubImg src={platinum} name={t('currency.plat')} />
           </span>{' '}
           ({deals[0].discount}
@@ -48,10 +48,10 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
       <HubPanelList>
         {deals.length > 0 ? (
           <HubPanelListItem borderBottom>
-            <Table className="hub-darvo-table" variant="primary">
+            <Table className='hub-darvo-table' variant='primary'>
               <Table.ScrollContainer>
                 <Table.Content aria-label={headertext}>
-                  <Table.Header className="sr-only">
+                  <Table.Header className='sr-only'>
                     <Table.Column isRowHeader>{t('sales.item')}</Table.Column>
                     <Table.Column>{t('darvo.off')}</Table.Column>
                     <Table.Column>{t('currency.plat')}</Table.Column>
@@ -67,7 +67,7 @@ const DarvoDealsPanel: FC<DarvoDealsPanelProps> = ({ deals = [] }: DarvoDealsPan
                           {t('darvo.off')}
                         </Table.Cell>
                         <Table.Cell>
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className='inline-flex items-center gap-1.5'>
                             {item.salePrice}
                             <HubImg src={platinum} name={t('currency.plat')} />
                           </span>

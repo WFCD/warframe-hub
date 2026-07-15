@@ -6,7 +6,9 @@ import type { CacheState } from '@/lib/shared';
 import type { WorldstateData } from '@/lib/shared';
 import { readStorage, removeStorage, writeStorage } from './storageUtils';
 
-type LegacyVuex = Partial<PrefsState & MapsState & NotificationsState & { worldstates?: Record<Platform, WorldstateData> }>;
+type LegacyVuex = Partial<
+  PrefsState & MapsState & NotificationsState & { worldstates?: Record<Platform, WorldstateData> }
+>;
 type LegacyCache = Partial<CacheState>;
 
 export const migrateLegacyStorage = (): void => {

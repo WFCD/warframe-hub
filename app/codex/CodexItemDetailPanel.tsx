@@ -30,9 +30,9 @@ type DetailFieldProps = {
 };
 
 const DetailField: FC<DetailFieldProps> = ({ label, value }: DetailFieldProps) => (
-  <div className="hub-codex-detail__field">
-    <dt className="hub-codex-detail__label">{label}</dt>
-    <dd className="hub-codex-detail__value">{value}</dd>
+  <div className='hub-codex-detail__field'>
+    <dt className='hub-codex-detail__label'>{label}</dt>
+    <dd className='hub-codex-detail__value'>{value}</dd>
   </div>
 );
 
@@ -46,14 +46,14 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
   const maxModStats = maxModRank !== null ? detail.levelStats?.[maxModRank]?.stats : null;
 
   return (
-    <div className="hub-codex-detail">
+    <div className='hub-codex-detail'>
       {detail.description ? (
-        <p className="hub-codex-detail__description">
+        <p className='hub-codex-detail__description'>
           <WarframeRichText text={detail.description} />
         </p>
       ) : null}
 
-      <dl className="hub-codex-detail__grid">
+      <dl className='hub-codex-detail__grid'>
         {detail.masteryReq != null ? (
           <DetailField label={t('codex.detail.mastery')} value={detail.masteryReq} />
         ) : null}
@@ -91,17 +91,17 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
       </dl>
 
       {detail.passiveDescription ? (
-        <p className="hub-codex-detail__passive">
+        <p className='hub-codex-detail__passive'>
           <strong>{t('codex.detail.passive')}:</strong> <WarframeRichText text={detail.passiveDescription} />
         </p>
       ) : null}
 
       {maxModStats?.length ? (
-        <section className="hub-codex-detail__section">
-          <h3 className="hub-codex-detail__heading">
+        <section className='hub-codex-detail__section'>
+          <h3 className='hub-codex-detail__heading'>
             {t('codex.detail.maxRank', { rank: maxModRank })}
           </h3>
-          <ul className="hub-codex-detail__list">
+          <ul className='hub-codex-detail__list'>
             {maxModStats.map((stat) => (
               <li key={stat}>
                 <WarframeRichText text={stat} />
@@ -112,16 +112,16 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
       ) : null}
 
       {detail.abilities?.length ? (
-        <section className="hub-codex-detail__section">
-          <h3 className="hub-codex-detail__heading">{t('codex.detail.abilities')}</h3>
-          <ul className="hub-codex-detail__abilities">
+        <section className='hub-codex-detail__section'>
+          <h3 className='hub-codex-detail__heading'>{t('codex.detail.abilities')}</h3>
+          <ul className='hub-codex-detail__abilities'>
             {detail.abilities.map((ability) => (
-              <li key={ability.uniqueName} className="hub-codex-detail__ability">
+              <li key={ability.uniqueName} className='hub-codex-detail__ability'>
                 {ability.imageName ? (
                   <CodexItemImage
                     imageName={ability.imageName}
                     name={ability.name}
-                    className="hub-codex-detail__ability-icon"
+                    className='hub-codex-detail__ability-icon'
                     width={32}
                     height={32}
                   />
@@ -141,25 +141,25 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
       ) : null}
 
       {detail.components?.length ? (
-        <section className="hub-codex-detail__section">
-          <h3 className="hub-codex-detail__heading">{t('codex.detail.components')}</h3>
-          <table className="hub-codex-detail__table">
+        <section className='hub-codex-detail__section'>
+          <h3 className='hub-codex-detail__heading'>{t('codex.detail.components')}</h3>
+          <table className='hub-codex-detail__table'>
             <thead>
               <tr>
-                <th scope="col">{t('codex.detail.componentName')}</th>
-                <th scope="col">{t('codex.detail.componentCount')}</th>
+                <th scope='col'>{t('codex.detail.componentName')}</th>
+                <th scope='col'>{t('codex.detail.componentCount')}</th>
               </tr>
             </thead>
             <tbody>
               {detail.components.map((component) => (
                 <tr key={component.uniqueName}>
                   <td>
-                    <div className="hub-codex-detail__component">
+                    <div className='hub-codex-detail__component'>
                       {component.imageName ? (
                         <CodexItemImage
                           imageName={component.imageName}
                           name={component.name}
-                          className="hub-codex-detail__component-icon"
+                          className='hub-codex-detail__component-icon'
                           width={24}
                           height={24}
                         />
@@ -176,14 +176,14 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
       ) : null}
 
       {detail.drops?.length ? (
-        <section className="hub-codex-detail__section">
-          <h3 className="hub-codex-detail__heading">{t('codex.detail.drops')}</h3>
-          <table className="hub-codex-detail__table">
+        <section className='hub-codex-detail__section'>
+          <h3 className='hub-codex-detail__heading'>{t('codex.detail.drops')}</h3>
+          <table className='hub-codex-detail__table'>
             <thead>
               <tr>
-                <th scope="col">{t('codex.detail.dropLocation')}</th>
-                <th scope="col">{t('codex.detail.dropType')}</th>
-                <th scope="col">{t('codex.detail.dropChance')}</th>
+                <th scope='col'>{t('codex.detail.dropLocation')}</th>
+                <th scope='col'>{t('codex.detail.dropType')}</th>
+                <th scope='col'>{t('codex.detail.dropChance')}</th>
               </tr>
             </thead>
             <tbody>
@@ -200,9 +200,9 @@ const CodexItemDetailContent: FC<CodexItemDetailContentProps> = ({ detail }: Cod
       ) : null}
 
       {detail.wikiaUrl ? (
-        <div className="hub-codex-detail__links">
-          <ContentLinkButton href={detail.wikiaUrl} external size="sm">
-            {t('codex.detail.wiki')} <i className="fas fa-external-link-alt fa-xs" />
+        <div className='hub-codex-detail__links'>
+          <ContentLinkButton href={detail.wikiaUrl} external size='sm'>
+            {t('codex.detail.wiki')} <i className='fas fa-external-link-alt fa-xs' />
           </ContentLinkButton>
         </div>
       ) : null}
@@ -226,12 +226,12 @@ const CodexItemDetailPanel: FC<CodexItemDetailPanelProps> = ({
 
   if (status === 'loading' || status === 'idle') {
     return (
-      <HubLoadingIndicator compact label={t('codex.detail.loading')} className="hub-codex-detail__loading" />
+      <HubLoadingIndicator compact label={t('codex.detail.loading')} className='hub-codex-detail__loading' />
     );
   }
 
   if (status === 'error' || !detail) {
-    return <p className="hub-codex-detail__status hub-codex-detail__status--error">{t('codex.detail.error')}</p>;
+    return <p className='hub-codex-detail__status hub-codex-detail__status--error'>{t('codex.detail.error')}</p>;
   }
 
   return <CodexItemDetailContent detail={detail} />;

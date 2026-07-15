@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment, useMemo, useState, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Table } from '@heroui/react';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
@@ -61,22 +62,57 @@ type PoeFish = {
 
 const fishData = fish as PoeFish[];
 
+const buildPoeDetailItems = (item: PoeFish) =>
+  [
+    item.thumb
+      ? {
+        key: `${item.name}-fish`,
+        label: item.name,
+        href: item.wiki,
+        thumb: item.thumb,
+        imageType: 'fish' as const,
+        width: '200',
+      }
+      : null,
+    item.unique.thumb
+      ? {
+        key: `${item.name}-unique`,
+        label: item.unique.name,
+        href: item.unique.wiki,
+        thumb: item.unique.thumb,
+        imageType: 'parts' as const,
+        width: '150',
+      }
+      : null,
+    item.bait.thumb
+      ? {
+        key: `${item.name}-bait`,
+        label: item.bait.name,
+        thumb: item.bait.thumb,
+        imageType: 'bait' as const,
+        width: '120',
+      }
+      : null,
+  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+
 const ResourceCell: FC<{ size: FishSize }> = ({ size }: { size: FishSize }) => {
+  const { t } = useTranslation();
   const { resources, standing } = size;
   return (
     <>
       {resources.meat}
-      <FishImg type="common" item="meat" title="Fish Meat" width="20" />
+      <FishImg type='common' item='meat' title={t('fish.resources.fishMeat')} width='20' />
       {resources.scales}
-      <FishImg type="common" item="scale" title="Fish Scales" width="20" />
+      <FishImg type='common' item='scale' title={t('fish.resources.fishScales')} width='20' />
       {resources.oil}
-      <FishImg type="common" item="oil" title="Fish Oil" width="20" />/ {standing}
-      <FishImg type="common" item="standing" title="Ostron Standing" width="15" invert />
+      <FishImg type='common' item='oil' title={t('fish.resources.fishOil')} width='20' />/ {standing}
+      <FishImg type='common' item='standing' title={t('fish.resources.ostronStanding')} width='15' invert />
     </>
   );
 };
 
 const PoeFishView: FC = () => {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const sortAccessors = useMemo(
     () => ({
@@ -109,144 +145,125 @@ const PoeFishView: FC = () => {
 
   return (
     <ContentPage
-      title="Plains of Eidolon Fishing"
+      title={t('fish.titles.poe')}
       actions={
         <>
-          <ContentLinkButton href="/ow/fish/howto#hotspots">What is a Hotspot?</ContentLinkButton>
-          <ContentLinkButton href="/poe/map">Plains of Eidolon Map</ContentLinkButton>
+          <ContentLinkButton href='/ow/fish/howto#hotspots'>{t('fish.links.hotspot')}</ContentLinkButton>
+          <ContentLinkButton href='/poe/map'>{t('fish.links.poeMap')}</ContentLinkButton>
         </>
       }
     >
-      <div className="hub-content-panel hub-content-panel--flush">
-        <Table className="hub-content-table fish-info" variant="primary">
+      <div className='hub-content-panel hub-content-panel--flush'>
+        <Table className='hub-content-table fish-info' variant='primary'>
           <Table.ScrollContainer>
-            <Table.Content aria-label="Plains of Eidolon Fishing">
+            <Table.Content aria-label={t('fish.titles.poe')}>
               <Table.Header>
-                <Table.Column title="Display pictures for fish, unique, and bait type" />
-                <FishSortableColumn id="name" sort={sort} onSort={toggleSort} isRowHeader title="The name of the fish">
-                  Name
+                <Table.Column title={t('fish.columns.pictures')} />
+                <FishSortableColumn
+                  id='name'
+                  sort={sort}
+                  onSort={toggleSort}
+                  isRowHeader
+                  title={t('fish.tooltips.name')}
+                >
+                  {t('fish.columns.name')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="unique"
+                  id='unique'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Unique item when dismantling - you will receive one regardless of size"
+                  title={t('fish.tooltips.uniqueSize')}
                 >
-                  Unique
+                  {t('fish.columns.unique')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="small"
+                  id='small'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Common size - you will get fish parts if dismantled or standing if donated"
+                  title={t('fish.tooltips.smallSize')}
                 >
-                  Small
+                  {t('fish.columns.small')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="medium"
+                  id='medium'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Uncommon size - you will get fish parts if dismantled or standing if donated"
+                  title={t('fish.tooltips.mediumSize')}
                 >
-                  Medium
+                  {t('fish.columns.medium')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="large"
+                  id='large'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Rare size - you will get fish parts if dismantled or standing if donated"
+                  title={t('fish.tooltips.largeSize')}
                 >
-                  Large
-                </FishSortableColumn>
-                <FishSortableColumn id="location" sort={sort} onSort={toggleSort} title="Location of where to find the fish">
-                  Location
+                  {t('fish.columns.large')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="time"
+                  id='location'
                   sort={sort}
                   onSort={toggleSort}
-                  title="Time of when you can find the fish - arrow denotes preference"
+                  title={t('fish.tooltips.locationFish')}
                 >
-                  Time
+                  {t('fish.columns.location')}
+                </FishSortableColumn>
+                <FishSortableColumn id='time' sort={sort} onSort={toggleSort} title={t('fish.tooltips.time')}>
+                  {t('fish.columns.time')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="rarity"
-                  sort={sort}
-                  onSort={toggleSort}
-                  className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="How likely the fish will spawn"
-                >
-                  Rarity
-                </FishSortableColumn>
-                <FishSortableColumn id="bait" sort={sort} onSort={toggleSort} title="What bait will make this fish more likely to spawn">
-                  Bait
-                </FishSortableColumn>
-                <FishSortableColumn
-                  id="baitRequired"
-                  sort={sort}
-                  onSort={toggleSort}
-                  title="Whether bait is required in order for this fish to spawn"
-                >
-                  Bait Required
-                </FishSortableColumn>
-                <FishSortableColumn
-                  id="hotspot"
-                  sort={sort}
-                  onSort={toggleSort}
-                  title="Whether a hotspot is required for this fish to spawn"
-                >
-                  Hotspot Required
-                </FishSortableColumn>
-                <FishSortableColumn id="spear" sort={sort} onSort={toggleSort} title="What spear is effective at catching the fish">
-                  Spear
-                </FishSortableColumn>
-                <FishSortableColumn
-                  id="maximumMass"
+                  id='rarity'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="The maximum weight possible for this fish"
+                  title={t('fish.tooltips.rarity')}
                 >
-                  Max Weight
+                  {t('fish.columns.rarity')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='bait'
+                  sort={sort}
+                  onSort={toggleSort}
+                  title={t('fish.tooltips.baitFish')}
+                >
+                  {t('fish.columns.bait')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='baitRequired'
+                  sort={sort}
+                  onSort={toggleSort}
+                  title={t('fish.tooltips.baitRecommended')}
+                >
+                  {t('fish.columns.baitRequired')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='hotspot'
+                  sort={sort}
+                  onSort={toggleSort}
+                  title={t('fish.tooltips.hotspot')}
+                >
+                  {t('fish.columns.hotspotRequired')}
+                </FishSortableColumn>
+                <FishSortableColumn id='spear' sort={sort} onSort={toggleSort} title={t('fish.tooltips.spear')}>
+                  {t('fish.columns.spear')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='maximumMass'
+                  sort={sort}
+                  onSort={toggleSort}
+                  className={FISH_TABLE_MOBILE_DETAIL_COL}
+                  title={t('fish.tooltips.maxWeight')}
+                >
+                  {t('fish.columns.maxWeight')}
                 </FishSortableColumn>
               </Table.Header>
               <Table.Body>
                 {sortedData.map((item) => {
-                  const detailItems = [
-                    item.thumb
-                      ? {
-                          key: `${item.name}-fish`,
-                          label: item.name,
-                          href: item.wiki,
-                          thumb: item.thumb,
-                          imageType: 'fish' as const,
-                          width: '200',
-                        }
-                      : null,
-                    item.unique.thumb
-                      ? {
-                          key: `${item.name}-unique`,
-                          label: item.unique.name,
-                          href: item.unique.wiki,
-                          thumb: item.unique.thumb,
-                          imageType: 'parts' as const,
-                          width: '150',
-                        }
-                      : null,
-                    item.bait.thumb
-                      ? {
-                          key: `${item.name}-bait`,
-                          label: item.bait.name,
-                          thumb: item.bait.thumb,
-                          imageType: 'bait' as const,
-                          width: '120',
-                        }
-                      : null,
-                  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+                  const detailItems = buildPoeDetailItems(item);
 
                   return (
                     <Fragment key={item.name}>
@@ -273,21 +290,21 @@ const PoeFishView: FC = () => {
                         <Table.Cell>
                           <FishTimeTooltip id={`${item.name}-time`} label={item.time.string}>
                             {item.time.night.appear ? (
-                              <i className="fas fa-lg fa-moon hub-content-time-night" />
+                              <i className='fas fa-lg fa-moon hub-content-time-night' />
                             ) : null}
-                            {item.time.night.prefer ? <i className="fas fa-lg fa-arrow-left mx-1" /> : null}
-                            {item.time.day.prefer ? <i className="fas fa-lg fa-arrow-right mx-1" /> : null}
+                            {item.time.night.prefer ? <i className='fas fa-lg fa-arrow-left mx-1' /> : null}
+                            {item.time.day.prefer ? <i className='fas fa-lg fa-arrow-right mx-1' /> : null}
                             {item.time.day.appear ? (
-                              <i className="fas fa-lg fa-sun hub-content-time-day" />
+                              <i className='fas fa-lg fa-sun hub-content-time-day' />
                             ) : null}
                           </FishTimeTooltip>
                         </Table.Cell>
                         <Table.Cell className={FISH_TABLE_MOBILE_DETAIL_COL}>
                           <FishImg
-                            type="common"
+                            type='common'
                             item={item.rarity.slice(2).toLowerCase()}
                             title={item.rarity.slice(2)}
-                            width="20"
+                            width='20'
                           />
                         </Table.Cell>
                         <Table.Cell>{item.bait.name}</Table.Cell>
@@ -299,13 +316,13 @@ const PoeFishView: FC = () => {
                         </Table.Cell>
                         <Table.Cell>
                           {item.spear.lanzo ? (
-                            <FishImg type="common" item="lanzosm" title="Lanzo (T1)" width="30" />
+                            <FishImg type='common' item='lanzosm' title={t('fish.spears.lanzoT1')} width='30' />
                           ) : null}
                           {item.spear.tulok ? (
-                            <FishImg type="common" item="tuloksm" title="Tulok (T2)" width="30" />
+                            <FishImg type='common' item='tuloksm' title={t('fish.spears.tulokT2')} width='30' />
                           ) : null}
                           {item.spear.peram ? (
-                            <FishImg type="common" item="peramsm" title="Peram (T3)" width="30" />
+                            <FishImg type='common' item='peramsm' title={t('fish.spears.peramT3')} width='30' />
                           ) : null}
                         </Table.Cell>
                         <Table.Cell className={FISH_TABLE_MOBILE_DETAIL_COL}>{item.maximumMass}</Table.Cell>
@@ -316,22 +333,22 @@ const PoeFishView: FC = () => {
                             <FishDetailPanel
                               items={detailItems}
                               mobileStats={[
-                                { label: 'Unique', value: item.unique.name },
-                                { label: 'Small', value: <ResourceCell size={item.small} /> },
-                                { label: 'Medium', value: <ResourceCell size={item.medium} /> },
-                                { label: 'Large', value: <ResourceCell size={item.large} /> },
+                                { label: t('fish.columns.unique'), value: item.unique.name },
+                                { label: t('fish.columns.small'), value: <ResourceCell size={item.small} /> },
+                                { label: t('fish.columns.medium'), value: <ResourceCell size={item.medium} /> },
+                                { label: t('fish.columns.large'), value: <ResourceCell size={item.large} /> },
                                 {
-                                  label: 'Rarity',
+                                  label: t('fish.columns.rarity'),
                                   value: (
                                     <FishImg
-                                      type="common"
+                                      type='common'
                                       item={item.rarity.slice(2).toLowerCase()}
                                       title={item.rarity.slice(2)}
-                                      width="20"
+                                      width='20'
                                     />
                                   ),
                                 },
-                                { label: 'Max Weight', value: item.maximumMass },
+                                { label: t('fish.columns.maxWeight'), value: item.maximumMass },
                               ]}
                             />
                           </Table.Cell>

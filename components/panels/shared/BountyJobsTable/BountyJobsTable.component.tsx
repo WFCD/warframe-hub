@@ -33,18 +33,18 @@ const BountyJobsTable: FC<BountyJobsTableProps> = ({
   const { t } = useTranslation();
 
   return (
-    <Table className="hub-bounty-table" variant="primary">
+    <Table className='hub-bounty-table' variant='primary'>
       <Table.ScrollContainer>
         <Table.Content aria-label={ariaLabel}>
           <Table.Header>
             <Table.Column isRowHeader>{t('bounty.type')}</Table.Column>
-            <Table.Column className="hub-bounty-col-standing">
+            <Table.Column className='hub-bounty-col-standing'>
               <HubImg
                 src={standing}
                 name={t('bounty.standing')}
-                width="24px"
-                height="24px"
-                className="li-mission-decorator li-mission-decorator-lg invert hub-table-header-icon"
+                width='24px'
+                height='24px'
+                className='li-mission-decorator li-mission-decorator-lg invert hub-table-header-icon'
               />
             </Table.Column>
             <Table.Column>{t('bounty.lrange')}</Table.Column>
@@ -52,25 +52,25 @@ const BountyJobsTable: FC<BountyJobsTableProps> = ({
           <Table.Body>
             {rows.map((row, index) => (
               <Fragment key={`${rowKeyPrefix}-${index}`}>
-                <Table.Row className="hub-bounty-row" onAction={() => onToggleRow(index)}>
+                <Table.Row className='hub-bounty-row' onAction={() => onToggleRow(index)}>
                   <Table.Cell>
-                    <div className="hub-bounty-type-cell">
+                    <div className='hub-bounty-type-cell'>
                       <i
                         className={`hub-bounty-type-chevron fas fa-chevron-${row.showDetails ? 'down' : 'right'}`}
                         aria-hidden
                       />
-                      <span className="hub-bounty-type-label">{row.type}</span>
+                      <span className='hub-bounty-type-label'>{row.type}</span>
                     </div>
                   </Table.Cell>
-                  <Table.Cell className="hub-bounty-col-standing">{row.standing}</Table.Cell>
+                  <Table.Cell className='hub-bounty-col-standing'>{row.standing}</Table.Cell>
                   <Table.Cell>{row.levelRange}</Table.Cell>
                 </Table.Row>
                 {row.showDetails && (
-                  <Table.Row className="hub-bounty-row-details">
+                  <Table.Row className='hub-bounty-row-details'>
                     <Table.Cell colSpan={3}>
-                      <div className="hub-bounty-rewards">
+                      <div className='hub-bounty-rewards'>
                         {dedupeRewardPool(row.rewards).map((reward) => (
-                          <Chip key={`${rowKeyPrefix}-${index}-${reward}`} size="sm" variant="soft">
+                          <Chip key={`${rowKeyPrefix}-${index}-${reward}`} size='sm' variant='soft'>
                             {reward}
                           </Chip>
                         ))}

@@ -32,25 +32,25 @@ const EllipseProgress: FC<EllipseProgressProps> = ({ progress, color, size = 100
   const offset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="construction-wrapper text-center">
-      <div className="construction-ring" style={{ width: size, height: size }}>
+    <div className='construction-wrapper text-center'>
+      <div className='construction-ring' style={{ width: size, height: size }}>
         <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#222" strokeWidth={stroke} />
+          <circle cx={size / 2} cy={size / 2} r={radius} fill='none' stroke='#222' strokeWidth={stroke} />
           <circle
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            fill="none"
+            fill='none'
             stroke={color}
             strokeWidth={stroke}
             strokeDasharray={circumference}
             strokeDashoffset={offset}
-            strokeLinecap="round"
+            strokeLinecap='round'
           />
         </svg>
-        <div className="construction-ring-value">{progress}%</div>
+        <div className='construction-ring-value'>{progress}%</div>
       </div>
-      <p className="legend-caption">{caption}</p>
+      <p className='legend-caption'>{caption}</p>
     </div>
   );
 };
@@ -72,18 +72,18 @@ const ConstructionPanel: FC<ConstructionPanelProps> = ({
   const hasData = construction && Object.keys(construction).length > 2;
 
   return (
-    <HubPanelWrap title={headertext} className="construction">
+    <HubPanelWrap title={headertext} className='construction'>
       {hasData ? (
         <HubPanelList>
-          <HubPanelListItem borderless className="hub-construction-row">
+          <HubPanelListItem borderless className='hub-construction-row'>
             <EllipseProgress
               progress={percent(construction.fomorianProgress)}
-              color="#ff0000"
+              color='#ff0000'
               caption={t('construction.fomorian')}
             />
             <EllipseProgress
               progress={percent(construction.razorbackProgress)}
-              color="#5BACF7"
+              color='#5BACF7'
               caption={t('construction.razorback')}
             />
           </HubPanelListItem>

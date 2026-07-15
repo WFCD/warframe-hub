@@ -1,6 +1,7 @@
 'use client';
 
 import type { ChangeEvent, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type ContentSearchToolbarProps = {
   value: string;
@@ -13,10 +14,13 @@ type ContentSearchToolbarProps = {
 const ContentSearchToolbar: FC<ContentSearchToolbarProps> = ({
   value,
   onChange,
-  placeholder = 'Type to Search',
+  placeholder,
   id = 'filterInput',
   compact = false,
 }: ContentSearchToolbarProps) => {
+  const { t } = useTranslation();
+  const searchPlaceholder = placeholder ?? t('ui.search.contentPlaceholder');
+
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
@@ -34,29 +38,29 @@ const ContentSearchToolbar: FC<ContentSearchToolbarProps> = ({
           .filter(Boolean)
           .join(' ')}
       >
-        <label htmlFor={id} className="sr-only">
-          {placeholder}
+        <label htmlFor={id} className='sr-only'>
+          {searchPlaceholder}
         </label>
-        <span className="hub-content-search-native__icon" aria-hidden>
-          <i className="fas fa-search" />
+        <span className='hub-content-search-native__icon' aria-hidden>
+          <i className='fas fa-search' />
         </span>
         <input
           id={id}
-          type="search"
-          className="hub-content-search-native__field"
+          type='search'
+          className='hub-content-search-native__field'
           value={value}
           onChange={onInputChange}
-          placeholder={placeholder}
-          aria-label={placeholder}
+          placeholder={searchPlaceholder}
+          aria-label={searchPlaceholder}
         />
         {dirty ? (
           <button
-            type="button"
-            className="hub-content-search-native__clear-inline"
-            aria-label="Clear search"
+            type='button'
+            className='hub-content-search-native__clear-inline'
+            aria-label={t('ui.search.clear')}
             onClick={() => onChange('')}
           >
-            <i className="fas fa-times" aria-hidden />
+            <i className='fas fa-times' aria-hidden />
           </button>
         ) : null}
       </div>

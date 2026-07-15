@@ -16,6 +16,7 @@ import CodexTableBody from './CodexTableBody';
 import { useCodexQueryState } from './useCodexQueryState';
 
 const perPage = 25;
+const CODEX_FILTER_ID = 'codex-filter';
 
 const sortItems = (items: CodexItem[]): CodexItem[] =>
   [...items].sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
@@ -88,8 +89,8 @@ const CodexView: FC = () => {
       notice={
         <p>
           {t('codex.notice')}{' '}
-          <a href="https://api.warframestat.us/items" target="_blank" rel="noreferrer">
-            WFCD Items API
+          <a href='https://api.warframestat.us/items' target='_blank' rel='noreferrer'>
+            {t('codex.itemsApiLink')}
           </a>
           .
         </p>
@@ -98,10 +99,10 @@ const CodexView: FC = () => {
       {!loading ? (
         <ContentDataTable
           ariaLabel={t('codex.tableAria')}
-          className="codex-table"
+          className='codex-table'
           pagination={{ page: currentPage, pageCount, onPageChange: setCurrentPage }}
           search={{
-            id: 'codex-filter',
+            id: CODEX_FILTER_ID,
             value: filter,
             onChange: setFilter,
             placeholder: t('codex.searchPlaceholder'),
@@ -113,7 +114,7 @@ const CodexView: FC = () => {
                 active={selectedTypes.length > 0}
                 ariaLabel={t('codex.filters.types')}
               >
-                <div className="hub-content-type-filter">
+                <div className='hub-content-type-filter'>
                   {types.map((type) => (
                     <HubSwitch
                       key={type}
@@ -133,7 +134,7 @@ const CodexView: FC = () => {
                 active={selectedCategories.length > 0}
                 ariaLabel={t('codex.filters.categories')}
               >
-                <div className="hub-content-type-filter">
+                <div className='hub-content-type-filter'>
                   {categories.map((category) => (
                     <HubSwitch
                       key={category}
@@ -153,15 +154,15 @@ const CodexView: FC = () => {
         >
           <thead>
             <tr>
-              <th scope="col" className="hub-codex-table__expand-col">
-                <span className="sr-only">{t('codex.columns.details')}</span>
+              <th scope='col' className='hub-codex-table__expand-col'>
+                <span className='sr-only'>{t('codex.columns.details')}</span>
               </th>
-              <th scope="col">{t('codex.columns.name')}</th>
-              <th scope="col">{t('codex.columns.type')}</th>
-              <th scope="col">{t('codex.columns.category')}</th>
-              <th scope="col">{t('codex.columns.tradable')}</th>
-              <th scope="col">{t('codex.columns.masterable')}</th>
-              <th scope="col">{t('codex.columns.links')}</th>
+              <th scope='col'>{t('codex.columns.name')}</th>
+              <th scope='col'>{t('codex.columns.type')}</th>
+              <th scope='col'>{t('codex.columns.category')}</th>
+              <th scope='col'>{t('codex.columns.tradable')}</th>
+              <th scope='col'>{t('codex.columns.masterable')}</th>
+              <th scope='col'>{t('codex.columns.links')}</th>
             </tr>
           </thead>
           <CodexTableBody rows={filtered} currentPage={currentPage} perPage={perPage} locale={prefs.locale} />

@@ -25,9 +25,9 @@ const GuideContentSection: FC<GuideContentSectionProps> = ({
   }, [id]);
 
   return (
-    <section ref={sectionRef} id={id} className="hub-content-guide-section">
-      {heading ? <div className="hub-content-guide-section__heading">{heading}</div> : null}
-      <div className="hub-content-guide-section__content">{active === 'cetus' ? cetus : vallis}</div>
+    <section ref={sectionRef} id={id} className='hub-content-guide-section'>
+      {heading ? <div className='hub-content-guide-section__heading'>{heading}</div> : null}
+      <div className='hub-content-guide-section__content'>{active === 'cetus' ? cetus : vallis}</div>
     </section>
   );
 };

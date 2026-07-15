@@ -140,15 +140,15 @@ const TimersPage: FC = () => {
   ));
 
   const viewGrid = (
-    <Masonry breakpointCols={breakpointCols} className="masonry-grid" columnClassName="masonry-grid_column">
+    <Masonry breakpointCols={breakpointCols} className='masonry-grid' columnClassName='masonry-grid_column'>
       {viewSlots}
     </Masonry>
   );
 
   if (!showContent) {
     return (
-      <div className="timers timers--loading">
-        <div className="hub-chrome-shell hub-timers-loading" role="status" aria-live="polite">
+      <div className='timers timers--loading'>
+        <div className='hub-chrome-shell hub-timers-loading' role='status' aria-live='polite'>
           <HubLoadingIndicator label={t('timersPage.loading')} />
         </div>
       </div>
@@ -160,7 +160,7 @@ const TimersPage: FC = () => {
       <OfflineBanner />
       <StaleDataBanner />
       {displayCycleTimers ? (
-        <div className="hub-chrome-shell hub-cycle-timers-shell">
+        <div className='hub-chrome-shell hub-cycle-timers-shell'>
           <CycleTimerDock worldstate={worldstate} />
         </div>
       ) : null}
@@ -171,7 +171,7 @@ const TimersPage: FC = () => {
           setEditMode((on) => !on);
         }}
       />
-      <div className="hub-chrome-shell grid hub-timers-grid">
+      <div className='hub-chrome-shell grid hub-timers-grid'>
         {editMode ? (
           <TimersEditLayout
             components={components}

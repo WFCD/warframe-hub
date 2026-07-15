@@ -13,7 +13,7 @@ const TimerPanelLoadingShell: FC<TimerPanelLoadingShellProps> = ({ label }: Time
   const { t } = useTranslation();
 
   return (
-    <HubPanelWrap title={label} className="hub-timer-panel-loading">
+    <HubPanelWrap title={label} className='hub-timer-panel-loading'>
       <HubLoadingIndicator compact label={t('timersPage.panelLoading')} />
     </HubPanelWrap>
   );

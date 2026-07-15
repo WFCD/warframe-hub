@@ -14,8 +14,10 @@ const runHubTestPointer = (event: ReactPointerEvent, handler: () => void): void 
   handler();
 };
 
-/** Always attach onPointerDownCapture so SSR/hydration DOM matches; only runs handler under hubTest. */
-export const hubTestPointerProps = (handler: () => void): { onPointerDownCapture: (event: ReactPointerEvent) => void } => ({
+/** Always attach onPointerDownCapture so SSR/hydration DOM matches; only runs under hubTest. */
+export const hubTestPointerProps = (
+  handler: () => void,
+): { onPointerDownCapture: (event: ReactPointerEvent) => void } => ({
   onPointerDownCapture: (event) => runHubTestPointer(event, handler),
 });
 

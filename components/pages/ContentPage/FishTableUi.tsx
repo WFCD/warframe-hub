@@ -18,8 +18,8 @@ export const FishExpandButton: FC<FishExpandButtonProps> = ({
   onToggle,
 }: FishExpandButtonProps) => (
   <button
-    type="button"
-    className="hub-content-expand-btn"
+    type='button'
+    className='hub-content-expand-btn'
     aria-expanded={expanded}
     aria-label={`Toggle details for ${name}`}
     onClick={onToggle}
@@ -77,6 +77,8 @@ type FishSortableColumnProps = {
   sort: FishSortState | null;
   onSort: (column: string) => void;
   children: ReactNode;
+  /** Full localized accessible name for the sort control (no English prefix inside this component). */
+  ariaLabel: string;
   className?: string;
   title?: string;
   isRowHeader?: boolean;
@@ -88,6 +90,7 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
   sort,
   onSort,
   children,
+  ariaLabel,
   className,
   title,
   isRowHeader,
@@ -95,15 +98,14 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
 }: FishSortableColumnProps) => {
   const active = sort?.column === id;
   const direction = active ? sort.direction : null;
-  const label = typeof children === 'string' ? children : id;
 
   return (
     <Table.Column isRowHeader={isRowHeader} title={title} className={className}>
       {sortable ? (
         <button
-          type="button"
+          type='button'
           className={['hub-fish-sort-btn', active ? 'is-active' : ''].filter(Boolean).join(' ')}
-          aria-label={`Sort by ${label}`}
+          aria-label={ariaLabel}
           aria-pressed={active}
           onClick={() => onSort(id)}
         >
@@ -125,11 +127,11 @@ export const FishSortableColumn: FC<FishSortableColumnProps> = ({
 };
 
 export const FishMobileDetailStats: FC<{ rows: FishMobileStatRow[] }> = ({ rows }: { rows: FishMobileStatRow[] }) => (
-  <dl className="hub-fish-mobile-stats">
+  <dl className='hub-fish-mobile-stats'>
     {rows.map(({ label, value }) => (
-      <div key={label} className="hub-fish-mobile-stats__row">
-        <dt className="hub-fish-mobile-stats__label">{label}</dt>
-        <dd className="hub-fish-mobile-stats__value">{value}</dd>
+      <div key={label} className='hub-fish-mobile-stats__row'>
+        <dt className='hub-fish-mobile-stats__label'>{label}</dt>
+        <dd className='hub-fish-mobile-stats__value'>{value}</dd>
       </div>
     ))}
   </dl>
@@ -141,15 +143,15 @@ export const FishDetailPanel: FC<FishDetailPanelProps> = ({ items, mobileStats }
   if (!hasGallery && !hasMobileStats) return null;
 
   return (
-    <div className="hub-fish-expand-detail">
+    <div className='hub-fish-expand-detail'>
       {hasMobileStats ? <FishMobileDetailStats rows={mobileStats!} /> : null}
       {hasGallery ? (
-        <div className="hub-content-detail-panel">
+        <div className='hub-content-detail-panel'>
           {items.map((item) =>
             item.thumb ? (
-              <div key={item.key} className="hub-content-detail-panel__item">
+              <div key={item.key} className='hub-content-detail-panel__item'>
                 {item.href ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="hub-content-detail-panel__link">
+                  <a href={item.href} target='_blank' rel='noopener noreferrer' className='hub-content-detail-panel__link'>
                     {item.label}
                   </a>
                 ) : (

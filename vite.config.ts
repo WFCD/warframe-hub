@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 import { runtimeCaching } from './lib/pwa/cacheConfig';
-import devConfig from './dev.config.cjs';
+import devConfig from './dev.config';
 import {
   REACT_ARIA_NO_EXTERNAL,
   REACT_ARIA_OPTIMIZE_DEPS,
@@ -43,9 +43,9 @@ const cjsInteropPlugin = (pkg: string): Plugin => {
         source === pkg
           ? 'index'
           : source
-              .slice(prefix.length)
-              .replace(/^cjs\//, '')
-              .replace(/\.js$/, '');
+            .slice(prefix.length)
+            .replace(/^cjs\//, '')
+            .replace(/\.js$/, '');
       const cjsPath = `${appRoot}node_modules/${pkg}/cjs/${sub}.js`;
       if (!existsSync(cjsPath)) return;
       const mod = require(cjsPath);

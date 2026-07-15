@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useState, type FC } from 'react';
+import Link from 'next/link';
+import { Trans, useTranslation } from 'react-i18next';
 import type { Platform, RivenTradeStat } from '@/lib/shared';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentDataTable from '@/components/pages/ContentPage/ContentDataTable';
@@ -12,12 +14,8 @@ import { useContentPageLoadReporting } from '@/lib/providers/ContentPageLoadProv
 import { useWorldstate } from '@/lib/providers/WorldstateProvider';
 import { FishBoolIcon } from '@/components/pages/ContentPage/FishTableUi';
 
-const rolls = [
-  { label: 'Rolled', value: 'rolled' },
-  { label: 'Unrolled', value: 'unrolled' },
-  { label: 'Both', value: 'both' },
-];
-
+const RIVEN_FILTER_ID = 'filterInput';
+const ROLL_VALUES = ['rolled', 'unrolled', 'both'] as const;
 const perPage = 25;
 
 const toTitleCase = (str: string) =>
@@ -29,6 +27,7 @@ const platformDisplay = (platform: Platform) => {
 };
 
 const RivenDataView: FC = () => {
+  const { t } = useTranslation();
   const { state, updateRivens } = useCache();
   const platform = useWorldstate((ctx) => ctx.platform);
   const rivens = useMemo(
@@ -50,16 +49,17 @@ const RivenDataView: FC = () => {
 
   const filtered = useMemo(() => {
     const query = filter.trim().toLowerCase();
+    const veiledLabel = t('riven.veiled').toLowerCase();
     return rivens.filter((row) => {
       const rollFilter =
         rollstate === 'both' || (rollstate === 'rolled' && row.rerolled) || (rollstate === 'unrolled' && !row.rerolled);
       const typeMatches = !selectedTypes.length || selectedTypes.includes(row.itemType);
       if (!rollFilter || !typeMatches) return false;
       if (!query) return true;
-      const weapon = (row.compatibility || 'Veiled').toLowerCase();
+      const weapon = (row.compatibility || veiledLabel).toLowerCase();
       return weapon.includes(query);
     });
-  }, [rivens, filter, rollstate, selectedTypes]);
+  }, [rivens, filter, rollstate, selectedTypes, t]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -69,42 +69,52 @@ const RivenDataView: FC = () => {
   const pageItems = filtered.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   const typesLabel =
-    selectedTypes.length > 0 ? `Riven Types (${selectedTypes.length})` : 'Select Riven Types';
+    selectedTypes.length > 0
+      ? t('riven.filters.typesActive', { count: selectedTypes.length })
+      : t('riven.filters.types');
   const rolledLabel =
-    rollstate === 'both' ? 'Filter by Rolled' : (rolls.find((roll) => roll.value === rollstate)?.label ?? 'Filter by Rolled');
+    rollstate === 'both'
+      ? t('riven.filters.rolled')
+      : t(`riven.rolls.${rollstate as (typeof ROLL_VALUES)[number]}`);
 
   return (
     <ContentPage
-      title="Riven Data"
-      subtitle={`Platform: ${platformDisplay(platform)}`}
+      title={t('riven.title')}
+      subtitle={t('riven.subtitle', { platform: platformDisplay(platform) })}
       notice={
         <p>
-          Aggregated from{' '}
-          <a href="https://forums.warframe.com/topic/1077490-r" target="_blank" rel="noreferrer">
-            DE&apos;s weekly Riven trade data
-          </a>{' '}
-          via{' '}
-          <a href="https://api.warframestat.us/pc/rivens" target="_blank" rel="noreferrer">
-            WFCD
-          </a>
-          .
+          <Trans
+            i18nKey='riven.notice'
+            components={{
+              deLink: (
+                <Link
+                  href='https://forums.warframe.com/topic/1077490-r'
+                  target='_blank'
+                  rel='noreferrer'
+                />
+              ),
+              wfcdLink: (
+                <Link href='https://api.warframestat.us/pc/rivens' target='_blank' rel='noreferrer' />
+              ),
+            }}
+          />
         </p>
       }
     >
       {!loading ? (
         <ContentDataTable
-          ariaLabel="Riven Data"
-          className="riven-table"
+          ariaLabel={t('riven.tableAria')}
+          className='riven-table'
           pagination={{ page: currentPage, pageCount, onPageChange: setCurrentPage }}
-          search={{ id: 'filterInput', value: filter, onChange: setFilter }}
+          search={{ id: RIVEN_FILTER_ID, value: filter, onChange: setFilter }}
           filters={
             <>
               <ContentTableToolbarDropdown
                 label={typesLabel}
                 active={selectedTypes.length > 0}
-                ariaLabel="Select Riven Types"
+                ariaLabel={t('riven.filters.types')}
               >
-                <div className="hub-content-type-filter">
+                <div className='hub-content-type-filter'>
                   {types.map((type) => (
                     <HubSwitch
                       key={type}
@@ -122,19 +132,19 @@ const RivenDataView: FC = () => {
               <ContentTableToolbarDropdown
                 label={rolledLabel}
                 active={rollstate !== 'both'}
-                ariaLabel="Filter by rolled"
+                ariaLabel={t('riven.filters.rolledAria')}
               >
-                <div className="hub-content-table-filter-menu" role="radiogroup" aria-label="Filter by rolled">
-                  {rolls.map((roll) => (
-                    <label key={roll.value} className="hub-content-table-filter-menu__option">
+                <div className='hub-content-table-filter-menu' role='radiogroup' aria-label={t('riven.filters.rolledAria')}>
+                  {ROLL_VALUES.map((value) => (
+                    <label key={value} className='hub-content-table-filter-menu__option'>
                       <input
-                        type="radio"
-                        name="riven-roll-filter"
-                        value={roll.value}
-                        checked={rollstate === roll.value}
-                        onChange={() => setRollstate(roll.value)}
+                        type='radio'
+                        name='riven-roll-filter'
+                        value={value}
+                        checked={rollstate === value}
+                        onChange={() => setRollstate(value)}
                       />
-                      {roll.label}
+                      {t(`riven.rolls.${value}`)}
                     </label>
                   ))}
                 </div>
@@ -144,36 +154,36 @@ const RivenDataView: FC = () => {
         >
           <thead>
             <tr>
-              <th scope="col" title="Compatible Weapon">
-                Weapon
+              <th scope='col' title={t('riven.columns.weaponTitle')}>
+                {t('riven.columns.weapon')}
               </th>
-              <th scope="col" title="Whether or not this denotes a riven that has been rerolled">
-                Rerolled?
+              <th scope='col' title={t('riven.columns.rerolledTitle')}>
+                {t('riven.columns.rerolled')}
               </th>
-              <th scope="col" title="Average cost of the platinum when trading it">
-                Average Trade
+              <th scope='col' title={t('riven.columns.avgTradeTitle')}>
+                {t('riven.columns.avgTrade')}
               </th>
-              <th scope="col" title="Standard Deviation">
-                Standard Deviation
+              <th scope='col' title={t('riven.columns.stddevTitle')}>
+                {t('riven.columns.stddev')}
               </th>
-              <th scope="col" title="Minimum value at which the riven was traded">
-                Min Traded Value
+              <th scope='col' title={t('riven.columns.minTitle')}>
+                {t('riven.columns.min')}
               </th>
-              <th scope="col" title="Median Value of traded Riven">
-                Median
+              <th scope='col' title={t('riven.columns.medianTitle')}>
+                {t('riven.columns.median')}
               </th>
-              <th scope="col" title="Maximuim value at which the riven was traded">
-                Max Traded Value
+              <th scope='col' title={t('riven.columns.maxTitle')}>
+                {t('riven.columns.max')}
               </th>
-              <th scope="col" title="Number of rivens traded for determining stats">
-                Population
+              <th scope='col' title={t('riven.columns.populationTitle')}>
+                {t('riven.columns.population')}
               </th>
             </tr>
           </thead>
           <tbody>
             {pageItems.map((row, idx) => (
               <tr key={`${row.compatibility ?? 'veiled'}-${row.itemType}-${idx}`}>
-                <td>{toTitleCase(row.compatibility || 'Veiled')}</td>
+                <td>{toTitleCase(row.compatibility || t('riven.veiled'))}</td>
                 <td>
                   <FishBoolIcon value={row.rerolled} />
                 </td>

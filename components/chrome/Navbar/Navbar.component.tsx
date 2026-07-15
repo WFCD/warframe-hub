@@ -38,7 +38,7 @@ const MenuLink: FC<MenuLinkProps> = ({ href, children, external, onNavigate }: M
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className} onClick={onNavigate}>
+      <a href={href} target='_blank' rel='noopener noreferrer' className={className} onClick={onNavigate}>
         {children}
       </a>
     );
@@ -57,9 +57,9 @@ type MenuSectionProps = {
 };
 
 const MenuSection: FC<MenuSectionProps> = ({ title, children }: MenuSectionProps) => (
-  <div className="hub-nav-section">
-    {title ? <div className="hub-nav-section-title">{title}</div> : null}
-    <div className="hub-nav-section-links">{children}</div>
+  <div className='hub-nav-section'>
+    {title ? <div className='hub-nav-section-title'>{title}</div> : null}
+    <div className='hub-nav-section-links'>{children}</div>
   </div>
 );
 
@@ -72,7 +72,7 @@ type NavIconItemProps = {
 
 const NavIconItem: FC<NavIconItemProps> = ({ icon, label, showLabel = true, stacked = false }: NavIconItemProps) => (
   <>
-    <span className="hub-nav-icon" aria-hidden>
+    <span className='hub-nav-icon' aria-hidden>
       {icon}
     </span>
     {showLabel ? (
@@ -88,9 +88,9 @@ type NavTooltipProps = {
 
 const NavTooltip: FC<NavTooltipProps> = ({ label, children }: NavTooltipProps) => (
   <Tooltip delay={HUB_TOOLTIP_DELAY}>
-    <Tooltip.Trigger className="hub-nav-tooltip-trigger">{children}</Tooltip.Trigger>
-    <Tooltip.Content placement="bottom">
-      <span className="hub-nav-tooltip-text">{label}</span>
+    <Tooltip.Trigger className='hub-nav-tooltip-trigger'>{children}</Tooltip.Trigger>
+    <Tooltip.Content placement='bottom'>
+      <span className='hub-nav-tooltip-text'>{label}</span>
     </Tooltip.Content>
   </Tooltip>
 );
@@ -134,8 +134,8 @@ const NavIconLink: FC<NavIconLinkProps> = ({
     <a
       className={className}
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target='_blank'
+      rel='noopener noreferrer'
       aria-label={label}
       onClick={onNavigate}
     >
@@ -193,7 +193,7 @@ const NavDropdown: FC<NavDropdownProps> = ({
   }, [hubTestMenuKey]);
 
   const dropdown = (
-    <div className="hub-nav-dropdown-host" {...hubTestOpenHandler(() => setMenuOpen(true))}>
+    <div className='hub-nav-dropdown-host' {...hubTestOpenHandler(() => setMenuOpen(true))}>
       <Dropdown isOpen={menuOpen} onOpenChange={setMenuOpen}>
         <Dropdown.Trigger
           className={`hub-nav-link hub-nav-dropdown-trigger hub-nav-icon-item${stacked ? ' hub-nav-link--stacked' : ''}`}
@@ -202,10 +202,10 @@ const NavDropdown: FC<NavDropdownProps> = ({
           aria-current={isActive ? 'page' : undefined}
         >
           <NavIconItem icon={icon} label={label} showLabel={showLabel} stacked={stacked} />
-          {showLabel && showChevron ? <i className="fas fa-chevron-down hub-nav-chevron" aria-hidden /> : null}
+          {showLabel && showChevron ? <i className='fas fa-chevron-down hub-nav-chevron' aria-hidden /> : null}
         </Dropdown.Trigger>
-        <Dropdown.Popover className="hub-nav-dropdown-popover" placement={placement}>
-          <div className="hub-nav-popover">{children}</div>
+        <Dropdown.Popover className='hub-nav-dropdown-popover' placement={placement}>
+          <div className='hub-nav-popover'>{children}</div>
         </Dropdown.Popover>
       </Dropdown>
     </div>
@@ -215,8 +215,8 @@ const NavDropdown: FC<NavDropdownProps> = ({
     return (
       <Tooltip delay={HUB_TOOLTIP_DELAY} isDisabled={menuOpen}>
         {dropdown}
-        <Tooltip.Content placement="bottom">
-          <span className="hub-nav-tooltip-text">{label}</span>
+        <Tooltip.Content placement='bottom'>
+          <span className='hub-nav-tooltip-text'>{label}</span>
         </Tooltip.Content>
       </Tooltip>
     );
@@ -241,10 +241,10 @@ const NavIconButton: FC<NavIconButtonProps> = ({
   useTooltip = false,
 }: NavIconButtonProps) => {
   const button = (
-    <span className="hub-nav-icon-btn-host" {...hubTestClickHandler(onPress)}>
+    <span className='hub-nav-icon-btn-host' {...hubTestClickHandler(onPress)}>
       <Button
-        variant="ghost"
-        className="hub-nav-icon-btn hub-nav-icon-item"
+        variant='ghost'
+        className='hub-nav-icon-btn hub-nav-icon-item'
         aria-label={label}
         onPress={onPress}
       >
@@ -270,32 +270,32 @@ const OpenWorldMenu: FC<OpenWorldMenuProps> = ({ onNavigate }: OpenWorldMenuProp
   return (
     <>
       <MenuSection>
-        <MenuLink href="/ow/fish/howto" onNavigate={onNavigate}>
-          <i className="fas fa-info faIcon" /> {t('nav.howto')}
+        <MenuLink href='/ow/fish/howto' onNavigate={onNavigate}>
+          <i className='fas fa-info faIcon' /> {t('nav.howto')}
         </MenuLink>
       </MenuSection>
-      <MenuSection title={<><i className="fas fa-mountain faIcon" /> {t('nav.owearth')}</>}>
-        <MenuLink href="/poe/map" onNavigate={onNavigate}>
-          <i className="fas fa-map-marker-alt faIcon" /> {t('nav.map')}
+      <MenuSection title={<><i className='fas fa-mountain faIcon' /> {t('nav.owearth')}</>}>
+        <MenuLink href='/poe/map' onNavigate={onNavigate}>
+          <i className='fas fa-map-marker-alt faIcon' /> {t('nav.map')}
         </MenuLink>
-        <MenuLink href="/poe/fish" onNavigate={onNavigate}>
-          <i className="fas fa-fish faIcon" /> {t('nav.fish')}
-        </MenuLink>
-      </MenuSection>
-      <MenuSection title={<><i className="fas fa-icicles faIcon" /> {t('nav.owvenus')}</>}>
-        <MenuLink href="/vallis/map" onNavigate={onNavigate}>
-          <i className="fas fa-map-marker-alt faIcon" /> {t('nav.map')}
-        </MenuLink>
-        <MenuLink href="/vallis/fish" onNavigate={onNavigate}>
-          <i className="fas fa-fish faIcon" /> {t('nav.fish')}
+        <MenuLink href='/poe/fish' onNavigate={onNavigate}>
+          <i className='fas fa-fish faIcon' /> {t('nav.fish')}
         </MenuLink>
       </MenuSection>
-      <MenuSection title={<><i className="fas fa-biohazard faIcon" /> {t('nav.owdeimos')}</>}>
-        <MenuLink href="/deimos/map" onNavigate={onNavigate}>
-          <i className="fas fa-map-marker-alt faIcon" /> {t('nav.map')}
+      <MenuSection title={<><i className='fas fa-icicles faIcon' /> {t('nav.owvenus')}</>}>
+        <MenuLink href='/vallis/map' onNavigate={onNavigate}>
+          <i className='fas fa-map-marker-alt faIcon' /> {t('nav.map')}
         </MenuLink>
-        <MenuLink href="/deimos/fish" onNavigate={onNavigate}>
-          <i className="fas fa-fish faIcon" /> {t('nav.fish')}
+        <MenuLink href='/vallis/fish' onNavigate={onNavigate}>
+          <i className='fas fa-fish faIcon' /> {t('nav.fish')}
+        </MenuLink>
+      </MenuSection>
+      <MenuSection title={<><i className='fas fa-biohazard faIcon' /> {t('nav.owdeimos')}</>}>
+        <MenuLink href='/deimos/map' onNavigate={onNavigate}>
+          <i className='fas fa-map-marker-alt faIcon' /> {t('nav.map')}
+        </MenuLink>
+        <MenuLink href='/deimos/fish' onNavigate={onNavigate}>
+          <i className='fas fa-fish faIcon' /> {t('nav.fish')}
         </MenuLink>
       </MenuSection>
     </>
@@ -311,17 +311,17 @@ const ProjectsMenu: FC<ProjectsMenuProps> = ({ onNavigate }: ProjectsMenuProps) 
 
   return (
     <>
-      <MenuLink href="https://drops.warframestat.us" external onNavigate={onNavigate}>
-        <i className="fas fa-download faIcon" /> {t('nav.drops')}
+      <MenuLink href='https://drops.warframestat.us' external onNavigate={onNavigate}>
+        <i className='fas fa-download faIcon' /> {t('nav.drops')}
       </MenuLink>
-      <MenuLink href="https://genesis.warframestat.us" external onNavigate={onNavigate}>
-        <i className="fas fa-robot faIcon" /> {t('nav.genesis')}
+      <MenuLink href='https://genesis.warframestat.us' external onNavigate={onNavigate}>
+        <i className='fas fa-robot faIcon' /> {t('nav.genesis')}
       </MenuLink>
-      <MenuLink href="https://docs.warframestat.us" external onNavigate={onNavigate}>
-        <i className="fas fa-terminal faIcon" /> {t('nav.docs')}
+      <MenuLink href='https://docs.warframestat.us' external onNavigate={onNavigate}>
+        <i className='fas fa-terminal faIcon' /> {t('nav.docs')}
       </MenuLink>
-      <MenuLink href="https://warframestat.us" external onNavigate={onNavigate}>
-        <i className="fas fa-tachometer-alt faIcon" /> {t('nav.status')}
+      <MenuLink href='https://warframestat.us' external onNavigate={onNavigate}>
+        <i className='fas fa-tachometer-alt faIcon' /> {t('nav.status')}
       </MenuLink>
     </>
   );
@@ -361,8 +361,8 @@ const MainNavItems: FC<MainNavItemsProps> = ({
   return (
     <>
       <NavIconLink
-        href="/"
-        icon={<i className="fas fa-clock" />}
+        href='/'
+        icon={<i className='fas fa-clock' />}
         label={t('nav.timers')}
         isActive={isTimersActive}
         onNavigate={onNavigate}
@@ -372,9 +372,9 @@ const MainNavItems: FC<MainNavItemsProps> = ({
       />
 
       <NavDropdown
-        icon={<i className="fas fa-globe" />}
+        icon={<i className='fas fa-globe' />}
         label={t('nav.ow')}
-        hubTestMenuKey="open-world"
+        hubTestMenuKey='open-world'
         showLabel={showLabel}
         useTooltip={useTooltip}
         isActive={isOwActive}
@@ -386,7 +386,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
       </NavDropdown>
 
       <NavIconLink
-        href="/riven/data"
+        href='/riven/data'
         icon={<NavSymbol symbol={NAV_SYMBOL.riven} />}
         label={t('nav.riven')}
         isActive={isRivenActive}
@@ -397,7 +397,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
       />
 
       <NavIconLink
-        href="/synthesis"
+        href='/synthesis'
         icon={<NavSymbol symbol={NAV_SYMBOL.synthesis} />}
         label={t('nav.synth')}
         isActive={isSynthActive}
@@ -408,7 +408,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
       />
 
       <NavIconLink
-        href="/codex"
+        href='/codex'
         icon={<NavSymbol symbol={NAV_SYMBOL.codex} />}
         label={t('nav.codex')}
         isActive={isCodexActive}
@@ -420,7 +420,7 @@ const MainNavItems: FC<MainNavItemsProps> = ({
 
       {showProjects ? (
         <NavDropdown
-          icon={<i className="fas fa-terminal" />}
+          icon={<i className='fas fa-terminal' />}
           label={t('nav.projects')}
           showLabel={showLabel}
           useTooltip={useTooltip}
@@ -456,7 +456,7 @@ const ProjectsNavDropdown: FC<ProjectsNavDropdownProps> = ({
 
   return (
     <NavDropdown
-      icon={<i className="fas fa-terminal" />}
+      icon={<i className='fas fa-terminal' />}
       label={t('nav.projects')}
       showLabel={showLabel}
       useTooltip={useTooltip}
@@ -489,8 +489,8 @@ const SupportNavItems: FC<SupportNavItemsProps> = ({
   return (
     <>
       <NavIconLink
-        href="https://discord.gg/jGZxH9f"
-        icon={<i className="fab fa-discord" />}
+        href='https://discord.gg/jGZxH9f'
+        icon={<i className='fab fa-discord' />}
         label={t('nav.discord')}
         external
         onNavigate={onNavigate}
@@ -498,7 +498,7 @@ const SupportNavItems: FC<SupportNavItemsProps> = ({
         useTooltip={useTooltip}
       />
       <NavIconButton
-        icon={<i className="fas fa-info" />}
+        icon={<i className='fas fa-info' />}
         label={t('nav.info')}
         showLabel={showLabel}
         useTooltip={useTooltip}
@@ -508,7 +508,7 @@ const SupportNavItems: FC<SupportNavItemsProps> = ({
         }}
       />
       <NavIconButton
-        icon={<i className="fas fa-cog" />}
+        icon={<i className='fas fa-cog' />}
         label={t('nav.settings')}
         showLabel={showLabel}
         useTooltip={useTooltip}
@@ -568,22 +568,22 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
 
   return (
     <>
-      <div className="hub-chrome-shell hub-navbar-shell">
-        <header className="hub-navbar">
-          <div className="hub-navbar-inner">
+      <div className='hub-chrome-shell hub-navbar-shell'>
+        <header className='hub-navbar'>
+          <div className='hub-navbar-inner'>
             <Link
-              className="hub-navbar-brand"
-              href="/"
+              className='hub-navbar-brand'
+              href='/'
               aria-label={t('nav.brand')}
               aria-current={isTimersActive ? 'page' : undefined}
             >
-              <img className="hub-nav-icon hub-nav-brand-icon" src="/icon.png" alt="" height={40} />
-              {!isDesktop ? <span className="hub-navbar-brand-label">{t('nav.brand')}</span> : null}
+              <img className='hub-nav-icon hub-nav-brand-icon' src='/icon.png' alt='' height={40} />
+              {!isDesktop ? <span className='hub-navbar-brand-label'>{t('nav.brand')}</span> : null}
             </Link>
 
             {isDesktop ? (
-              <div id="hub-nav-collapse" className="hub-navbar-collapse">
-                <nav className="hub-navbar-start" aria-label={t('nav.mainAria')}>
+              <div id='hub-nav-collapse' className='hub-navbar-collapse'>
+                <nav className='hub-navbar-start' aria-label={t('nav.mainAria')}>
                   <MainNavItems
                     isTimersActive={isTimersActive}
                     isOwActive={isOwActive}
@@ -596,15 +596,15 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                 </nav>
 
                 {pageChrome?.config && pageChrome.collapsed ? (
-                  <div className="hub-navbar-page-chrome">
+                  <div className='hub-navbar-page-chrome'>
                     {pageChrome.config.label ? (
-                      <span className="hub-navbar-page-chrome__label">{pageChrome.config.label}</span>
+                      <span className='hub-navbar-page-chrome__label'>{pageChrome.config.label}</span>
                     ) : null}
-                    <div className="hub-navbar-page-chrome__controls">{pageChrome.config.controls}</div>
+                    <div className='hub-navbar-page-chrome__controls'>{pageChrome.config.controls}</div>
                   </div>
                 ) : null}
 
-                <nav className="hub-navbar-end" aria-label={t('nav.supportAria')}>
+                <nav className='hub-navbar-end' aria-label={t('nav.supportAria')}>
                   <SupportNavItems
                     onOpenAbout={onOpenAbout}
                     onOpenSettings={onOpenSettings}
@@ -614,8 +614,8 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                 </nav>
               </div>
             ) : (
-              <nav className="hub-navbar-end hub-navbar-end--header" aria-label={t('nav.supportAria')}>
-                <ProjectsNavDropdown showLabel={false} placement="bottom end" showChevron={false} />
+              <nav className='hub-navbar-end hub-navbar-end--header' aria-label={t('nav.supportAria')}>
+                <ProjectsNavDropdown showLabel={false} placement='bottom end' showChevron={false} />
                 <SupportNavItems
                   onOpenAbout={onOpenAbout}
                   onOpenSettings={onOpenSettings}
@@ -629,9 +629,9 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
       </div>
 
       {!isDesktop ? (
-        <div className="hub-bottom-nav-shell">
-          <div className="hub-chrome-shell hub-bottom-nav-shell__inner">
-            <nav className="hub-bottom-nav" aria-label={t('nav.mainAria')}>
+        <div className='hub-bottom-nav-shell'>
+          <div className='hub-chrome-shell hub-bottom-nav-shell__inner'>
+            <nav className='hub-bottom-nav' aria-label={t('nav.mainAria')}>
               <MainNavItems
                 isTimersActive={isTimersActive}
                 isOwActive={isOwActive}
@@ -641,7 +641,7 @@ const HubNavbar: FC<Props> = ({ onOpenSettings, onOpenAbout }: Props) => {
                 showLabel
                 useTooltip={false}
                 showProjects={false}
-                placement="top start"
+                placement='top start'
                 showChevron={false}
                 stacked
               />

@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
 import { cdn } from '@/lib/shared';
 import BaseMap from '@/components/maps/BaseMap';
@@ -21,6 +22,7 @@ const caveMarker = (feature: { properties: { name: string } }) => {
   return markers.cave;
 };
 const DeimosMapView: FC = () => {
+  const { t } = useTranslation();
   const { state, setDeimosMapToggles } = useMaps();
   const toggles = state.deimosMapToggles;
 
@@ -39,7 +41,7 @@ const DeimosMapView: FC = () => {
 
   return (
     <BaseMap
-      title="Cambion Drift"
+      title={t('maps.titles.cambionDrift')}
       zoom={-1.5}
       center={L.latLng(1904, 2530)}
       url={drift}

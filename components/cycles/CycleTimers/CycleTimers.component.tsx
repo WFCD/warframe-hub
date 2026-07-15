@@ -61,7 +61,7 @@ const timerBadge = (start: string, end: string) => (
     endtime={end}
     interval={1000}
     pullright={false}
-    className="hub-cycle-timer-badge"
+    className='hub-cycle-timer-badge'
   />
 );
 
@@ -75,31 +75,31 @@ const CycleTimerPill: FC<CycleTimerPillProps> = ({
 }: CycleTimerPillProps) => {
   const body = (
     <>
-      <span className="hub-cycle-timer-pill-icon" aria-hidden>
+      <span className='hub-cycle-timer-pill-icon' aria-hidden>
         {icon}
       </span>
-      <span className="hub-cycle-timer-pill-label">{label}</span>
-      {detail ? <span className="hub-cycle-timer-pill-detail">{detail}</span> : null}
+      <span className='hub-cycle-timer-pill-label'>{label}</span>
+      {detail ? <span className='hub-cycle-timer-pill-detail'>{detail}</span> : null}
       {!badge && !hideBadgeSpacer && !detail ? (
-        <span className="hub-cycle-timer-badge-spacer" aria-hidden />
+        <span className='hub-cycle-timer-badge-spacer' aria-hidden />
       ) : null}
     </>
   );
 
   const pill = (
-    <div className="hub-cycle-timer-pill-wrap">
+    <div className='hub-cycle-timer-pill-wrap'>
       <div className={`hub-cycle-timer-pill${detail ? ' hub-cycle-timer-pill--has-detail' : ''}`}>
         {title && title !== label ? (
           <Tooltip delay={HUB_TOOLTIP_DELAY}>
-            <Tooltip.Trigger className="hub-cycle-timer-tooltip-trigger hub-cycle-timer-pill-tooltip-target">
+            <Tooltip.Trigger className='hub-cycle-timer-tooltip-trigger hub-cycle-timer-pill-tooltip-target'>
               {body}
             </Tooltip.Trigger>
-            <Tooltip.Content placement="top">
-              <span className="hub-cycle-timer-tooltip-text">{title}</span>
+            <Tooltip.Content placement='top'>
+              <span className='hub-cycle-timer-tooltip-text'>{title}</span>
             </Tooltip.Content>
           </Tooltip>
         ) : (
-          <span className="hub-cycle-timer-pill-body">{body}</span>
+          <span className='hub-cycle-timer-pill-body'>{body}</span>
         )}
         {badge}
       </div>
@@ -143,7 +143,7 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
             dayMinutes: CETUS_DAY_MINUTES,
             nightMinutes: CETUS_NIGHT_MINUTES,
           })}
-          icon={isDay ? <i className="fa fa-sun day" /> : <i className="fa fa-moon night" />}
+          icon={isDay ? <i className='fa fa-sun day' /> : <i className='fa fa-moon night' />}
           badge={timerBadge(cetusCycle?.activation || now, cetusCycle?.expiry || now)}
         />
       ),
@@ -164,7 +164,7 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
               isWarm === undefined ? t('time.loading') : t(isWarm ? 'time.warm' : 'time.cold'),
             coldMinutes: VALLIS_COLD_MINUTES,
           })}
-          icon={isWarm ? <i className="fa fa-fire warm" /> : <i className="fa fa-snowflake cold" />}
+          icon={isWarm ? <i className='fa fa-fire warm' /> : <i className='fa fa-snowflake cold' />}
           badge={timerBadge(vallisCycle?.activation || now, vallisCycle?.expiry || now)}
         />
       ),
@@ -187,11 +187,11 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
           })}
           icon={
             phase === 'fass' ? (
-              <i className="fa fa-sun day" />
+              <i className='fa fa-sun day' />
             ) : phase === 'vome' ? (
-              <i className="fa fa-moon night" />
+              <i className='fa fa-moon night' />
             ) : (
-              <i className="fa fa-circle" />
+              <i className='fa fa-circle' />
             )
           }
           badge={timerBadge(cambionCycle?.activation || now, cambionCycle?.expiry ?? now)}
@@ -216,11 +216,11 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
           })}
           icon={
             stateKey === 'corpus' ? (
-              <i className="icon-factions-corpus" />
+              <i className='icon-factions-corpus' />
             ) : stateKey === 'grineer' ? (
-              <i className="icon-factions-grineer" />
+              <i className='icon-factions-grineer' />
             ) : (
-              <i className="fa fa-circle" />
+              <i className='fa fa-circle' />
             )
           }
           badge={timerBadge(zarimanCycle?.activation || now, zarimanCycle?.expiry ?? now)}
@@ -238,7 +238,7 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
         <CycleTimerPill
           label={t('reset.header')}
           title={t('reset.tooltip')}
-          icon={<i className="fas fa-redo-alt" />}
+          icon={<i className='fas fa-redo-alt' />}
           badge={timerBadge(now, nextDay)}
         />
       ),
@@ -254,7 +254,7 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
         <CycleTimerPill
           label={t('sentientoutpost.header')}
           title={`${t('sentientoutpost.header')} — ${node} (${type})`}
-          icon={<i className="icon-factions-sentient" />}
+          icon={<i className='icon-factions-sentient' />}
           detail={type ? `${node} (${type})` : node}
           hideBadgeSpacer
         />
@@ -275,20 +275,20 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
             <HubImg
               src={steelPathLogo}
               name={t('steelPath.header')}
-              className="hub-cycle-timer-pill-img no-invert"
-              height="12px"
-              width="12px"
+              className='hub-cycle-timer-pill-img no-invert'
+              height='12px'
+              width='12px'
             />
           }
           detail={
             reward?.name ? (
-              <span className="hub-cycle-timer-pill-reward">
+              <span className='hub-cycle-timer-pill-reward'>
                 {reward.name}
                 {reward.cost ? (
                   <>
                     {' '}
                     ({reward.cost}
-                    <AsyncItemThumb ikey="Steel Essence" alt={t('currency.steelEssense')} />)
+                    <AsyncItemThumb ikey='Steel Essence' alt={t('currency.steelEssense')} />)
                   </>
                 ) : null}
               </span>
@@ -342,10 +342,10 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
   };
 
   return (
-    <div className="hub-cycle-timers" aria-label={t('time.Timer')}>
+    <div className='hub-cycle-timers' aria-label={t('time.Timer')}>
       {items.map(({ id, pill, size }) => (
         <div key={id} className={cellClass(size)}>
-          <div className="hub-cycle-timer-cell-inner">{pill}</div>
+          <div className='hub-cycle-timer-cell-inner'>{pill}</div>
         </div>
       ))}
     </div>

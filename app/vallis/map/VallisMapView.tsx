@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
 import { cdn } from '@/lib/shared';
 import BaseMap from '@/components/maps/BaseMap';
@@ -35,6 +36,7 @@ const caveMarkerFromName = (feature: { properties: { name: string } }) => {
   return null;
 };
 const VallisMapView: FC = () => {
+  const { t } = useTranslation();
   const { state, setVallisMapToggles } = useMaps();
   const toggles = state.vallisMapToggles;
 
@@ -60,7 +62,7 @@ const VallisMapView: FC = () => {
 
   return (
     <BaseMap
-      title="Orb Vallis"
+      title={t('maps.titles.orbVallis')}
       zoom={-1}
       center={L.latLng(942, 1060)}
       url={vallis}

@@ -27,12 +27,12 @@ const InAppNotificationHost: FC = () => {
   if (!items.length) return null;
 
   return (
-    <div className="hub-in-app-notifications" aria-live="polite">
+    <div className='hub-in-app-notifications' aria-live='polite'>
       {items.map((notification) => (
         <button
           key={notification.id}
-          type="button"
-          className="hub-in-app-notification"
+          type='button'
+          className='hub-in-app-notification'
           onClick={() => {
             if (notification.link) {
               window.open(notification.link, '_blank', 'noopener,noreferrer');
@@ -40,11 +40,11 @@ const InAppNotificationHost: FC = () => {
             setItems((current) => current.filter((entry) => entry.id !== notification.id));
           }}
         >
-          <img className="hub-in-app-notification-icon" src={notification.icon} alt="" />
-          <span className="hub-in-app-notification-copy">
-            <strong className="hub-in-app-notification-title">{notification.title}</strong>
+          <img className='hub-in-app-notification-icon' src={notification.icon} alt='' />
+          <span className='hub-in-app-notification-copy'>
+            <strong className='hub-in-app-notification-title'>{notification.title}</strong>
             {notification.body ? (
-              <span className="hub-in-app-notification-body">{notification.body}</span>
+              <span className='hub-in-app-notification-body'>{notification.body}</span>
             ) : null}
           </span>
         </button>

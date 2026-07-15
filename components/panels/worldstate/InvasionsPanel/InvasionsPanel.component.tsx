@@ -16,7 +16,7 @@ type InvasionsPanelProps = {
 const MAX_INVASIONS = 5;
 
 const InvasionList: FC<{ invasions: Invasion[] }> = ({ invasions }: { invasions: Invasion[] }) => (
-  <div className="hub-invasion-list">
+  <div className='hub-invasion-list'>
     {invasions.map((invasion) => (
       <InvasionItem key={invasion.id} invasion={invasion} />
     ))}
@@ -48,8 +48,8 @@ const InvasionsPanel: FC<InvasionsPanelProps> = ({ invasions = [] }: InvasionsPa
         <>
           <InvasionList invasions={current} />
           {overflow.length > 0 && (
-            <Disclosure className="hub-invasion-more" isExpanded={expanded} onExpandedChange={setExpanded}>
-              <Disclosure.Trigger className="hub-invasion-more-trigger">
+            <Disclosure className='hub-invasion-more' isExpanded={expanded} onExpandedChange={setExpanded}>
+              <Disclosure.Trigger className='hub-invasion-more-trigger'>
                 {t('invasions.showMore', { count: overflow.length })}
                 <Disclosure.Indicator />
               </Disclosure.Trigger>

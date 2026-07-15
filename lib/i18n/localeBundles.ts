@@ -2,9 +2,10 @@ import type { i18n as I18nInstance } from 'i18next';
 
 import en from '@/lib/locales/en.json';
 
-type LocaleJson = typeof en;
+/** Non-en Crowdin locales may lag behind `en.json`; treat as open shapes. */
+type LocaleBundle = Record<string, unknown>;
 
-const localeLoaders: Record<string, () => Promise<{ default: LocaleJson }>> = {
+const localeLoaders: Record<string, () => Promise<{ default: LocaleBundle }>> = {
   cs: () => import('@/lib/locales/cs.json'),
   de: () => import('@/lib/locales/de.json'),
   es: () => import('@/lib/locales/es.json'),

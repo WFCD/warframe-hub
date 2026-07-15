@@ -40,17 +40,17 @@ const TimerPanelBody: FC<TimerPanelBodyProps> = ({
     case 'archonHunt':
       return worldstate.archonHunt ? <Panel sortie={worldstate.archonHunt} /> : null;
     case 'fissures':
-      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant="fissures" />;
+      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant='fissures' />;
     case 'voidStorms':
-      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant="voidStorms" />;
+      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant='voidStorms' />;
     case 'steelPathFissures':
-      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant="steelPathFissures" />;
+      return <Panel fissures={(worldstate.fissures as unknown[]) ?? []} variant='steelPathFissures' />;
     case 'bounties':
-      return ostron ? <Panel syndicate={ostron} type="ostron" /> : null;
+      return ostron ? <Panel syndicate={ostron} type='ostron' /> : null;
     case 'solaris-bounties':
-      return solaris ? <Panel syndicate={solaris} type="solaris" /> : null;
+      return solaris ? <Panel syndicate={solaris} type='solaris' /> : null;
     case 'entrati-bounties':
-      return entrati ? <Panel syndicate={entrati} type="entrati" /> : null;
+      return entrati ? <Panel syndicate={entrati} type='entrati' /> : null;
     case 'deals':
       return <Panel sales={(worldstate.flashSales as unknown[]) ?? []} />;
     case 'baro':

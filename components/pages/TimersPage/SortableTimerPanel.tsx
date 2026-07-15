@@ -33,9 +33,9 @@ const SortableTimerPanel: FC<SortableTimerPanelProps> = ({
   const style: CSSProperties = isDragging
     ? { opacity: compact ? 0.45 : 0.2 }
     : {
-        transform: CSS.Translate.toString(transform),
-        transition,
-      };
+      transform: CSS.Translate.toString(transform),
+      transition,
+    };
 
   const visibilityLabel = visible ? t('timersLayout.hidePanel') : t('timersLayout.showPanel');
   const dragLabel = t('timersLayout.dragToReorder');
@@ -58,8 +58,8 @@ const SortableTimerPanel: FC<SortableTimerPanelProps> = ({
           <Tooltip delay={HUB_TOOLTIP_DELAY}>
             <Tooltip.Trigger>
               <button
-                type="button"
-                className="hub-timer-panel-visibility-btn"
+                type='button'
+                className='hub-timer-panel-visibility-btn'
                 aria-label={visibilityLabel}
                 onClick={(event) => {
                   event.stopPropagation();
@@ -74,20 +74,20 @@ const SortableTimerPanel: FC<SortableTimerPanelProps> = ({
           <Tooltip delay={HUB_TOOLTIP_DELAY}>
             <Tooltip.Trigger>
               <button
-                type="button"
-                className="hub-timer-panel-drag-handle"
+                type='button'
+                className='hub-timer-panel-drag-handle'
                 aria-label={dragLabel}
                 {...attributes}
                 {...listeners}
               >
-                <i className="fas fa-grip-vertical" aria-hidden />
+                <i className='fas fa-grip-vertical' aria-hidden />
               </button>
             </Tooltip.Trigger>
             <Tooltip.Content>{dragLabel}</Tooltip.Content>
           </Tooltip>
         </>
       ) : null}
-      <div className="hub-timer-panel-slot-content">{children}</div>
+      <div className='hub-timer-panel-slot-content'>{children}</div>
     </div>
   );
 };

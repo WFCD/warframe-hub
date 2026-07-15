@@ -23,16 +23,16 @@ const ContentTableToolbarDropdown: FC<ContentTableToolbarDropdownProps> = ({
     <Dropdown isOpen={isOpen} onOpenChange={setIsOpen}>
       <Dropdown.Trigger>
         <button
-          type="button"
+          type='button'
           className={['hub-content-table-toolbar-dropdown', active ? 'is-active' : ''].filter(Boolean).join(' ')}
           aria-label={ariaLabel}
           {...hubTestOpenHandler(() => setIsOpen(true))}
         >
-          <span className="hub-content-table-toolbar-dropdown__label">{label}</span>
-          <i className="fas fa-chevron-down hub-content-table-toolbar-dropdown__icon" aria-hidden />
+          <span className='hub-content-table-toolbar-dropdown__label'>{label}</span>
+          <i className='fas fa-chevron-down hub-content-table-toolbar-dropdown__icon' aria-hidden />
         </button>
       </Dropdown.Trigger>
-      <Dropdown.Popover className="hub-content-table-toolbar-dropdown-popover">{children}</Dropdown.Popover>
+      <Dropdown.Popover className='hub-content-table-toolbar-dropdown-popover'>{children}</Dropdown.Popover>
     </Dropdown>
   );
 };

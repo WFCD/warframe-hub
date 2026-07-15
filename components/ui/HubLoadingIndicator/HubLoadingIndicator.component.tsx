@@ -24,12 +24,12 @@ const HubLoadingIndicator: FC<HubLoadingIndicatorProps> = ({
       className={['hub-loading-indicator', compact ? 'hub-loading-indicator--compact' : '', className]
         .filter(Boolean)
         .join(' ')}
-      role="status"
-      aria-live="polite"
+      role='status'
+      aria-live='polite'
       aria-label={label ?? t('time.loading')}
     >
-      <HubLoadingIcon className="hub-loading-indicator__icon" />
-      {label ? <p className="hub-loading-indicator__label">{label}</p> : null}
+      <HubLoadingIcon className='hub-loading-indicator__icon' />
+      {label ? <p className='hub-loading-indicator__label'>{label}</p> : null}
     </div>
   );
 };

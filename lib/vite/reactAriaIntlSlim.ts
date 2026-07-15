@@ -30,9 +30,7 @@ const enUsPathFor = (source: string, importer?: string): string | null => {
 export const reactAriaIntlSlim = (): Plugin => ({
   name: 'hub-react-aria-intl-slim',
   enforce: 'pre',
-  resolveId(source, importer) {
-    return enUsPathFor(source, importer) ?? undefined;
-  },
+  resolveId: (source, importer) => enUsPathFor(source, importer) ?? undefined,
 });
 
 export const REACT_ARIA_OPTIMIZE_DEPS = ['@heroui/react', 'react-aria', 'react-aria-components'] as const;

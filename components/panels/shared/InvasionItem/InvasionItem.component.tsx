@@ -97,12 +97,12 @@ type RewardChipsProps = {
 const RewardChips: FC<RewardChipsProps> = ({ items, countedItems, faction }: RewardChipsProps) => (
   <>
     {items.map((item) => (
-      <Chip key={item} color={chipColor(faction)} variant="soft" size="sm" className="hub-invasion-reward-chip">
+      <Chip key={item} color={chipColor(faction)} variant='soft' size='sm' className='hub-invasion-reward-chip'>
         <AsyncItemThumb alt={item} />
       </Chip>
     ))}
     {countedItems.map((item) => (
-      <Chip key={item.type} color={chipColor(faction)} variant="soft" size="sm" className="hub-invasion-reward-chip">
+      <Chip key={item.type} color={chipColor(faction)} variant='soft' size='sm' className='hub-invasion-reward-chip'>
         <AsyncItemThumb alt={countedItem(item)} ikey={item.key} />
       </Chip>
     ))}
@@ -138,43 +138,43 @@ const InvasionItem: FC<InvasionItemProps> = ({ invasion }: InvasionItemProps) =>
   const defenderIcon = fImg[defFaction.toLowerCase()] || corrupted;
 
   return (
-    <Card className="hub-invasion-card">
-      <Card.Content className="hub-invasion-card-content">
-        <div className="hub-invasion-rewards-side">
+    <Card className='hub-invasion-card'>
+      <Card.Content className='hub-invasion-card-content'>
+        <div className='hub-invasion-rewards-side'>
           {atkItems.length > 0 || atkCntItems.length > 0 ? (
             <RewardChips items={atkItems} countedItems={atkCntItems} faction={atkFaction} />
           ) : null}
         </div>
 
-        <div className="hub-invasion-title">
+        <div className='hub-invasion-title'>
           <b>{invasion.node}</b> — {invasion.desc}
         </div>
 
-        <div className="hub-invasion-rewards-side hub-invasion-rewards-side-end">
+        <div className='hub-invasion-rewards-side hub-invasion-rewards-side-end'>
           {defItems.length > 0 || defCntItems.length > 0 ? (
             <RewardChips items={defItems} countedItems={defCntItems} faction={defFaction} />
           ) : null}
         </div>
 
-        <div className="hub-invasion-progress-row">
+        <div className='hub-invasion-progress-row'>
           <HubImg
             src={attackerIcon}
             name={atkFaction}
-            className="hub-invasion-faction-icon invert"
-            width="20px"
-            height="20px"
+            className='hub-invasion-faction-icon invert'
+            width='20px'
+            height='20px'
           />
 
-          <div className="hub-invasion-progress-bar-wrap">
+          <div className='hub-invasion-progress-bar-wrap'>
             <ProgressBar
               value={attackerPct}
               minValue={0}
               maxValue={100}
               aria-label={`${atkFaction} ${attackerPct.toFixed(0)}% vs ${defFaction}`}
-              className="hub-invasion-progress-bar"
-              size="lg"
+              className='hub-invasion-progress-bar'
+              size='lg'
             >
-              <ProgressBar.Track className="hub-invasion-dual-track">
+              <ProgressBar.Track className='hub-invasion-dual-track'>
                 <div
                   className={`hub-invasion-segment hub-invasion-segment--${factionTone(atkFaction)}`}
                   style={{ width: `${attackerPct}%` }}
@@ -192,13 +192,13 @@ const InvasionItem: FC<InvasionItemProps> = ({ invasion }: InvasionItemProps) =>
           <HubImg
             src={defenderIcon}
             name={defFaction}
-            className="hub-invasion-faction-icon invert"
-            width="20px"
-            height="20px"
+            className='hub-invasion-faction-icon invert'
+            width='20px'
+            height='20px'
           />
         </div>
 
-        <div className="hub-invasion-meta">
+        <div className='hub-invasion-meta'>
           {attackerPct.toFixed(2)}%{eta ? ` — ${eta}` : ''}
         </div>
       </Card.Content>

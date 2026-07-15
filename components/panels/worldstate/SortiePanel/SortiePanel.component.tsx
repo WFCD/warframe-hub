@@ -56,23 +56,23 @@ const SortiePanel: FC<SortiePanelProps> = ({ sortie = {} }: SortiePanelProps) =>
   const now = dayjs().toISOString();
 
   return (
-    <HubPanelWrap title={headertext} className="sortie">
+    <HubPanelWrap title={headertext} className='sortie'>
       <HubPanelList>
         <HubPanelListItem borderless compact>
-          <div className="hub-panel-row">
-            <span className="hub-panel-row-main">
-              <h3 className="my-0 inline-flex items-center gap-1.5">
+          <div className='hub-panel-row'>
+            <span className='hub-panel-row-main'>
+              <h3 className='my-0 inline-flex items-center gap-1.5'>
                 <HubImg
                   src={factionImg}
                   name={sortie.faction ?? ''}
-                  className="li-mission-decorator li-mission-decorator-lg invert shrink-0"
-                  width="25px"
-                  height="25px"
+                  className='li-mission-decorator li-mission-decorator-lg invert shrink-0'
+                  width='25px'
+                  height='25px'
                 />
                 {sortie.boss}
               </h3>
             </span>
-            <span className="hub-panel-row-side">
+            <span className='hub-panel-row-side'>
               <TimeBadge starttime={now} endtime={sortie.expiry} interval={1000} pullright={false} />
             </span>
           </div>
@@ -84,14 +84,14 @@ const SortiePanel: FC<SortiePanelProps> = ({ sortie = {} }: SortiePanelProps) =>
             borderBottom={index === missions.length - 1}
             compact={index !== missions.length - 1}
           >
-            <div className="hub-sortie-mission ml-3">
-              <div className="hub-panel-row hub-panel-row-subtle">
-                <span className="hub-panel-row-main">
+            <div className='hub-sortie-mission ml-3'>
+              <div className='hub-panel-row hub-panel-row-subtle'>
+                <span className='hub-panel-row-main'>
                   <b>
                     {mission.missionType || mission.type} - {mission.node}
                   </b>
                 </span>
-                <span className="hub-panel-row-side" title={mission.modifierDescription}>
+                <span className='hub-panel-row-side' title={mission.modifierDescription}>
                   {mission.modifier}
                 </span>
               </div>

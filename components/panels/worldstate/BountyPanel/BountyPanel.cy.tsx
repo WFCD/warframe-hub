@@ -19,7 +19,7 @@ describe('BountyPanel', () => {
   it('renders bounty jobs table when syndicate is active', () => {
     cy.mount(
       <MapsProvider>
-        <BountyPanel syndicate={activeSyndicate} type="Ostrons" />
+        <BountyPanel syndicate={activeSyndicate} type='Ostrons' />
       </MapsProvider>
     );
     cy.get('.bounties .hub-bounty-panel').should('exist');
@@ -30,7 +30,7 @@ describe('BountyPanel', () => {
   it('shows empty state when syndicate is inactive', () => {
     cy.mount(
       <MapsProvider>
-        <BountyPanel syndicate={{}} type="Ostrons" />
+        <BountyPanel syndicate={{}} type='Ostrons' />
       </MapsProvider>
     );
     cy.get('.bounties .no-content-warning').should('exist');

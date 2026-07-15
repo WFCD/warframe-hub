@@ -44,34 +44,34 @@ const SettingsModal: FC<Props> = ({ show, onHide }: Props) => {
         <Modal.Container
           placement={placement}
           size={size}
-          scroll="inside"
-          className="hub-modal hub-modal--sheet hub-settings-modal"
+          scroll='inside'
+          className='hub-modal hub-modal--sheet hub-settings-modal'
         >
           <Modal.Dialog>
-            <Tabs defaultSelectedKey="general">
-              <Modal.Header className="hub-modal-header">
-                <Modal.Heading className="hub-modal-title">{t('settings.header')}</Modal.Heading>
-                <Tabs.ListContainer className="hub-modal-tabs">
+            <Tabs defaultSelectedKey='general'>
+              <Modal.Header className='hub-modal-header'>
+                <Modal.Heading className='hub-modal-title'>{t('settings.header')}</Modal.Heading>
+                <Tabs.ListContainer className='hub-modal-tabs'>
                   <Tabs.List aria-label={t('settings.tabs.sectionsAria')}>
-                    <Tabs.Tab id="general">{t('settings.tabs.general')}</Tabs.Tab>
-                    <Tabs.Tab id="notifications">{t('settings.tabs.notifications')}</Tabs.Tab>
-                    <Tabs.Tab id="fissures">{t('settings.tabs.fissures')}</Tabs.Tab>
-                    <Tabs.Tab id="sounds">{t('settings.tabs.sounds')}</Tabs.Tab>
+                    <Tabs.Tab id='general'>{t('settings.tabs.general')}</Tabs.Tab>
+                    <Tabs.Tab id='notifications'>{t('settings.tabs.notifications')}</Tabs.Tab>
+                    <Tabs.Tab id='fissures'>{t('settings.tabs.fissures')}</Tabs.Tab>
+                    <Tabs.Tab id='sounds'>{t('settings.tabs.sounds')}</Tabs.Tab>
                   </Tabs.List>
                 </Tabs.ListContainer>
-                <Modal.CloseTrigger className="hub-modal-close" {...hubTestClickHandler(onHide)} />
+                <Modal.CloseTrigger className='hub-modal-close' {...hubTestClickHandler(onHide)} />
               </Modal.Header>
               <Modal.Body>
-                <Tabs.Panel id="general">
+                <Tabs.Panel id='general'>
                   <GeneralFilter />
                 </Tabs.Panel>
-                <Tabs.Panel id="notifications">
+                <Tabs.Panel id='notifications'>
                   <NotificationFilters />
                 </Tabs.Panel>
-                <Tabs.Panel id="fissures">
+                <Tabs.Panel id='fissures'>
                   <FissureFilters />
                 </Tabs.Panel>
-                <Tabs.Panel id="sounds">
+                <Tabs.Panel id='sounds'>
                   <SoundFilters />
                 </Tabs.Panel>
               </Modal.Body>

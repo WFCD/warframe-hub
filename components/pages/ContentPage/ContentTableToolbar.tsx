@@ -16,10 +16,10 @@ const ContentTableToolbar: FC<ContentTableToolbarProps> = ({
   if (!search && !filters && !actions) return null;
 
   return (
-    <div className="hub-content-table-toolbar">
-      {filters ? <div className="hub-content-table-toolbar__filters">{filters}</div> : null}
-      {search ? <div className="hub-content-table-toolbar__search">{search}</div> : null}
-      {actions ? <div className="hub-content-table-toolbar__actions">{actions}</div> : null}
+    <div className='hub-content-table-toolbar'>
+      {filters ? <div className='hub-content-table-toolbar__filters'>{filters}</div> : null}
+      {search ? <div className='hub-content-table-toolbar__search'>{search}</div> : null}
+      {actions ? <div className='hub-content-table-toolbar__actions'>{actions}</div> : null}
     </div>
   );
 };

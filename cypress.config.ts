@@ -1,12 +1,11 @@
 import path from 'node:path';
-import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'cypress';
 import setupNodeEvents from './cypress/plugins/index';
+import devConfig from './dev.config';
 
-const require = createRequire(import.meta.url);
 const repoRoot = path.dirname(fileURLToPath(import.meta.url));
-const { port: devPort } = require('./dev.config.cjs') as { port: number };
+const { port: devPort } = devConfig;
 
 export default defineConfig({
   allowCypressEnv: false,

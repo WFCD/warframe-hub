@@ -37,7 +37,7 @@ const ContentLinkButton: FC<ContentLinkButtonProps> = ({
   if (tone === 'header') {
     return (
       <button
-        type="button"
+        type='button'
         className={['hub-content-header-link', className].filter(Boolean).join(' ')}
         aria-label={ariaLabel}
         onClick={navigate}

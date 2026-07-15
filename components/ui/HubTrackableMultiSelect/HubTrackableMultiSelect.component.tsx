@@ -55,16 +55,16 @@ const HubTrackableMultiSelect: FC<Props> = ({
   };
 
   return (
-    <div className="hub-settings-field">
+    <div className='hub-settings-field'>
       <Autocomplete
         fullWidth
-        className="hub-settings-select hub-settings-multiselect"
+        className='hub-settings-select hub-settings-multiselect'
         placeholder={placeholder}
-        selectionMode="multiple"
+        selectionMode='multiple'
         value={selectedKeys}
         onChange={(keys) => onSelectionChange(normalizeKeys(keys))}
       >
-        <Label className="hub-settings-section-label">{label}</Label>
+        <Label className='hub-settings-section-label'>{label}</Label>
         <Autocomplete.Trigger>
           <Autocomplete.Value>
             {({ defaultChildren, isPlaceholder, state }) => {
@@ -73,7 +73,7 @@ const HubTrackableMultiSelect: FC<Props> = ({
               }
 
               return (
-                <TagGroup size="sm" onRemove={onRemoveTags}>
+                <TagGroup size='sm' onRemove={onRemoveTags}>
                   <TagGroup.List>
                     {state.selectedItems.map((item) => {
                       const option = optionByKey.get(String(item.key));
@@ -93,29 +93,29 @@ const HubTrackableMultiSelect: FC<Props> = ({
           <Autocomplete.ClearButton />
           <Autocomplete.Indicator />
         </Autocomplete.Trigger>
-        <Autocomplete.Popover className="hub-settings-multiselect-popover">
+        <Autocomplete.Popover className='hub-settings-multiselect-popover'>
           <Autocomplete.Filter filter={contains}>
             {showSelectAll ? (
-              <div className="hub-settings-multiselect-actions">
+              <div className='hub-settings-multiselect-actions'>
                 <Button
-                  type="button"
-                  size="sm"
-                  variant="ghost"
+                  type='button'
+                  size='sm'
+                  variant='ghost'
                   onPress={() => onSelectionChange(allOptionKeys)}
                 >
                   {t('ui.selectAll')}
                 </Button>
-                <Button type="button" size="sm" variant="ghost" onPress={() => onSelectionChange([])}>
+                <Button type='button' size='sm' variant='ghost' onPress={() => onSelectionChange([])}>
                   {t('ui.clearAll')}
                 </Button>
               </div>
             ) : null}
             {/* Focus filter input when the popover opens for keyboard users. */}
             {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
-            <SearchField autoFocus name="search" variant="secondary">
+            <SearchField autoFocus name='search' variant='secondary'>
               <SearchField.Group>
                 <SearchField.SearchIcon />
-                <SearchField.Input placeholder={t('ui.search')} />
+                <SearchField.Input placeholder={t('ui.search.placeholder')} />
                 <SearchField.ClearButton />
               </SearchField.Group>
             </SearchField>

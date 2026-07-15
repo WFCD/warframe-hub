@@ -38,12 +38,12 @@ export const resolvePanelContainer = (
 export type PanelLayoutDragResult =
   | { kind: 'noop' }
   | {
-      kind: 'update';
-      activeKeys: MasonryPanelKey[];
-      hiddenKeys: MasonryPanelKey[];
-      toggledKey?: MasonryPanelKey;
-      toggledDisplay?: boolean;
-    };
+    kind: 'update';
+    activeKeys: MasonryPanelKey[];
+    hiddenKeys: MasonryPanelKey[];
+    toggledKey?: MasonryPanelKey;
+    toggledDisplay?: boolean;
+  };
 
 /** Apply a drag-end between active grid slots and the hidden pool. */
 export const applyPanelLayoutDrag = ({

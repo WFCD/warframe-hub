@@ -26,9 +26,9 @@ const TimerPanelPlaceholder: FC<TimerPanelPlaceholderProps> = ({
         .filter(Boolean)
         .join(' ')}
     >
-      <Card.Content className="hub-timer-panel-placeholder-body">
-        <span className="hub-timer-panel-placeholder-label">{label}</span>
-        {!compact ? <p className="hub-timer-panel-placeholder-hint">{t('timersLayout.placeholderHint')}</p> : null}
+      <Card.Content className='hub-timer-panel-placeholder-body'>
+        <span className='hub-timer-panel-placeholder-label'>{label}</span>
+        {!compact ? <p className='hub-timer-panel-placeholder-hint'>{t('timersLayout.placeholderHint')}</p> : null}
       </Card.Content>
     </Card>
   );

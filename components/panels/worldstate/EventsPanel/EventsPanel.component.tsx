@@ -98,7 +98,7 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
   return (
     <HubPanelWrap title={headertext} className={`events ${events.length === 0 ? 'no-content' : ''}`}>
       {activeEvents.length > 0 ? (
-        <div className="hub-events-list">
+        <div className='hub-events-list'>
           {activeEvents.map((event) => {
             const rows = jobRows[event.id] ?? formatJobItems(event);
             const health = Number(getHealth(event));
@@ -106,53 +106,53 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
             const healthColor = isReversed ? healthToneOpposite(health) : healthTone(health);
 
             return (
-              <article key={event.id} className="hub-event-item">
-                <header className="hub-event-header">
-                  <h5 className="hub-event-title">{event.description}</h5>
-                  <Chip className="hub-event-health" color={healthColor} size="sm" variant="soft">
+              <article key={event.id} className='hub-event-item'>
+                <header className='hub-event-header'>
+                  <h5 className='hub-event-title'>{event.description}</h5>
+                  <Chip className='hub-event-health' color={healthColor} size='sm' variant='soft'>
                     {t(isReversed ? 'events.completed' : 'events.remaining', { perc: health })}
                   </Chip>
                 </header>
 
-                {event.tooltip ? <div className="hub-event-tooltip">{event.tooltip}</div> : null}
+                {event.tooltip ? <div className='hub-event-tooltip'>{event.tooltip}</div> : null}
 
                 {event.activation && event.expiry ? (
-                  <div className="hub-event-timer">
+                  <div className='hub-event-timer'>
                     <TimeBadge starttime={event.activation} endtime={event.expiry} interval={1000} pullright={false} />
                   </div>
                 ) : null}
 
                 {event.victimNode ? (
-                  <div className="hub-event-chip-row">
-                    <Chip color="danger" size="sm" variant="soft">
+                  <div className='hub-event-chip-row'>
+                    <Chip color='danger' size='sm' variant='soft'>
                       {event.victimNode}
                     </Chip>
                   </div>
                 ) : null}
 
                 {(event.rewards?.length || event.interimSteps?.length) ? (
-                  <div className="hub-event-section">
-                    {event.rewards?.length ? <div className="hub-event-section-title">{t('events.rewards.header')}</div> : null}
-                    <div className="hub-event-chip-row">
+                  <div className='hub-event-section'>
+                    {event.rewards?.length ? <div className='hub-event-section-title'>{t('events.rewards.header')}</div> : null}
+                    <div className='hub-event-chip-row'>
                       {event.rewards?.map((reward, ri) => (
-                        <span key={`reward-set-${event.id}-${ri}`} className="hub-event-chip-group">
+                        <span key={`reward-set-${event.id}-${ri}`} className='hub-event-chip-group'>
                           {reward.items?.map((item) => (
-                            <Chip key={`${event.id}-reward-item-${ri}-${item}`} color="success" size="sm" variant="soft">
+                            <Chip key={`${event.id}-reward-item-${ri}-${item}`} color='success' size='sm' variant='soft'>
                               {item}
                             </Chip>
                           ))}
                           {reward.countedItems?.map((item, ci) => (
                             <Chip
                               key={`${event.id}-reward-counted-${ri}-${ci}`}
-                              color="success"
-                              size="sm"
-                              variant="soft"
+                              color='success'
+                              size='sm'
+                              variant='soft'
                             >
                               {String(item)}
                             </Chip>
                           ))}
                           {reward.credits ? (
-                            <Chip color="accent" size="sm" variant="soft">
+                            <Chip color='accent' size='sm' variant='soft'>
                               {reward.credits}
                               {t('currency.credAbbr')}
                             </Chip>
@@ -160,18 +160,18 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                         </span>
                       ))}
                       {event.interimSteps?.map((step, si) => (
-                        <span key={`interim-${event.id}-${si}`} className="hub-event-chip-group">
+                        <span key={`interim-${event.id}-${si}`} className='hub-event-chip-group'>
                           {step.reward.items?.map((item) => (
-                            <Chip key={`${event.id}-interim-item-${si}-${item}`} color="success" size="sm" variant="soft">
+                            <Chip key={`${event.id}-interim-item-${si}-${item}`} color='success' size='sm' variant='soft'>
                               {item}
                             </Chip>
                           ))}
                           {step.reward.countedItems?.map((item, ci) => (
                             <Chip
                               key={`${event.id}-interim-counted-${si}-${ci}`}
-                              color="success"
-                              size="sm"
-                              variant="soft"
+                              color='success'
+                              size='sm'
+                              variant='soft'
                             >
                               {String(item)}
                             </Chip>
@@ -192,11 +192,11 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                 ) : null}
 
                 {event.completionBonuses && event.completionBonuses.length > 0 ? (
-                  <div className="hub-event-section">
-                    <div className="hub-event-section-title">{t('events.completionBonuses')}</div>
-                    <div className="hub-event-chip-row">
+                  <div className='hub-event-section'>
+                    <div className='hub-event-section-title'>{t('events.completionBonuses')}</div>
+                    <div className='hub-event-chip-row'>
                       {event.completionBonuses.map((bonus) => (
-                        <Chip key={`${event.id}-bonus-${bonus}`} color="default" size="sm" variant="soft">
+                        <Chip key={`${event.id}-bonus-${bonus}`} color='default' size='sm' variant='soft'>
                           {bonus}
                         </Chip>
                       ))}
@@ -205,9 +205,9 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                 ) : null}
 
                 {event.altActivation !== epoch && event.altExpiry !== epoch ? (
-                  <div className="hub-event-section">
-                    <div className="hub-event-section-title">{t('events.currentCycle')}</div>
-                    <div className="hub-event-timer">
+                  <div className='hub-event-section'>
+                    <div className='hub-event-section-title'>{t('events.currentCycle')}</div>
+                    <div className='hub-event-timer'>
                       <TimeBadge
                         starttime={event.altActivation!}
                         endtime={event.altExpiry!}
@@ -219,9 +219,9 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                 ) : null}
 
                 {event.nextAlt?.activation !== epoch && event.nextAlt?.expiry !== epoch ? (
-                  <div className="hub-event-section">
-                    <div className="hub-event-section-title">{t('events.nextCycle')}</div>
-                    <div className="hub-event-timer">
+                  <div className='hub-event-section'>
+                    <div className='hub-event-section-title'>{t('events.nextCycle')}</div>
+                    <div className='hub-event-timer'>
                       <TimeBadge
                         starttime={event.nextAlt?.activation ?? String(Date.now())}
                         endtime={event.nextAlt?.expiry ?? String(Date.now())}

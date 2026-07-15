@@ -33,7 +33,7 @@ const HubImg: FC<HubImgProps> = ({
       style={style}
     >
       <img
-        className="block"
+        className='block'
         src={src}
         width={Number.isFinite(widthPx) ? widthPx : undefined}
         height={Number.isFinite(heightPx) ? heightPx : undefined}

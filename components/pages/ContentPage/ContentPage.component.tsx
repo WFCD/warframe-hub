@@ -70,25 +70,25 @@ const ContentPage: FC<ContentPageProps> = ({
         .filter(Boolean)
         .join(' ')}
     >
-      <div className="hub-chrome-shell hub-content-page__shell">
+      <div className='hub-chrome-shell hub-content-page__shell'>
         {hasHeader ? (
-          <header className="hub-content-page__header">
-            <div className="hub-content-page__heading">
-              {title ? <h1 className="hub-content-page__title">{title}</h1> : null}
-              {subtitle ? <p className="hub-content-page__subtitle">{subtitle}</p> : null}
+          <header className='hub-content-page__header'>
+            <div className='hub-content-page__heading'>
+              {title ? <h1 className='hub-content-page__title'>{title}</h1> : null}
+              {subtitle ? <p className='hub-content-page__subtitle'>{subtitle}</p> : null}
             </div>
-            {actions ? <div className="hub-content-page__actions">{actions}</div> : null}
+            {actions ? <div className='hub-content-page__actions'>{actions}</div> : null}
           </header>
         ) : null}
         {pageChrome ? (
-          <div ref={anchorRef} className="hub-page-chrome hub-panel-surface">
-            {pageChromeLabel ? <div className="hub-page-chrome__label">{pageChromeLabel}</div> : null}
-            <div className="hub-page-chrome__controls">{!chromeCollapsed ? pageChrome : null}</div>
+          <div ref={anchorRef} className='hub-page-chrome hub-panel-surface'>
+            {pageChromeLabel ? <div className='hub-page-chrome__label'>{pageChromeLabel}</div> : null}
+            <div className='hub-page-chrome__controls'>{!chromeCollapsed ? pageChrome : null}</div>
           </div>
         ) : null}
-        {toolbar ? <div className="hub-content-page__toolbar">{toolbar}</div> : null}
-        {notice ? <div className="hub-content-page__notice">{notice}</div> : null}
-        <div className="hub-content-page__body">{children}</div>
+        {toolbar ? <div className='hub-content-page__toolbar'>{toolbar}</div> : null}
+        {notice ? <div className='hub-content-page__notice'>{notice}</div> : null}
+        <div className='hub-content-page__body'>{children}</div>
       </div>
     </main>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment, useMemo, useState, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Table } from '@heroui/react';
 import ContentPage from '@/components/pages/ContentPage';
 import ContentLinkButton from '@/components/pages/ContentPage/ContentLinkButton';
@@ -49,15 +50,53 @@ type VallisFish = {
 
 const fishData = fish as VallisFish[];
 
-const ResourceCell: FC<{ size: FishSize }> = ({ size }: { size: FishSize }) => (
-  <>
-    {size.resources.scrap}
-    <FishImg type="common" item="scrap" title="Scrap" width="20" />/ {size.standing}
-    <FishImg type="common" item="standing" title="Solaris United Standing" width="15" invert />
-  </>
-);
+const buildVallisDetailItems = (item: VallisFish) =>
+  [
+    item.thumb
+      ? {
+        key: `${item.name}-fish`,
+        label: item.name,
+        href: item.wiki,
+        thumb: item.thumb,
+        imageType: 'fish' as const,
+        width: '200',
+      }
+      : null,
+    item.unique.thumb
+      ? {
+        key: `${item.name}-unique`,
+        label: item.unique.name,
+        href: item.unique.wiki,
+        thumb: item.unique.thumb,
+        imageType: 'parts' as const,
+        width: '200',
+      }
+      : null,
+    item.bait.thumb
+      ? {
+        key: `${item.name}-bait`,
+        label: item.bait.name,
+        thumb: item.bait.thumb,
+        imageType: 'bait' as const,
+        width: '200',
+      }
+      : null,
+  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+
+const ResourceCell: FC<{ size: FishSize }> = ({ size }: { size: FishSize }) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      {size.resources.scrap}
+      <FishImg type='common' item='scrap' title={t('fish.resources.scrap')} width='20' />/ {size.standing}
+      <FishImg type='common' item='standing' title={t('fish.resources.solarisStanding')} width='15' invert />
+    </>
+  );
+};
 
 const VallisFishView: FC = () => {
+  const { t } = useTranslation();
+  const sortAria = (column: string) => t('fish.sortBy', { column });
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const sortAccessors = useMemo(
     () => ({
@@ -88,138 +127,133 @@ const VallisFishView: FC = () => {
 
   return (
     <ContentPage
-      title="Orb Vallis Servofish"
+      title={t('fish.titles.vallis')}
       notice={
-        <p className="hub-content-callout hub-content-callout--warning">
-          All servofish requires either Shockprod or Stunna Fishing Spear for effective capture
-        </p>
+        <p className='hub-content-callout hub-content-callout--warning'>{t('fish.notice.vallisSpear')}</p>
       }
       actions={
         <>
-          <ContentLinkButton href="/ow/fish/howto#hotspots">What is a Hotspot?</ContentLinkButton>
-          <ContentLinkButton href="/vallis/map">Orb Vallis Map</ContentLinkButton>
+          <ContentLinkButton href='/ow/fish/howto#hotspots'>{t('fish.links.hotspot')}</ContentLinkButton>
+          <ContentLinkButton href='/vallis/map'>{t('fish.links.vallisMap')}</ContentLinkButton>
         </>
       }
     >
-      <div className="hub-content-panel hub-content-panel--flush">
-        <Table className="hub-content-table fish-info" variant="primary">
+      <div className='hub-content-panel hub-content-panel--flush'>
+        <Table className='hub-content-table fish-info' variant='primary'>
           <Table.ScrollContainer>
-            <Table.Content aria-label="Orb Vallis Servofish">
+            <Table.Content aria-label={t('fish.titles.vallis')}>
               <Table.Header>
                 <Table.Column />
-                <FishSortableColumn id="name" sort={sort} onSort={toggleSort} isRowHeader title="The name of the fish">
-                  Name
+                <FishSortableColumn
+                  id='name'
+                  sort={sort}
+                  onSort={toggleSort}
+                  isRowHeader
+                  title={t('fish.tooltips.name')}
+                  ariaLabel={sortAria(t('fish.columns.name'))}
+                >
+                  {t('fish.columns.name')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="unique"
+                  id='unique'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Unique item when dismantling - you will receive one regardless of model"
+                  title={t('fish.tooltips.uniqueModel')}
+                  ariaLabel={sortAria(t('fish.columns.unique'))}
                 >
-                  Unique
+                  {t('fish.columns.unique')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="small"
+                  id='small'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Common model - you will get scrap if dismantled or standing if donated"
+                  title={t('fish.tooltips.basicModel')}
+                  ariaLabel={sortAria(t('fish.columns.basic'))}
                 >
-                  Basic
+                  {t('fish.columns.basic')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="medium"
+                  id='medium'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Uncommon model - you will get scrap if dismantled or standing if donated"
+                  title={t('fish.tooltips.adornedModel')}
+                  ariaLabel={sortAria(t('fish.columns.adorned'))}
                 >
-                  Adorned
+                  {t('fish.columns.adorned')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="large"
+                  id='large'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="Rare model - you will get scrap if dismantled or standing if donated"
+                  title={t('fish.tooltips.magnificentModel')}
+                  ariaLabel={sortAria(t('fish.columns.magnificent'))}
                 >
-                  Magnificent
-                </FishSortableColumn>
-                <FishSortableColumn id="location" sort={sort} onSort={toggleSort} title="Location of where to find the servofish">
-                  Location
+                  {t('fish.columns.magnificent')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="time"
+                  id='location'
                   sort={sort}
                   onSort={toggleSort}
-                  title="Temperature of when you can find the servofish - arrow denotes preference"
+                  title={t('fish.tooltips.locationServofish')}
+                  ariaLabel={sortAria(t('fish.columns.location'))}
                 >
-                  Temperature
+                  {t('fish.columns.location')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="rarity"
+                  id='time'
                   sort={sort}
                   onSort={toggleSort}
-                  className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="How likely the fish will spawn"
+                  title={t('fish.tooltips.temperature')}
+                  ariaLabel={sortAria(t('fish.columns.temperature'))}
                 >
-                  Rarity
-                </FishSortableColumn>
-                <FishSortableColumn id="bait" sort={sort} onSort={toggleSort} title="What bait will make this servofish more likely to spawn">
-                  Bait
+                  {t('fish.columns.temperature')}
                 </FishSortableColumn>
                 <FishSortableColumn
-                  id="hotspot"
-                  sort={sort}
-                  onSort={toggleSort}
-                  title="Whether a hotspot is required for this fish to spawn"
-                >
-                  Hotspot Required
-                </FishSortableColumn>
-                <FishSortableColumn
-                  id="maximumPoint"
+                  id='rarity'
                   sort={sort}
                   onSort={toggleSort}
                   className={FISH_TABLE_MOBILE_DETAIL_COL}
-                  title="The maximum points possible for this fish"
+                  title={t('fish.tooltips.rarity')}
+                  ariaLabel={sortAria(t('fish.columns.rarity'))}
                 >
-                  Max Points
+                  {t('fish.columns.rarity')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='bait'
+                  sort={sort}
+                  onSort={toggleSort}
+                  title={t('fish.tooltips.baitServofish')}
+                  ariaLabel={sortAria(t('fish.columns.bait'))}
+                >
+                  {t('fish.columns.bait')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='hotspot'
+                  sort={sort}
+                  onSort={toggleSort}
+                  title={t('fish.tooltips.hotspot')}
+                  ariaLabel={sortAria(t('fish.columns.hotspotRequired'))}
+                >
+                  {t('fish.columns.hotspotRequired')}
+                </FishSortableColumn>
+                <FishSortableColumn
+                  id='maximumPoint'
+                  sort={sort}
+                  onSort={toggleSort}
+                  className={FISH_TABLE_MOBILE_DETAIL_COL}
+                  title={t('fish.tooltips.maxPoints')}
+                  ariaLabel={sortAria(t('fish.columns.maxPoints'))}
+                >
+                  {t('fish.columns.maxPoints')}
                 </FishSortableColumn>
               </Table.Header>
               <Table.Body>
                 {sortedData.map((item) => {
-                  const detailItems = [
-                    item.thumb
-                      ? {
-                          key: `${item.name}-fish`,
-                          label: item.name,
-                          href: item.wiki,
-                          thumb: item.thumb,
-                          imageType: 'fish' as const,
-                          width: '200',
-                        }
-                      : null,
-                    item.unique.thumb
-                      ? {
-                          key: `${item.name}-unique`,
-                          label: item.unique.name,
-                          href: item.unique.wiki,
-                          thumb: item.unique.thumb,
-                          imageType: 'parts' as const,
-                          width: '200',
-                        }
-                      : null,
-                    item.bait.thumb
-                      ? {
-                          key: `${item.name}-bait`,
-                          label: item.bait.name,
-                          thumb: item.bait.thumb,
-                          imageType: 'bait' as const,
-                          width: '200',
-                        }
-                      : null,
-                  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+                  const detailItems = buildVallisDetailItems(item);
 
                   return (
                     <Fragment key={item.name}>
@@ -246,21 +280,21 @@ const VallisFishView: FC = () => {
                         <Table.Cell>
                           <FishTimeTooltip id={`${item.name}-time`} label={item.time.string}>
                             {item.time.cold.appear ? (
-                              <i className="fas fa-lg fa-snowflake hub-content-time-night" />
+                              <i className='fas fa-lg fa-snowflake hub-content-time-night' />
                             ) : null}
-                            {item.time.cold.prefer ? <i className="fas fa-lg fa-arrow-left mx-1" /> : null}
-                            {item.time.warm.prefer ? <i className="fas fa-lg fa-arrow-right mx-1" /> : null}
+                            {item.time.cold.prefer ? <i className='fas fa-lg fa-arrow-left mx-1' /> : null}
+                            {item.time.warm.prefer ? <i className='fas fa-lg fa-arrow-right mx-1' /> : null}
                             {item.time.warm.appear ? (
-                              <i className="fas fa-lg fa-sun hub-content-time-day" />
+                              <i className='fas fa-lg fa-sun hub-content-time-day' />
                             ) : null}
                           </FishTimeTooltip>
                         </Table.Cell>
                         <Table.Cell className={FISH_TABLE_MOBILE_DETAIL_COL}>
                           <FishImg
-                            type="common"
+                            type='common'
                             item={item.rarity.slice(2).toLowerCase()}
                             title={item.rarity.slice(2)}
-                            width="20"
+                            width='20'
                           />
                         </Table.Cell>
                         <Table.Cell>{item.bait.name}</Table.Cell>
@@ -275,22 +309,22 @@ const VallisFishView: FC = () => {
                             <FishDetailPanel
                               items={detailItems}
                               mobileStats={[
-                                { label: 'Unique', value: item.unique.name },
-                                { label: 'Basic', value: <ResourceCell size={item.small} /> },
-                                { label: 'Adorned', value: <ResourceCell size={item.medium} /> },
-                                { label: 'Magnificent', value: <ResourceCell size={item.large} /> },
+                                { label: t('fish.columns.unique'), value: item.unique.name },
+                                { label: t('fish.columns.basic'), value: <ResourceCell size={item.small} /> },
+                                { label: t('fish.columns.adorned'), value: <ResourceCell size={item.medium} /> },
+                                { label: t('fish.columns.magnificent'), value: <ResourceCell size={item.large} /> },
                                 {
-                                  label: 'Rarity',
+                                  label: t('fish.columns.rarity'),
                                   value: (
                                     <FishImg
-                                      type="common"
+                                      type='common'
                                       item={item.rarity.slice(2).toLowerCase()}
                                       title={item.rarity.slice(2)}
-                                      width="20"
+                                      width='20'
                                     />
                                   ),
                                 },
-                                { label: 'Max Points', value: item.maximumPoint },
+                                { label: t('fish.columns.maxPoints'), value: item.maximumPoint },
                               ]}
                             />
                           </Table.Cell>

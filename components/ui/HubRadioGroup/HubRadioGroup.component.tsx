@@ -22,7 +22,7 @@ type HubRadioOptionProps = {
 };
 
 export const HubRadioOption: FC<HubRadioOptionProps> = ({ value, label, id }: HubRadioOptionProps) => (
-  <Radio value={value} id={id} className="hub-radio">
+  <Radio value={value} id={id} className='hub-radio'>
     <Radio.Content>
       <Radio.Control>
         <Radio.Indicator />

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, type FC } from 'react';
+import Link from 'next/link';
+import { Trans, useTranslation } from 'react-i18next';
 import { cdn } from '@/lib/shared';
 import { Chip } from '@heroui/react';
 import ContentPage from '@/components/pages/ContentPage';
@@ -9,388 +11,301 @@ import GuideContentSection from '@/components/pages/ContentPage/GuideContentSect
 import OpenWorldGuideTabList from '@/components/pages/ContentPage/OpenWorldGuideTabList';
 import CodexCard from '@/components/ui/CodexCard';
 import FishImg from '@/components/media/FishImg';
+
 const HowToFishView: FC = () => {
+  const { t } = useTranslation();
   const [active, setActive] = useState('cetus');
   const pageChrome = (
-    <OpenWorldGuideTabList active={active} onSelect={setActive} ariaLabel="Fishing guide region" />
+    <OpenWorldGuideTabList active={active} onSelect={setActive} ariaLabel={t('howto.regionAria')} />
   );
 
   return (
     <ContentPage
-      title="How do Fish?"
-      subtitle="The definitive guide to fishing in Warframe"
-      variant="article"
-      pageChromeLabel="Open world"
+      title={t('howto.title')}
+      subtitle={t('howto.subtitle')}
+      variant='article'
+      pageChromeLabel={t('howto.pageChrome')}
       pageChrome={pageChrome}
       actions={
         <>
-          <ContentLinkButton href="/poe/map" tone="header" aria-label="Plains of Eidolon Map">
-            PoE Map
+          <ContentLinkButton href='/poe/map' tone='header' aria-label={t('howto.links.poeMapAria')}>
+            {t('howto.links.poeMap')}
           </ContentLinkButton>
-          <ContentLinkButton href="/vallis/map" tone="header" aria-label="Orb Vallis Map">
-            Vallis Map
+          <ContentLinkButton href='/vallis/map' tone='header' aria-label={t('howto.links.vallisMapAria')}>
+            {t('howto.links.vallisMap')}
           </ContentLinkButton>
         </>
       }
     >
-      <div className="hub-content-prose">
-        <h4>Contributors</h4>
-        <ul className="hub-content-contributor-list">
+      <div className='hub-content-prose'>
+        <h4>{t('howto.contributors.heading')}</h4>
+        <ul className='hub-content-contributor-list'>
           <li>
-            cranem258 aka PepsiMan
-            <Chip size="sm" variant="soft" color="accent">
-              v1
+            {t('howto.contributors.cranem258')}
+            <Chip size='sm' variant='soft' color='accent'>
+              {t('howto.contributors.v1')}
             </Chip>
           </li>
           <li>
-            MainlandHero
-            <Chip size="sm" variant="soft" color="accent">
-              v2
+            {t('howto.contributors.mainlandHero')}
+            <Chip size='sm' variant='soft' color='accent'>
+              {t('howto.contributors.v2')}
             </Chip>
           </li>
           <li>
-            Tobiah
-            <Chip size="sm" variant="soft" color="accent">
-              fuuusion
+            {t('howto.contributors.tobiah')}
+            <Chip size='sm' variant='soft' color='accent'>
+              {t('howto.contributors.fuuusion')}
             </Chip>
           </li>
         </ul>
-        <FishImg type="guide" item="clem" title="Clem... Clem!" className="hub-content-hero-img" />
+        <FishImg type='guide' item='clem' title={t('howto.images.clem')} className='hub-content-hero-img' />
+        <p>{t('howto.sections.welcome')}</p>
+        <GuideContentSection
+          heading={
+            <h4>
+              <b>{t('howto.sections.startingSteps')}</b>
+            </h4>
+          }
+          active={active}
+          cetus={<p>{t('howto.sections.cetusBounties')}</p>}
+          vallis={<p>{t('howto.sections.vallisBounties')}</p>}
+        />
+        <p>{t('howto.sections.waterBodies')}</p>
+        <br />
+        <br />
+        <p>{t('howto.sections.mapReference')}</p>
+        <p>{t('howto.sections.equipSpear')}</p>
+        <GuideContentSection
+          active={active}
+          cetus={
+            <>
+              <FishImg type='guide' item='guide1' title={t('howto.images.guide1')} />
+              <h6 className='text-center'>{t('howto.credits.shin')}</h6>
+            </>
+          }
+          vallis={
+            <>
+              <FishImg type='guide' item='vallisguide1' title={t('howto.images.vallisGuide1')} />
+              <br />
+              <p>{t('howto.sections.vallisFarmSpot')}</p>
+            </>
+          }
+        />
+        <br />
+        <br />
+        <p>{t('howto.sections.pondRock')}</p>
+        <p>{t('howto.sections.secondSpear')}</p>
         <p>
-          Welcome, if you&apos;re here, you want to know how to fish, and what to do. So sit down and buckle up,
-          because we&apos;re going on a ride. A grinding ride.
+          <Trans i18nKey='howto.sections.referenceTable' components={{ a: <Link href='/poe/fish' /> }} />
         </p>
-        <GuideContentSection
-          heading={
-            <h4>
-              <b>Starting steps! - Bounties</b>
-            </h4>
-          }
-          active={active}
-          cetus={
-            <p>
-              Go to Cetus, do some bounties (by talking to Konzu close to the main gate) to increase your standing have
-              at least 500, buy the first spear from the fish trader (fish icon on minimap, close to Cetus entrance),
-              it&apos;s called &quot;Lanzo fishing spear&quot;.
-            </p>
-          }
-          vallis={
-            <p>
-              Go to Orb Vallis, do some bounties (by talking to Eudico by the elevator) to increase your standing until
-              you have at least 500, buy the first spear from The Businnes (fish icon on minimap, or you can fast travel
-              there using ESC -&gt; Fast Travel), it&apos;s called &quot;Shockprod fishing spear&quot;. If you are coming
-              here from Cetus, technically you can also use those old spears from Cetus, but they will not be as
-              effective here, and grants you less standing.
-            </p>
-          }
-        />
-          <p>
-            There are different kinds of water bodies: Lakes, Ponds/Rivers, Caves, and Sea. They have their own fishes
-            and the spawns are also day-night/warm-cold dependant.
-          </p>
-          <br />
-          <br />
-        <p>Here&apos;s the map for reference</p>
+        <br />
+        <br />
+        <h4>
+          <b>{t('howto.sections.nowFish')}</b>
+        </h4>
         <p>
-            Equip your spear on your gear wheel, and enter the open world, let&apos;s go to this spot since it&apos;s
-            the easier to farm fish in the beginning:
-          </p>
+          <Trans
+            i18nKey='howto.sections.gearWheel'
+            components={{ del: <del /> }}
+          />
+        </p>
+        <p>{t('howto.sections.spawnFish')}</p>
+        <p>{t('howto.sections.splashEffects')}</p>
+        <p>{t('howto.sections.clientBased')}</p>
+        <br />
+        <br />
         <GuideContentSection
+          heading={<h4>{t('howto.sections.catchingMechanic')}</h4>}
           active={active}
           cetus={
             <>
-              <FishImg type="guide" item="guide1" title="Guide 1" />
-              <h6 className="text-center">[Screenshot by --Q--Shin]</h6>
-            </>
-          }
-          vallis={
-            <>
-              <FishImg type="guide" item="vallisguide1" title="Vallis Guide 1" />
-              <br />
+              <h5>{t('howto.sections.catchingComplex')}</h5>
+              <p>{t('howto.sections.catchingHp')}</p>
               <p>
-                You can either farm here or do more bounties to level up your standing with Solaris United until you can
-                get your second spear, which you get once you reach the Doer rank. There are only two fishing spears in
-                Orb Vallis, and Stunna fishing spear is definitely the better one.
-              </p>
-            </>
-          }
-        />
-          <br />
-          <br />
-          <p>
-            Stand on top of that rock on the middle of the pond, you&apos;ll have a 360° view of the pond around you,
-            making it easy to farm fishes.
-          </p>
-          <p>
-            You will be farming here until you get your second (and maybe third) spear, which you get once you reach the
-            next title with the Ostrun, you can farm multiple fishes here but the best one is the Mortus Lungfish, it
-            gives a great amount of standing and resources, but I&apos;d recommend gathering a bunch of them and using
-            them to max your standing until you level up your title. Currently fishing isn&apos;t so great for standing
-            farming, so let&apos;s just hope they fix the bounty system.
-          </p>
-          <p>
-            From now on you should refer to the <a href="/poe/fish">Super Fishing Reference Table </a>
-            for whatever other information more specific on what/where/how to catch each fish. It contains EVERYTHING
-            you need to know about them.
-          </p>
-          <br />
-          <br />
-          <h4>
-            <b>Now let&apos;s fish!</b>
-          </h4>
-          <p>
-            To catch some fish, switch to your spear by clicking it on your gear wheel, keep in mind that when you do
-            so, your gear wheel will switch to the fishing wheel that contains your bait and dye (if you have them,
-            probably not now), so the only way to unequip the spear is pressing F (<del>to pay respects</del>to switch
-            to your weapons) or E to quick melee.
-          </p>
-          <p>
-            Once you grab your spear, fish will start to spawn at random in close proximity to you, so keep your eyes
-            peeled for movement. Once you hear a bubbling sound (you can hold aim to hear them a lot better), follow it
-            and shortly a fish should be spawning where the sound came from. After spawning in, they will keep making
-            the bubbling/swimming sound. Click to throw your spear and if it hits the fish, you&apos;ll catch it!
-            (Maybe)
-          </p>
-          <p>
-            Any splash effects produced in the water will scare the fish away, your sentinel can also cause them if
-            it&apos;s close enough to the water.
-          </p>
-          <p>
-            Remember that Fish are completely client-based, which means that different players will see different fish
-            on the same session.
-          </p>
-          <br />
-          <br />
-        <GuideContentSection
-          heading={<h4>The catching mechanic!</h4>}
-          active={active}
-          cetus={
-            <>
-              <h5>(This part is a bit complex so read carefully.)</h5>
-              <p>
-                The catching mechanic is currently based on HP (health points), so some fish have different amounts of
-                HP, certain spears will deal different amounts of damage to different fish, and some low tiered fish have
-                a very small amount of health, which means they can be caught with any spear. When you go to more
-                uncommon fishes, you will need to pay attention to which spear deals the best damage so you can catch it
-                with 1 hit, and not let it swim away.
-              </p>
-              <p>
-                In the <a href="/poe/fish">Super Fishing Reference Table</a>, the &quot;Spear&quot; column represents
-                the spear that can capture the fish in 1 hit.
+                <Trans
+                  i18nKey='howto.sections.catchingSpearColumn'
+                  components={{ a: <Link href='/poe/fish' /> }}
+                />
               </p>
             </>
           }
           vallis={
             <>
-              <p>
-                The catching mechanic is currently based on how effectively you complete a minigame, please see below
-                for an example:
-              </p>
-              <FishImg type="guide" item="vallisguide3" title="Vallis Guide 3" />
-              <p>
-                Once you have latched onto a servofish with your spear, you want to try and click again when the moving
-                indicator reaches around the center of the red part. If you do not hit the red part of the bar, your
-                catch will not be as effective. When you do hit the red part, it will send out a shockwave from the
-                location where you caught the fish to stun other fish. Shockprod has a shorter stun duration than Stunna
-                spear. Also in this picture is the item Luminous Dye that makes servofish easier to see, but you have to
-                get them from the fish merchant in Cetus.
-              </p>
+              <p>{t('howto.sections.catchingMinigame')}</p>
+              <FishImg type='guide' item='vallisguide3' title={t('howto.images.vallisGuide3')} />
+              <p>{t('howto.sections.catchingMinigameDetail')}</p>
             </>
           }
         />
-          <p>Fishing is all about patience, so keep at it!</p>
-          <br />
-          <br />
+        <p>{t('howto.sections.patience')}</p>
+        <br />
+        <br />
         <GuideContentSection
           heading={
             <h4>
-              <b>Let&apos;s get better fish!</b>
+              <b>{t('howto.sections.betterFish')}</b>
             </h4>
           }
           active={active}
           cetus={
             <>
-              <p>
-                Once you get enough standing, it&apos;s time to go to the Sea, so I&apos;d recommend going here,
-                you&apos;ll need a bunch of Goopola for resources, and they spawn quite consistently:
-              </p>
-              <FishImg type="guide" item="guide2" title="Guide 2" />
+              <p>{t('howto.sections.cetusSea')}</p>
+              <FishImg type='guide' item='guide2' title={t('howto.images.guide2')} />
               <br />
-              <h6 className="text-center">[Screenshot by --Q--Shin]</h6>
+              <h6 className='text-center'>{t('howto.credits.shin')}</h6>
               <br />
-              <p>
-                All the water surface around this island can spawn &quot;Hotspots&quot;, which is the next topic I will
-                explain.
-              </p>
+              <p>{t('howto.sections.cetusHotspotsIntro')}</p>
             </>
           }
           vallis={
             <p>
-              Once you get enough standing and aquired the second fishing spear from The Business, you should consult the{' '}
-              <a href="/vallis/map">Orb Vallis Map</a> for recommended fishing locations for all types of fish.
+              <Trans
+                i18nKey='howto.sections.vallisBetterFish'
+                components={{ a: <Link href='/vallis/map' /> }}
+              />
             </p>
           }
         />
 
-          <br />
-          <br />
-          <br />
+        <br />
+        <br />
+        <br />
         <GuideContentSection
-          id="hotspots"
+          id='hotspots'
           heading={
             <h4>
-              <b>Hotspots</b>
+              <b>{t('howto.sections.hotspots')}</b>
             </h4>
           }
           active={active}
           cetus={
             <>
-              <p>Hotspots are bubbly/wavy water that spawns at random in some locations, it looks like this:</p>
+              <p>{t('howto.sections.cetusHotspotsDesc')}</p>
               <br />
-              <FishImg type="guide" item="guide3" title="Guide 3" />
+              <FishImg type='guide' item='guide3' title={t('howto.images.guide3')} />
               <br />
-              <h6 className="text-center">[Image by Narration]</h6>
+              <h6 className='text-center'>{t('howto.credits.narration')}</h6>
               <br />
               <video autoPlay muted loop>
-                <source src={cdn('webp/fish/guide/hotspot.webm')} type="video/webm" />
-                <source src={cdn('webp/fish/guide/hotspot.mp4')} type="video/mp4" />
+                <source src={cdn('webp/fish/guide/hotspot.webm')} type='video/webm' />
+                <source src={cdn('webp/fish/guide/hotspot.mp4')} type='video/mp4' />
               </video>
               <br />
-              <h6 className="text-center">[Animated GIF by How4Much]</h6>
+              <h6 className='text-center'>{t('howto.credits.how4much')}</h6>
+              <br />
+              <p>{t('howto.sections.cetusMurkray')}</p>
               <br />
               <p>
-                This is the time to learn to use your Dye and Bait. At night, you can catch Murkray, which gives an
-                insane amount of standing and resources that you will need for later on. To do so, you need the
-                appropriate bait for fishes that &quot;Require Bait&quot; in the spreadsheet, take a look at it again to
-                find the fish you&apos;re looking for and its specific bait (In this case, Murkray). For fishes that
-                are not bait required, the proper bait specified will only attract them, making them easier to fish. To
-                craft the Murkray Bait you&apos;ll need to catch Tralok, which are common in the sea at daytime.
+                <Trans
+                  i18nKey='howto.sections.cetusMurkrayBait'
+                  components={{ b: <b /> }}
+                />
               </p>
               <br />
-              <p>
-                So use the Murkray Bait <b>IN CLOSE PROXIMITY TO A HOTSPOT</b>, use the dye to see the fish better, and
-                enjoy catching your Murkrays.
+              <p>{t('howto.sections.boosters')}</p>
+              <br />
+              <p className='hub-content-callout hub-content-callout--warning'>
+                <b>{t('howto.sections.cetusSizeWarning')}</b>
               </p>
               <br />
-              <p>
-                Resource boosters and Smeeta Kavat&apos;s charm affect the fish catches, so it&apos;s highly
-                recommended!
-              </p>
+              <p>{t('howto.sections.sentientLake')}</p>
               <br />
-              <p className="hub-content-callout hub-content-callout--warning">
-                <b>
-                  Keep in mind that even though larger fishes give more standing, they don&apos;t give extra unique
-                  drops, so it&apos;s recommended to get the drops (fillet) from the smaller ones, and save the larger
-                  fish for standing. Unless you really need standing.
-                </b>
-              </p>
-              <br />
-              <p>
-                As Honorable mention: The Sentient Lake, the only &quot;lake&quot; in PoE (that we&apos;re aware of!).
-              </p>
-              <br />
-              <FishImg type="guide" item="guide5" title="Guide 5" />
-              <h6 className="text-center">[Screenshot by --Q--Shin]</h6>
-              <p>Thanks for reading! Hope it helped.</p>
+              <FishImg type='guide' item='guide5' title={t('howto.images.guide5')} />
+              <h6 className='text-center'>{t('howto.credits.shin')}</h6>
+              <p>{t('howto.sections.thanks')}</p>
             </>
           }
           vallis={
             <>
-              <p>Hotspots are glowing water that spawns at random in some locations, it looks like this:</p>
+              <p>{t('howto.sections.vallisHotspotsDesc')}</p>
               <br />
-              <FishImg type="guide" item="vallisguide2" title="Vallis Guide 2" />
+              <FishImg type='guide' item='vallisguide2' title={t('howto.images.vallisGuide2')} />
               <br />
               <br />
               <video autoPlay muted loop>
-                <source src={cdn('webp/fish/guide/vallishotspot.webm')} type="video/webm" />
-                <source src={cdn('webp/fish/guide/vallishotspot.mp4')} type="video/mp4" />
+                <source src={cdn('webp/fish/guide/vallishotspot.webm')} type='video/webm' />
+                <source src={cdn('webp/fish/guide/vallishotspot.mp4')} type='video/mp4' />
               </video>
               <p>
-                This is the time to learn to use your Dye and Bait. During cold cycle, you can catch Tromyzon, which
-                gives an insane amount of standing and resources that you will need for later on. To do so, you need the
-                appropriate bait to maximize the chances for those fish to spawn. Rare fishes do spawn in Orb Vallis
-                without their respective bait, but definitely not as often compared to when you do use their bait.
-                Again, you can refer to the <a href="/vallis/fish">Super Fishing Reference Table</a> for its specific
-                bait.
+                <Trans
+                  i18nKey='howto.sections.vallisTromyzon'
+                  components={{ a: <Link href='/vallis/fish' /> }}
+                />
               </p>
               <br />
               <p>
-                So use the Tromyzon Bait <b>IN CLOSE PROXIMITY TO A HOTSPOT</b>, use the dye to see the fish better, and
-                enjoy catching your Tromyzons.
+                <Trans
+                  i18nKey='howto.sections.vallisTromyzonBait'
+                  components={{ b: <b /> }}
+                />
               </p>
               <br />
-              <p>
-                Resource boosters and Smeeta Kavat&apos;s charm affect the fish catches, so it&apos;s highly
-                recommended!
-              </p>
+              <p>{t('howto.sections.boosters')}</p>
               <br />
-              <p className="hub-content-callout hub-content-callout--warning">
-                <b>
-                  Keep in mind that even though larger fishes give more standing, they don&apos;t give extra unique
-                  drops, so it&apos;s recommended to get the unique parts from the smaller ones, and save the larger
-                  fish for standing. Unless you really need standing.
-                </b>
+              <p className='hub-content-callout hub-content-callout--warning'>
+                <b>{t('howto.sections.vallisSizeWarning')}</b>
               </p>
               <br />
               <br />
-              <FishImg type="guide" item="vallisguide4" title="Vallis Guide 4" />
-              <p>Thanks for reading! Hope it helped.</p>
+              <FishImg type='guide' item='vallisguide4' title={t('howto.images.vallisGuide4')} />
+              <p>{t('howto.sections.thanks')}</p>
               <br />
             </>
           }
         />
-        <h4>Recommended Equipment</h4>
-        <div className="hub-codex-grid">
-            <CodexCard
-              item={{ name: 'Ivara', uniqueName: '/Lotus/Powersuits/Ranger/Ranger' }}
-              link="https://wiki.warframe.com/w/Ivara"
-            >
-              Ivara&apos;s Prowl can help you stay away from enemy awareness.
-              <br />
-              Ivara&apos;s Dashwire can let you get a good angle above fish to throw spears at them
-            </CodexCard>
-            <CodexCard
-              item={{
-                name: 'Banshee',
-                uniqueName: '/Lotus/Powersuits/Banshee/Banshee',
-                description:
+        <h4>{t('howto.sections.equipment')}</h4>
+        <div className='hub-codex-grid'>
+          <CodexCard
+            item={{ name: 'Ivara', uniqueName: '/Lotus/Powersuits/Ranger/Ranger' }}
+            link='https://wiki.warframe.com/w/Ivara'
+          >
+            {t('howto.equipment.ivara')}
+            <br />
+            {t('howto.equipment.ivaraDashwire')}
+          </CodexCard>
+          <CodexCard
+            item={{
+              name: 'Banshee',
+              uniqueName: '/Lotus/Powersuits/Banshee/Banshee',
+              description:
                   "Banshee's Sonarr allows you to see outlines of fish for a short time, but doesn't give weak points or waypoints.",
-              }}
-              link="https://wiki.warframe.com/w/Banshee"
-            />
+            }}
+            link='https://wiki.warframe.com/w/Banshee'
+          />
 
-            <CodexCard
-              item={{
-                name: 'Limbo',
-                uniqueName: '/Lotus/Powersuits/Magician/Magician',
-                description:
+          <CodexCard
+            item={{
+              name: 'Limbo',
+              uniqueName: '/Lotus/Powersuits/Magician/Magician',
+              description:
                   "Limbo in the rift will see an entity outline, but the spear won't be effective as the fish isn't in the rift",
-              }}
-              link="https://wiki.warframe.com/w/Limbo"
-            />
+            }}
+            link='https://wiki.warframe.com/w/Limbo'
+          />
 
-            <CodexCard
-              item={{
-                name: 'Luminous Dye',
-                uniqueName: '/Lotus/Types/Restoratives/Consumable/FishingBoosts/AnglerVision',
-                description: 'Luminous dye shows bright silhouettes of fish in the water, making them easier to catch.',
-              }}
-              link="https://wiki.warframe.com/w/Luminous_Dye"
-            />
+          <CodexCard
+            item={{
+              name: 'Luminous Dye',
+              uniqueName: '/Lotus/Types/Restoratives/Consumable/FishingBoosts/AnglerVision',
+              description: 'Luminous dye shows bright silhouettes of fish in the water, making them easier to catch.',
+            }}
+            link='https://wiki.warframe.com/w/Luminous_Dye'
+          />
 
-            <CodexCard
-              item={{
-                name: 'Oxylus',
-                uniqueName: '/Lotus/Types/Sentinels/SentinelPowersuits/RadarPowerSuit',
-                description:
+          <CodexCard
+            item={{
+              name: 'Oxylus',
+              uniqueName: '/Lotus/Types/Sentinels/SentinelPowersuits/RadarPowerSuit',
+              description:
                   "Oxylus's Scan Aquatic Lifeforms provides a fish highlight similar to luminous dye, and provides waypoints on the map.",
-              }}
-              link="https://wiki.warframe.com/w/Oxylus"
-              link2={{ a: 'https://wiki.warframe.com/w/Scan_Aquatic_Lifeforms', title: 'Mod' }}
-            />
+            }}
+            link='https://wiki.warframe.com/w/Oxylus'
+            link2={{ a: 'https://wiki.warframe.com/w/Scan_Aquatic_Lifeforms', title: t('howto.equipment.mod') }}
+          />
         </div>
         <h4>
-          <b>Now go and fish on!</b>
+          <b>{t('howto.sections.goFish')}</b>
         </h4>
       </div>
     </ContentPage>

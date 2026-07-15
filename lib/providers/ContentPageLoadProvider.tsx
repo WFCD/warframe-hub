@@ -20,7 +20,7 @@ type ContentPageLoadContextValue = {
 const ContentPageLoadContext = createContext<ContentPageLoadContextValue | null>(null);
 
 export const HubPageLoadingShell: FC = () => (
-  <div className="hub-page-loading-shell">
+  <div className='hub-page-loading-shell'>
     <HubLoadingIndicator />
   </div>
 );

@@ -54,21 +54,19 @@ export const makeMapLabel = (labels: unknown): GeoEntry => ({
   name: 'Map Label',
   json: geoJson(labels),
   opts: {
-    pointToLayer(feature, latlng) {
-      return labelAlias(latlng)
-        .setStyle({
-          stroke: false,
-          fill: false,
-          // @ts-expect-error leaflet circleMarker style extension
-          textShadow: '0 0 4px #000, 0 0 5px #000',
-        })
-        .bindTooltip((feature.properties as { name: string }).name, {
-          permanent: true,
-          direction: 'center',
-          className: 'map-label',
-        })
-        .openTooltip();
-    },
+    pointToLayer: (feature, latlng) => labelAlias(latlng)
+      .setStyle({
+        stroke: false,
+        fill: false,
+        // @ts-expect-error leaflet circleMarker style extension
+        textShadow: '0 0 4px #000, 0 0 5px #000',
+      })
+      .bindTooltip((feature.properties as { name: string }).name, {
+        permanent: true,
+        direction: 'center',
+        className: 'map-label',
+      })
+      .openTooltip(),
   },
 });
 

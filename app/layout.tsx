@@ -27,7 +27,7 @@ export const metadata = {
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   return (
-    <html lang="en" className={exo2.className} suppressHydrationWarning>
+    <html lang='en' className={exo2.className} suppressHydrationWarning>
       <body>
         <HubProviders>
           <ClientShell>{children}</ClientShell>

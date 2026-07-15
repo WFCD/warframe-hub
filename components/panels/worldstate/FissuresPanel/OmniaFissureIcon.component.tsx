@@ -84,8 +84,8 @@ const OmniaFissureIcon: FC<OmniaFissureIconProps> = ({ label, className }: Omnia
       title={undefined}
     >
       {outgoingIndex !== null ? (
-        <span className="hub-omnia-fissure-icon__layer hub-omnia-fissure-icon__layer--outgoing">
-          <img src={OMNIA_CYCLE_ICONS[outgoingIndex]} height="24" width="24" alt="" aria-hidden />
+        <span className='hub-omnia-fissure-icon__layer hub-omnia-fissure-icon__layer--outgoing'>
+          <img src={OMNIA_CYCLE_ICONS[outgoingIndex]} height='24' width='24' alt='' aria-hidden />
         </span>
       ) : null}
       <span
@@ -94,7 +94,7 @@ const OmniaFissureIcon: FC<OmniaFissureIconProps> = ({ label, className }: Omnia
           outgoingIndex !== null ? 'hub-omnia-fissure-icon__layer--incoming' : 'hub-omnia-fissure-icon__layer--current',
         ].join(' ')}
       >
-        <img src={OMNIA_CYCLE_ICONS[index]} height="24" width="24" alt={label} />
+        <img src={OMNIA_CYCLE_ICONS[index]} height='24' width='24' alt={label} />
       </span>
     </span>
   );

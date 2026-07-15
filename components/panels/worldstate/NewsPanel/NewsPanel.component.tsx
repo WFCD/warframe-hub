@@ -82,10 +82,10 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
   const carouselIndex = cycle ? activeElemIndex % Math.max(filteredNews.length, 1) : (hover ?? 0);
 
   return (
-    <HubPanelWrap title={headertext} className="news">
-      <div className="hub-news">
-        <div className="hub-news-carousel">
-          <div className="hub-news-carousel-viewport">
+    <HubPanelWrap title={headertext} className='news'>
+      <div className='hub-news'>
+        <div className='hub-news-carousel'>
+          <div className='hub-news-carousel-viewport'>
             {filteredNews.map((newsitem, index) => {
               const isActive = index === carouselIndex;
               return (
@@ -98,7 +98,7 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
                   height={110}
                   fetchPriority={isActive ? 'high' : 'low'}
                   loading={isActive ? 'eager' : 'lazy'}
-                  decoding="async"
+                  decoding='async'
                   onError={onNewsImageError}
                 />
               );
@@ -106,7 +106,7 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
           </div>
         </div>
 
-        <ul className="hub-news-list">
+        <ul className='hub-news-list'>
           {filteredNews.map((newsitem, index) => {
             const { time, label } = newsTitle(newsitem);
             const isActive = cycle && index === carouselIndex;
@@ -116,24 +116,24 @@ const NewsPanel: FC<NewsPanelProps> = ({ news }: NewsPanelProps) => {
               <li key={`${newsitem.id}-li`} data-news-item={newsitem.id}>
                 <a
                   href={newsitem.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className={`hub-news-item${isActive ? ' is-active' : ''}${isHover ? ' is-hover' : ''}`}
                   onMouseEnter={() => setHover(index)}
                   onFocus={() => setHover(index)}
                 >
-                  <span className="hub-news-time">{time}</span>
-                  <span className="hub-news-label">{label}</span>
+                  <span className='hub-news-time'>{time}</span>
+                  <span className='hub-news-label'>{label}</span>
                 </a>
               </li>
             );
           })}
         </ul>
 
-        <div className="hub-news-footer">
+        <div className='hub-news-footer'>
           <HubSwitch
-            id="news-cycle-checkbox"
-            className="hub-news-autocycle"
+            id='news-cycle-checkbox'
+            className='hub-news-autocycle'
             label={t('news.autoprogress')}
             checked={cycle}
             onChange={(isSelected) => dispatch({ type: 'SET_NEWS_AUTO_CYCLE', payload: isSelected })}

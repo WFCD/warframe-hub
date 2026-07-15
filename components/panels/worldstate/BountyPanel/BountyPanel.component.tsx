@@ -72,13 +72,13 @@ const BountyPanel: FC<BountyPanelProps> = ({ syndicate = {}, type = 'Syndicate' 
   };
 
   return (
-    <HubPanelWrap title={headertext} className="bounties">
+    <HubPanelWrap title={headertext} className='bounties'>
       {active ? (
-        <div className="hub-bounty-panel">
-          <div className="hub-bounty-expiry hub-panel-row">
-            <span className="hub-panel-row-main">{t('bounty.expires')}</span>
+        <div className='hub-bounty-panel'>
+          <div className='hub-bounty-expiry hub-panel-row'>
+            <span className='hub-panel-row-main'>{t('bounty.expires')}</span>
             <TimeBadge
-              className="hub-panel-row-side"
+              className='hub-panel-row-side'
               starttime={syndicate.activation!}
               endtime={syndicate.expiry!}
               interval={1000}
@@ -92,7 +92,7 @@ const BountyPanel: FC<BountyPanelProps> = ({ syndicate = {}, type = 'Syndicate' 
             onToggleRow={toggleDetails}
           />
 
-          <div className="hub-bounty-footer">
+          <div className='hub-bounty-footer'>
             <HubSwitch
               id={`${typeId}-bounty-reward-checkbox`}
               label={t('bounty.autoExpand')}

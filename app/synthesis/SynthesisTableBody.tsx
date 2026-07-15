@@ -44,7 +44,7 @@ const SynthesisTableBody: FC<SynthesisTableBodyProps> = ({ rows, currentPage, pe
       {pageItems.map((row) => (
         <tr key={row.name}>
           <td>{row.name}</td>
-          <td className="synth-cell">
+          <td className='synth-cell'>
             <SynthesisImg name={row.name} image={row.imageKey} />
           </td>
           <td>{locationLines(row, (loc) => `${loc.planet} (${loc.mission})`)}</td>

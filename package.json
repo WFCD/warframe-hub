@@ -79,5 +79,13 @@
   },
   "engines": {
     "node": "24"
+  },
+  "overrides": {
+    "eslint-plugin-jsx-a11y": {
+      "eslint": "$eslint"
+    },
+    "eslint-plugin-react": {
+      "eslint": "$eslint"
+    }
   }
 }

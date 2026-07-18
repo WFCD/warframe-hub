@@ -71,7 +71,7 @@
     "nitro": "3.0.260610-beta",
     "sass": "^1.101.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.64.0",
     "vite": "^8.1.5",
     "vite-plugin-pwa": "^1.0.0",

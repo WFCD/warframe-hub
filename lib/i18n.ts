@@ -6,7 +6,6 @@ void i18n.use(initReactI18next).init({
   resources: defaultLocaleResources,
   lng: 'en',
   fallbackLng: 'en',
-  showSupportNotice: false,
   interpolation: {
     escapeValue: false,
     prefix: '{',

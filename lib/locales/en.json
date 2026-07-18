@@ -19,7 +19,7 @@
     "archwing": "Archwing Required for Mission",
     "nightmare": "Nightmare Mission",
     "level": "Level:",
-    "missionSummary": "<type>{{type}}</type> ({{faction}}) | <level>{{levelLabel}}</level> {{min}}-{{max}}"
+    "missionSummary": "<type>{type}</type> ({faction}) | <level>{levelLabel}</level> {min}-{max}"
   },
   "arbitration": {
     "header": "Arbitration"
@@ -324,7 +324,7 @@
     },
     "soundsHelp": "Enable sounds for matching notifications. Use play to preview each tone.",
     "soundsPlayLabel": "Play",
-    "soundsPlay": "Play {{sound}} preview"
+    "soundsPlay": "Play {sound} preview"
   },
   "timersPage": {
     "loading": "Loading timers...",

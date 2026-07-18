@@ -13,7 +13,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "next/dynamic": ["./node_modules/vinext/dist/shims/dynamic.js"],

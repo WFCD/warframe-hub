@@ -9,7 +9,6 @@ void i18nCore.init({
   resources: defaultLocaleResources,
   lng: 'en',
   fallbackLng: 'en',
-  showSupportNotice: false,
   interpolation: {
     escapeValue: false,
     prefix: '{',

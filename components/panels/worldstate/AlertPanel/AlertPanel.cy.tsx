@@ -30,6 +30,11 @@ describe('AlertPanel', () => {
 
     cy.get('.hub-panel-row').should('have.length.at.least', 2);
     cy.contains('Cervantes (Earth)').should('exist');
+    cy.contains('Exterminate').should('exist');
+    cy.contains('Grineer').should('exist');
+    cy.contains('Level:').should('exist');
+    cy.contains('10-15').should('exist');
+    cy.contains('{{').should('not.exist');
     cy.get('.hub-panel-row-side').should('exist');
     cy.get('.hub-alert-rewards .chip').should('have.length.at.least', 2);
     cy.contains('20000cr').should('exist');

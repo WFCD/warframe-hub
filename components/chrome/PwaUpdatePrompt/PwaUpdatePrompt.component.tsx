@@ -17,12 +17,31 @@ const PwaUpdatePrompt: FC = () => {
     onRegisteredSW(_swUrl, registration) {
       if (isDev && registration) {
         void registration.unregister();
+        return;
       }
+      // Replace stale Nuxt/NetworkFirst controllers ASAP (edge cost)
+      if (registration?.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+      void registration?.update();
     },
     onNeedRefresh() {
       if (!isDev) setShow(true);
     },
   });
+
+  useEffect(() => {
+    if (isDev || typeof navigator === 'undefined' || !('serviceWorker' in navigator)) return;
+    void navigator.serviceWorker.getRegistrations().then((regs) => {
+      for (const reg of regs) {
+        const script = reg.active?.scriptURL ?? reg.waiting?.scriptURL ?? reg.installing?.scriptURL;
+        // Drop workers that are not our root /sw.js (legacy paths)
+        if (script && !script.endsWith('/sw.js')) {
+          void reg.unregister();
+        }
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (!isDev && needRefresh) setShow(true);

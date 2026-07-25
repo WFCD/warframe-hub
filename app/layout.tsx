@@ -2,6 +2,7 @@ import type { ReactNode, FC } from 'react';
 import { Exo_2 } from 'next/font/google';
 import HubProviders from '@/lib/providers/HubProviders';
 import ClientShell from '@/components/chrome/ClientShell';
+import SentryInit from '@/components/chrome/SentryInit';
 
 const exo2 = Exo_2({
   subsets: ['latin'],
@@ -28,7 +29,11 @@ export const metadata = {
 const RootLayout: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en' className={exo2.className} suppressHydrationWarning>
+      <head>
+        <script src='/runtime-env.js' />
+      </head>
       <body>
+        <SentryInit />
         <HubProviders>
           <ClientShell>{children}</ClientShell>
         </HubProviders>

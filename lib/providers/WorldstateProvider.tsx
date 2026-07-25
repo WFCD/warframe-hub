@@ -27,7 +27,9 @@ import {
   isWorldstateFetchDue,
   readWorldstateCacheMeta,
   writeWorldstateCacheMeta,
+  wsMetaStorageKey,
 } from '../worldstate/worldstateCache';
+import { startPollLeadership } from '../worldstate/pollLeadership';
 import { ensureI18nLocale } from '../i18n/localeBundles';
 import i18nCore from '../i18nCore';
 
@@ -179,12 +181,38 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
     writeStorage(wsStorageKey(platform), ws);
   }, [state.worldstates, platform]);
 
+  const isLeaderRef = useRef(false);
+  const leadershipReadyRef = useRef(false);
+  const scheduleNextRef = useRef<() => void>(() => {});
+
+  const hydrateFromStorage = useCallback((p: Platform) => {
+    const stored = readStorage<WorldstateData>(wsStorageKey(p));
+    if (!stored || isPlaceholderWorldstate(stored)) return;
+    const meta = readWorldstateCacheMeta(p);
+    dispatch({
+      type: 'HYDRATE_PLATFORM',
+      payload: {
+        platform: p,
+        data: stored,
+        fetchedAt: meta?.fetchedAt,
+      },
+    });
+  }, []);
+
   const updateWorldstate = useCallback(async (options?: UpdateWorldstateOptions) => {
     if (getDataMode() !== 'live') return;
 
     const activePlatform = notifierDepsRef.current.platform;
     const locale = notifierDepsRef.current.locale;
     const fetchedAt = lastFetchedAtRef.current;
+    const force = options?.force === true;
+
+    // Followers: adopt leader's localStorage; only force (banner) may network
+    if (leadershipReadyRef.current && !isLeaderRef.current && !force) {
+      hydrateFromStorage(activePlatform);
+      setInitialFetchSettled(true);
+      return;
+    }
 
     if (
       !isWorldstateFetchDue({
@@ -192,7 +220,7 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
         worldstate: worldstateRef.current,
         locale,
         fetchedAt,
-        force: options?.force,
+        force,
       })
     ) {
       setInitialFetchSettled(true);
@@ -234,7 +262,7 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
 
     fetchInFlightRef.current = run;
     await run;
-  }, []);
+  }, [hydrateFromStorage]);
 
   const hasReadyWorldstate =
     Boolean(state.lastUpdated[platform]) ||
@@ -247,17 +275,30 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
 
   useEffect(() => {
     if (getDataMode() !== 'live') return;
+    return startPollLeadership((next) => {
+      isLeaderRef.current = next;
+      leadershipReadyRef.current = true;
+      if (next) void updateWorldstate();
+      else hydrateFromStorage(notifierDepsRef.current.platform);
+    });
+  }, [updateWorldstate, hydrateFromStorage]);
+
+  useEffect(() => {
+    if (getDataMode() !== 'live') return;
 
     let cancelled = false;
-    let timeoutId: ReturnType<typeof setTimeout>;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     const scheduleNext = () => {
       if (cancelled) return;
-      const interval = getWorldstatePollIntervalMs(worldstateRef.current.timestamp);
+      if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+      const interval = getWorldstatePollIntervalMs();
       timeoutId = setTimeout(() => void tick(), interval);
     };
+    scheduleNextRef.current = scheduleNext;
 
     const tick = async () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
       await updateWorldstate();
       scheduleNext();
     };
@@ -267,24 +308,42 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
 
     return () => {
       cancelled = true;
-      clearTimeout(timeoutId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
     };
   }, [updateWorldstate, platform]);
 
   useEffect(() => {
-    const onOnline = () => void updateWorldstate();
+    const onOnline = () => {
+      if (!leadershipReadyRef.current || isLeaderRef.current) void updateWorldstate();
+      else hydrateFromStorage(notifierDepsRef.current.platform);
+    };
     window.addEventListener('online', onOnline);
     return () => window.removeEventListener('online', onOnline);
-  }, [updateWorldstate]);
+  }, [updateWorldstate, hydrateFromStorage]);
 
   useEffect(() => {
     if (getDataMode() !== 'live') return;
     const onVisible = () => {
-      if (document.visibilityState === 'visible') void updateWorldstate();
+      if (document.visibilityState !== 'visible') return;
+      if (!leadershipReadyRef.current || isLeaderRef.current) void updateWorldstate();
+      else hydrateFromStorage(notifierDepsRef.current.platform);
+      scheduleNextRef.current();
     };
     document.addEventListener('visibilitychange', onVisible);
     return () => document.removeEventListener('visibilitychange', onVisible);
-  }, [updateWorldstate]);
+  }, [updateWorldstate, hydrateFromStorage]);
+
+  useEffect(() => {
+    if (getDataMode() !== 'live') return;
+    const onStorage = (event: StorageEvent) => {
+      if (!event.key) return;
+      const p = notifierDepsRef.current.platform;
+      if (event.key !== wsStorageKey(p) && event.key !== wsMetaStorageKey(p)) return;
+      hydrateFromStorage(p);
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, [hydrateFromStorage]);
 
   const value = useMemo(
     () => ({

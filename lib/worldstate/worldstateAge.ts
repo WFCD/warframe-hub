@@ -1,5 +1,4 @@
 export const STALE_WORLDSTATE_MS = 5 * 60 * 1000;
-export const STALE_POLL_INTERVAL_MS = 10 * 1000;
 
 export const getWorldstateAgeMs = (timestamp?: string, at = Date.now()): number | null => {
   if (!timestamp) return null;

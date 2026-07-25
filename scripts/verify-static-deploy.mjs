@@ -40,4 +40,27 @@ if (missing.length) {
   process.exit(1);
 }
 
-console.log(`Static deploy OK: ${expected.length} routes, 0 serverless fallbacks.`);
+const swPath = path.join(clientDir, 'sw.js');
+if (!fs.existsSync(swPath)) {
+  console.error('Missing service worker in dist/client/sw.js (Vercel outputDirectory would 404 /sw.js).');
+  process.exit(1);
+}
+
+const workboxFiles = fs.readdirSync(clientDir).filter((name) => /^workbox-.*\.js$/.test(name));
+if (!workboxFiles.length) {
+  console.error('Missing workbox-*.js next to dist/client/sw.js.');
+  process.exit(1);
+}
+
+const serverEntry = path.join(root, 'dist', 'server', 'index.js');
+const serverSrc = fs.readFileSync(serverEntry, 'utf8');
+for (const asset of ['/sw.js', '/registerSW.js', '/manifest.webmanifest', `/${workboxFiles[0]}`]) {
+  if (!serverSrc.includes(`\`${asset}\``)) {
+    console.error(`dist/server/index.js publicFiles missing ${asset} (run patch-pwa-public-files).`);
+    process.exit(1);
+  }
+}
+
+console.log(
+  `Static deploy OK: ${expected.length} routes, 0 serverless fallbacks, SW + ${workboxFiles[0]}.`,
+);

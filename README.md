@@ -36,6 +36,33 @@ $ npm start
 
 The website will be available for viewing at http://localhost:8742
 
+## Self-hosting (Docker)
+
+Official site stays on **Vercel**. Images publish to **GHCR** on each semantic-release (`ghcr.io/wfcd/warframe-hub`).
+
+For self-host (e.g. behind [SWAG](https://github.com/linuxserver/docker-swag)):
+
+```bash
+docker pull ghcr.io/wfcd/warframe-hub:latest
+docker run --rm -p 8742:8742 -e NEXT_PUBLIC_DSN=https://your@sentry.io/project ghcr.io/wfcd/warframe-hub:latest
+# → http://localhost:8742
+```
+
+Or copy the sample compose and adapt (join your SWAG network; proxy to `http://hub:8742`):
+
+```bash
+cp docker-compose.sample.yml docker-compose.yml
+docker compose up -d
+```
+
+Local image build (optional):
+
+```bash
+docker build -t warframe-hub .
+```
+
+`NEXT_PUBLIC_DSN` is injected at **container start** via `docker/entrypoint.sh` → `/runtime-env.js` (not baked into the image). Clients still call `api.warframestat.us` / `cdn.warframestat.us` directly — the hub process does not proxy those.
+
 ## Development
 
 See **[REPO_LAYOUT.md](REPO_LAYOUT.md)** for what lives where.

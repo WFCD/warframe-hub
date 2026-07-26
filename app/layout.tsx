@@ -29,9 +29,6 @@ export const metadata = {
 const RootLayout: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en' className={exo2.className} suppressHydrationWarning>
-      <head>
-        <script src='/runtime-env.js' />
-      </head>
       <body>
         <SentryInit />
         <HubProviders>

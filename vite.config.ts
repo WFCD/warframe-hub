@@ -149,8 +149,7 @@ export default defineConfig(() => ({
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/api\//],
+        // No navigateFallback — vinext prerenders per-route HTML (codex.html, etc.)
         runtimeCaching,
       },
     }),

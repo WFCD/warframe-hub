@@ -13,12 +13,23 @@ const loadRuntimeEnv = (): Promise<void> => {
   if (runtimeEnvPromise) return runtimeEnvPromise;
 
   runtimeEnvPromise = new Promise((resolve) => {
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      resolve();
+    };
+
     const existing = document.querySelector<HTMLScriptElement>('script[data-hub-runtime-env]');
     if (existing) {
-      existing.addEventListener('load', () => resolve(), { once: true });
-      existing.addEventListener('error', () => resolve(), { once: true });
-      // Already loaded
-      if (window.__HUB_RUNTIME_ENV__) resolve();
+      if (window.__HUB_RUNTIME_ENV__) {
+        done();
+        return;
+      }
+      existing.addEventListener('load', done, { once: true });
+      existing.addEventListener('error', done, { once: true });
+      // load/error may already have fired without setting runtime env
+      setTimeout(done, 50);
       return;
     }
 
@@ -26,8 +37,8 @@ const loadRuntimeEnv = (): Promise<void> => {
     script.src = '/runtime-env.js';
     script.async = true;
     script.dataset.hubRuntimeEnv = '1';
-    script.onload = () => resolve();
-    script.onerror = () => resolve();
+    script.onload = done;
+    script.onerror = done;
     document.head.appendChild(script);
   });
 

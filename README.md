@@ -44,7 +44,7 @@ For self-host (e.g. behind [SWAG](https://github.com/linuxserver/docker-swag)):
 
 ```bash
 docker pull ghcr.io/wfcd/warframe-hub:latest
-docker run --rm -p 8742:8742 -e NEXT_PUBLIC_DSN=https://your@sentry.io/project ghcr.io/wfcd/warframe-hub:latest
+docker run --rm -p 8742:8742 -e NEXT_PUBLIC_DSN=https://public_key@o0.ingest.sentry.io/0 ghcr.io/wfcd/warframe-hub:latest
 # → http://localhost:8742
 ```
 
@@ -61,7 +61,7 @@ Local image build (optional):
 docker build -t warframe-hub .
 ```
 
-`NEXT_PUBLIC_DSN` is injected at **container start** via `docker/entrypoint.sh` → `/runtime-env.js` (not baked into the image). Clients still call `api.warframestat.us` / `cdn.warframestat.us` directly — the hub process does not proxy those.
+`NEXT_PUBLIC_DSN` is injected at **container start** via `docker/entrypoint.sh` (writes `dist/client/runtime-env.js`). Browsers load it as `/runtime-env.js` (not baked into the image). Clients still call `api.warframestat.us` / `cdn.warframestat.us` directly — the hub process does not proxy those.
 
 ## Development
 

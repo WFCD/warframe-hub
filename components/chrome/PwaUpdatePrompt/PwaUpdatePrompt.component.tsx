@@ -19,10 +19,7 @@ const PwaUpdatePrompt: FC = () => {
         void registration.unregister();
         return;
       }
-      // Replace stale Nuxt/NetworkFirst controllers ASAP (edge cost)
-      if (registration?.waiting) {
-        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-      }
+      // Keep waiting worker until user clicks Update Now (registerType: prompt)
       void registration?.update();
     },
     onNeedRefresh() {

@@ -146,8 +146,8 @@ export default defineConfig(() => ({
           '**/vinext-client-entry-manifest.json',
           '**/runtime-env.js',
         ],
-        clientsClaim: true,
-        skipWaiting: true,
+        clientsClaim: false,
+        skipWaiting: false,
         cleanupOutdatedCaches: true,
         // No navigateFallback — vinext prerenders per-route HTML (codex.html, etc.)
         runtimeCaching,

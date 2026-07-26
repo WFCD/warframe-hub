@@ -8,6 +8,6 @@ export const dismissVinextDevOverlay = (doc: Document = document): void => {
     while (node?.parentElement && node.parentElement !== doc.body) {
       node = node.parentElement;
     }
-    node?.remove();
+    if (node?.parentElement === doc.body) node.remove();
   }
 };

@@ -11,6 +11,7 @@ dist
 dev-dist
 coverage
 .env
+.env.*
 .secrets
 .eslintcache
 tsconfig.tsbuildinfo

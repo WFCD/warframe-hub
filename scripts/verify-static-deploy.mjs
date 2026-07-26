@@ -52,13 +52,33 @@ if (!workboxFiles.length) {
   process.exit(1);
 }
 
-const serverEntry = path.join(root, 'dist', 'server', 'index.js');
-const serverSrc = fs.readFileSync(serverEntry, 'utf8');
-for (const asset of ['/sw.js', '/registerSW.js', '/manifest.webmanifest', `/${workboxFiles[0]}`]) {
-  if (!serverSrc.includes(`\`${asset}\``)) {
-    console.error(`dist/server/index.js publicFiles missing ${asset} (run patch-pwa-public-files).`);
-    process.exit(1);
+const requiredAssets = ['/sw.js', '/registerSW.js', '/manifest.webmanifest', `/${workboxFiles[0]}`];
+const serverBundles = ['index.js', 'ssr/index.js']
+  .map((name) => path.join(root, 'dist', 'server', name))
+  .filter((full) => fs.existsSync(full));
+
+if (!serverBundles.length) {
+  console.error('Missing dist/server bundles to validate PWA publicFiles allowlist.');
+  process.exit(1);
+}
+
+let checked = 0;
+for (const bundle of serverBundles) {
+  const src = fs.readFileSync(bundle, 'utf8');
+  // Only bundles that own the publicFiles Set need the PWA allowlist
+  if (!src.includes('`/favicon.ico`') && !src.includes('`/runtime-env.js`')) continue;
+  checked += 1;
+  for (const asset of requiredAssets) {
+    if (!src.includes(`\`${asset}\``)) {
+      console.error(`${path.relative(root, bundle)} publicFiles missing ${asset} (run patch-pwa-public-files).`);
+      process.exit(1);
+    }
   }
+}
+
+if (!checked) {
+  console.error('No dist/server bundle with publicFiles Set found for PWA allowlist check.');
+  process.exit(1);
 }
 
 console.log(

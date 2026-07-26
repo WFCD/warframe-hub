@@ -26,7 +26,8 @@ const startBroadcastFallback = () => {
   }
   channel = new BroadcastChannel(CHANNEL_NAME);
   const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-  let knownLeader: string | null = null;
+  let knownLeader = id;
+  notify(true);
 
   const claim = () => {
     channel?.postMessage({ type: 'claim', id });
@@ -36,7 +37,7 @@ const startBroadcastFallback = () => {
     const data = event.data;
     if (!data || typeof data !== 'object') return;
     if (data.type === 'claim' && data.id) {
-      if (!knownLeader || data.id < knownLeader || data.id === id) {
+      if (data.id < knownLeader || data.id === id) {
         knownLeader = data.id;
         notify(knownLeader === id);
       }
@@ -65,8 +66,11 @@ const startWebLock = () => {
           notify(false);
         },
       );
-    } catch {
-      // Aborted or unsupported mid-flight — try fallback if we never led
+    } catch (err) {
+      // Teardown abort must not flip to BroadcastChannel fallback
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      if ((err as { name?: string } | null)?.name === 'AbortError') return;
+      // Unsupported / genuine lock failure before leadership
       if (!leader) startBroadcastFallback();
     }
   };

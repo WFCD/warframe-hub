@@ -185,9 +185,9 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
   const leadershipReadyRef = useRef(false);
   const scheduleNextRef = useRef<() => void>(() => {});
 
-  const hydrateFromStorage = useCallback((p: Platform) => {
+  const hydrateFromStorage = useCallback((p: Platform): boolean => {
     const stored = readStorage<WorldstateData>(wsStorageKey(p));
-    if (!stored || isPlaceholderWorldstate(stored)) return;
+    if (!stored || isPlaceholderWorldstate(stored)) return false;
     const meta = readWorldstateCacheMeta(p);
     dispatch({
       type: 'HYDRATE_PLATFORM',
@@ -197,6 +197,7 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
         fetchedAt: meta?.fetchedAt,
       },
     });
+    return true;
   }, []);
 
   const updateWorldstate = useCallback(async (options?: UpdateWorldstateOptions) => {
@@ -209,8 +210,7 @@ const WorldstateProvider: FC<{ children: ReactNode }> = ({ children }: { childre
 
     // Followers: adopt leader's localStorage; only force (banner) may network
     if (leadershipReadyRef.current && !isLeaderRef.current && !force) {
-      hydrateFromStorage(activePlatform);
-      setInitialFetchSettled(true);
+      if (hydrateFromStorage(activePlatform)) setInitialFetchSettled(true);
       return;
     }
 

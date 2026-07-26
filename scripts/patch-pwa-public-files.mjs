@@ -26,13 +26,19 @@ for (const rel of extra) {
   }
 }
 
+const allowlistComplete = (setLiteral) => extra.every((p) => setLiteral.includes(`\`${p}\``));
+
+/**
+ * @returns {'ok' | 'skip' | 'fail'}
+ * ok = allowlist present (patched or already complete)
+ * skip = bundle has no publicFiles Set
+ * fail = Set found but could not ensure allowlist
+ */
 const patchFile = (filePath) => {
   const before = fs.readFileSync(filePath, 'utf8');
   const marker = '`/favicon.ico`';
-  const start = before.indexOf('new Set([');
-  if (start < 0) return false;
+  const rel = path.relative(root, filePath);
 
-  // Prefer the Set that includes favicon (public files allowlist)
   let setStart = -1;
   let searchFrom = 0;
   while (true) {
@@ -47,19 +53,25 @@ const patchFile = (filePath) => {
     }
     searchFrom = idx + 8;
   }
-  if (setStart < 0) return false;
+  if (setStart < 0) {
+    console.log(`No publicFiles Set in ${rel}; skip`);
+    return 'skip';
+  }
 
   const setEnd = before.indexOf('])', setStart);
   const setLiteral = before.slice(setStart, setEnd + 2);
   const missing = extra.filter((p) => !setLiteral.includes(`\`${p}\``));
-  if (!missing.length) return false;
+  if (!missing.length) {
+    console.log(`publicFiles already allowlisted in ${rel}`);
+    return allowlistComplete(setLiteral) ? 'ok' : 'fail';
+  }
 
   const insert = missing.map((p) => `\`${p}\``).join(',');
-  // Insert before closing ])
   const patched = before.slice(0, setEnd) + ',' + insert + before.slice(setEnd);
   fs.writeFileSync(filePath, patched);
-  console.log(`Patched publicFiles in ${path.relative(root, filePath)}: ${missing.join(', ')}`);
-  return true;
+  console.log(`Patched publicFiles in ${rel}: ${missing.join(', ')}`);
+  const nextLiteral = patched.slice(setStart, patched.indexOf('])', setStart) + 2);
+  return allowlistComplete(nextLiteral) ? 'ok' : 'fail';
 };
 
 const targets = [];
@@ -68,12 +80,22 @@ for (const name of ['index.js', 'ssr/index.js']) {
   if (fs.existsSync(full)) targets.push(full);
 }
 
-let patched = 0;
-for (const file of targets) {
-  if (patchFile(file)) patched += 1;
+if (!targets.length) {
+  console.error('No dist/server bundles found to patch for PWA assets.');
+  process.exit(1);
 }
 
-if (!patched) {
-  console.error('Could not locate vinext publicFiles Set to patch for PWA assets.');
+let ensured = 0;
+for (const file of targets) {
+  const result = patchFile(file);
+  if (result === 'fail') {
+    console.error(`Could not ensure PWA publicFiles allowlist in ${path.relative(root, file)}`);
+    process.exit(1);
+  }
+  if (result === 'ok') ensured += 1;
+}
+
+if (!ensured) {
+  console.error('No vinext publicFiles Set found to patch for PWA assets.');
   process.exit(1);
 }

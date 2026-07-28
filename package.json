@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build && node scripts/verify-static-deploy.mjs",
+    "build": "vinext build && node scripts/patch-pwa-public-files.mjs && node scripts/verify-static-deploy.mjs",
     "start": "vinext start --port 8742",
     "vinext:check": "vinext check",
     "typecheck": "tsc --noEmit",

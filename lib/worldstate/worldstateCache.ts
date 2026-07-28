@@ -2,7 +2,6 @@ import type { Platform, WorldstateData } from '@/lib/shared';
 import { readStorage, writeStorage } from '@/lib/providers/storageUtils';
 import { getDataMode } from '../test/dataMode';
 import { isPlaceholderWorldstate } from './worldstatePlaceholder';
-import { isWorldstateStale, STALE_POLL_INTERVAL_MS, STALE_WORLDSTATE_MS } from './worldstateAge';
 
 export type WorldstateCacheMeta = {
   fetchedAt: string;
@@ -27,10 +26,8 @@ export const getCacheAgeMs = (fetchedAt?: string, at = Date.now()): number | nul
   return at - parsed;
 };
 
-export const getWorldstatePollIntervalMs = (worldstateTimestamp?: string, at = Date.now()): number =>
-  isWorldstateStale(worldstateTimestamp, STALE_WORLDSTATE_MS, at)
-    ? STALE_POLL_INTERVAL_MS
-    : WORLDSTATE_POLL_INTERVAL_MS;
+/** Always use configured poll interval (no accelerated stale polling). */
+export const getWorldstatePollIntervalMs = (): number => WORLDSTATE_POLL_INTERVAL_MS;
 
 export const isWorldstateFetchDue = ({
   platform,
@@ -52,13 +49,13 @@ export const isWorldstateFetchDue = ({
   if (isPlaceholderWorldstate(worldstate)) return true;
 
   const meta = readWorldstateCacheMeta(platform);
-  const resolvedFetchedAt = fetchedAt ?? meta?.fetchedAt;
+  // Prefer storage meta so cross-tab followers see the leader's fetch
+  const resolvedFetchedAt = meta?.fetchedAt ?? fetchedAt;
   if (!resolvedFetchedAt) return true;
   if (meta?.locale && meta.locale !== locale) return true;
 
   const cacheAge = getCacheAgeMs(resolvedFetchedAt, at);
   if (cacheAge === null) return true;
 
-  const pollInterval = getWorldstatePollIntervalMs(worldstate.timestamp, at);
-  return cacheAge >= pollInterval;
+  return cacheAge >= getWorldstatePollIntervalMs();
 };

@@ -3,7 +3,7 @@ import type { RuntimeCaching } from 'workbox-build';
 export const runtimeCaching: RuntimeCaching[] = [
   {
     urlPattern: /^https:\/\/cdn\.warframestat\.us\/.*/i,
-    handler: 'StaleWhileRevalidate',
+    handler: 'CacheFirst',
     options: {
       cacheName: 'hub-cdn',
       expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 7 },
@@ -11,11 +11,10 @@ export const runtimeCaching: RuntimeCaching[] = [
   },
   {
     urlPattern: /^https:\/\/api\.warframestat\.us\/.*/i,
-    handler: 'NetworkFirst',
+    handler: 'StaleWhileRevalidate',
     options: {
       cacheName: 'hub-api',
-      networkTimeoutSeconds: 3,
-      expiration: { maxEntries: 20, maxAgeSeconds: 60 * 5 },
+      expiration: { maxEntries: 20, maxAgeSeconds: 30 },
     },
   },
   {

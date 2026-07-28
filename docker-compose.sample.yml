@@ -1,0 +1,22 @@
+# Sample only — copy/adapt for your host (e.g. next to SWAG).
+#   cp docker-compose.sample.yml docker-compose.yml
+#
+# Prefer the published image (semantic-release → ghcr.io/wfcd/warframe-hub).
+# Sentry DSN is runtime-only (never baked into the image).
+
+services:
+  hub:
+    image: ghcr.io/wfcd/warframe-hub:latest
+    # Or build locally instead of pulling:
+    # build: .
+    ports:
+      - '8742:8742'
+    environment:
+      NEXT_PUBLIC_DSN: ${NEXT_PUBLIC_DSN:-}
+    restart: unless-stopped
+    # Prefer joining your SWAG/proxy network and omit `ports` when proxy-only:
+    # networks:
+    #   - swag
+    # networks:
+    #   swag:
+    #     external: true

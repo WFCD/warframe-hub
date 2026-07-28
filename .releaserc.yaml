@@ -8,6 +8,13 @@ plugins:
     - npmPublish: false
       pkgRoot: .
   - '@semantic-release/github'
+  - - '@codedependant/semantic-release-docker'
+    - dockerImage: warframe-hub
+      dockerRegistry: ghcr.io
+      dockerProject: wfcd
+      dockerPlatform:
+        - 'linux/amd64'
+        - 'linux/arm64'
   - - '@semantic-release/git'
     - assets:
         - package.json

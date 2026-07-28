@@ -115,6 +115,8 @@ export default defineConfig(() => ({
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',
+      // vinext/Vercel deploy root is dist/client — SW must live there or /sw.js 404s
+      outDir: 'dist/client',
       devOptions: {
         enabled: false,
       },
@@ -137,7 +139,17 @@ export default defineConfig(() => ({
       },
       workbox: {
         globDirectory: fileURLToPath(new URL('./dist/client', import.meta.url)),
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,json,woff,woff2}'],
+        // Avoid precaching RSC payloads / locale JSON blast on install
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff,woff2}'],
+        globIgnores: [
+          '**/*.rsc',
+          '**/vinext-client-entry-manifest.json',
+          '**/runtime-env.js',
+        ],
+        clientsClaim: false,
+        skipWaiting: false,
+        cleanupOutdatedCaches: true,
+        // No navigateFallback — vinext prerenders per-route HTML (codex.html, etc.)
         runtimeCaching,
       },
     }),

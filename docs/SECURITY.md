@@ -13,6 +13,13 @@ Only the current `dev` deployment is supported (production on Vercel; self-host 
 
 **In scope:** vulnerabilities in this repository’s application code, build/release pipelines, published container images (`ghcr.io/wfcd/warframe-hub`), and first-party configuration that ships with the project.
 
+**Security requirements (what users can expect):**
+
+- The hub is a **read-only information UI**. It does not require Warframe account login and must not request Warframe passwords or session tokens.
+- Data shown comes from **public** third-party APIs/CDNs (Warframe Stat.us and related). Availability and correctness of that upstream data are outside this project’s control; integration bugs in this repo remain in scope.
+- Self-hosted deployments should treat `NEXT_PUBLIC_*` values as visible to browsers; do not place private credentials there.
+- Signed container releases and SBOMs (when published) support supply-chain verification; see the README Cosign examples.
+
 **Out of scope:**
 
 - Third-party services the hub consumes (for example Warframe Stat.us APIs/CDN), unless a concrete issue is in how this project integrates with them

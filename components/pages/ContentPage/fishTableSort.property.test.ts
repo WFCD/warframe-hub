@@ -40,13 +40,14 @@ test('parseFishRarity returns original string when no leading tier', () => {
 test('parseFishMass extracts leading numeric mass when present', () => {
   fc.assert(
     fc.property(
-      fc.double({ min: 0, max: 1_000, noNaN: true, noDefaultInfinity: true }),
+      // Fixed-point masses avoid scientific notation, which /^([\d.]+)/ only partially matches.
+      fc.integer({ min: 0, max: 1_000_000 }).map((n) => n / 1000),
       fc.string({ maxLength: 12 }).filter((s) => !/^\d/.test(s)),
       (mass, suffix) => {
         const formatted = `${mass}${suffix}`;
         const parsed = parseFishMass(formatted);
         assert.equal(typeof parsed, 'number');
-        assert.ok(Math.abs((parsed as number) - mass) < 1e-9 || Number.isFinite(parsed as number));
+        assert.ok(Math.abs((parsed as number) - mass) < 1e-9);
       },
     ),
   );

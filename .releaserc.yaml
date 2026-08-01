@@ -1,8 +1,11 @@
 plugins:
   - '@semantic-release/commit-analyzer'
   - - '@semantic-release/exec'
-    - successCmd: "echo 'release=yes' >> $GITHUB_OUTPUT; echo $GITHUB_OUTPUT"
-      failCmd: "echo 'release=no' >> $GITHUB_OUTPUT; echo $GITHUB_OUTPUT"
+    - successCmd: >
+        echo 'release=yes' >> $GITHUB_OUTPUT;
+        echo 'new_release_version=${nextRelease.version}' >> $GITHUB_OUTPUT;
+        echo 'new_release_git_tag=${nextRelease.gitTag}' >> $GITHUB_OUTPUT
+      failCmd: "echo 'release=no' >> $GITHUB_OUTPUT"
   - '@semantic-release/release-notes-generator'
   - - '@semantic-release/npm'
     - npmPublish: false

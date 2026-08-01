@@ -1,0 +1,9 @@
+{
+  "name": "@semantic-release/npm",
+  "version": "13.1.5",
+  "private": true,
+  "description": "No-op stub — hub does not publish to the npm registry; avoids pulling a nested npm CLI with known vulns. Lives under .github with other release/CI tooling.",
+  "type": "module",
+  "main": "index.js",
+  "exports": "./index.js"
+}

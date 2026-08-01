@@ -6,6 +6,10 @@ on:
     branches: [ dev ]
   schedule:
     - cron: '36 2 * * 6'
+
+permissions:
+  contents: read
+
 jobs:
   analyze:
     name: Analyze

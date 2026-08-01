@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fc from 'fast-check';
 
-import type { ComponentsMap } from '../shared/types/prefs.ts';
+import type { ComponentsMap } from '../shared/types/prefs';
 import {
   FISSURE_PANEL_KEYS,
   isFissureDisplayIncluded,
   migrateFissurePanels,
-} from './fissurePanelMigration.ts';
+} from './fissurePanelMigration';
 
 const displayModes = [
   'fissures',

@@ -9,7 +9,7 @@ import {
   parseFishRarity,
   poeSpearTier,
   type FishSortValue,
-} from './fishTableSort.ts';
+} from './fishTableSort';
 
 const fishValueArb: fc.Arbitrary<FishSortValue> = fc.oneof(
   fc.string({ maxLength: 24 }),

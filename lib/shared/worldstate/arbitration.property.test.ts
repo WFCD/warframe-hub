@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fc from 'fast-check';
 
-import { isArbitrationActive, stripInactiveArbitration } from './arbitration.ts';
+import { isArbitrationActive, stripInactiveArbitration } from './arbitration';
 
 const loadingArb = fc.constantFrom('Loading...', 'SolNode000', 'Tenno');
 

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Card, Chip, ProgressBar } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
-import { cdn } from '@/lib/shared';
+import { cdn, isRealInstant, parseInstant } from '@/lib/shared';
 import AsyncItemThumb from '@/components/media/AsyncItemThumb';
 import HubImg from '@/components/media/HubImg';
 
@@ -127,8 +127,9 @@ const InvasionItem: FC<InvasionItemProps> = ({ invasion }: InvasionItemProps) =>
 
   const eta = useMemo(() => {
     const completedRuns = invasion.count;
-    if (!completedRuns) return '';
-    const elapsedMillis = dayjs(invasion.activation).diff(dayjs(), 'millisecond');
+    const activation = parseInstant(invasion.activation);
+    if (!completedRuns || !isRealInstant(activation)) return '';
+    const elapsedMillis = activation.diff(dayjs(), 'millisecond');
     const remaining = invasion.requiredRuns - completedRuns;
     const estExpiry = dayjs().add(remaining * (elapsedMillis / completedRuns), 'millisecond');
     return `${t('invasions.eta')} ${dayjs(estExpiry).fromNow(true).trim()}`;

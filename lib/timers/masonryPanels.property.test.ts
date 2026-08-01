@@ -2,14 +2,14 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fc from 'fast-check';
 
-import type { ComponentsMap } from '../shared/types/prefs.ts';
+import type { ComponentsMap } from '../shared/types/prefs';
 import {
   DEFAULT_MASONRY_PANEL_ORDER,
   isMasonryPanelKey,
   MASONRY_PANEL_KEYS,
   normalizeComponentOrder,
   type MasonryPanelKey,
-} from './masonryPanels.ts';
+} from './masonryPanels';
 
 const masonryKeyArb = fc.constantFrom(...MASONRY_PANEL_KEYS);
 

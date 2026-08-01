@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import durationPlugin from 'dayjs/plugin/duration';
 import { useTranslation } from 'react-i18next';
 
+import { isRealInstant, parseInstant } from '@/lib/shared/time';
+
 dayjs.extend(durationPlugin);
 
 type DayjsDuration = ReturnType<typeof dayjs.duration>;
@@ -19,6 +21,8 @@ const defaultCoarseHoursAbove = 7200000;
 export type TimeBadgeTone = 'info' | 'success' | 'warning' | 'danger' | 'transparent';
 
 type ChipColor = 'accent' | 'success' | 'warning' | 'danger' | 'default';
+
+export { parseInstant } from '@/lib/shared/time';
 
 export const timeBadgeChipColor = (tone: TimeBadgeTone | string): ChipColor => {
   if (tone === 'info' || tone === 'accent') return 'accent';
@@ -39,14 +43,6 @@ type TimeBadgeProps = {
   id?: string;
   /** When remaining ms is at or above this threshold, show hours only (e.g. 2h, 1d 3h). Pass `null` to disable. */
   coarseHoursAbove?: number | null;
-};
-
-export const parseInstant = (value?: string): dayjs.Dayjs | null => {
-  if (value === undefined || value === null || value === '' || value === '0') {
-    return null;
-  }
-  const parsed = dayjs(value);
-  return parsed.isValid() ? parsed : null;
 };
 
 export const formatTimer = (diff: number): string => {
@@ -146,17 +142,19 @@ const TimeBadge: FC<TimeBadgeProps> = ({
     const coarseAbove = coarseHoursAbove ?? undefined;
     const startAt = parseInstant(starttime);
     const endAt = parseInstant(endtime);
+    const start = isRealInstant(startAt) ? startAt : undefined;
+    const end = isRealInstant(endAt) ? endAt : undefined;
 
     let diffactivate: number | undefined;
     let durationactivate: DayjsDuration | undefined;
 
-    if (startAt) {
-      diffactivate = startAt.diff(dayjs(), 'millisecond');
+    if (start) {
+      diffactivate = start.diff(dayjs(), 'millisecond');
       durationactivate = dayjs.duration(diffactivate);
     }
 
     if (!counter) {
-      if (!endAt) {
+      if (!end) {
         setTone('info');
         setTickInterval(interval);
         setDisp(
@@ -165,7 +163,7 @@ const TimeBadge: FC<TimeBadgeProps> = ({
         return;
       }
 
-      const diff = endAt.diff(dayjs(), 'millisecond');
+      const diff = end.diff(dayjs(), 'millisecond');
       const duration = dayjs.duration(Math.abs(diff));
       const useCoarse = coarseAbove !== undefined && diff >= coarseAbove;
 
@@ -191,7 +189,7 @@ const TimeBadge: FC<TimeBadgeProps> = ({
         setDisp(formatCountdown(diff, coarseAbove));
       }
     } else {
-      const diff = startAt ? dayjs().diff(startAt, 'millisecond') : 0;
+      const diff = start ? dayjs().diff(start, 'millisecond') : 0;
       const duration = dayjs.duration(diff);
       const useCoarse = coarseAbove !== undefined && diff >= coarseAbove;
 

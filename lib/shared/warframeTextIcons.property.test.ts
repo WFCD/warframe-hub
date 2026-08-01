@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fc from 'fast-check';
 
-import { dtAssetKey, genesisDtIconUrl, GENESIS_EMOJI_BASE } from './warframeTextIcons.ts';
+import { dtAssetKey, genesisDtIconUrl, GENESIS_EMOJI_BASE } from './warframeTextIcons';
 
 const KNOWN_ALIASES = [
   'IMPACT',

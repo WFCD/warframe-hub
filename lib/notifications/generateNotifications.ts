@@ -1,4 +1,4 @@
-import type { WorldstateData } from '@/lib/shared';
+import { isRealInstant, parseInstant, type WorldstateData } from '@/lib/shared';
 
 import type { TFunction } from 'i18next';
 
@@ -28,8 +28,10 @@ const arbitrationEventKey = (arbitration: { enemy?: string; type?: string }): st
     .toLowerCase()
     .replace(/\s/gi, '')}`;
 
-const arbitrationId = (arbitration: { expiry?: string }): string =>
-  `arbitration:${new Date(String(arbitration.expiry)).getTime()}`;
+const arbitrationId = (arbitration: { expiry?: string }): string => {
+  const expiry = parseInstant(arbitration.expiry);
+  return `arbitration:${isRealInstant(expiry) ? expiry.valueOf() : 0}`;
+};
 
 const newsEventKey = (article: {
   update?: boolean;

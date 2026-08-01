@@ -14,7 +14,7 @@
     "commitlint": "commitlint",
     "prepare": "husky",
     "test": "npm run test:property && npm run test:e2e && npm run test:component",
-    "test:property": "node --experimental-strip-types --test 'lib/**/*.property.test.ts' 'components/**/*.property.test.ts'",
+    "test:property": "node --import jiti/register --test 'lib/**/*.property.test.ts' 'components/**/*.property.test.ts'",
     "test:e2e": "cypress run --e2e --config-file cypress.config.ts",
     "test:component": "cypress run --component --config-file cypress.config.ts",
     "test:debug": "cypress open --config-file cypress.config.ts",

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fc from 'fast-check';
 
-import { cdn, dedupeRewardPool, optimize, wfcdn } from './utilities.ts';
+import { cdn, dedupeRewardPool, optimize, wfcdn } from './utilities';
 
 test('dedupeRewardPool keeps first-seen order and unique values', () => {
   fc.assert(

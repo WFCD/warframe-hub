@@ -65,6 +65,8 @@ jobs:
   semantic-release:
     runs-on: ubuntu-latest
     needs: ['commitlint', 'lint', 'test']
+    outputs:
+      release: ${{ steps.release.outputs.release }}
     permissions:
       contents: write
       packages: write
@@ -151,12 +153,26 @@ jobs:
             --predicate sbom.spdx.json \
             "ghcr.io/wfcd/warframe-hub@${{ steps.digest.outputs.digest }}"
       - name: Attest build provenance
+        id: provenance
         if: ${{ steps.release.outputs.release == 'yes' }}
         uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
         with:
           subject-name: ghcr.io/wfcd/warframe-hub
           subject-digest: ${{ steps.digest.outputs.digest }}
           push-to-registry: true
+      - name: Attach SLSA provenance to GitHub Release
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.release.outputs.new_release_version }}
+          TAG: ${{ steps.release.outputs.new_release_git_tag }}
+          BUNDLE: ${{ steps.provenance.outputs.bundle-path }}
+        run: |
+          set -euo pipefail
+          RELEASE_TAG="${TAG:-v${VERSION}}"
+          OUT="warframe-hub-${VERSION}.intoto.jsonl"
+          cp "${BUNDLE}" "${OUT}"
+          gh release upload "${RELEASE_TAG}" "${OUT}" --clobber
       - name: Scan image with Trivy
         if: ${{ steps.release.outputs.release == 'yes' }}
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # 0.36.0
@@ -173,13 +189,6 @@ jobs:
         with:
           sarif_file: trivy-results.sarif
           category: trivy-image
-      - name: Upload SBOM artifact
-        if: ${{ steps.release.outputs.release == 'yes' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: sbom-spdx
-          path: sbom.spdx.json
-          retention-days: 30
       - name: Create Sentry release
         if: ${{ steps.release.outputs.release == 'yes' }}
         uses: getsentry/action-release@ff07929a6537bac57790c3451cf4d364aca38528 # v3.7.0
@@ -189,3 +198,14 @@ jobs:
           SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
         with:
           environment: production
+
+  scorecard:
+    name: Scorecard
+    needs: semantic-release
+    if: ${{ needs.semantic-release.outputs.release == 'yes' }}
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+      actions: read
+    uses: ./.github/workflows/scorecard.yml

@@ -1,6 +1,10 @@
 name: Scorecard
 on:
-  workflow_call: {}
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
   branch_protection_rule:
     types: [created, edited, deleted]
   schedule:
@@ -11,6 +15,10 @@ permissions: read-all
 jobs:
   analysis:
     name: Scorecard analysis
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'dev')
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -21,6 +29,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Prefer the Release run's commit when triggered via workflow_run
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           persist-credentials: false
       - name: Run analysis
         uses: ossf/scorecard-action@2d1146689b8cda280b9bc96326124645441f03bc # v2.4.4

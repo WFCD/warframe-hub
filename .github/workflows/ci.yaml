@@ -4,6 +4,9 @@ on:
     branches:
       - dev
 
+permissions:
+  contents: read
+
 jobs:
   commitlint:
     name: Commit messages

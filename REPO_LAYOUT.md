@@ -21,7 +21,7 @@ hub/
 ├── commitlint.config.ts
 ├── lint-staged.config.ts
 ├── dev.config.ts
-├── package.json              # @wfcd/hub 3.x
+├── package.json              # @wfcd/hub (version 0.0.0-dev; semver via tags/Releases)
 ├── vercel.json               # static export → dist/client
 ├── crowdin.yml               # l10n → lib/locales
 └── README.md
@@ -72,7 +72,7 @@ Shared port: [`dev.config.ts`](dev.config.ts) (vinext + Cypress + CI).
 
 ## Deploy
 
-[`vercel.json`](vercel.json): `npm run build` → `dist/client`. Semantic-release bumps root `package.json` on `dev`.
+[`vercel.json`](vercel.json): `npm run build` → `dist/client`. Semantic-release publishes GitHub Releases + GHCR tags (no `package.json` bump; version is `0.0.0-dev` in-repo).
 
 **PR previews:** Vercel Git integration auto-deploys on push (native Preview check + View Deployment). CI (commitlint, lint, e2e, component) runs in parallel and does not gate the preview.
 

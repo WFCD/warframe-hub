@@ -3,6 +3,7 @@
 [![Vercel](https://vercelbadge.vercel.app/api/wfcd/warframe-hub)](https://vercel.com/wfcd/warframe-hub)
 [![Actions](https://github.com/WFCD/warframe-hub/actions/workflows/ci.yaml/badge.svg)](https://github.com/WFCD/warframe-hub/actions/workflows/ci.yaml)
 [![Release](https://github.com/WFCD/warframe-hub/actions/workflows/release.yml/badge.svg)](https://github.com/WFCD/warframe-hub/actions/workflows/release.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/WFCD/warframe-hub/badge)](https://scorecard.dev/viewer/?uri=github.com/WFCD/warframe-hub)
 [![Supported by the Warframe Community Developers](https://img.shields.io/badge/Warframe_Comm_Devs-supported-blue.svg?color=2E96EF&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOTgiIGhlaWdodD0iMTczIiB2aWV3Qm94PSIwIDAgMjk4IDE3MyI%2BPHBhdGggZD0iTTE4NSA2N2MxNSA4IDI4IDE2IDMxIDE5czIzIDE4LTcgNjBjMCAwIDM1LTMxIDI2LTc5LTE0LTctNjItMzYtNzAtNDUtNC01LTEwLTEyLTE1LTIyLTUgMTAtOSAxNC0xNSAyMi0xMyAxMy01OCAzOC03MiA0NS05IDQ4IDI2IDc5IDI2IDc5LTMwLTQyLTEwLTU3LTctNjBsMzEtMTkgMzYtMjIgMzYgMjJ6TTU1IDE3M2wtMTctM2MtOC0xOS0yMC00NC0yNC01MC01LTctNy0xMS0xNC0xNWwxOC0yYzE2LTMgMjItNyAzMi0xMyAxIDYgMCA5IDIgMTQtNiA0LTIxIDEwLTI0IDE2IDMgMTQgNSAyNyAyNyA1M3ptMTYtMTFsLTktMi0xNC0yOWEzMCAzMCAwIDAgMC04LThoN2wxMy00IDQgN2MtMyAyLTcgMy04IDZhODYgODYgMCAwIDAgMTUgMzB6bTE3MiAxMWwxNy0zYzgtMTkgMjAtNDQgMjQtNTAgNS03IDctMTEgMTQtMTVsLTE4LTJjLTE2LTMtMjItNy0zMi0xMy0xIDYgMCA5LTIgMTQgNiA0IDIxIDEwIDI0IDE2LTMgMTQtNSAyNy0yNyA1M3ptLTE2LTExbDktMiAxNC0yOWEzMCAzMCAwIDAgMSA4LThoLTdsLTEzLTQtNCA3YzMgMiA3IDMgOCA2YTg2IDg2IDAgMCAxLTE1IDMwem0tNzktNDBsLTYtNmMtMSAzLTMgNi02IDdsNSA1YTUgNSAwIDAgMSAyIDB6bS0xMy0yYTQgNCAwIDAgMSAxLTJsMi0yYTQgNCAwIDAgMSAyLTFsNC0xNy0xNy0xMC04IDcgMTMgOC0yIDctNyAyLTgtMTItOCA4IDEwIDE3em0xMiAxMWE1IDUgMCAwIDAtNC0yIDQgNCAwIDAgMC0zIDFsLTMwIDI3YTUgNSAwIDAgMCAwIDdsNCA0YTYgNiAwIDAgMCA0IDIgNSA1IDAgMCAwIDMtMWwyNy0zMWMyLTIgMS01LTEtN3ptMzkgMjZsLTMwLTI4LTYgNmE1IDUgMCAwIDEgMCAzbDI2IDI5YTEgMSAwIDAgMCAxIDBsNS0yIDItMmMxLTIgMy01IDItNnptNS00NWEyIDIgMCAwIDAtNCAwbC0xIDEtMi00YzEtMy01LTktNS05LTEzLTE0LTIzLTE0LTI3LTEzLTIgMS0yIDEgMCAyIDE0IDIgMTUgMTAgMTMgMTNhNCA0IDAgMCAwLTEgMyAzIDMgMCAwIDAgMSAxbC0yMSAyMmE3IDcgMCAwIDEgNCAyIDggOCAwIDAgMSAyIDNsMjAtMjFhNyA3IDAgMCAwIDEgMSA0IDQgMCAwIDAgNCAwYzEtMSA2IDMgNyA0aC0xYTMgMyAwIDAgMCAwIDQgMiAyIDAgMCAwIDQgMGw2LTZhMyAzIDAgMCAwIDAtM3oiIGZpbGw9IiMyZTk2ZWYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg%3D%3D)](https://github.com/WFCD/banner/blob/master/PROJECTS.md)
 [![Discord](https://img.shields.io/discord/256087517353213954.svg?logo=discord)](https://discord.gg/jGZxH9f)
 
@@ -38,7 +39,7 @@ The website will be available for viewing at http://localhost:8742
 
 ## Self-hosting (Docker)
 
-Official site stays on **Vercel**. Images publish to **GHCR** on each semantic-release (`ghcr.io/wfcd/warframe-hub`).
+Official site stays on **Vercel**. Images publish to **GHCR** on each semantic-release (`ghcr.io/wfcd/warframe-hub`). Semver lives on **git tags / GitHub Releases / GHCR tags** — root `package.json` stays `0.0.0-dev`.
 
 For self-host (e.g. behind [SWAG](https://github.com/linuxserver/docker-swag)):
 
@@ -46,6 +47,25 @@ For self-host (e.g. behind [SWAG](https://github.com/linuxserver/docker-swag)):
 docker pull ghcr.io/wfcd/warframe-hub:latest
 docker run --rm -p 8742:8742 -e NEXT_PUBLIC_DSN=https://public_key@o0.ingest.sentry.io/0 ghcr.io/wfcd/warframe-hub:latest
 # → http://localhost:8742
+```
+
+Verify keyless Cosign signature (after a signed release):
+
+```bash
+cosign verify \
+  --certificate-identity-regexp 'https://github.com/WFCD/warframe-hub/.github/workflows/release.yml@refs/heads/dev' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  ghcr.io/wfcd/warframe-hub:latest
+```
+
+Verify SPDX SBOM attestation:
+
+```bash
+cosign verify-attestation \
+  --type spdxjson \
+  --certificate-identity-regexp 'https://github.com/WFCD/warframe-hub/.github/workflows/release.yml@refs/heads/dev' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  ghcr.io/wfcd/warframe-hub:latest
 ```
 
 Or copy the sample compose and adapt (join your SWAG network; proxy to `http://hub:8742`):

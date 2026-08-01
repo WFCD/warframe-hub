@@ -15,9 +15,6 @@ plugins:
       dockerPlatform:
         - 'linux/amd64'
         - 'linux/arm64'
-  - - '@semantic-release/git'
-    - assets:
-        - package.json
   - '@eclass/semantic-release-sentry-releases'
 branches:
   - dev

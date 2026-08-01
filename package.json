@@ -1,6 +1,6 @@
 {
   "name": "@wfcd/hub",
-  "version": "2.7.1",
+  "version": "0.0.0-dev",
   "private": true,
   "type": "module",
   "scripts": {

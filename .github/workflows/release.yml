@@ -7,6 +7,8 @@ jobs:
   commitlint:
     name: Commit messages
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -22,6 +24,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -35,6 +39,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         browser:
@@ -55,13 +61,17 @@ jobs:
           browser: ${{ matrix.browser }}
   semantic-release:
     runs-on: ubuntu-latest
-    # wait until test & lint complete
     needs: ['commitlint', 'lint', 'test']
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+      attestations: write
+      security-events: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: '.nvmrc'
@@ -74,26 +84,100 @@ jobs:
         uses: docker/login-action@abd2ef45e78c5afb21d64d4ca52ee8550d9572c7 # v4.5.1
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GH_PACKAGES_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Semantic Release
         id: release
         uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90 # v6.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          DOCKER_REGISTRY_USER: ${{ github.repository_owner }}
-          DOCKER_REGISTRY_PASSWORD: ${{ secrets.GH_PACKAGES_TOKEN }}
+          DOCKER_REGISTRY_USER: ${{ github.actor }}
+          DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           extra_plugins: |
             @eclass/semantic-release-sentry-releases
             @codedependant/semantic-release-docker
-            @semantic-release/git
             @semantic-release/exec
+      - name: Install Cosign
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - name: Install Syft
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: anchore/sbom-action/download-syft@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
+      - name: Resolve image digest
+        id: digest
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        env:
+          VERSION: ${{ steps.release.outputs.new_release_version }}
+        run: |
+          set -euo pipefail
+          IMAGE="ghcr.io/wfcd/warframe-hub:${VERSION}"
+          DIGEST="$(docker buildx imagetools inspect "${IMAGE}" --format '{{.Manifest.Digest}}')"
+          echo "image=${IMAGE}" >> "${GITHUB_OUTPUT}"
+          echo "digest=${DIGEST}" >> "${GITHUB_OUTPUT}"
+          echo "Resolved ${IMAGE}@${DIGEST}"
+      - name: Generate SBOM
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        run: |
+          set -euo pipefail
+          syft "ghcr.io/wfcd/warframe-hub@${{ steps.digest.outputs.digest }}" \
+            -o spdx-json=sbom.spdx.json
+      - name: Sign container image
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        env:
+          COSIGN_YES: 'true'
+        run: |
+          set -euo pipefail
+          cosign sign --yes --recursive \
+            -a "repo=${{ github.repository }}" \
+            -a "workflow=${{ github.workflow }}" \
+            -a "ref=${{ github.sha }}" \
+            "ghcr.io/wfcd/warframe-hub@${{ steps.digest.outputs.digest }}"
+      - name: Attest SBOM
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        env:
+          COSIGN_YES: 'true'
+        run: |
+          set -euo pipefail
+          cosign attest --yes \
+            --type spdxjson \
+            --predicate sbom.spdx.json \
+            "ghcr.io/wfcd/warframe-hub@${{ steps.digest.outputs.digest }}"
+      - name: Attest build provenance
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-name: ghcr.io/wfcd/warframe-hub
+          subject-digest: ${{ steps.digest.outputs.digest }}
+          push-to-registry: true
+      - name: Scan image with Trivy
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # 0.36.0
+        with:
+          image-ref: ghcr.io/wfcd/warframe-hub@${{ steps.digest.outputs.digest }}
+          format: sarif
+          output: trivy-results.sarif
+          exit-code: '0'
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+      - name: Upload Trivy SARIF
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: github/codeql-action/upload-sarif@7188fc363630916deb702c7fdcf4e481b751f97a # v4.37.1
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy-image
+      - name: Upload SBOM artifact
+        if: ${{ steps.release.outputs.release == 'yes' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sbom-spdx
+          path: sbom.spdx.json
+          retention-days: 30
       - name: Create Sentry release
-        if: ${{ steps.release.outputs.release == 'yes'  }}
+        if: ${{ steps.release.outputs.release == 'yes' }}
         uses: getsentry/action-release@ff07929a6537bac57790c3451cf4d364aca38528 # v3.7.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

@@ -13,11 +13,15 @@ export type ArbitrationData = {
 };
 
 function parseInstant(value?: string): dayjs.Dayjs | null {
-  if (value === undefined || value === null || value === '' || value === '0') {
+  if (value === undefined || value === null || value === '') {
     return null;
   }
+  if (value === '0') {
+    return dayjs(0);
+  }
   const parsed = dayjs(value);
-  return parsed.isValid() ? parsed : null;
+  // Invalid API timestamps → epoch (same sentinel as literal "0").
+  return parsed.isValid() ? parsed : dayjs(0);
 }
 
 /** True when arbitration is a live rotation, not API/initial placeholder data. */

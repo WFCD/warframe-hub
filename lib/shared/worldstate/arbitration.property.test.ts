@@ -83,6 +83,12 @@ test('isArbitrationActive requires a finite future expiry', () => {
   );
 });
 
+test('isArbitrationActive treats invalid expiry like sentinel 0', () => {
+  const base = { node: 'Earth', enemy: 'Grineer', type: 'Survival' };
+  assert.equal(isArbitrationActive({ ...base, expiry: '0' }), false);
+  assert.equal(isArbitrationActive({ ...base, expiry: 'not-a-date' }), false);
+  assert.equal(isArbitrationActive({ ...base, expiry: 'garbage' }), false);
+});
 test('stripInactiveArbitration removes inactive arbitration only', () => {
   fc.assert(
     fc.property(
@@ -91,7 +97,10 @@ test('stripInactiveArbitration removes inactive arbitration only', () => {
         arbitration: fc.option(
           fc.record({
             expired: fc.boolean(),
-            expiry: fc.option(fc.date().map((d) => d.toISOString()), { nil: undefined }),
+            expiry: fc.option(
+              fc.date().map((d) => (Number.isNaN(d.getTime()) ? '0' : d.toISOString())),
+              { nil: undefined },
+            ),
             node: fc.oneof(fc.constant('Loading...'), fc.string({ maxLength: 16 })),
             enemy: fc.oneof(fc.constant('Loading...'), fc.string({ maxLength: 16 })),
             type: fc.oneof(fc.constant('Loading...'), fc.string({ maxLength: 16 })),

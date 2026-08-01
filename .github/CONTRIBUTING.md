@@ -1,49 +1,55 @@
-# Contribution
+# Contributing to Warframe Hub
 
-## Getting started
+Thanks for helping improve the hub. By participating you agree to follow the [Code of Conduct](../CODE_OF_CONDUCT.md).
 
-1. Fork this repo
+## How we accept changes
 
-2. Log or pick an issue
+1. **Find or open an issue** on [GitHub Issues](https://github.com/WFCD/warframe-hub/issues) (bug, feature, or question templates).
+2. **Fork** the repository and create a branch from `dev`.
+3. Make your changes, with tests where practical.
+4. Open a **pull request** into `dev`. Fill out the PR template.
+5. Wait for CI (lint, property tests, Cypress) and review. Maintainers merge via the protected `dev` ruleset.
 
-3. ... (Make your code changes)
+We use **pull requests** for all code changes to `dev` — direct pushes to the default branch are not the contribution path.
 
-4. Profit! (Submit a Pull Request)
+Discussion: GitHub Issues / PR threads, or [WFCD Discord](https://discord.gg/jGZxH9f).
 
-5. We all profit. (Your pr is integrated)
+## Development setup
 
-## Guidelines
+```bash
+git clone https://github.com/YOUR_USER/warframe-hub.git
+cd warframe-hub
+npm install
+npm run dev    # http://localhost:8742
+```
 
-### Linting
+Requires Node.js 24 (see `.nvmrc`). Optional env: copy [`.example.env`](../.example.env).
 
-Use the root [`.eslintrc.cjs`](../.eslintrc.cjs) (and [`eslint.cypress.cjs`](../eslint.cypress.cjs) for Cypress). Include any ignores in your pull request documentation with a reason why.
+More layout detail: [docs/LAYOUT.md](../docs/LAYOUT.md). Local tooling: [docs/DEVELOPMENT.md](../docs/DEVELOPMENT.md). Architecture: [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
-### Commit messages
+## Requirements for acceptable contributions
 
-Commits must follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`
+| Area | Expectation |
+|------|-------------|
+| **Language** | TypeScript / React as used in the tree; match nearby style |
+| **Lint** | `npm run lint` clean ([`eslint.config.ts`](../eslint.config.ts)). Prefer fixing rather than disabling rules; if you must disable, explain in the PR |
+| **Commits** | [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject` — e.g. `feat(codex): add filter`, `fix(timers): hydrate panels`. Enforced by husky + commitlint in CI |
+| **Tests** | Add or update Cypress component/e2e and/or `*.property.test.ts` when changing behavior. `npm run test:property` is cheap; run relevant Cypress specs for UI |
+| **i18n** | User-visible strings go through i18n (`lib/locales`); don’t hard-code English-only UI copy for new features |
+| **Scope** | Keep PRs focused; large drive-bys are harder to review |
+| **Security** | Never commit secrets. Vulnerability reports go to [docs/SECURITY.md](../docs/SECURITY.md), not public issues |
 
-Examples: `feat(synthesis): add table pagination`, `fix: hydrate timer panels`, `ci: bump cypress`
+### Useful commands
 
-Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `ci`, `chore`. Validated locally by husky (`commit-msg`) and in CI on pull requests.
+```bash
+npm run lint
+npm run lint:fix
+npm run test:property
+npm run test:component
+npm run test:e2e      # needs dev/server running
+npm run typecheck
+```
 
-### Running
+## License
 
-1. Clone the repo: `git clone https://github.com/WFCD/warframe-hub.git`
-
-2. `npm install`
-
-3. `npm run dev` (port from `dev.config.cjs`, default **8742**)
-
-4. Open http://localhost:8742
-
-### Resources
-
-Nothing here yet
-
-## Contributors
-
-MainlandHero
- * Primary dev, originally made the beginnings of this as another site, but came onto the team and is making cool things happen.
- 
-Tobiah (aliasfalse)
- * Other dude who's helping, checking reviews, tweaks, some formalities
+Contributions are under the same [Apache License 2.0](../LICENSE) as the project.

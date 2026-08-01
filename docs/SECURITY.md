@@ -36,3 +36,5 @@ Please do **not** open a public GitHub issue for security reports.
 ## Response Timeline
 
 We aim to acknowledge reports within **one week**. After acknowledgment we will assess severity, work on a fix or mitigation when appropriate, and coordinate disclosure. Complex issues may take longer; we will keep you informed when we can.
+
+Public fixes that already have a CVE (or similar) at release time are called out in GitHub Release notes per [RELEASES.md](RELEASES.md).

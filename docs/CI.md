@@ -40,3 +40,5 @@ Workflow: [`.github/workflows/release.yml`](../.github/workflows/release.yml)
 | Self-host | `ghcr.io/wfcd/warframe-hub` tags from Release (see README Docker section) |
 
 Production alias gating (Deployment Checks after CI) can be enabled in the Vercel dashboard if desired.
+
+Release-note / CVE-fix policy for operators and the Best Practices form: [RELEASES.md](RELEASES.md).

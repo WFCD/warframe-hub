@@ -1,5 +1,6 @@
 name: Scorecard
 on:
+  workflow_dispatch: {}
   workflow_run:
     workflows:
       - Release
@@ -30,6 +31,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # Manual runs always score tip of dev (not the branch selected in the UI).
+          ref: ${{ github.event_name == 'workflow_dispatch' && 'dev' || github.sha }}
       - name: Run analysis
         uses: ossf/scorecard-action@2d1146689b8cda280b9bc96326124645441f03bc # v2.4.4
         with:

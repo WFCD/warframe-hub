@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { isRealInstant, parseInstant } from '../time';
 import type { WorldstateData } from '../types/worldstate';
 
 export type ArbitrationData = {
@@ -11,14 +12,6 @@ export type ArbitrationData = {
   nodeKey?: string;
   expired?: boolean;
 };
-
-function parseInstant(value?: string): dayjs.Dayjs | null {
-  if (value === undefined || value === null || value === '' || value === '0') {
-    return null;
-  }
-  const parsed = dayjs(value);
-  return parsed.isValid() ? parsed : null;
-}
 
 /** True when arbitration is a live rotation, not API/initial placeholder data. */
 export function isArbitrationActive(arbitration: unknown): boolean {
@@ -39,7 +32,7 @@ export function isArbitrationActive(arbitration: unknown): boolean {
   if (activationAt && activationAt.year() <= 1971) return false;
 
   const expiryAt = parseInstant(a.expiry);
-  if (!expiryAt) return false;
+  if (!isRealInstant(expiryAt)) return false;
   if (expiryAt.year() > 9999) return false;
 
   return expiryAt.isAfter(dayjs());

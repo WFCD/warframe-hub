@@ -7,11 +7,11 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { Tooltip } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
-import { cdn, isArbitrationActive, type WorldstateData } from '@/lib/shared';
+import { cdn, isArbitrationActive, isRealInstant, parseInstant, type WorldstateData } from '@/lib/shared';
 import { tCycleState } from '@/lib/i18n';
 import { usePrefs } from '@/lib/providers/PrefsProvider';
 import { HUB_TOOLTIP_DELAY } from '@/lib/ui/tooltipTiming';
-import TimeBadge, { parseInstant } from '@/components/ui/TimeBadge';
+import TimeBadge from '@/components/ui/TimeBadge';
 import HubImg from '@/components/media/HubImg';
 import AsyncItemThumb from '@/components/media/AsyncItemThumb';
 
@@ -295,8 +295,8 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
             ) : undefined
           }
           badge={
-            steelPath.expiry && parseInstant(steelPath.expiry)
-              ? timerBadge(steelPath.activation!, steelPath.expiry)
+            isRealInstant(parseInstant(steelPath.expiry))
+              ? timerBadge(steelPath.activation!, steelPath.expiry!)
               : undefined
           }
         />
@@ -315,8 +315,8 @@ const CycleTimers: FC<CycleTimersProps> = ({ worldstate }: CycleTimersProps) => 
           icon={<i className={`icon-factions-${enemy}`} />}
           detail={arbitration.node}
           badge={
-            arbitration.expiry && parseInstant(arbitration.expiry)
-              ? timerBadge(arbitration.activation, arbitration.expiry)
+            isRealInstant(parseInstant(arbitration.expiry))
+              ? timerBadge(arbitration.activation!, arbitration.expiry!)
               : undefined
           }
         />

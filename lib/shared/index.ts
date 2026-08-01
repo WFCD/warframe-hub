@@ -1,5 +1,6 @@
 export * from './Notifier';
 export * from './utilities';
+export * from './time';
 export * from './types/platform';
 export * from './types/codex';
 export * from './types/worldstate';

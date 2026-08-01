@@ -8,8 +8,8 @@ import BountyJobsTable, { type BountyJobsTableRow } from '@/components/panels/sh
 import NoDataItem from '@/components/ui/NoDataItem';
 import HubPanelWrap from '@/components/panels/shared/HubPanelWrap';
 import TimeBadge from '@/components/ui/TimeBadge';
+import { API_TIME_EPOCH_ISO } from '@/lib/shared';
 
-const epoch = '1970-01-01T00:00:00.000Z';
 const reversedHealthEvents = ['Thermia Fractures'];
 
 type EventReward = {
@@ -204,7 +204,7 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                   </div>
                 ) : null}
 
-                {event.altActivation !== epoch && event.altExpiry !== epoch ? (
+                {event.altActivation !== API_TIME_EPOCH_ISO && event.altExpiry !== API_TIME_EPOCH_ISO ? (
                   <div className='hub-event-section'>
                     <div className='hub-event-section-title'>{t('events.currentCycle')}</div>
                     <div className='hub-event-timer'>
@@ -218,7 +218,7 @@ const EventsPanel: FC<EventsPanelProps> = ({ events = [] }: EventsPanelProps) =>
                   </div>
                 ) : null}
 
-                {event.nextAlt?.activation !== epoch && event.nextAlt?.expiry !== epoch ? (
+                {event.nextAlt?.activation !== API_TIME_EPOCH_ISO && event.nextAlt?.expiry !== API_TIME_EPOCH_ISO ? (
                   <div className='hub-event-section'>
                     <div className='hub-event-section-title'>{t('events.nextCycle')}</div>
                     <div className='hub-event-timer'>

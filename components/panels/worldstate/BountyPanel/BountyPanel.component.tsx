@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMaps } from '@/lib/providers/MapsProvider';
+import { isRealInstant, parseInstant } from '@/lib/shared';
 import BountyJobsTable, { type BountyJobsTableRow } from '@/components/panels/shared/BountyJobsTable';
 import HubSwitch from '@/components/ui/HubSwitch';
 import TimeBadge from '@/components/ui/TimeBadge';
@@ -32,13 +33,13 @@ const BountyPanel: FC<BountyPanelProps> = ({ syndicate = {}, type = 'Syndicate' 
   const { state, dispatch } = useMaps();
   const typeId = type.toLowerCase().replace(/\s/gi, '-');
 
-  const active = useMemo(
-    () =>
-      syndicate?.activation && syndicate?.expiry
-        ? new Date(syndicate.activation).getTime() < Date.now() && new Date(syndicate.expiry).getTime() > Date.now()
-        : false,
-    [syndicate.activation, syndicate.expiry]
-  );
+  const active = useMemo(() => {
+    const activation = parseInstant(syndicate?.activation);
+    const expiry = parseInstant(syndicate?.expiry);
+    if (!isRealInstant(activation) || !isRealInstant(expiry)) return false;
+    const now = Date.now();
+    return activation.valueOf() < now && expiry.valueOf() > now;
+  }, [syndicate.activation, syndicate.expiry]);
 
   const [autoExpand, setAutoExpand] = useState(state.bountyToggles[typeId] ?? false);
   const [rows, setRows] = useState<BountyJobsTableRow[]>([]);

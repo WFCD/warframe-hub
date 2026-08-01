@@ -1,8 +1,9 @@
-import type { WorldstateData } from '@/lib/shared';
+import { isRealInstant, parseInstant, type WorldstateData } from '@/lib/shared';
 
 const arbitrationId = (arbitration: { expiry?: string }): string | undefined => {
-  if (!arbitration.expiry) return undefined;
-  return `arbitration:${new Date(arbitration.expiry).getTime()}`;
+  const expiry = parseInstant(arbitration.expiry);
+  if (!isRealInstant(expiry)) return undefined;
+  return `arbitration:${expiry.valueOf()}`;
 };
 
 export const collectNotifiedIds = (ws: WorldstateData): string[] =>

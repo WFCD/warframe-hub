@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import { Chip } from '@heroui/react';
 import { Trans, useTranslation } from 'react-i18next';
-import { cdn } from '@/lib/shared';
+import { cdn, isRealInstant, parseInstant } from '@/lib/shared';
 import TimeBadge from '@/components/ui/TimeBadge';
 import HubImg from '@/components/media/HubImg';
 import NoDataItem from '@/components/ui/NoDataItem';
@@ -46,7 +46,8 @@ const AlertItem: FC<{ alert: Alert; last: boolean }> = ({ alert, last }: { alert
   const hasRewards =
     reward.items.length > 0 || reward.countedItems.length > 0 || Boolean(reward.credits);
 
-  if (new Date(alert.activation).getTime() >= Date.now()) return null;
+  const activation = parseInstant(alert.activation);
+  if (!isRealInstant(activation) || activation.valueOf() >= Date.now()) return null;
 
   return (
     <HubPanelListItem style={{ display: 'block' }} borderless={!last} borderBottom={last} compact={!last}>

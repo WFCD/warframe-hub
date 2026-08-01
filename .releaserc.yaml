@@ -7,9 +7,6 @@ plugins:
         echo 'new_release_git_tag=${nextRelease.gitTag}' >> $GITHUB_OUTPUT
       failCmd: "echo 'release=no' >> $GITHUB_OUTPUT"
   - '@semantic-release/release-notes-generator'
-  - - '@semantic-release/npm'
-    - npmPublish: false
-      pkgRoot: .
   - '@semantic-release/github'
   - - '@codedependant/semantic-release-docker'
     - dockerImage: warframe-hub

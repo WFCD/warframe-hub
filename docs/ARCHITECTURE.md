@@ -46,6 +46,8 @@ A **browser web application** that shows Warframe worldstate timers and referenc
 ## Related docs
 
 - [Documentation index](README.md)
+- [INTERFACE.md](INTERFACE.md) — external routes and config
+- [RELEASES.md](RELEASES.md) — release notes and CVE-fix policy
 - [README.md](../README.md) — quick start, user overview
 - [LAYOUT.md](LAYOUT.md) — directory map
 - [DEVELOPMENT.md](DEVELOPMENT.md) — local tooling

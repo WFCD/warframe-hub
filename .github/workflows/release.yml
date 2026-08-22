@@ -73,7 +73,7 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Run Cypress
-        uses: cypress-io/github-action@fa4a118725a8f001170d49631ea89e5d66fee626 # v7.4.1
+        uses: cypress-io/github-action@c32f12761482a282d24ca0fd7466d8ae86f54ba8 # v7.4.2
         with:
           build: npm run build
           start: npm start
@@ -198,7 +198,7 @@ jobs:
           ignore-unfixed: true
       - name: Upload Trivy SARIF
         if: ${{ steps.release.outputs.release == 'yes' }}
-        uses: github/codeql-action/upload-sarif@5595ccaf912efad79be6eef63a5619ff05969be3 # v4.37.6
+        uses: github/codeql-action/upload-sarif@ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd # v4.37.7
         with:
           sarif_file: trivy-results.sarif
           category: trivy-image

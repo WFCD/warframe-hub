@@ -1,7 +1,16 @@
+// Content pages stay hidden behind the loader until their cache has data; hubTest mode never fetches.
+const visitHubWithCaches = () => {
+  cy.fixture('rivens-cache').then((rivens) =>
+    cy.fixture('synth-targets').then((synth) =>
+      cy.fixture('codex-items').then((items) => cy.visitHub('/', { cache: { rivens, synth, items } }))
+    )
+  );
+};
+
 describe('Navbar', () => {
   beforeEach(() => {
     cy.viewport(1280, 800);
-    cy.visitHub('/');
+    visitHubWithCaches();
     cy.get('.hub-navbar-start').should('be.visible');
   });
 
@@ -49,7 +58,7 @@ describe('Navbar', () => {
 describe('Navbar mobile', () => {
   beforeEach(() => {
     cy.viewport(390, 844);
-    cy.visitHub('/');
+    visitHubWithCaches();
     cy.get('.hub-bottom-nav').should('be.visible');
     cy.get('.hub-navbar-start').should('not.exist');
   });

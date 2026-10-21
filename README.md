@@ -105,7 +105,7 @@ docker run --rm -p 8742:8742 -e NEXT_PUBLIC_DSN=https://public_key@o0.ingest.sen
 # → http://localhost:8742
 ```
 
-Verify keyless Cosign signature (after a signed release):
+Verify keyless Cosign signature (after a signed release). The identity is the OIDC subject for the [release workflow](https://github.com/WFCD/warframe-hub/blob/dev/.github/workflows/release.yml) on `dev`, not a browser URL:
 
 ```bash
 cosign verify \
@@ -185,7 +185,7 @@ Cypress needs a running app (`npm run dev` or `npm start`) for e2e. See [CONTRIB
 
 ## License
 
-Distributed under the [Apache License 2.0](LICENSE). Plain-English summary: [tldrlegal Apache-2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)).
+Distributed under the [Apache License 2.0](LICENSE). Plain-English summary: [tldrlegal Apache-2.0](https://www.tldrlegal.com/license/apache-license-2-0-apache-2-0).
 
 ## Small note
 

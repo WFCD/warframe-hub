@@ -158,8 +158,7 @@ export default defineConfig(() => ({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('.', import.meta.url)),
-      // HeroUI bundles react-aria@3.49 while the app resolves 3.50 — duplicate
-      // FocusableProvider contexts break Tooltip hover (no onPointerEnter on trigger).
+      // Keep one react-aria tree; duplicate FocusableProvider contexts break Tooltip hover.
       'react-aria': reactAriaRoot,
       'react-aria-components': reactAriaComponentsRoot,
     },
